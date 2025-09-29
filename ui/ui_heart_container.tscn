@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bt74wnjkyby2u"]
+
+[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health-heart-icon.png" id="1_2r7ge"]
+[ext_resource type="Script" uid="uid://dqanchr25t1qe" path="res://ui/ui_heart_container.gd" id="1_xlwr5"]
+[ext_resource type="Texture2D" uid="uid://bbxndtq5iclgv" path="res://ui/health-heart-empty-icon.png" id="2_xlwr5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
+atlas = ExtResource("2_xlwr5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
+atlas = ExtResource("2_xlwr5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("2_xlwr5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_272bh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bvp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lquwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="UI_Heart_Container" type="MarginContainer" node_paths=PackedStringArray("heart_image")]
+custom_minimum_size = Vector2(32, 32)
+script = ExtResource("1_xlwr5")
+heart_image = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16.5, 16.5)
+texture = ExtResource("1_2r7ge")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_272bh")
+autoplay = "default"
+frame = 2
+frame_progress = 0.851984
+centered = false

@@ -15,7 +15,34 @@ run/main_scene="uid://c63fm78u50tjr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[debug]
+
+shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.784314)
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/scale=1.5
+
+[layer_names]
+
+2d_physics/layer_1="Actors 1"
+2d_physics/layer_2="Actors 2"
+2d_physics/layer_3="Actors 3"
+2d_physics/layer_4="Objects 1"
+2d_physics/layer_5="Objects 2"
+2d_physics/layer_6="Objects 3"
+2d_physics/layer_7="Level 1"
+2d_physics/layer_8="Level 2"
+2d_physics/layer_9="Level 3"
+
+[physics]
+
+2d/default_gravity=35.0
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

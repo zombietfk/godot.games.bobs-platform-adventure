@@ -1,0 +1,205 @@
+[gd_scene load_steps=26 format=3 uid="uid://dtcuxsjxmk3o6"]
+
+[ext_resource type="Script" uid="uid://w3k14f5hn7er" path="res://objects/flag/level_complete_flagpole.gd" id="1_b1bc4"]
+[ext_resource type="Texture2D" uid="uid://cuj4uic7abyky" path="res://objects/flag/flagpole-spritesheet.png" id="2_pk8b5"]
+[ext_resource type="Script" uid="uid://djq4d4knkv1da" path="res://objects/flag/flag.gd" id="3_kaw7s"]
+[ext_resource type="Texture2D" uid="uid://cvx72hv61cght" path="res://objects/flag/flag-spritesheet.png" id="4_7lbva"]
+[ext_resource type="Texture2D" uid="uid://635y7nh3j3a1" path="res://objects/confetti.png" id="5_pk8b5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
+atlas = ExtResource("2_pk8b5")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
+atlas = ExtResource("2_pk8b5")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("2_pk8b5")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
+atlas = ExtResource("2_pk8b5")
+region = Rect2(192, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
+atlas = ExtResource("2_pk8b5")
+region = Rect2(256, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
+atlas = ExtResource("2_pk8b5")
+region = Rect2(320, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vivmo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}],
+"loop": true,
+"name": &"waving",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cqfq"]
+atlas = ExtResource("4_7lbva")
+region = Rect2(0, 6, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaehf"]
+atlas = ExtResource("4_7lbva")
+region = Rect2(64, 6, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
+atlas = ExtResource("4_7lbva")
+region = Rect2(128, 6, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cegan"]
+atlas = ExtResource("4_7lbva")
+region = Rect2(192, 6, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82xsv"]
+atlas = ExtResource("4_7lbva")
+region = Rect2(256, 6, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_getpj"]
+atlas = ExtResource("4_7lbva")
+region = Rect2(320, 6, 64, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ryguw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cqfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaehf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_074og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cegan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82xsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_getpj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kaw7s"]
+
+[sub_resource type="Curve" id="Curve_pk8b5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.93125, 1), 0.0, 0.0, 0, 0, Vector2(0.9875, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kaw7s"]
+curve = SubResource("Curve_pk8b5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kaw7s"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 400.0
+initial_velocity_max = 450.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 100, 0)
+scale_min = 1.2
+scale_max = 1.6
+scale_curve = SubResource("CurveTexture_kaw7s")
+color = Color(1, 0, 1, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+turbulence_enabled = true
+turbulence_noise_scale = 0.5
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.08
+turbulence_initial_displacement_min = 0.100001
+turbulence_initial_displacement_max = 0.500001
+collision_mode = 1
+collision_friction = 0.3
+collision_bounce = 0.7
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pk8b5"]
+polygon = PackedVector2Array(200, 0, 200, 25, -200, 25, -200, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
+size = Vector2(20, 120)
+
+[node name="Level_Complete_Flagpole" type="Node2D"]
+script = ExtResource("1_b1bc4")
+
+[node name="Pole" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pole"]
+position = Vector2(9, -26)
+sprite_frames = SubResource("SpriteFrames_vivmo")
+animation = &"waving"
+autoplay = "waving"
+frame_progress = 0.582564
+
+[node name="Flag" type="Node2D" parent="." node_paths=PackedStringArray("confetti_particles_2d")]
+z_index = -1
+position = Vector2(0, 60)
+script = ExtResource("3_kaw7s")
+confetti_particles_2d = NodePath("../Confetti/GPUParticles2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flag"]
+position = Vector2(10, 0)
+sprite_frames = SubResource("SpriteFrames_ryguw")
+autoplay = "default"
+frame_progress = 0.288067
+
+[node name="Confetti" type="Node2D" parent="."]
+position = Vector2(0, 60)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Confetti"]
+material = SubResource("CanvasItemMaterial_kaw7s")
+position = Vector2(6, -28)
+emitting = false
+amount = 128
+texture = ExtResource("5_pk8b5")
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_kaw7s")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Confetti/GPUParticles2D"]
+position = Vector2(0, 1)
+occluder = SubResource("OccluderPolygon2D_pk8b5")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(7, -28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_5vw27")
+
+[node name="Load_Next_Level_Timeout" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Load_Next_Level_Timeout" to="." method="_on_load_next_level_timeout"]

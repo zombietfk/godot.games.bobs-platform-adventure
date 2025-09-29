@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://dyor0okde2rnm"]
+
+[ext_resource type="Script" uid="uid://c8buq4qne72fg" path="res://enemies/imp/imp.gd" id="1_3p1ij"]
+[ext_resource type="Texture2D" uid="uid://cuijmmsqux478" path="res://enemies/imp/imp-walk-spritesheet.png" id="2_3p1ij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gngxf"]
+atlas = ExtResource("2_3p1ij")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swk4a"]
+atlas = ExtResource("2_3p1ij")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chpmn"]
+atlas = ExtResource("2_3p1ij")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3unr"]
+atlas = ExtResource("2_3p1ij")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yyttc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gngxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swk4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chpmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3unr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chpmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swk4a")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(22.5, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p1ij"]
+radius = 1.5
+
+[node name="Enemy_Imp" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 64
+script = ExtResource("1_3p1ij")
+knockpack_impetus = Vector2(1300, 1600)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_yyttc")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.0333583
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.25, 1)
+shape = SubResource("RectangleShape2D_1bvp3")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.419608)
+position = Vector2(-22, -8)
+scale = Vector2(5.39429, -5.49999)
+shape = SubResource("CircleShape2D_3p1ij")
+target_position = Vector2(0, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-8, -19)
+target_position = Vector2(0, 96)
+collision_mask = 64
