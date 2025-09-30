@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c63fm78u50tjr"]
+[gd_scene load_steps=5 format=3 uid="uid://c63fm78u50tjr"]
 
-[ext_resource type="PackedScene" uid="uid://d4lx0mf8a78xt" path="res://player/player.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dd4hda4w5qubs" path="res://player/player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dvork0tghl73f" path="res://ui/player_health_ui.gd" id="1_7mycd"]
 [ext_resource type="Script" uid="uid://ds76dsnvp602l" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bt74wnjkyby2u" path="res://ui/ui_heart_container.tscn" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://b6ma45wbr2u7" path="res://level/levels/level_1.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lquwl")
-inital_level = ExtResource("4_1bvp3")
+inital_level_path = "uid://b6ma45wbr2u7"
 
 [node name="Game_UI" type="CanvasLayer" parent="."]
 
@@ -59,7 +58,7 @@ current_health = 10
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0
 limit_top = -1000000
-limit_bottom = 650
+limit_bottom = 600
 limit_smoothed = true
 position_smoothing_speed = 10.0
 editor_draw_limits = true

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=4 uid="uid://dnmbne185ql0"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_ayajj"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_nr4ye"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud_platform.tscn" id="3_nr4ye"]
+[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/level_complete_flagpole.tscn" id="3_se3ff"]
+
+[node name="Level_2" type="Node2D" node_paths=PackedStringArray("player_start_marker")]
+script = ExtResource("1_ayajj")
+player_start_marker = NodePath("Spawn_Point")
+
+[node name="Spawn_Point" type="Marker2D" parent="."]
+position = Vector2(97, 463)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -37)
+tile_map_data = PackedByteArray("AAAEAAkAAgACAAEAAAAFAAkAAgACAAEAAAAGAAkAAgANAAQAAAAHAAkAAgACAAEAAAAKAAkAAgALAAMAAAALAAkAAgACAAIAAAAAAAkAAgACAAEAAAABAAkAAgACAAEAAAACAAkAAgACAAEAAAADAAkAAgACAAEAAAD//wgAAgADAAIAAAD//wcAAgADAAIAAAD//wYAAgAOAAUAAAD//wUAAgADAAIAAAD//wQAAgADAAIAAAD//wMAAgADAAIAAAD//wIAAgADAAIAAAD//wEAAgADAAIAAAD//wAAAgADAAIAAAAIAAkAAgACAAEAAAAJAAkAAgACAAEAAAAPAAkAAgACAAEAAAAQAAkAAgACAAEAAAARAAkAAgACAAEAAAASAAkAAgACAAEAAAATAAkAAgACAAEAAAAUAAkAAgALAAMAAAD/////AgADAAIAAAAUAAgAAgABAAIAAAAUAAcAAgABAAIAAAAUAAYAAgABAAIAAAAUAAUAAgABAAIAAAAUAAQAAgABAAIAAAAUAAMAAgABAAIAAAAUAAIAAgABAAIAAAAUAAEAAgABAAIAAAAUAAAAAgABAAIAAAAUAP//AgABAAIAAAAUAP7/AgABAAIAAAAUAP3/AgABAAIAAAAUAPz/AgABAAIAAAAUAPv/AgABAAIAAAD//wkAAgAPAAMAAAACAAQAAgABAAEAAAADAAQAAgADAAIAAAD///7/AgADAAIAAAD///3/AgADAAIAAAD///z/AgADAAIAAAD///v/AgADAAIAAAAKAAYAAgABAAIAAAAKAAcAAgABAAIAAAALAAcAAgACAAIAAAALAAgAAgACAAIAAAAMAAgAAgACAAIAAAAKAAgAAgABAAIAAAAKAAUAAgABAAEAAAALAAUAAgADAAEAAAALAAYAAgAPAAMAAAAMAAYAAgADAAEAAAAMAAcAAgAPAAMAAAANAAcAAgADAAEAAAANAAgAAgAPAAMAAAAOAAgAAgADAAEAAAAGAAcAAgAFAAMAAAAGAAgAAgAFAAQAAAAOAAkAAgAPAAMAAAAMAAkAAgACAAIAAAANAAkAAgACAAIAAAAAAAYAAgAIAAEAAAABAAYAAgAJAAEAAAACAAUAAgABAAMAAAADAAIAAgAFAAMAAAADAAMAAgAFAAQAAAADAAUAAgACAAMAAAAEAAUAAgAJAAEAAAA=")
+tile_set = ExtResource("2_nr4ye")
+
+[node name="Cloud_Platform" parent="." instance=ExtResource("3_nr4ye")]
+position = Vector2(911, 207)
+
+[node name="Cloud_Platform2" parent="." instance=ExtResource("3_nr4ye")]
+position = Vector2(1195, 101)
+
+[node name="Cloud_Platform3" parent="." instance=ExtResource("3_nr4ye")]
+position = Vector2(975, -23)
+
+[node name="Cloud_Platform4" parent="." instance=ExtResource("3_nr4ye")]
+position = Vector2(681, -67)
+
+[node name="Cloud_Platform5" parent="." instance=ExtResource("3_nr4ye")]
+position = Vector2(408, -24)
+
+[node name="Level_Complete_Flagpole" parent="." instance=ExtResource("3_se3ff")]
+position = Vector2(51, 314)
+next_level_path = "uid://ed004uxwfpfw"
+
+[connection signal="ready" from="." to="." method="_on_ready"]

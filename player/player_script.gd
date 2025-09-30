@@ -10,18 +10,33 @@ static var spawn_position: Vector2;
 
 @export var max_health = 3;
 @export var current_health = 3;
+@export var jump_forgiveness_timer = 0.08;
+
+var is_dead = false;
+var c_jump_forgiveness_timer = 0.0;
 
 signal take_damage(amount: int, from_direction: Vector2, knockback_strength: Vector2)
 
 var damage_timeout = 0.0;
-
 func _on_take_damage(amount: int, from_direction: Vector2, knockback_strength: Vector2 = Vector2.ZERO) -> void:
 	if damage_timeout <= 0:
-		print(from_direction);
 		velocity += -from_direction.normalized() * knockback_strength;
 		damage_timeout = 1.0;
 		current_health -= amount;
+
+func gib_and_kill(gibs: int = 25) -> void:
+	for i in gibs:
+		Gib.spawn(global_position, -velocity);
+	$RespawnTimer.start();
+	visible = false;
+	is_dead = true;
 	
+func _on_respawn_timer_timeout() -> void:
+	global_position = spawn_position;
+	current_health = max_health;
+	visible = true;
+	is_dead = false;
+
 func is_out_of_bounds() -> bool:
 	return !play_area_bounds.encloses(
 		Rect2(position, Vector2.ONE)
@@ -43,8 +58,11 @@ func update_movement_direction() -> void:
 		!Input.is_action_pressed("ui_left") and
 		!Input.is_action_pressed("ui_right")
 	):
-		movement_impetus -= Vector2(velocity.x * 0.25, 0);
-	if is_jump_key_pressed() and is_on_floor():
+		movement_impetus -= Vector2(velocity.x * 0.25, 0);		
+	if (
+		is_jump_key_pressed() and
+		c_jump_forgiveness_timer <= jump_forgiveness_timer
+	):
 		jump();
 	if is_jump_key_released():
 		cancel_jump();
@@ -58,16 +76,23 @@ func cancel_jump() -> void:
 		velocity.y = 0;
 
 func _process(delta: float) -> void:
+	if is_dead:
+		return;
 	damage_timeout -= delta;
 	if damage_timeout > 0:
 		modulate.a = 0.5;
 	else:
 		modulate.a = 1;
 	if is_out_of_bounds() or current_health <= 0:
-		global_position = spawn_position;
-		current_health = max_health;
+		gib_and_kill(100);
 	player_heath_ui.update_health_bar(current_health, max_health);
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return;
+	if is_on_floor():
+		c_jump_forgiveness_timer = 0;
+	else:
+		c_jump_forgiveness_timer += delta;
 	update_movement_direction();
 	move_and_slide();

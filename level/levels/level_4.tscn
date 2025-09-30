@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=4 uid="uid://ed004uxwfpfw"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_p1lem"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_cgnem"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/spikes/spike.tscn" id="4_p1lem"]
+[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/level_complete_flagpole.tscn" id="4_tce3k"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud_platform.tscn" id="5_cgnem"]
+[ext_resource type="Script" uid="uid://vxjxoigha6d4" path="res://level/traps/movement_trap.gd" id="6_wwgj7"]
+
+[sub_resource type="Curve2D" id="Curve2D_wwgj7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, -2674)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgnem"]
+size = Vector2(128, 96)
+
+[node name="Level_4" type="Node2D" node_paths=PackedStringArray("player_start_marker")]
+script = ExtResource("1_p1lem")
+player_start_marker = NodePath("Spawn_Point")
+
+[node name="Spawn_Point" type="Marker2D" parent="."]
+position = Vector2(158, 479)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -37)
+tile_map_data = PackedByteArray("AAAAAAkAAgAHAAEAAAABAAkAAgAIAAEAAAACAAkAAgAIAAEAAAAGAAkAAgAHAAEAAAAHAAkAAgAIAAEAAAAIAAkAAgAIAAEAAAAJAAkAAgAIAAEAAAAKAAkAAgAJAAEAAAADAAkAAgAIAAEAAAAEAAkAAgAJAAEAAAAKAAgAAgAFAAQAAAAKAAcAAgAFAAQAAAAKAAYAAgAFAAQAAAAKAAUAAgAFAAQAAAAKAAQAAgAFAAQAAAAKAAMAAgAFAAQAAAAKAAIAAgAFAAQAAAAKAAEAAgAFAAQAAAAKAAAAAgAFAAQAAAAKAP//AgAFAAQAAAAKAP7/AgAFAAQAAAAKAP3/AgAFAAQAAAAKAPz/AgAFAAQAAAAKAPv/AgAFAAQAAAAKAPr/AgAFAAQAAAAKAPn/AgAFAAQAAAAKAPj/AgAFAAQAAAAKAPf/AgAFAAQAAAAHAAYAAgAFAAUAAAAHAAUAAgAFAAQAAAAHAAQAAgAFAAQAAAAHAAMAAgAFAAQAAAAHAAIAAgAFAAQAAAAHAAEAAgAFAAQAAAAHAAAAAgAFAAQAAAAHAP//AgAFAAQAAAAHAP7/AgAFAAQAAAAHAP3/AgAFAAQAAAAHAPz/AgAFAAQAAAAHAPv/AgAFAAQAAAAHAPr/AgAFAAQAAAAHAPn/AgAFAAQAAAAHAPj/AgAFAAQAAAAHAPf/AgAFAAQAAAAHAPb/AgAFAAQAAAAHAPX/AgAFAAQAAAAHAPT/AgAFAAQAAAAHAPP/AgAFAAQAAAAHAPL/AgAFAAQAAAAHAPH/AgAFAAQAAAAHAPD/AgAFAAQAAAAHAO//AgAFAAQAAAAHAO7/AgAFAAQAAAAHAO3/AgAFAAQAAAAHAOz/AgAFAAQAAAAHAOv/AgAFAAQAAAAHAOr/AgAFAAQAAAAHAOn/AgAFAAQAAAAHAOj/AgAFAAQAAAAKAPb/AgAFAAQAAAAKAPX/AgAFAAQAAAAKAPT/AgAFAAQAAAAKAPP/AgAFAAQAAAAKAPL/AgAFAAQAAAAKAPH/AgAFAAQAAAAKAPD/AgAFAAQAAAAKAO//AgAFAAQAAAAKAO7/AgAFAAQAAAAKAO3/AgAFAAQAAAAKAOz/AgAFAAQAAAAKAOv/AgAFAAQAAAAKAOr/AgAFAAQAAAAKAOn/AgAFAAQAAAAKAOj/AgAFAAQAAAAHAOf/AgAFAAQAAAAHAOb/AgAFAAQAAAAHAOX/AgAFAAQAAAAHAOT/AgAFAAQAAAAHAOP/AgAFAAQAAAAHAOL/AgAFAAQAAAAHAOH/AgAFAAQAAAAHAOD/AgAFAAQAAAAHAN//AgAFAAQAAAAHAN7/AgAFAAQAAAAHAN3/AgAFAAQAAAAKAOf/AgAFAAQAAAAKAOb/AgAFAAQAAAAKAOX/AgAFAAQAAAAKAOT/AgAFAAQAAAAKAOP/AgAFAAQAAAAKAOL/AgAFAAQAAAAKAOH/AgAFAAQAAAAKAOD/AgAFAAQAAAAKAN//AgAFAAQAAAAKAN7/AgAFAAQAAAAKAN3/AgAFAAQAAAAHANz/AgAFAAQAAAAHANv/AgAFAAQAAAAHANr/AgAFAAQAAAAHANn/AgAFAAQAAAAHANj/AgAFAAQAAAAHANf/AgAFAAQAAAAHANb/AgAFAAQAAAAHANX/AgAFAAQAAAAHANT/AgAFAAQAAAAHANP/AgAFAAQAAAAHANL/AgABAAEAAAAKANz/AgAFAAQAAAAKANv/AgAFAAQAAAAKANr/AgAFAAQAAAAKANn/AgAFAAMAAAAKANX/AgAFAAUAAAAKANT/AgAFAAQAAAAKANP/AgAFAAQAAAAKANL/AgACAAEAAAAMANL/AgADAAEAAAAMANP/AgAFAAQAAAAMANT/AgAFAAQAAAAMANX/AgAFAAQAAAAMANb/AgAFAAQAAAAMANf/AgABAAIAAAAMANj/AgAFAAQAAAAMANn/AgAFAAUAAAAMANz/AgAFAAMAAAAMAN3/AgAFAAQAAAAMAN7/AgAFAAQAAAAMAN//AgAFAAQAAAAMAOD/AgAFAAQAAAAMAOH/AgAFAAQAAAAMAOL/AgAFAAQAAAAMAOP/AgAFAAQAAAAMAOT/AgAFAAQAAAAMAOX/AgAFAAQAAAAMAOb/AgAFAAQAAAAMAOf/AgAFAAQAAAAMAOj/AgABAAIAAAAMAOn/AgAFAAQAAAAMAOr/AgAFAAQAAAAMAOv/AgAFAAQAAAAMAOz/AgAFAAQAAAAMAO3/AgAFAAQAAAAMAO7/AgAFAAQAAAAMAO//AgAFAAQAAAAMAPD/AgAFAAQAAAAMAPH/AgAFAAQAAAAMAPL/AgAFAAQAAAAMAPP/AgAFAAQAAAAMAPT/AgAFAAQAAAAMAPX/AgAFAAQAAAAMAPb/AgAFAAQAAAAMAPf/AgAFAAQAAAAMAPj/AgAFAAQAAAAMAPn/AgAFAAQAAAAMAPr/AgAFAAQAAAAMAPv/AgAFAAQAAAAMAPz/AgAFAAQAAAAMAP3/AgAFAAQAAAAMAP7/AgAFAAQAAAAMAP//AgAFAAQAAAAMAAAAAgAFAAQAAAAMAAEAAgAFAAQAAAAMAAIAAgAFAAQAAAAMAAMAAgAFAAQAAAAMAAQAAgAFAAQAAAAMAAUAAgAFAAQAAAAMAAcAAgAFAAQAAAAMAAgAAgAFAAUAAAAIANL/AgAIAAEAAAAJANL/AgAIAAEAAAALANL/AgAIAAEAAAAPANj/AgABAAMAAAAPANz/AgAFAAMAAAAPAN3/AgAFAAQAAAAPAN7/AgAFAAQAAAAPAN//AgAFAAQAAAAPAOD/AgAFAAQAAAAPANf/AgADAAEAAAAOANf/AgAIAAEAAAANANf/AgAIAAEAAAAPAOH/AgAFAAQAAAAPAOL/AgAFAAQAAAAPAOP/AgAFAAQAAAAPAOT/AgAFAAQAAAAPAOX/AgAFAAQAAAAPAOb/AgAFAAQAAAAPAOf/AgAFAAQAAAAPAOj/AgADAAMAAAAOAOj/AgAIAAEAAAANAOj/AgAIAAEAAAAQANj/AgAIAAEAAAARANj/AgAIAAEAAAASANj/AgAIAAEAAAATANj/AgAIAAEAAAAUANj/AgAIAAEAAAAVANj/AgAIAAEAAAAWANj/AgAIAAEAAAAXANj/AgAIAAEAAAAYANj/AgAIAAEAAAAZANj/AgAIAAEAAAAaANj/AgAIAAEAAAAbANj/AgAIAAEAAAAcANj/AgAIAAEAAAAdANj/AgAIAAEAAAAeANj/AgAIAAEAAAAfANj/AgAIAAEAAAAQANr/AgAHAAEAAAARANr/AgAIAAEAAAASANr/AgAIAAEAAAATANr/AgAIAAEAAAAUANr/AgAIAAEAAAAVANr/AgAIAAEAAAAWANr/AgAIAAEAAAAXANr/AgAIAAEAAAAYANr/AgAIAAEAAAAZANr/AgAIAAEAAAAaANr/AgAIAAEAAAAbANr/AgAIAAEAAAAcANr/AgAIAAEAAAAdANr/AgAIAAEAAAAeANr/AgAIAAEAAAAfANr/AgAIAAEAAAAgANj/AgAIAAEAAAAhANj/AgAIAAEAAAAiANj/AgADAAEAAAAgANr/AgAIAAEAAAAhANr/AgAIAAEAAAAiANr/AgADAAMAAAAiANn/AgAFAAQAAAAMAAYAAgAFAAQAAAA=")
+tile_set = ExtResource("2_cgnem")
+
+[node name="Level_Complete_Flagpole" parent="." instance=ExtResource("4_tce3k")]
+position = Vector2(726, 512)
+next_level_path = "uid://b6ma45wbr2u7"
+
+[node name="Spike" parent="." instance=ExtResource("4_p1lem")]
+position = Vector2(720, 512)
+
+[node name="Spike2" parent="." instance=ExtResource("4_p1lem")]
+position = Vector2(752, 512)
+
+[node name="Cloud_Platform" parent="." instance=ExtResource("5_cgnem")]
+position = Vector2(576, 448)
+
+[node name="Cloud_Platform2" parent="." instance=ExtResource("5_cgnem")]
+position = Vector2(576, 352)
+
+[node name="Cloud_Platform3" parent="." instance=ExtResource("5_cgnem")]
+position = Vector2(576, 256)
+
+[node name="Cloud_Platform4" parent="." instance=ExtResource("5_cgnem")]
+position = Vector2(576, 160)
+
+[node name="Cloud_Platform5" parent="." instance=ExtResource("5_cgnem")]
+position = Vector2(576, 64)
+
+[node name="Cloud_Platform6" parent="." instance=ExtResource("5_cgnem")]
+position = Vector2(576, -32)
+
+[node name="Movement_Trap" type="Path2D" parent="."]
+position = Vector2(576, -190)
+curve = SubResource("Curve2D_wwgj7")
+script = ExtResource("6_wwgj7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Movement_Trap"]
+position = Vector2(0, 64)
+rotation = -1.5708
+rotates = false
+loop = false
+
+[node name="Area2D" type="Area2D" parent="Movement_Trap/PathFollow2D"]
+position = Vector2(64, 0)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Movement_Trap/PathFollow2D/Area2D"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_cgnem")
+
+[node name="Cloud_Platform21" parent="Movement_Trap/PathFollow2D/Area2D" instance=ExtResource("5_cgnem")]
+position = Vector2(0, 64)
+
+[node name="Spike3" parent="." instance=ExtResource("4_p1lem")]
+position = Vector2(528, -2888)
+rotation = 3.14159
+
+[node name="Spike4" parent="." instance=ExtResource("4_p1lem")]
+position = Vector2(560, -2888)
+rotation = 3.14159
+
+[node name="Spike5" parent="." instance=ExtResource("4_p1lem")]
+position = Vector2(592, -2888)
+rotation = 3.14159
+
+[node name="Spike6" parent="." instance=ExtResource("4_p1lem")]
+position = Vector2(624, -2888)
+rotation = 3.14159
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="Movement_Trap/PathFollow2D/Area2D" to="Movement_Trap" method="_on_trap_area_2d_entered"]

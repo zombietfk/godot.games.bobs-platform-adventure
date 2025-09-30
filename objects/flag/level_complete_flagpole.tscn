@@ -125,7 +125,7 @@ initial_velocity_min = 400.0
 initial_velocity_max = 450.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
-gravity = Vector3(0, 100, 0)
+gravity = Vector3(0, 300, 0)
 scale_min = 1.2
 scale_max = 1.6
 scale_curve = SubResource("CurveTexture_kaw7s")
@@ -164,6 +164,7 @@ frame_progress = 0.582564
 z_index = -1
 position = Vector2(0, 60)
 script = ExtResource("3_kaw7s")
+raise_duration = 0.333
 confetti_particles_2d = NodePath("../Confetti/GPUParticles2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flag"]
@@ -173,11 +174,10 @@ autoplay = "default"
 frame_progress = 0.288067
 
 [node name="Confetti" type="Node2D" parent="."]
-position = Vector2(0, 60)
+position = Vector2(7, -79)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Confetti"]
 material = SubResource("CanvasItemMaterial_kaw7s")
-position = Vector2(6, -28)
 emitting = false
 amount = 128
 texture = ExtResource("5_pk8b5")
@@ -187,7 +187,7 @@ explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_kaw7s")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Confetti/GPUParticles2D"]
-position = Vector2(0, 1)
+position = Vector2(0, 112)
 occluder = SubResource("OccluderPolygon2D_pk8b5")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -198,7 +198,7 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5vw27")
 
 [node name="Load_Next_Level_Timeout" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 3.0
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
