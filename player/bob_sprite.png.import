@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhqbusl5wbuyn"
-path="res://.godot/imported/cloud-platform.png-54660c7690fb2d22feb7afbe74219ec5.ctex"
+uid="uid://bo7vwjgkdvcgm"
+path="res://.godot/imported/bob_sprite.png-9882a6bc6bfe7995f11e6d535779dd97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/platforms/cloud-platform.png"
-dest_files=["res://.godot/imported/cloud-platform.png-54660c7690fb2d22feb7afbe74219ec5.ctex"]
+source_file="res://player/bob_sprite.png"
+dest_files=["res://.godot/imported/bob_sprite.png-9882a6bc6bfe7995f11e6d535779dd97.ctex"]
 
 [params]
 

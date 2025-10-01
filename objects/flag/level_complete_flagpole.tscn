@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://dtcuxsjxmk3o6"]
 
 [ext_resource type="Script" uid="uid://w3k14f5hn7er" path="res://objects/flag/level_complete_flagpole.gd" id="1_b1bc4"]
-[ext_resource type="Texture2D" uid="uid://cuj4uic7abyky" path="res://objects/flag/flagpole-spritesheet.png" id="2_pk8b5"]
-[ext_resource type="Script" uid="uid://djq4d4knkv1da" path="res://objects/flag/flag.gd" id="3_kaw7s"]
-[ext_resource type="Texture2D" uid="uid://cvx72hv61cght" path="res://objects/flag/flag-spritesheet.png" id="4_7lbva"]
+[ext_resource type="Texture2D" uid="uid://cuj4uic7abyky" path="res://objects/flag/flagpole_spritesheet.png" id="2_pk8b5"]
+[ext_resource type="Script" uid="uid://djq4d4knkv1da" path="res://objects/flag/level_complete_flag.gd" id="3_kaw7s"]
+[ext_resource type="Texture2D" uid="uid://cvx72hv61cght" path="res://objects/flag/flag_spritesheet.png" id="4_7lbva"]
 [ext_resource type="Texture2D" uid="uid://635y7nh3j3a1" path="res://objects/confetti.png" id="5_pk8b5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
@@ -148,7 +148,7 @@ polygon = PackedVector2Array(200, 0, 200, 25, -200, 25, -200, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
 size = Vector2(20, 120)
 
-[node name="Level_Complete_Flagpole" type="Node2D"]
+[node name="LevelCompleteFlagpole" type="Node2D"]
 script = ExtResource("1_b1bc4")
 
 [node name="Pole" type="Node2D" parent="."]
@@ -197,9 +197,9 @@ position = Vector2(7, -28)
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5vw27")
 
-[node name="Load_Next_Level_Timeout" type="Timer" parent="."]
+[node name="LoadNextLevelTimeout" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Load_Next_Level_Timeout" to="." method="_on_load_next_level_timeout"]
+[connection signal="timeout" from="LoadNextLevelTimeout" to="." method="_on_load_next_level_timeout"]

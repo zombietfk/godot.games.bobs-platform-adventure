@@ -7,19 +7,20 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lquwl")
-inital_level_path = "uid://b6ma45wbr2u7"
+inital_level_path = "uid://ed004uxwfpfw"
 
-[node name="Game_UI" type="CanvasLayer" parent="."]
+[node name="GameUI" type="CanvasLayer" parent="."]
 
-[node name="UI" type="Control" parent="Game_UI"]
+[node name="UI" type="Control" parent="GameUI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Player_Health_UI" type="HBoxContainer" parent="Game_UI/UI"]
+[node name="PlayerHealthUI" type="HBoxContainer" parent="GameUI/UI"]
 layout_direction = 2
 layout_mode = 0
 offset_right = 640.0
@@ -28,8 +29,9 @@ size_flags_horizontal = 0
 size_flags_vertical = 6
 script = ExtResource("1_7mycd")
 ui_heart_container_scene = ExtResource("2_lquwl")
+metadata/_edit_use_anchors_ = true
 
-[node name="Loading_Panel" type="PanelContainer" parent="Game_UI/UI"]
+[node name="LoadingPanel" type="PanelContainer" parent="GameUI/UI"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -37,12 +39,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Game_UI/UI/Loading_Panel"]
+[node name="ColorRect" type="ColorRect" parent="GameUI/UI/LoadingPanel"]
 layout_mode = 2
 color = Color(0.412152, 0.412152, 0.412152, 1)
 
-[node name="Label" type="Label" parent="Game_UI/UI/Loading_Panel"]
+[node name="Label" type="Label" parent="GameUI/UI/LoadingPanel"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Loading..."
@@ -51,7 +54,7 @@ vertical_alignment = 1
 
 [node name="Player" parent="." node_paths=PackedStringArray("player_heath_ui") instance=ExtResource("1_0xm2m")]
 position = Vector2(32, 284)
-player_heath_ui = NodePath("../Game_UI/UI/Player_Health_UI")
+player_heath_ui = NodePath("../GameUI/UI/PlayerHealthUI")
 max_health = 10
 current_health = 10
 

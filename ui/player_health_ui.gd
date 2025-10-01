@@ -1,9 +1,13 @@
 class_name PlayerHealthUI;
 extends HBoxContainer;
 
+# SETTINGS
 @export var ui_heart_container_scene: PackedScene;
+
+# INTERNAL STATE
 var hearts: Array[UIHeartContainer] = [];
 
+# METHODS
 func update_health_bar(current_health: int, max_health: int) -> void:
 	if hearts.size() != max_health:
 		for heart in hearts:

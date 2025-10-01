@@ -1,24 +1,21 @@
-class_name Level_Complete_Flag;
+class_name LevelCompleteFlag;
 extends Node2D;
 
-var raised_target_local_pos: Vector2 = Vector2(0, -60);
-var origin_target_local_pos: Vector2 = Vector2(0, 60);
-var is_being_raised: bool = false;
-var c_raise_duration = 0.0;
-
-@export var raise_duration = 1.0;
+# SETTINGS
 @export var confetti_particles_2d: GPUParticles2D;
 
-func raise_flag():
-	if !is_being_raised:
-		is_being_raised = true;
-		c_raise_duration = 0.0;
+# INTERNAL STATE
+var raised_target_local_pos: Vector2 = Vector2(0, -60);
+var origin_target_local_pos: Vector2 = Vector2(0, 60);
 
-func reset_flag():
-	c_raise_duration = 0;
-	is_being_raised = false;
-	position = origin_target_local_pos;
+# FLAGS
+var is_being_raised: bool = false;
 
+# TIMERS
+@export var raise_duration = 1.0;
+var c_raise_duration = 0.0;
+
+# LIFECYCLE
 func _process(delta: float) -> void:
 	if(is_being_raised && c_raise_duration < raise_duration):
 		c_raise_duration += delta;
@@ -30,3 +27,14 @@ func _process(delta: float) -> void:
 		raised_target_local_pos,
 		c_raise_duration / raise_duration
 	)
+
+# METHODS
+func raise_flag():
+	if !is_being_raised:
+		is_being_raised = true;
+		c_raise_duration = 0.0;
+
+func reset_flag():
+	c_raise_duration = 0;
+	is_being_raised = false;
+	position = origin_target_local_pos;

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bt74wnjkyby2u"]
 
-[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health-heart-icon.png" id="1_2r7ge"]
+[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="1_2r7ge"]
 [ext_resource type="Script" uid="uid://dqanchr25t1qe" path="res://ui/ui_heart_container.gd" id="1_xlwr5"]
-[ext_resource type="Texture2D" uid="uid://bbxndtq5iclgv" path="res://ui/health-heart-empty-icon.png" id="2_xlwr5"]
+[ext_resource type="Texture2D" uid="uid://bbxndtq5iclgv" path="res://ui/health_heart_empty_icon.png" id="2_xlwr5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
 atlas = ExtResource("2_xlwr5")
@@ -33,7 +33,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="UI_Heart_Container" type="MarginContainer" node_paths=PackedStringArray("heart_image")]
+[node name="UIHeartContainer" type="MarginContainer" node_paths=PackedStringArray("heart_image")]
 custom_minimum_size = Vector2(32, 32)
 script = ExtResource("1_xlwr5")
 heart_image = NodePath("Sprite2D")

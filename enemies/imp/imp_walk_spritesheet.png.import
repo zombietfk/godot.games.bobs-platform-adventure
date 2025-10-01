@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo7vwjgkdvcgm"
-path="res://.godot/imported/bob-sprite.png-d255cd717fc17e94f5f9b7c72f76389f.ctex"
+uid="uid://cuijmmsqux478"
+path="res://.godot/imported/imp_walk_spritesheet.png-9fbf203244f21020030231ff78d5c5e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/bob-sprite.png"
-dest_files=["res://.godot/imported/bob-sprite.png-d255cd717fc17e94f5f9b7c72f76389f.ctex"]
+source_file="res://enemies/imp/imp_walk_spritesheet.png"
+dest_files=["res://.godot/imported/imp_walk_spritesheet.png-9fbf203244f21020030231ff78d5c5e0.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmkjxom5s3oq1"
-path="res://.godot/imported/imp-sprite.png-7615c9eb0e0b8cc745279a241a7b38fe.ctex"
+uid="uid://dhqbusl5wbuyn"
+path="res://.godot/imported/cloud_platform.png-cb088d44dbc36dca356a2b8913bb59cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/imp/imp-sprite.png"
-dest_files=["res://.godot/imported/imp-sprite.png-7615c9eb0e0b8cc745279a241a7b38fe.ctex"]
+source_file="res://level/platforms/cloud/cloud_platform.png"
+dest_files=["res://.godot/imported/cloud_platform.png-cb088d44dbc36dca356a2b8913bb59cb.ctex"]
 
 [params]
 

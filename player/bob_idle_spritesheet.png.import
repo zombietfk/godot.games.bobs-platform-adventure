@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdgcstses45pg"
-path="res://.godot/imported/health-heart-icon.png-c3284d8c8240e2f0d2ba97f90a7be68e.ctex"
+uid="uid://csatwk1neiden"
+path="res://.godot/imported/bob_idle_spritesheet.png-9c2c7845d21613e9ac050c6713b2045e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/health-heart-icon.png"
-dest_files=["res://.godot/imported/health-heart-icon.png-c3284d8c8240e2f0d2ba97f90a7be68e.ctex"]
+source_file="res://player/bob_idle_spritesheet.png"
+dest_files=["res://.godot/imported/bob_idle_spritesheet.png-9c2c7845d21613e9ac050c6713b2045e.ctex"]
 
 [params]
 

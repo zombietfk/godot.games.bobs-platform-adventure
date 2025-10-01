@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbxndtq5iclgv"
-path="res://.godot/imported/health-heart-empty-icon.png-da07e9d11661e43561d459d3e316011b.ctex"
+uid="uid://cuj4uic7abyky"
+path="res://.godot/imported/flagpole_spritesheet.png-ffe15165e237c2a47bf94269d4f26495.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/health-heart-empty-icon.png"
-dest_files=["res://.godot/imported/health-heart-empty-icon.png-da07e9d11661e43561d459d3e316011b.ctex"]
+source_file="res://objects/flag/flagpole_spritesheet.png"
+dest_files=["res://.godot/imported/flagpole_spritesheet.png-ffe15165e237c2a47bf94269d4f26495.ctex"]
 
 [params]
 

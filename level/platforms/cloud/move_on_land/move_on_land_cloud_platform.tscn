@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3n1ljnuhyqff"]
+
+[ext_resource type="Script" uid="uid://vxjxoigha6d4" path="res://level/platforms/cloud/move_on_land/move_on_land_cloud_platform.gd" id="1_wi8w1"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="2_ku3xc"]
+
+[sub_resource type="Curve2D" id="Curve2D_wwgj7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, -2674)
+}
+point_count = 2
+
+[node name="MoveOnLandCloudPlatform" type="Path2D"]
+curve = SubResource("Curve2D_wwgj7")
+script = ExtResource("1_wi8w1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, 64)
+rotates = false
+loop = false
+
+[node name="CloudPlatform" parent="PathFollow2D" instance=ExtResource("2_ku3xc")]
+position = Vector2(0, -0.000244141)
+safe_margin = 100.0
+enable_displacement = false
+
+[connection signal="player_exited" from="PathFollow2D/CloudPlatform" to="." method="_on_cloud_platform_player_exited"]
+[connection signal="player_landed" from="PathFollow2D/CloudPlatform" to="." method="_on_cloud_platform_player_landed"]

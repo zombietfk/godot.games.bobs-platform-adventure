@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b2lfscx2oorkx"]
 
-[ext_resource type="Script" uid="uid://dcys5f7vhk0x2" path="res://level/platforms/cloud_platform.gd" id="1_fo1gd"]
-[ext_resource type="Texture2D" uid="uid://dhqbusl5wbuyn" path="res://level/platforms/cloud-platform.png" id="2_1qdmc"]
+[ext_resource type="Script" uid="uid://dcys5f7vhk0x2" path="res://level/platforms/cloud/cloud_platform.gd" id="1_fo1gd"]
+[ext_resource type="Texture2D" uid="uid://dhqbusl5wbuyn" path="res://level/platforms/cloud/cloud_platform.png" id="2_1qdmc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo1gd"]
 atlas = ExtResource("2_1qdmc")
@@ -33,13 +33,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b2ua"]
-size = Vector2(118, 3.5)
+resource_local_to_scene = true
+custom_solver_bias = 1.0
+size = Vector2(118, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se3ff"]
 size = Vector2(118, 6)
 
-[node name="Cloud_Platform" type="CharacterBody2D"]
+[node name="CloudPlatform" type="CharacterBody2D"]
 collision_layer = 128
+platform_floor_layers = 4278190081
+safe_margin = 0.001
 script = ExtResource("1_fo1gd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

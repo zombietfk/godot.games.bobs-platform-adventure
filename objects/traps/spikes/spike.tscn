@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvkius8ni6k6a"]
 
-[ext_resource type="Script" uid="uid://dmos0qhqmiyhi" path="res://objects/spikes/spike.gd" id="1_a5y4n"]
-[ext_resource type="SpriteFrames" uid="uid://citeb5adh0d6f" path="res://objects/spikes/spikes-atlas.tres" id="2_isgjp"]
+[ext_resource type="Script" uid="uid://dmos0qhqmiyhi" path="res://objects/traps/spikes/spike.gd" id="1_a5y4n"]
+[ext_resource type="SpriteFrames" uid="uid://citeb5adh0d6f" path="res://objects/traps/spikes/spikes_atlas.tres" id="2_isgjp"]
 
 [node name="Spike" type="Area2D"]
 z_index = -1

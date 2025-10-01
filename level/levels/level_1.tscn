@@ -6,9 +6,9 @@
 
 [node name="Level_1" type="Node2D" node_paths=PackedStringArray("player_start_marker")]
 script = ExtResource("1_wg4fv")
-player_start_marker = NodePath("Spawn_Point")
+player_start_marker = NodePath("SpawnPoint")
 
-[node name="Spawn_Point" type="Marker2D" parent="."]
+[node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(418, 449)
 
 [node name="Level" type="TileMapLayer" parent="."]
@@ -16,7 +16,7 @@ position = Vector2(0, -37)
 tile_map_data = PackedByteArray("AAAEAAkAAgAPAAMAAAAFAAkAAgACAAEAAAAGAAkAAgACAAEAAAAHAAkAAgACAAEAAAAIAAkAAgALAAMAAAAJAAkAAgAPAAMAAAAKAAkAAgACAAEAAAALAAkAAgACAAEAAAAMAAkAAgACAAEAAAANAAkAAgALAAMAAAAIAAcAAgABAAEAAAAIAAgAAgABAAIAAAAJAAcAAgADAAEAAAAJAAgAAgADAAIAAAANAAgAAgABAAIAAAANAAcAAgABAAIAAAANAAYAAgABAAIAAAANAAUAAgABAAIAAAANAAQAAgABAAIAAAANAAMAAgABAAIAAAANAAIAAgABAAIAAAANAAEAAgALAAcAAAAEAAgAAgADAAIAAAAEAAcAAgADAAIAAAAEAAYAAgADAAIAAAAEAAUAAgADAAIAAAAEAAQAAgADAAIAAAAEAAMAAgADAAIAAAAEAAIAAgADAAIAAAAEAAEAAgAPAAcAAAAFAAEAAgACAAMAAAAGAAEAAgACAAMAAAAHAAEAAgACAAMAAAAIAAEAAgACAAMAAAAJAAEAAgACAAMAAAAKAAEAAgACAAMAAAALAAEAAgACAAMAAAAMAAEAAgACAAMAAAA=")
 tile_set = ExtResource("2_35gx7")
 
-[node name="Level_Complete_Flagpole" parent="." instance=ExtResource("3_eq12i")]
+[node name="LevelCompleteFlagpole" parent="." instance=ExtResource("3_eq12i")]
 position = Vector2(731, 508)
 next_level_path = "uid://0gdkthe85mea"
 

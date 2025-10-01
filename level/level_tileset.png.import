@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuijmmsqux478"
-path="res://.godot/imported/imp-walk-spritesheet.png-8c6618132dd6d24aad1efc6e0852e316.ctex"
+uid="uid://dqu4as32vyksr"
+path="res://.godot/imported/level_tileset.png-2dd184b36bf890367602c25ebca50e2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/imp/imp-walk-spritesheet.png"
-dest_files=["res://.godot/imported/imp-walk-spritesheet.png-8c6618132dd6d24aad1efc6e0852e316.ctex"]
+source_file="res://level/level_tileset.png"
+dest_files=["res://.godot/imported/level_tileset.png-2dd184b36bf890367602c25ebca50e2a.ctex"]
 
 [params]
 

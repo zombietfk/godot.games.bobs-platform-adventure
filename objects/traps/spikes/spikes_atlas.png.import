@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3qcpxgjt87h5"
-path="res://.godot/imported/spikes-atlas.png-a708f6ea77fcd20ade0ccce8cc04a59c.ctex"
+path="res://.godot/imported/spikes_atlas.png-f9c17f6db01930632f82334d756e64b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/spikes/spikes-atlas.png"
-dest_files=["res://.godot/imported/spikes-atlas.png-a708f6ea77fcd20ade0ccce8cc04a59c.ctex"]
+source_file="res://objects/traps/spikes/spikes_atlas.png"
+dest_files=["res://.godot/imported/spikes_atlas.png-f9c17f6db01930632f82334d756e64b4.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dyor0okde2rnm"]
 
 [ext_resource type="Script" uid="uid://c8buq4qne72fg" path="res://enemies/imp/imp.gd" id="1_3p1ij"]
-[ext_resource type="Texture2D" uid="uid://cuijmmsqux478" path="res://enemies/imp/imp-walk-spritesheet.png" id="2_3p1ij"]
+[ext_resource type="Texture2D" uid="uid://cuijmmsqux478" path="res://enemies/imp/imp_walk_spritesheet.png" id="2_3p1ij"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gngxf"]
 atlas = ExtResource("2_3p1ij")
@@ -51,7 +51,7 @@ size = Vector2(22.5, 40)
 [sub_resource type="CircleShape2D" id="CircleShape2D_3p1ij"]
 radius = 1.5
 
-[node name="Enemy_Imp" type="CharacterBody2D"]
+[node name="Imp" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 64
 script = ExtResource("1_3p1ij")

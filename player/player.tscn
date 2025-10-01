@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dd4hda4w5qubs"]
 
-[ext_resource type="Script" uid="uid://caoku7dqkwa54" path="res://player/player_script.gd" id="1_rkbax"]
-[ext_resource type="Texture2D" uid="uid://csatwk1neiden" path="res://player/bob-idle-spritesheet.png" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://caoku7dqkwa54" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://csatwk1neiden" path="res://player/bob_idle_spritesheet.png" id="2_rkbax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1dw6"]
 atlas = ExtResource("2_rkbax")
@@ -61,7 +61,7 @@ size = Vector2(25, 54)
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 201
 platform_floor_layers = 4278190528
-platform_wall_layers = 128
+platform_wall_layers = 320
 script = ExtResource("1_rkbax")
 play_area_bounds = Rect2(0, -1e+07, 1e+07, 1.00006e+07)
 movement_speed = 400
@@ -84,5 +84,4 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 wait_time = 2.0
 one_shot = true
 
-[connection signal="take_damage" from="." to="." method="_on_take_damage"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
