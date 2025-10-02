@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dikidq3cosqy1"]
+
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/traps/generic_follow_path/follow_path.gd" id="1_urmvc"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="2_ssj85"]
+
+[sub_resource type="Curve2D" id="Curve2D_wwgj7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.000274658, -64, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[node name="MovingSpike" type="Path2D"]
+rotation = 3.14159
+curve = SubResource("Curve2D_wwgj7")
+script = ExtResource("1_urmvc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="Spike" parent="PathFollow2D" instance=ExtResource("2_ssj85")]

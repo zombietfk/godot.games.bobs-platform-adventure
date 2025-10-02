@@ -38,7 +38,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b2ua"]
 resource_local_to_scene = true
 custom_solver_bias = 1.0
-size = Vector2(120, 4)
+size = Vector2(129, 4)
 
 [node name="CloudPlatform" type="AnimatableBody2D"]
 collision_layer = 128
@@ -46,7 +46,8 @@ sync_to_physics = false
 script = ExtResource("1_fo1gd")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -31)
+rotation = 3.14159
 shape = SubResource("RectangleShape2D_73g21")
 target_position = Vector2(0, -8)
 
@@ -57,6 +58,6 @@ autoplay = "default"
 frame_progress = 0.472206
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0.5, -2)
 shape = SubResource("RectangleShape2D_5b2ua")
 one_way_collision = true

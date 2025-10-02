@@ -12,7 +12,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity += get_gravity();
 	move_and_slide();
-	if !$RayCast2D.is_colliding() or is_on_wall():
+	if !$FloorCheckRayCast2D.is_colliding():
+		turn_around();
+	if $WallCheckRayCast2D.is_colliding():
 		turn_around();
 
 func _process_attacks() -> void:
@@ -21,7 +23,10 @@ func _process_attacks() -> void:
 		if body is Player:
 			body.damage(
 				1,
-				$ShapeCast2D.global_position - body.global_position,
+				(
+					$ShapeCast2D.global_position -
+					body.global_position
+				),
 				knockpack_impetus
 			);
 			

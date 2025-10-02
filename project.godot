@@ -44,10 +44,6 @@ window/vsync/vsync_mode=0
 
 common/physics_ticks_per_second=240
 2d/default_gravity=8.75
-2d/solver/contact_recycle_radius=0.5
-2d/solver/contact_max_separation=0.1
-2d/solver/contact_max_allowed_penetration=0.01
-2d/max_physics_steps_per_frame=60
 
 [rendering]
 

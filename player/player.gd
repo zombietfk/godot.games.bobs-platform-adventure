@@ -10,12 +10,14 @@ const FLOOR_CORRECTION_DISTANCE = 100;
 @export var movement_speed: int = 200;
 @export var jump_strength: int = 1000;
 @export var player_heath_ui: PlayerHealthUI;
+@export var death_count_label: Label;
 @export var max_health = 3;
 @export var current_health = 3;
 @export var spawn_position: Vector2;
 
 # INTERNAL STATE
 var damage_timeout = 0.0;
+var death_count = 0;
 
 # FLAGS
 var is_dead = false;
@@ -24,12 +26,17 @@ var is_dead = false;
 @export var jump_forgiveness_timer = 0.08;
 var c_jump_forgiveness_timer = 0.0;
 
-# TRIGGERS
-func _on_respawn_timer_timeout() -> void:
+
+func _on_reload_level_timer_timeout() -> void:
+	Main.reload_current_level();
 	current_health = max_health;
 	visible = true;
 	is_dead = false;
-	Main.reload_current_level();
+	damage(0, Vector2.ZERO);
+
+func _on_respawn_timer_timeout() -> void:
+	global_position = spawn_position;
+	$ReloadLevelTimer.start();
 
 # LIFECYCLE
 func _process(delta: float) -> void:
@@ -41,7 +48,7 @@ func _process(delta: float) -> void:
 	else:
 		modulate.a = 1;
 	if is_out_of_bounds() or current_health <= 0:
-		gib_and_kill(100);
+		gib_and_kill(50);
 	player_heath_ui.update_health_bar(current_health, max_health);
 
 func _physics_process(delta: float) -> void:
@@ -85,6 +92,8 @@ func gib_and_kill(gibs: int = 25) -> void:
 	for i in gibs:
 		Gib.spawn(global_position, -velocity);
 	$RespawnTimer.start();
+	death_count += 1;
+	death_count_label.text = var_to_str(death_count);
 	visible = false;
 	is_dead = true;
 	

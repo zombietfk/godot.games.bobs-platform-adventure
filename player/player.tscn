@@ -56,7 +56,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(25, 54)
+size = Vector2(21, 51)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 201
@@ -76,12 +76,17 @@ frame = 2
 frame_progress = 0.673187
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2)
+position = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_h2yge")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="RespawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="ReloadLevelTimer" type="Timer" parent="."]
+wait_time = 0.05
 one_shot = true
 
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="timeout" from="ReloadLevelTimer" to="." method="_on_reload_level_timer_timeout"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

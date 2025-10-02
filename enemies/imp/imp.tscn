@@ -55,7 +55,7 @@ radius = 1.5
 collision_layer = 2
 collision_mask = 64
 script = ExtResource("1_3p1ij")
-knockpack_impetus = Vector2(1300, 1600)
+knockpack_impetus = Vector2(5000, 1600)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
@@ -76,7 +76,13 @@ scale = Vector2(5.39429, -5.49999)
 shape = SubResource("CircleShape2D_3p1ij")
 target_position = Vector2(0, 0)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="FloorCheckRayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-8, -19)
 target_position = Vector2(0, 96)
+collision_mask = 64
+
+[node name="WallCheckRayCast2D" type="RayCast2D" parent="."]
+position = Vector2(5, 0)
+rotation = 1.5708
+target_position = Vector2(0, 24)
 collision_mask = 64
