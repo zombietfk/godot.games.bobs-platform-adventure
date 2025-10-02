@@ -1,5 +1,5 @@
 class_name CloudPlatform;
-extends CharacterBody2D;
+extends AnimatableBody2D;
 
 # SETTINGS
 @export var floating_displacement = 25;
@@ -22,20 +22,8 @@ var is_landed_on_platform_one_shot_trigger = false;
 var is_exited_from_platform_one_shot_trigger = false;
 
 # SIGNALS
-signal player_landed(platform: CloudPlatform);
-signal player_exited(platform: CloudPlatform);
-
-# TRIGGERS
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player:
-		if body.is_on_floor():
-			is_player_standing_on_platform = true;
-			is_landed_on_platform_one_shot_trigger = true;
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body is Player and is_player_standing_on_platform:
-		is_player_standing_on_platform = false;
-		is_exited_from_platform_one_shot_trigger = true;
+signal player_landed();
+signal player_exited();
 
 # LIFECYCLE
 func _ready() -> void:
@@ -58,7 +46,7 @@ func _process_displacement(delta: float) -> void:
 func _process_player_landed() -> void:
 	if is_player_standing_on_platform:
 		if is_landed_on_platform_one_shot_trigger:
-			player_landed.emit(self);
+			player_landed.emit();
 			is_landed_on_platform_one_shot_trigger = false;
 			if c_bounce_timer == bounce_timer:
 				c_bounce_timer = 0.0;
@@ -66,11 +54,25 @@ func _process_player_landed() -> void:
 func _process_player_leave() -> void:
 	if !is_player_standing_on_platform:
 		if is_exited_from_platform_one_shot_trigger:
-			player_exited.emit(self);
+			player_exited.emit();
 			is_exited_from_platform_one_shot_trigger = false;
+
+func _process_is_player_on_platform_flags() -> void:
+	for collision in $ShapeCast2D.collision_result:
+		var collider = instance_from_id(collision["collider_id"])
+		if collider is Player:
+			if collider.is_on_floor() and !is_player_standing_on_platform:
+				is_player_standing_on_platform = true;
+				is_landed_on_platform_one_shot_trigger = true;
+				player_landed.emit();
+			elif !collider.is_on_floor() and is_player_standing_on_platform:
+				is_player_standing_on_platform = false;
+				is_exited_from_platform_one_shot_trigger = true;
+				player_exited.emit();
 
 func _physics_process(delta: float) -> void:
 	_process_player_landed();
 	_process_player_leave();
 	if enable_displacement:
 		_process_displacement(delta);
+	_process_is_player_on_platform_flags();

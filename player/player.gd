@@ -16,26 +16,22 @@ const FLOOR_CORRECTION_DISTANCE = 100;
 
 # INTERNAL STATE
 var damage_timeout = 0.0;
-var previous_frame_global_position = Vector2.ZERO;
 
 # FLAGS
 var is_dead = false;
-@export var is_vertical_collision_correction_enabled = true;
 
 # TIMERS
 @export var jump_forgiveness_timer = 0.08;
 var c_jump_forgiveness_timer = 0.0;
 
+# TRIGGERS
 func _on_respawn_timer_timeout() -> void:
-	global_position = spawn_position;
 	current_health = max_health;
 	visible = true;
 	is_dead = false;
+	Main.reload_current_level();
 
 # LIFECYCLE
-func _ready() -> void:
-	previous_frame_global_position = global_position;
-
 func _process(delta: float) -> void:
 	if is_dead:
 		return;
@@ -49,8 +45,6 @@ func _process(delta: float) -> void:
 	player_heath_ui.update_health_bar(current_health, max_health);
 
 func _physics_process(delta: float) -> void:
-	if is_vertical_collision_correction_enabled:
-		_process_vertical_collision_correction()
 	if is_dead:
 		return;
 	if is_on_floor():
@@ -58,26 +52,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		c_jump_forgiveness_timer += delta;
 	_process_update_movement_direction();
-	previous_frame_global_position = global_position;
 	move_and_slide();
-
-func _process_vertical_collision_correction() -> void:
-	print();
-	#if velocity.y == 0:
-		#var floor = get_world_2d().direct_space_state.intersect_ray(
-			#PhysicsRayQueryParameters2D.create(
-				#global_position,
-				#global_position - Vector2.UP * FLOOR_CORRECTION_DISTANCE,
-				#FLOOR_COLLISION_MASK
-			#),
-		#)
-		#if floor.has("collider"):
-			#global_position.y = (
-				#floor["collider"].global_position.y -
-				#(
-					#$CollisionShape2D.shape.get_rect().size.y / 2
-				#)
-			#);
 
 func _process_is_jump_key_pressed() -> bool:
 	return Input.is_action_just_pressed("ui_accept");

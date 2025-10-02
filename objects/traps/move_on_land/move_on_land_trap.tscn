@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3n1ljnuhyqff"]
+
+[ext_resource type="Script" uid="uid://vxjxoigha6d4" path="res://objects/traps/move_on_land/move_on_land_trap.gd" id="1_wi8w1"]
+
+[sub_resource type="Curve2D" id="Curve2D_wwgj7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, -2674)
+}
+point_count = 2
+
+[node name="MoveOnLandTrap" type="Path2D"]
+curve = SubResource("Curve2D_wwgj7")
+script = ExtResource("1_wi8w1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, 64)
+rotates = false
+loop = false

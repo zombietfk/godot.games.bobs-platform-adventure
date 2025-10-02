@@ -8,6 +8,7 @@ extends Node2D;
 static var player: Player;
 static var instance: Main;
 static var level_instance: Level;
+static var current_level_path: String;
 
 # TRIGGERS
 func _on_level_ready() -> void:
@@ -21,9 +22,13 @@ func _ready() -> void:
 
 # UTILITY
 static func load_next_level(next_level_path: String) -> void:
+	current_level_path = next_level_path;
+	reload_current_level()
+
+static func reload_current_level() -> void:
 	if level_instance != null:
 		level_instance.queue_free();
-	var level = load(next_level_path).instantiate();
+	var level = load(current_level_path).instantiate();
 	level.ready.connect(instance._on_level_ready);
 	level_instance = level;
 	player.spawn_position = level.player_start_marker.global_position;

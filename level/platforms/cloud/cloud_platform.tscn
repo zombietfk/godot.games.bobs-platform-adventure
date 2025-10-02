@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dcys5f7vhk0x2" path="res://level/platforms/cloud/cloud_platform.gd" id="1_fo1gd"]
 [ext_resource type="Texture2D" uid="uid://dhqbusl5wbuyn" path="res://level/platforms/cloud/cloud_platform.png" id="2_1qdmc"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73g21"]
+size = Vector2(120, 4)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo1gd"]
 atlas = ExtResource("2_1qdmc")
 region = Rect2(0, 0, 128, 32)
@@ -35,16 +38,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b2ua"]
 resource_local_to_scene = true
 custom_solver_bias = 1.0
-size = Vector2(118, 4)
+size = Vector2(120, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_se3ff"]
-size = Vector2(118, 6)
-
-[node name="CloudPlatform" type="CharacterBody2D"]
+[node name="CloudPlatform" type="AnimatableBody2D"]
 collision_layer = 128
-platform_floor_layers = 4278190081
-safe_margin = 0.001
+sync_to_physics = false
 script = ExtResource("1_fo1gd")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_73g21")
+target_position = Vector2(0, -8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
@@ -53,18 +57,6 @@ autoplay = "default"
 frame_progress = 0.472206
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.399658, 3.95775e-05)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_5b2ua")
 one_way_collision = true
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0.600342, -21)
-collision_layer = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, 18)
-shape = SubResource("RectangleShape2D_se3ff")
-debug_color = Color(0.654577, 0.517912, 0, 0.784314)
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
