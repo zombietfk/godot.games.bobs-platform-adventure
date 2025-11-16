@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxjr0uwo0iqbk"]
+
+[ext_resource type="Script" uid="uid://btmf3u4ldwn1j" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.gd" id="1_76yt7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0elrt"]
+size = Vector2(16, 16)
+
+[node name="TeleportToLevelZone" type="Area2D"]
+monitoring = false
+script = ExtResource("1_76yt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0elrt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

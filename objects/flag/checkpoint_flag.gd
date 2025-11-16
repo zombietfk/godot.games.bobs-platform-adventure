@@ -1,4 +1,4 @@
-class_name LevelCompleteFlag;
+class_name CheckpointFlag;
 extends Node2D;
 
 # SETTINGS

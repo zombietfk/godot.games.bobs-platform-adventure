@@ -1,23 +1,61 @@
-[gd_scene load_steps=4 format=4 uid="uid://0gdkthe85mea"]
+[gd_scene load_steps=5 format=4 uid="uid://bo8yhp7lsim74"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_8ctxq"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_8ctxq"]
-[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/level_complete_flagpole.tscn" id="3_vht67"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_8ctxq"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="4_vuqo5"]
 
-[node name="Level_2" type="Node2D" node_paths=PackedStringArray("player_start_marker")]
+[node name="Level_2" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_8ctxq")
-player_start_marker = NodePath("SpawnPoint")
+level_binding_box = Rect2(0, 16, 768, 440)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(347, 463)
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, 352)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(768, 352)
 
 [node name="Level" type="TileMapLayer" parent="."]
-position = Vector2(0, -37)
-tile_map_data = PackedByteArray("AAAEAAkAAgAPAAMAAAAFAAkAAgACAAEAAAAGAAkAAgACAAEAAAAHAAkAAgADAAEAAAAKAAkAAgABAAEAAAALAAkAAgACAAEAAAAMAAkAAgALAAMAAAANAAcAAgALAAMAAAANAAYAAgABAAIAAAANAAUAAgABAAIAAAANAAQAAgABAAIAAAANAAMAAgABAAIAAAANAAIAAgABAAIAAAANAAEAAgALAAcAAAAEAAgAAgADAAIAAAAEAAcAAgADAAIAAAAEAAYAAgADAAIAAAAEAAUAAgADAAIAAAAEAAQAAgAOAAUAAAAEAAMAAgADAAIAAAAEAAIAAgADAAIAAAAEAAEAAgAPAAcAAAAFAAEAAgACAAMAAAAGAAEAAgACAAMAAAAHAAEAAgACAAMAAAAIAAEAAgACAAMAAAAJAAEAAgACAAMAAAAKAAEAAgACAAMAAAALAAEAAgACAAMAAAAMAAEAAgACAAMAAAAKAAoAAgABAAIAAAAHAAoAAgADAAIAAAAHAAsAAgADAAIAAAAKAAsAAgABAAIAAAAMAAcAAgABAAEAAAAMAAgAAgABAAIAAAAKAAYAAgAFAAEAAAAIAAUAAgAFAAEAAAAFAAQAAgAIAAEAAAAGAAQAAgAJAAEAAAA=")
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAAAAAkAAgACAAEAAAABAAkAAgACAAEAAAACAAkAAgALAAMAAAAJAAkAAgACAAEAAAAKAAkAAgACAAEAAAALAAYAAgABAAMAAAALAAkAAgACAAEAAAAMAAkAAgACAAEAAAALAAMAAgALAAcAAAALAAQAAgABAAIAAAALAAUAAgABAAIAAAAMAAYAAgACAAMAAAAAAAMAAgAPAAcAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAMAAAD//wkAAgACAAEAAAD//wYAAgACAAMAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAADAAkAAgADAAIAAAADAAoAAgAPAAMAAAAIAAkAAgABAAEAAAAIAAoAAgALAAMAAAAEAAoAAgACAAEAAAAFAAoAAgACAAEAAAAGAAoAAgACAAEAAAAHAAoAAgACAAEAAAADAAgAAgADAAEAAAACAAgAAgABAAEAAAA=")
 tile_set = ExtResource("2_8ctxq")
 
-[node name="LevelCompleteFlagpole" parent="." instance=ExtResource("3_vht67")]
-position = Vector2(369, 189)
-next_level_path = "uid://dnmbne185ql0"
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_8ctxq")]
+position = Vector2(864, 320)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://c3ayputbimy2f"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_8ctxq")]
+position = Vector2(-96, 320)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://llqv2al5xrch"
+to_spawn_location_with_index = 1
+
+[node name="SpikePit" type="Node" parent="."]
+
+[node name="Spike2" parent="SpikePit" instance=ExtResource("4_vuqo5")]
+position = Vector2(272, 416)
+
+[node name="Spike3" parent="SpikePit" instance=ExtResource("4_vuqo5")]
+position = Vector2(304, 416)
+
+[node name="Spike4" parent="SpikePit" instance=ExtResource("4_vuqo5")]
+position = Vector2(336, 416)
+
+[node name="Spike5" parent="SpikePit" instance=ExtResource("4_vuqo5")]
+position = Vector2(368, 416)
+
+[node name="Spike6" parent="SpikePit" instance=ExtResource("4_vuqo5")]
+position = Vector2(400, 416)
+
+[node name="Spike7" parent="SpikePit" instance=ExtResource("4_vuqo5")]
+position = Vector2(432, 416)
+
+[node name="Spike8" parent="SpikePit" instance=ExtResource("4_vuqo5")]
+position = Vector2(464, 416)
+
+[node name="Spike9" parent="SpikePit" instance=ExtResource("4_vuqo5")]
+position = Vector2(496, 416)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -63,7 +63,7 @@ collision_mask = 201
 platform_floor_layers = 4278190528
 platform_wall_layers = 320
 script = ExtResource("1_rkbax")
-play_area_bounds = Rect2(0, -1e+07, 1e+07, 1.00006e+07)
+play_area_bounds = Rect2(0, -10000000, 10000000, 10000600)
 movement_speed = 400
 jump_strength = 820
 

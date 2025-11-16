@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Bobs-Platform-Adventure"
 run/main_scene="uid://c63fm78u50tjr"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [debug]
@@ -50,4 +50,4 @@ common/physics_ticks_per_second=240
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.67777556, 0.2754185, 0.59186697, 1)

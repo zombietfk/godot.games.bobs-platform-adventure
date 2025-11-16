@@ -7,6 +7,7 @@ const FLOOR_CORRECTION_DISTANCE = 100;
 
 # SETTINGS
 @export var play_area_bounds: Rect2;
+@export var camera: Camera2D;
 @export var movement_speed: int = 200;
 @export var jump_strength: int = 1000;
 @export var player_heath_ui: PlayerHealthUI;
@@ -28,7 +29,7 @@ var c_jump_forgiveness_timer = 0.0;
 
 
 func _on_reload_level_timer_timeout() -> void:
-	Main.reload_current_level();
+	Main.load_level();
 	current_health = max_health;
 	visible = true;
 	is_dead = false;
@@ -105,7 +106,12 @@ func cancel_jump() -> void:
 		velocity.y = 0;
 		
 func is_out_of_bounds() -> bool:
-	return !play_area_bounds.encloses(
+	return !Rect2(
+		Main.level_instance.level_binding_box.position.x - 64,
+		Main.level_instance.level_binding_box.position.y - 64,
+		Main.level_instance.level_binding_box.size.x + 128,
+		Main.level_instance.level_binding_box.size.y + 128,
+	).encloses(
 		Rect2(position, Vector2.ONE)
 	);
 	

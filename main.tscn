@@ -7,7 +7,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lquwl")
-inital_level_path = "uid://b6ma45wbr2u7"
+inital_level_path = "uid://c3ayputbimy2f"
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
@@ -61,8 +61,10 @@ offset_right = 109.0
 offset_bottom = 56.0
 text = "0"
 
-[node name="Player" parent="." node_paths=PackedStringArray("player_heath_ui", "death_count_label") instance=ExtResource("1_0xm2m")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "player_heath_ui", "death_count_label") instance=ExtResource("1_0xm2m")]
 position = Vector2(32, 284)
+play_area_bounds = Rect2(0, 0, 0, 0)
+camera = NodePath("Camera2D")
 player_heath_ui = NodePath("../GameUI/UI/PlayerHealthUI")
 death_count_label = NodePath("../GameUI/UI/DeathCount")
 

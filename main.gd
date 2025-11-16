@@ -8,7 +8,8 @@ extends Node2D;
 static var player: Player;
 static var instance: Main;
 static var level_instance: Level;
-static var current_level_path: String;
+static var current_spawn_level: String;
+static var current_spawn_index = 0;
 
 # TRIGGERS
 func _on_level_ready() -> void:
@@ -18,21 +19,29 @@ func _on_level_ready() -> void:
 func _ready() -> void:
 	player = $Player;
 	instance = self;
-	load_next_level(inital_level_path);
+	update_spawn(inital_level_path, 0);
+	load_level();
+	print('Game Start, setting player position', player.global_position);
 
 # UTILITY
-static func load_next_level(next_level_path: String) -> void:
-	current_level_path = next_level_path;
-	reload_current_level();
-	player.spawn_position = level_instance.player_start_marker.global_position;
-	player.global_position = player.spawn_position;
+static func update_spawn(next_level_path: String, with_spawn_index: int = 0) -> void:
+	current_spawn_level = next_level_path;
+	current_spawn_index = with_spawn_index;
 
-static func reload_current_level() -> void:
+static func load_level(
+	level_path: String = current_spawn_level,
+	spawn_index: int = current_spawn_index,
+) -> void:
 	if level_instance != null:
 		level_instance.queue_free();
-	var level = load(current_level_path).instantiate();
+	var level = load(level_path).instantiate() as Level;
 	level.ready.connect(instance._on_level_ready);
 	level_instance = level;
-	player.spawn_position = level.player_start_marker.global_position;
-	instance.add_child(level);
+	# Set limits for game camera
+	player.camera.limit_left = int(level_instance.level_binding_box.position.x);
+	player.camera.limit_top = int(level_instance.level_binding_box.position.y);
+	player.camera.limit_right = int(level_instance.level_binding_box.size.x);
+	player.camera.limit_bottom = int(level_instance.level_binding_box.size.y);
+	instance.call_deferred("add_child", level);
 	player.velocity = Vector2.ZERO;
+	player.global_position = level.spawn_locations[spawn_index].global_position;
