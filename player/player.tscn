@@ -55,17 +55,17 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(21, 51)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
+radius = 14.0
+height = 56.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 201
 platform_floor_layers = 4278190528
-platform_wall_layers = 320
+platform_wall_layers = 448
 script = ExtResource("1_rkbax")
-play_area_bounds = Rect2(0, -10000000, 10000000, 10000600)
-movement_speed = 400
-jump_strength = 820
+max_health = 25
+current_health = 25
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -76,8 +76,8 @@ frame = 2
 frame_progress = 0.673187
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 1.5)
-shape = SubResource("RectangleShape2D_h2yge")
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_rkbax")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="ReloadLevelTimer" type="Timer" parent="."]

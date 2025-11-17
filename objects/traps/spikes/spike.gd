@@ -17,3 +17,4 @@ func _ready() -> void:
 			$AnimatedSprite2D.animation
 		)
 	);
+	$AnimatedSprite2D.play();

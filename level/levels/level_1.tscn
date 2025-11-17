@@ -6,7 +6,7 @@
 
 [node name="Level_1" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_wg4fv")
-level_binding_box = Rect2(0, 16, 768, 440)
+level_binding_box = Rect2(0, 0, 768, 448)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]

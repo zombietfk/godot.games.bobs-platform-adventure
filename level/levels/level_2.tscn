@@ -7,7 +7,7 @@
 
 [node name="Level_2" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_8ctxq")
-level_binding_box = Rect2(0, 16, 768, 440)
+level_binding_box = Rect2(0, 0, 768, 448)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
@@ -35,27 +35,27 @@ to_spawn_location_with_index = 1
 [node name="SpikePit" type="Node" parent="."]
 
 [node name="Spike2" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(272, 416)
+position = Vector2(272, 428)
 
 [node name="Spike3" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(304, 416)
+position = Vector2(304, 428)
 
 [node name="Spike4" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(336, 416)
+position = Vector2(336, 428)
 
 [node name="Spike5" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(368, 416)
+position = Vector2(368, 428)
 
 [node name="Spike6" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(400, 416)
+position = Vector2(400, 428)
 
 [node name="Spike7" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(432, 416)
+position = Vector2(432, 428)
 
 [node name="Spike8" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(464, 416)
+position = Vector2(464, 428)
 
 [node name="Spike9" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(496, 416)
+position = Vector2(496, 428)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

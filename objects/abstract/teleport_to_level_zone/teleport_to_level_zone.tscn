@@ -6,6 +6,7 @@
 size = Vector2(16, 16)
 
 [node name="TeleportToLevelZone" type="Area2D"]
+collision_layer = 8
 monitoring = false
 script = ExtResource("1_76yt7")
 

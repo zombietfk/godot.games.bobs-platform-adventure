@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=4 uid="uid://bgv7knuesdgrb"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_nmqwb"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_26go3"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_prrb4"]
+[ext_resource type="PackedScene" uid="uid://dikidq3cosqy1" path="res://objects/traps/spikes/moving/moving_spike.tscn" id="4_8rsbt"]
+
+[sub_resource type="Curve2D" id="Curve2D_8rsbt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3.0517578e-05, -8, 0, 0, 0, 0, 0.00015258789, -40)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_nmqwb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -10.666664, 0, 0, 0, 0, 0, -42.666664)
+}
+point_count = 2
+
+[node name="Level_6" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_nmqwb")
+level_binding_box = Rect2(-64, -128, 896, 448)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-64, 160)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(832, 224)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAAAAAYAAgACAAEAAAD//wYAAgACAAEAAAD//wMAAgADAAMAAAABAAYAAgANAAQAAAACAAYAAgADAAEAAAAEAAYAAgABAAEAAAAFAAYAAgANAAQAAAAGAAYAAgADAAEAAAAIAAYAAgABAAEAAAAJAAYAAgANAAQAAAAKAAYAAgADAAEAAAADAAMAAgAFAAUAAAAHAAMAAgAFAAUAAAAKAAMAAgABAAMAAAALAAMAAgACAAMAAAABAAUAAgAFAAMAAAAFAAUAAgAFAAMAAAAJAAUAAgAFAAMAAAALAAcAAgACAAEAAAADAAcAAgACAAEAAAAHAAcAAgACAAEAAAAAAAIAAgADAAMAAAABAAEAAgACAAMAAAAFAAEAAgACAAMAAAAJAAEAAgACAAMAAAACAAIAAgABAAMAAAAGAAIAAgABAAMAAAAKAAIAAgABAAIAAAAEAAIAAgADAAMAAAAIAAIAAgADAAMAAAAMAAcAAgACAAEAAAAMAAQAAgABAAMAAAAHAAIAAgANAAYAAAADAAIAAgANAAYAAAACAAcAAgAPAAMAAAAGAAcAAgAPAAMAAAAKAAcAAgAPAAMAAAAIAAcAAgALAAMAAAAEAAcAAgALAAMAAAD//wIAAgAPAAcAAAAAAAEAAgAPAAcAAAAEAAEAAgAPAAcAAAAIAAEAAgAPAAcAAAAKAAEAAgALAAcAAAAGAAEAAgALAAcAAAACAAEAAgALAAcAAAAMAAMAAgALAAcAAAD//wEAAgACAAIAAAADAAEAAgACAAIAAAAHAAEAAgACAAIAAAALAAEAAgACAAIAAAALAAIAAgACAAIAAAAMAAEAAgACAAIAAAAMAAIAAgACAAIAAAAJAAcAAgACAAIAAAAFAAcAAgACAAIAAAD//wcAAgACAAIAAAAAAAcAAgACAAIAAAABAAcAAgACAAIAAAD+/wMAAgACAAMAAAD+/wYAAgACAAEAAAANAAcAAgACAAEAAAANAAQAAgACAAMAAAABAAAAAgACAAIAAAAFAAAAAgACAAIAAAAJAAAAAgACAAIAAAADAAgAAgACAAIAAAAHAAgAAgACAAIAAAA=")
+tile_set = ExtResource("2_26go3")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_prrb4")]
+position = Vector2(928, 192)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://brd67f76jwer3"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_prrb4")]
+position = Vector2(-160, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://brd67f76jwer3"
+to_spawn_location_with_index = 1
+
+[node name="MovingSpike" parent="." instance=ExtResource("4_8rsbt")]
+position = Vector2(96.000244, -104)
+scale = Vector2(2, 3)
+curve = SubResource("Curve2D_8rsbt")
+speed = 25.0
+
+[node name="MovingSpike2" parent="." instance=ExtResource("4_8rsbt")]
+position = Vector2(352.00024, -104)
+scale = Vector2(2, 3)
+curve = SubResource("Curve2D_8rsbt")
+speed = 25.0
+start_distance_ratio = 0.2
+
+[node name="MovingSpike3" parent="." instance=ExtResource("4_8rsbt")]
+position = Vector2(608.00024, -104)
+scale = Vector2(2, 3)
+curve = SubResource("Curve2D_8rsbt")
+speed = 25.0
+start_distance_ratio = 0.9
+
+[node name="MovingSpike4" parent="." instance=ExtResource("4_8rsbt")]
+position = Vector2(224, 304)
+rotation = 0.0
+scale = Vector2(2, 3)
+curve = SubResource("Curve2D_nmqwb")
+speed = 25.0
+start_distance_ratio = 0.3
+
+[node name="MovingSpike5" parent="." instance=ExtResource("4_8rsbt")]
+position = Vector2(480, 304)
+rotation = 0.0
+scale = Vector2(2, 3)
+curve = SubResource("Curve2D_nmqwb")
+speed = 25.0
+start_distance_ratio = 0.6
+
+[connection signal="ready" from="." to="." method="_on_ready"]

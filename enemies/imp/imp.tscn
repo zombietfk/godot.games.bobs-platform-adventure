@@ -55,7 +55,6 @@ radius = 1.5
 collision_layer = 2
 collision_mask = 64
 script = ExtResource("1_3p1ij")
-knockpack_impetus = Vector2(5000, 1600)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)

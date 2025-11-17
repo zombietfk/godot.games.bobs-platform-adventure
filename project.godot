@@ -21,6 +21,7 @@ shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.784314)
 
 [display]
 
+window/size/viewport_height=672
 window/stretch/mode="viewport"
 window/stretch/scale=1.5
 window/vsync/vsync_mode=0
@@ -39,6 +40,7 @@ window/vsync/vsync_mode=0
 2d_physics/layer_10="Fatal 1"
 2d_physics/layer_11="Fatal 2"
 2d_physics/layer_12="Fatal 3"
+2d_physics/layer_13="Level 4"
 
 [physics]
 

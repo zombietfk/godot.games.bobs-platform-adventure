@@ -3,13 +3,13 @@ extends CharacterBody2D;
 
 # SETTINGS
 @export var movement_speed: int = -25;
-@export var knockpack_impetus = Vector2(1000, 2000);
+@export var knockpack_impetus = Vector2(500, 500);
 
 # LIFECYCLE
 func _ready() -> void:
 	velocity = Vector2(movement_speed, 0);
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity += get_gravity();
 	move_and_slide();
 	if !$FloorCheckRayCast2D.is_colliding():
@@ -23,14 +23,11 @@ func _process_attacks() -> void:
 		if body is Player:
 			body.damage(
 				1,
-				(
-					$ShapeCast2D.global_position -
-					body.global_position
-				),
+				collision.normal,
 				knockpack_impetus
 			);
 			
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_process_attacks();
 	
 # METHODS

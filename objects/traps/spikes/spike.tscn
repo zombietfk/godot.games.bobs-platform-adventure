@@ -5,10 +5,12 @@
 
 [node name="Spike" type="Area2D"]
 z_index = -1
+collision_layer = 512
 script = ExtResource("1_a5y4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_isgjp")
+frame_progress = 0.85574114
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-16, 32, -2, -31, -1, -31, 16, 32)

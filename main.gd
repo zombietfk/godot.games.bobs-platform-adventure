@@ -40,8 +40,14 @@ static func load_level(
 	# Set limits for game camera
 	player.camera.limit_left = int(level_instance.level_binding_box.position.x);
 	player.camera.limit_top = int(level_instance.level_binding_box.position.y);
-	player.camera.limit_right = int(level_instance.level_binding_box.size.x);
-	player.camera.limit_bottom = int(level_instance.level_binding_box.size.y);
+	player.camera.limit_right = int(
+		level_instance.level_binding_box.position.x +
+		level_instance.level_binding_box.size.x
+	);
+	player.camera.limit_bottom = int(
+		level_instance.level_binding_box.position.y +
+		level_instance.level_binding_box.size.y
+	);
 	instance.call_deferred("add_child", level);
 	player.velocity = Vector2.ZERO;
 	player.global_position = level.spawn_locations[spawn_index].global_position;
