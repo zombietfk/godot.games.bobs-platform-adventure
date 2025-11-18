@@ -9,8 +9,8 @@ extends CharacterBody2D;
 func _ready() -> void:
 	velocity = Vector2(movement_speed, 0);
 
-func _physics_process(_delta: float) -> void:
-	velocity += get_gravity();
+func _physics_process(delta: float) -> void:
+	velocity += get_gravity() * delta;
 	move_and_slide();
 	if !$FloorCheckRayCast2D.is_colliding():
 		turn_around();

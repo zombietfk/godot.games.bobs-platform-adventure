@@ -1,0 +1,709 @@
+[gd_scene load_steps=5 format=4 uid="uid://d4hrqsj6q1pl6"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_mq6f8"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_seura"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_4x0sv"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="4_ps23h"]
+
+[node name="Level_10" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_mq6f8")
+level_binding_box = Rect2(-64, 128, 1024, 960)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-128, 800)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(704, 800)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(192, -63)
+tile_map_data = PackedByteArray("AAD//w4AAgACAAEAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAD8/wsAAgACAAMAAAD8/w4AAgACAAEAAAD9/w4AAgACAAEAAAD+/w4AAgACAAEAAAD7/wsAAgACAAMAAAD7/w4AAgACAAEAAAD9/wsAAgAIAAEAAAD+/wsAAgAIAAEAAAD//wsAAgAIAAEAAAAAAAsAAgAIAAEAAAABAAsAAgAIAAEAAAACAAsAAgAIAAEAAAADAAsAAgAJAAEAAAAFAAwAAgAHAAEAAAD//wgAAgAHAAEAAAAAAAgAAgAIAAEAAAABAAgAAgAIAAEAAAACAAgAAgAIAAEAAAADAAgAAgAIAAEAAAAEAAgAAgAIAAEAAAAFAAgAAgAIAAEAAAD8/wgAAgADAAIAAAD8/wkAAgACAAIAAAD8/woAAgADAAIAAAD9/wkAAgAJAAEAAAD8/wYAAgADAAIAAAD8/wcAAgADAAIAAAD9/wUAAgAIAAEAAAD+/wUAAgAIAAEAAAD//wUAAgAIAAEAAAAAAAUAAgAIAAEAAAABAAUAAgAIAAEAAAACAAUAAgAIAAEAAAADAAUAAgAJAAEAAAAFAAYAAgAHAAEAAAD9/wMAAgAJAAEAAAD//wIAAgAHAAEAAAAAAAIAAgAIAAEAAAABAAIAAgAIAAEAAAACAAIAAgAIAAEAAAADAAIAAgAIAAEAAAAEAAIAAgAIAAEAAAAFAAIAAgAIAAEAAAD8/wQAAgADAAIAAAD8/wAAAgADAAIAAAD8/wEAAgADAAIAAAD8/wIAAgADAAIAAAD9////AgACAAMAAAD+////AgACAAMAAAD/////AgACAAMAAAAAAP//AgACAAMAAAABAP//AgADAAMAAAAEAP//AgABAAMAAAAFAP//AgACAAMAAAAGAAAAAgABAAIAAAAGAAEAAgABAAIAAAAGAAMAAgABAAIAAAAGAAQAAgABAAIAAAAGAAUAAgABAAIAAAAGAAcAAgABAAIAAAAGAAkAAgABAAIAAAAGAAoAAgABAAIAAAAGAAsAAgABAAIAAAAGAAwAAgADAAMAAAAHAAsAAgACAAMAAAAIAAsAAgACAAMAAAD6/wsAAgACAAMAAAD6/w4AAgACAAEAAAACAP7/AgACAAMAAAADAP7/AgACAAMAAAD6//7/AgACAAIAAAD6////AgACAAIAAAD6/wAAAgACAAIAAAD6/wEAAgACAAIAAAD6/wIAAgACAAIAAAD6/wMAAgACAAIAAAD6/wQAAgACAAIAAAD6/wUAAgACAAIAAAD6/wYAAgACAAIAAAD6/wcAAgACAAIAAAD6/wgAAgACAAIAAAD6/wkAAgACAAIAAAD6/woAAgACAAIAAAD7//7/AgACAAIAAAD7////AgACAAIAAAD7/wAAAgACAAIAAAD7/wEAAgACAAIAAAD7/wIAAgACAAIAAAD7/wMAAgACAAIAAAD7/wQAAgACAAIAAAD7/wUAAgACAAIAAAD7/wYAAgACAAIAAAD7/wcAAgACAAIAAAD7/wgAAgACAAIAAAD7/wkAAgACAAIAAAD7/woAAgACAAIAAAD8/wUAAgACAAIAAAD8/wMAAgACAAIAAAD8//7/AgACAAIAAAD8////AgACAAIAAAD9//7/AgACAAIAAAD+//7/AgACAAIAAAD///7/AgACAAIAAAAAAP7/AgACAAIAAAABAP7/AgACAAIAAAAEAP7/AgACAAIAAAAFAP7/AgACAAIAAAAGAP7/AgACAAIAAAAGAP//AgACAAIAAAAGAAIAAgACAAIAAAAGAAgAAgACAAIAAAAGAAYAAgACAAIAAAAHAP7/AgACAAIAAAAHAP//AgACAAIAAAAHAAAAAgACAAIAAAAHAAEAAgACAAIAAAAHAAIAAgACAAIAAAAHAAMAAgACAAIAAAAHAAQAAgACAAIAAAAHAAUAAgACAAIAAAAHAAYAAgACAAIAAAAHAAcAAgACAAIAAAAHAAgAAgACAAIAAAAHAAkAAgACAAIAAAAHAAoAAgACAAIAAAAIAP7/AgACAAIAAAAIAP//AgACAAIAAAAIAAAAAgACAAIAAAAIAAEAAgACAAIAAAAIAAIAAgACAAIAAAAIAAMAAgACAAIAAAAIAAQAAgACAAIAAAAIAAUAAgACAAIAAAAIAAYAAgACAAIAAAAIAAcAAgACAAIAAAAIAAgAAgACAAIAAAAIAAkAAgACAAIAAAAIAAoAAgACAAIAAAA=")
+tile_set = ExtResource("2_seura")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_4x0sv")]
+position = Vector2(800, 768)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_11.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_4x0sv")]
+position = Vector2(-224, 768)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bxo30nr2i85cv"
+to_spawn_location_with_index = 1
+
+[node name="Rabbits" type="Node" parent="."]
+
+[node name="Rabbit" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(32, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit2" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(64, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit3" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(96, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit4" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(128, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit5" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(160, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit6" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(192, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit7" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(224, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit8" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(256, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit9" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(184, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit10" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(216, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit11" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(248, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit12" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(280, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit13" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(312, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit14" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(344, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit15" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(376, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit16" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(408, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit17" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(296, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit18" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(328, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit19" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(360, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit20" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(392, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit21" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(48, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit22" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(80, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit23" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(112, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit24" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(144, 624)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit25" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(168, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit26" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(200, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit27" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(232, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit28" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(264, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit29" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(296, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit30" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(328, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit31" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(360, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit32" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(392, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit33" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(320, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit34" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(352, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit35" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(384, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit36" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(416, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit37" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(448, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit38" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(480, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit39" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(512, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit40" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(544, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit41" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(432, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit42" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(464, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit43" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(496, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit44" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(528, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit45" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(184, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit46" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(216, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit47" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(248, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit48" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(280, 432)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit49" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(32, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit50" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(64, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit51" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(96, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit52" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(128, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit53" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(160, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit54" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(192, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit55" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(224, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit56" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(256, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit57" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(184, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit58" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(216, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit59" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(248, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit60" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(280, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit61" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(312, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit62" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(344, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit63" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(376, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit64" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(408, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit65" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(296, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit66" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(328, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit67" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(360, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit68" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(392, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit69" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(48, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit70" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(80, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit71" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(112, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit72" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(144, 240)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit73" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(160, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit74" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(192, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit75" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(224, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit76" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(256, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit77" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(288, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit78" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(320, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit79" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(352, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit80" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(384, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit81" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(312, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit82" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(344, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit83" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(376, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit84" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(408, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit85" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(440, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit86" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(472, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit87" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(504, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit88" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(536, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit89" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(424, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit90" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(456, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit91" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(488, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit92" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(520, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit93" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(176, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit94" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(208, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit95" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(240, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[node name="Rabbit96" parent="Rabbits" instance=ExtResource("4_ps23h")]
+position = Vector2(272, 48)
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+
+[connection signal="ready" from="." to="." method="_on_ready"]

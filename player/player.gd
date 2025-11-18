@@ -7,7 +7,7 @@ const FLOOR_CORRECTION_DISTANCE = 100;
 
 # SETTINGS
 @export var camera: Camera2D;
-@export var movement_speed: int = 400;
+@export var movement_speed: int = 300;
 @export var jump_strength: int = 820;
 @export var player_heath_ui: PlayerHealthUI;
 @export var death_count_label: Label;
@@ -75,9 +75,9 @@ func _process_update_movement_direction(delta) -> void:
 		velocity = knockback_impetus;
 	var movement_impetus = Vector2.ZERO;
 	if Input.is_action_pressed("ui_right") and velocity.x < movement_speed:
-		movement_impetus += Vector2.RIGHT * movement_speed * 0.15;
+		movement_impetus += Vector2.RIGHT * movement_speed * 0.10;
 	if Input.is_action_pressed("ui_left") and velocity.x > -movement_speed:
-		movement_impetus += Vector2(-movement_speed * 0.15, 0);
+		movement_impetus += Vector2.LEFT * movement_speed * 0.10;
 	if (
 		_process_is_jump_key_pressed() and
 		c_jump_forgiveness_timer <= jump_forgiveness_timer
@@ -89,12 +89,14 @@ func _process_update_movement_direction(delta) -> void:
 		set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, false);
 	else:
 		set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, true);
-	apply_friction();
-	velocity += get_gravity() + movement_impetus;
+	apply_friction(delta);
+	velocity += get_gravity() * delta + movement_impetus;
 	
 # METHODS
-func apply_friction() -> void:
-	velocity.x -= sign(velocity.x) * get_gravity().length();
+func apply_friction(delta) -> void:
+	velocity.x -= sign(velocity.x) * get_gravity().length() * delta;
+	if (abs(velocity.x) < 10):
+		velocity.x = 0;
 
 func gib_and_kill(gibs: int = 25) -> void:
 	for i in gibs:

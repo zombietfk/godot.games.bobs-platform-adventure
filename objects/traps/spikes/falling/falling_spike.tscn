@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cucm55as7id28"]
 
-[ext_resource type="Script" uid="uid://8r1rhr8wtcyx" path="res://objects/traps/fall_on_pass_below/fall_on_pass_below.gd" id="1_t5fna"]
+[ext_resource type="Script" uid="uid://8r1rhr8wtcyx" path="res://objects/abstract/fall_on_pass_below/fall_on_pass_below.gd" id="1_t5fna"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="2_mrcqh"]
 
 [sub_resource type="Animation" id="Animation_mrcqh"]
@@ -46,6 +46,9 @@ z_index = -1
 rotation = 3.1415927
 script = ExtResource("1_t5fna")
 falling_node = NodePath("Spike")
+speed = 500.0
+fall_after = 0.3
+before_fall_animation_label = "spike_shake"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, -1024)

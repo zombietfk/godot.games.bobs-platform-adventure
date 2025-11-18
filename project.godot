@@ -45,11 +45,11 @@ window/vsync/vsync_mode=0
 [physics]
 
 common/physics_ticks_per_second=240
-2d/default_gravity=8.75
+2d/default_gravity=2100.0
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.67777556, 0.2754185, 0.59186697, 1)
+environment/defaults/default_clear_color=Color(0.9133692, 8.663535e-05, 0.7146836, 1)

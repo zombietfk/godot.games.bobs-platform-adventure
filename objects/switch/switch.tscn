@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bus2730on4ksk"]
+
+[ext_resource type="Script" uid="uid://rdwh488h6m02" path="res://objects/switch/switch.gd" id="1_pceir"]
+[ext_resource type="Texture2D" uid="uid://c1k8ev1c8d00o" path="res://objects/switch/switch_spritesheet.png" id="1_r7f0c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pceir"]
+atlas = ExtResource("1_r7f0c")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf65d"]
+atlas = ExtResource("1_r7f0c")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0kip"]
+atlas = ExtResource("1_r7f0c")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7f0c"]
+atlas = ExtResource("1_r7f0c")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egaae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pceir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf65d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0kip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7f0c")
+}],
+"loop": true,
+"name": &"switch_flipped",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r7f0c"]
+radius = 8.0
+height = 40.0
+
+[node name="Switch" type="Area2D"]
+collision_layer = 56
+collision_mask = 7
+script = ExtResource("1_pceir")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_egaae")
+autoplay = "default"
+frame_progress = 0.10950923
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_r7f0c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

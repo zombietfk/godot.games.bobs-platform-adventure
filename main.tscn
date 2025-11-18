@@ -7,7 +7,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lquwl")
-inital_level_path = "uid://bioh7kmbmtkno"
+inital_level_path = "uid://d4hrqsj6q1pl6"
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
@@ -66,6 +66,8 @@ position = Vector2(32, 284)
 camera = NodePath("Camera2D")
 player_heath_ui = NodePath("../GameUI/UI/PlayerHealthUI")
 death_count_label = NodePath("../GameUI/UI/DeathCount")
+max_health = 3
+current_health = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0

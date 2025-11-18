@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfdmpp2r661yo"]
+
+[ext_resource type="Script" uid="uid://bmxr661q11g4g" path="res://enemies/rabbit/rabbit.gd" id="1_yjq4o"]
+[ext_resource type="Texture2D" uid="uid://couq8jeja7if0" path="res://enemies/rabbit/rabbit_spritesheet.png" id="2_yjq4o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toyhj"]
+atlas = ExtResource("2_yjq4o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r841g"]
+atlas = ExtResource("2_yjq4o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oclvl"]
+atlas = ExtResource("2_yjq4o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mii6a"]
+atlas = ExtResource("2_yjq4o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rv2j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toyhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r841g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oclvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mii6a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(24, 28)
+
+[node name="Rabbit" type="CharacterBody2D"]
+position = Vector2(1, 0)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("1_yjq4o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2rv2j")
+autoplay = "default"
+frame = 3
+frame_progress = 0.8960669
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1bvp3")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
+collision_mask = 64
+
+[node name="FloorCheckCast2D" type="RayCast2D" parent="."]
+position = Vector2(16, 0)
+target_position = Vector2(0, 63)
+collision_mask = 64

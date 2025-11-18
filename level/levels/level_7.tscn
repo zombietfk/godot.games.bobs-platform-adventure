@@ -11,7 +11,7 @@ level_binding_box = Rect2(-128, -128, 896, 960)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-128, 160)
+position = Vector2(-160, 160)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(768, 672)
@@ -24,7 +24,7 @@ tile_set = ExtResource("2_0e6gn")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_e0tu7")]
 position = Vector2(864, 639.99994)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://brd67f76jwer3"
+to_level_path = "uid://ffgeasfgmm3m"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_e0tu7")]
 position = Vector2(-224, 128)

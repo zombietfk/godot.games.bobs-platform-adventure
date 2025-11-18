@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=4 uid="uid://ffgeasfgmm3m"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_fiy1l"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_nm5qk"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_k4avw"]
+[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/checkpoint_flagpole.tscn" id="5_k4avw"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="5_nm5qk"]
+
+[node name="Level_8" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_fiy1l")
+level_binding_box = Rect2(-160, -128, 768, 704)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-128, 160)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(576, 160)
+
+[node name="CheckpointSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(224, 544)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wYAAgADAAEAAAD+/wgAAgAPAAMAAAD+/wkAAgACAAIAAAD+/wcAAgADAAIAAAD9/wMAAgACAAMAAAD9/wYAAgACAAEAAAD+/wMAAgADAAMAAAAIAAMAAgABAAMAAAAIAAYAAgABAAEAAAAIAAcAAgABAAIAAAAIAAgAAgALAAMAAAAFAAkAAgABAAEAAAAFAAoAAgALAAMAAAABAAoAAgAPAAMAAAABAAkAAgADAAEAAAAJAAMAAgACAAMAAAAAAAkAAgACAAEAAAAGAAkAAgACAAEAAAAHAAkAAgALAAMAAAD//wkAAgAPAAMAAAAIAAkAAgACAAIAAAAJAAYAAgACAAEAAAD9/wkAAgACAAIAAAD9/wgAAgACAAIAAAD9/wcAAgACAAIAAAD9/woAAgACAAIAAAAAAAoAAgACAAIAAAD//woAAgACAAIAAAD+/woAAgACAAIAAAAJAAcAAgACAAIAAAAJAAgAAgACAAIAAAAJAAkAAgACAAIAAAAJAAoAAgACAAIAAAAGAAoAAgACAAIAAAAHAAoAAgACAAIAAAAIAAoAAgACAAIAAAD//wgAAgADAAEAAAAHAAgAAgABAAEAAAACAAUAAgABAAEAAAACAAYAAgADAAIAAAAEAAUAAgADAAEAAAAEAAYAAgABAAIAAAABAAYAAgAHAAEAAAACAAcAAgABAAMAAAADAAUAAgACAAMAAAADAAcAAgAIAAEAAAAEAAcAAgADAAMAAAAFAAYAAgAJAAEAAAD9/wEAAgACAAIAAAD9/wIAAgACAAIAAAD+/wEAAgACAAIAAAD+/wIAAgAPAAcAAAD//wEAAgACAAIAAAAAAAEAAgACAAIAAAABAAEAAgAPAAcAAAAFAAEAAgALAAcAAAAGAAEAAgACAAIAAAAHAAEAAgACAAIAAAAIAAEAAgACAAIAAAAIAAIAAgALAAcAAAAJAAEAAgACAAIAAAAJAAIAAgACAAIAAAD//wIAAgACAAMAAAAAAAIAAgACAAMAAAABAAIAAgADAAMAAAACAAEAAgACAAMAAAADAAEAAgACAAMAAAAEAAEAAgACAAMAAAAFAAIAAgABAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAD9/wsAAgACAAIAAAD+/wsAAgACAAIAAAD//wsAAgACAAIAAAAAAAsAAgACAAIAAAABAAsAAgACAAIAAAACAAsAAgAPAAMAAAAEAAsAAgALAAMAAAAFAAsAAgACAAIAAAAGAAsAAgACAAIAAAAHAAsAAgACAAIAAAAIAAsAAgACAAIAAAAJAAsAAgACAAIAAAACAAoAAgADAAEAAAADAAsAAgACAAEAAAAEAAoAAgABAAEAAAADAAQAAgAFAAMAAAA=")
+tile_set = ExtResource("2_nm5qk")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_k4avw")]
+position = Vector2(672, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_9.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_k4avw")]
+position = Vector2(-224, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bioh7kmbmtkno"
+to_spawn_location_with_index = 1
+
+[node name="Rabbit" parent="." instance=ExtResource("5_nm5qk")]
+position = Vector2(224, 240)
+
+[node name="CheckpointFlagpole" parent="." instance=ExtResource("5_k4avw")]
+position = Vector2(224, 488)
+level_path = "uid://ffgeasfgmm3m"
+spawn_index = 3
+
+[connection signal="ready" from="." to="." method="_on_ready"]

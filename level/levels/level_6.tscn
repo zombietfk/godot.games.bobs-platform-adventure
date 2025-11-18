@@ -36,7 +36,7 @@ tile_set = ExtResource("2_26go3")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_prrb4")]
 position = Vector2(928, 192)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://brd67f76jwer3"
+to_level_path = "uid://bioh7kmbmtkno"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_prrb4")]
 position = Vector2(-160, 128)
