@@ -6,6 +6,7 @@
 <sup>Hi Bob! Wow, look at that cool wave!</sup>
 
 </div>
+
 ## Info
 
 Welcome to Bob's Big Platform Adventure! A very by the numbers, totally f̲a̲i̲r̲ platforming game with n̲o̲t̲h̲i̲n̲g̲ weird going on at all!
