@@ -1,15 +1,15 @@
-### Bobs Big Platform Adventure!
+# Bobs Big Platform Adventure!
 
 ![tilewarspreview](https://github.com/user-attachments/assets/8830d0f6-43d5-4a6a-b4ca-aa346c4c61cd)
 
 <sup>Hi Bob! Wow, look at that cool wave!</sup>
-## Info
+### Info
 
 Welcome to Bob's Big Platform Adventure! A very by the numbers, totally f̲a̲i̲r̲ platforming game with n̲o̲t̲h̲i̲n̲g̲ weird going on at all!
 
 Made with Godot - Currently a work in progress. Watch this space for when the first builds come out!
 
-# Screenshots
+### Screenshots
 
 <img width="400" height="280" alt="Screenshot_1" src="https://github.com/user-attachments/assets/bb863734-cca0-4cf9-a7a4-63a50992db1d" />
 <img width="400" height="280" alt="Screenshot_2" src="https://github.com/user-attachments/assets/c0fe8f84-fd7b-44eb-9d64-bbae2efdc377" />
