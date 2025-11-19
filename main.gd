@@ -19,6 +19,7 @@ func _on_level_ready() -> void:
 func _ready() -> void:
 	player = $Player;
 	instance = self;
+	RenderingServer.set_default_clear_color(Color.BLACK);
 	update_spawn(inital_level_path, 0);
 	load_level();
 	print('Game Start, setting player position', player.global_position);

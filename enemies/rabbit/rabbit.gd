@@ -8,11 +8,13 @@ extends CharacterBody2D;
 @export var randomize_starting_direction = false;
 
 # TIMERS
+@export var jump_timer_variance = 0.0;
 @export var jump_timer = 1.0;
 var c_jump_timer = 0.0;
 
 # LIFECYCLE
 func _ready() -> void:
+	c_jump_timer = randf_range(-jump_timer_variance, jump_timer_variance);
 	if randomize_starting_direction:
 		if randf() >= 0.5:
 			turn_around();
@@ -29,7 +31,7 @@ func _physics_process(delta: float) -> void:
 				randf() * sign(jump_movement.x) * jump_variance.x,
 				randf() * sign(jump_movement.y) * jump_variance.y,
 			);
-			c_jump_timer = 0;
+			c_jump_timer = 0 - randf_range(-jump_timer_variance, jump_timer_variance);
 	c_jump_timer += delta;
 	velocity += get_gravity() * delta;
 	move_and_slide();

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://bxo30nr2i85cv"]
+[gd_scene load_steps=11 format=4 uid="uid://bxo30nr2i85cv"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_3fquk"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_jsekn"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_pukjq"]
 [ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="4_jk6bc"]
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="5_3fquk"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="6_jk6bc"]
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="6_jsekn"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="7_pukjq"]
 
@@ -39,7 +40,7 @@ tile_set = ExtResource("2_jsekn")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_pukjq")]
 position = Vector2(1056, 768)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/level_9.tscn"
+to_level_path = "uid://d4hrqsj6q1pl6"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_pukjq")]
 position = Vector2(-160, 256)
@@ -61,8 +62,8 @@ rotates = false
 loop = false
 
 [node name="Door" parent="DoorPath/DoorPathFollow" node_paths=PackedStringArray("movement_path") instance=ExtResource("5_3fquk")]
+script = ExtResource("6_jk6bc")
 movement_path = NodePath("..")
-movement_speed = 100.0
 
 [node name="DoorPath2" type="Path2D" parent="."]
 position = Vector2(736, 768)
@@ -73,8 +74,8 @@ rotates = false
 loop = false
 
 [node name="Door" parent="DoorPath2/DoorPathFollow" node_paths=PackedStringArray("movement_path") instance=ExtResource("5_3fquk")]
+script = ExtResource("6_jk6bc")
 movement_path = NodePath("..")
-movement_speed = 100.0
 
 [node name="Switch" parent="." instance=ExtResource("6_jsekn")]
 position = Vector2(800, 640)

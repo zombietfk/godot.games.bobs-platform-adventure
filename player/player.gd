@@ -7,8 +7,8 @@ const FLOOR_CORRECTION_DISTANCE = 100;
 
 # SETTINGS
 @export var camera: Camera2D;
-@export var movement_speed: int = 300;
-@export var jump_strength: int = 820;
+@export var movement_speed: int = 340;
+@export var jump_strength: int = 850;
 @export var player_heath_ui: PlayerHealthUI;
 @export var death_count_label: Label;
 @export var max_health = 3;
