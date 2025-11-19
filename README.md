@@ -3,7 +3,8 @@
 ![tilewarspreview](https://github.com/user-attachments/assets/8830d0f6-43d5-4a6a-b4ca-aa346c4c61cd)
 
 <sup>Hi Bob! Wow, look at that cool wave!</sup>
-### Info
+
+## Info
 
 Welcome to Bob's Big Platform Adventure! A very by the numbers, totally f̲a̲i̲r̲ platforming game with n̲o̲t̲h̲i̲n̲g̲ weird going on at all!
 
