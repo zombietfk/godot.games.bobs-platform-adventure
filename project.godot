@@ -53,3 +53,4 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.9133692, 8.663535e-05, 0.7146836, 1)
+environment/stdout/print_fps=false

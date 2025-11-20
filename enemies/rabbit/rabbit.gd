@@ -41,3 +41,8 @@ func turn_around() -> void:
 	scale.x *= -1;
 	jump_movement.x *= -1;
 	velocity.x *= -1;
+	
+func gib_and_kill(gibs: int = 5) -> void:
+	for i in gibs:
+		Gib.spawn(global_position, -velocity);
+	queue_free();

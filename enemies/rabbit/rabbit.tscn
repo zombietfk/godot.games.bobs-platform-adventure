@@ -43,7 +43,6 @@ animations = [{
 size = Vector2(24, 28)
 
 [node name="Rabbit" type="CharacterBody2D"]
-position = Vector2(1, 0)
 collision_layer = 4
 collision_mask = 64
 script = ExtResource("1_yjq4o")

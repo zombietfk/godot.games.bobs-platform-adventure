@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctaeyscddayym"]
+
+[ext_resource type="Script" uid="uid://8omjtau6l14t" path="res://objects/traps/sawblade/sawblade.gd" id="1_0hunc"]
+[ext_resource type="Texture2D" uid="uid://bh2c6tukab2m3" path="res://objects/traps/sawblade/sawblade.png" id="1_0jydq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hunc"]
+radius = 28.0
+
+[sub_resource type="Animation" id="Animation_jqo0m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0hunc"]
+resource_name = "spin_sawblade"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 1.2566371, 2.5132742, 3.7699113, 5.0265484, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jqo0m"]
+_data = {
+&"RESET": SubResource("Animation_jqo0m"),
+&"spin_sawblade": SubResource("Animation_0hunc")
+}
+
+[node name="Sawblade" type="Area2D"]
+collision_layer = 512
+script = ExtResource("1_0hunc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0jydq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0hunc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jqo0m")
+}
+autoplay = "spin_sawblade"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

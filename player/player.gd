@@ -106,6 +106,7 @@ func gib_and_kill(gibs: int = 25) -> void:
 	death_count_label.text = var_to_str(death_count);
 	visible = false;
 	is_dead = true;
+	velocity = Vector2.ZERO;
 	
 func jump() -> void:
 	velocity += Vector2(0, -jump_strength);

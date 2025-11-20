@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=4 uid="uid://6fyl1kvwta1a"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_dfo20"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_vw5px"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_s0pqg"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="4_q6wp7"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_1k6pf"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="6_yuayy"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="7_do820"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="8_ywjr8"]
+
+[sub_resource type="Curve2D" id="Curve2D_eeagb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
+}
+point_count = 2
+
+[node name="Level_9A" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_dfo20")
+level_binding_box = Rect2(-128, -352, 768, 576)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-128, 160)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(640, 160)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD9/wMAAgACAAMAAAD9/wYAAgACAAEAAAD9/wEAAgACAAIAAAD+/wMAAgACAAMAAAD//wMAAgAIAAEAAAAAAAMAAgAIAAEAAAABAAMAAgAIAAEAAAACAAMAAgAIAAEAAAADAAMAAgAIAAEAAAAEAAMAAgAIAAEAAAAFAAMAAgAIAAEAAAAGAAMAAgAIAAEAAAAHAAMAAgAIAAEAAAAIAAMAAgACAAMAAAD+/wYAAgACAAEAAAD//wYAAgACAAEAAAAAAAYAAgACAAEAAAABAAYAAgACAAEAAAACAAYAAgACAAEAAAADAAYAAgACAAEAAAAEAAYAAgACAAEAAAAFAAYAAgACAAEAAAAGAAYAAgACAAEAAAAHAAYAAgACAAEAAAAIAAYAAgACAAEAAAD+/wEAAgACAAIAAAD//wEAAgAIAAEAAAAAAAEAAgAIAAEAAAABAAEAAgAIAAEAAAACAAEAAgAIAAEAAAADAAEAAgAIAAEAAAAEAAEAAgACAAMAAAAFAAEAAgACAAMAAAAGAAEAAgACAAMAAAAHAAEAAgACAAMAAAAIAAEAAgACAAIAAAD+////AgACAAIAAAD/////AgACAAMAAAAAAP//AgACAAMAAAABAP//AgACAAMAAAACAP//AgACAAMAAAADAP//AgACAAMAAAAEAP//AgACAAIAAAAFAP//AgACAAIAAAAGAP//AgACAAIAAAAHAP//AgACAAIAAAAIAP//AgACAAIAAAD9////AgACAAIAAAD9/wIAAgACAAIAAAD9/wAAAgACAAIAAAD+/wAAAgADAAIAAAAIAAAAAgACAAIAAAAIAAIAAgABAAIAAAD+/wIAAgADAAIAAAD9//7/AgACAAIAAAD+//7/AgACAAIAAAD///7/AgACAAIAAAAAAP7/AgACAAIAAAABAP7/AgACAAIAAAACAP7/AgACAAIAAAADAP7/AgACAAIAAAAEAP7/AgACAAIAAAAFAP7/AgACAAIAAAAGAP7/AgACAAIAAAAHAP7/AgACAAIAAAAIAP7/AgACAAIAAAAEAAAAAgABAAIAAAAFAAAAAgACAAIAAAAGAAAAAgACAAIAAAAHAAAAAgACAAIAAAAKAP7/AgACAAIAAAAKAP//AgACAAIAAAAKAAAAAgACAAIAAAAKAAEAAgACAAIAAAAKAAIAAgACAAIAAAAKAAMAAgACAAMAAAAKAAYAAgACAAEAAAAJAAYAAgACAAEAAAAJAAIAAgACAAIAAAAJAAMAAgACAAMAAAAJAAEAAgACAAIAAAAJAAAAAgACAAIAAAAJAP//AgACAAIAAAAJAP7/AgACAAIAAAA=")
+tile_set = ExtResource("2_vw5px")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_s0pqg")]
+position = Vector2(736, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bxo30nr2i85cv"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_s0pqg")]
+position = Vector2(-224, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://ffgeasfgmm3m"
+to_spawn_location_with_index = 1
+
+[node name="Rabbit" parent="." instance=ExtResource("4_q6wp7")]
+position = Vector2(-49, -144)
+collision_mask = 3136
+jump_movement = Vector2(200, -250)
+jump_timer = 0.3
+
+[node name="Rabbit2" parent="." instance=ExtResource("4_q6wp7")]
+position = Vector2(-49, -16)
+collision_mask = 3136
+jump_movement = Vector2(200, -250)
+jump_timer = 0.3
+
+[node name="Spike" parent="." instance=ExtResource("5_1k6pf")]
+position = Vector2(224, -176)
+rotation = -1.5707964
+collision_layer = 2048
+collision_mask = 4
+
+[node name="Spike2" parent="." instance=ExtResource("5_1k6pf")]
+position = Vector2(224, -144)
+rotation = -1.5707964
+collision_layer = 2048
+collision_mask = 4
+
+[node name="DoorPath" type="Path2D" parent="."]
+position = Vector2(544, 128)
+curve = SubResource("Curve2D_eeagb")
+
+[node name="DoorPathFollow" type="PathFollow2D" parent="DoorPath"]
+rotates = false
+loop = false
+
+[node name="Door" parent="DoorPath/DoorPathFollow" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yuayy")]
+script = ExtResource("7_do820")
+movement_path = NodePath("..")
+
+[node name="Switch" parent="." instance=ExtResource("8_ywjr8")]
+position = Vector2(480, 0)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="DoorPath/DoorPathFollow/Door" method="_on_switch_flipped_on"]

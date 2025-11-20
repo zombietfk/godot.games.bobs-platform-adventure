@@ -7,7 +7,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lquwl")
-inital_level_path = "uid://llqv2al5xrch"
+inital_level_path = "uid://d4hrqsj6q1pl6"
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
