@@ -1,6 +1,12 @@
 class_name Main;
 extends Node2D;
 
+enum DIFFICULTY {
+	EASY,
+	NORMAL,
+	HARD,
+}
+
 # SETTINGS
 @export_file() var inital_level_path: String;
 
@@ -8,8 +14,10 @@ extends Node2D;
 static var player: Player;
 static var instance: Main;
 static var level_instance: Level;
+static var current_level_path: String;
 static var current_spawn_level: String;
 static var current_spawn_index = 0;
+static var difficulty = DIFFICULTY.NORMAL;
 
 # TRIGGERS
 func _on_level_ready() -> void:
@@ -33,6 +41,9 @@ static func load_level(
 	level_path: String = current_spawn_level,
 	spawn_index: int = current_spawn_index,
 ) -> void:
+	if Main.difficulty == Main.DIFFICULTY.EASY:
+		update_spawn(level_path, spawn_index);
+	current_level_path = level_path;
 	if level_instance != null:
 		level_instance.queue_free();
 	var level = load(level_path).instantiate() as Level;

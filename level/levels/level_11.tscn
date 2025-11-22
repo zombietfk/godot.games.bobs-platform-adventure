@@ -1,0 +1,136 @@
+[gd_scene load_steps=15 format=4 uid="uid://co204ll0li0k8"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_224ee"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_y8i0u"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_bxg01"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_kxs5p"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="4_2mn4d"]
+[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="5_t4gag"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="6_2b23t"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="6_xoq06"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="7_jjq62"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="8_vql6r"]
+[ext_resource type="PackedScene" uid="uid://ctaeyscddayym" path="res://objects/traps/sawblade/sawblade.tscn" id="11_burb0"]
+
+[sub_resource type="Curve2D" id="Curve2D_2mn4d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 384, 0, 0, 0, 0, 128, -400)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xoq06"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 784)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_auxjq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128)
+}
+point_count = 2
+
+[node name="Level_8" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_224ee")
+level_binding_box = Rect2(-198, -448, 792, 1024)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-128, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(576, 480)
+
+[node name="HealthHeartIcon" type="Sprite2D" parent="."]
+position = Vector2(96, -384)
+texture = ExtResource("5_t4gag")
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD9/wEAAgACAAIAAAD+/wEAAgACAAIAAAD//wEAAgACAAIAAAAAAAEAAgACAAIAAAABAAEAAgADAAIAAAAFAAEAAgABAAIAAAAGAAEAAgACAAIAAAAHAAEAAgACAAIAAAAIAAEAAgACAAIAAAAJAAEAAgACAAIAAAAAAAsAAgALAAMAAAABAAsAAgACAAIAAAACAAsAAgACAAIAAAAEAAsAAgACAAIAAAAFAAsAAgACAAIAAAAGAAsAAgAPAAMAAAAHAAsAAgACAAEAAAAIAAsAAgACAAEAAAAJAAsAAgACAAEAAAADAAsAAgACAAIAAAD9/wsAAgACAAEAAAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAACAAgAAgABAAEAAAADAAgAAgACAAEAAAAEAAgAAgADAAEAAAAFAAkAAgADAAEAAAAGAAoAAgADAAEAAAAAAAoAAgABAAEAAAABAAkAAgABAAEAAAACAAkAAgALAAMAAAACAAoAAgACAAIAAAADAAkAAgACAAIAAAADAAoAAgACAAIAAAAEAAkAAgAPAAMAAAAEAAoAAgACAAIAAAABAAoAAgALAAMAAAAFAAoAAgAPAAMAAAAAAAUAAgAPAAcAAAABAAUAAgADAAMAAAD//wYAAgAPAAcAAAD+/wcAAgAPAAcAAAD9/wgAAgACAAMAAAD+/wgAAgADAAMAAAD//wcAAgADAAMAAAAAAAYAAgADAAMAAAAIAAgAAgABAAMAAAAJAAgAAgACAAMAAAAHAAcAAgABAAMAAAAGAAYAAgABAAMAAAAFAAUAAgABAAMAAAABAAQAAgADAAIAAAABAAMAAgADAAIAAAABAAIAAgADAAIAAAABAAAAAgADAAIAAAAFAAQAAgABAAIAAAAFAAMAAgABAAIAAAAFAAIAAgABAAIAAAAFAAAAAgABAAIAAAAFAP//AgABAAIAAAAFAP7/AgABAAIAAAABAP//AgADAAIAAAABAP7/AgADAAIAAAAFAP3/AgABAAIAAAAFAPz/AgABAAIAAAD9//z/AgACAAIAAAD9//3/AgACAAIAAAD9//7/AgACAAIAAAD9////AgACAAIAAAD9/wAAAgACAAIAAAD9/wIAAgACAAIAAAD9/wMAAgACAAIAAAD9/wQAAgACAAIAAAD9/wUAAgACAAIAAAD+//z/AgACAAIAAAD+//3/AgACAAIAAAD+//7/AgACAAIAAAD+////AgACAAIAAAD+/wAAAgACAAIAAAD+/wIAAgACAAIAAAD+/wMAAgACAAIAAAD+/wQAAgACAAIAAAD+/wUAAgACAAIAAAD///z/AgACAAIAAAD///3/AgACAAIAAAD///7/AgACAAIAAAD/////AgACAAIAAAD//wAAAgACAAIAAAD//wIAAgACAAIAAAD//wMAAgACAAIAAAD//wQAAgACAAIAAAD//wUAAgACAAIAAAAAAP3/AgACAAIAAAAAAP7/AgACAAIAAAAAAP//AgACAAIAAAAAAAAAAgACAAIAAAAAAAIAAgACAAIAAAAAAAMAAgACAAIAAAAAAAQAAgACAAIAAAD9/wYAAgACAAIAAAD+/wYAAgACAAIAAAD9/wcAAgACAAIAAAAIAPz/AgACAAIAAAAIAP3/AgACAAIAAAAIAP7/AgACAAIAAAAIAP//AgACAAIAAAAIAAAAAgACAAIAAAAIAAIAAgACAAIAAAAIAAMAAgACAAIAAAAIAAQAAgACAAIAAAAIAAUAAgACAAIAAAAIAAYAAgACAAIAAAAIAAcAAgALAAcAAAAJAPz/AgACAAIAAAAJAP3/AgACAAIAAAAJAP7/AgACAAIAAAAJAP//AgACAAIAAAAJAAAAAgACAAIAAAAJAAIAAgACAAIAAAAJAAMAAgACAAIAAAAJAAQAAgACAAIAAAAJAAUAAgACAAIAAAAJAAYAAgACAAIAAAAJAAcAAgACAAIAAAAGAPz/AgACAAIAAAAGAP3/AgACAAIAAAAGAP7/AgACAAIAAAAGAP//AgACAAIAAAAGAAAAAgACAAIAAAAGAAIAAgACAAIAAAAGAAMAAgACAAIAAAAGAAQAAgACAAIAAAAGAAUAAgALAAcAAAAHAPz/AgACAAIAAAAHAP3/AgACAAIAAAAHAP7/AgACAAIAAAAHAP//AgACAAIAAAAHAAAAAgACAAIAAAAHAAIAAgACAAIAAAAHAAMAAgACAAIAAAAHAAQAAgACAAIAAAAHAAUAAgACAAIAAAAHAAYAAgALAAcAAAADAP7/AgAFAAEAAAA=")
+tile_set = ExtResource("2_y8i0u")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAADAPv/AAAHAAIAAAACAPv/AAAFAAIAAAABAPr/AAAHAAIAAAAAAPr/AAAFAAIAAAD///n/AAAHAAQAAAD///j/AAAHAAMAAAD///r/AAAfAAYAAAABAPv/AAAfAAYAAAACAPj/AAAFAAcAAAADAPj/AAAFAAcAAAABAPj/AAACAAcAAAA=")
+tile_set = ExtResource("3_kxs5p")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_bxg01")]
+position = Vector2(672, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_12.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_bxg01")]
+position = Vector2(-224, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://d4hrqsj6q1pl6"
+to_spawn_location_with_index = 1
+
+[node name="CloudPlatform" parent="." instance=ExtResource("4_2mn4d")]
+position = Vector2(224, 192)
+randomize_inital_displacement = false
+
+[node name="CloudPlatform2" parent="." instance=ExtResource("4_2mn4d")]
+position = Vector2(224, 64)
+randomize_inital_displacement = false
+
+[node name="CloudPlatform3" parent="." instance=ExtResource("4_2mn4d")]
+position = Vector2(224, -64)
+randomize_inital_displacement = false
+
+[node name="CloudPlatform4" parent="." instance=ExtResource("4_2mn4d")]
+position = Vector2(224, -192)
+randomize_inital_displacement = false
+
+[node name="Sawblade" parent="." instance=ExtResource("11_burb0")]
+z_index = -2
+position = Vector2(224.00002, -488.99997)
+scale = Vector2(3.7, 3.7)
+
+[node name="LeftSawPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2mn4d")
+script = ExtResource("6_xoq06")
+speed = 200.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LeftSawPath"]
+position = Vector2(128, 384)
+rotates = false
+loop = false
+
+[node name="Sawblade" parent="LeftSawPath/PathFollow2D" instance=ExtResource("11_burb0")]
+z_index = -2
+scale = Vector2(3, -3)
+
+[node name="RightSawPath" type="Path2D" parent="."]
+position = Vector2(320, -400)
+curve = SubResource("Curve2D_xoq06")
+script = ExtResource("6_xoq06")
+speed = 200.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="RightSawPath"]
+rotates = false
+loop = false
+
+[node name="Sawblade" parent="RightSawPath/PathFollow2D" instance=ExtResource("11_burb0")]
+z_index = -2
+scale = Vector2(3, -3)
+
+[node name="Switch" parent="." instance=ExtResource("6_2b23t")]
+position = Vector2(224, -320)
+collision_mask = 1
+
+[node name="DoorPath" type="Path2D" parent="."]
+position = Vector2(544, 448)
+curve = SubResource("Curve2D_auxjq")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="DoorPath"]
+rotates = false
+loop = false
+
+[node name="Door" parent="DoorPath/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_jjq62")]
+script = ExtResource("8_vql6r")
+movement_path = NodePath("..")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="DoorPath/PathFollow2D/Door" method="_on_switch_flipped_on"]

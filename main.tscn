@@ -1,13 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://c63fm78u50tjr"]
+[gd_scene load_steps=14 format=3 uid="uid://c63fm78u50tjr"]
 
 [ext_resource type="PackedScene" uid="uid://dd4hda4w5qubs" path="res://player/player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dvork0tghl73f" path="res://ui/player_health_ui.gd" id="1_7mycd"]
 [ext_resource type="Script" uid="uid://ds76dsnvp602l" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bt74wnjkyby2u" path="res://ui/ui_heart_container.tscn" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://ctgkcqkl80emy" path="res://ui/ui_difficulty_selector.gd" id="4_kek77"]
+[ext_resource type="Texture2D" uid="uid://mkniumx4artt" path="res://ui/face_sad.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://b3pm6md6jdgyc" path="res://ui/face_neutral.png" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://dh2t3yqy7jnph" path="res://ui/face_smile.png" id="6_272bh"]
+[ext_resource type="Texture2D" uid="uid://csbgstbk3iit4" path="res://ui/circular_circle.png" id="7_5vw27"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dg77c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lquwl")
-inital_level_path = "uid://d4hrqsj6q1pl6"
+inital_level_path = "uid://llqv2al5xrch"
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
@@ -30,6 +64,47 @@ size_flags_vertical = 6
 script = ExtResource("1_7mycd")
 ui_heart_container_scene = ExtResource("2_lquwl")
 metadata/_edit_use_anchors_ = true
+
+[node name="PlayerDifficultyUI" type="HBoxContainer" parent="GameUI/UI"]
+visible = false
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16666667
+anchor_right = 0.16666667
+offset_left = 320.0
+offset_right = 960.0
+offset_bottom = 64.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+alignment = 2
+script = ExtResource("4_kek77")
+metadata/_edit_use_anchors_ = true
+
+[node name="HardMode" type="TextureButton" parent="GameUI/UI/PlayerDifficultyUI"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("4_lquwl")
+
+[node name="Selector" type="Control" parent="GameUI/UI/PlayerDifficultyUI"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameUI/UI/PlayerDifficultyUI/Selector"]
+position = Vector2(35, 35)
+sprite_frames = SubResource("SpriteFrames_dg77c")
+autoplay = "default"
+frame_progress = 0.26171932
+
+[node name="NormalMode" type="TextureButton" parent="GameUI/UI/PlayerDifficultyUI"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("5_7mycd")
+
+[node name="EasyMode" type="TextureButton" parent="GameUI/UI/PlayerDifficultyUI"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("6_272bh")
 
 [node name="LoadingPanel" type="PanelContainer" parent="GameUI/UI"]
 visible = false
@@ -76,3 +151,7 @@ limit_bottom = 600
 limit_smoothed = true
 position_smoothing_speed = 10.0
 editor_draw_limits = true
+
+[connection signal="pressed" from="GameUI/UI/PlayerDifficultyUI/HardMode" to="GameUI/UI/PlayerDifficultyUI" method="_on_hard_mode_pressed"]
+[connection signal="pressed" from="GameUI/UI/PlayerDifficultyUI/NormalMode" to="GameUI/UI/PlayerDifficultyUI" method="_on_normal_mode_pressed"]
+[connection signal="pressed" from="GameUI/UI/PlayerDifficultyUI/EasyMode" to="GameUI/UI/PlayerDifficultyUI" method="_on_easy_mode_pressed"]

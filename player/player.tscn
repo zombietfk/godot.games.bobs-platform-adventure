@@ -79,7 +79,7 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_rkbax")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="ReloadLevelTimer" type="Timer" parent="."]
+[node name="RespawnGraceTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
 
@@ -87,5 +87,5 @@ one_shot = true
 wait_time = 2.5
 one_shot = true
 
-[connection signal="timeout" from="ReloadLevelTimer" to="." method="_on_reload_level_timer_timeout"]
+[connection signal="timeout" from="RespawnGraceTimer" to="." method="_on_respawn_grace_timer_timeout"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

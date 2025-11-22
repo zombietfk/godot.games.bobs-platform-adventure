@@ -1,4 +1,4 @@
-class_name FollowPathCyclical;
+class_name Path2DCyclical;
 extends Path2D;
 
 # SETTINGS
@@ -11,6 +11,11 @@ var is_in_return_cycle = false;
 
 # LIFECYCLE
 func _ready() -> void:
+	var children = get_children();
+	# Rechild Nodes
+	for c in children:
+		if c != $PathFollow2D:
+			$PathFollow2D.add_child(c);
 	$PathFollow2D.progress_ratio = start_distance_ratio;
 	if cycle_path:
 		#Turn off looping if cyclical, causes issues

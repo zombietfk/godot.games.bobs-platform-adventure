@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://6fyl1kvwta1a"]
+[gd_scene load_steps=11 format=4 uid="uid://6fyl1kvwta1a"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_dfo20"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_vw5px"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_s0pqg"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_vw5px"]
 [ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="4_q6wp7"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_1k6pf"]
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="6_yuayy"]
@@ -30,6 +31,10 @@ position = Vector2(640, 160)
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAD9/wMAAgACAAMAAAD9/wYAAgACAAEAAAD9/wEAAgACAAIAAAD+/wMAAgACAAMAAAD//wMAAgAIAAEAAAAAAAMAAgAIAAEAAAABAAMAAgAIAAEAAAACAAMAAgAIAAEAAAADAAMAAgAIAAEAAAAEAAMAAgAIAAEAAAAFAAMAAgAIAAEAAAAGAAMAAgAIAAEAAAAHAAMAAgAIAAEAAAAIAAMAAgACAAMAAAD+/wYAAgACAAEAAAD//wYAAgACAAEAAAAAAAYAAgACAAEAAAABAAYAAgACAAEAAAACAAYAAgACAAEAAAADAAYAAgACAAEAAAAEAAYAAgACAAEAAAAFAAYAAgACAAEAAAAGAAYAAgACAAEAAAAHAAYAAgACAAEAAAAIAAYAAgACAAEAAAD+/wEAAgACAAIAAAD//wEAAgAIAAEAAAAAAAEAAgAIAAEAAAABAAEAAgAIAAEAAAACAAEAAgAIAAEAAAADAAEAAgAIAAEAAAAEAAEAAgACAAMAAAAFAAEAAgACAAMAAAAGAAEAAgACAAMAAAAHAAEAAgACAAMAAAAIAAEAAgACAAIAAAD+////AgACAAIAAAD/////AgACAAMAAAAAAP//AgACAAMAAAABAP//AgACAAMAAAACAP//AgACAAMAAAADAP//AgACAAMAAAAEAP//AgACAAIAAAAFAP//AgACAAIAAAAGAP//AgACAAIAAAAHAP//AgACAAIAAAAIAP//AgACAAIAAAD9////AgACAAIAAAD9/wIAAgACAAIAAAD9/wAAAgACAAIAAAD+/wAAAgADAAIAAAAIAAAAAgACAAIAAAAIAAIAAgABAAIAAAD+/wIAAgADAAIAAAD9//7/AgACAAIAAAD+//7/AgACAAIAAAD///7/AgACAAIAAAAAAP7/AgACAAIAAAABAP7/AgACAAIAAAACAP7/AgACAAIAAAADAP7/AgACAAIAAAAEAP7/AgACAAIAAAAFAP7/AgACAAIAAAAGAP7/AgACAAIAAAAHAP7/AgACAAIAAAAIAP7/AgACAAIAAAAEAAAAAgABAAIAAAAFAAAAAgACAAIAAAAGAAAAAgACAAIAAAAHAAAAAgACAAIAAAAKAP7/AgACAAIAAAAKAP//AgACAAIAAAAKAAAAAgACAAIAAAAKAAEAAgACAAIAAAAKAAIAAgACAAIAAAAKAAMAAgACAAMAAAAKAAYAAgACAAEAAAAJAAYAAgACAAEAAAAJAAIAAgACAAIAAAAJAAMAAgACAAMAAAAJAAEAAgACAAIAAAAJAAAAAgACAAIAAAAJAP//AgACAAIAAAAJAP7/AgACAAIAAAA=")
 tile_set = ExtResource("2_vw5px")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAAIAP//AAAYAA0AAAAQAAMAAAAYAA0AAAAQAAYAAAAaAAoAAAAIAAIAAAAaAAoAAAD9/wYAAAAdAAgAAAD9/wIAAAAdAAoAAAD9////AAAbAAsAAAD9/wMAAAAbAAsAAAA=")
+tile_set = ExtResource("3_vw5px")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_s0pqg")]
 position = Vector2(736, 128)

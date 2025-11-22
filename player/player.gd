@@ -29,7 +29,7 @@ var is_dead = false;
 var c_jump_forgiveness_timer = 0.0;
 var knockback_duration_timer = 0.0;
 
-func _on_reload_level_timer_timeout() -> void:
+func _on_respawn_grace_timer_timeout() -> void:
 	Main.load_level();
 	current_health = max_health;
 	visible = true;
@@ -37,8 +37,12 @@ func _on_reload_level_timer_timeout() -> void:
 	damage(0, Vector2.ZERO);
 
 func _on_respawn_timer_timeout() -> void:
-	global_position = spawn_position;
-	$ReloadLevelTimer.start();
+	global_position = (
+		Main.level_instance.spawn_locations[
+			Main.current_spawn_index
+		].global_position
+	);
+	$RespawnGraceTimer.start();
 
 # LIFECYCLE
 func _process(delta: float) -> void:
@@ -99,6 +103,8 @@ func apply_friction(delta) -> void:
 		velocity.x = 0;
 
 func gib_and_kill(gibs: int = 25) -> void:
+	if is_dead:
+		return;
 	for i in gibs:
 		Gib.spawn(global_position, -velocity);
 	$RespawnTimer.start();
