@@ -40,3 +40,6 @@ machine_gun_bullet_collisison_mask = 454
 position = Vector2(0, 9)
 sprite_frames = SubResource("SpriteFrames_lemno")
 autoplay = "default"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(53, -4)
