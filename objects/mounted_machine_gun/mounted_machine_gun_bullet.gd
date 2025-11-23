@@ -6,7 +6,8 @@ extends Node2D;
 @onready var collision_raycast: RayCast2D = $RayCast2D;
 
 func _physics_process(delta: float) -> void:
-	position += movement_direction * movement_speed * delta;
+	rotation = movement_direction.angle();
+	position += movement_direction.normalized() * movement_speed * delta;
 	if collision_raycast.is_colliding():
 		var collider: Node2D = $RayCast2D.get_collider();
 		if collider.has_method("gib_and_kill"):

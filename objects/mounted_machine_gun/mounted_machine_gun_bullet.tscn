@@ -23,4 +23,4 @@ begin_cap_mode = 1
 end_cap_mode = 2
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(23, 0)
+target_position = Vector2(14, 0)

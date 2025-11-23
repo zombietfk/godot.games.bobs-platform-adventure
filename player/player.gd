@@ -20,9 +20,9 @@ var damage_timeout = 0.0;
 var death_count = 0;
 var knockback_impetus: Vector2 = Vector2.ZERO;
 
-
 # FLAGS
 var is_dead = false;
+var is_movement_disabled = false;
 
 # TIMERS
 @export var jump_forgiveness_timer = 0.08;
@@ -34,15 +34,18 @@ func _on_respawn_grace_timer_timeout() -> void:
 	current_health = max_health;
 	visible = true;
 	is_dead = false;
+	is_movement_disabled = false;
 	damage(0, Vector2.ZERO);
+	velocity = Vector2.ZERO;
+	knockback_impetus = Vector2.ZERO;
 
 func _on_respawn_timer_timeout() -> void:
-	global_position = (
-		Main.level_instance.spawn_locations[
-			Main.current_spawn_index
-		].global_position
-	);
+	global_position = Vector2.ZERO;
 	$RespawnGraceTimer.start();
+
+# SIGNALS
+signal player_interaction();
+signal player_interaction_end();
 
 # LIFECYCLE
 func _process(delta: float) -> void:
@@ -53,7 +56,12 @@ func _process(delta: float) -> void:
 		modulate.a = 0.5;
 	else:
 		modulate.a = 1;
+	if Input.is_action_just_pressed("interaction"):
+		player_interaction.emit();
+	if Input.is_action_just_released("interaction"):
+		player_interaction_end.emit();
 	if is_out_of_bounds() or current_health <= 0:
+		print('oob');
 		gib_and_kill(50);
 	player_heath_ui.update_health_bar(current_health, max_health);
 
@@ -68,19 +76,22 @@ func _physics_process(delta: float) -> void:
 	move_and_slide();
 
 func _process_is_jump_key_pressed() -> bool:
-	return Input.is_action_just_pressed("ui_accept");
+	return Input.is_action_just_pressed("jump");
 
 func _process_is_jump_key_released() -> bool:
-	return Input.is_action_just_released("ui_accept");
+	return Input.is_action_just_released("jump");
 
 func _process_update_movement_direction(delta) -> void:
+	if is_movement_disabled:
+		velocity += get_gravity() * delta;
+		return;
 	if knockback_duration_timer > 0:
 		knockback_duration_timer -= delta;
 		velocity = knockback_impetus;
 	var movement_impetus = Vector2.ZERO;
-	if Input.is_action_pressed("ui_right") and velocity.x < movement_speed:
+	if Input.is_action_pressed("move_right") and velocity.x < movement_speed:
 		movement_impetus += Vector2.RIGHT * movement_speed * 0.10;
-	if Input.is_action_pressed("ui_left") and velocity.x > -movement_speed:
+	if Input.is_action_pressed("move_left") and velocity.x > -movement_speed:
 		movement_impetus += Vector2.LEFT * movement_speed * 0.10;
 	if (
 		_process_is_jump_key_pressed() and
@@ -89,7 +100,7 @@ func _process_update_movement_direction(delta) -> void:
 		jump();
 	if _process_is_jump_key_released():
 		cancel_jump();
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("drop"):
 		set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, false);
 	else:
 		set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, true);
@@ -123,13 +134,9 @@ func cancel_jump() -> void:
 		
 func is_out_of_bounds() -> bool:
 	return !Rect2(
-		Main.level_instance.level_binding_box.position.x - 64,
-		Main.level_instance.level_binding_box.position.y - 64,
-		-Main.level_instance.level_binding_box.position.x + Main.level_instance.level_binding_box.size.x + 128,
-		-Main.level_instance.level_binding_box.position.y + Main.level_instance.level_binding_box.size.y + 128,
-	).encloses(
-		Rect2(position, Vector2.ONE)
-	);
+		Main.level_instance.level_binding_box.position - 64 * Vector2.ONE,
+		Main.level_instance.level_binding_box.size - Main.level_instance.level_binding_box.position + 64 * Vector2.ONE * 2,
+	).has_point(position);
 	
 func damage(
 	amount: int,
@@ -143,3 +150,16 @@ func damage(
 		knockback_impetus = -from_direction.normalized() * knockback_strength;
 		knockback_duration_timer = knockback_duration_in_s;
 		current_health -= amount;
+
+func set_alert_notification_visibility(show_alert = !$AlertNotification.visible):
+	$AlertNotification.visible = show_alert;
+
+func get_camera_rect(camera: Camera2D) -> Rect2:
+	var zoom = camera.zoom
+	var screen_size = get_viewport().get_visible_rect().size
+
+	# Convert screen size to world size at current zoom
+	var world_size = screen_size * zoom
+	var world_pos = camera.get_screen_center_position() - world_size * 0.5
+
+	return Rect2(world_pos, world_size)

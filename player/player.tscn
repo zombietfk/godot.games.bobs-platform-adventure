@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd4hda4w5qubs"]
+[gd_scene load_steps=14 format=3 uid="uid://dd4hda4w5qubs"]
 
 [ext_resource type="Script" uid="uid://caoku7dqkwa54" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://csatwk1neiden" path="res://player/bob_idle_spritesheet.png" id="2_rkbax"]
+[ext_resource type="Texture2D" uid="uid://c1aitfjmkljul" path="res://player/exclamation.png" id="3_g1dw6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1dw6"]
 atlas = ExtResource("2_rkbax")
@@ -58,6 +59,43 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(28, 54)
 
+[sub_resource type="Animation" id="Animation_g1dw6"]
+resource_name = "floating_alert"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -48), Vector2(0, -56)]
+}
+
+[sub_resource type="Animation" id="Animation_yw30f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjkh3"]
+_data = {
+&"RESET": SubResource("Animation_yw30f"),
+&"floating_alert": SubResource("Animation_g1dw6")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 201
 platform_floor_layers = 4278190528
@@ -86,6 +124,17 @@ one_shot = true
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
+
+[node name="AlertNotification" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -48)
+texture = ExtResource("3_g1dw6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AlertNotification"]
+libraries = {
+&"": SubResource("AnimationLibrary_qjkh3")
+}
+autoplay = "floating_alert"
 
 [connection signal="timeout" from="RespawnGraceTimer" to="." method="_on_respawn_grace_timer_timeout"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

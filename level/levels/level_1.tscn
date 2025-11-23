@@ -1,33 +1,28 @@
-[gd_scene load_steps=5 format=4 uid="uid://llqv2al5xrch"]
+[gd_scene load_steps=4 format=4 uid="uid://llqv2al5xrch"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_wg4fv"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_35gx7"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_35gx7"]
-[ext_resource type="PackedScene" uid="uid://bmh7affp16sse" path="res://objects/mounted_machine_gun/mounted_machine_gun.tscn" id="4_hosfi"]
 
 [node name="Level_1" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_wg4fv")
-level_binding_box = Rect2(0, 0, 768, 448)
+level_binding_box = Rect2(0, 0, 704, 448)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(160, 352)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(768, 352)
+position = Vector2(704, 352)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAAEAAcAAgABAAEAAAAFAAcAAgACAAEAAAAGAAcAAgACAAEAAAALAAYAAgABAAMAAAALAAMAAgALAAcAAAALAAQAAgABAAIAAAALAAUAAgABAAIAAAAMAAYAAgACAAMAAAAAAAMAAgAPAAcAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAAHAAcAAgADAAEAAAAAAAgAAgADAAIAAAAEAAgAAgABAAIAAAAFAAgAAgACAAIAAAAGAAgAAgACAAIAAAAHAAgAAgADAAIAAAAAAAkAAgAPAAMAAAABAAkAAgACAAEAAAACAAkAAgACAAEAAAADAAkAAgACAAEAAAAEAAkAAgALAAMAAAAFAAkAAgACAAIAAAAGAAkAAgACAAIAAAAHAAkAAgAPAAMAAAAIAAkAAgACAAEAAAAJAAkAAgACAAEAAAAKAAkAAgACAAEAAAALAAkAAgACAAEAAAAMAAkAAgACAAEAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAEAAcAAgABAAEAAAAFAAcAAgACAAEAAAAGAAcAAgADAAEAAAAAAAMAAgAPAAcAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAAEAAgAAgABAAIAAAAFAAgAAgACAAIAAAAGAAgAAgADAAIAAAAAAAkAAgAPAAMAAAABAAkAAgACAAEAAAACAAkAAgACAAEAAAADAAkAAgACAAEAAAAEAAkAAgALAAMAAAAFAAkAAgACAAIAAAAGAAkAAgAPAAMAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAHAAkAAgACAAEAAAAIAAMAAgACAAMAAAAIAAkAAgACAAEAAAAJAAMAAgACAAMAAAAJAAkAAgACAAEAAAAKAAMAAgALAAcAAAAKAAkAAgACAAEAAAALAAYAAgACAAMAAAALAAkAAgACAAEAAAAKAAQAAgABAAIAAAAKAAUAAgABAAIAAAAKAAYAAgABAAMAAAA=")
 tile_set = ExtResource("2_35gx7")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_35gx7")]
-position = Vector2(864, 320)
+position = Vector2(800, 320)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bo8yhp7lsim74"
-
-[node name="MountedMachineGun" parent="." instance=ExtResource("4_hosfi")]
-position = Vector2(384, 224)
-is_firing = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]

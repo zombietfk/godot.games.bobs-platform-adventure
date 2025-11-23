@@ -10,6 +10,7 @@ func _ready() -> void:
 	velocity = Vector2(movement_speed, 0);
 
 func _physics_process(delta: float) -> void:
+	velocity = Vector2(movement_speed, velocity.y);
 	velocity += get_gravity() * delta;
 	move_and_slide();
 	if !$FloorCheckRayCast2D.is_colliding():
@@ -33,4 +34,9 @@ func _process(_delta: float) -> void:
 # METHODS
 func turn_around() -> void:
 	scale = Vector2(-scale.x, scale.y)
-	velocity = -velocity;
+	movement_speed = -movement_speed;
+
+func gib_and_kill(gibs: int = 5) -> void:
+	for i in gibs:
+		Gib.spawn(global_position, -velocity);
+	queue_free();

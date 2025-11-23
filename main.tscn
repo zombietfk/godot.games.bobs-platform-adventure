@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c63fm78u50tjr"]
+[gd_scene load_steps=15 format=3 uid="uid://c63fm78u50tjr"]
 
 [ext_resource type="PackedScene" uid="uid://dd4hda4w5qubs" path="res://player/player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dvork0tghl73f" path="res://ui/player_health_ui.gd" id="1_7mycd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b3pm6md6jdgyc" path="res://ui/face_neutral.png" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://dh2t3yqy7jnph" path="res://ui/face_smile.png" id="6_272bh"]
 [ext_resource type="Texture2D" uid="uid://csbgstbk3iit4" path="res://ui/circular_circle.png" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://dhwpen6bnogod" path="res://ui/cheats_ui_warp_level.gd" id="9_4c57u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
 atlas = ExtResource("7_5vw27")
@@ -135,6 +136,24 @@ offset_right = 109.0
 offset_bottom = 56.0
 text = "0"
 
+[node name="CheatBox" type="VBoxContainer" parent="GameUI/UI"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 178.0
+offset_bottom = 104.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/UI/CheatBox"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="GameUI/UI/CheatBox/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("9_4c57u")
+
+[node name="Button" type="Button" parent="GameUI/UI/CheatBox/HBoxContainer"]
+layout_mode = 2
+text = "Warp LvL"
+
 [node name="Player" parent="." node_paths=PackedStringArray("camera", "player_heath_ui", "death_count_label") instance=ExtResource("1_0xm2m")]
 position = Vector2(32, 284)
 camera = NodePath("Camera2D")
@@ -154,3 +173,4 @@ editor_draw_limits = true
 [connection signal="pressed" from="GameUI/UI/PlayerDifficultyUI/HardMode" to="GameUI/UI/PlayerDifficultyUI" method="_on_hard_mode_pressed"]
 [connection signal="pressed" from="GameUI/UI/PlayerDifficultyUI/NormalMode" to="GameUI/UI/PlayerDifficultyUI" method="_on_normal_mode_pressed"]
 [connection signal="pressed" from="GameUI/UI/PlayerDifficultyUI/EasyMode" to="GameUI/UI/PlayerDifficultyUI" method="_on_easy_mode_pressed"]
+[connection signal="button_down" from="GameUI/UI/CheatBox/HBoxContainer/Button" to="GameUI/UI/CheatBox/HBoxContainer/LineEdit" method="_on_cheat_warp_button_down"]

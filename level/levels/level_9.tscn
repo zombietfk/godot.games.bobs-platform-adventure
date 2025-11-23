@@ -24,7 +24,7 @@ point_count = 2
 
 [node name="Level_9" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_3fquk")
-level_binding_box = Rect2(-64, 128, 1024, 960)
+level_binding_box = Rect2(-64, 128, 960, 896)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
@@ -50,7 +50,7 @@ to_level_path = "uid://d4hrqsj6q1pl6"
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_pukjq")]
 position = Vector2(-160, 256)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://ffgeasfgmm3m"
+to_level_path = "uid://6fyl1kvwta1a"
 to_spawn_location_with_index = 1
 
 [node name="Rabbit" parent="." instance=ExtResource("4_jk6bc")]

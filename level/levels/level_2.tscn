@@ -7,22 +7,22 @@
 
 [node name="Level_2" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_8ctxq")
-level_binding_box = Rect2(0, 0, 768, 448)
+level_binding_box = Rect2(0, 0, 704, 448)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(0, 352)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(768, 352)
+position = Vector2(704, 352)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAAAAAkAAgACAAEAAAABAAkAAgACAAEAAAACAAkAAgALAAMAAAAJAAkAAgACAAEAAAAKAAkAAgACAAEAAAALAAYAAgABAAMAAAALAAkAAgACAAEAAAAMAAkAAgACAAEAAAALAAMAAgALAAcAAAALAAQAAgABAAIAAAALAAUAAgABAAIAAAAMAAYAAgACAAMAAAAAAAMAAgAPAAcAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAMAAAD//wkAAgACAAEAAAD//wYAAgACAAMAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAADAAkAAgADAAIAAAADAAoAAgAPAAMAAAAIAAkAAgABAAEAAAAIAAoAAgALAAMAAAAEAAoAAgACAAEAAAAFAAoAAgACAAEAAAAGAAoAAgACAAEAAAAHAAoAAgACAAEAAAADAAgAAgADAAEAAAACAAgAAgABAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAkAAgACAAEAAAABAAkAAgACAAEAAAACAAkAAgALAAMAAAAAAAMAAgAPAAcAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAMAAAD//wkAAgACAAEAAAD//wYAAgACAAMAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAADAAkAAgADAAIAAAADAAgAAgADAAEAAAACAAgAAgABAAEAAAAIAAMAAgACAAMAAAAIAAkAAgACAAEAAAAJAAMAAgACAAMAAAAJAAkAAgACAAEAAAAKAAMAAgALAAcAAAAKAAkAAgACAAEAAAALAAYAAgACAAMAAAALAAkAAgACAAEAAAAHAAkAAgABAAEAAAAKAAQAAgABAAIAAAAKAAUAAgABAAIAAAAKAAYAAgABAAMAAAA=")
 tile_set = ExtResource("2_8ctxq")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_8ctxq")]
-position = Vector2(864, 320)
+position = Vector2(800, 320)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://c3ayputbimy2f"
 
@@ -51,11 +51,5 @@ position = Vector2(400, 428)
 
 [node name="Spike7" parent="SpikePit" instance=ExtResource("4_vuqo5")]
 position = Vector2(432, 428)
-
-[node name="Spike8" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(464, 428)
-
-[node name="Spike9" parent="SpikePit" instance=ExtResource("4_vuqo5")]
-position = Vector2(496, 428)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

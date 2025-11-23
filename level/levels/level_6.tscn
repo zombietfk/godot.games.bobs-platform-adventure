@@ -19,7 +19,7 @@ point_count = 2
 
 [node name="Level_6" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_nmqwb")
-level_binding_box = Rect2(-64, -128, 896, 448)
+level_binding_box = Rect2(-64, -128, 832, 320)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]

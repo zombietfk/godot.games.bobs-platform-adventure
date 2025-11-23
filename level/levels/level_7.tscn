@@ -7,11 +7,11 @@
 
 [node name="Level_7" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_mdked")
-level_binding_box = Rect2(-128, -128, 896, 960)
+level_binding_box = Rect2(-128, -128, 768, 832)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-160, 160)
+position = Vector2(-128, 160)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(768, 672)

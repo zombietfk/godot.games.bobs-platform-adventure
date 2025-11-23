@@ -13,7 +13,7 @@ var displace_position: Vector2 = Vector2.ZERO;
 
 # TIMERS
 @export var bounce_timer: float = 0.5;
-var c_bounce_timer: float = bounce_timer;
+@onready var c_bounce_timer: float = bounce_timer;
 var c_timer: float = 0;
 
 # FLAGS
@@ -27,6 +27,7 @@ signal player_exited();
 
 # LIFECYCLE
 func _ready() -> void:
+	print(c_bounce_timer)
 	anchor_position = position;
 	if randomize_inital_displacement:
 		c_timer = randf() * PI;
