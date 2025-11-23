@@ -1,0 +1,14 @@
+class_name MountedMachineGunBullet;
+extends Node2D;
+
+@export var movement_direction: Vector2 = Vector2.RIGHT;
+@export var movement_speed: float = 500.0;
+@onready var collision_raycast: RayCast2D = $RayCast2D;
+
+func _physics_process(delta: float) -> void:
+	position += movement_direction * movement_speed * delta;
+	if collision_raycast.is_colliding():
+		var collider: Node2D = $RayCast2D.get_collider();
+		if collider.has_method("gib_and_kill"):
+			collider.gib_and_kill();
+		queue_free();

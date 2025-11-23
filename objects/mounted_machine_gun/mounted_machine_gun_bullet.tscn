@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpkrox2k08ws7"]
+
+[ext_resource type="Script" uid="uid://pukr4krwnq0a" path="res://objects/mounted_machine_gun/mounted_machine_gun_bullet.gd" id="1_4mssq"]
+
+[sub_resource type="Curve" id="Curve_wg4fv"]
+_limits = [0.1, 0.2, 0.0, 1.0]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0, 0.2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_wg4fv"]
+offsets = PackedFloat32Array(0, 0.14973262, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[node name="MountedMachineGunBullet" type="Node2D"]
+script = ExtResource("1_4mssq")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 5, 0, 16, 0)
+width_curve = SubResource("Curve_wg4fv")
+gradient = SubResource("Gradient_wg4fv")
+joint_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 2
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(23, 0)

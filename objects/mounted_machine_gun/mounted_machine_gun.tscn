@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmh7affp16sse"]
+
+[ext_resource type="Script" uid="uid://c7uyn82fcy3bt" path="res://objects/mounted_machine_gun/mounted_machine_gun.gd" id="1_lyrq3"]
+[ext_resource type="Texture2D" uid="uid://dithyuifg5x1j" path="res://objects/mounted_machine_gun/mounted_machine_gun_spritesheet.png" id="1_oxvf8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hosfi"]
+atlas = ExtResource("1_oxvf8")
+region = Rect2(0, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq12i"]
+atlas = ExtResource("1_oxvf8")
+region = Rect2(128, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blww0"]
+atlas = ExtResource("1_oxvf8")
+region = Rect2(256, 0, 128, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lemno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hosfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq12i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blww0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="MountedMachineGun" type="Node2D"]
+script = ExtResource("1_lyrq3")
+machine_gun_bullet_collisison_mask = 454
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 9)
+sprite_frames = SubResource("SpriteFrames_lemno")
+autoplay = "default"

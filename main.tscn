@@ -66,7 +66,6 @@ ui_heart_container_scene = ExtResource("2_lquwl")
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerDifficultyUI" type="HBoxContainer" parent="GameUI/UI"]
-visible = false
 layout_direction = 2
 layout_mode = 1
 anchors_preset = -1
