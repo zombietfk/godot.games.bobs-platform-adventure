@@ -29,7 +29,7 @@ tile_map_data = PackedByteArray("AAD9/wMAAgADAAMAAAD9/wYAAgADAAEAAAAJAAMAAgABAAM
 tile_set = ExtResource("2_5wg1i")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
-tile_map_data = PackedByteArray("AAAPAA8AAAAfAA8AAAASAA8AAAAWAA8AAAA=")
+tile_map_data = PackedByteArray("AAAPAA8AAAAfAA8AAAASAA8AAAAWAA8AAAANAAwAAAAfAAYAAAAOAA0AAAAWAA8AAAASAAMAAAAWAA8AAAAQAAEAAAAWAA8AAAAGAAEAAAAWAA8AAAAAAAEAAAAWAA8AAAAJAAEAAAAfAA8AAAABAAEAAAAfAA8AAAD9/wEAAAAfAA8AAAD7/wMAAAAfAA8AAAA=")
 tile_set = ExtResource("3_ttw2y")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_i8q35")]

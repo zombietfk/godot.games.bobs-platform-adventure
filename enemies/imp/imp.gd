@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(movement_speed, velocity.y);
-	velocity += get_gravity() * delta;
+	velocity += get_gravity();
 	move_and_slide();
 	if !$FloorCheckRayCast2D.is_colliding():
 		turn_around();

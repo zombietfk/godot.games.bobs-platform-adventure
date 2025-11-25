@@ -102,6 +102,20 @@ script = ExtResource("11_rk8f7")
 movement_path = NodePath("..")
 movement_speed = 300.0
 
+[node name="DoorPath3" type="Path2D" parent="."]
+position = Vector2(928, 256)
+curve = SubResource("Curve2D_2q5k3")
+
+[node name="DoorPathFollow" type="PathFollow2D" parent="DoorPath3"]
+rotates = false
+loop = false
+
+[node name="Door" parent="DoorPath3/DoorPathFollow" node_paths=PackedStringArray("movement_path") instance=ExtResource("10_mpjew")]
+position = Vector2(32, 0)
+script = ExtResource("11_rk8f7")
+movement_path = NodePath("..")
+movement_speed = 100.0
+
 [node name="Imp2" parent="." instance=ExtResource("9_2q5k3")]
 position = Vector2(1336, 296)
 rotation = -3.1415927
@@ -303,3 +317,4 @@ position = Vector2(1448, 296)
 [connection signal="switch_flipped_on" from="Switch" to="RaiseGunPath" method="_on_switch_flipped_on"]
 [connection signal="switch_flipped_on" from="Switch" to="DoorPath/DoorPathFollow/Door" method="_on_switch_flipped_on"]
 [connection signal="switch_flipped_on" from="Switch" to="DoorPath2/DoorPathFollow/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch" to="DoorPath3/DoorPathFollow/Door" method="_on_switch_flipped_on"]

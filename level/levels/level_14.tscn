@@ -1,0 +1,739 @@
+[gd_scene load_steps=12 format=4 uid="uid://gdxiknjx40q"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_3yqpf"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_3h50m"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_7plge"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="4_3gurg"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_m84tp"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_j77jb"]
+[ext_resource type="PackedScene" uid="uid://ctaeyscddayym" path="res://objects/traps/sawblade/sawblade.tscn" id="7_7plge"]
+[ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="7_j77jb"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="7_rebbx"]
+[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="8_367d0"]
+
+[sub_resource type="Curve2D" id="Curve2D_3yqpf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -0.00012207031, 64, 0, 0, 0, 0, 0.00024414063, -64)
+}
+point_count = 2
+
+[node name="Level_14" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_3yqpf")
+level_binding_box = Rect2(-192, 64, 3392, 4160)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-192, 352)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(3392, 3040)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(192, 0)
+tile_map_data = PackedByteArray("AAD7/wYAAgACAAEAAAD8/wYAAgACAAEAAAD9/wYAAgACAAEAAAD7/wMAAgACAAMAAAD8/wMAAgACAAMAAAD+/wIAAgAEAAoAAAD9/wMAAgAEAAoAAAD//wEAAgACAAMAAAAAAAEAAgACAAMAAAABAAIAAgACAAkAAAACAAMAAgACAAkAAAADAAMAAgACAAMAAAAEAAMAAgAEAAoAAAAFAAMAAgADAAoAAAAGAAQAAgACAAkAAAAHAAUAAgACAAkAAAAIAAYAAgACAAkAAAAIAAcAAgADAAcAAAAIAAgAAgABAAIAAAAHAAkAAgABAAEAAAAGAAoAAgACAAgAAAAGAAsAAgACAAkAAAAHAAwAAgACAAkAAAAIAA0AAgABAAIAAAAHAA4AAgACAAgAAAAGAA8AAgACAAgAAAAFABAAAgACAAgAAAAEABEAAgACAAgAAAADABIAAgACAAgAAAACABMAAgACAAgAAAABABQAAgACAAgAAAABABUAAgABAAIAAAD+/xUAAgAFAAMAAAD9/xYAAgACAAgAAAD8/xcAAgACAAgAAAD8/xgAAgACAAkAAAD8/xwAAgAEAAcAAAD9/x4AAgACAAIAAAD9/x0AAgAEAAcAAAD+/x4AAgAEAAcAAAABACEAAgAEAAcAAAACACIAAgAEAAcAAAAFACUAAgAEAAcAAAAGACYAAgAEAAcAAAAHACcAAgACAAEAAAAIACcAAgACAAEAAAAJACcAAgACAAEAAAAKACYAAgACAAgAAAAMACUAAgACAAEAAAALACUAAgACAAgAAAANACUAAgACAAEAAAAOACQAAgACAAgAAAAPACMAAgACAAgAAAAQACMAAgAEAAcAAAARACQAAgAEAAcAAAASACYAAgACAAIAAAASACUAAgAEAAcAAAATACYAAgAEAAcAAAAUACcAAgAEAAcAAAAVACgAAgAEAAcAAAAZACkAAgABAAIAAAAZACgAAgABAAIAAAAZACcAAgABAAIAAAAZACYAAgABAAIAAAAZACUAAgABAAIAAAAZACQAAgABAAIAAAAZACMAAgABAAIAAAAZACIAAgABAAIAAAAZACoAAgACAAkAAAAaACsAAgACAAkAAAAbACwAAgACAAkAAAAVACoAAgACAAIAAAAUACsAAgACAAIAAAATACwAAgACAAMAAAAWACkAAgAEAAcAAAAWACoAAgAEAAoAAAAVACsAAgAEAAoAAAAUACwAAgAEAAoAAAANADAAAgADAAIAAAANAC8AAgACAAIAAAANADEAAgADAAIAAAANADIAAgADAAIAAAANADMAAgADAAIAAAANADQAAgADAAIAAAANADUAAgADAAIAAAANADYAAgADAAIAAAANADcAAgADAAIAAAANADgAAgADAAIAAAAQADMAAgABAAIAAAAQADQAAgABAAIAAAAQADUAAgABAAIAAAAQADYAAgABAAIAAAAQADcAAgABAAIAAAAQADgAAgABAAIAAAAQADwAAgABAAIAAAAQADsAAgABAAIAAAAQADoAAgABAAIAAAAQADkAAgABAAIAAAANADkAAgADAAIAAAANADoAAgADAAIAAAANADwAAgADAAIAAAANADsAAgADAAIAAAANAD0AAgADAAIAAAANAD4AAgADAAIAAAANAD8AAgADAAIAAAAQAD0AAgACAAkAAAAOAEAAAgACAAEAAAAPAEAAAgACAAEAAAAQAEAAAgACAAEAAAARAEAAAgACAAEAAAASAEAAAgACAAEAAAATAEAAAgACAAEAAAAUAEAAAgACAAEAAAAVAEAAAgACAAEAAAAWAEAAAgACAAEAAAAXAEAAAgACAAEAAAAYAEAAAgACAAEAAAAZAEAAAgACAAEAAAAaAEAAAgACAAEAAAAbAEAAAgACAAEAAAAcAEAAAgACAAEAAAAdAEAAAgACAAEAAAAeAEAAAgACAAEAAAAfAEAAAgACAAEAAAAgAEAAAgACAAEAAAAhAEAAAgACAAEAAAAiAEAAAgACAAEAAAAjAEAAAgACAAEAAAAkAEAAAgACAAEAAAAlAEAAAgACAAEAAAAmAEAAAgACAAEAAAAnAEAAAgACAAEAAAARAD0AAgACAAMAAAASAD0AAgACAAMAAAATAD0AAgACAAMAAAAUAD0AAgACAAMAAAAVAD0AAgACAAMAAAAWAD0AAgACAAMAAAAXAD0AAgACAAMAAAAYAD0AAgACAAMAAAAZAD0AAgACAAMAAAAaAD0AAgACAAMAAAAbAD0AAgACAAMAAAAcAD0AAgACAAMAAAAdAD0AAgACAAMAAAAeAD0AAgACAAMAAAAfAD0AAgACAAMAAAAgAD0AAgACAAMAAAAhAD0AAgACAAMAAAAiAD0AAgACAAMAAAAjAD0AAgACAAMAAAAkAD0AAgACAAMAAAAlAD0AAgACAAMAAAAmAD0AAgACAAMAAAAnAD0AAgACAAMAAAAoAD0AAgACAAMAAAApAD0AAgACAAMAAAAqAD0AAgACAAMAAAAoAEAAAgACAAEAAAApAEAAAgACAAEAAAAqAEAAAgACAAEAAAArAEAAAgACAAEAAAAsAEAAAgACAAEAAAAtAEAAAgACAAEAAAAuAEAAAgACAAIAAAArAD0AAgAEAAoAAAAvAD8AAgACAAIAAAAvAD4AAgABAAIAAAAvAD0AAgABAAIAAAAvADwAAgABAAIAAAAvADsAAgABAAIAAAAvADoAAgABAAIAAAAvADkAAgABAAIAAAAvADgAAgAMAAUAAAAvADcAAgABAAIAAAAvADYAAgAMAAUAAAAvADUAAgABAAIAAAAvADQAAgAMAAUAAAAvADMAAgABAAIAAAAvADIAAgAMAAUAAAAvADEAAgABAAEAAAArADwAAgADAAIAAAArADsAAgAFAAQAAAArADoAAgANAAUAAAArADkAAgAFAAQAAAArADgAAgAFAAQAAAArADcAAgABAAIAAAAsADYAAgADAAIAAAAsADUAAgAFAAQAAAAsADQAAgADAAIAAAAsADMAAgADAAIAAAAsADIAAgAFAAQAAAAsADEAAgAFAAMAAAAsADoAAgAJAAEAAAAuADQAAgAHAAEAAAAOAC8AAgAEAAoAAAAPAC4AAgAEAAoAAAAQAC0AAgAEAAoAAAARACwAAgACAAMAAAASACwAAgACAAMAAAAcACwAAgACAAMAAAAdACwAAgACAAMAAAAeACwAAgACAAMAAAAfACwAAgACAAMAAAAgACwAAgAEAAoAAAAhACwAAgADAAoAAAApACwAAgADAAoAAAAoACwAAgAEAAoAAAAiACwAAgACAAMAAAAjACwAAgACAAMAAAAkACwAAgACAAMAAAAlACwAAgACAAMAAAAmACwAAgACAAMAAAAnACwAAgACAAMAAAAqACwAAgACAAMAAAArAC0AAgADAAoAAAArADYAAgACAAgAAAAsADcAAgAEAAoAAAAqADwAAgACAAEAAAApADwAAgACAAEAAAAoADwAAgACAAEAAAAnADwAAgACAAEAAAAmADwAAgACAAEAAAAlADwAAgACAAEAAAAkADwAAgACAAEAAAAjADwAAgACAAEAAAAiADwAAgACAAEAAAAhADwAAgACAAEAAAAgADwAAgACAAEAAAAfADwAAgACAAEAAAAeADwAAgACAAEAAAAdADwAAgACAAEAAAAcADwAAgACAAEAAAAbADwAAgACAAEAAAAaADwAAgACAAEAAAAZADwAAgACAAEAAAAYADwAAgACAAEAAAAXADwAAgACAAEAAAAWADwAAgACAAEAAAAVADwAAgACAAEAAAAUADwAAgACAAEAAAATADwAAgACAAEAAAASADwAAgACAAEAAAARADwAAgAPAAMAAAARADsAAgADAAIAAAARADoAAgADAAIAAAARADkAAgADAAIAAAARADgAAgADAAIAAAARADcAAgADAAIAAAARADYAAgADAAIAAAARADUAAgADAAIAAAARADQAAgADAAIAAAARADMAAgADAAIAAAAQADIAAgADAAcAAAARADIAAgAEAAcAAAAqADoAAgAHAAEAAAAYACEAAgACAAkAAAAXACAAAgACAAMAAAAWACAAAgACAAMAAAAVACAAAgACAAMAAAAUACAAAgACAAMAAAATACAAAgACAAMAAAASACAAAgACAAMAAAAQACAAAgACAAMAAAARACAAAgACAAMAAAAPACAAAgACAAMAAAAOACAAAgACAAMAAAANACAAAgACAAMAAAAMACAAAgACAAMAAAALACEAAgAEAAoAAAAKACIAAgAEAAoAAAAJACIAAgACAAMAAAAIACIAAgACAAMAAAAHACIAAgADAAoAAAAGACEAAgADAAoAAAAFACAAAgADAAoAAAD//xsAAgADAAoAAAACAB0AAgADAAoAAAADAB4AAgADAAoAAAAEAB8AAgADAAoAAAABABwAAgADAAoAAAAAABsAAgACAAMAAAD//xoAAgABAAIAAAD+/xkAAgADAAoAAAD9/xgAAgACAAMAAAD9/xcAAgACAAIAAAD7/xsAAgADAAIAAAD7/xoAAgADAAEAAAD7/xUAAgADAAMAAAD8/xQAAgAEAAoAAAD9/xEAAgAEAAoAAAD+/xAAAgAEAAoAAAD//w8AAgAEAAoAAAAAAA4AAgAEAAoAAAABAA0AAgAEAAoAAAACAAwAAgAEAAoAAAD+/wYAAgACAAEAAAD//wgAAgACAAIAAAD//wcAAgACAAIAAAD+/wcAAgACAAIAAAD+/wgAAgACAAIAAAAAAAkAAgACAAIAAAAAAAoAAgACAAIAAAABAAoAAgACAAIAAAACAAoAAgACAAIAAAACAAsAAgACAAIAAAAAAAgAAgACAAIAAAABAAkAAgACAAIAAAADAAsAAgAFAAkAAAD//wYAAgAFAAgAAAAAAAcAAgAFAAgAAAABAAgAAgAFAAgAAAACAAkAAgAFAAgAAAADAAoAAgAFAAgAAAD8/wcAAgACAAIAAAD8/wgAAgACAAIAAAD8/wkAAgACAAIAAAD8/woAAgACAAIAAAD8/wsAAgACAAIAAAD8/wwAAgACAAIAAAD8/w0AAgACAAIAAAD8/w4AAgACAAIAAAD8/w8AAgACAAIAAAD8/xAAAgACAAIAAAD8/xEAAgACAAIAAAD8/xIAAgACAAIAAAD8/xMAAgACAAIAAAD7/wcAAgACAAIAAAD7/wgAAgACAAIAAAD7/wkAAgACAAIAAAD7/woAAgACAAIAAAD7/wsAAgACAAIAAAD7/wwAAgACAAIAAAD7/w0AAgACAAIAAAD7/w4AAgACAAIAAAD7/w8AAgACAAIAAAD7/xAAAgACAAIAAAD7/xEAAgACAAIAAAD7/xIAAgACAAIAAAD7/xMAAgACAAIAAAD7/xQAAgACAAIAAAD9/wsAAgACAAIAAAD9/woAAgACAAIAAAD9/wkAAgACAAIAAAD9/wgAAgACAAIAAAD9/wcAAgACAAIAAAD+/wkAAgACAAIAAAD+/woAAgACAAIAAAD+/wsAAgACAAIAAAD+/wwAAgACAAIAAAD9/wwAAgACAAIAAAD9/w0AAgACAAIAAAD9/w4AAgACAAIAAAD9/w8AAgACAAIAAAD9/xAAAgACAAIAAAD+/w8AAgACAAIAAAD+/w4AAgACAAIAAAD+/w0AAgACAAIAAAD//w0AAgACAAIAAAD//wwAAgACAAIAAAD//wsAAgACAAIAAAD//woAAgACAAIAAAD//wkAAgACAAIAAAAAAAsAAgACAAIAAAAAAAwAAgACAAIAAAAAAA0AAgACAAIAAAABAAwAAgACAAIAAAABAAsAAgACAAIAAAD//w4AAgACAAIAAAD7/wIAAgACAAIAAAD8/wIAAgACAAIAAAD9/wIAAgACAAIAAAD+/wEAAgACAAIAAAABAAEAAgACAAIAAAACAAIAAgACAAIAAAADAAIAAgACAAIAAAAEAAIAAgACAAIAAAAFAAIAAgACAAIAAAAGAAMAAgACAAIAAAAHAAQAAgACAAIAAAAIAAUAAgACAAIAAAAJAAYAAgACAAIAAAAJAAcAAgACAAIAAAAIAAkAAgACAAIAAAAHAAoAAgACAAIAAAAHAAsAAgACAAIAAAAIAAwAAgACAAIAAAACABQAAgACAAIAAAADABMAAgACAAIAAAAEABIAAgACAAIAAAAFABEAAgACAAIAAAAGABAAAgACAAIAAAAHAA8AAgACAAIAAAAIAA4AAgACAAIAAAD//xYAAgACAAEAAAAAABYAAgACAAEAAAD+/xYAAgACAAIAAAD7/xwAAgACAAIAAAD8/x0AAgACAAIAAAABACIAAgACAAIAAAD//yEAAgACAAIAAAAAACEAAgACAAEAAAD+/x8AAgADAAIAAAD//yAAAgAFAAgAAAADACQAAgAFAAgAAAACACMAAgADAAIAAAAEACUAAgACAAEAAAD+/yAAAgACAAIAAAACACQAAgACAAIAAAADACUAAgACAAIAAAAFACYAAgACAAIAAAAGACcAAgACAAIAAAAKACcAAgACAAIAAAALACYAAgACAAIAAAAOACUAAgACAAIAAAAPACQAAgACAAIAAAAQACQAAgACAAIAAAAKACEAAgACAAIAAAAHACEAAgACAAIAAAAGACAAAgACAAIAAAAFAB8AAgACAAIAAAAEAB4AAgACAAIAAAADAB0AAgACAAIAAAACABwAAgACAAIAAAABABsAAgACAAIAAAAAABoAAgACAAIAAAD//xkAAgACAAIAAAD+/xgAAgACAAIAAAD6/xkAAgADAAIAAAD6/xgAAgADAAIAAAD6/xcAAgADAAIAAAD6/xYAAgADAAIAAAALACAAAgACAAIAAAAYACAAAgACAAIAAAAZACEAAgACAAIAAAD6/xoAAgACAAIAAAD6/xUAAgACAAIAAAABABYAAgACAAIAAAARACUAAgACAAIAAAATACcAAgACAAIAAAAUACgAAgACAAIAAAAVACkAAgACAAIAAAAQACwAAgACAAIAAAAPAC0AAgACAAIAAAAOAC4AAgACAAIAAAAuAD8AAgACAAgAAAAuADgAAgAHAAEAAAAuADIAAgAHAAEAAAAuADYAAgAHAAEAAAAsAC0AAgACAAMAAAAtAC0AAgACAAMAAAAuAC0AAgACAAMAAAAvAC0AAgACAAMAAAAwAC0AAgACAAMAAAAxAC0AAgACAAMAAAAyAC0AAgACAAMAAAAwADAAAgABAAEAAAAyADAAAgACAAEAAAAxADAAAgACAAEAAAAUADIAAgADAAcAAAAUADgAAgADAAcAAAAVADIAAgAEAAcAAAAVADgAAgAEAAcAAAAXAC8AAgADAAcAAAAXADUAAgADAAcAAAAYAC8AAgAEAAcAAAAYADUAAgAEAAcAAAAaADIAAgADAAcAAAAbADIAAgAEAAcAAAAdADUAAgADAAgAAAAeADUAAgAEAAgAAAAgADIAAgADAAcAAAAgADgAAgADAAcAAAAhADIAAgAEAAcAAAAhADgAAgAEAAcAAAAjAC8AAgADAAcAAAAjADUAAgADAAcAAAAkAC8AAgAEAAcAAAAkADUAAgAEAAcAAAAmADIAAgADAAcAAAAmADgAAgADAAcAAAAnADIAAgAEAAcAAAAnADgAAgAEAAcAAAAUADMAAgADAAoAAAAUADkAAgADAAoAAAAVADMAAgAEAAoAAAAVADkAAgAEAAoAAAAXADAAAgADAAoAAAAXADYAAgADAAoAAAAYADAAAgAEAAoAAAAYADYAAgAEAAoAAAAaADMAAgADAAoAAAAbADMAAgAEAAoAAAAdADYAAgADAAkAAAAeADYAAgAEAAkAAAAgADMAAgADAAoAAAAgADkAAgADAAoAAAAhADMAAgAEAAoAAAAhADkAAgAEAAoAAAAjADAAAgADAAoAAAAjADYAAgADAAoAAAAkADAAAgAEAAoAAAAkADYAAgAEAAoAAAAmADMAAgADAAoAAAAmADkAAgADAAoAAAAnADMAAgAEAAoAAAAnADkAAgAEAAoAAAArADMAAgACAAgAAAArADQAAgACAAkAAAAqADMAAgABAAgAAAAqADQAAgABAAkAAAAiAC8AAgABAAgAAAAiADAAAgABAAkAAAAfADIAAgABAAgAAAAfADMAAgABAAkAAAAZADIAAgABAAgAAAAZADMAAgABAAkAAAAWAC8AAgABAAgAAAAWADAAAgABAAkAAAATADIAAgABAAgAAAATADMAAgABAAkAAAAWADUAAgABAAgAAAAWADYAAgABAAkAAAATADgAAgABAAgAAAATADkAAgABAAkAAAAfADgAAgABAAgAAAAfADkAAgABAAkAAAAiADUAAgABAAgAAAAiADYAAgABAAkAAAAlADgAAgABAAgAAAAlADkAAgABAAkAAAAlADIAAgABAAgAAAAlADMAAgABAAkAAAAcADUAAgACAAgAAAAcADYAAgACAAkAAAAbADUAAgABAAgAAAAbADYAAgABAAkAAAAcADQAAgACAAcAAAAdADMAAgADAAYAAAAdADQAAgADAAcAAAAdADcAAgADAAoAAAAdADgAAgADAAsAAAAeADMAAgAEAAYAAAAeADQAAgAEAAcAAAAeADcAAgAEAAoAAAAeADgAAgAEAAsAAAAfADQAAgAFAAcAAAAfADUAAgAFAAgAAAAfADYAAgAFAAkAAAAfADcAAgAFAAoAAAAgADUAAgAGAAgAAAAgADYAAgAGAAkAAAAZADgAAgABAAgAAAAZADkAAgABAAkAAAAaADcAAgADAAYAAAAaADgAAgADAAcAAAAaADkAAgADAAoAAAAaADoAAgADAAsAAAAbADcAAgAEAAYAAAAbADgAAgAEAAcAAAAbADkAAgAEAAoAAAAbADoAAgAEAAsAAAAcADcAAgACAAoAAAAcADgAAgAGAAgAAAAcADkAAgAGAAkAAAAXAC4AAgADAAYAAAAYAC4AAgAEAAYAAAAZAC8AAgAGAAgAAAAZADAAAgAGAAkAAAAXADEAAgADAAsAAAAYADEAAgAEAAsAAAAUADEAAgADAAYAAAAUADQAAgADAAsAAAAVADEAAgAEAAYAAAAVADQAAgAEAAsAAAAWADIAAgAGAAgAAAAWADMAAgAGAAkAAAAaADEAAgADAAYAAAAaADQAAgADAAsAAAAbADEAAgAEAAYAAAAbADQAAgAEAAsAAAAcADIAAgAGAAgAAAAcADMAAgAGAAkAAAAgADEAAgADAAYAAAAgADQAAgADAAsAAAAhADEAAgAEAAYAAAAhADQAAgAEAAsAAAAiADIAAgAGAAgAAAAiADMAAgAGAAkAAAAjAC4AAgADAAYAAAAjADEAAgADAAsAAAAkAC4AAgAEAAYAAAAkADEAAgAEAAsAAAAlAC8AAgAGAAgAAAAlADAAAgAGAAkAAAAUADcAAgADAAYAAAAUADoAAgADAAsAAAAVADcAAgAEAAYAAAAVADoAAgAEAAsAAAAWADgAAgAGAAgAAAAWADkAAgAGAAkAAAAXADQAAgADAAYAAAAXADcAAgADAAsAAAAYADQAAgAEAAYAAAAYADcAAgAEAAsAAAAZADUAAgAGAAgAAAAZADYAAgAGAAkAAAAgADcAAgADAAYAAAAgADoAAgADAAsAAAAhADcAAgAEAAYAAAAhADoAAgAEAAsAAAAiADgAAgAGAAgAAAAiADkAAgAGAAkAAAAmADcAAgADAAYAAAAmADoAAgADAAsAAAAnADcAAgAEAAYAAAAnADoAAgAEAAsAAAAoADgAAgAGAAgAAAAoADkAAgAGAAkAAAAjADQAAgADAAYAAAAjADcAAgADAAsAAAAkADQAAgAEAAYAAAAkADcAAgAEAAsAAAAlADUAAgAGAAgAAAAlADYAAgAGAAkAAAAmADEAAgADAAYAAAAmADQAAgADAAsAAAAnADEAAgAEAAYAAAAnADQAAgAEAAsAAAAoADIAAgAGAAgAAAAoADMAAgAGAAkAAAAQADEAAgADAAYAAAARADEAAgAEAAYAAAAPACIAAgADAAYAAAAQACIAAgAEAAYAAAAEAAoAAgAGAAgAAAAEAAsAAgAGAAkAAAAXACkAAgAGAAgAAAAXACoAAgAGAAkAAAAFAAoAAgABAAgAAAAFAAsAAgABAAkAAAD7/x0AAgACAAIAAAD7/x4AAgACAAIAAAD7/x8AAgACAAIAAAD7/yAAAgACAAIAAAD7/yEAAgACAAIAAAD7/yIAAgACAAIAAAD7/yMAAgACAAIAAAD7/yQAAgACAAIAAAD7/yUAAgACAAIAAAD7/yYAAgACAAIAAAD7/ycAAgACAAIAAAD7/ygAAgACAAIAAAD7/ykAAgACAAIAAAD8/yYAAgACAAIAAAD8/ycAAgACAAIAAAD8/ygAAgACAAIAAAD8/ykAAgACAAIAAAD9/ygAAgACAAIAAAD9/ykAAgACAAIAAAD+/ygAAgACAAIAAAD+/ykAAgACAAIAAAD//ygAAgACAAIAAAD//ykAAgACAAIAAAAAACgAAgACAAIAAAAAACkAAgACAAIAAAABACgAAgACAAIAAAABACkAAgACAAIAAAACACgAAgACAAIAAAACACkAAgACAAIAAAADACgAAgACAAIAAAADACkAAgACAAIAAAAEACgAAgACAAIAAAAEACkAAgACAAIAAAAFACgAAgACAAIAAAAFACkAAgACAAIAAAAGACgAAgACAAIAAAAGACkAAgACAAIAAAAHACgAAgACAAIAAAAHACkAAgACAAIAAAAIACgAAgACAAIAAAAIACkAAgACAAIAAAAJACgAAgACAAIAAAAJACkAAgACAAIAAAAKACgAAgACAAIAAAAKACkAAgACAAIAAAALACgAAgACAAIAAAALACkAAgACAAIAAAAMACgAAgACAAIAAAAMACkAAgACAAIAAAANACgAAgACAAIAAAANACkAAgACAAIAAAAOACgAAgACAAIAAAAOACkAAgACAAIAAAAPACgAAgACAAIAAAAPACkAAgACAAIAAAAQACgAAgACAAIAAAAQACkAAgACAAIAAAARACgAAgACAAIAAAARACkAAgACAAIAAAASACgAAgACAAIAAAASACkAAgACAAIAAAATACgAAgACAAIAAAATACkAAgACAAIAAAAMACYAAgACAAIAAAAMACcAAgACAAIAAAANACYAAgACAAIAAAANACcAAgACAAIAAAAOACYAAgACAAIAAAAOACcAAgACAAIAAAAPACYAAgACAAIAAAAPACcAAgACAAIAAAAQACYAAgACAAIAAAAQACcAAgACAAIAAAARACYAAgACAAIAAAARACcAAgACAAIAAAALACcAAgACAAIAAAASACcAAgACAAIAAAAPACUAAgACAAIAAAAQACUAAgACAAIAAAD9/yUAAgACAAIAAAD9/yYAAgACAAIAAAD9/ycAAgACAAIAAAD+/yUAAgACAAIAAAD+/yYAAgACAAIAAAD+/ycAAgACAAIAAAD//yUAAgACAAIAAAD//yYAAgACAAIAAAD//ycAAgACAAIAAAAAACUAAgACAAIAAAAAACYAAgACAAIAAAAAACcAAgACAAIAAAABACUAAgACAAIAAAABACYAAgACAAIAAAABACcAAgACAAIAAAACACUAAgACAAIAAAACACYAAgACAAIAAAACACcAAgACAAIAAAD8/yEAAgACAAIAAAD8/yIAAgACAAIAAAD8/yMAAgACAAIAAAD8/yQAAgACAAIAAAD8/yUAAgACAAIAAAD9/yEAAgACAAIAAAD9/yIAAgACAAIAAAD9/yMAAgACAAIAAAD9/yQAAgACAAIAAAD+/yEAAgACAAIAAAD+/yIAAgACAAIAAAD+/yMAAgACAAIAAAD+/yQAAgACAAIAAAD//yIAAgACAAIAAAD//yMAAgACAAIAAAD//yQAAgACAAIAAAAAACIAAgACAAIAAAAAACMAAgACAAIAAAAAACQAAgACAAIAAAABACMAAgACAAIAAAABACQAAgACAAIAAAADACYAAgACAAIAAAADACcAAgACAAIAAAAEACYAAgACAAIAAAAEACcAAgACAAIAAAAFACcAAgACAAIAAAD8/x4AAgACAAIAAAD8/x8AAgACAAIAAAD8/yAAAgACAAIAAAD9/x8AAgACAAIAAAD9/yAAAgACAAIAAAAUACkAAgACAAIAAAAUACoAAgACAAIAAAAFACoAAgACAAIAAAAFACsAAgACAAIAAAAGACoAAgACAAIAAAAGACsAAgACAAIAAAAHACoAAgACAAIAAAAHACsAAgACAAIAAAAIACoAAgACAAIAAAAIACsAAgACAAIAAAAJACoAAgACAAIAAAAJACsAAgACAAIAAAAKACoAAgACAAIAAAAKACsAAgACAAIAAAALACoAAgACAAIAAAALACsAAgACAAIAAAAMACoAAgACAAIAAAAMACsAAgACAAIAAAANACoAAgACAAIAAAANACsAAgACAAIAAAAOACoAAgACAAIAAAAOACsAAgACAAIAAAAPACoAAgACAAIAAAAPACsAAgACAAIAAAAQACoAAgACAAIAAAAQACsAAgACAAIAAAARACoAAgACAAIAAAARACsAAgACAAIAAAASACoAAgACAAIAAAASACsAAgACAAIAAAATACoAAgACAAIAAAATACsAAgACAAIAAAD7/xcAAgABAAgAAAD7/xgAAgABAAkAAAAwADEAAgALAAMAAAD6/wYAAgACAAEAAAD5/wYAAgACAAEAAAD6/wMAAgACAAMAAAD5/wMAAgACAAMAAAD//xgAAgACAAIAAAD+/xcAAgACAAIAAAD//xcAAgACAAIAAAAAABcAAgACAAIAAAABABcAAgACAAIAAAACABcAAgACAAIAAAAAABkAAgACAAIAAAAAABgAAgACAAIAAAABABgAAgACAAIAAAACABgAAgACAAIAAAACABkAAgACAAIAAAABABkAAgACAAIAAAABABoAAgACAAIAAAAIAA8AAgACAAIAAAAIAAsAAgACAAIAAAA=")
+tile_set = ExtResource("2_3h50m")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("3_7plge")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_m84tp")]
+position = Vector2(3488, 3008)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_15.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_m84tp")]
+position = Vector2(-288, 320)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://6rbfed1cvfg4"
+to_spawn_location_with_index = 1
+
+[node name="CloudPlatform" parent="." instance=ExtResource("7_rebbx")]
+position = Vector2(3168, 3968)
+scale = Vector2(0.5, 0.5)
+
+[node name="CloudPlatform2" parent="." instance=ExtResource("7_rebbx")]
+position = Vector2(3040, 3840)
+scale = Vector2(0.5, 0.5)
+
+[node name="CloudPlatform3" parent="." instance=ExtResource("7_rebbx")]
+position = Vector2(3104, 3200)
+scale = Vector2(0.5, 0.5)
+
+[node name="HealthHeartIcon" type="Sprite2D" parent="."]
+position = Vector2(2112, 4032)
+texture = ExtResource("8_367d0")
+
+[node name="SawsCollection" type="Node" parent="."]
+
+[node name="Sawblade" parent="SawsCollection" instance=ExtResource("7_7plge")]
+z_index = -1
+position = Vector2(672, 864)
+scale = Vector2(3, 3)
+
+[node name="Sawblade2" parent="SawsCollection" instance=ExtResource("7_7plge")]
+z_index = -1
+position = Vector2(192, 1376)
+scale = Vector2(3, 3)
+
+[node name="Sawblade3" parent="SawsCollection" instance=ExtResource("7_7plge")]
+z_index = -1
+position = Vector2(96, 1632)
+scale = Vector2(3, 3)
+
+[node name="Sawblade4" parent="SawsCollection" instance=ExtResource("7_7plge")]
+z_index = -1
+position = Vector2(160, 2080)
+scale = Vector2(3, 3)
+
+[node name="Sawblade5" parent="SawsCollection" instance=ExtResource("7_7plge")]
+z_index = -1
+position = Vector2(416, 2336)
+scale = Vector2(3, 3)
+
+[node name="Sawblade7" parent="SawsCollection" instance=ExtResource("7_7plge")]
+z_index = -1
+position = Vector2(1024, 2400)
+scale = Vector2(3, 3)
+
+[node name="Sawblade6" parent="SawsCollection" instance=ExtResource("7_7plge")]
+z_index = -1
+position = Vector2(736.00006, 2496.0002)
+scale = Vector2(3.5, 3.5)
+
+[node name="SpikesCollection" type="Node" parent="."]
+
+[node name="MovingSpike" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1376, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike2" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1408, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.2
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike2"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike2/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike3" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1440, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.4
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike3"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike3/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike4" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1472, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.6
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike4"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike4/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike5" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1504, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.8
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike5"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike5/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike6" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1696.0004, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike6"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike6/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike7" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1728.0004, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.2
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike7"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike7/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike8" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1760.0004, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.4
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike8"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike8/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike9" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1792.0004, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.6
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike9"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike9/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike10" type="Path2D" parent="SpikesCollection"]
+position = Vector2(1824.0004, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.8
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike10"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike10/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="FallingSpike" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(1536, 4000)
+fall_after = 1.0
+
+[node name="FallingSpike2" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(1568, 4000)
+fall_after = 1.0
+
+[node name="FallingSpike3" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(1600, 4000)
+fall_after = 1.0
+
+[node name="FallingSpike11" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(119, 155)
+speed = 400.0
+fall_after = 0.1
+
+[node name="FallingSpike12" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(288, 896)
+scale = Vector2(2, 2)
+speed = 400.0
+fall_after = 0.1
+
+[node name="FallingSpike4" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(1632, 4000)
+fall_after = 1.0
+
+[node name="FallingSpike5" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(1664, 4000)
+fall_after = 1.0
+
+[node name="MovingSpike11" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2400.0005, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike11"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike11/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike12" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2432.0005, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.2
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike12"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike12/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike13" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2464.0005, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.4
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike13"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike13/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike14" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2496.0005, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.6
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike14"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike14/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike15" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2528.0005, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.8
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike15"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike15/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike16" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2720.0007, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike16"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike16/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike17" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2752.0007, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.2
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike17"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike17/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike18" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2784.0007, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.4
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike18"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike18/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike19" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2816.0007, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.6
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike19"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike19/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="MovingSpike20" type="Path2D" parent="SpikesCollection"]
+position = Vector2(2848.0007, 3968)
+rotation = 3.14159
+curve = SubResource("Curve2D_3yqpf")
+script = ExtResource("4_3gurg")
+speed = 25.0
+start_distance_ratio = 0.8
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpikesCollection/MovingSpike20"]
+position = Vector2(-0.00012207031, 64)
+rotates = false
+
+[node name="Spike" parent="SpikesCollection/MovingSpike20/PathFollow2D" instance=ExtResource("5_j77jb")]
+scale = Vector2(1.5, 2)
+
+[node name="FallingSpike6" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(2560.0005, 4000)
+fall_after = 1.0
+
+[node name="FallingSpike7" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(2592.0005, 4000)
+fall_after = 1.0
+
+[node name="FallingSpike8" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(2624.0005, 4000)
+fall_after = 1.0
+
+[node name="FallingSpike9" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(2656.0005, 4000)
+fall_after = 1.0
+
+[node name="FallingSpike10" parent="SpikesCollection" instance=ExtResource("7_j77jb")]
+position = Vector2(2688.0005, 4000)
+fall_after = 1.0
+
+[node name="Spike" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1920, 4096)
+
+[node name="Spike2" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2048, 4096)
+
+[node name="Spike3" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2176, 4096)
+
+[node name="Spike4" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2304, 4096)
+
+[node name="Spike5" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(3104, 4064)
+scale = Vector2(2, 2)
+
+[node name="Spike6" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(576.00006, 640.00006)
+rotation = -0.7853982
+scale = Vector2(2, 2)
+
+[node name="Spike7" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(544, 288)
+rotation = -2.3561945
+scale = Vector2(2, 2)
+
+[node name="Spike8" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(672, 416)
+rotation = -2.3561945
+scale = Vector2(2, 2)
+
+[node name="Spike9" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(672, 576)
+scale = Vector2(2, 2)
+
+[node name="Spike11" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1696, 2144)
+rotation = 3.1415927
+scale = Vector2(2, 2)
+
+[node name="Spike17" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(224, 1792)
+rotation = 3.1415927
+scale = Vector2(2, 2)
+
+[node name="Spike19" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(416, 768)
+rotation = 3.1415927
+scale = Vector2(2, 2)
+
+[node name="Spike10" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1568, 2144)
+rotation = -3.1415925
+scale = Vector2(2, 2)
+
+[node name="Spike12" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1504, 2112)
+rotation = 3.1415927
+scale = Vector2(2, 2)
+
+[node name="Spike13" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1568, 2144)
+rotation = -3.1415925
+scale = Vector2(2, 2)
+
+[node name="Spike14" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1504, 2112)
+rotation = 3.1415927
+scale = Vector2(2, 2)
+
+[node name="Spike15" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2144, 2912)
+rotation = -3.1415925
+scale = Vector2(2, 2)
+
+[node name="Spike16" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2080, 2880)
+rotation = 3.1415927
+scale = Vector2(2, 2)
+
+[node name="Spike18" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1504, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike20" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1472, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike21" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1440, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike22" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1408, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike23" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1376, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike69" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1344, 3840)
+rotation = -5.930629
+scale = Vector2(2, 2)
+
+[node name="Spike24" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1664, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike25" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1632, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike26" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1600, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike27" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1568, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike28" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1536, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike29" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1824, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike30" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1792, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike31" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1760, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike32" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1728, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike33" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1696, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike34" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1984, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike35" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1952, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike36" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1920, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike37" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1888, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike38" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(1856, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike39" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2144, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike40" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2112, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike41" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2080, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike42" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2048, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike43" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2016, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike44" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2304, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike45" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2272, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike46" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2240, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike47" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2208, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike48" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2176, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike49" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2464, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike50" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2432, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike51" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2400, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike52" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2368, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike53" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2336, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike54" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2624, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike55" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2592, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike56" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2560, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike57" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2528, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike58" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2496, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike59" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2784, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike60" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2752, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike61" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2720, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike62" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2688, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike63" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2656, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike64" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2944, 3840)
+rotation = -0.33161256
+scale = Vector2(2, 2)
+
+[node name="Spike65" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2912, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike66" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2880, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike67" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2848, 3840)
+scale = Vector2(2, 2)
+
+[node name="Spike68" parent="SpikesCollection" instance=ExtResource("5_j77jb")]
+position = Vector2(2816, 3840)
+scale = Vector2(2, 2)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
