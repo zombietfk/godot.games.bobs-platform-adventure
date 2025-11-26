@@ -42,37 +42,30 @@ to_spawn_location_with_index = 1
 [node name="SawsCollection" type="Node" parent="."]
 
 [node name="Sawblade" parent="SawsCollection" instance=ExtResource("7_7plge")]
-z_index = -1
 position = Vector2(672, 864)
 scale = Vector2(3, 3)
 
 [node name="Sawblade2" parent="SawsCollection" instance=ExtResource("7_7plge")]
-z_index = -1
 position = Vector2(192, 1376)
 scale = Vector2(3, 3)
 
 [node name="Sawblade3" parent="SawsCollection" instance=ExtResource("7_7plge")]
-z_index = -1
 position = Vector2(96, 1632)
 scale = Vector2(3, 3)
 
 [node name="Sawblade4" parent="SawsCollection" instance=ExtResource("7_7plge")]
-z_index = -1
 position = Vector2(160, 2080)
 scale = Vector2(3, 3)
 
 [node name="Sawblade5" parent="SawsCollection" instance=ExtResource("7_7plge")]
-z_index = -1
 position = Vector2(416, 2336)
 scale = Vector2(3, 3)
 
 [node name="Sawblade7" parent="SawsCollection" instance=ExtResource("7_7plge")]
-z_index = -1
 position = Vector2(1024, 2400)
 scale = Vector2(3, 3)
 
 [node name="Sawblade6" parent="SawsCollection" instance=ExtResource("7_7plge")]
-z_index = -1
 position = Vector2(736.00006, 2496.0002)
 scale = Vector2(3.5, 3.5)
 

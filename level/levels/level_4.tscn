@@ -124,7 +124,7 @@ position = Vector2(512, 184)
 rotation = 3.1415927
 
 [node name="Spike12" parent="." instance=ExtResource("7_skuwe")]
-position = Vector2(480, 216)
+position = Vector2(552, 216)
 rotation = 3.1415927
 
 [node name="Spike13" parent="." instance=ExtResource("7_skuwe")]

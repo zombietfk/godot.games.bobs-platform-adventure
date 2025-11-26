@@ -102,11 +102,6 @@ position = Vector2(500, 544)
 rotation = -1.5707964
 scale = Vector2(2, 2)
 
-[node name="Spike4" parent="Spikes" instance=ExtResource("5_se3ff")]
-position = Vector2(372, 1056)
-rotation = 1.5707964
-scale = Vector2(2, 2)
-
 [node name="ExtraHeart" type="Sprite2D" parent="."]
 position = Vector2(864, 928)
 scale = Vector2(1.5, 1.5)
