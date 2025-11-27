@@ -1,4 +1,4 @@
-class_name SawbladeShooter;
+class_name SawbladeTimedShooter;
 extends Node2D;
 
 @export var sawblade_scene: PackedScene;

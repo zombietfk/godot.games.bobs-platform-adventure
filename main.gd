@@ -17,7 +17,7 @@ static var level_instance: Level;
 static var current_level_path: String;
 static var current_spawn_level: String;
 static var current_spawn_index = 0;
-static var difficulty = DIFFICULTY.NORMAL;
+static var difficulty = DIFFICULTY.EASY;
 static var persistant_trigger_labels: Array[String] = [];
 
 # TRIGGERS

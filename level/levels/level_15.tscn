@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_w7lgd"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_ncsay"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_3wbv4"]
-[ext_resource type="PackedScene" uid="uid://bwm72kx7ki3v6" path="res://objects/traps/sawblade/shooter/sawblade_shooter.tscn" id="5_0m4jv"]
+[ext_resource type="PackedScene" uid="uid://bwm72kx7ki3v6" path="res://objects/traps/sawblade/shooter/sawblade_timed_shooter.tscn" id="5_0m4jv"]
 [ext_resource type="PackedScene" uid="uid://ctaeyscddayym" path="res://objects/traps/sawblade/sawblade.tscn" id="5_gw8o7"]
 [ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="6_psqo7"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="7_gko51"]

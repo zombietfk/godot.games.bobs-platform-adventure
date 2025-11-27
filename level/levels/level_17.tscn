@@ -1,0 +1,347 @@
+[gd_scene load_steps=15 format=4 uid="uid://b2kkf8nll4p73"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_gcmu8"]
+[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="2_ymljr"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="3_mob2k"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="4_qmsa2"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="5_qdija"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="6_eatdd"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="7_t44sk"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="8_t3kpl"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="9_gcmu8"]
+[ext_resource type="Script" uid="uid://bwuy62otllgkb" path="res://utils/connect_group_signals_on_spawn.gd" id="10_mob2k"]
+[ext_resource type="PackedScene" uid="uid://b8mbn7xxabui" path="res://objects/traps/sawblade/shooter/sawblade_shooter_on_switch.tscn" id="10_ymljr"]
+[ext_resource type="PackedScene" uid="uid://bwm72kx7ki3v6" path="res://objects/traps/sawblade/shooter/sawblade_timed_shooter.tscn" id="12_qmsa2"]
+
+[sub_resource type="Curve2D" id="Curve2D_t44sk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 448, 0, 0, 0, 0, 288, 320)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_t3kpl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128)
+}
+point_count = 2
+
+[node name="Level_17" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_gcmu8")
+level_binding_box = Rect2(0, 192, 1152, 1280)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1152, 1184)
+
+[node name="HealthHeartIcon" type="Sprite2D" parent="."]
+position = Vector2(96, -384)
+texture = ExtResource("2_ymljr")
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD//wsAAgACAAEAAAAAAAsAAgACAAEAAAAHAAsAAgAIAAEAAAADAAsAAgAIAAEAAAAEAAsAAgACAAEAAAAJAAsAAgAIAAEAAAAKAAsAAgAIAAEAAAALAAsAAgAIAAEAAAAMAAsAAgACAAEAAAAJAAYAAgACAAMAAAAKAAYAAgACAAMAAAAMAAgAAgABAAMAAAAPAAgAAgACAAMAAAAQAAgAAgACAAMAAAANAAsAAgACAAEAAAAOAAsAAgAJAAMAAAAFAA4AAgAIAAEAAAABAA4AAgAIAAEAAAACAA4AAgAIAAEAAAAHAA4AAgAIAAEAAAAIAA4AAgACAAMAAAAJAA4AAgAIAAEAAAAKAA4AAgAIAAEAAAAMAA4AAgACAAMAAAANAA4AAgACAAMAAAAOAA4AAgAJAAUAAAAOAA0AAgADAAIAAAAOAAwAAgADAAIAAAARAAkAAgABAAIAAAARAAoAAgABAAIAAAARAAsAAgABAAIAAAARAAwAAgABAAIAAAARAA0AAgABAAIAAAARAA4AAgABAAIAAAARAA8AAgABAAIAAAARABAAAgABAAIAAAAPABEAAgACAAEAAAAQABEAAgACAAEAAAANABMAAgACAAMAAAAOABMAAgACAAMAAAAMABEAAgACAAEAAAAJABMAAgACAAMAAAAKABMAAgACAAMAAAABAAsAAgAIAAEAAAACAAsAAgAIAAEAAAAFAAsAAgAIAAEAAAAGAAsAAgAIAAEAAAADAA4AAgAIAAEAAAAEAA4AAgACAAMAAAAAAAwAAgADAAIAAAAAAA0AAgADAAIAAAAIAAgAAgAFAAUAAAAFAAYAAgACAAMAAAAGAAYAAgACAAMAAAAEAAgAAgAFAAUAAAABAAYAAgACAAMAAAACAAYAAgACAAMAAAD//wgAAgACAAMAAAAAAAgAAgADAAMAAAAIABEAAgACAAEAAAAFABMAAgACAAMAAAAGABMAAgACAAMAAAAEABEAAgABAAEAAAAAAA8AAgADAAIAAAAAABAAAgADAAIAAAAAABEAAgADAAIAAAAAABIAAgADAAIAAAAAABMAAgADAAIAAAAAABQAAgADAAIAAAAAABUAAgADAAIAAAABABYAAgACAAEAAAACABYAAgACAAEAAAADABYAAgACAAEAAAAEABYAAgACAAEAAAAFABYAAgACAAEAAAAGABYAAgACAAEAAAAHABYAAgACAAEAAAAIABYAAgACAAEAAAAJABYAAgACAAEAAAAKABYAAgACAAEAAAALABYAAgACAAEAAAAMABYAAgACAAEAAAANABYAAgACAAEAAAAOABYAAgACAAEAAAAPABYAAgACAAEAAAAQABYAAgACAAEAAAARABYAAgACAAEAAAAPABMAAgACAAMAAAAQABMAAgACAAMAAAARABMAAgACAAMAAAASABMAAgACAAMAAAASABYAAgACAAEAAAAEABIAAgABAAIAAAAIABIAAgACAAIAAAAMABIAAgACAAIAAAAPABIAAgACAAIAAAAQABIAAgACAAIAAAAEAAcAAgAFAAQAAAAIAAcAAgAFAAQAAAAAAAcAAgADAAIAAAAAAAYAAgAPAAcAAAAEAAYAAgANAAYAAAAIAAYAAgAPAAcAAAAEABMAAgABAAMAAAAIABMAAgACAAMAAAAHABMAAgACAAMAAAAMABMAAgACAAMAAAALABMAAgACAAMAAAADAAYAAgACAAMAAAAHAAYAAgACAAMAAAALAAYAAgACAAMAAAARAAgAAgALAAcAAAARABEAAgALAAMAAAAAAA4AAgAOAAUAAAAAABYAAgAPAAMAAAAEAAwAAgAFAAQAAAAEAA0AAgAFAAQAAAAMAAwAAgABAAIAAAAMAA0AAgABAAIAAAAIAA0AAgAFAAQAAAALAA4AAgAIAAEAAAANAAwAAgACAAIAAAANAA0AAgACAAIAAAANAAgAAgACAAMAAAAOAAgAAgACAAMAAAAMAAcAAgABAAIAAAAMAAYAAgALAAcAAAAIAAwAAgAFAAQAAAAIAAsAAgACAAEAAAAGAA4AAgAIAAEAAAAOABEAAgACAAEAAAANABEAAgACAAEAAAALABEAAgACAAEAAAAKABEAAgACAAEAAAAJABEAAgACAAEAAAAHABEAAgACAAEAAAAGABEAAgACAAEAAAAFABEAAgACAAEAAAALABIAAgACAAIAAAAFABIAAgACAAIAAAAGABIAAgACAAIAAAAHABIAAgACAAIAAAAJABIAAgACAAIAAAAKABIAAgACAAIAAAANABIAAgACAAIAAAAOABIAAgACAAIAAAA=")
+tile_set = ExtResource("3_mob2k")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAABABcAAAAfAA8AAAAeACYAAAAWAAYAAAAZACYAAAAfAAYAAAAJACYAAAAfAAYAAAAYABwAAAAWAAYAAAAYABcAAAAWAA8AAAARABcAAAAfAA8AAAARABwAAAAfAAYAAAAQABwAAAAWAAYAAAAQABcAAAAWAA8AAAAJABcAAAAfAA8AAAAJABwAAAAfAAYAAAAIABcAAAAWAA8AAAAIABwAAAAWAAYAAAAQACYAAAAWAAYAAAARACYAAAAfAAYAAAAYACYAAAAWAAYAAAA=")
+tile_set = ExtResource("4_qmsa2")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("5_qdija")]
+position = Vector2(1248, 1152)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_18.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("5_qdija")]
+position = Vector2(-96, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bj5kneik5d58m"
+to_spawn_location_with_index = 1
+
+[node name="Rabbit" parent="." instance=ExtResource("6_eatdd")]
+position = Vector2(80, 688)
+jump_movement = Vector2(150, -300)
+jump_timer = 0.55
+
+[node name="Rabbit2" parent="." instance=ExtResource("6_eatdd")]
+position = Vector2(480, 688)
+jump_movement = Vector2(150, -300)
+jump_timer = 0.6
+
+[node name="Rabbit3" parent="." instance=ExtResource("6_eatdd")]
+position = Vector2(672, 688)
+jump_movement = Vector2(150, -300)
+jump_timer = 0.65
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_t44sk")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(288, 448)
+rotates = false
+loop = false
+
+[node name="Door6" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_t44sk")]
+script = ExtResource("8_t3kpl")
+movement_path = NodePath("..")
+movement_speed = 250.0
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(256, 0)
+curve = SubResource("Curve2D_t44sk")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(288, 448)
+rotates = false
+loop = false
+
+[node name="Door2" parent="Path2D2/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_t44sk")]
+script = ExtResource("8_t3kpl")
+movement_path = NodePath("..")
+movement_speed = 250.0
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(512, 0)
+curve = SubResource("Curve2D_t44sk")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+position = Vector2(288, 448)
+rotates = false
+loop = false
+
+[node name="Door3" parent="Path2D3/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_t44sk")]
+script = ExtResource("8_t3kpl")
+movement_path = NodePath("..")
+movement_speed = 250.0
+
+[node name="Path2D4" type="Path2D" parent="."]
+position = Vector2(287, 832)
+curve = SubResource("Curve2D_t3kpl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+rotates = false
+loop = false
+
+[node name="Door4" parent="Path2D4/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_t44sk")]
+position = Vector2(1, 0)
+script = ExtResource("8_t3kpl")
+movement_path = NodePath("..")
+movement_speed = 250.0
+
+[node name="Path2D5" type="Path2D" parent="."]
+position = Vector2(544, 832)
+curve = SubResource("Curve2D_t3kpl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D5/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_t44sk")]
+script = ExtResource("8_t3kpl")
+movement_path = NodePath("..")
+movement_speed = 250.0
+
+[node name="Path2D6" type="Path2D" parent="."]
+position = Vector2(800, 832)
+curve = SubResource("Curve2D_t3kpl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D6"]
+rotates = false
+loop = false
+
+[node name="Door5" parent="Path2D6/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_t44sk")]
+script = ExtResource("8_t3kpl")
+movement_path = NodePath("..")
+movement_speed = 250.0
+
+[node name="Switch" parent="." instance=ExtResource("9_gcmu8")]
+position = Vector2(256, 656)
+rotation = 1.5707964
+has_timer = true
+switch_duration = 1.0
+
+[node name="Switch2" parent="." instance=ExtResource("9_gcmu8")]
+position = Vector2(512, 656)
+rotation = 1.5707964
+has_timer = true
+switch_duration = 1.0
+
+[node name="Switch3" parent="." instance=ExtResource("9_gcmu8")]
+position = Vector2(768, 656)
+rotation = 1.5707964
+has_timer = true
+switch_duration = 1.0
+
+[node name="Switch1_sawblade_shooters" type="Node" parent="." node_paths=PackedStringArray("connects_to")]
+script = ExtResource("10_mob2k")
+connects_to = NodePath("../Switch")
+signal_names = Array[String](["switch_flipped_on"])
+callback_names = Array[String](["_fire_sawblade_on_swtich_press"])
+
+[node name="Sawblade_Shooter_On_Switch" parent="Switch1_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(96, 544)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, -1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch3" parent="Switch1_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(352, 544)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, -1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch5" parent="Switch1_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(608, 544)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, -1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch4" parent="Switch1_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(352, 736)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, 1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch6" parent="Switch1_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(608, 736)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, 1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch2" parent="Switch1_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(96, 736)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, 1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Switch2_sawblade_shooters" type="Node" parent="." node_paths=PackedStringArray("connects_to")]
+script = ExtResource("10_mob2k")
+connects_to = NodePath("../Switch2")
+signal_names = Array[String](["switch_flipped_on"])
+callback_names = Array[String](["_fire_sawblade_on_swtich_press"])
+
+[node name="Sawblade_Shooter_On_Switch" parent="Switch2_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(160, 544)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, -1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch3" parent="Switch2_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(416, 544)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, -1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch5" parent="Switch2_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(672, 544)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, -1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch4" parent="Switch2_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(416, 736)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, 1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch6" parent="Switch2_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(672, 736)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, 1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch2" parent="Switch2_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(160, 736)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, 1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Switch3_sawblade_shooters" type="Node" parent="." node_paths=PackedStringArray("connects_to")]
+script = ExtResource("10_mob2k")
+connects_to = NodePath("../Switch3")
+signal_names = Array[String](["switch_flipped_on"])
+callback_names = Array[String](["_fire_sawblade_on_swtich_press"])
+
+[node name="Sawblade_Shooter_On_Switch" parent="Switch3_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(224, 544)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, -1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch3" parent="Switch3_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(480, 544)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, -1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch5" parent="Switch3_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(736, 544)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, -1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch4" parent="Switch3_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(480, 736)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, 1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch6" parent="Switch3_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(736, 736)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, 1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Switch2" parent="Switch3_sawblade_shooters" instance=ExtResource("10_ymljr")]
+position = Vector2(224, 736)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(0, 1)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 1
+
+[node name="Sawblade_Shooter_On_Timeout" parent="." instance=ExtResource("12_qmsa2")]
+position = Vector2(1120, 864)
+sawblade_travel_speed = 200
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 3
+is_enabled = true
+
+[node name="Sawblade_Shooter_On_Timeout2" parent="." instance=ExtResource("12_qmsa2")]
+position = Vector2(1120, 480)
+sawblade_travel_speed = 300
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 6
+is_enabled = true
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_off" from="Switch" to="Path2D/PathFollow2D/Door6" method="_on_switch_flipped_off"]
+[connection signal="switch_flipped_off" from="Switch" to="Path2D4/PathFollow2D/Door4" method="_on_switch_flipped_off"]
+[connection signal="switch_flipped_on" from="Switch" to="Path2D/PathFollow2D/Door6" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch" to="Path2D4/PathFollow2D/Door4" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_off" from="Switch2" to="Path2D2/PathFollow2D/Door2" method="_on_switch_flipped_off"]
+[connection signal="switch_flipped_off" from="Switch2" to="Path2D5/PathFollow2D/Door" method="_on_switch_flipped_off"]
+[connection signal="switch_flipped_on" from="Switch2" to="Path2D2/PathFollow2D/Door2" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch2" to="Path2D5/PathFollow2D/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_off" from="Switch3" to="Path2D3/PathFollow2D/Door3" method="_on_switch_flipped_off"]
+[connection signal="switch_flipped_off" from="Switch3" to="Path2D6/PathFollow2D/Door5" method="_on_switch_flipped_off"]
+[connection signal="switch_flipped_on" from="Switch3" to="Path2D3/PathFollow2D/Door3" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch3" to="Path2D6/PathFollow2D/Door5" method="_on_switch_flipped_on"]

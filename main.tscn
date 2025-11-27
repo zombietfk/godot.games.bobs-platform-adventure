@@ -1,15 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://c63fm78u50tjr"]
+[gd_scene load_steps=19 format=3 uid="uid://c63fm78u50tjr"]
 
 [ext_resource type="PackedScene" uid="uid://dd4hda4w5qubs" path="res://player/player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dvork0tghl73f" path="res://ui/player_health_ui.gd" id="1_7mycd"]
 [ext_resource type="Script" uid="uid://ds76dsnvp602l" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bt74wnjkyby2u" path="res://ui/ui_heart_container.tscn" id="2_lquwl"]
+[ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="4_dg77c"]
+[ext_resource type="FontFile" uid="uid://cl83hp2mdm2xw" path="res://ui/HomeVideoBold-R90Dv.ttf" id="4_efxa6"]
 [ext_resource type="Script" uid="uid://ctgkcqkl80emy" path="res://ui/ui_difficulty_selector.gd" id="4_kek77"]
 [ext_resource type="Texture2D" uid="uid://mkniumx4artt" path="res://ui/face_sad.png" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b3pm6md6jdgyc" path="res://ui/face_neutral.png" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://dh2t3yqy7jnph" path="res://ui/face_smile.png" id="6_272bh"]
 [ext_resource type="Texture2D" uid="uid://csbgstbk3iit4" path="res://ui/circular_circle.png" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://dhwpen6bnogod" path="res://ui/cheats_ui_warp_level.gd" id="9_4c57u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ycdy4"]
+font = ExtResource("4_dg77c")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_dg77c"]
+font = ExtResource("4_efxa6")
+font_size = 18
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
 atlas = ExtResource("7_5vw27")
@@ -42,7 +52,7 @@ animations = [{
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lquwl")
-inital_level_path = "uid://llqv2al5xrch"
+inital_level_path = "uid://lkyue67li2aq"
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
@@ -65,46 +75,6 @@ size_flags_vertical = 6
 script = ExtResource("1_7mycd")
 ui_heart_container_scene = ExtResource("2_lquwl")
 metadata/_edit_use_anchors_ = true
-
-[node name="PlayerDifficultyUI" type="HBoxContainer" parent="GameUI/UI"]
-layout_direction = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.16666667
-anchor_right = 0.16666667
-offset_left = 320.0
-offset_right = 960.0
-offset_bottom = 64.0
-scale = Vector2(0.5, 0.5)
-size_flags_horizontal = 0
-size_flags_vertical = 6
-alignment = 2
-script = ExtResource("4_kek77")
-metadata/_edit_use_anchors_ = true
-
-[node name="HardMode" type="TextureButton" parent="GameUI/UI/PlayerDifficultyUI"]
-layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("4_lquwl")
-
-[node name="Selector" type="Control" parent="GameUI/UI/PlayerDifficultyUI"]
-layout_mode = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameUI/UI/PlayerDifficultyUI/Selector"]
-position = Vector2(35, 35)
-sprite_frames = SubResource("SpriteFrames_dg77c")
-autoplay = "default"
-frame_progress = 0.26171932
-
-[node name="NormalMode" type="TextureButton" parent="GameUI/UI/PlayerDifficultyUI"]
-layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("5_7mycd")
-
-[node name="EasyMode" type="TextureButton" parent="GameUI/UI/PlayerDifficultyUI"]
-layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("6_272bh")
 
 [node name="LoadingPanel" type="PanelContainer" parent="GameUI/UI"]
 visible = false
@@ -135,6 +105,7 @@ offset_top = 33.0
 offset_right = 109.0
 offset_bottom = 56.0
 text = "0"
+label_settings = SubResource("LabelSettings_ycdy4")
 
 [node name="CheatBox" type="VBoxContainer" parent="GameUI/UI"]
 layout_mode = 0
@@ -142,6 +113,12 @@ offset_left = 8.0
 offset_top = 64.0
 offset_right = 178.0
 offset_bottom = 104.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="GameUI/UI/CheatBox"]
+layout_mode = 2
+text = "CHEATS!"
+label_settings = SubResource("LabelSettings_dg77c")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameUI/UI/CheatBox"]
 layout_mode = 2
@@ -152,7 +129,46 @@ script = ExtResource("9_4c57u")
 
 [node name="Button" type="Button" parent="GameUI/UI/CheatBox/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_efxa6")
 text = "Warp LvL"
+
+[node name="Label2" type="Label" parent="GameUI/UI/CheatBox"]
+layout_mode = 2
+text = "DIFFICULTY CHANGE"
+label_settings = SubResource("LabelSettings_dg77c")
+
+[node name="PlayerDifficultyUI" type="HBoxContainer" parent="GameUI/UI/CheatBox"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+alignment = 2
+script = ExtResource("4_kek77")
+metadata/_edit_use_anchors_ = true
+
+[node name="Selector" type="Control" parent="GameUI/UI/CheatBox/PlayerDifficultyUI"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameUI/UI/CheatBox/PlayerDifficultyUI/Selector"]
+position = Vector2(35, 35)
+sprite_frames = SubResource("SpriteFrames_dg77c")
+autoplay = "default"
+frame_progress = 0.26171932
+
+[node name="EasyMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("6_272bh")
+
+[node name="NormalMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("5_7mycd")
+
+[node name="HardMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("4_lquwl")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera", "player_heath_ui", "death_count_label") instance=ExtResource("1_0xm2m")]
 position = Vector2(32, 284)
@@ -170,7 +186,7 @@ limit_smoothed = true
 position_smoothing_speed = 10.0
 editor_draw_limits = true
 
-[connection signal="pressed" from="GameUI/UI/PlayerDifficultyUI/HardMode" to="GameUI/UI/PlayerDifficultyUI" method="_on_hard_mode_pressed"]
-[connection signal="pressed" from="GameUI/UI/PlayerDifficultyUI/NormalMode" to="GameUI/UI/PlayerDifficultyUI" method="_on_normal_mode_pressed"]
-[connection signal="pressed" from="GameUI/UI/PlayerDifficultyUI/EasyMode" to="GameUI/UI/PlayerDifficultyUI" method="_on_easy_mode_pressed"]
 [connection signal="button_down" from="GameUI/UI/CheatBox/HBoxContainer/Button" to="GameUI/UI/CheatBox/HBoxContainer/LineEdit" method="_on_cheat_warp_button_down"]
+[connection signal="pressed" from="GameUI/UI/CheatBox/PlayerDifficultyUI/EasyMode" to="GameUI/UI/CheatBox/PlayerDifficultyUI" method="_on_easy_mode_pressed"]
+[connection signal="pressed" from="GameUI/UI/CheatBox/PlayerDifficultyUI/NormalMode" to="GameUI/UI/CheatBox/PlayerDifficultyUI" method="_on_normal_mode_pressed"]
+[connection signal="pressed" from="GameUI/UI/CheatBox/PlayerDifficultyUI/HardMode" to="GameUI/UI/CheatBox/PlayerDifficultyUI" method="_on_hard_mode_pressed"]
