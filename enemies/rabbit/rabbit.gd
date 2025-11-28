@@ -5,6 +5,7 @@ extends CharacterBody2D;
 @export var jump_movement: Vector2 = Vector2(150, -200);
 @export var turnaround_on_platform_edge = false;
 @export var jump_variance: Vector2 = Vector2.ZERO;
+@export var jump_inital_delay = 0;
 @export var randomize_starting_direction = false;
 
 # TIMERS
@@ -14,7 +15,7 @@ var c_jump_timer = 0.0;
 
 # LIFECYCLE
 func _ready() -> void:
-	c_jump_timer = randf_range(-jump_timer_variance, jump_timer_variance);
+	c_jump_timer = randf_range(-jump_timer_variance, jump_timer_variance) - jump_inital_delay;
 	if randomize_starting_direction:
 		if randf() >= 0.5:
 			turn_around();

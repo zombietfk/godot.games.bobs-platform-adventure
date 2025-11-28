@@ -109,11 +109,13 @@ func _process_update_movement_direction(delta) -> void:
 	if is_on_slope():
 		apply_slope_slide();
 	apply_friction();
-	velocity.x = clamp(
-		velocity.x,
-		-max_movement_speed,
-		max_movement_speed
-	);
+	if knockback_duration_timer <= 0:
+		print(knockback_duration_timer);
+		velocity.x = clamp(
+			velocity.x,
+			-max_movement_speed,
+			max_movement_speed
+		);
 	velocity += get_gravity() + movement_impetus;
 	
 # METHODS

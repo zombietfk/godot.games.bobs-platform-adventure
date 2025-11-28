@@ -175,7 +175,8 @@ autoplay = "default"
 frame_progress = 0.288067
 
 [node name="Confetti" type="Node2D" parent="."]
-position = Vector2(-1, -80)
+z_index = 2
+position = Vector2(1, -78)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Confetti"]
 material = SubResource("CanvasItemMaterial_kaw7s")
@@ -188,7 +189,7 @@ explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_kaw7s")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Confetti/GPUParticles2D"]
-position = Vector2(0, 112)
+position = Vector2(-1, 104)
 occluder = SubResource("OccluderPolygon2D_pk8b5")
 
 [node name="Area2D" type="Area2D" parent="."]

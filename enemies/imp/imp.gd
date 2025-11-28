@@ -9,7 +9,7 @@ extends CharacterBody2D;
 func _ready() -> void:
 	velocity = Vector2(movement_speed, 0);
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = Vector2(movement_speed, velocity.y);
 	velocity += get_gravity();
 	move_and_slide();
