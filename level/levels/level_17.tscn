@@ -52,12 +52,12 @@ tile_set = ExtResource("4_qmsa2")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("5_qdija")]
 position = Vector2(1248, 1152)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/level_18.tscn"
+to_level_path = "uid://cuycqdwnf4y3h"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("5_qdija")]
 position = Vector2(-96, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://bj5kneik5d58m"
+to_level_path = "uid://bp18vkl3xpcg7"
 to_spawn_location_with_index = 1
 
 [node name="Rabbit" parent="." instance=ExtResource("6_eatdd")]

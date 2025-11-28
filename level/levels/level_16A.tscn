@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=4 uid="uid://bp18vkl3xpcg7"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_6noox"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="3_kyqqm"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="4_1jdej"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="5_k11p0"]
+[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/checkpoint_flagpole.tscn" id="8_2nphl"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="9_6noox"]
+
+[node name="Level_16A" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_6noox")
+level_binding_box = Rect2(0, 192, 896, 1216)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), NodePath("CheckpointPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, 480)
+
+[node name="CheckpointPoint" type="Marker2D" parent="."]
+position = Vector2(468, 488)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(896, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAACAAsAAgACAAEAAAAGAAsAAgACAAEAAAAHAAsAAgACAAEAAAAIAAsAAgACAAEAAAACAAgAAgADAAMAAAD//wgAAgACAAMAAAAAAAgAAgACAAMAAAABAAgAAgACAAMAAAD//wsAAgACAAEAAAAAAAsAAgACAAEAAAABAAsAAgACAAEAAAAMAAsAAgACAAEAAAANAAsAAgACAAEAAAAOAAsAAgACAAEAAAANAAgAAgABAAMAAAAOAAgAAgACAAMAAAADAAsAAgACAAEAAAAEAAsAAgACAAEAAAAFAAsAAgACAAEAAAAJAAsAAgACAAEAAAAKAAsAAgACAAEAAAALAAsAAgACAAEAAAACAAcAAgADAAIAAAANAAcAAgABAAIAAAADAAYAAgACAAMAAAAEAAYAAgACAAMAAAAFAAYAAgACAAMAAAAGAAYAAgACAAMAAAAHAAYAAgACAAMAAAAIAAYAAgACAAMAAAAJAAYAAgACAAMAAAAKAAYAAgACAAMAAAALAAYAAgACAAMAAAAMAAYAAgACAAMAAAAJAAcAAgAFAAUAAAAFAAcAAgAFAAQAAAAFAAgAAgAFAAUAAAA=")
+tile_set = ExtResource("3_kyqqm")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAARAA4AAAACAAcAAAAUAA4AAAAHAAcAAAASAA4AAAAWAA8AAAARAA0AAAAWAA8AAAAKAA0AAAAEAAQAAAALAA0AAAAfAA8AAAATAA4AAAAfAA8AAAAUAA0AAAAfAA8AAAATAA0AAAAFAAUAAAASAA0AAAAFAAUAAAAFAA0AAAAfAA8AAAAaAA0AAAAWAA8AAAAJAA4AAAAKAAsAAAAKAA4AAAAWAA8AAAAJAA0AAAAWAA8AAAA=")
+tile_set = ExtResource("4_1jdej")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("5_k11p0")]
+position = Vector2(992, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b2kkf8nll4p73"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("5_k11p0")]
+position = Vector2(-96, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bj5kneik5d58m"
+to_spawn_location_with_index = 1
+
+[node name="Spike" parent="." instance=ExtResource("9_6noox")]
+position = Vector2(224, 288)
+rotation = 3.1415927
+
+[node name="Spike2" parent="." instance=ExtResource("9_6noox")]
+position = Vector2(256, 288)
+rotation = 3.1415927
+
+[node name="Spike3" parent="." instance=ExtResource("9_6noox")]
+position = Vector2(608, 352)
+rotation = 3.1415927
+
+[node name="Spike4" parent="." instance=ExtResource("9_6noox")]
+position = Vector2(788, 288)
+rotation = 3.1415927
+
+[node name="Spike5" parent="." instance=ExtResource("9_6noox")]
+position = Vector2(752, 288)
+rotation = 3.1415927
+
+[node name="Spike6" parent="." instance=ExtResource("9_6noox")]
+position = Vector2(716, 288)
+rotation = 3.1415927
+
+[node name="CheckpointFlagpole" parent="." instance=ExtResource("8_2nphl")]
+position = Vector2(468, 488)
+level_path = "uid://bp18vkl3xpcg7"
+spawn_index = 2
+
+[connection signal="ready" from="." to="." method="_on_ready"]

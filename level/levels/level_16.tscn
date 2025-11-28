@@ -12,7 +12,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_r5ys4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 288, 512, 0, 0, 0, 0, 288, 1152)
+"points": PackedVector2Array(0, 0, 0, 0, 288, 512, 0, 0, 0, 0, 288, 1216)
 }
 point_count = 2
 
@@ -43,7 +43,7 @@ tile_set = ExtResource("4_wmv0x")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("5_luskp")]
 position = Vector2(992, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/level_17.tscn"
+to_level_path = "uid://bp18vkl3xpcg7"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("5_luskp")]
 position = Vector2(-96, 448)
@@ -66,22 +66,21 @@ rotates = false
 position = Vector2(384, 0)
 curve = SubResource("Curve2D_r5ys4")
 script = ExtResource("8_3kv07")
-speed = 100.0
-start_distance_ratio = 1.0
+speed = 300.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(288, 1152)
+position = Vector2(288, 1151.8499)
 progress = 640.0
 rotates = false
 
 [node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("6_v0vnm")]
 
 [node name="Sawblade" parent="." instance=ExtResource("7_ruqyq")]
-position = Vector2(480, 1120)
+position = Vector2(480, 1128)
 scale = Vector2(3, 3)
 
 [node name="Sawblade2" parent="." instance=ExtResource("7_ruqyq")]
-position = Vector2(480, 800.00006)
+position = Vector2(480, 792.00006)
 scale = Vector2(3, 3)
 
 [node name="FallingSpike" parent="." instance=ExtResource("9_3m5o3")]

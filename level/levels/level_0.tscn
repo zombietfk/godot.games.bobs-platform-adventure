@@ -132,13 +132,18 @@ anchors_preset = -1
 anchor_left = 0.16666667
 anchor_right = 0.16666667
 offset_left = 129.0
-offset_top = 194.0
-offset_right = 666.0
-offset_bottom = 258.0
+offset_top = 196.0
+offset_right = 696.0
+offset_bottom = 260.0
 size_flags_horizontal = 0
-size_flags_vertical = 6
 alignment = 2
 script = ExtResource("9_51qy1")
+
+[node name="EasyMode" type="TextureButton" parent="PlayerDifficultyUI"]
+custom_minimum_size = Vector2(185, 0)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("7_1ek66")
 
 [node name="Selector" type="Control" parent="PlayerDifficultyUI"]
 layout_mode = 2
@@ -147,12 +152,6 @@ layout_mode = 2
 position = Vector2(35, 35)
 sprite_frames = SubResource("SpriteFrames_gc213")
 autoplay = "default"
-
-[node name="EasyMode" type="TextureButton" parent="PlayerDifficultyUI"]
-custom_minimum_size = Vector2(185, 0)
-layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("7_1ek66")
 
 [node name="NormalMode" type="TextureButton" parent="PlayerDifficultyUI"]
 custom_minimum_size = Vector2(185, 0)
@@ -167,9 +166,9 @@ focus_mode = 0
 texture_normal = ExtResource("5_hl3c7")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="body_entered" from="Area2D" to="PlayerDifficultyUI" method="_on_easy_mode_pressed" unbinds=1]
-[connection signal="body_entered" from="Area2D2" to="PlayerDifficultyUI" method="_on_normal_mode_pressed" unbinds=1]
-[connection signal="body_entered" from="Area2D3" to="PlayerDifficultyUI" method="_on_hard_mode_pressed" unbinds=1]
+[connection signal="body_entered" from="Area2D" to="PlayerDifficultyUI" method="_on_easy_mode_pressed"]
+[connection signal="body_entered" from="Area2D2" to="PlayerDifficultyUI" method="_on_normal_mode_pressed"]
+[connection signal="body_entered" from="Area2D3" to="PlayerDifficultyUI" method="_on_hard_mode_pressed"]
 [connection signal="pressed" from="PlayerDifficultyUI/EasyMode" to="PlayerDifficultyUI" method="_on_easy_mode_pressed"]
 [connection signal="pressed" from="PlayerDifficultyUI/NormalMode" to="PlayerDifficultyUI" method="_on_normal_mode_pressed"]
 [connection signal="pressed" from="PlayerDifficultyUI/HardMode" to="PlayerDifficultyUI" method="_on_hard_mode_pressed"]

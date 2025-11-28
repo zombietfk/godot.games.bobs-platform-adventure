@@ -39,12 +39,12 @@ tile_set = ExtResource("3_65lp4")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_562xh")]
 position = Vector2(1248, 736)
 scale = Vector2(4, 4)
-to_level_path = "uid://d4hrqsj6q1pl6"
+to_level_path = "res://level/levels/level_19.tscn"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_562xh")]
 position = Vector2(-160, 256)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://6fyl1kvwta1a"
+to_level_path = "uid://b2kkf8nll4p73"
 to_spawn_location_with_index = 1
 
 [node name="Switch" parent="." instance=ExtResource("8_o6fhk")]
