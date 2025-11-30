@@ -324,7 +324,7 @@ sawblade_autodestroy_after_x_seconds_timer = 1
 position = Vector2(1120, 864)
 sawblade_travel_speed = 200
 sawblade_autodestroy = true
-sawblade_autodestroy_after_x_seconds_timer = 3
+sawblade_autodestroy_after_x_seconds_timer = 6
 is_enabled = true
 
 [node name="Sawblade_Shooter_On_Timeout2" parent="." instance=ExtResource("12_qmsa2")]

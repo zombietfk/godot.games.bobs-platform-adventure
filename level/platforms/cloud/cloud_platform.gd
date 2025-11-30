@@ -27,7 +27,6 @@ signal player_exited();
 
 # LIFECYCLE
 func _ready() -> void:
-	print(c_bounce_timer)
 	anchor_position = position;
 	if randomize_inital_displacement:
 		c_timer = randf() * PI;

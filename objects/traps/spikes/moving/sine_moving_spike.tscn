@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw758fjsi1xy6"]
+
+[ext_resource type="Script" uid="uid://c8ri35pk1b63d" path="res://objects/abstract/follow_path_cyclical/follow_path_sine_cyclical.gd" id="1_yxc1a"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="2_ilaa5"]
+
+[node name="SineMovingSpike" type="Path2D"]
+rotation = 3.14159
+script = ExtResource("1_yxc1a")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="Spike" parent="PathFollow2D" instance=ExtResource("2_ilaa5")]

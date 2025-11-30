@@ -110,7 +110,6 @@ func _process_update_movement_direction(delta) -> void:
 		apply_slope_slide();
 	apply_friction();
 	if knockback_duration_timer <= 0:
-		print(knockback_duration_timer);
 		velocity.x = clamp(
 			velocity.x,
 			-max_movement_speed,

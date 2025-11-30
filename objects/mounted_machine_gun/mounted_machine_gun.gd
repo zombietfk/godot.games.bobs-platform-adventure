@@ -39,7 +39,6 @@ func _on_body_exited(body: Node2D) -> void:
 func _process(delta: float) -> void:
 	c_shoot_timer += delta;
 	if is_firing and c_shoot_timer > shoot_timer:
-		print(33);
 		c_shoot_timer = 0;
 		var m_gun_bullet: MountedMachineGunBullet = machine_gun_bullet.instantiate();
 		Main.instance.add_child(m_gun_bullet);

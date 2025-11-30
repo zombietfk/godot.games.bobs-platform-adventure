@@ -1,0 +1,328 @@
+[gd_scene load_steps=10 format=4 uid="uid://bnwundjfdgmbd"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_uoodq"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_ckqcf"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_wi5wg"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_dwqjk"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_tj7p3"]
+[ext_resource type="PackedScene" uid="uid://b8mbn7xxabui" path="res://objects/traps/sawblade/shooter/sawblade_shooter_on_switch.tscn" id="6_uoodq"]
+[ext_resource type="Script" uid="uid://c8ri35pk1b63d" path="res://objects/abstract/follow_path_cyclical/follow_path_sine_cyclical.gd" id="6_wi5wg"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="7_ckqcf"]
+
+[sub_resource type="Curve2D" id="Curve2D_dwqjk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -34, 0, 0, 0, 0, 0, 34)
+}
+point_count = 2
+
+[node name="Level_19" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_uoodq")
+level_binding_box = Rect2(-96, 320, 1056, 1432)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1056, 1376)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD//wgAAgACAAIAAAAAAAgAAgACAAMAAAD//wsAAgACAAEAAAAAAAsAAgAJAAMAAAAGABAAAgAFAAcAAAAGABEAAgAEAAcAAAAGABIAAgAEAAgAAAAHABEAAgAFAAcAAAAHABIAAgAEAAcAAAAHABMAAgAEAAgAAAAIABIAAgAFAAcAAAAIABMAAgAEAAcAAAAIABQAAgAEAAgAAAAJABMAAgAFAAcAAAAJABQAAgAEAAcAAAAJABUAAgAEAAgAAAAKABQAAgAFAAcAAAAKABUAAgAFAAgAAAALABYAAgAEAAcAAAALABcAAgAEAAgAAAAMABYAAgAFAAcAAAAMABcAAgAEAAcAAAAMABgAAgAEAAgAAAANABcAAgAFAAcAAAANABgAAgAJAAMAAAAOABkAAgACAAEAAAAMABQAAgACAAkAAAAMABUAAgACAAoAAAANABQAAgADAAkAAAANABUAAgADAAoAAAAKABIAAgACAAkAAAAKABMAAgACAAoAAAALABIAAgADAAkAAAALABMAAgADAAoAAAAIABAAAgACAAkAAAAIABEAAgACAAoAAAAJABAAAgADAAkAAAAJABEAAgADAAoAAAAGAA4AAgACAAkAAAAGAA8AAgACAAoAAAAHAA4AAgADAAkAAAAHAA8AAgADAAoAAAAAAAwAAgACAAIAAAAKABYAAgACAAIAAAANABkAAgACAAIAAAAMABMAAgACAAIAAAAKABEAAgACAAIAAAAGAA0AAgACAAIAAAAIAA8AAgACAAIAAAAOABYAAgAHAAUAAAAPABkAAgACAAEAAAD+/wsAAgACAAEAAAD+/wkAAgACAAMAAAAQABcAAgACAAMAAAAQABkAAgACAAEAAAD+/wgAAgACAAIAAAD//xkAAgACAAIAAAAAABkAAgACAAIAAAAGABkAAgACAAIAAAAHABkAAgACAAIAAAAIABkAAgACAAIAAAAJABkAAgACAAIAAAAKABkAAgACAAIAAAALABkAAgACAAIAAAAMABkAAgACAAIAAAAPAAgAAgACAAIAAAAPAAkAAgACAAIAAAAPAAoAAgACAAIAAAAPAAsAAgACAAIAAAAPAAwAAgACAAIAAAAPAA0AAgACAAIAAAAPAA4AAgACAAIAAAAPAA8AAgACAAIAAAAPABAAAgACAAIAAAAPABEAAgACAAIAAAAPABIAAgACAAIAAAAPABMAAgACAAIAAAAPABQAAgACAAIAAAAPABUAAgACAAIAAAAPABYAAgACAAIAAAAGAAgAAgACAAIAAAAHAAgAAgACAAIAAAAIAAgAAgACAAIAAAAJAAgAAgACAAIAAAAKAAgAAgACAAIAAAALAAgAAgACAAIAAAAMAAgAAgACAAIAAAANAAgAAgACAAIAAAAOAAgAAgACAAIAAAD//wwAAgACAAIAAAD//w0AAgACAAIAAAD//w4AAgACAAIAAAD//w8AAgACAAIAAAD//xAAAgACAAIAAAD//xEAAgACAAIAAAD//xIAAgACAAIAAAD//xMAAgACAAIAAAD//xQAAgACAAIAAAD//xUAAgACAAIAAAD//xYAAgACAAIAAAD//xcAAgACAAIAAAD//xgAAgACAAIAAAAAAA4AAgACAAIAAAAAAA0AAgACAAIAAAAAAA8AAgACAAIAAAAAABAAAgACAAIAAAAAABEAAgACAAIAAAAAABIAAgACAAIAAAAAABMAAgACAAIAAAAAABQAAgACAAIAAAAAABUAAgACAAIAAAAAABYAAgACAAIAAAAAABcAAgACAAIAAAAAABgAAgACAAIAAAAGABMAAgACAAIAAAAGABQAAgACAAIAAAAGABUAAgACAAIAAAAGABYAAgACAAIAAAAGABcAAgACAAIAAAAGABgAAgACAAIAAAAHABgAAgACAAIAAAAHABcAAgACAAIAAAAHABYAAgACAAIAAAAHABUAAgACAAIAAAAHABQAAgACAAIAAAAIABUAAgACAAIAAAAIABYAAgACAAIAAAAIABcAAgACAAIAAAAIABgAAgACAAIAAAAJABgAAgACAAIAAAAJABcAAgACAAIAAAAJABYAAgACAAIAAAAKABcAAgACAAIAAAAKABgAAgACAAIAAAALABgAAgACAAIAAAAKAAwAAgACAAIAAAAKAAsAAgACAAIAAAAKAAoAAgACAAIAAAAKAAkAAgACAAIAAAAJAAkAAgACAAIAAAAIAAkAAgACAAIAAAAHAAkAAgACAAIAAAAGAAkAAgACAAIAAAAGAAsAAgACAAIAAAAGAAoAAgACAAIAAAAHAAoAAgACAAIAAAAHAAsAAgACAAIAAAAHAAwAAgACAAIAAAAGAAwAAgACAAIAAAAHAA0AAgACAAIAAAAIAA0AAgACAAIAAAAIAAwAAgACAAIAAAAIAAsAAgACAAIAAAAIAAoAAgACAAIAAAAJAAoAAgACAAIAAAAJAAsAAgACAAIAAAAJAAwAAgACAAIAAAAJAA0AAgACAAIAAAAJAA4AAgACAAIAAAAIAA4AAgACAAIAAAAJAA8AAgACAAIAAAAKAA8AAgACAAIAAAAKAA4AAgACAAIAAAAKAA0AAgACAAIAAAALAA0AAgACAAIAAAALAAwAAgACAAIAAAALAAsAAgACAAIAAAALAAoAAgACAAIAAAALAAkAAgACAAIAAAAMAAkAAgACAAIAAAAMAAoAAgACAAIAAAAMAAsAAgACAAIAAAAMAAwAAgACAAIAAAAMAA0AAgACAAIAAAAMAA4AAgACAAIAAAALAA4AAgACAAIAAAALAA8AAgACAAIAAAALABAAAgACAAIAAAAKABAAAgACAAIAAAALABEAAgACAAIAAAAMABEAAgACAAIAAAAMABAAAgACAAIAAAAMAA8AAgACAAIAAAANAA8AAgACAAIAAAANAA4AAgACAAIAAAANAA0AAgACAAIAAAANAAwAAgACAAIAAAANAAsAAgACAAIAAAANAAoAAgACAAIAAAANAAkAAgACAAIAAAAOAAkAAgACAAIAAAAOAAoAAgACAAIAAAAOAAsAAgACAAIAAAAOAAwAAgACAAIAAAAOAA0AAgACAAIAAAAOAA4AAgACAAIAAAAOAA8AAgACAAIAAAAOABAAAgACAAIAAAANABAAAgACAAIAAAANABEAAgACAAIAAAANABIAAgACAAIAAAAMABIAAgACAAIAAAANABMAAgACAAIAAAAOABMAAgACAAIAAAAOABIAAgACAAIAAAAOABEAAgACAAIAAAAOABQAAgACAAIAAAAOABUAAgACAAIAAAAJAP7/AAAdAA0AAAAJAP//AAAHAAcAAAAKAP7/AAAHAAcAAAARAAMAAAAdAA0AAAARAAQAAAAHAAcAAAASAAMAAAAHAAcAAAABAAgAAgACAAIAAAABAAkAAgAHAAUAAAABAAwAAgAEAAcAAAABAA0AAgAEAAgAAAABAA4AAgACAAIAAAABAA8AAgACAAIAAAABABAAAgACAAIAAAABABEAAgACAAIAAAABABIAAgACAAIAAAABABMAAgACAAIAAAABABQAAgACAAIAAAABABUAAgACAAIAAAABABYAAgACAAIAAAABABcAAgACAAIAAAABABgAAgACAAIAAAABABkAAgACAAIAAAACAAgAAgACAAIAAAACAAkAAgACAAIAAAACAAoAAgACAAkAAAACAAsAAgACAAoAAAACAAwAAgAFAAcAAAACAA0AAgAEAAcAAAACAA4AAgAEAAgAAAACAA8AAgACAAIAAAACABAAAgACAAIAAAACABEAAgACAAIAAAACABIAAgACAAIAAAACABMAAgACAAIAAAACABQAAgACAAIAAAACABUAAgACAAIAAAACABYAAgACAAIAAAACABcAAgACAAIAAAACABgAAgACAAIAAAACABkAAgACAAIAAAADAAgAAgACAAIAAAADAAkAAgACAAIAAAADAAoAAgADAAkAAAADAAsAAgADAAoAAAADAA0AAgAFAAcAAAADAA4AAgAFAAgAAAADAA8AAgAEAAgAAAADABAAAgACAAIAAAADABEAAgACAAIAAAADABIAAgACAAIAAAADABMAAgACAAIAAAADABQAAgACAAIAAAADABUAAgACAAIAAAADABYAAgACAAIAAAADABcAAgACAAIAAAADABgAAgACAAIAAAADABkAAgACAAIAAAAEAAgAAgACAAIAAAAEAAkAAgACAAIAAAAEAAoAAgACAAIAAAAEAAsAAgACAAIAAAAEAAwAAgACAAkAAAAEAA0AAgACAAoAAAAEAA4AAgAFAAcAAAAEAA8AAgAEAAcAAAAEABAAAgAEAAgAAAAEABEAAgACAAIAAAAEABIAAgACAAIAAAAEABMAAgACAAIAAAAEABQAAgACAAIAAAAEABUAAgACAAIAAAAEABYAAgACAAIAAAAEABcAAgACAAIAAAAEABgAAgACAAIAAAAEABkAAgACAAIAAAAFAAgAAgACAAIAAAAFAAkAAgACAAIAAAAFAAoAAgACAAIAAAAFAAsAAgACAAIAAAAFAAwAAgADAAkAAAAFAA0AAgADAAoAAAAFAA8AAgAFAAcAAAAFABAAAgAEAAcAAAAFABEAAgAEAAgAAAAFABIAAgACAAIAAAAFABMAAgACAAIAAAAFABQAAgACAAIAAAAFABUAAgACAAIAAAAFABYAAgACAAIAAAAFABcAAgACAAIAAAAFABgAAgACAAIAAAAFABkAAgACAAIAAAAQABAAAgACAAIAAAAQABEAAgACAAIAAAAQABIAAgACAAIAAAAQABMAAgACAAIAAAAQABQAAgACAAIAAAAQABUAAgACAAIAAAAQABYAAgACAAIAAAAQAAgAAgACAAIAAAAQAAkAAgACAAIAAAAQAAoAAgACAAIAAAAQAAsAAgACAAIAAAAQAAwAAgACAAIAAAAQAA0AAgACAAIAAAAQAA4AAgACAAIAAAAQAA8AAgACAAIAAAD+/wwAAgACAAIAAAD+/w0AAgACAAIAAAD+/w4AAgACAAIAAAD+/w8AAgACAAIAAAD+/xAAAgACAAIAAAD+/xEAAgACAAIAAAD+/xIAAgACAAIAAAD+/xMAAgACAAIAAAD+/xQAAgACAAIAAAD+/xUAAgACAAIAAAD+/xYAAgACAAIAAAD+/xcAAgACAAIAAAD+/xgAAgACAAIAAAD+/xkAAgACAAIAAAA=")
+tile_set = ExtResource("2_ckqcf")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAD+/xMAAAAHAAcAAAD//xIAAAAHAAcAAAD+/xIAAAAdAA0AAAD+/xEAAAAFAAUAAAD//xEAAAAfAA8AAAACABEAAAAWAA8AAAAEABMAAAAGAAsAAAAeAC4AAAACAAcAAAAfAC4AAAAWAA8AAAAfAC8AAAACAAcAAAAeAC0AAAAWAA8AAAAcACsAAAAHAAsAAFAbADIAAAAfAAYAAAAaADAAAAAIAA4AAAA=")
+tile_set = ExtResource("3_wi5wg")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_dwqjk")]
+position = Vector2(1120, 1376)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_20.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_dwqjk")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://cuycqdwnf4y3h"
+to_spawn_location_with_index = 1
+
+[node name="Sawblade_Shooter_On_Switch" parent="." instance=ExtResource("6_uoodq")]
+position = Vector2(1056, 1472)
+sawblade_scale = Vector2(2, 2)
+sawblade_travel_speed = 175
+sawblade_travel_direction = Vector2(-1, -1)
+
+[node name="SineMovingSpike" type="Path2D" parent="."]
+position = Vector2(127.99994, 415.99997)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike2" type="Path2D" parent="."]
+position = Vector2(175.99991, 463.99994)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 0.25
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike2"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike2/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike3" type="Path2D" parent="."]
+position = Vector2(223.99992, 512)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 0.5
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike3"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike3/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike4" type="Path2D" parent="."]
+position = Vector2(271.99994, 560)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 0.75
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike4"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike4/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike5" type="Path2D" parent="."]
+position = Vector2(319.99988, 608)
+rotation = -2.3561945
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 1.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike5"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike5/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike6" type="Path2D" parent="."]
+position = Vector2(367.99985, 655.9999)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 1.25
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike6"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike6/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike7" type="Path2D" parent="."]
+position = Vector2(415.99988, 704)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 1.5
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike7"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike7/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike8" type="Path2D" parent="."]
+position = Vector2(463.99988, 752)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 1.75
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike8"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike8/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike9" type="Path2D" parent="."]
+position = Vector2(511.99988, 800)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 2.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike9"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike9/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike10" type="Path2D" parent="."]
+position = Vector2(559.99994, 848)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike10"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike10/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike11" type="Path2D" parent="."]
+position = Vector2(607.9999, 895.99994)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 0.25
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike11"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike11/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike12" type="Path2D" parent="."]
+position = Vector2(655.99994, 944)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 0.5
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike12"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike12/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike13" type="Path2D" parent="."]
+position = Vector2(703.99994, 992)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 0.75
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike13"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike13/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike14" type="Path2D" parent="."]
+position = Vector2(751.9999, 1040)
+rotation = -2.3561945
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 1.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike14"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike14/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike15" type="Path2D" parent="."]
+position = Vector2(799.9999, 1087.9999)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 1.25
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike15"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike15/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike16" type="Path2D" parent="."]
+position = Vector2(847.9999, 1136)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 1.5
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike16"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike16/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike17" type="Path2D" parent="."]
+position = Vector2(895.9999, 1184)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 1.75
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike17"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike17/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="SineMovingSpike18" type="Path2D" parent="."]
+position = Vector2(943.9999, 1232)
+rotation = 3.9269907
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_dwqjk")
+script = ExtResource("6_wi5wg")
+speed = -1.2
+start_distance_ratio = 2.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SineMovingSpike18"]
+position = Vector2(0, -34)
+rotates = false
+
+[node name="Spike" parent="SineMovingSpike18/PathFollow2D" instance=ExtResource("5_tj7p3")]
+
+[node name="Switch" parent="." instance=ExtResource("7_ckqcf")]
+position = Vector2(688, 1200.0001)
+rotation = 0.7853982
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="Sawblade_Shooter_On_Switch" method="_fire_sawblade_on_swtich_press"]

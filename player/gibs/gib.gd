@@ -31,7 +31,7 @@ static func spawn(
 # TRIGGERS
 func _on_despawn_timer_timeout() -> void:
 	is_shrinking = true;
-	
+
 # LIFECYCLE
 func _ready() -> void:
 	$Sprite2D.texture = gib_sprites[randi() % gib_sprites.size()];
@@ -40,7 +40,7 @@ func _ready() -> void:
 		randf() + force_vertical_direction_bias - 0.5
 	).normalized() * inital_force);
 	inital_scale = scale;
-	
+
 func _process(delta: float) -> void:
 	if is_shrinking:
 		c_shrink_timer += delta;
@@ -52,4 +52,3 @@ func _process(delta: float) -> void:
 			Vector2.ZERO,
 			c_shrink_timer / shrink_timer
 		);
-	
