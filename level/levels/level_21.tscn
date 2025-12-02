@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=4 uid="uid://b7e2ilx4c2b4i"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_cn7bb"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_uvxqh"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_idkrq"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_w26x6"]
+[ext_resource type="PackedScene" uid="uid://bmh7affp16sse" path="res://objects/mounted_machine_gun/mounted_machine_gun.tscn" id="5_cj6a2"]
+
+[node name="Level_20" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_cn7bb")
+level_binding_box = Rect2(-64, 256, 1600, 832)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1632, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAD+/wgAAgACAAMAAAD//wgAAgAEAAoAAAAAAAYAAgAEAAkAAAAAAAcAAgAEAAoAAAABAAYAAgAFAAkAAAABAAcAAgAFAAoAAAAEAAIAAgACAAMAAAAFAAIAAgACAAMAAAAFAAMAAgAFAAoAAAAEAAgAAgAHAAEAAAAFAAgAAgAIAAEAAAAGAAgAAgAIAAEAAAAGAAUAAgAIAAEAAAAHAAUAAgAIAAEAAAAIAAUAAgAIAAEAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAKAAIAAgACAAMAAAALAAIAAgACAAMAAAAMAAIAAgACAAMAAAANAAIAAgACAAMAAAAOAAIAAgACAAMAAAAPAAIAAgACAAMAAAAAAAsAAgACAAEAAAABAAsAAgACAAEAAAACAAsAAgACAAEAAAADAAsAAgACAAEAAAAEAAsAAgACAAEAAAAFAAsAAgACAAEAAAAGAAsAAgACAAEAAAAHAAsAAgACAAEAAAAIAAsAAgACAAEAAAAJAAsAAgACAAEAAAAKAAsAAgACAAEAAAALAAsAAgACAAEAAAAMAAsAAgACAAEAAAANAAsAAgACAAEAAAAOAAsAAgACAAEAAAAPAAsAAgACAAEAAAAHAAgAAgAIAAEAAAAIAAgAAgAIAAEAAAAJAAgAAgAIAAEAAAAKAAgAAgAJAAEAAAAJAAUAAgAIAAEAAAAKAAUAAgAJAAEAAAAQAAoAAgACAAgAAAAQAAMAAgACAAkAAAARAAkAAgABAAIAAAARAAQAAgABAAIAAAARAAUAAgABAAIAAAARAAgAAgABAAIAAAAEAAUAAgAHAAEAAAAFAAUAAgAIAAEAAAACAAgAAgAFAAEAAAACAAUAAgAJAAEAAAABAAMAAgADAAIAAAABAAQAAgADAAIAAAACAAIAAgACAAMAAAADAAIAAgACAAMAAAA=")
+tile_set = ExtResource("2_uvxqh")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_idkrq")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_w26x6")]
+position = Vector2(1696, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_20.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_w26x6")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bnwundjfdgmbd"
+to_spawn_location_with_index = 1
+
+[node name="MountedMachineGun" parent="." instance=ExtResource("5_cj6a2")]
+position = Vector2(224, 477)
+
+[node name="MountedMachineGun2" parent="." instance=ExtResource("5_cj6a2")]
+position = Vector2(352, 288)
+
+[node name="MountedMachineGun3" parent="." instance=ExtResource("5_cj6a2")]
+position = Vector2(480, 96)
+
+[connection signal="ready" from="." to="." method="_on_ready"]

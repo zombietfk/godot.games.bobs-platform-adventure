@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://8r1rhr8wtcyx" path="res://objects/abstract/fall_on_pass_below/fall_on_pass_below.gd" id="1_t5fna"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="2_mrcqh"]
 
+[sub_resource type="Animation" id="Animation_7xwx0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spike:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_mrcqh"]
 resource_name = "spike_shake"
 length = 0.2
@@ -18,21 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-4, 0), Vector2(4, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_7xwx0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Spike:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4pty1"]

@@ -124,10 +124,7 @@ func apply_friction() -> void:
 	#Apply extra friction, when traveling on the FLOOR
 	if is_on_floor():
 		velocity.x -= friction_unit * 7/8;
-	#Apply extra friction, when traveling DOWN a slope
-	if is_on_slope() and sign(velocity.x) == sign(get_floor_normal().x):
-		velocity.x -= friction_unit * 2;
-	if abs(velocity.x) < VELOCITY_X_MIN:
+	if abs(velocity.x) < VELOCITY_X_MIN and !is_on_slope():
 		velocity.x = 0;
 
 func apply_slope_slide() -> void:
@@ -140,7 +137,7 @@ func apply_slope_slide() -> void:
 		) * max_movement_speed
 	);
 
-func is_on_slope(min_slope_angle: float = 20) -> bool:
+func is_on_slope(min_slope_angle: float = 5) -> bool:
 	return is_on_floor() and rad_to_deg(
 		abs(get_floor_normal().angle() + PI / 2)
 	) > min_slope_angle;

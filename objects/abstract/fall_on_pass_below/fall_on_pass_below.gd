@@ -7,16 +7,17 @@ extends Node2D;
 @export var fall_after: float = 0.4;
 @export var before_fall_animation_label: String;
 
-var is_shaking = false;
 var is_falling = false;
+var is_triggered = false;
 
 func _process(_delta: float) -> void:
-	if !is_falling:
+	if !is_falling and !is_triggered:
 		var collision = $RayCast2D.get_collider();
 		if collision is Player:
+			is_triggered = true;
 			$AnimationPlayer.play(before_fall_animation_label);
 			await get_tree().create_timer(fall_after).timeout;
-			$AnimationPlayer.play("RESET");
+			$AnimationPlayer.stop();
 			is_falling = true;
 
 func _physics_process(delta: float) -> void:
