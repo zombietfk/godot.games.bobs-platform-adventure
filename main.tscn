@@ -98,12 +98,21 @@ text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DeathCount" type="Label" parent="GameUI/UI"]
+[node name="LivesLabel" type="Label" parent="GameUI/UI"]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 33.0
-offset_right = 109.0
+offset_right = 96.0
 offset_bottom = 56.0
+text = "lives -"
+label_settings = SubResource("LabelSettings_ycdy4")
+
+[node name="LivesCount" type="Label" parent="GameUI/UI"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 32.0
+offset_right = 194.0
+offset_bottom = 55.0
 text = "0"
 label_settings = SubResource("LabelSettings_ycdy4")
 
@@ -170,11 +179,11 @@ layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("4_lquwl")
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera", "player_heath_ui", "death_count_label") instance=ExtResource("1_0xm2m")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "player_heath_ui", "lives_count_label") instance=ExtResource("1_0xm2m")]
 position = Vector2(32, 284)
 camera = NodePath("Camera2D")
 player_heath_ui = NodePath("../GameUI/UI/PlayerHealthUI")
-death_count_label = NodePath("../GameUI/UI/DeathCount")
+lives_count_label = NodePath("../GameUI/UI/LivesCount")
 max_health = 3
 current_health = 3
 

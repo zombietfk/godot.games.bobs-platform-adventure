@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://d4hrqsj6q1pl6"]
+[gd_scene load_steps=13 format=4 uid="uid://d4hrqsj6q1pl6"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_mq6f8"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_seura"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="6_36xoc"]
 [ext_resource type="PackedScene" uid="uid://dyor0okde2rnm" path="res://enemies/imp/imp.tscn" id="8_4x0sv"]
 [ext_resource type="PackedScene" uid="uid://bwm72kx7ki3v6" path="res://objects/traps/sawblade/shooter/sawblade_timed_shooter.tscn" id="10_ps23h"]
-[ext_resource type="PackedScene" uid="uid://ctaeyscddayym" path="res://objects/traps/sawblade/sawblade.tscn" id="11_gv03e"]
 
 [sub_resource type="Curve2D" id="Curve2D_mq6f8"]
 _data = {
@@ -23,6 +22,7 @@ point_count = 2
 script = ExtResource("1_mq6f8")
 level_binding_box = Rect2(-896, -128, 1536, 896)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+camera_zoom_to = Vector2(0.7, 0.7)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-896, 800)
@@ -2515,7 +2515,6 @@ position = Vector2(200, 232)
 
 [node name="Sawblade_Shooter" parent="." instance=ExtResource("10_ps23h")]
 position = Vector2(-800, 608)
-sawblade_scene = ExtResource("11_gv03e")
 sawblade_travel_speed = 500
 sawblade_travel_direction = Vector2(1, 0)
 sawblade_autodestroy = true
@@ -2524,7 +2523,6 @@ sawblade_physics_mask = 5
 
 [node name="Sawblade_Shooter2" parent="." instance=ExtResource("10_ps23h")]
 position = Vector2(1440, 416)
-sawblade_scene = ExtResource("11_gv03e")
 sawblade_travel_speed = 500
 sawblade_autodestroy = true
 sawblade_autodestroy_after_x_seconds_timer = 8
@@ -2532,7 +2530,6 @@ sawblade_physics_mask = 5
 
 [node name="Sawblade_Shooter3" parent="." instance=ExtResource("10_ps23h")]
 position = Vector2(-800, 224)
-sawblade_scene = ExtResource("11_gv03e")
 sawblade_travel_speed = 500
 sawblade_travel_direction = Vector2(1, 0)
 sawblade_autodestroy = true
@@ -2541,7 +2538,6 @@ sawblade_physics_mask = 5
 
 [node name="Sawblade_Shooter4" parent="." instance=ExtResource("10_ps23h")]
 position = Vector2(1440, 32)
-sawblade_scene = ExtResource("11_gv03e")
 sawblade_travel_speed = 500
 sawblade_autodestroy = true
 sawblade_autodestroy_after_x_seconds_timer = 8

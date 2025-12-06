@@ -20,6 +20,7 @@ point_count = 2
 script = ExtResource("1_8rqtg")
 level_binding_box = Rect2(0, 192, 896, 1216)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+camera_zoom_to = Vector2(1.1, 1.1)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(0, 480)

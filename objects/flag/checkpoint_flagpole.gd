@@ -9,8 +9,5 @@ extends Node2D;
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player and !$Flag.is_being_raised:
 		$Flag.raise_flag();
-		if (
-			Main.difficulty == Main.DIFFICULTY.EASY or
-			Main.difficulty == Main.DIFFICULTY.NORMAL
-		): 
-			Main.update_spawn(level_path, spawn_index);
+		Main.update_checkpoint(level_path, spawn_index);
+		Main.update_spawn(level_path, spawn_index);

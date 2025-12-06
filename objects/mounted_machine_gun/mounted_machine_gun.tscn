@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmh7affp16sse"]
+[gd_scene load_steps=12 format=3 uid="uid://bmh7affp16sse"]
 
 [ext_resource type="Script" uid="uid://c7uyn82fcy3bt" path="res://objects/mounted_machine_gun/mounted_machine_gun.gd" id="1_lyrq3"]
 [ext_resource type="Texture2D" uid="uid://dithyuifg5x1j" path="res://objects/mounted_machine_gun/mounted_machine_gun_spritesheet.png" id="1_oxvf8"]
@@ -32,6 +32,35 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyrq3"]
+atlas = ExtResource("1_oxvf8")
+region = Rect2(0, 96, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qse1y"]
+atlas = ExtResource("1_oxvf8")
+region = Rect2(128, 96, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx6j4"]
+atlas = ExtResource("1_oxvf8")
+region = Rect2(256, 96, 128, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lyrq3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyrq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qse1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx6j4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lyrq3"]
 size = Vector2(34, 32)
 
@@ -39,16 +68,26 @@ size = Vector2(34, 32)
 script = ExtResource("1_lyrq3")
 machine_gun_bullet_collisison_mask = 454
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 9)
+[node name="BarrelPivot" type="Node2D" parent="."]
+position = Vector2(3, 15)
+
+[node name="Barrel" type="AnimatedSprite2D" parent="BarrelPivot"]
+position = Vector2(21, -7)
 sprite_frames = SubResource("SpriteFrames_lemno")
 autoplay = "default"
+frame_progress = 0.95992285
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(36, -3)
+[node name="Marker2D" type="Marker2D" parent="BarrelPivot"]
+position = Vector2(57, -18)
+
+[node name="Base" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 9)
+sprite_frames = SubResource("SpriteFrames_lyrq3")
+autoplay = "default"
+frame_progress = 0.53607166
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-72, 24)
+position = Vector2(-48, 24)
 shape = SubResource("RectangleShape2D_lyrq3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,84 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://bm0ynqus6gxsc"]
+
+[ext_resource type="Texture2D" uid="uid://dhrsd3uroq8c5" path="res://enemies/bosses/demon-rabbit/demon_rabbit_spreadsheet.png" id="1_nbasu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xoku"]
+atlas = ExtResource("1_nbasu")
+region = Rect2(0, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy5jt"]
+atlas = ExtResource("1_nbasu")
+region = Rect2(160, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnt27"]
+atlas = ExtResource("1_nbasu")
+region = Rect2(320, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgu3e"]
+atlas = ExtResource("1_nbasu")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5830"]
+atlas = ExtResource("1_nbasu")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yokq"]
+atlas = ExtResource("1_nbasu")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbasu"]
+atlas = ExtResource("1_nbasu")
+region = Rect2(0, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dgf7"]
+atlas = ExtResource("1_nbasu")
+region = Rect2(160, 160, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84a7u"]
+atlas = ExtResource("1_nbasu")
+region = Rect2(320, 160, 160, 160)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xoku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy5jt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnt27")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgu3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5830")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yokq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbasu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dgf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84a7u")
+}],
+"loop": true,
+"name": &"stunned",
+"speed": 5.0
+}]

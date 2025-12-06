@@ -1,0 +1,136 @@
+[gd_scene load_steps=17 format=3 uid="uid://i7besdllp522"]
+
+[ext_resource type="Script" uid="uid://ctxj825qesnky" path="res://enemies/bosses/demon-rabbit/demon_rabbit.gd" id="1_6w804"]
+[ext_resource type="SpriteFrames" uid="uid://bm0ynqus6gxsc" path="res://enemies/bosses/demon-rabbit/demon_rabbit_sprites.tres" id="1_jmrix"]
+[ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying_imp.tscn" id="2_bv7or"]
+[ext_resource type="Texture2D" uid="uid://jphbfbr6mhm8" path="res://enemies/bosses/demon-rabbit/pitchfork.png" id="2_eeg2y"]
+[ext_resource type="PackedScene" uid="uid://cntwaqajm0x88" path="res://objects/mirror/mirror.tscn" id="3_i52du"]
+[ext_resource type="PackedScene" uid="uid://cj6isii318ay6" path="res://enemies/bosses/demon-rabbit/demon_rabbit_magic_spell_spiral.tscn" id="4_61886"]
+[ext_resource type="Texture2D" uid="uid://ctkhl2np0n4hg" path="res://enemies/bosses/demon-rabbit/demon_rabbit_shield.png" id="5_i52du"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61886"]
+atlas = ExtResource("5_i52du")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8xq6"]
+atlas = ExtResource("5_i52du")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_470ce"]
+atlas = ExtResource("5_i52du")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ednx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61886")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8xq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_470ce")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i52du"]
+radius = 77.00649
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmrix"]
+radius = 41.0
+
+[sub_resource type="Animation" id="Animation_i52du"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bv7or"]
+resource_name = "spin_pitchfork"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.66, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 12.566370614359172, 18.84955592153876]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i52du"]
+_data = {
+&"RESET": SubResource("Animation_i52du"),
+&"spin_pitchfork": SubResource("Animation_bv7or")
+}
+
+[node name="DemonRabbit" type="CharacterBody2D" node_paths=PackedStringArray("pitchfork_animator")]
+collision_layer = 2
+collision_mask = 64
+script = ExtResource("1_6w804")
+jump_height = 400.0
+cast_jump_height = 700.0
+jump_timer = 1.0
+pitchfork_animator = NodePath("Pitchfork/AnimationPlayer")
+summoned_enemy_scene = ExtResource("2_bv7or")
+mirror_scene = ExtResource("3_i52du")
+magic_spell_shot = ExtResource("4_61886")
+
+[node name="ForceField" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+z_index = -1
+position = Vector2(0, 4)
+sprite_frames = SubResource("SpriteFrames_8ednx")
+autoplay = "default"
+frame_progress = 0.6269801
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ForceField"]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForceField/StaticBody2D"]
+shape = SubResource("CircleShape2D_i52du")
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(3.33786e-06, 3.33786e-06)
+sprite_frames = ExtResource("1_jmrix")
+animation = &"angry"
+autoplay = "default"
+frame_progress = 0.52716213
+speed_scale = 0.7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 32)
+shape = SubResource("CircleShape2D_jmrix")
+
+[node name="PitchforkOriginMarker" type="Marker2D" parent="."]
+position = Vector2(14, 37)
+
+[node name="Pitchfork" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(14, 37)
+texture = ExtResource("2_eeg2y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pitchfork"]
+libraries = {
+&"": SubResource("AnimationLibrary_i52du")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="Pitchfork"]
+position = Vector2(14, 2)
+target_position = Vector2(-38, 0)

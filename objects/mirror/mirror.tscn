@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cntwaqajm0x88"]
+
+[ext_resource type="Texture2D" uid="uid://c0csad4v0e5nk" path="res://objects/mirror/mirror_sprite.png" id="1_avp1t"]
+[ext_resource type="Script" uid="uid://bbrqfke4o86kd" path="res://objects/mirror/mirror.gd" id="2_twmao"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twmao"]
+height = 42.0
+
+[node name="Mirror" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_twmao")
+
+[node name="StaticBody2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_avp1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_twmao")

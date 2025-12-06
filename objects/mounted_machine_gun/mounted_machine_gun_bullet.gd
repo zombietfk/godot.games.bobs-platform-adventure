@@ -12,4 +12,8 @@ func _physics_process(delta: float) -> void:
 		var collider: Node2D = $RayCast2D.get_collider();
 		if collider.has_method("gib_and_kill"):
 			collider.gib_and_kill();
+		if collider.has_method("shatter"):
+			collider.shatter();
+		if collider.has_method("hit_by_bullet"):
+			collider.hit_by_bullet();
 		queue_free();

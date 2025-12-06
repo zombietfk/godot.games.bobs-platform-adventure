@@ -2,13 +2,14 @@ class_name Main;
 extends Node2D;
 
 enum DIFFICULTY {
-	EASY,
-	NORMAL,
-	HARD,
+	EASY = 50,
+	NORMAL = 10,
+	HARD = 3,
 }
 
 # SETTINGS
 @export_file() var inital_level_path: String;
+@export_file() var inital_checkpoint_path: String;
 
 # INTERNAL STATE
 static var player: Player;
@@ -17,6 +18,8 @@ static var level_instance: Level;
 static var current_level_path: String;
 static var current_spawn_level: String;
 static var current_spawn_index = 0;
+static var checkpoint_spawn_level: String;
+static var checkpoint_spawn_index = 0;
 static var difficulty = DIFFICULTY.EASY;
 static var persistant_trigger_labels: Array[String] = [];
 
@@ -30,6 +33,7 @@ func _ready() -> void:
 	instance = self;
 	RenderingServer.set_default_clear_color(Color.BLACK);
 	update_spawn(inital_level_path, 0);
+	update_checkpoint(inital_checkpoint_path, 0);
 	load_level();
 
 # UTILITY
@@ -37,12 +41,22 @@ static func update_spawn(next_level_path: String, with_spawn_index: int = 0) -> 
 	current_spawn_level = next_level_path;
 	current_spawn_index = with_spawn_index;
 
+static func update_checkpoint(
+	checkpoint_level_path: String,
+	checkpoint_level_spawn_index: int = 0
+) -> void:
+	checkpoint_spawn_level = checkpoint_level_path;
+	checkpoint_spawn_index = checkpoint_level_spawn_index;
+
+static func reset_lives_load_checkpoint_level() -> void:
+	player.lives = difficulty;
+	load_level(checkpoint_spawn_level, checkpoint_spawn_index);
+
 static func load_level(
 	level_path: String = current_spawn_level,
 	spawn_index: int = current_spawn_index,
 ) -> void:
-	if Main.difficulty == Main.DIFFICULTY.EASY:
-		update_spawn(level_path, 0);
+	update_spawn(level_path, spawn_index);
 	current_level_path = level_path;
 	if level_instance != null:
 		level_instance.queue_free();

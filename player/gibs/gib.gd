@@ -20,9 +20,10 @@ static var gib_scene_path: String = "res://player/gibs/gib.tscn";
 
 static func spawn(
 	at: Vector2,
-	force_direction_bias: Vector2 = Vector2.ZERO
+	force_direction_bias: Vector2 = Vector2.ZERO,
+	using_gib_scene: String = gib_scene_path,
 ) -> void:
-	var gib: Gib = load(gib_scene_path).instantiate();
+	var gib: Gib = load(using_gib_scene).instantiate();
 	gib.global_position = at;
 	gib.force_horizontal_direction_bias = force_direction_bias.normalized().x;
 	gib.force_vertical_direction_bias = force_direction_bias.normalized().y;

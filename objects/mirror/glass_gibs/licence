@@ -1,0 +1,30 @@
+Reactorcore Art (RC Art)
+==
+PACK: Gore Blood Gibs
+
+--
+
+Pixel-art sprites pack depicting special effects used for gore, blood and gibbing effects when a fleshy human, animal or monster is utterly destroyed by something powerful. Use them to make combat feel massively more satisfying and add realism/believability to the experience.
+
+--
+
+The main idea is to use a particle system of a game engine to spawn a combination of these things all at once:
+- red pixels that spray all over.
+- meat chunks/bones/organs as physics enabled objects that can collide with solid terrain.
+- animated blood splash particles.
+- a glow splash sprite that briefly appears and fades away quickly after start of the gibbing event.
+- a glow mist sprite that lingers in the air where the character gibbed and slowly fades into transparency slowly.
+
+Please be mindful of keeping the number of particles sensible/limited per effect, especially if the game project features multiple characters that all could gib at the same time. Performance is important and lag sucks - plan ahead by keeping particles as minimal as they need to be so action and gameplay will remain smooth.
+
+--
+
+CC0, you can use these assets however you want, including commercial projects.
+
+--
+
+You can use Alferd Spritesheet Unpacker to quickly split the large atlas image into seperate individual images.
+https://github.com/ForkandBeard/Alferd-Spritesheet-Unpacker
+
+The animation spritesheets can be cut quickly into individual images with Sprite Sheet Slicer:
+https://isometric8.itch.io/sprite-sheet-slicer

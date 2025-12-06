@@ -12,11 +12,12 @@ const VELOCITY_X_MIN = 10;
 @export var max_movement_speed: int = 340; 
 @export var jump_strength: int = 850;
 @export var player_heath_ui: PlayerHealthUI;
-@export var death_count_label: Label;
+@export var lives_count_label: Label;
 @export var max_health = 3;
 @export var current_health = 3;
 @export var spawn_position: Vector2;
 @export var slope_slide_curve: Curve;
+@export var lives = 50;
 
 # INTERNAL STATE
 var damage_timeout = 0.0;
@@ -33,7 +34,11 @@ var c_jump_forgiveness_timer = 0.0;
 var knockback_duration_timer = 0.0;
 
 func _on_respawn_grace_timer_timeout() -> void:
-	Main.load_level();
+	lives -= 1;
+	if lives >= 0:
+		Main.load_level();
+	else:
+		Main.reset_lives_load_checkpoint_level();
 	current_health = max_health;
 	visible = true;
 	is_dead = false;
@@ -43,7 +48,9 @@ func _on_respawn_grace_timer_timeout() -> void:
 	knockback_impetus = Vector2.ZERO;
 
 func _on_respawn_timer_timeout() -> void:
-	global_position = Vector2.ZERO;
+	global_position = Main.instance.level_instance.spawn_locations[
+		Main.instance.current_spawn_index
+	].global_position;
 	$RespawnGraceTimer.start();
 
 # SIGNALS
@@ -52,6 +59,7 @@ signal player_interaction_end();
 
 # LIFECYCLE
 func _process(delta: float) -> void:
+	lives_count_label.text = var_to_str(lives);
 	if is_dead:
 		return;
 	damage_timeout -= delta;
@@ -64,6 +72,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released("interaction"):
 		player_interaction_end.emit();
 	if is_out_of_bounds() or current_health <= 0:
+		gib_and_kill(50);
+	if $CrushCheckUpCast.is_colliding() and $CrushCheckDownCast.is_colliding():
 		gib_and_kill(50);
 	player_heath_ui.update_health_bar(current_health, max_health);
 
@@ -84,12 +94,12 @@ func _process_is_jump_key_released() -> bool:
 	return Input.is_action_just_released("jump");
 
 func _process_update_movement_direction(delta) -> void:
-	if is_movement_disabled:
-		velocity += get_gravity();
-		return;
 	if knockback_duration_timer > 0:
 		knockback_duration_timer -= delta;
 		velocity = knockback_impetus;
+	if is_movement_disabled:
+		velocity += get_gravity() * delta;
+		return;
 	var movement_impetus = Vector2.ZERO;
 	if Input.is_action_pressed("move_right"):
 		movement_impetus += Vector2.RIGHT * movement_speed;
@@ -108,18 +118,18 @@ func _process_update_movement_direction(delta) -> void:
 		set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, true);
 	if is_on_slope():
 		apply_slope_slide();
-	apply_friction();
+	apply_friction(delta);
 	if knockback_duration_timer <= 0:
 		velocity.x = clamp(
 			velocity.x,
 			-max_movement_speed,
 			max_movement_speed
 		);
-	velocity += get_gravity() + movement_impetus;
+	velocity += get_gravity() * delta + movement_impetus;
 	
 # METHODS
-func apply_friction() -> void:
-	var friction_unit = sign(velocity.x) * get_gravity().length();
+func apply_friction(delta) -> void:
+	var friction_unit = sign(velocity.x) * (get_gravity().length() * delta);
 	velocity.x -= friction_unit * 1/4;
 	#Apply extra friction, when traveling on the FLOOR
 	if is_on_floor():
@@ -148,8 +158,6 @@ func gib_and_kill(gibs: int = 25) -> void:
 	for i in gibs:
 		Gib.spawn(global_position, -velocity);
 	$RespawnTimer.start();
-	death_count += 1;
-	death_count_label.text = var_to_str(death_count);
 	visible = false;
 	is_dead = true;
 	velocity = Vector2.ZERO;

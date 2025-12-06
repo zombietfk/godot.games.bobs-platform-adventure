@@ -12,6 +12,7 @@
 script = ExtResource("1_ng40v")
 level_binding_box = Rect2(0, -320, 896, 448)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.8, 0.8)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(0, 352)

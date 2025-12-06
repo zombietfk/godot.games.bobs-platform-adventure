@@ -1,48 +1,288 @@
-[gd_scene load_steps=6 format=4 uid="uid://b7e2ilx4c2b4i"]
+[gd_scene load_steps=18 format=4 uid="uid://b7e2ilx4c2b4i"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_cn7bb"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_uvxqh"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_idkrq"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_w26x6"]
 [ext_resource type="PackedScene" uid="uid://bmh7affp16sse" path="res://objects/mounted_machine_gun/mounted_machine_gun.tscn" id="5_cj6a2"]
+[ext_resource type="PackedScene" uid="uid://i7besdllp522" path="res://enemies/bosses/demon-rabbit/demon_rabbit.tscn" id="6_5rx4e"]
+[ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="6_cn7bb"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="6_qdmkt"]
+[ext_resource type="Script" uid="uid://vxjxoigha6d4" path="res://objects/abstract/move_on_land/move_on_land.gd" id="9_idkrq"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="9_uvxqh"]
+[ext_resource type="Script" uid="uid://cvjrwnq3677oe" path="res://objects/abstract/one_shot_area/one_shot_area.gd" id="9_w26x6"]
 
-[node name="Level_20" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[sub_resource type="Curve2D" id="Curve2D_5rx4e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 544, 1664, 0, 0, 0, 0, 704, 1632, 0, 0, 0, 0, 832, 1568, 0, 0, 0, 0, 960, 1440, 0, 0, 0, 0, 1024, 1312, 0, 0, 0, 0, 1056, 1216, 0, 0, 0, 0, 1088, 1056, 0, 0, 0, 0, 1088, 160, 0, 0, 0, 0, 1056, 0, 0, 0, 0, 0, 1024, -96, 0, 0, 0, 0, 960, -224, 0, 0, 0, 0, 832, -352, 0, 0, 0, 0, 704, -416, 0, 0, 0, 0, 544, -448, 0, 0, 0, 0, 384, -416, 0, 0, 0, 0, 256, -352, 0, 0, 0, 0, 128, -224, 0, 0, 0, 0, 64, -96, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, 160, 0, 0, 0, 0, 0, 1056, 0, 0, 0, 0, 32, 1216, 0, 0, 0, 0, 64, 1312, 0, 0, 0, 0, 128, 1440, 0, 0, 0, 0, 256, 1568, 0, 0, 0, 0, 384, 1632, 0, 0, 0, 0, 544, 1664)
+}
+point_count = 27
+
+[sub_resource type="Curve2D" id="Curve2D_w26x6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 768, 0, 0, 0, 0, 0, -784, 0, 0, 0, 0, 0, -784, 1408, 0, 0, 0, 0, 768, 1408, 0, 0, 0, 0, 768, 0)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvxqh"]
+size = Vector2(48, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idkrq"]
+size = Vector2(64, 128)
+
+[sub_resource type="Curve2D" id="Curve2D_idkrq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -128, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_uvxqh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
+}
+point_count = 2
+
+[node name="Level_21" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_cn7bb")
-level_binding_box = Rect2(-64, 256, 1600, 832)
+level_binding_box = Rect2(-192, -448, 2112, 2304)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.6, 0.6)
+camera_zoom_speed = 0.01
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-96, 480)
+position = Vector2(-224, 480)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1632, 480)
+position = Vector2(2144, 480)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAD+/wgAAgACAAMAAAD//wgAAgAEAAoAAAAAAAYAAgAEAAkAAAAAAAcAAgAEAAoAAAABAAYAAgAFAAkAAAABAAcAAgAFAAoAAAAEAAIAAgACAAMAAAAFAAIAAgACAAMAAAAFAAMAAgAFAAoAAAAEAAgAAgAHAAEAAAAFAAgAAgAIAAEAAAAGAAgAAgAIAAEAAAAGAAUAAgAIAAEAAAAHAAUAAgAIAAEAAAAIAAUAAgAIAAEAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAKAAIAAgACAAMAAAALAAIAAgACAAMAAAAMAAIAAgACAAMAAAANAAIAAgACAAMAAAAOAAIAAgACAAMAAAAPAAIAAgACAAMAAAAAAAsAAgACAAEAAAABAAsAAgACAAEAAAACAAsAAgACAAEAAAADAAsAAgACAAEAAAAEAAsAAgACAAEAAAAFAAsAAgACAAEAAAAGAAsAAgACAAEAAAAHAAsAAgACAAEAAAAIAAsAAgACAAEAAAAJAAsAAgACAAEAAAAKAAsAAgACAAEAAAALAAsAAgACAAEAAAAMAAsAAgACAAEAAAANAAsAAgACAAEAAAAOAAsAAgACAAEAAAAPAAsAAgACAAEAAAAHAAgAAgAIAAEAAAAIAAgAAgAIAAEAAAAJAAgAAgAIAAEAAAAKAAgAAgAJAAEAAAAJAAUAAgAIAAEAAAAKAAUAAgAJAAEAAAAQAAoAAgACAAgAAAAQAAMAAgACAAkAAAARAAkAAgABAAIAAAARAAQAAgABAAIAAAARAAUAAgABAAIAAAARAAgAAgABAAIAAAAEAAUAAgAHAAEAAAAFAAUAAgAIAAEAAAACAAgAAgAFAAEAAAACAAUAAgAJAAEAAAABAAMAAgADAAIAAAABAAQAAgADAAIAAAACAAIAAgACAAMAAAADAAIAAgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAGAAAAAgACAAMAAAAJAP7/AgACAAMAAAAKAP7/AgACAAMAAAANAPz/AgACAAMAAAAHAAAAAgAEAAoAAAAIAP//AgAEAAoAAAALAP7/AgAEAAoAAAAMAP3/AgAEAAoAAAARAP3/AgADAAoAAAASAP7/AgADAAoAAAATAP7/AgACAAMAAAAUAP7/AgACAAMAAAAVAP//AgADAAoAAAAWAAAAAgADAAoAAAAXAAAAAgACAAMAAAAPAPz/AgACAAMAAAAOAPz/AgACAAMAAAAQAPz/AgACAAMAAAANABQAAgAIAAEAAAAOABQAAgAIAAEAAAAPABQAAgAIAAEAAAAQABQAAgAIAAEAAAAfAAgAAgACAAMAAAAfAAsAAgACAAEAAAAbAAAAAgACAAMAAAAcAAEAAgADAAoAAAAdAAIAAgADAAoAAAAeAAMAAgABAAIAAAAeAAQAAgABAAIAAAAeAAUAAgABAAIAAAAeAAYAAgABAAIAAAAeAAcAAgABAAIAAAAeAAwAAgABAAIAAAAeAA0AAgABAAIAAAAeAA4AAgABAAIAAAAeAA8AAgABAAIAAAAeABAAAgABAAIAAAAeABEAAgABAAIAAAAeABIAAgABAAIAAAAeABMAAgABAAIAAAAeABQAAgABAAIAAAAeABUAAgABAAIAAAAeABYAAgABAAIAAAAeABcAAgABAAIAAAAeABgAAgABAAIAAAAeABkAAgABAAIAAAAeABoAAgABAAIAAAAeABsAAgABAAIAAAAeABwAAgABAAIAAAAeAB0AAgABAAIAAAAeAB4AAgABAAIAAAAeAB8AAgABAAIAAAAeACAAAgABAAIAAAAeACEAAgABAAIAAAAeACIAAgABAAIAAAAeACMAAgABAAIAAAAeACQAAgABAAIAAAAeACUAAgABAAIAAAAeACYAAgABAAIAAAAgAAgAAgACAAMAAAAgAAsAAgACAAEAAAAhAAgAAgACAAMAAAAhAAsAAgACAAEAAAAiAAgAAgACAAMAAAAiAAsAAgACAAEAAAD+/wgAAgACAAMAAAD7/wgAAgACAAMAAAD7/wsAAgACAAEAAAD8/wgAAgACAAMAAAD8/wsAAgACAAEAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAD//wMAAgADAAIAAAD//wQAAgADAAIAAAD//wUAAgADAAIAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAD//wwAAgADAAIAAAD//w0AAgADAAIAAAD//w4AAgADAAIAAAD//w8AAgADAAIAAAD//xAAAgADAAIAAAD//xEAAgADAAIAAAD//xIAAgADAAIAAAD//xMAAgADAAIAAAD//xQAAgADAAIAAAD//xUAAgADAAIAAAD//xYAAgADAAIAAAD//xcAAgADAAIAAAD//xgAAgADAAIAAAD//xkAAgADAAIAAAD//xoAAgADAAIAAAD//xsAAgADAAIAAAD//xwAAgADAAIAAAD//x0AAgADAAIAAAD//x4AAgADAAIAAAD//x8AAgADAAIAAAD//yAAAgADAAIAAAD//yEAAgADAAIAAAD//yIAAgADAAIAAAD//yMAAgADAAIAAAD//yQAAgADAAIAAAD//yUAAgADAAIAAAD//yYAAgADAAIAAAAAAAIAAgAEAAoAAAABAAEAAgAEAAoAAAACAAAAAgACAAMAAAAZAAAAAgACAAMAAAAYAAAAAgACAAMAAAAaAAAAAgACAAMAAAADAAAAAgACAAMAAAAEAAAAAgACAAMAAAAFAAAAAgACAAMAAAAMABQAAgAIAAEAAAALABQAAgAHAAEAAAARABQAAgAIAAEAAAASABQAAgAJAAEAAAALAAkAAgAHAAEAAAAMAAkAAgAIAAEAAAANAAkAAgAIAAEAAAAOAAkAAgAIAAEAAAAPAAkAAgAIAAEAAAAQAAkAAgAIAAEAAAARAAkAAgAIAAEAAAASAAkAAgAJAAEAAAALAB8AAgAHAAEAAAAMAB8AAgAIAAEAAAANAB8AAgAIAAEAAAAOAB8AAgAIAAEAAAAPAB8AAgAIAAEAAAAQAB8AAgAIAAEAAAARAB8AAgAIAAEAAAASAB8AAgAJAAEAAAD+/wsAAgACAAEAAAD//wsAAgADAAEAAAAeAAsAAgABAAEAAAD//wgAAgADAAMAAAAeAAgAAgABAAMAAAA=")
 tile_set = ExtResource("2_uvxqh")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
 tile_set = ExtResource("3_idkrq")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_w26x6")]
-position = Vector2(1696, 448)
+position = Vector2(2208, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/level_20.tscn"
+to_level_path = "res://level/levels/level_22.tscn"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_w26x6")]
-position = Vector2(-160, 448)
+position = Vector2(-288, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://bnwundjfdgmbd"
+to_level_path = "uid://b3mv21r6xcn7b"
 to_spawn_location_with_index = 1
 
-[node name="MountedMachineGun" parent="." instance=ExtResource("5_cj6a2")]
-position = Vector2(224, 477)
+[node name="DemonRabbit" parent="." node_paths=PackedStringArray("mirror_spawn_locations", "platform_jump_locations") instance=ExtResource("6_5rx4e")]
+position = Vector2(960.00006, 864)
+scale = Vector2(3, 3)
+mirror_spawn_locations = [NodePath("../Clouds/CircularCloud1/PathFollow2D/CloudPlatform"), NodePath("../Clouds/CircularCloud2/PathFollow2D/CloudPlatform"), NodePath("../Clouds/CircularCloud3/PathFollow2D/CloudPlatform"), NodePath("../Clouds/CircularCloud4/PathFollow2D/CloudPlatform"), NodePath("../Clouds/CircularCloud5/PathFollow2D/CloudPlatform"), NodePath("../Clouds/CircularCloud6/PathFollow2D/CloudPlatform"), NodePath("../Clouds/CircularCloud7/PathFollow2D/CloudPlatform"), NodePath("../Clouds/CircularCloud8/PathFollow2D/CloudPlatform")]
+platform_jump_locations = [NodePath("../Marker2D3"), NodePath("../Marker2D2"), NodePath("../Marker2D")]
 
-[node name="MountedMachineGun2" parent="." instance=ExtResource("5_cj6a2")]
-position = Vector2(352, 288)
+[node name="Clouds" type="Node2D" parent="."]
+position = Vector2(416, 512)
 
-[node name="MountedMachineGun3" parent="." instance=ExtResource("5_cj6a2")]
-position = Vector2(480, 96)
+[node name="CircularCloud1" type="Path2D" parent="Clouds"]
+curve = SubResource("Curve2D_5rx4e")
+script = ExtResource("6_cn7bb")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Clouds/CircularCloud1"]
+position = Vector2(544, 1664)
+rotates = false
+
+[node name="CloudPlatform" parent="Clouds/CircularCloud1/PathFollow2D" instance=ExtResource("6_qdmkt")]
+randomize_inital_displacement = false
+
+[node name="CircularCloud2" type="Path2D" parent="Clouds"]
+curve = SubResource("Curve2D_5rx4e")
+script = ExtResource("6_cn7bb")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Clouds/CircularCloud2"]
+position = Vector2(1036.9576, 1273.1268)
+progress = 671.38226
+rotates = false
+
+[node name="CloudPlatform" parent="Clouds/CircularCloud2/PathFollow2D" instance=ExtResource("6_qdmkt")]
+randomize_inital_displacement = false
+
+[node name="CircularCloud3" type="Path2D" parent="Clouds"]
+curve = SubResource("Curve2D_5rx4e")
+script = ExtResource("6_cn7bb")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Clouds/CircularCloud3"]
+position = Vector2(1088, 608.00134)
+progress = 1342.7645
+rotates = false
+
+[node name="CloudPlatform" parent="Clouds/CircularCloud3/PathFollow2D" instance=ExtResource("6_qdmkt")]
+randomize_inital_displacement = false
+
+[node name="CircularCloud4" type="Path2D" parent="Clouds"]
+curve = SubResource("Curve2D_5rx4e")
+script = ExtResource("6_cn7bb")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Clouds/CircularCloud4"]
+position = Vector2(1036.959, -57.123177)
+progress = 2014.1467
+rotates = false
+
+[node name="CloudPlatform" parent="Clouds/CircularCloud4/PathFollow2D" instance=ExtResource("6_qdmkt")]
+randomize_inital_displacement = false
+
+[node name="CircularCloud5" type="Path2D" parent="Clouds"]
+curve = SubResource("Curve2D_5rx4e")
+script = ExtResource("6_cn7bb")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Clouds/CircularCloud5"]
+position = Vector2(544.0002, -447.99997)
+progress = 2685.529
+rotates = false
+
+[node name="CloudPlatform" parent="Clouds/CircularCloud5/PathFollow2D" instance=ExtResource("6_qdmkt")]
+randomize_inital_displacement = false
+
+[node name="CircularCloud6" type="Path2D" parent="Clouds"]
+curve = SubResource("Curve2D_5rx4e")
+script = ExtResource("6_cn7bb")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Clouds/CircularCloud6"]
+position = Vector2(51.041176, -57.123535)
+progress = 3356.9114
+rotates = false
+
+[node name="CloudPlatform" parent="Clouds/CircularCloud6/PathFollow2D" instance=ExtResource("6_qdmkt")]
+randomize_inital_displacement = false
+
+[node name="CircularCloud7" type="Path2D" parent="Clouds"]
+curve = SubResource("Curve2D_5rx4e")
+script = ExtResource("6_cn7bb")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Clouds/CircularCloud7"]
+position = Vector2(0, 608.0005)
+progress = 4028.2935
+rotates = false
+
+[node name="CloudPlatform" parent="Clouds/CircularCloud7/PathFollow2D" instance=ExtResource("6_qdmkt")]
+randomize_inital_displacement = false
+
+[node name="CircularCloud8" type="Path2D" parent="Clouds"]
+curve = SubResource("Curve2D_5rx4e")
+script = ExtResource("6_cn7bb")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Clouds/CircularCloud8"]
+position = Vector2(51.041645, 1273.125)
+progress = 4699.676
+rotates = false
+
+[node name="CloudPlatform" parent="Clouds/CircularCloud8/PathFollow2D" instance=ExtResource("6_qdmkt")]
+randomize_inital_displacement = false
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(960, 448)
+curve = SubResource("Curve2D_w26x6")
+script = ExtResource("6_cn7bb")
+speed = 200.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(768, 0)
+rotates = false
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Path2D/PathFollow2D"]
+position = Vector2(-704, -1536)
+tile_map_data = PackedByteArray("AAAKABgAAgAHAAEAAAALABgAAgAJAAEAAAA=")
+tile_set = ExtResource("2_uvxqh")
+use_kinematic_bodies = true
+
+[node name="MountedMachineGun4" parent="Path2D/PathFollow2D" instance=ExtResource("5_cj6a2")]
+position = Vector2(0, -40)
+machine_gun_bullet_direction = Vector2(-1, 0)
+machine_gun_bullet_direction_variance = Vector2(0, 0.02)
+machine_gun_bullet_speed = 1000.0
+machine_gun_bullet_collisison_mask = 98
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(960, 448)
+curve = SubResource("Curve2D_w26x6")
+script = ExtResource("6_cn7bb")
+speed = 200.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(-783.9994, 1408.0006)
+progress = 2960.0022
+rotates = false
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Path2D2/PathFollow2D"]
+position = Vector2(-704, -1536)
+tile_map_data = PackedByteArray("AAAKABgAAgAHAAEAAAALABgAAgAJAAEAAAA=")
+tile_set = ExtResource("2_uvxqh")
+use_kinematic_bodies = true
+
+[node name="MountedMachineGun4" parent="Path2D2/PathFollow2D" instance=ExtResource("5_cj6a2")]
+position = Vector2(0, -40)
+scale = Vector2(-1, 1)
+machine_gun_bullet_direction_variance = Vector2(0, 0.02)
+machine_gun_bullet_speed = 1000.0
+machine_gun_bullet_collisison_mask = 98
+
+[node name="FlipGunZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipGunZone"]
+position = Vector2(960, 448)
+shape = SubResource("RectangleShape2D_uvxqh")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(960, 168)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(960, 1576)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(960, 864)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("9_w26x6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(32, 448)
+shape = SubResource("RectangleShape2D_idkrq")
+
+[node name="Path2D4" type="Path2D" parent="."]
+position = Vector2(-32, 448)
+curve = SubResource("Curve2D_idkrq")
+script = ExtResource("9_idkrq")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+position = Vector2(0, -128)
+rotation = 3.1415927
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D4/PathFollow2D" instance=ExtResource("9_uvxqh")]
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(1952, 448)
+curve = SubResource("Curve2D_uvxqh")
+script = ExtResource("9_idkrq")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+rotation = 3.1415927
+rotates = false
+
+[node name="Door2" parent="Path2D3/PathFollow2D" instance=ExtResource("9_uvxqh")]
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="demon_rabbit_destroyed" from="DemonRabbit" to="Path2D3" method="_on_trigger"]
+[connection signal="area_entered" from="FlipGunZone" to="Path2D/PathFollow2D/MountedMachineGun4" method="flip_gun_direction" unbinds=1]
+[connection signal="area_entered" from="FlipGunZone" to="Path2D2/PathFollow2D/MountedMachineGun4" method="flip_gun_direction" unbinds=1]
+[connection signal="body_entered" from="Area2D" to="DemonRabbit" method="_begin_attacking_on_battlezone_enter"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_disable_area_after_enter" unbinds=1]
+[connection signal="body_entered" from="Area2D" to="Path2D4" method="_on_trigger" unbinds=1]

@@ -141,5 +141,13 @@ libraries = {
 }
 autoplay = "floating_alert"
 
+[node name="CrushCheckDownCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 25)
+collision_mask = 64
+
+[node name="CrushCheckUpCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, -20)
+collision_mask = 64
+
 [connection signal="timeout" from="RespawnGraceTimer" to="." method="_on_respawn_grace_timer_timeout"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

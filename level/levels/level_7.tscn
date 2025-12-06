@@ -9,6 +9,7 @@
 script = ExtResource("1_mdked")
 level_binding_box = Rect2(-128, -128, 768, 832)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+camera_zoom_to = Vector2(0.8, 0.8)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-128, 160)

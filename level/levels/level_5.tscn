@@ -11,6 +11,7 @@
 script = ExtResource("1_hby2w")
 level_binding_box = Rect2(0, 0, 1920, 1088)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+camera_zoom_to = Vector2(0.7, 0.7)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(0, 160)

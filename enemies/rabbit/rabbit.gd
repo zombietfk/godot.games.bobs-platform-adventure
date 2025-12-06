@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 			);
 			c_jump_timer = 0 - randf_range(-jump_timer_variance, jump_timer_variance);
 	c_jump_timer += delta;
-	velocity += get_gravity();
+	velocity += get_gravity() * delta;
 	move_and_slide();
 
 # METHODS
