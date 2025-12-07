@@ -90,14 +90,23 @@ func _process(delta: float) -> void:
 		m_gun_bullet.movement_speed = machine_gun_bullet_speed;
 		m_gun_bullet.collision_raycast.collision_mask = machine_gun_bullet_collisison_mask;
 
+var is_being_flipped = false;
+
 func flip_gun_direction()->void:
+	print(123);
+	if is_being_flipped:
+		return;
+	is_being_flipped = true;
 	var target_scale = scale.x * -1;
 	var original_scale = scale.x;
 	var timer = 0;
 	var timer_step = 0.02;
+	#print(original_scale, " ", target_scale);
 	while timer < 1:
 		await get_tree().create_timer(timer_step).timeout;
 		timer += timer_step;
 		scale.x = lerp(original_scale, target_scale, timer);
+	print('End Scale MGF - ',original_scale * -1);
 	scale.x = original_scale * -1;
 	machine_gun_bullet_direction *= -1;
+	is_being_flipped = false;

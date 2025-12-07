@@ -204,6 +204,7 @@ use_kinematic_bodies = true
 
 [node name="MountedMachineGun4" parent="Path2D/PathFollow2D" instance=ExtResource("5_cj6a2")]
 position = Vector2(0, -40)
+scale = Vector2(-1, 1)
 machine_gun_bullet_direction = Vector2(-1, 0)
 machine_gun_bullet_direction_variance = Vector2(0, 0.02)
 machine_gun_bullet_speed = 1000.0
@@ -228,7 +229,6 @@ use_kinematic_bodies = true
 
 [node name="MountedMachineGun4" parent="Path2D2/PathFollow2D" instance=ExtResource("5_cj6a2")]
 position = Vector2(0, -40)
-scale = Vector2(-1, 1)
 machine_gun_bullet_direction_variance = Vector2(0, 0.02)
 machine_gun_bullet_speed = 1000.0
 machine_gun_bullet_collisison_mask = 98
