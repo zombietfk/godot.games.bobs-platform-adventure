@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvqby3mtmw7qn"]
+
+[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="1_ehja4"]
+[ext_resource type="Script" uid="uid://dqdj2vojlx8ke" path="res://objects/health_upgrade_item.gd" id="2_f8vee"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ttw2y"]
+
+[node name="HealthUpgradeItem" type="Sprite2D"]
+texture = ExtResource("1_ehja4")
+script = ExtResource("2_f8vee")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ttw2y")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_enter_area"]

@@ -5,9 +5,9 @@
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_4nclm"]
 [ext_resource type="Script" uid="uid://bhj705hwpanuo" path="res://level/platforms/rotating/rotating_platform_over_time.gd" id="4_35ii1"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_ybuji"]
-[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="6_3wdit"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="6_a58x1"]
 [ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="7_tuskr"]
+[ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="8_ymkjy"]
 [ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying_imp.tscn" id="9_ymkjy"]
 
 [sub_resource type="Curve2D" id="Curve2D_tuskr"]
@@ -226,10 +226,10 @@ rotates = false
 script = ExtResource("4_35ii1")
 speed = -65.0
 
-[node name="HealthHeartIcon" type="Sprite2D" parent="Path2DSineCyclical2/PathFollow2D/SpinningPlatformPivot"]
+[node name="HealthUpgradeItem" parent="Path2DSineCyclical2/PathFollow2D/SpinningPlatformPivot" instance=ExtResource("8_ymkjy")]
 position = Vector2(-48, 48)
 rotation = -2.3911011
-texture = ExtResource("6_3wdit")
+pickup_unique_name = "hp_pickup_5"
 
 [node name="SpinningPlatform" type="TileMapLayer" parent="Path2DSineCyclical2/PathFollow2D/SpinningPlatformPivot"]
 position = Vector2(-32, -32)

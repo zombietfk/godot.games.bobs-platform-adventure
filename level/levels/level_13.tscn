@@ -1,40 +1,74 @@
-[gd_scene load_steps=9 format=4 uid="uid://6rbfed1cvfg4"]
+[gd_scene load_steps=15 format=4 uid="uid://6rbfed1cvfg4"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_xnn2y"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_5wg1i"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_ttw2y"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_i8q35"]
-[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="5_mshiv"]
-[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/checkpoint_flagpole.tscn" id="6_hf7np"]
+[ext_resource type="Script" uid="uid://dcys5f7vhk0x2" path="res://level/platforms/cloud/cloud_platform.gd" id="6_ttw2y"]
 [ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="7_5wg1i"]
-[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="8_ttw2y"]
+[ext_resource type="Texture2D" uid="uid://dhqbusl5wbuyn" path="res://level/platforms/cloud/cloud_platform.png" id="7_i8q35"]
+[ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="8_ttw2y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73g21"]
+size = Vector2(120, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo1gd"]
+atlas = ExtResource("7_i8q35")
+region = Rect2(0, 0, 128, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qdmc"]
+atlas = ExtResource("7_i8q35")
+region = Rect2(0, 32, 128, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e820i"]
+atlas = ExtResource("7_i8q35")
+region = Rect2(0, 64, 128, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2sx2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo1gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qdmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e820i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mshiv"]
+resource_local_to_scene = true
+custom_solver_bias = 1.0
+size = Vector2(129, 4)
 
 [node name="Level_13" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_xnn2y")
-level_binding_box = Rect2(0, 0, 832, 882)
-spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), NodePath("CheckpointSpawnPoint")]
+level_binding_box = Rect2(0, 0, 1088, 1088)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 camera_zoom_to = Vector2(1.1, 1.1)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(0, 352)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(832, 352)
-
-[node name="CheckpointSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(416, 416)
+position = Vector2(1088, 352)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(192, 0)
-tile_map_data = PackedByteArray("AAD9/wMAAgADAAMAAAD9/wYAAgADAAEAAAAJAAMAAgABAAMAAAAJAAYAAgACAAEAAAD9/wkAAgADAAIAAAD9/wgAAgADAAIAAAD9/wcAAgADAAIAAAD9/woAAgADAAIAAAAJAAcAAgACAAIAAAAJAAgAAgABAAIAAAAJAAkAAgABAAIAAAAJAAoAAgABAAIAAAD9/wEAAgACAAIAAAD9/wIAAgADAAIAAAAJAAEAAgACAAIAAAAJAAIAAgABAAIAAAD9/wsAAgADAAIAAAAJAAsAAgABAAIAAAD+/wEAAgADAAMAAAAIAAEAAgABAAMAAAAFAAAAAgACAAMAAAAGAAAAAgACAAMAAAAHAAAAAgACAAMAAAAEAAEAAgADAAMAAAADAAEAAgABAAMAAAABAAAAAgACAAMAAAACAAAAAgACAAMAAAAAAAEAAgAFAAUAAAD//wAAAgACAAMAAAD9/wAAAgACAAIAAAD+/wAAAgACAAIAAAAAAAAAAgACAAIAAAADAAAAAgACAAIAAAAEAAAAAgACAAIAAAAIAAAAAgACAAIAAAAJAAAAAgACAAIAAAD9/xAAAgADAAIAAAD9/w8AAgADAAIAAAD9/w4AAgADAAIAAAD9/w0AAgADAAIAAAD9/wwAAgADAAIAAAAJAAwAAgABAAIAAAAJAA0AAgABAAIAAAAJAA4AAgABAAIAAAAJAA8AAgABAAIAAAAJABAAAgABAAIAAAD8/wYAAgACAAEAAAD8/wMAAgACAAMAAAAKAAMAAgACAAMAAAAKAAYAAgACAAEAAAAHAAcAAgABAAIAAAAHAAgAAgAFAAQAAAAHAAkAAgAFAAUAAAAIAAYAAgACAAEAAAAIAAcAAgACAAMAAAAHAAsAAgAFAAEAAAAGAAYAAgABAAMAAAAGAAUAAgAFAAQAAAAGAAQAAgAFAAQAAAAGAAMAAgAFAAMAAAAHAAYAAgACAAEAAAA=")
+tile_map_data = PackedByteArray("AAD9/wMAAgADAAMAAAD9/wYAAgADAAEAAAD9/wkAAgADAAIAAAD9/wgAAgADAAIAAAD9/wcAAgADAAIAAAD9/woAAgADAAIAAAD9/wEAAgACAAIAAAD9/wIAAgADAAIAAAD9/wsAAgADAAIAAAD+/wEAAgADAAMAAAAFAAAAAgACAAMAAAAEAAEAAgADAAMAAAADAAEAAgABAAMAAAABAAAAAgACAAMAAAACAAAAAgACAAMAAAAAAAEAAgAFAAUAAAD//wAAAgACAAMAAAD9/wAAAgACAAIAAAD+/wAAAgACAAIAAAAAAAAAAgACAAIAAAADAAAAAgACAAIAAAAEAAAAAgACAAIAAAD9/xAAAgADAAIAAAD9/w8AAgADAAIAAAD9/w4AAgADAAIAAAD9/w0AAgADAAIAAAD9/wwAAgADAAIAAAD8/wYAAgACAAEAAAD8/wMAAgACAAMAAAAKAAAAAgACAAMAAAALAAAAAgACAAMAAAALAAkAAgAFAAEAAAALAAsAAgAFAAEAAAAMAAAAAgALAAcAAAAMAAEAAgABAAMAAAANAAAAAgACAAIAAAANAAEAAgALAAcAAAANAAIAAgABAAIAAAANAAMAAgABAAMAAAANAAYAAgABAAEAAAANAAcAAgABAAIAAAANAAgAAgABAAIAAAANAAkAAgABAAIAAAANAAoAAgABAAIAAAANAAsAAgABAAIAAAANAAwAAgABAAIAAAANAA0AAgABAAIAAAANAA4AAgABAAIAAAANAA8AAgABAAIAAAANABAAAgABAAIAAAAOAAMAAgACAAMAAAAOAAYAAgACAAEAAAAGAAAAAgACAAMAAAAHAAAAAgACAAMAAAAIAAAAAgACAAMAAAAJAAAAAgACAAMAAAALAAcAAgAFAAEAAAALAA0AAgAFAAEAAAALAA8AAgAFAAEAAAA=")
 tile_set = ExtResource("2_5wg1i")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
-tile_map_data = PackedByteArray("AAAPAA8AAAAfAA8AAAASAA8AAAAWAA8AAAANAAwAAAAfAAYAAAAOAA0AAAAWAA8AAAASAAMAAAAWAA8AAAAQAAEAAAAWAA8AAAAGAAEAAAAWAA8AAAAAAAEAAAAWAA8AAAAJAAEAAAAfAA8AAAABAAEAAAAfAA8AAAD9/wEAAAAfAA8AAAD7/wMAAAAfAA8AAAA=")
+tile_map_data = PackedByteArray("AAAGAAEAAAAWAA8AAAAAAAEAAAAWAA8AAAAJAAEAAAAfAA8AAAABAAEAAAAfAA8AAAD9/wEAAAAfAA8AAAD7/wMAAAAfAA8AAAA=")
 tile_set = ExtResource("3_ttw2y")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_i8q35")]
-position = Vector2(928, 320)
+position = Vector2(1184, 320)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/level_14.tscn"
 
@@ -44,28 +78,43 @@ scale = Vector2(4, 8.1)
 to_level_path = "uid://rewxth2tq56f"
 to_spawn_location_with_index = 1
 
-[node name="Rabbit" parent="." instance=ExtResource("5_mshiv")]
-position = Vector2(703, 370)
-turnaround_on_platform_edge = true
-
-[node name="CheckpointFlagpole" parent="." instance=ExtResource("6_hf7np")]
-position = Vector2(736, 352)
-level_path = "uid://6rbfed1cvfg4"
-spawn_index = 2
-
 [node name="CloudPlatform2" parent="." instance=ExtResource("7_5wg1i")]
 position = Vector2(192, 384)
 on_land_displacement = 0
 bounce_timer = 1.0
 
 [node name="CloudPlatform" parent="." instance=ExtResource("7_5wg1i")]
-position = Vector2(448, 384)
+position = Vector2(544, 384)
 on_land_displacement = 600
 randomize_inital_displacement = false
 bounce_timer = 2.5
 
-[node name="HealthHeartIcon" type="Sprite2D" parent="."]
-position = Vector2(672, 672)
-texture = ExtResource("8_ttw2y")
+[node name="CloudPlatform3" type="AnimatableBody2D" parent="."]
+position = Vector2(864, 384)
+collision_layer = 64
+sync_to_physics = false
+script = ExtResource("6_ttw2y")
+on_land_displacement = -600
+randomize_inital_displacement = false
+bounce_timer = 2.5
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="CloudPlatform3"]
+position = Vector2(0, -31)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_73g21")
+target_position = Vector2(0, -8)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CloudPlatform3"]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_2sx2x")
+autoplay = "default"
+frame_progress = 0.472206
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloudPlatform3"]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_mshiv")
+
+[node name="HealthUpgradeItem" parent="." instance=ExtResource("8_ttw2y")]
+pickup_unique_name = "hp_pickup_4"
 
 [connection signal="ready" from="." to="." method="_on_ready"]

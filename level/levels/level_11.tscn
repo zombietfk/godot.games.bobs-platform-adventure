@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=4 uid="uid://co204ll0li0k8"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_224ee"]
+[ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="2_224ee"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_y8i0u"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_bxg01"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_kxs5p"]
 [ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="4_2mn4d"]
-[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="5_t4gag"]
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="6_2b23t"]
 [ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="6_xoq06"]
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="7_jjq62"]
@@ -41,9 +41,9 @@ position = Vector2(-192, 480)
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(640, 480)
 
-[node name="HealthHeartIcon" type="Sprite2D" parent="."]
+[node name="HealthUpgradeItem" parent="." instance=ExtResource("2_224ee")]
 position = Vector2(96, -384)
-texture = ExtResource("5_t4gag")
+pickup_unique_name = "hp_pickup_3"
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)

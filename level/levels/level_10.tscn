@@ -6,9 +6,9 @@
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_36xoc"]
 [ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="4_ps23h"]
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="5_gv03e"]
-[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="5_seura"]
 [ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="6_6ijwk"]
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="6_36xoc"]
+[ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="6_gv03e"]
 [ext_resource type="PackedScene" uid="uid://dyor0okde2rnm" path="res://enemies/imp/imp.tscn" id="8_4x0sv"]
 [ext_resource type="PackedScene" uid="uid://bwm72kx7ki3v6" path="res://objects/traps/sawblade/shooter/sawblade_timed_shooter.tscn" id="10_ps23h"]
 
@@ -2442,9 +2442,9 @@ jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
 
-[node name="HealthHeartIcon" type="Sprite2D" parent="."]
+[node name="HealthUpgradeItem" parent="." instance=ExtResource("6_gv03e")]
 position = Vector2(-736, 224)
-texture = ExtResource("5_seura")
+pickup_unique_name = "hp_pickup_2"
 
 [node name="Switch" parent="." instance=ExtResource("6_36xoc")]
 position = Vector2(960, 64)
