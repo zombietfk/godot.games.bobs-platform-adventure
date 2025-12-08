@@ -17,7 +17,7 @@ var throw_pitchfork_timer = 3.0;
 var c_throw_pitchfork_timer = 0.0;
 var throw_pitchfork_return_timer = 6.0;
 var is_holding_pitchfork = true;
-var pitchfork_speed = 18;
+var pitchfork_speed = 24;
 var coroutine_processing_timer_duration = 0.02;
 var summon_mirror_counter: Dictionary = {
 	"to_summon": 2,
@@ -27,12 +27,13 @@ var summon_mirror_counter: Dictionary = {
 var summon_timer: float = 3.0;
 var c_summon_timer: float = 0;
 @export var summoned_enemy_scene: PackedScene;
+var max_summoned_enemies_per_mirror = 4;
 @export var mirror_scene: PackedScene;
 @export var magic_spell_shot: PackedScene;
 @export var mirror_spawn_locations: Array[Node2D];
 var availiable_mirror_spawn_locations: Array[Node2D];
-var mirror_summon_time = 5.0;
-var bullet_hits_until_stunned = 10;
+var mirror_summon_time = 1;
+var bullet_hits_until_stunned = 18;
 var is_in_bullet_hit_cooldown_period = false;
 @export var platform_jump_locations: Array[Node2D];
 var is_recovering = false;
@@ -44,9 +45,18 @@ signal demon_rabbit_destroyed();
 
 func _ready() -> void:
 	availiable_mirror_spawn_locations = mirror_spawn_locations.duplicate();
-	current_platform_jump_location = platform_jump_locations[0]
+	current_platform_jump_location = platform_jump_locations[0];
+	Main.instance.player.camera.reparent.call_deferred(Main.instance.level_instance);
+	Main.instance.player.camera.global_position = (
+		Main.instance.level_instance.level_binding_box.size +
+		Main.instance.level_instance.level_binding_box.position
+	) / 2;
 
 func _physics_process(delta: float) -> void:
+	Main.instance.player.camera.global_position.y = (
+		Main.instance.player.global_position.y * 2
+		+ global_position.y
+	) / 3;
 	if is_on_floor() and state == DemonRabbitState.SUMMONING:
 		c_jump_timer += delta;
 		if c_jump_timer >= jump_timer: 
@@ -207,19 +217,25 @@ func spawn_mirror_at_target(target: Node2D)->void:
 
 func spawn_enemies_at_node_every_x(node: Mirror, every_x: float)->void:
 	await get_tree().create_timer(every_x).timeout;
+	var summoned_enemies_at_node = { "count" : 0 };
 	while node != null:
-		var summoned_enemy = summoned_enemy_scene.instantiate() as FlyingImp;
-		summoned_enemy.global_position = node.global_position;
-		summoned_enemy.scale = Vector2.ZERO;
-		node.connect("on_shatter", summoned_enemy.gib_and_kill);
-		increase_summoned_size_until(summoned_enemy);
-		Main.instance.level_instance.add_child(summoned_enemy);
+		if summoned_enemies_at_node.count < max_summoned_enemies_per_mirror:
+			var summoned_enemy = summoned_enemy_scene.instantiate() as FlyingImp;
+			summoned_enemy.global_position = node.global_position;
+			summoned_enemy.scale = Vector2.ZERO;
+			node.connect("on_shatter", summoned_enemy.gib_and_kill);
+			summoned_enemy.connect("on_death", Callable(func():
+				summoned_enemies_at_node.count -= 1;
+			));
+			increase_summoned_size_until(summoned_enemy);
+			summoned_enemies_at_node.count += 1;
+			Main.instance.level_instance.add_child(summoned_enemy);
 		await get_tree().create_timer(every_x).timeout;
 		
 func increase_summoned_size_until(
 	summon: Node2D,
 	until_size: Vector2 = Vector2.ONE,
-	duration: float = 1,
+	duration: float = 0.5,
 ) -> void:
 	var c_duration = 0.0;
 	var inital_scale = summon.scale;
@@ -268,14 +284,13 @@ func recover_from_stun_and_reset() -> void:
 		else:
 			velocity.y -= global_position.y - current_platform_jump_location.global_position.y + get_gravity().y * 0.5 + 128;
 	$CollisionShape2D.disabled = true;
-	summon_timer *= 0.8;
+	summon_timer *= 0.666;
 	summon_mirror_counter.to_summon *= 2;
 	summon_mirror_counter.to_summon = clamp(summon_mirror_counter.to_summon, 0, 8);
 	availiable_mirror_spawn_locations = mirror_spawn_locations.duplicate();
-	throw_pitchfork_return_timer -= 1;
-	throw_pitchfork_timer *= 0.8;
-	mirror_summon_time -= 0.5;
-	bullet_hits_until_stunned = 10;
+	throw_pitchfork_return_timer -= 1.5;
+	throw_pitchfork_timer *= 0.6;
+	bullet_hits_until_stunned = 18;
 	
 func destroy()->void:
 	if is_being_destroyed:
@@ -291,6 +306,8 @@ func destroy()->void:
 	$CollisionShape2D.disabled = true;
 	$ForceField/StaticBody2D/CollisionShape2D.disabled = true;
 	await get_tree().create_timer(5).timeout;
+	remove_child(Main.instance.player.camera);
+	Main.instance.player.camera.reparent(Main.instance.player);
 	demon_rabbit_destroyed.emit();
 	queue_free();
 

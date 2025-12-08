@@ -10,6 +10,7 @@ enum DIFFICULTY {
 # SETTINGS
 @export_file() var inital_level_path: String;
 @export_file() var inital_checkpoint_path: String;
+@export var camera: Camera2D;
 
 # INTERNAL STATE
 static var player: Player;
@@ -56,6 +57,7 @@ static func load_level(
 	level_path: String = current_spawn_level,
 	spawn_index: int = current_spawn_index,
 ) -> void:
+	Main.instance.player.camera.reparent(Main.instance.player);
 	update_spawn(level_path, spawn_index);
 	current_level_path = level_path;
 	if level_instance != null:

@@ -17,6 +17,8 @@ var c_attacking_length_timer = 0.0;
 var floating_displacement_timer = 0.0;
 var floating_displacement_magnitude = 25;
 
+signal on_death();
+
 func _process(delta: float) -> void:
 	match state:
 		FlyingImpState.SEEKING:
@@ -63,4 +65,5 @@ func _process_attacks() -> void:
 func gib_and_kill(gibs: int = 5) -> void:
 	for i in gibs:
 		Gib.spawn(global_position, -velocity);
+	on_death.emit();
 	queue_free();

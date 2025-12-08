@@ -109,10 +109,10 @@ label_settings = SubResource("LabelSettings_ycdy4")
 
 [node name="LivesCount" type="Label" parent="GameUI/UI"]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 32.0
-offset_right = 194.0
-offset_bottom = 55.0
+offset_left = 11.0
+offset_top = 33.0
+offset_right = 109.0
+offset_bottom = 56.0
 text = "0"
 label_settings = SubResource("LabelSettings_ycdy4")
 

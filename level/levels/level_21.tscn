@@ -281,7 +281,7 @@ point_count = 2
 script = ExtResource("1_cn7bb")
 level_binding_box = Rect2(-192, -448, 2112, 2304)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
-camera_zoom_to = Vector2(0.6, 0.6)
+camera_zoom_to = Vector2(0.45, 0.45)
 camera_zoom_speed = 0.01
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
@@ -511,6 +511,7 @@ script = ExtResource("9_idkrq")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
 rotation = 3.1415927
 rotates = false
+loop = false
 
 [node name="Door2" parent="Path2D3/PathFollow2D" instance=ExtResource("9_uvxqh")]
 
