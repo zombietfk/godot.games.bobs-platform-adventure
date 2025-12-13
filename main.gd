@@ -58,6 +58,7 @@ static func load_level(
 	spawn_index: int = current_spawn_index,
 ) -> void:
 	Main.instance.player.camera.reparent(Main.instance.player);
+	Main.instance.player.camera.position = Vector2.ZERO;
 	update_spawn(level_path, spawn_index);
 	current_level_path = level_path;
 	if level_instance != null:

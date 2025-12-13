@@ -1,0 +1,194 @@
+[gd_scene load_steps=13 format=4 uid="uid://mw10pn57hpj1"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_vegbc"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_hr4gq"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_8b2to"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_2y2w5"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="5_dn6ha"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="6_hr4gq"]
+[ext_resource type="PackedScene" uid="uid://bmh7affp16sse" path="res://objects/mounted_machine_gun/mounted_machine_gun.tscn" id="6_vegbc"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="6_wd0j7"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="9_2y2w5"]
+[ext_resource type="PackedScene" uid="uid://cclnn5v3he5e0" path="res://enemies/bat/bat.tscn" id="10_w2xh8"]
+[ext_resource type="PackedScene" uid="uid://dyor0okde2rnm" path="res://enemies/imp/imp.tscn" id="11_wd0j7"]
+
+[sub_resource type="Curve2D" id="Curve2D_8b2to"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
+}
+point_count = 2
+
+[node name="Level_29" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_vegbc")
+level_binding_box = Rect2(-96, -64, 2528, 704)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(1.1, 1.1)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(2528, 416)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD+/wgAAgACAAMAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAAIAAsAAgAIAAEAAAAJAAsAAgAIAAEAAAD//wsAAgACAAEAAAAAAAsAAgACAAEAAAABAAsAAgACAAEAAAACAAsAAgAIAAEAAAADAAsAAgAIAAEAAAAEAAsAAgAIAAEAAAAFAAsAAgAIAAEAAAAGAAsAAgAIAAEAAAAHAAsAAgAIAAEAAAAKAAsAAgAIAAEAAAALAAsAAgAIAAEAAAAMAAsAAgACAAMAAAANAAsAAgAIAAEAAAAOAAsAAgAIAAEAAAAPAAsAAgAIAAEAAAARAAsAAgAIAAEAAAD//wgAAgACAAMAAAAAAAgAAgACAAMAAAABAAgAAgACAAMAAAACAAgAAgADAAMAAAADAAUAAgADAAIAAAADAAYAAgADAAIAAAADAAcAAgADAAMAAAAEAAQAAgACAAMAAAAFAAQAAgACAAMAAAAGAAQAAgACAAMAAAAHAAQAAgACAAMAAAAIAAQAAgACAAMAAAAJAAQAAgADAAMAAAASAAsAAgAIAAEAAAATAAsAAgAIAAEAAAAUAAsAAgACAAMAAAAVAAsAAgAIAAEAAAAWAAsAAgAIAAEAAAAXAAsAAgAIAAEAAAAZAAsAAgAIAAEAAAAaAAsAAgAIAAEAAAAMAAoAAgAFAAMAAAAUAAoAAgAFAAMAAAALAAUAAgABAAIAAAALAAYAAgABAAMAAAANAAUAAgADAAIAAAANAAYAAgADAAMAAAAPAAUAAgABAAIAAAAPAAYAAgABAAMAAAARAAUAAgADAAIAAAARAAYAAgADAAMAAAATAAUAAgABAAIAAAATAAYAAgABAAMAAAAUAAUAAgADAAIAAAAUAAYAAgADAAIAAAAUAAcAAgAFAAUAAAAKAAMAAgACAAMAAAALAAQAAgABAAIAAAAMAAcAAgAFAAUAAAANAAQAAgADAAIAAAAOAAMAAgACAAMAAAAPAAQAAgABAAIAAAAQAAcAAgAFAAUAAAARAAQAAgADAAIAAAASAAMAAgACAAMAAAATAAQAAgABAAIAAAAQAAsAAgAIAAEAAAAUAAQAAgADAAIAAAAUAAMAAgADAAIAAAAVAAIAAgACAAMAAAAWAAIAAgACAAMAAAAXAAIAAgACAAMAAAAYAAIAAgACAAMAAAAZAAIAAgACAAMAAAAaAAIAAgACAAMAAAAbAAIAAgACAAMAAAAcAAIAAgACAAMAAAAdAAIAAgACAAMAAAAeAAIAAgACAAMAAAAYAAsAAgAIAAEAAAAbAAsAAgAIAAEAAAAcAAsAAgAIAAEAAAAdAAsAAgAIAAEAAAAeAAsAAgAIAAEAAAAEAA0AAgACAAEAAAAFAA0AAgACAAEAAAAGAA0AAgACAAEAAAAHAA0AAgACAAEAAAAIAA0AAgACAAEAAAAJAA0AAgACAAEAAAAKAA0AAgACAAEAAAALAA0AAgACAAEAAAANAA0AAgACAAEAAAAOAA0AAgACAAEAAAAPAA0AAgACAAEAAAAQAA0AAgACAAEAAAARAA0AAgACAAEAAAATAA0AAgACAAEAAAASAA0AAgACAAEAAAAVAA0AAgACAAEAAAAWAA0AAgACAAEAAAAXAA0AAgACAAEAAAAYAA0AAgACAAEAAAAZAA0AAgACAAEAAAAaAA0AAgACAAEAAAAbAA0AAgACAAEAAAAcAA0AAgACAAEAAAAdAA0AAgACAAEAAAAeAA0AAgACAAEAAAAXAAkAAgAFAAEAAAAZAAcAAgAFAAEAAAAcAAcAAgAFAAEAAAAeAAkAAgAFAAEAAAAeAAUAAgAFAAEAAAAXAAUAAgAFAAEAAAAgAAIAAgACAAMAAAAgAAsAAgAIAAEAAAAgAA0AAgACAAEAAAAhAAMAAgABAAIAAAAhAAQAAgABAAIAAAAhAAUAAgABAAIAAAAhAAYAAgABAAIAAAAhAAcAAgABAAMAAAAhAAoAAgABAAEAAAAhAAwAAgABAAIAAAAfAAsAAgAIAAEAAAAfAA0AAgACAAEAAAAUAA0AAgACAAEAAAAMAA0AAgACAAEAAAAiAAoAAgACAAEAAAAjAAoAAgACAAEAAAAkAAoAAgACAAEAAAAlAAoAAgACAAEAAAAmAAoAAgACAAEAAAAnAAoAAgACAAEAAAAoAAoAAgACAAEAAAAiAAcAAgACAAMAAAAkAAcAAgACAAMAAAAjAAcAAgACAAMAAAAlAAcAAgACAAMAAAAmAAcAAgACAAMAAAAnAAcAAgACAAMAAAAoAAcAAgACAAMAAAACAA0AAgACAAEAAAABAAwAAgADAAIAAAADAA0AAgACAAEAAAAfAAIAAgACAAMAAAAHAAkAAgAFAAEAAAABAA0AAgACAAIAAAABAA4AAgACAAIAAAACAA4AAgACAAIAAAADAA4AAgACAAIAAAAEAA4AAgACAAIAAAAFAA4AAgACAAIAAAAGAA4AAgACAAIAAAAHAA4AAgACAAIAAAAIAA4AAgACAAIAAAAJAA4AAgACAAIAAAAKAA4AAgACAAIAAAALAA4AAgACAAIAAAAMAA4AAgACAAIAAAANAA4AAgACAAIAAAAOAA4AAgACAAIAAAAPAA4AAgACAAIAAAAQAA4AAgACAAIAAAARAA4AAgACAAIAAAASAA4AAgACAAIAAAATAA4AAgACAAIAAAAUAA4AAgACAAIAAAAVAA4AAgACAAIAAAAWAA4AAgACAAIAAAAXAA4AAgACAAIAAAAYAA4AAgACAAIAAAAZAA4AAgACAAIAAAAaAA4AAgACAAIAAAAbAA4AAgACAAIAAAAcAA4AAgACAAIAAAAdAA4AAgACAAIAAAAeAA4AAgACAAIAAAAfAA4AAgACAAIAAAAgAA4AAgACAAIAAAAhAA0AAgACAAIAAAAhAA4AAgACAAIAAAAhAAsAAgACAAIAAAAiAAsAAgACAAIAAAAjAAsAAgACAAIAAAAkAAsAAgACAAIAAAAlAAsAAgACAAIAAAAmAAsAAgACAAIAAAAnAAsAAgACAAIAAAAoAAsAAgACAAIAAAAiAAYAAgACAAIAAAAjAAYAAgACAAIAAAAkAAYAAgACAAIAAAAlAAYAAgACAAIAAAAmAAYAAgACAAIAAAAnAAYAAgACAAIAAAAoAAYAAgACAAIAAAAiAAIAAgACAAIAAAAiAAMAAgACAAIAAAAiAAQAAgACAAIAAAAiAAUAAgACAAIAAAAhAAIAAgACAAIAAAD9/wIAAgACAAIAAAD+/wIAAgACAAIAAAD//wIAAgACAAIAAAAAAAIAAgACAAIAAAABAAIAAgACAAIAAAACAAIAAgACAAIAAAADAAIAAgACAAIAAAAEAAIAAgACAAIAAAAFAAIAAgACAAIAAAAGAAIAAgACAAIAAAAHAAIAAgACAAIAAAAIAAIAAgACAAIAAAAJAAIAAgACAAIAAAAKAAIAAgACAAIAAAALAAIAAgACAAIAAAAMAAIAAgACAAIAAAANAAIAAgACAAIAAAAOAAIAAgACAAIAAAAPAAIAAgACAAIAAAAQAAIAAgACAAIAAAARAAIAAgACAAIAAAASAAIAAgACAAIAAAATAAIAAgACAAIAAAAUAAIAAgACAAIAAAD9/wMAAgACAAIAAAD9/wQAAgACAAIAAAD9/wUAAgACAAIAAAD9/wYAAgACAAIAAAD9/wcAAgACAAIAAAD9/wwAAgACAAIAAAD9/w0AAgACAAIAAAD9/w4AAgACAAIAAAD+/wwAAgACAAIAAAD+/w0AAgACAAIAAAD+/w4AAgACAAIAAAD//wwAAgACAAIAAAD//w0AAgACAAIAAAD//w4AAgACAAIAAAAAAAwAAgACAAIAAAAAAA0AAgACAAIAAAAAAA4AAgACAAIAAAD+/wMAAgACAAIAAAD+/wQAAgACAAIAAAD+/wUAAgACAAIAAAD+/wYAAgACAAIAAAD+/wcAAgACAAIAAAD//wMAAgACAAIAAAD//wQAAgACAAIAAAD//wUAAgACAAIAAAD//wYAAgACAAIAAAD//wcAAgACAAIAAAAAAAMAAgACAAIAAAAAAAQAAgACAAIAAAAAAAUAAgACAAIAAAAAAAYAAgACAAIAAAAAAAcAAgACAAIAAAABAAMAAgACAAIAAAABAAQAAgACAAIAAAABAAUAAgACAAIAAAABAAYAAgACAAIAAAABAAcAAgACAAIAAAACAAMAAgACAAIAAAACAAQAAgACAAIAAAACAAUAAgACAAIAAAACAAYAAgACAAIAAAACAAcAAgACAAIAAAADAAMAAgACAAIAAAADAAQAAgACAAIAAAAEAAMAAgACAAIAAAAFAAMAAgACAAIAAAAGAAMAAgACAAIAAAAHAAMAAgACAAIAAAAIAAMAAgACAAIAAAAJAAMAAgACAAIAAAAMAAMAAgACAAIAAAAMAAQAAgACAAIAAAAMAAUAAgACAAIAAAAMAAYAAgACAAIAAAALAAMAAgACAAIAAAANAAMAAgACAAIAAAAQAAMAAgACAAIAAAAQAAQAAgACAAIAAAAQAAUAAgACAAIAAAAQAAYAAgACAAIAAAAPAAMAAgACAAIAAAARAAMAAgACAAIAAAATAAMAAgACAAIAAAA=")
+tile_set = ExtResource("2_hr4gq")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_8b2to")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_2y2w5")]
+position = Vector2(2592, 384)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_24.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_2y2w5")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b3xkt036gq5el"
+to_spawn_location_with_index = 1
+
+[node name="MountedMachineGun" parent="." instance=ExtResource("6_vegbc")]
+position = Vector2(2304, 416)
+scale = Vector2(-1, 1)
+machine_gun_bullet_direction = Vector2(-1, 0)
+machine_gun_bullet_direction_variance = Vector2(0.02, 0)
+
+[node name="Path2D2" type="Path2D" parent="." node_paths=PackedStringArray("movement_path")]
+position = Vector2(800, 384)
+curve = SubResource("Curve2D_8b2to")
+script = ExtResource("6_hr4gq")
+movement_path = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D2/PathFollow2D" instance=ExtResource("5_dn6ha")]
+
+[node name="Path2D3" type="Path2D" parent="." node_paths=PackedStringArray("movement_path")]
+position = Vector2(1312, 384)
+curve = SubResource("Curve2D_8b2to")
+script = ExtResource("6_hr4gq")
+movement_path = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D3/PathFollow2D" instance=ExtResource("5_dn6ha")]
+
+[node name="Path2D4" type="Path2D" parent="." node_paths=PackedStringArray("movement_path")]
+position = Vector2(2144, 384)
+curve = SubResource("Curve2D_8b2to")
+script = ExtResource("6_hr4gq")
+movement_path = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D4/PathFollow2D" instance=ExtResource("5_dn6ha")]
+
+[node name="Path2D5" type="Path2D" parent="." node_paths=PackedStringArray("movement_path")]
+position = Vector2(800, 640)
+curve = SubResource("Curve2D_8b2to")
+script = ExtResource("6_hr4gq")
+movement_path = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D5/PathFollow2D" instance=ExtResource("5_dn6ha")]
+
+[node name="Path2D7" type="Path2D" parent="." node_paths=PackedStringArray("movement_path")]
+position = Vector2(224, 640)
+rotation = 3.1415927
+curve = SubResource("Curve2D_8b2to")
+script = ExtResource("6_hr4gq")
+movement_path = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7"]
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D7/PathFollow2D" instance=ExtResource("5_dn6ha")]
+
+[node name="Path2D6" type="Path2D" parent="." node_paths=PackedStringArray("movement_path")]
+position = Vector2(1312, 640)
+curve = SubResource("Curve2D_8b2to")
+script = ExtResource("6_hr4gq")
+movement_path = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D6"]
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D6/PathFollow2D" instance=ExtResource("5_dn6ha")]
+
+[node name="Rabbit" parent="." instance=ExtResource("6_wd0j7")]
+position = Vector2(167, 626)
+
+[node name="Switch" parent="." instance=ExtResource("9_2y2w5")]
+position = Vector2(160, 512)
+collision_mask = 1
+
+[node name="Switch2" parent="." instance=ExtResource("9_2y2w5")]
+position = Vector2(736, 640)
+collision_mask = 4
+
+[node name="Switch3" parent="." instance=ExtResource("9_2y2w5")]
+position = Vector2(1248, 640)
+collision_mask = 4
+
+[node name="Switch4" parent="." instance=ExtResource("9_2y2w5")]
+position = Vector2(2080, 640)
+collision_mask = 4
+
+[node name="Switch5" parent="." instance=ExtResource("9_2y2w5")]
+position = Vector2(736, 512)
+collision_mask = 1
+
+[node name="Switch6" parent="." instance=ExtResource("9_2y2w5")]
+position = Vector2(1248, 512)
+collision_mask = 1
+
+[node name="Bat" parent="." instance=ExtResource("10_w2xh8")]
+position = Vector2(288, 160)
+
+[node name="Bat3" parent="." instance=ExtResource("10_w2xh8")]
+position = Vector2(672, 96)
+
+[node name="Bat4" parent="." instance=ExtResource("10_w2xh8")]
+position = Vector2(928, 96)
+
+[node name="Bat5" parent="." instance=ExtResource("10_w2xh8")]
+position = Vector2(1184, 96)
+
+[node name="Bat6" parent="." instance=ExtResource("10_w2xh8")]
+position = Vector2(1408, 32)
+
+[node name="Bat10" parent="." instance=ExtResource("10_w2xh8")]
+position = Vector2(1728, 32)
+
+[node name="Bat16" parent="." instance=ExtResource("10_w2xh8")]
+position = Vector2(2048, 32)
+
+[node name="Imp" parent="." instance=ExtResource("11_wd0j7")]
+position = Vector2(896, 480)
+
+[node name="Imp2" parent="." instance=ExtResource("11_wd0j7")]
+position = Vector2(1216, 480)
+
+[node name="Imp3" parent="." instance=ExtResource("11_wd0j7")]
+position = Vector2(1728, 480)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="Path2D7" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch2" to="Path2D2" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch3" to="Path2D3" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch4" to="Path2D4" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch5" to="Path2D5" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch6" to="Path2D6" method="_on_switch_flipped_on"]

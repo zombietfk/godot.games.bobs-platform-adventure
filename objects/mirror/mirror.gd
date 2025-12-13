@@ -12,6 +12,5 @@ func shatter()->void:
 			Vector2.ZERO,
 			"res://objects/mirror/glass_gibs/glass_gib.tscn"
 		);
-	print('glassshatter');
 	on_shatter.emit();
 	queue_free();

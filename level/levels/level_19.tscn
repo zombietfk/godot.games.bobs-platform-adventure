@@ -409,7 +409,7 @@ fall_after = 0.5
 
 [node name="FallingSpike4" type="Node2D" parent="." node_paths=PackedStringArray("falling_node")]
 z_index = -1
-position = Vector2(800, 224)
+position = Vector2(828.00006, 192)
 rotation = -2.3561945
 scale = Vector2(1.75, 1.75)
 script = ExtResource("8_tj7p3")

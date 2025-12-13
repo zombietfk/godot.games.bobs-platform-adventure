@@ -1,0 +1,193 @@
+[gd_scene load_steps=18 format=4 uid="uid://bc3n4hvmcxp5v"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_qeuft"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_ys8xl"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_bjxwb"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_qis5t"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="5_q3teu"]
+[ext_resource type="Script" uid="uid://8r1rhr8wtcyx" path="res://objects/abstract/fall_on_pass_below/fall_on_pass_below.gd" id="6_pu8k3"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="6_qeuft"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="7_x5q85"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="9_bjxwb"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="10_pu8k3"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="10_qis5t"]
+[ext_resource type="PackedScene" uid="uid://cclnn5v3he5e0" path="res://enemies/bat/bat.tscn" id="11_tw1ov"]
+
+[sub_resource type="Curve2D" id="Curve2D_ys8xl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -512)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_7xwx0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spike:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mrcqh"]
+resource_name = "spike_shake"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spike:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-4, 0), Vector2(4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4pty1"]
+_data = {
+&"RESET": SubResource("Animation_7xwx0"),
+&"spike_shake": SubResource("Animation_mrcqh")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_pu8k3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
+}
+point_count = 2
+
+[node name="Level_27" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_qeuft")
+level_binding_box = Rect2(-96, -1728, 352, 576)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(352, 32)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAAAAAsAAgACAAEAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wUAAgADAAIAAAD//wYAAgACAAIAAAD//wcAAgACAAIAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAD//wMAAgADAAIAAAD//wAAAgADAAIAAAD//wEAAgADAAIAAAD//wIAAgACAAIAAAD/////AgADAAIAAAD///7/AgACAAIAAAD///3/AgADAAIAAAD///z/AgADAAIAAAABAAsAAgACAAEAAAACAAsAAgACAAEAAAADAAsAAgACAAEAAAAEAAsAAgACAAEAAAD///T/AgADAAIAAAD///X/AgADAAIAAAD///b/AgADAAIAAAD///f/AgADAAIAAAD///j/AgACAAIAAAD///n/AgADAAIAAAD///r/AgADAAIAAAD///v/AgADAAIAAAAAAAYAAgAFAAgAAAAAAAcAAgAFAAkAAAAEAAgAAgACAAgAAAAEAAkAAgACAAkAAAAFAPT/AgABAAIAAAAFAPX/AgABAAIAAAAFAPb/AgABAAIAAAAFAPf/AgABAAIAAAAFAPj/AgABAAIAAAAFAPn/AgABAAIAAAAFAPr/AgABAAIAAAAFAPv/AgABAAIAAAAFAPz/AgABAAIAAAAFAP3/AgABAAIAAAAFAP7/AgABAAIAAAAFAP//AgABAAIAAAAFAAAAAgACAAIAAAAFAAEAAgACAAMAAAAFAAQAAgACAAEAAAAFAAUAAgABAAIAAAAFAAYAAgABAAIAAAAFAAcAAgABAAIAAAAFAAgAAgACAAIAAAAFAAkAAgACAAIAAAAFAAoAAgABAAIAAAAEAAQAAgAIAAEAAAAEAAEAAgABAAMAAAAAAAIAAgAJAAEAAAABAAYAAgAGAAgAAAABAAcAAgAGAAkAAAADAAgAAgABAAgAAAADAAkAAgABAAkAAAAEAAAAAgABAAEAAAAAAP7/AgAIAAEAAAABAP7/AgAJAAEAAAAAAPj/AgAIAAEAAAABAPj/AgAJAAEAAAADAPH/AgAHAAEAAAAEAPH/AgAIAAEAAAAAAPP/AgAJAAEAAAD///L/AgADAAIAAAD///H/AgADAAIAAAD///D/AgADAAIAAAD//+//AgADAAIAAAD//+7/AgADAAIAAAD//+3/AgADAAIAAAAFAPD/AgABAAIAAAAFAO//AgABAAIAAAAFAO7/AgABAAIAAAAFAO3/AgABAAIAAAAFAPL/AgABAAIAAAAFAPP/AgABAAIAAAAFAOz/AgABAAIAAAAFAOv/AgABAAIAAAAFAOr/AgABAAIAAAD//+z/AgADAAIAAAD//+v/AgADAAIAAAD//+r/AgADAAIAAAD//+n/AgADAAIAAAD//+j/AgADAAIAAAAFAOn/AgABAAIAAAAFAOj/AgABAAIAAAD//wQAAgADAAIAAAD///P/AgACAAIAAAAFAPH/AgACAAIAAAAGAAQAAgACAAEAAAAGAAEAAgACAAMAAAADAAQAAgAHAAEAAAA=")
+tile_set = ExtResource("2_ys8xl")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_bjxwb")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_qis5t")]
+position = Vector2(416, 0)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_24.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_qis5t")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b3xkt036gq5el"
+to_spawn_location_with_index = 1
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(224, -416)
+curve = SubResource("Curve2D_ys8xl")
+script = ExtResource("5_q3teu")
+speed = 125.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("6_qeuft")]
+
+[node name="FallingSpike" type="Node2D" parent="." node_paths=PackedStringArray("falling_node")]
+z_index = -1
+position = Vector2(32, -1760)
+rotation = 3.1415927
+script = ExtResource("6_pu8k3")
+falling_node = NodePath("Spike")
+speed = 500.0
+fall_after = 0.1
+before_fall_animation_label = "spike_shake"
+
+[node name="RayCast2D" type="RayCast2D" parent="FallingSpike"]
+target_position = Vector2(-6.484985e-05, -736)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingSpike"]
+libraries = {
+&"": SubResource("AnimationLibrary_4pty1")
+}
+
+[node name="Spike" parent="FallingSpike" instance=ExtResource("7_x5q85")]
+
+[node name="FallingSpike2" type="Node2D" parent="." node_paths=PackedStringArray("falling_node")]
+z_index = -1
+position = Vector2(224, -1760)
+rotation = 3.1415927
+script = ExtResource("6_pu8k3")
+falling_node = NodePath("Spike")
+speed = 500.0
+fall_after = 0.3
+before_fall_animation_label = "spike_shake"
+
+[node name="RayCast2D" type="RayCast2D" parent="FallingSpike2"]
+target_position = Vector2(-4.5776367e-05, -608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingSpike2"]
+libraries = {
+&"": SubResource("AnimationLibrary_4pty1")
+}
+
+[node name="Spike" parent="FallingSpike2" instance=ExtResource("7_x5q85")]
+
+[node name="FallingSpike3" type="Node2D" parent="." node_paths=PackedStringArray("falling_node")]
+z_index = -1
+position = Vector2(288, -1760)
+rotation = 3.1415927
+script = ExtResource("6_pu8k3")
+falling_node = NodePath("Spike")
+speed = 500.0
+fall_after = 0.1
+before_fall_animation_label = "spike_shake"
+
+[node name="RayCast2D" type="RayCast2D" parent="FallingSpike3"]
+target_position = Vector2(-6.1035156e-05, -608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingSpike3"]
+libraries = {
+&"": SubResource("AnimationLibrary_4pty1")
+}
+
+[node name="Spike" parent="FallingSpike3" instance=ExtResource("7_x5q85")]
+
+[node name="Switch" parent="." instance=ExtResource("9_bjxwb")]
+position = Vector2(320, -1184)
+rotation = -1.5707964
+
+[node name="Path2D2" type="Path2D" parent="." node_paths=PackedStringArray("movement_path")]
+position = Vector2(288, 0)
+curve = SubResource("Curve2D_pu8k3")
+script = ExtResource("10_pu8k3")
+movement_path = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D2/PathFollow2D" instance=ExtResource("10_qis5t")]
+
+[node name="Bat" parent="." instance=ExtResource("11_tw1ov")]
+position = Vector2(32, 32)
+
+[node name="Bat3" parent="." instance=ExtResource("11_tw1ov")]
+position = Vector2(96, -608)
+
+[node name="Bat4" parent="." instance=ExtResource("11_tw1ov")]
+position = Vector2(256, -1056)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="Path2D2" method="_on_switch_flipped_on"]

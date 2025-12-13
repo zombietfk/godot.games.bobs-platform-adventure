@@ -117,7 +117,8 @@ func _process_update_movement_direction(delta) -> void:
 	else:
 		set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, true);
 	if is_on_slope():
-		apply_slope_slide();
+		apply_slope_slide(movement_impetus);
+		movement_impetus = Vector2.ZERO;
 	apply_friction(delta);
 	if knockback_duration_timer <= 0:
 		velocity.x = clamp(
@@ -137,14 +138,16 @@ func apply_friction(delta) -> void:
 	if abs(velocity.x) < VELOCITY_X_MIN and !is_on_slope():
 		velocity.x = 0;
 
-func apply_slope_slide() -> void:
+func apply_slope_slide(movement_impetus: Vector2 = Vector2.ZERO) -> void:
 	var slope_angle_in_degrees = rad_to_deg(
 		abs(get_floor_normal().angle() + PI / 2)
 	);
-	velocity.x += (
-		sign(get_floor_normal().x) * slope_slide_curve.sample(
-			slope_angle_in_degrees
-		) * max_movement_speed
+	var vertical_angle_deg = 90;
+	var slope_speed_factor = 1.6;
+	var slope_impulse = sign(get_floor_normal().x) * max_movement_speed * slope_speed_factor * (slope_angle_in_degrees / vertical_angle_deg)
+	velocity.x = (slope_impulse +
+		sign(movement_impetus.x) *
+		((vertical_angle_deg - slope_angle_in_degrees) / vertical_angle_deg) * max_movement_speed
 	);
 
 func is_on_slope(min_slope_angle: float = 5) -> bool:

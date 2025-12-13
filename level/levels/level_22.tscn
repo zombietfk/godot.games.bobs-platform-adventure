@@ -1,40 +1,42 @@
-[gd_scene load_steps=7 format=4 uid="uid://b3xkt036gq5el"]
+[gd_scene load_steps=8 format=4 uid="uid://b3xkt036gq5el"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_oh7n4"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_bkpwy"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_1wprq"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_32618"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_ul1fc"]
-[ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying_imp.tscn" id="9_13ff5"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="6_pl13w"]
+[ext_resource type="PackedScene" uid="uid://b8mbn7xxabui" path="res://objects/traps/sawblade/shooter/sawblade_shooter_on_switch.tscn" id="7_rja75"]
 
-[node name="Level_20" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_22" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_oh7n4")
-level_binding_box = Rect2(-64, 256, 1600, 832)
+level_binding_box = Rect2(-96, 0, 1824, 832)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.9, 0.9)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-96, 480)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1632, 480)
+position = Vector2(1824, 480)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAAAAAsAAgAJAAEAAAD//wwAAgADAAIAAAD//w0AAgADAAIAAAD//w4AAgADAAIAAAD//w8AAgAPAAMAAAAAAA8AAgACAAEAAAABAA8AAgACAAEAAAACAA8AAgACAAEAAAADAA8AAgACAAEAAAAEAA8AAgACAAEAAAAFAA8AAgACAAEAAAAGAA8AAgACAAEAAAAHAA8AAgACAAEAAAAIAA8AAgACAAEAAAAJAA8AAgACAAEAAAAKAA8AAgACAAEAAAALAA8AAgACAAEAAAAMAA8AAgACAAEAAAANAA8AAgACAAEAAAAOAA8AAgACAAEAAAAPAA8AAgACAAEAAAAQAA8AAgACAAEAAAARAA8AAgACAAEAAAASAA8AAgACAAEAAAATAA8AAgACAAEAAAAUAA8AAgACAAEAAAAVAA8AAgACAAEAAAADAAkAAgAFAAMAAAADAAoAAgAFAAQAAAADAAsAAgAFAAQAAAADAAwAAgAFAAQAAAADAA0AAgAFAAQAAAADAA4AAgAFAAQAAAAGAA0AAgAFAAMAAAAGAA4AAgAFAAQAAAAKAAsAAgAFAAMAAAAKAAwAAgAFAAQAAAAKAA0AAgAFAAQAAAAKAA4AAgAFAAQAAAANAAoAAgAFAAMAAAANAAsAAgAFAAQAAAANAAwAAgAFAAQAAAANAA0AAgAFAAQAAAANAA4AAgAFAAQAAAAPAAgAAgAFAAMAAAAPAAkAAgAFAAQAAAAPAAoAAgAFAAQAAAAPAAsAAgAFAAQAAAAPAAwAAgAFAAQAAAAPAA0AAgAFAAQAAAAPAA4AAgAFAAQAAAARAAYAAgAFAAMAAAARAAcAAgAFAAQAAAARAAgAAgAFAAQAAAARAAkAAgAFAAQAAAARAAoAAgAFAAQAAAARAAsAAgAFAAQAAAARAAwAAgAFAAQAAAARAA0AAgAFAAQAAAARAA4AAgAFAAQAAAAZAA8AAgACAAEAAAAaAAsAAgAHAAEAAAAaAA8AAgACAAEAAAAbAAsAAgACAAEAAAAbAAwAAgABAAIAAAAbAA0AAgABAAIAAAAbAA4AAgABAAIAAAAbAA8AAgALAAMAAAAcAAsAAgACAAEAAAAWAA8AAgACAAEAAAAXAA8AAgACAAEAAAAYAA8AAgACAAEAAAAWAAoAAgAFAAMAAAAWAAsAAgAFAAQAAAAWAAwAAgAFAAQAAAAWAA0AAgAFAAQAAAAWAA4AAgAFAAQAAAA=")
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAAAAAsAAgAJAAEAAAD//wwAAgADAAIAAAD//w0AAgADAAIAAAD//w4AAgADAAIAAAD//w8AAgAPAAMAAAAAAA8AAgACAAEAAAABAA8AAgACAAEAAAACAA8AAgACAAEAAAADAA8AAgANAAQAAAAEAA8AAgACAAEAAAAFAA8AAgACAAEAAAAGAA8AAgANAAQAAAAHAA8AAgACAAEAAAAIAA8AAgACAAEAAAAJAA8AAgACAAEAAAAKAA8AAgANAAQAAAALAA8AAgACAAEAAAAMAA8AAgACAAEAAAANAA8AAgANAAQAAAAOAA8AAgACAAEAAAAPAA8AAgANAAQAAAAQAA8AAgACAAEAAAARAA8AAgANAAQAAAASAA8AAgACAAEAAAATAA8AAgACAAEAAAAUAA8AAgACAAEAAAAVAA8AAgACAAEAAAADAAkAAgAFAAMAAAADAAoAAgAFAAQAAAADAAsAAgAFAAQAAAADAAwAAgAFAAQAAAADAA0AAgAFAAQAAAADAA4AAgAFAAQAAAAGAA0AAgAFAAMAAAAGAA4AAgAFAAQAAAAKAAsAAgAFAAMAAAAKAAwAAgAFAAQAAAAKAA0AAgAFAAQAAAAKAA4AAgAFAAQAAAANAAoAAgAFAAMAAAANAAsAAgAFAAQAAAANAAwAAgAFAAQAAAANAA0AAgAFAAQAAAANAA4AAgAFAAQAAAAPAAgAAgAFAAMAAAAPAAkAAgAFAAQAAAAPAAoAAgAFAAQAAAAPAAsAAgAFAAQAAAAPAAwAAgAFAAQAAAAPAA0AAgAFAAQAAAAPAA4AAgAFAAQAAAARAAYAAgAFAAMAAAARAAcAAgAFAAQAAAARAAgAAgAFAAQAAAARAAkAAgAFAAQAAAARAAoAAgAFAAQAAAARAAsAAgAFAAQAAAARAAwAAgAFAAQAAAARAA0AAgAFAAQAAAARAA4AAgAFAAQAAAAZAA8AAgACAAEAAAAaAAsAAgAHAAEAAAAaAA8AAgACAAEAAAAbAAsAAgACAAEAAAAbAAwAAgABAAIAAAAbAA0AAgABAAIAAAAbAA4AAgABAAIAAAAbAA8AAgALAAMAAAAcAAsAAgACAAEAAAAWAA8AAgANAAQAAAAXAA8AAgACAAEAAAAYAA8AAgACAAEAAAAWAAoAAgAFAAMAAAAWAAsAAgAFAAQAAAAWAAwAAgAFAAQAAAAWAA0AAgAFAAQAAAAWAA4AAgAFAAQAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wQAAgADAAIAAAD//wUAAgADAAIAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAAAAAMAAgACAAMAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAALAAMAAgACAAMAAAAMAAMAAgACAAMAAAANAAMAAgACAAMAAAAOAAMAAgACAAMAAAAPAAMAAgACAAMAAAAQAAMAAgACAAMAAAARAAMAAgACAAMAAAASAAMAAgACAAMAAAATAAMAAgACAAMAAAAUAAMAAgACAAMAAAAVAAMAAgACAAMAAAAWAAMAAgACAAMAAAAXAAMAAgACAAMAAAAYAAMAAgACAAMAAAAZAAMAAgACAAMAAAAaAAMAAgACAAMAAAAbAAQAAgABAAIAAAAbAAUAAgABAAIAAAAbAAYAAgABAAIAAAAbAAcAAgABAAIAAAAbAAgAAgABAAMAAAAcAAgAAgACAAMAAAAdAAgAAgACAAMAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAAdAAsAAgACAAEAAAAbAAMAAgALAAcAAAD//wMAAgAPAAcAAAA=")
 tile_set = ExtResource("2_bkpwy")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
 tile_set = ExtResource("3_1wprq")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_32618")]
-position = Vector2(1696, 448)
+position = Vector2(1888, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://b7e2ilx4c2b4i"
+to_level_path = "res://level/levels/level_23.tscn"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_32618")]
 position = Vector2(-160, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://bnwundjfdgmbd"
+to_level_path = "uid://b7e2ilx4c2b4i"
 to_spawn_location_with_index = 1
 
 [node name="Spike" parent="." instance=ExtResource("5_ul1fc")]
@@ -199,11 +201,63 @@ position = Vector2(1680, 752)
 [node name="Spike54" parent="." instance=ExtResource("5_ul1fc")]
 position = Vector2(1712, 752)
 
-[node name="FlyingImp" parent="." instance=ExtResource("9_13ff5")]
-position = Vector2(752, 368)
-seeking_speed = 100
-attacking_speed = 600
-attack_range = 100.0
-attacking_length_timer = 0.7
+[node name="Switch" parent="." instance=ExtResource("6_pl13w")]
+position = Vector2(224, 384)
+release_on_leave = true
+
+[node name="Switch2" parent="." instance=ExtResource("6_pl13w")]
+position = Vector2(416, 640)
+release_on_leave = true
+
+[node name="Switch3" parent="." instance=ExtResource("6_pl13w")]
+position = Vector2(672, 512)
+release_on_leave = true
+
+[node name="Switch4" parent="." instance=ExtResource("6_pl13w")]
+position = Vector2(864, 448)
+release_on_leave = true
+
+[node name="Switch5" parent="." instance=ExtResource("6_pl13w")]
+position = Vector2(992, 320)
+release_on_leave = true
+
+[node name="Switch6" parent="." instance=ExtResource("6_pl13w")]
+position = Vector2(1120, 192)
+release_on_leave = true
+
+[node name="Switch7" parent="." instance=ExtResource("6_pl13w")]
+position = Vector2(1440, 448)
+release_on_leave = true
+
+[node name="Sawblade_Shooter_On_Switch" parent="." instance=ExtResource("7_rja75")]
+position = Vector2(1856, 384)
+sawblade_travel_speed = 500
+
+[node name="Sawblade_Shooter_On_Switch2" parent="." instance=ExtResource("7_rja75")]
+position = Vector2(1856, 640)
+sawblade_travel_speed = 500
+
+[node name="Sawblade_Shooter_On_Switch3" parent="." instance=ExtResource("7_rja75")]
+position = Vector2(1856, 512)
+sawblade_travel_speed = 500
+
+[node name="Sawblade_Shooter_On_Switch4" parent="." instance=ExtResource("7_rja75")]
+position = Vector2(1856, 448)
+sawblade_travel_speed = 500
+
+[node name="Sawblade_Shooter_On_Switch5" parent="." instance=ExtResource("7_rja75")]
+position = Vector2(1856, 320)
+sawblade_travel_speed = 500
+
+[node name="Sawblade_Shooter_On_Switch6" parent="." instance=ExtResource("7_rja75")]
+position = Vector2(1856, 192)
+sawblade_travel_speed = 500
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="Sawblade_Shooter_On_Switch" method="_fire_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="Switch2" to="Sawblade_Shooter_On_Switch2" method="_fire_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="Switch3" to="Sawblade_Shooter_On_Switch3" method="_fire_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="Switch4" to="Sawblade_Shooter_On_Switch4" method="_fire_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="Switch5" to="Sawblade_Shooter_On_Switch5" method="_fire_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="Switch6" to="Sawblade_Shooter_On_Switch6" method="_fire_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="Switch7" to="Sawblade_Shooter_On_Switch" method="_fire_sawblade_on_swtich_press"]

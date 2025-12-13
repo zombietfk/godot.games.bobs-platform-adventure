@@ -10,7 +10,6 @@ var hearts: Array[UIHeartContainer] = [];
 # METHODS
 func update_health_bar(current_health: int, max_health: int) -> void:
 	if hearts.size() != max_health:
-		print(hearts.size(),'/',max_health);
 		for heart in hearts:
 			heart.queue_free();
 		hearts.clear();

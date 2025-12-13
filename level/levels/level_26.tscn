@@ -1,0 +1,154 @@
+[gd_scene load_steps=11 format=4 uid="uid://ckv0iv8uxynge"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_7d7t6"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_ewnlw"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_qnrlr"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_xw3hp"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_hg22y"]
+[ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="5_uwgjl"]
+[ext_resource type="Script" uid="uid://8r1rhr8wtcyx" path="res://objects/abstract/fall_on_pass_below/fall_on_pass_below.gd" id="6_7d7t6"]
+
+[sub_resource type="Animation" id="Animation_7xwx0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spike:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mrcqh"]
+resource_name = "spike_shake"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spike:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-4, 0), Vector2(4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4pty1"]
+_data = {
+&"RESET": SubResource("Animation_7xwx0"),
+&"spike_shake": SubResource("Animation_mrcqh")
+}
+
+[node name="Level_26" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_7d7t6")
+level_binding_box = Rect2(-96, 0, 1824, 1088)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.9, 0.9)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1824, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAAAAAsAAgADAAEAAAD//wwAAgACAAIAAAD//w0AAgACAAIAAAD//w4AAgAPAAcAAAAaAAsAAgAHAAEAAAAbAAsAAgACAAEAAAAbAAwAAgABAAIAAAAbAA0AAgAMAAUAAAAbAA4AAgABAAIAAAAcAAsAAgACAAEAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wQAAgADAAIAAAD//wUAAgADAAIAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAAAAAMAAgACAAMAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAALAAMAAgACAAMAAAAMAAMAAgACAAMAAAANAAMAAgACAAMAAAAOAAMAAgACAAMAAAAPAAMAAgACAAMAAAAQAAMAAgACAAMAAAARAAMAAgACAAMAAAASAAMAAgACAAMAAAATAAMAAgACAAMAAAAUAAMAAgACAAMAAAAVAAMAAgACAAMAAAAWAAMAAgACAAMAAAAXAAMAAgACAAMAAAAYAAMAAgACAAMAAAAZAAMAAgACAAMAAAAaAAMAAgACAAMAAAAbAAQAAgABAAIAAAAbAAUAAgABAAIAAAAbAAYAAgAMAAUAAAAbAAcAAgABAAIAAAAbAAgAAgABAAMAAAAcAAgAAgACAAMAAAAdAAgAAgACAAMAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAAdAAsAAgACAAEAAAAbAAMAAgALAAcAAAD//wMAAgAPAAcAAAD//w8AAgADAAIAAAD//xAAAgADAAIAAAD//xEAAgADAAIAAAD//xIAAgADAAIAAAD//xMAAgADAAIAAAAbAA8AAgABAAIAAAAbABAAAgABAAIAAAAbABEAAgABAAIAAAAbABIAAgABAAIAAAAbABMAAgABAAIAAAAAAAwAAgADAAIAAAAAAA0AAgADAAIAAAAAAA4AAgAJAAUAAAADAAsAAgAFAAEAAAAHAAkAAgAFAAEAAAAMAA4AAgAFAAEAAAAOAAwAAgAFAAEAAAAUAAwAAgAFAAEAAAAYAAoAAgAFAAUAAAAXAAkAAgABAAMAAAAYAA0AAgAFAAEAAAAXAAcAAgABAAIAAAAXAAgAAgABAAIAAAAXAAYAAgAHAAMAAAAYAAYAAgACAAEAAAAZAAYAAgACAAEAAAAaAAYAAgAIAAEAAAAYAAgAAgADAAIAAAAYAAkAAgADAAIAAAAZAAcAAgAJAAUAAAAYAAcAAgAPAAcAAAAEAAQAAgAFAAQAAAAEAAUAAgAFAAUAAAAFAAQAAgAFAAUAAAAAAAQAAgADAAMAAAAIAAQAAgAFAAQAAAAIAAUAAgAFAAQAAAAIAAYAAgAFAAUAAAAJAAQAAgAFAAQAAAAJAAUAAgAFAAUAAAALAAQAAgAFAAQAAAALAAUAAgAFAAUAAAANAAQAAgAFAAUAAAAPAAQAAgAFAAQAAAAPAAUAAgAFAAQAAAAPAAYAAgAFAAUAAAAQAAQAAgAFAAQAAAAQAAUAAgAFAAQAAAAQAAYAAgAFAAUAAAARAAQAAgAFAAQAAAARAAUAAgAFAAUAAAATAAUAAgAFAAQAAAATAAYAAgAFAAQAAAATAAQAAgAFAAQAAAATAAcAAgAFAAUAAAAVAAQAAgAFAAQAAAAVAAUAAgAFAAUAAAAVAA8AAgAFAAEAAAAaAA0AAgAHAAEAAAA=")
+tile_set = ExtResource("2_ewnlw")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_qnrlr")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_xw3hp")]
+position = Vector2(1888, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_24.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_xw3hp")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b3xkt036gq5el"
+to_spawn_location_with_index = 1
+
+[node name="FallingSpike" parent="." instance=ExtResource("5_uwgjl")]
+position = Vector2(224, 88)
+scale = Vector2(1.6, 1.6)
+fall_after = 0.4
+
+[node name="FallingSpike2" parent="." instance=ExtResource("5_uwgjl")]
+position = Vector2(480, 88)
+scale = Vector2(1.6, 1.6)
+
+[node name="FallingSpike3" parent="." instance=ExtResource("5_uwgjl")]
+position = Vector2(800, 88)
+scale = Vector2(1.6, 1.6)
+
+[node name="FallingSpike4" parent="." instance=ExtResource("5_uwgjl")]
+position = Vector2(928, 88)
+scale = Vector2(1.6, 1.6)
+direction = Vector2(0, 0.7)
+fall_after = 0.6
+
+[node name="FallingSpike5" type="Node2D" parent="." node_paths=PackedStringArray("falling_node")]
+z_index = -1
+position = Vector2(1120, 216)
+rotation = 3.1415927
+scale = Vector2(1.6, 1.6)
+script = ExtResource("6_7d7t6")
+falling_node = NodePath("Spike")
+speed = 500.0
+fall_after = 0.5
+before_fall_animation_label = "spike_shake"
+
+[node name="RayCast2D" type="RayCast2D" parent="FallingSpike5"]
+position = Vector2(120.00001, 80)
+target_position = Vector2(0, -1024)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingSpike5"]
+libraries = {
+&"": SubResource("AnimationLibrary_4pty1")
+}
+
+[node name="Spike" parent="FallingSpike5" instance=ExtResource("5_hg22y")]
+
+[node name="FallingSpike6" parent="." instance=ExtResource("5_uwgjl")]
+position = Vector2(1312, 88)
+scale = Vector2(1.6, 1.6)
+fall_after = 0.6
+
+[node name="FallingSpike7" type="Node2D" parent="." node_paths=PackedStringArray("falling_node")]
+z_index = -1
+position = Vector2(1376, 216)
+rotation = 3.1415927
+scale = Vector2(1.6, 1.6)
+script = ExtResource("6_7d7t6")
+falling_node = NodePath("Spike")
+speed = 500.0
+fall_after = 0.1
+before_fall_animation_label = "spike_shake"
+
+[node name="RayCast2D" type="RayCast2D" parent="FallingSpike7"]
+position = Vector2(39.999992, 79.999985)
+target_position = Vector2(0, -1024)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingSpike7"]
+libraries = {
+&"": SubResource("AnimationLibrary_4pty1")
+}
+
+[node name="Spike" parent="FallingSpike7" instance=ExtResource("5_hg22y")]
+
+[node name="FallingSpike8" parent="." instance=ExtResource("5_uwgjl")]
+position = Vector2(1704, 616)
+rotation = 0.0
+scale = Vector2(1.6, 1.6)
+fall_after = 0.01
+
+[connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,0 +1,230 @@
+[gd_scene load_steps=10 format=4 uid="uid://d0ehfvnxdwcqp"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_6320c"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_jpp7g"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_u1bf6"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_5phvd"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_tknyo"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="6_rkpxu"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="7_qlon1"]
+[ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="8_jpp7g"]
+
+[sub_resource type="Curve2D" id="Curve2D_ysgdr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 320, 0, 0, 0, 0, 0, -64, 0)
+}
+point_count = 2
+
+[node name="Level_25" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_6320c")
+level_binding_box = Rect2(-96, 0, 1824, 832)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.9, 0.9)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1824, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAAAAAsAAgADAAEAAAD//wwAAgACAAIAAAD//w0AAgACAAIAAAD//w4AAgACAAIAAAD//w8AAgACAAIAAAAAAA8AAgACAAIAAAABAA8AAgACAAIAAAACAA8AAgAPAAMAAAADAA8AAgACAAEAAAAEAA8AAgACAAEAAAAFAA8AAgACAAEAAAAGAA8AAgACAAEAAAAHAA8AAgACAAEAAAAIAA8AAgACAAEAAAAJAA8AAgACAAEAAAAKAA8AAgACAAEAAAALAA8AAgACAAEAAAAMAA8AAgACAAEAAAANAA8AAgACAAEAAAAOAA8AAgACAAEAAAAPAA8AAgACAAEAAAAQAA8AAgACAAEAAAARAA8AAgACAAEAAAASAA8AAgACAAEAAAATAA8AAgACAAEAAAAUAA8AAgACAAEAAAAVAA8AAgACAAEAAAAZAA8AAgACAAEAAAAaAAsAAgAHAAEAAAAaAA8AAgACAAEAAAAbAAsAAgACAAEAAAAbAAwAAgABAAIAAAAbAA0AAgABAAIAAAAbAA4AAgABAAIAAAAbAA8AAgALAAMAAAAcAAsAAgACAAEAAAAWAA8AAgACAAEAAAAXAA8AAgACAAEAAAAYAA8AAgACAAEAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wQAAgACAAIAAAD//wUAAgACAAIAAAD//wYAAgACAAIAAAD//wcAAgAPAAcAAAAAAAMAAgACAAIAAAABAAMAAgACAAIAAAACAAMAAgACAAIAAAADAAMAAgACAAIAAAAEAAMAAgACAAIAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAALAAMAAgACAAMAAAAMAAMAAgACAAMAAAANAAMAAgACAAMAAAAOAAMAAgACAAMAAAAPAAMAAgACAAMAAAAQAAMAAgACAAMAAAARAAMAAgACAAMAAAASAAMAAgACAAMAAAATAAMAAgACAAMAAAAUAAMAAgACAAMAAAAVAAMAAgACAAMAAAAWAAMAAgACAAMAAAAXAAMAAgACAAMAAAAYAAMAAgACAAMAAAAZAAMAAgACAAMAAAAaAAMAAgACAAMAAAAbAAQAAgABAAIAAAAbAAUAAgABAAIAAAAbAAYAAgABAAIAAAAbAAcAAgABAAIAAAAbAAgAAgABAAMAAAAcAAgAAgACAAMAAAAdAAgAAgACAAMAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAAdAAsAAgACAAEAAAAbAAMAAgALAAcAAAD//wMAAgACAAIAAAALAAcAAgAHAAEAAAALAAkAAgAFAAEAAAAMAAcAAgAIAAEAAAANAAcAAgAIAAEAAAANAAkAAgAFAAEAAAAOAAcAAgAIAAEAAAAPAAcAAgAJAAEAAAAPAAkAAgAFAAEAAAAAAAYAAgAPAAcAAAAAAAcAAgAJAAUAAAABAAYAAgAJAAUAAAABAAcAAgAFAAoAAAADAAQAAgAPAAcAAAADAAUAAgAJAAUAAAAEAAQAAgAJAAUAAAAEAAUAAgAFAAoAAAACAAUAAgACAAMAAAABAAUAAgAPAAcAAAAAAAUAAgACAAIAAAAAAAQAAgACAAIAAAABAAQAAgACAAIAAAACAAQAAgACAAIAAAAQAAQAAgAFAAUAAAAWAAQAAgAFAAQAAAAWAAUAAgAFAAUAAAAAAA4AAgACAAIAAAABAA4AAgAPAAMAAAACAA4AAgADAAEAAAABAA0AAgADAAEAAAAAAAwAAgADAAIAAAAAAA0AAgAPAAMAAAA=")
+tile_set = ExtResource("2_jpp7g")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_u1bf6")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_5phvd")]
+position = Vector2(1888, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_24.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_5phvd")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b3xkt036gq5el"
+to_spawn_location_with_index = 1
+
+[node name="Spike7" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(208, 752)
+
+[node name="Spike8" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(240, 752)
+
+[node name="Spike9" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(272, 752)
+
+[node name="Spike10" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(304, 752)
+
+[node name="Spike11" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(336, 752)
+
+[node name="Spike12" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(368, 752)
+
+[node name="Spike13" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(400, 752)
+
+[node name="Spike14" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(432, 752)
+
+[node name="Spike15" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(464, 752)
+
+[node name="Spike16" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(496, 752)
+
+[node name="Spike17" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(528, 752)
+
+[node name="Spike18" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(560, 752)
+
+[node name="Spike19" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(592, 752)
+
+[node name="Spike20" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(624, 752)
+
+[node name="Spike21" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(656, 752)
+
+[node name="Spike22" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(688, 752)
+
+[node name="Spike23" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(720, 752)
+
+[node name="Spike24" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(752, 752)
+
+[node name="Spike25" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(784, 752)
+
+[node name="Spike26" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(816, 752)
+
+[node name="Spike27" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(848, 752)
+
+[node name="Spike28" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(880, 752)
+
+[node name="Spike29" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(912, 752)
+
+[node name="Spike30" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(944, 752)
+
+[node name="Spike31" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(976, 752)
+
+[node name="Spike32" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1008, 752)
+
+[node name="Spike33" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1040, 752)
+
+[node name="Spike34" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1072, 752)
+
+[node name="Spike35" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1104, 752)
+
+[node name="Spike36" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1136, 752)
+
+[node name="Spike37" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1168, 752)
+
+[node name="Spike38" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1200, 752)
+
+[node name="Spike39" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1232, 752)
+
+[node name="Spike40" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1264, 752)
+
+[node name="Spike41" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1296, 752)
+
+[node name="Spike42" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1328, 752)
+
+[node name="Spike43" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1360, 752)
+
+[node name="Spike44" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1392, 752)
+
+[node name="Spike45" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1424, 752)
+
+[node name="Spike46" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1456, 752)
+
+[node name="Spike47" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1488, 752)
+
+[node name="Spike48" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1520, 752)
+
+[node name="Spike49" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1552, 752)
+
+[node name="Spike50" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1584, 752)
+
+[node name="Spike51" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1616, 752)
+
+[node name="Spike52" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1648, 752)
+
+[node name="Spike53" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1680, 752)
+
+[node name="Spike54" parent="." instance=ExtResource("5_tknyo")]
+position = Vector2(1712, 752)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(224, 512)
+curve = SubResource("Curve2D_ysgdr")
+script = ExtResource("6_rkpxu")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(320, 0)
+rotation = 3.1415927
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("7_qlon1")]
+position = Vector2(0, -2.4667283e-05)
+rotation = 3.1415925
+randomize_inital_displacement = false
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(1184, 512)
+curve = SubResource("Curve2D_ysgdr")
+script = ExtResource("6_rkpxu")
+speed = 300.0
+start_distance_ratio = 0.3
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+position = Vector2(320, 0)
+rotation = 3.1415927
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D3/PathFollow2D" instance=ExtResource("7_qlon1")]
+position = Vector2(3.8146973e-06, -2.6321286e-05)
+rotation = 3.1415925
+randomize_inital_displacement = false
+
+[node name="HealthUpgradeItem" parent="." instance=ExtResource("8_jpp7g")]
+position = Vector2(864, 224)
+pickup_unique_name = "ai8r24nrgn792h79nfi"
+
+[connection signal="ready" from="." to="." method="_on_ready"]

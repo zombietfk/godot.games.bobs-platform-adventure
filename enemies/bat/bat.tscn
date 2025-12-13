@@ -1,0 +1,237 @@
+[gd_scene load_steps=20 format=3 uid="uid://cclnn5v3he5e0"]
+
+[ext_resource type="Script" uid="uid://vl20873o1c7u" path="res://enemies/bat/bat.gd" id="1_kjrhy"]
+[ext_resource type="Texture2D" uid="uid://wwajk3e0kbue" path="res://enemies/bat/bat.png" id="2_ckyte"]
+[ext_resource type="Texture2D" uid="uid://b7q47j85sj5vy" path="res://enemies/bat/bat_hanging.png" id="3_hf1ur"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf5cq"]
+atlas = ExtResource("2_ckyte")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6urb"]
+atlas = ExtResource("2_ckyte")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0ltb"]
+atlas = ExtResource("2_ckyte")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6gqkr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf5cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6urb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0ltb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6urb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqvym"]
+atlas = ExtResource("3_hf1ur")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_751gt"]
+atlas = ExtResource("3_hf1ur")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okmwn"]
+atlas = ExtResource("3_hf1ur")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjrhy"]
+atlas = ExtResource("3_hf1ur")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckyte"]
+atlas = ExtResource("3_hf1ur")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf1ur"]
+atlas = ExtResource("3_hf1ur")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xbj4d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqvym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_751gt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okmwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_751gt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjrhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckyte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjrhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckyte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjrhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckyte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjrhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckyte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjrhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckyte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckyte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf1ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckyte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckyte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf1ur")
+}],
+"loop": false,
+"name": &"waking_up",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dy0p3"]
+radius = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjrhy"]
+radius = 17.0
+height = 56.0
+
+[sub_resource type="Animation" id="Animation_ckyte"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.49803922)]
+}
+
+[sub_resource type="Animation" id="Animation_kjrhy"]
+resource_name = "awaken"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.225),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-4, 0), Vector2(4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.49803922), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ckyte"]
+_data = {
+&"RESET": SubResource("Animation_ckyte"),
+&"awaken": SubResource("Animation_kjrhy")
+}
+
+[node name="Bat" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 66
+script = ExtResource("1_kjrhy")
+
+[node name="Flying" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_6gqkr")
+autoplay = "default"
+frame_progress = 0.6643059
+
+[node name="Hanging" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.49803922)
+sprite_frames = SubResource("SpriteFrames_xbj4d")
+animation = &"waking_up"
+autoplay = "default"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 512)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
+position = Vector2(-2, 4)
+shape = SubResource("CircleShape2D_dy0p3")
+target_position = Vector2(0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_kjrhy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Hanging")
+libraries = {
+&"": SubResource("AnimationLibrary_ckyte")
+}

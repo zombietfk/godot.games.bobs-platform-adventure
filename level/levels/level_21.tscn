@@ -279,7 +279,7 @@ point_count = 2
 
 [node name="Level_21" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_cn7bb")
-level_binding_box = Rect2(-192, -448, 2112, 2304)
+level_binding_box = Rect2(-224, -448, 2144, 2304)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
 camera_zoom_to = Vector2(0.45, 0.45)
 camera_zoom_speed = 0.01

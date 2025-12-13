@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=4 uid="uid://dkjbqt356oo6b"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_22lwc"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_44xjb"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_f6j7m"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_woblp"]
+[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/checkpoint_flagpole.tscn" id="5_3l3og"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="6_clbk2"]
+
+[node name="Level_28" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_22lwc")
+level_binding_box = Rect2(-96, -512, 544, 1088)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), NodePath("CheckpointSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(544, 480)
+
+[node name="CheckpointSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(160, -160)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAAAAAsAAgADAAEAAAD//wwAAgACAAIAAAD//w0AAgACAAIAAAD//w4AAgAPAAcAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wQAAgADAAIAAAD//wUAAgADAAIAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAD//wMAAgADAAIAAAD//w8AAgADAAIAAAD//xAAAgADAAIAAAD//xEAAgADAAIAAAD//xIAAgADAAIAAAD//xMAAgADAAIAAAAAAAwAAgADAAIAAAAAAA0AAgADAAIAAAAAAA4AAgAJAAUAAAADAAoAAgADAAYAAAADAAsAAgAFAAEAAAAEAAoAAgAEAAYAAAAHAAQAAgABAAIAAAAHAAUAAgABAAIAAAAHAAYAAgABAAIAAAAHAAcAAgABAAIAAAAHAAgAAgABAAMAAAAHAAAAAgABAAIAAAAHAAEAAgABAAIAAAAHAAIAAgABAAIAAAAHAAMAAgAMAAUAAAD//wAAAgADAAIAAAD//wEAAgADAAIAAAD//wIAAgADAAIAAAAGAA4AAgAHAAUAAAAGAA0AAgABAAIAAAAGAAwAAgABAAIAAAAGAAsAAgABAAEAAAAHAAsAAgACAAEAAAAIAAsAAgACAAEAAAAJAAsAAgACAAEAAAAJAAgAAgACAAMAAAAIAAgAAgACAAMAAAAHAA8AAgABAAIAAAAHABAAAgABAAIAAAAHABEAAgABAAIAAAAHABIAAgABAAIAAAAHABMAAgABAAIAAAAHAA4AAgALAAcAAAAIAAwAAgACAAIAAAAIAA0AAgACAAIAAAAIAA4AAgACAAIAAAAIAA8AAgACAAIAAAAIABAAAgACAAIAAAAIABEAAgACAAIAAAAIABIAAgACAAIAAAAIABMAAgACAAIAAAAJAAwAAgACAAIAAAAJAA0AAgACAAIAAAAJAA4AAgACAAIAAAAJAA8AAgACAAIAAAAJABAAAgACAAIAAAAJABEAAgACAAIAAAAJABIAAgACAAIAAAAJABMAAgACAAIAAAAHAAwAAgACAAIAAAAHAA0AAgACAAIAAAD9/wwAAgACAAIAAAD9/w0AAgACAAIAAAD9/w4AAgACAAIAAAD9/w8AAgACAAIAAAD9/xAAAgACAAIAAAD9/xEAAgACAAIAAAD9/xIAAgACAAIAAAD9/xMAAgACAAIAAAD+/wwAAgACAAIAAAD+/w0AAgACAAIAAAD+/w4AAgACAAIAAAD+/w8AAgACAAIAAAD+/xAAAgACAAIAAAD+/xEAAgACAAIAAAD+/xIAAgACAAIAAAD+/xMAAgACAAIAAAAEAAkAAgAFAAEAAAABAAcAAgAFAAEAAAADAAUAAgAFAAEAAAAFAAMAAgAHAAEAAAAGAAMAAgAIAAEAAAABAAEAAgAHAAEAAAACAAEAAgAIAAEAAAADAAEAAgAJAAEAAAD/////AgADAAIAAAD///7/AgADAAIAAAD///3/AgADAAIAAAAHAP//AgABAAIAAAAHAP7/AgABAAIAAAAHAP3/AgABAAIAAAAAAPz/AgAJAAUAAAAGAPz/AgAHAAUAAAABAPv/AgACAAMAAAACAPv/AgACAAMAAAADAPv/AgACAAMAAAAEAPv/AgACAAMAAAAFAPv/AgACAAMAAAD///z/AgAPAAcAAAAAAPv/AgAPAAcAAAAHAPz/AgALAAcAAAAGAPv/AgALAAcAAAA=")
+tile_set = ExtResource("2_44xjb")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_f6j7m")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_woblp")]
+position = Vector2(608, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_24.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_woblp")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b3xkt036gq5el"
+to_spawn_location_with_index = 1
+
+[node name="CheckpointFlagpole" parent="." instance=ExtResource("5_3l3og")]
+position = Vector2(160, -152)
+level_path = "uid://ckv0iv8uxynge"
+spawn_index = 2
+
+[node name="Rabbit" parent="." instance=ExtResource("6_clbk2")]
+position = Vector2(193, -143)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(20, 20)
+randomize_starting_direction = true
+
+[node name="Rabbit2" parent="." instance=ExtResource("6_clbk2")]
+position = Vector2(97, -143)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(20, 20)
+randomize_starting_direction = true
+
+[node name="Rabbit3" parent="." instance=ExtResource("6_clbk2")]
+position = Vector2(388, -15)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(20, 20)
+randomize_starting_direction = true
+
+[connection signal="ready" from="." to="." method="_on_ready"]

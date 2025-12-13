@@ -40,6 +40,7 @@ var is_recovering = false;
 var current_platform_jump_location: Node2D;
 var is_being_destroyed = false;
 var player: Player;
+var is_jumping_to_new_target = false;
 
 signal demon_rabbit_destroyed();
 
@@ -66,11 +67,13 @@ func _physics_process(delta: float) -> void:
 		$Pitchfork.rotation = player.global_position.angle_to_point(
 			$Pitchfork.global_position
 		);
-	if (global_position - current_platform_jump_location.global_position).length() < 32:
-		$CollisionShape2D.disabled = false;
+	if (global_position - current_platform_jump_location.global_position).length() < 32 and is_jumping_to_new_target:
 		if state == DemonRabbitState.IDLE and is_recovering:
+			is_jumping_to_new_target = false;
 			is_recovering = false;
 			state = DemonRabbitState.SUMMONING;
+			$CollisionShape2D.disabled = false;
+			global_position = current_platform_jump_location.global_position;
 	velocity += get_gravity() * delta;
 	move_and_slide();
 	
@@ -262,7 +265,7 @@ func hit_by_bullet() -> void:
 		state = DemonRabbitState.STUNNED;
 		
 func recover_from_stun_and_reset() -> void:
-	$ForceField.visible = false;
+	$ForceField.visible = true;
 	if is_recovering:
 		return;
 	death_count += 1;
@@ -271,19 +274,24 @@ func recover_from_stun_and_reset() -> void:
 		return;
 	is_recovering = true;
 	await get_tree().create_timer(3.0).timeout;
-	$ForceField.visible = true;
 	state = DemonRabbitState.IDLE;
 	await get_tree().create_timer(1.0).timeout;
 	if platform_jump_locations.size() > 1:
 		var target_platform_jump_location = current_platform_jump_location;
+		print('old target - ', current_platform_jump_location);
 		while target_platform_jump_location == current_platform_jump_location: 
 			target_platform_jump_location = platform_jump_locations.pick_random();
 		current_platform_jump_location = target_platform_jump_location;
+		print('new target - ', current_platform_jump_location);
 		if current_platform_jump_location.global_position.y > global_position.y:
+			print('jump_down');
 			velocity.y = -500;
 		else:
-			velocity.y -= global_position.y - current_platform_jump_location.global_position.y + get_gravity().y * 0.5 + 128;
+			print('jump_up');
+			velocity.y -= global_position.y - current_platform_jump_location.global_position.y + get_gravity().y * 0.5;
+			print(velocity.y);
 	$CollisionShape2D.disabled = true;
+	is_jumping_to_new_target = true;
 	summon_timer *= 0.666;
 	summon_mirror_counter.to_summon *= 2;
 	summon_mirror_counter.to_summon = clamp(summon_mirror_counter.to_summon, 0, 8);

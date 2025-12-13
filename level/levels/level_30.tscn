@@ -1,0 +1,242 @@
+[gd_scene load_steps=10 format=4 uid="uid://df4btmfghkgw1"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_3wrs5"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_73xee"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_cqk0a"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_aeeq3"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="5_4ep0n"]
+[ext_resource type="PackedScene" uid="uid://ctaeyscddayym" path="res://objects/traps/sawblade/sawblade.tscn" id="6_4vbp4"]
+[ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="6_73xee"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="7_x8d6w"]
+
+[sub_resource type="Curve2D" id="Curve2D_4vbp4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -320, -224, 0, 0, 0, 0, -304, -160, 0, 0, 0, 0, -288, -96, 0, 0, 0, 0, -256, -32, 0, 0, 0, 0, -192, 32, 0, 0, 0, 0, -96, 80, 0, 0, 0, 0, 0, 96, 0, 0, 0, 0, 96, 80, 0, 0, 0, 0, 192, 32, 0, 0, 0, 0, 256, -32, 0, 0, 0, 0, 288, -96, 0, 0, 0, 0, 304, -160, 0, 0, 0, 0, 320, -224, 0, 0, 0, 0, 304, -288, 0, 0, 0, 0, 288, -352, 0, 0, 0, 0, 256, -416, 0, 0, 0, 0, 192, -480, 0, 0, 0, 0, 96, -528, 0, 0, 0, 0, 96, -528, 0, 0, 0, 0, 0, -544, 0, 0, 0, 0, -96, -528, 0, 0, 0, 0, -96, -528, 0, 0, 0, 0, -192, -480, 0, 0, 0, 0, -256, -416, 0, 0, 0, 0, -288, -352, 0, 0, 0, 0, -304, -288, 0, 0, 0, 0, -320, -224)
+}
+point_count = 27
+
+[node name="Level_30" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_3wrs5")
+level_binding_box = Rect2(-96, -64, 1056, 960)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.9, 0.9)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1056, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgADAAEAAAD//w4AAgACAAIAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wQAAgACAAIAAAD//wUAAgACAAIAAAD//wYAAgACAAIAAAD//wcAAgACAAIAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAD//wMAAgACAAIAAAD//w8AAgACAAIAAAD//xAAAgACAAIAAAD//wwAAgACAAIAAAD//w0AAgACAAIAAAAEABAAAgAJAAMAAAAKABAAAgAHAAMAAAAAAAwAAgAJAAMAAAAAABEAAgACAAIAAAABAA0AAgAJAAMAAAABABEAAgACAAIAAAACAA4AAgAJAAMAAAACABEAAgACAAIAAAADAA8AAgAJAAMAAAADABEAAgACAAIAAAAEABEAAgACAAIAAAAFABEAAgACAAEAAAAGABEAAgACAAEAAAAHABEAAgACAAEAAAAIABEAAgACAAEAAAAJABEAAgACAAEAAAAKABEAAgACAAIAAAALAA8AAgAHAAMAAAALABEAAgACAAIAAAAMAA4AAgAHAAMAAAAMABEAAgACAAIAAAANAA0AAgAHAAMAAAANABEAAgACAAIAAAAOAAwAAgAHAAMAAAAOABEAAgACAAIAAAAPAAwAAgACAAIAAAAPABEAAgACAAIAAAAQAAwAAgACAAIAAAAQABEAAgACAAIAAAARAAwAAgACAAIAAAAEAAMAAgAJAAUAAAAKAAMAAgAHAAUAAAAAAAIAAgACAAIAAAAAAAcAAgAJAAUAAAABAAIAAgACAAIAAAABAAYAAgAJAAUAAAACAAIAAgACAAIAAAACAAUAAgAJAAUAAAADAAIAAgACAAIAAAADAAQAAgAJAAUAAAAEAAIAAgACAAIAAAAFAAIAAgACAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAKAAIAAgACAAIAAAALAAIAAgACAAIAAAALAAQAAgAHAAUAAAAMAAIAAgACAAIAAAAMAAUAAgAHAAUAAAANAAIAAgACAAIAAAANAAYAAgAHAAUAAAAOAAIAAgACAAIAAAAOAAcAAgAHAAUAAAAPAAIAAgACAAIAAAAPAAcAAgACAAIAAAAQAAIAAgACAAIAAAAQAAcAAgACAAIAAAARAAcAAgACAAIAAAAAAA0AAgACAAIAAAAAAA4AAgACAAIAAAAAAA8AAgACAAIAAAAAABAAAgACAAIAAAABAA8AAgACAAIAAAABABAAAgACAAIAAAACAA8AAgACAAIAAAACABAAAgACAAIAAAABAA4AAgACAAIAAAADABAAAgACAAIAAAALABAAAgACAAIAAAAMABAAAgACAAIAAAANABAAAgACAAIAAAAOABAAAgACAAIAAAAPABAAAgACAAIAAAAMAA8AAgACAAIAAAANAA8AAgACAAIAAAAOAA8AAgACAAIAAAAPAA8AAgACAAIAAAAQAA8AAgACAAIAAAAQABAAAgACAAIAAAARAA8AAgACAAIAAAARABAAAgACAAIAAAAOAA0AAgACAAIAAAAOAA4AAgACAAIAAAAPAA0AAgACAAIAAAAPAA4AAgACAAIAAAAQAA0AAgACAAIAAAAQAA4AAgACAAIAAAARAA0AAgACAAIAAAARAA4AAgACAAIAAAANAA4AAgACAAIAAAAAAAMAAgACAAIAAAAAAAQAAgACAAIAAAAAAAUAAgACAAIAAAAAAAYAAgACAAIAAAABAAMAAgACAAIAAAABAAQAAgACAAIAAAABAAUAAgACAAIAAAACAAMAAgACAAIAAAADAAMAAgACAAIAAAACAAQAAgACAAIAAAALAAMAAgACAAIAAAAMAAMAAgACAAIAAAANAAMAAgACAAIAAAAOAAMAAgACAAIAAAAPAAMAAgACAAIAAAAQAAMAAgACAAIAAAARAAMAAgACAAIAAAAOAAQAAgACAAIAAAAOAAUAAgACAAIAAAAOAAYAAgACAAIAAAAPAAQAAgACAAIAAAAPAAUAAgACAAIAAAAPAAYAAgACAAIAAAAQAAQAAgACAAIAAAAQAAUAAgACAAIAAAAQAAYAAgACAAIAAAARAAQAAgACAAIAAAARAAUAAgACAAIAAAARAAYAAgACAAIAAAANAAQAAgACAAIAAAANAAUAAgACAAIAAAAMAAQAAgACAAIAAAAPAAsAAgABAAEAAAAPAAgAAgABAAMAAAAQAAsAAgACAAEAAAARAAsAAgACAAEAAAAQAAgAAgACAAMAAAARAAgAAgACAAMAAAA=")
+tile_set = ExtResource("2_73xee")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_cqk0a")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_aeeq3")]
+position = Vector2(1120, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_24.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_aeeq3")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b3xkt036gq5el"
+to_spawn_location_with_index = 1
+
+[node name="CloudPlatform" parent="." instance=ExtResource("5_4ep0n")]
+position = Vector2(480, 448)
+scale = Vector2(4, 3)
+floating_displacement = 35
+on_land_displacement = 65
+randomize_inital_displacement = false
+bounce_timer = 10.0
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(480, 672)
+curve = SubResource("Curve2D_4vbp4")
+script = ExtResource("6_73xee")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-320, -224)
+rotates = false
+
+[node name="Sawblade" parent="Path2D/PathFollow2D" instance=ExtResource("6_4vbp4")]
+scale = Vector2(3, 3)
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(480, 672)
+curve = SubResource("Curve2D_4vbp4")
+script = ExtResource("6_73xee")
+speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(320, -224)
+progress = 997.31744
+rotates = false
+
+[node name="Sawblade" parent="Path2D2/PathFollow2D" instance=ExtResource("6_4vbp4")]
+scale = Vector2(3, 3)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Spike" parent="Node2D" instance=ExtResource("7_x8d6w")]
+position = Vector2(352, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike2" parent="Node2D" instance=ExtResource("7_x8d6w")]
+position = Vector2(416, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike3" parent="Node2D" instance=ExtResource("7_x8d6w")]
+position = Vector2(480, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike4" parent="Node2D" instance=ExtResource("7_x8d6w")]
+position = Vector2(544, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike5" parent="Node2D" instance=ExtResource("7_x8d6w")]
+position = Vector2(608, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Node2D4" type="Node2D" parent="."]
+position = Vector2(960, 896)
+rotation = 3.1415927
+
+[node name="Spike" parent="Node2D4" instance=ExtResource("7_x8d6w")]
+position = Vector2(352, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike2" parent="Node2D4" instance=ExtResource("7_x8d6w")]
+position = Vector2(416, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike3" parent="Node2D4" instance=ExtResource("7_x8d6w")]
+position = Vector2(480, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike4" parent="Node2D4" instance=ExtResource("7_x8d6w")]
+position = Vector2(544, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike5" parent="Node2D4" instance=ExtResource("7_x8d6w")]
+position = Vector2(608, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(429, -240)
+rotation = 0.7853982
+
+[node name="Spike" parent="Node2D2" instance=ExtResource("7_x8d6w")]
+position = Vector2(352, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike2" parent="Node2D2" instance=ExtResource("7_x8d6w")]
+position = Vector2(416, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike3" parent="Node2D2" instance=ExtResource("7_x8d6w")]
+position = Vector2(480, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike4" parent="Node2D2" instance=ExtResource("7_x8d6w")]
+position = Vector2(544, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike5" parent="Node2D2" instance=ExtResource("7_x8d6w")]
+position = Vector2(608, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike6" parent="Node2D2" instance=ExtResource("7_x8d6w")]
+position = Vector2(672, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Node2D5" type="Node2D" parent="."]
+position = Vector2(-192.00003, 480.00003)
+rotation = -0.7853982
+
+[node name="Spike" parent="Node2D5" instance=ExtResource("7_x8d6w")]
+position = Vector2(352, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike2" parent="Node2D5" instance=ExtResource("7_x8d6w")]
+position = Vector2(416, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike3" parent="Node2D5" instance=ExtResource("7_x8d6w")]
+position = Vector2(480, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike4" parent="Node2D5" instance=ExtResource("7_x8d6w")]
+position = Vector2(544, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike5" parent="Node2D5" instance=ExtResource("7_x8d6w")]
+position = Vector2(608, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike6" parent="Node2D5" instance=ExtResource("7_x8d6w")]
+position = Vector2(672, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(1152, 416)
+rotation = 2.3561945
+
+[node name="Spike" parent="Node2D3" instance=ExtResource("7_x8d6w")]
+position = Vector2(352, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike2" parent="Node2D3" instance=ExtResource("7_x8d6w")]
+position = Vector2(416, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike3" parent="Node2D3" instance=ExtResource("7_x8d6w")]
+position = Vector2(480, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike4" parent="Node2D3" instance=ExtResource("7_x8d6w")]
+position = Vector2(544, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike5" parent="Node2D3" instance=ExtResource("7_x8d6w")]
+position = Vector2(608, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike6" parent="Node2D3" instance=ExtResource("7_x8d6w")]
+position = Vector2(672, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Node2D6" type="Node2D" parent="."]
+position = Vector2(531, 1136.0001)
+rotation = -2.3561945
+
+[node name="Spike" parent="Node2D6" instance=ExtResource("7_x8d6w")]
+position = Vector2(352, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike2" parent="Node2D6" instance=ExtResource("7_x8d6w")]
+position = Vector2(416, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike3" parent="Node2D6" instance=ExtResource("7_x8d6w")]
+position = Vector2(480, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike4" parent="Node2D6" instance=ExtResource("7_x8d6w")]
+position = Vector2(544, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike5" parent="Node2D6" instance=ExtResource("7_x8d6w")]
+position = Vector2(608, 848)
+scale = Vector2(1.7, 1.7)
+
+[node name="Spike6" parent="Node2D6" instance=ExtResource("7_x8d6w")]
+position = Vector2(672, 848)
+scale = Vector2(1.7, 1.7)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
