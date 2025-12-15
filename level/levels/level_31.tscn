@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=4 uid="uid://c6al5kipybvw3"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_yh2vc"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_m3wx6"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_xje3c"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_hcq3m"]
+[ext_resource type="PackedScene" uid="uid://br8v05dfs0m3m" path="res://level/platforms/seesaw/seesaw.tscn" id="5_u7vsf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3q3t"]
+size = Vector2(384, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yh2vc"]
+size = Vector2(384, 192)
+
+[node name="Level_31" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_yh2vc")
+level_binding_box = Rect2(-96, 0, 2272, 1088)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.9, 0.9)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(2272, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAD//wwAAgACAAIAAAD//w0AAgACAAIAAAD//w4AAgAPAAcAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wQAAgADAAIAAAD//wUAAgADAAIAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAAAAAMAAgACAAMAAAABAAMAAgACAAIAAAACAAMAAgACAAIAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAD//wMAAgAPAAcAAAD//w8AAgADAAIAAAD//xAAAgADAAIAAAD//xEAAgADAAIAAAD//xIAAgADAAIAAAD//xMAAgADAAIAAAABAAQAAgADAAoAAAABAAUAAgADAAsAAAACAAQAAgAEAAoAAAACAAUAAgAEAAsAAAAIAAoAAgABAAIAAAAIAAsAAgABAAIAAAAIAAwAAgABAAIAAAAIAA0AAgABAAIAAAAIAA4AAgABAAIAAAAIAA8AAgABAAIAAAAIABAAAgABAAIAAAAIABEAAgABAAIAAAAIABIAAgABAAIAAAAJAAoAAgADAAIAAAAJAAsAAgADAAIAAAAJAAwAAgADAAIAAAAJAA0AAgADAAIAAAAJAA4AAgACAAIAAAAJAA8AAgACAAIAAAAJABAAAgACAAIAAAAJABEAAgACAAIAAAAJABIAAgACAAIAAAAIABMAAgABAAIAAAAJABMAAgACAAIAAAAIAAcAAgABAAIAAAAJAAcAAgADAAIAAAAIAAUAAgADAAYAAAAIAAYAAgADAAcAAAAJAAUAAgAEAAYAAAAJAAYAAgAEAAcAAAAIAAkAAgABAAIAAAAIAAgAAgABAAIAAAAJAAkAAgADAAIAAAAJAAgAAgADAAIAAAAOAAMAAgACAAIAAAAPAAMAAgACAAIAAAAQAAMAAgACAAMAAAARAAMAAgACAAIAAAASAAMAAgACAAMAAAATAAMAAgACAAMAAAAUAAMAAgACAAMAAAAVAAMAAgACAAIAAAAWAAMAAgACAAIAAAAXAAMAAgACAAIAAAAYAAMAAgACAAIAAAAZAAMAAgACAAMAAAAaAAMAAgACAAIAAAAbAAMAAgACAAIAAAAVAAQAAgABAAIAAAAVAAUAAgABAAIAAAAVAAYAAgABAAIAAAAVAAcAAgABAAIAAAAVAAgAAgADAAoAAAAVAAkAAgADAAsAAAAVAAoAAgADAAYAAAAVAAsAAgADAAcAAAAVAAwAAgABAAIAAAAVAA0AAgABAAIAAAAVAA4AAgABAAIAAAAVAA8AAgABAAIAAAAVABAAAgABAAIAAAAVABEAAgABAAIAAAAVABIAAgABAAIAAAAVABMAAgABAAIAAAAWAAQAAgACAAIAAAAWAAUAAgACAAIAAAAWAAYAAgADAAIAAAAWAAcAAgADAAIAAAAWAAgAAgAEAAoAAAAWAAkAAgAEAAsAAAAWAAoAAgAEAAYAAAAWAAsAAgAEAAcAAAAWAAwAAgADAAIAAAAWAA0AAgADAAIAAAAWAA4AAgADAAIAAAAWAA8AAgADAAIAAAAWABAAAgADAAIAAAAWABEAAgADAAIAAAAWABIAAgADAAIAAAAWABMAAgADAAIAAAAcAAMAAgACAAMAAAAdAAMAAgACAAMAAAAhAAsAAgABAAEAAAAgAAMAAgACAAMAAAAhAAMAAgALAAcAAAAhAAQAAgABAAMAAAAhAAwAAgABAAIAAAAhAA0AAgABAAIAAAAhAA4AAgABAAIAAAAhAA8AAgABAAIAAAAhABAAAgABAAIAAAAhABEAAgABAAIAAAAhABIAAgABAAIAAAAhABMAAgABAAIAAAAiAAUAAgABAAIAAAAiAAYAAgABAAIAAAAiAAcAAgABAAIAAAAiAAgAAgABAAMAAAAiAAsAAgACAAEAAAAjAAgAAgACAAMAAAAjAAsAAgACAAEAAAAfAAMAAgACAAMAAAAeAAMAAgACAAIAAAAaAAQAAgABAAIAAAAaAAUAAgAFAAUAAAAbAAQAAgADAAMAAAAeAAQAAgAFAAQAAAAeAAUAAgAFAAQAAAAeAAYAAgAFAAUAAAARAAQAAgAFAAUAAAAOAAQAAgACAAIAAAAOAAUAAgAFAAUAAAAXAAQAAgACAAIAAAAXAAUAAgADAAMAAAAYAAQAAgADAAMAAAAKAA4AAgAEAAcAAAAKAA8AAgAEAAgAAAALAA4AAgAFAAcAAAALAA8AAgAFAAgAAAALABAAAgAFAAkAAAAKABEAAgADAAIAAAAKABIAAgADAAIAAAAKABMAAgADAAIAAAAKABAAAgACAAIAAAAKAAMAAgACAAMAAAALAAMAAgACAAMAAAAMAAMAAgACAAMAAAANAAMAAgACAAIAAAANAAQAAgABAAMAAAAPAAQAAgADAAMAAAA=")
+tile_set = ExtResource("2_m3wx6")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_xje3c")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_hcq3m")]
+position = Vector2(2336, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_24.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_hcq3m")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b3xkt036gq5el"
+to_spawn_location_with_index = 1
+
+[node name="Seesaw" parent="." instance=ExtResource("5_u7vsf")]
+position = Vector2(256, 544)
+rotation_sensitivity = 0.002
+rotation_slowdown_ratio = 3
+
+[node name="Saw" parent="Seesaw" index="1"]
+tile_map_data = PackedByteArray("AAD+/wAAAgAIAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAEAAAABAAAAAgAIAAEAAAACAAAAAgAJAAEAAAD9/wAAAgAHAAEAAAA=")
+
+[node name="CollisionShape2D" parent="Seesaw/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_o3q3t")
+
+[node name="Seesaw3" parent="." instance=ExtResource("5_u7vsf")]
+position = Vector2(992, 384)
+rotation_sensitivity = 0.003
+rotation_slowdown_ratio = 3
+
+[node name="Saw" parent="Seesaw3" index="1"]
+tile_map_data = PackedByteArray("AAD+/wAAAgAIAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAEAAAABAAAAAgAIAAEAAAACAAAAAgAJAAEAAAD9/wAAAgAHAAEAAAA=")
+
+[node name="CollisionShape2D" parent="Seesaw3/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_yh2vc")
+
+[node name="Seesaw4" parent="." instance=ExtResource("5_u7vsf")]
+position = Vector2(1792, 672)
+rotation_sensitivity = 0.004
+rotation_slowdown_ratio = 3
+
+[node name="Saw" parent="Seesaw4" index="1"]
+tile_map_data = PackedByteArray("AAD+/wAAAgAIAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAEAAAABAAAAAgAIAAEAAAACAAAAAgAJAAEAAAD9/wAAAgAHAAEAAAA=")
+
+[node name="CollisionShape2D" parent="Seesaw4/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_yh2vc")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+
+[editable path="Seesaw"]
+[editable path="Seesaw3"]
+[editable path="Seesaw4"]

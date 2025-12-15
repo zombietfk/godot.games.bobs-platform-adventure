@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn7upmm8pasm"
-path="res://.godot/imported/imp_wings_spritesheet.png-cfb0a4f20d49a012ebed91fc77ec54a9.ctex"
+path="res://.godot/imported/imp_wings_spritesheet.png-e42ab1be48495b9d57ff2bd5d0d00235.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/imp/imp_wings_spritesheet.png"
-dest_files=["res://.godot/imported/imp_wings_spritesheet.png-cfb0a4f20d49a012ebed91fc77ec54a9.ctex"]
+source_file="res://enemies/imp/flying/imp_wings_spritesheet.png"
+dest_files=["res://.godot/imported/imp_wings_spritesheet.png-e42ab1be48495b9d57ff2bd5d0d00235.ctex"]
 
 [params]
 

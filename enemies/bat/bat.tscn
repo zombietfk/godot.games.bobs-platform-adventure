@@ -235,3 +235,6 @@ root_node = NodePath("../Hanging")
 libraries = {
 &"": SubResource("AnimationLibrary_ckyte")
 }
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 0

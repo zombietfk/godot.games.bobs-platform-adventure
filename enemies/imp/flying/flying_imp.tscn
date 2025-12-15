@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://ctot71jpjx0j0"]
 
-[ext_resource type="Script" uid="uid://c8o5ovoaxru73" path="res://enemies/imp/flying_imp.gd" id="1_5yhsj"]
+[ext_resource type="Script" uid="uid://c8o5ovoaxru73" path="res://enemies/imp/flying/flying_imp.gd" id="1_5yhsj"]
 [ext_resource type="Texture2D" uid="uid://cuijmmsqux478" path="res://enemies/imp/imp_walk_spritesheet.png" id="2_5yhsj"]
-[ext_resource type="Texture2D" uid="uid://bn7upmm8pasm" path="res://enemies/imp/imp_wings_spritesheet.png" id="2_tlcl6"]
+[ext_resource type="Texture2D" uid="uid://bn7upmm8pasm" path="res://enemies/imp/flying/imp_wings_spritesheet.png" id="2_tlcl6"]
 [ext_resource type="Texture2D" uid="uid://c1aitfjmkljul" path="res://player/exclamation.png" id="4_jwqle"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yhsj"]

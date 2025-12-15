@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ctxj825qesnky" path="res://enemies/bosses/demon-rabbit/demon_rabbit.gd" id="1_6w804"]
 [ext_resource type="SpriteFrames" uid="uid://bm0ynqus6gxsc" path="res://enemies/bosses/demon-rabbit/demon_rabbit_sprites.tres" id="1_jmrix"]
-[ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying_imp.tscn" id="2_bv7or"]
+[ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying/flying_imp.tscn" id="2_bv7or"]
 [ext_resource type="Texture2D" uid="uid://jphbfbr6mhm8" path="res://enemies/bosses/demon-rabbit/pitchfork.png" id="2_eeg2y"]
 [ext_resource type="PackedScene" uid="uid://cntwaqajm0x88" path="res://objects/mirror/mirror.tscn" id="3_i52du"]
 [ext_resource type="PackedScene" uid="uid://cj6isii318ay6" path="res://enemies/bosses/demon-rabbit/demon_rabbit_magic_spell_spiral.tscn" id="4_61886"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://br8v05dfs0m3m"]
+
+[ext_resource type="Script" uid="uid://cujr8u1e3kwcq" path="res://level/platforms/seesaw/seesaw.gd" id="1_xroty"]
+[ext_resource type="Texture2D" uid="uid://csbgstbk3iit4" path="res://ui/circular_circle.png" id="2_34ik4"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="3_ubvnf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3q3t"]
+atlas = ExtResource("2_34ik4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh2vc"]
+atlas = ExtResource("2_34ik4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3wx6"]
+atlas = ExtResource("2_34ik4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xje3c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3q3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh2vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3wx6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7vsf"]
+radius = 128.0
+
+[node name="Seesaw" type="Node2D"]
+script = ExtResource("1_xroty")
+
+[node name="Pivot" type="AnimatedSprite2D" parent="."]
+z_index = 3
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_xje3c")
+autoplay = "default"
+frame_progress = 0.36928505
+
+[node name="Saw" type="TileMapLayer" parent="."]
+position = Vector2(0, -32)
+tile_map_data = PackedByteArray(0, 0, 254, 255, 0, 0, 2, 0, 7, 0, 1, 0, 0, 0, 255, 255, 0, 0, 2, 0, 8, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 8, 0, 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 9, 0, 1, 0, 0, 0)
+tile_set = ExtResource("3_ubvnf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_u7vsf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_seesaw_area_enter"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_seesaw_area_leave"]

@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		turn_around();
 
 func _process_attacks() -> void:
-	for collision in $ShapeCast2D.collision_result:
+	for collision in $AttackShapeCast2D.collision_result:
 		var body = instance_from_id(collision["collider_id"]);
 		if body is Player:
 			body.damage(

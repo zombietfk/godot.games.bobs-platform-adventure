@@ -56,19 +56,19 @@ collision_layer = 2
 collision_mask = 64
 script = ExtResource("1_3p1ij")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_yyttc")
 animation = &"walk"
 autoplay = "walk"
 frame_progress = 0.0333583
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(5.25, 1)
 shape = SubResource("RectangleShape2D_1bvp3")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+[node name="AttackShapeCast2D" type="ShapeCast2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.419608)
 position = Vector2(-22, -8)
 scale = Vector2(5.39429, -5.49999)

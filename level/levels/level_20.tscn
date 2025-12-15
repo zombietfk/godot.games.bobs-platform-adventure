@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="6_a58x1"]
 [ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="7_tuskr"]
 [ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="8_ymkjy"]
-[ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying_imp.tscn" id="9_ymkjy"]
+[ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying/flying_imp.tscn" id="9_ymkjy"]
 
 [sub_resource type="Curve2D" id="Curve2D_tuskr"]
 _data = {
