@@ -5,7 +5,7 @@ extends Node;
 @warning_ignore("unused_signal")
 signal transition(to: AbstractState);
 
-var context: StateMachine;
+var state_machine: StateMachine;
 
 @abstract
 func enter(_from: AbstractState)->void;

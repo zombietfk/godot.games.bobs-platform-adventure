@@ -239,9 +239,18 @@ use_kinematic_bodies = true
 
 [node name="FlyingImp" parent="." instance=ExtResource("9_ymkjy")]
 position = Vector2(752, 368)
-seeking_speed = 100
+
+[node name="Seek" parent="FlyingImp/StateMachine" index="0"]
+seeking_speed = 75
+prepare_attack_at_range = 100.0
+
+[node name="Attack" parent="FlyingImp/StateMachine" index="1"]
 attacking_speed = 600
-attack_range = 100.0
-attacking_length_timer = 0.7
+attacking_length_timer = 0.5
+
+[node name="PrepareAttack" parent="FlyingImp/StateMachine" index="2"]
+attack_pause_length_timer = 2.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+
+[editable path="FlyingImp"]

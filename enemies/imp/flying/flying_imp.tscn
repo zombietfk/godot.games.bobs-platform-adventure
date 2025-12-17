@@ -1,9 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctot71jpjx0j0"]
+[gd_scene load_steps=21 format=3 uid="uid://ctot71jpjx0j0"]
 
 [ext_resource type="Script" uid="uid://c8o5ovoaxru73" path="res://enemies/imp/flying/flying_imp.gd" id="1_5yhsj"]
+[ext_resource type="Script" uid="uid://ci348gimvwma7" path="res://enemies/abstract/states/enemy_state_machine.gd" id="2_5pn8g"]
 [ext_resource type="Texture2D" uid="uid://cuijmmsqux478" path="res://enemies/imp/imp_walk_spritesheet.png" id="2_5yhsj"]
 [ext_resource type="Texture2D" uid="uid://bn7upmm8pasm" path="res://enemies/imp/flying/imp_wings_spritesheet.png" id="2_tlcl6"]
+[ext_resource type="Script" uid="uid://dyp7rl0yaa12q" path="res://enemies/imp/flying/state_machine/states/flying_imp_seeking_state.gd" id="3_pihcr"]
 [ext_resource type="Texture2D" uid="uid://c1aitfjmkljul" path="res://player/exclamation.png" id="4_jwqle"]
+[ext_resource type="Script" uid="uid://dwufkeyyomvet" path="res://enemies/imp/flying/state_machine/states/flying_imp_attacking_state.gd" id="4_lolxb"]
+[ext_resource type="Script" uid="uid://y3ed6c6jtj01" path="res://enemies/imp/flying/state_machine/states/flying_imp_prepare_attack_state.gd" id="5_n7pxr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yhsj"]
 atlas = ExtResource("2_tlcl6")
@@ -102,10 +106,29 @@ _data = {
 &"floating_alert": SubResource("Animation_g1dw6")
 }
 
-[node name="FlyingImp" type="CharacterBody2D"]
+[node name="FlyingImp" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_5yhsj")
+state_machine = NodePath("StateMachine")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
+script = ExtResource("2_5pn8g")
+inital_state = NodePath("Seek")
+
+[node name="Seek" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("3_pihcr")
+body = NodePath("../..")
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack_shape_cast", "body")]
+script = ExtResource("4_lolxb")
+attack_shape_cast = NodePath("../../ShapeCast2D")
+body = NodePath("../..")
+
+[node name="PrepareAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("body_alert_notification", "body")]
+script = ExtResource("5_n7pxr")
+body_alert_notification = NodePath("../../Alert")
+body = NodePath("../..")
 
 [node name="Wings" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0.40392157, 0, 1)

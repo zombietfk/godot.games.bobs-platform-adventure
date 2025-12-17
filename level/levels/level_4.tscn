@@ -132,12 +132,7 @@ rotation = 3.1415927
 position = Vector2(416, 176)
 rotation = 3.1415927
 
-[node name="Imp" parent="." instance=ExtResource("6_wwgj7")]
-position = Vector2(352, 96)
-
 [node name="Imp2" parent="." instance=ExtResource("6_wwgj7")]
-position = Vector2(544, 288)
-scale = Vector2(-1, 1)
-movement_speed = 25
+position = Vector2(464, 289)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -2,7 +2,7 @@ class_name FlyingImp;
 extends CharacterBody2D;
 
 var floating_displacement_timer = 0.0;
-var floating_displacement_magnitude = 25;
+var floating_displacement_magnitude = 0.1;
 @export var state_machine: EnemyStateMachine;
 
 func _process(delta: float) -> void:
