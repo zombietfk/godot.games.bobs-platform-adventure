@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyor0okde2rnm"]
+[gd_scene load_steps=14 format=3 uid="uid://dyor0okde2rnm"]
 
 [ext_resource type="Script" uid="uid://c8buq4qne72fg" path="res://enemies/imp/imp.gd" id="1_3p1ij"]
 [ext_resource type="Texture2D" uid="uid://cuijmmsqux478" path="res://enemies/imp/imp_walk_spritesheet.png" id="2_3p1ij"]
@@ -7,92 +7,56 @@
 [ext_resource type="Script" uid="uid://clckd16reh3ci" path="res://enemies/imp/state_machine/contexts/imp_movement_context.gd" id="4_chpmn"]
 [ext_resource type="Script" uid="uid://crp88rnesokmi" path="res://enemies/imp/state_machine/states/imp_changing_direction_state.gd" id="4_d3unr"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3unr"]
+atlas = ExtResource("2_3p1ij")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dsa5"]
+atlas = ExtResource("2_3p1ij")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7chnj"]
+atlas = ExtResource("2_3p1ij")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooc45"]
+atlas = ExtResource("2_3p1ij")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5iiwb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3unr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dsa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7chnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooc45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7chnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dsa5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(22.5, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3p1ij"]
 radius = 1.5
 
-[sub_resource type="Animation" id="Animation_6dsa5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 64, 64)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.857, 0.857)]
-}
-
-[sub_resource type="Animation" id="Animation_7chnj"]
-resource_name = "Turn"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(64, 0, 64, 64)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.25, 1), Vector2(-1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_d3unr"]
-resource_name = "Walking"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(64, 0, 64, 64)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6dsa5"]
-_data = {
-&"RESET": SubResource("Animation_6dsa5"),
-&"Turn": SubResource("Animation_7chnj"),
-&"Walking": SubResource("Animation_d3unr")
-}
-
 [node name="Imp" type="CharacterBody2D"]
+scale = Vector2(-1, 1)
 collision_layer = 2
 collision_mask = 64
 script = ExtResource("1_3p1ij")
@@ -101,32 +65,28 @@ script = ExtResource("1_3p1ij")
 script = ExtResource("2_swk4a")
 inital_state = NodePath("Walk")
 
-[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_check_raycast", "wall_check_raycast", "attack_shape_cast", "animation_player", "body")]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_check_raycast", "wall_check_raycast", "attack_shape_cast", "body")]
 script = ExtResource("2_gngxf")
 floor_check_raycast = NodePath("../../FloorCheckRayCast2D")
 wall_check_raycast = NodePath("../../WallCheckRayCast2D")
 attack_shape_cast = NodePath("../../AttackShapeCast2D")
-animation_player = NodePath("../../AnimationPlayer")
 body = NodePath("../..")
 
-[node name="ChangeDirection" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_player", "body")]
+[node name="ChangeDirection" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
 script = ExtResource("4_d3unr")
-animation_player = NodePath("../../AnimationPlayer")
 body = NodePath("../..")
 
 [node name="-----" type="Node" parent="StateMachine"]
 
 [node name="MovementContext" type="Node" parent="StateMachine"]
 script = ExtResource("4_chpmn")
+x_movement_speed = 100.0
 
-[node name="AnimatableRoot" type="Node" parent="."]
-
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.857, 0.857)
-texture = ExtResource("2_3p1ij")
-region_enabled = true
-region_rect = Rect2(0, 0, 64, 64)
+sprite_frames = SubResource("SpriteFrames_5iiwb")
+autoplay = "default"
+frame_progress = 0.7279889
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(5.25, 1)
@@ -147,12 +107,6 @@ collision_mask = 64
 
 [node name="WallCheckRayCast2D" type="RayCast2D" parent="."]
 position = Vector2(5, 0)
-rotation = 1.5708
-target_position = Vector2(0, 24)
+scale = Vector2(-1, 1)
+target_position = Vector2(24, 0)
 collision_mask = 64
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_6dsa5")
-}
-autoplay = "Walking"

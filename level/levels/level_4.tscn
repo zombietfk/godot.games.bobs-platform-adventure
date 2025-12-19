@@ -12,7 +12,7 @@
 script = ExtResource("1_ng40v")
 level_binding_box = Rect2(0, -320, 896, 448)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
-camera_zoom_to = Vector2(0.8, 0.8)
+camera_zoom_to = Vector2(1, 1)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(0, 352)
@@ -133,6 +133,16 @@ position = Vector2(416, 176)
 rotation = 3.1415927
 
 [node name="Imp2" parent="." instance=ExtResource("6_wwgj7")]
-position = Vector2(464, 289)
+position = Vector2(436, 300)
+scale = Vector2(1, 1)
+
+[node name="Imp3" parent="." instance=ExtResource("6_wwgj7")]
+position = Vector2(436, 102)
+scale = Vector2(1, 1)
+
+[node name="MovementContext" parent="Imp3/StateMachine" index="3"]
+movement_direction = Vector2(1, 0)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+
+[editable path="Imp3"]

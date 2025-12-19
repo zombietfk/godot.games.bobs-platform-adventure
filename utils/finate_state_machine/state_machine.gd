@@ -12,8 +12,8 @@ func _ready() -> void:
 			_states[n.name] = n;
 			n.state_machine = self;
 		if n is AbstractContext:
-			print(n.name);
 			_contexts[n.name] = n;
+	await get_parent().ready;
 	_set_state(inital_state.name)
 
 func _set_state(new_state_name: String):
