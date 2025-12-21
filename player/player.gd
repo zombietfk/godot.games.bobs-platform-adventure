@@ -8,174 +8,49 @@ const VELOCITY_X_MIN = 10;
 
 # SETTINGS
 @export var camera: Camera2D;
-@export var movement_speed: int = 34;
-@export var max_movement_speed: int = 340; 
-@export var jump_strength: int = 850;
 @export var player_heath_ui: PlayerHealthUI;
-@export var lives_count_label: Label;
+@export var lives_count_label_ui: Label;
+@export var movement_state_machine: StateMachine;
 @export var max_health = 3;
 @export var current_health = 3;
-@export var spawn_position: Vector2;
-@export var slope_slide_curve: Curve;
 @export var lives = 50;
-
-# INTERNAL STATE
-var damage_timeout = 0.0;
-var death_count = 0;
-var knockback_impetus: Vector2 = Vector2.ZERO;
-
-# FLAGS
-var is_dead = false;
-var is_movement_disabled = false;
-
-# TIMERS
-@export var jump_forgiveness_timer = 0.08;
-var c_jump_forgiveness_timer = 0.0;
-var knockback_duration_timer = 0.0;
-
-func _on_respawn_grace_timer_timeout() -> void:
-	lives -= 1;
-	if lives >= 0:
-		Main.load_level();
-	else:
-		Main.reset_lives_load_checkpoint_level();
-	current_health = max_health;
-	visible = true;
-	is_dead = false;
-	is_movement_disabled = false;
-	damage(0, Vector2.ZERO);
-	velocity = Vector2.ZERO;
-	knockback_impetus = Vector2.ZERO;
-
-func _on_respawn_timer_timeout() -> void:
-	global_position = Main.instance.level_instance.spawn_locations[
-		Main.instance.current_spawn_index
-	].global_position;
-	$RespawnGraceTimer.start();
+@export var crush_check_raycast_up: RayCast2D;
+@export var crush_check_raycast_down: RayCast2D;
+@export var alert_notifcation: Sprite2D;
 
 # SIGNALS
+@warning_ignore("unused_signal")
 signal player_interaction();
+@warning_ignore("unused_signal")
 signal player_interaction_end();
+signal on_take_damage(
+	amount: int,
+	from_direction: Vector2,
+	knockback_strength: Vector2,
+	knockback_duration_in_s: float,
+);
+signal on_kill();
 
 # LIFECYCLE
-func _process(delta: float) -> void:
-	lives_count_label.text = var_to_str(lives);
-	if is_dead:
-		return;
-	damage_timeout -= delta;
-	if damage_timeout > 0:
-		modulate.a = 0.5;
-	else:
-		modulate.a = 1;
-	if Input.is_action_just_pressed("interaction"):
-		player_interaction.emit();
-	if Input.is_action_just_released("interaction"):
-		player_interaction_end.emit();
+func _process(_delta: float) -> void:
 	if is_out_of_bounds() or current_health <= 0:
-		gib_and_kill(50);
-	if $CrushCheckUpCast.is_colliding() and $CrushCheckDownCast.is_colliding():
-		gib_and_kill(50);
+		on_kill.emit();
+	if crush_check_raycast_up.is_colliding() and crush_check_raycast_down.is_colliding():
+		on_kill.emit();
+	lives_count_label_ui.text = var_to_str(lives);
 	player_heath_ui.update_health_bar(current_health, max_health);
 
-func _physics_process(delta: float) -> void:
-	if is_dead:
-		return;
-	if is_on_floor():
-		c_jump_forgiveness_timer = 0;
-	else:
-		c_jump_forgiveness_timer += delta;
-	_process_update_movement_direction(delta);
+func _physics_process(_delta: float) -> void:
 	move_and_slide();
-
-func _process_is_jump_key_pressed() -> bool:
-	return Input.is_action_just_pressed("jump");
-
-func _process_is_jump_key_released() -> bool:
-	return Input.is_action_just_released("jump");
-
-func _process_update_movement_direction(delta) -> void:
-	if knockback_duration_timer > 0:
-		knockback_duration_timer -= delta;
-		velocity = knockback_impetus;
-	if is_movement_disabled:
-		velocity += get_gravity() * delta;
-		return;
-	var movement_impetus = Vector2.ZERO;
-	if Input.is_action_pressed("move_right"):
-		movement_impetus += Vector2.RIGHT * movement_speed;
-	if Input.is_action_pressed("move_left"):
-		movement_impetus += Vector2.LEFT * movement_speed;
-	if (
-		_process_is_jump_key_pressed() and
-		c_jump_forgiveness_timer <= jump_forgiveness_timer
-	):
-		jump();
-	if _process_is_jump_key_released():
-		cancel_jump();
-	if Input.is_action_pressed("drop"):
-		set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, false);
-	else:
-		set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, true);
-	if is_on_slope():
-		apply_slope_slide(movement_impetus);
-		movement_impetus = Vector2.ZERO;
-	apply_friction(delta);
-	if knockback_duration_timer <= 0:
-		velocity.x = clamp(
-			velocity.x,
-			-max_movement_speed,
-			max_movement_speed
-		);
-	velocity += get_gravity() * delta + movement_impetus;
 	
 # METHODS
-func apply_friction(delta) -> void:
-	var friction_unit = sign(velocity.x) * (get_gravity().length() * delta);
-	velocity.x -= friction_unit * 1/4;
-	#Apply extra friction, when traveling on the FLOOR
-	if is_on_floor():
-		velocity.x -= friction_unit * 7/8;
-	if abs(velocity.x) < VELOCITY_X_MIN and !is_on_slope():
-		velocity.x = 0;
-
-func apply_slope_slide(movement_impetus: Vector2 = Vector2.ZERO) -> void:
-	var slope_angle_in_degrees = rad_to_deg(
-		abs(get_floor_normal().angle() + PI / 2)
-	);
-	var vertical_angle_deg = 90;
-	var slope_speed_factor = 1.6;
-	var slope_impulse = sign(get_floor_normal().x) * max_movement_speed * slope_speed_factor * (slope_angle_in_degrees / vertical_angle_deg)
-	velocity.x = (slope_impulse +
-		sign(movement_impetus.x) *
-		((vertical_angle_deg - slope_angle_in_degrees) / vertical_angle_deg) * max_movement_speed
-	);
-
-func is_on_slope(min_slope_angle: float = 5) -> bool:
-	return is_on_floor() and rad_to_deg(
-		abs(get_floor_normal().angle() + PI / 2)
-	) > min_slope_angle;
-
-func gib_and_kill(gibs: int = 25) -> void:
-	if is_dead:
-		return;
-	for i in gibs:
-		Gib.spawn(global_position, -velocity);
-	$RespawnTimer.start();
-	visible = false;
-	is_dead = true;
-	velocity = Vector2.ZERO;
+func gib_and_kill() -> void:
+	on_kill.emit();
 	
-func jump() -> void:
-	velocity += Vector2(0, -jump_strength);
-
-func cancel_jump() -> void:
-	if velocity.y < 0:
-		velocity.y = 0;
-		
 func is_out_of_bounds() -> bool:
 	return !Rect2(
-		Main.level_instance.level_binding_box.position - 64 * Vector2.ONE,
-		Main.level_instance.level_binding_box.size - Main.level_instance.level_binding_box.position + 64 * Vector2.ONE * 2,
+		Main.level_instance.level_binding_box.position - Main.STANDARD_UNIT * Vector2.ONE,
+		Main.level_instance.level_binding_box.size - Main.level_instance.level_binding_box.position + Main.STANDARD_UNIT * Vector2.ONE * 2,
 	).has_point(position);
 	
 func damage(
@@ -184,12 +59,12 @@ func damage(
 	knockback_strength: Vector2 = Vector2.ZERO,
 	knockback_duration_in_s: float = 0.2,
 ) -> void:
-	if damage_timeout <= 0:
-		velocity = Vector2.ZERO;
-		damage_timeout = 1.0;
-		knockback_impetus = -from_direction.normalized() * knockback_strength;
-		knockback_duration_timer = knockback_duration_in_s;
-		current_health -= amount;
+	on_take_damage.emit(
+		amount,
+		from_direction,
+		knockback_strength,
+		knockback_duration_in_s
+	);
 
-func set_alert_notification_visibility(show_alert = !$AlertNotification.visible):
-	$AlertNotification.visible = show_alert;
+func set_alert_notification_visibility(show_alert = !alert_notifcation.visible):
+	alert_notifcation.visible = show_alert;

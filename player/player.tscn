@@ -1,9 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://dd4hda4w5qubs"]
+[gd_scene load_steps=22 format=3 uid="uid://dd4hda4w5qubs"]
 
 [ext_resource type="Script" uid="uid://caoku7dqkwa54" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_2ieo8"]
 [ext_resource type="Texture2D" uid="uid://csatwk1neiden" path="res://player/bob_idle_spritesheet.png" id="2_rkbax"]
-[ext_resource type="Curve" uid="uid://pnerggw4bx7c" path="res://player/player_slope_slide_curve_deg.tres" id="2_yw30f"]
+[ext_resource type="Script" uid="uid://dd6lpf0ufyjvy" path="res://player/state_machines/input_state_machine/states/player_airborn_state.gd" id="3_ebec5"]
 [ext_resource type="Texture2D" uid="uid://c1aitfjmkljul" path="res://player/exclamation.png" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://6sq6en5cj5dn" path="res://player/state_machines/input_state_machine/states/player_dead_state.gd" id="4_yllr7"]
+[ext_resource type="Script" uid="uid://4uqoom2pm42p" path="res://player/state_machines/input_state_machine/states/player_grounded_state.gd" id="5_kb6p2"]
+[ext_resource type="Script" uid="uid://bwyuksqm3gq2a" path="res://player/state_machines/damage_state_machine/states/player_unhit_state.gd" id="6_wodsf"]
+[ext_resource type="Script" uid="uid://w1nnak65hmur" path="res://player/state_machines/damage_state_machine/states/player_hit_state.gd" id="7_32hag"]
+[ext_resource type="Script" uid="uid://e0omv0ocm82o" path="res://player/state_machines/contexts/player_movement_context.gd" id="8_tqiix"]
+[ext_resource type="Script" uid="uid://dxlm1rmw2kkip" path="res://player/state_machines/contexts/player_knockback_context.gd" id="9_e7oew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1dw6"]
 atlas = ExtResource("2_rkbax")
@@ -97,7 +104,7 @@ _data = {
 &"floating_alert": SubResource("Animation_g1dw6")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_state_machine", "crush_check_raycast_up", "crush_check_raycast_down", "alert_notifcation")]
 collision_mask = 201
 floor_max_angle = 1.2217305
 floor_snap_length = 10.0
@@ -105,9 +112,52 @@ platform_on_leave = 1
 platform_floor_layers = 4278190528
 platform_wall_layers = 448
 script = ExtResource("1_rkbax")
-max_health = 25
-current_health = 25
-slope_slide_curve = ExtResource("2_yw30f")
+movement_state_machine = NodePath("StateMachines/MovementStateMachine")
+crush_check_raycast_up = NodePath("CrushCheckUpCast")
+crush_check_raycast_down = NodePath("CrushCheckDownCast")
+alert_notifcation = NodePath("AlertNotification")
+
+[node name="StateMachines" type="Node" parent="."]
+
+[node name="MovementStateMachine" type="Node" parent="StateMachines" node_paths=PackedStringArray("inital_state", "external_contexts")]
+script = ExtResource("2_2ieo8")
+inital_state = NodePath("Grounded")
+external_contexts = [NodePath("../MovementContext"), NodePath("../KnockbackContext")]
+
+[node name="Airborn" type="Node" parent="StateMachines/MovementStateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("3_ebec5")
+body = NodePath("../../..")
+
+[node name="Dead" type="Node" parent="StateMachines/MovementStateMachine" node_paths=PackedStringArray("respawn_grace_timer", "respawn_timer", "body")]
+script = ExtResource("4_yllr7")
+respawn_grace_timer = NodePath("../../../RespawnGraceTimer")
+respawn_timer = NodePath("../../../RespawnTimer")
+body = NodePath("../../..")
+
+[node name="Grounded" type="Node" parent="StateMachines/MovementStateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("5_kb6p2")
+body = NodePath("../../..")
+
+[node name="DamageStateMachine" type="Node" parent="StateMachines" node_paths=PackedStringArray("inital_state", "external_contexts")]
+script = ExtResource("2_2ieo8")
+inital_state = NodePath("Unhit")
+external_contexts = [NodePath("../MovementContext"), NodePath("../KnockbackContext")]
+
+[node name="Unhit" type="Node" parent="StateMachines/DamageStateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("6_wodsf")
+body = NodePath("../../..")
+
+[node name="Hit" type="Node" parent="StateMachines/DamageStateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("7_32hag")
+body = NodePath("../../..")
+
+[node name="---" type="Node" parent="StateMachines"]
+
+[node name="MovementContext" type="Node" parent="StateMachines"]
+script = ExtResource("8_tqiix")
+
+[node name="KnockbackContext" type="Node" parent="StateMachines"]
+script = ExtResource("9_e7oew")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -122,12 +172,12 @@ position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_g1dw6")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="RespawnGraceTimer" type="Timer" parent="."]
-wait_time = 0.05
-one_shot = true
-
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 2.5
+one_shot = true
+
+[node name="RespawnGraceTimer" type="Timer" parent="."]
+wait_time = 0.05
 one_shot = true
 
 [node name="AlertNotification" type="Sprite2D" parent="."]
@@ -148,6 +198,3 @@ collision_mask = 64
 [node name="CrushCheckUpCast" type="RayCast2D" parent="."]
 target_position = Vector2(0, -20)
 collision_mask = 64
-
-[connection signal="timeout" from="RespawnGraceTimer" to="." method="_on_respawn_grace_timer_timeout"]
-[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

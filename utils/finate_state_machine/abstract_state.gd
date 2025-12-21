@@ -7,6 +7,10 @@ signal transition(to: AbstractState);
 
 var state_machine: StateMachine;
 
+# Optional initalizastion block 
+func init()->void:
+	pass;
+
 @abstract
 func enter(_from: AbstractState)->void;
 
@@ -17,4 +21,4 @@ func exit(_to: AbstractState)->void;
 func process(_delta: float)->void;
 	
 @abstract
-func physics_process(_delta: float);
+func physics_process(_delta: float)->void;

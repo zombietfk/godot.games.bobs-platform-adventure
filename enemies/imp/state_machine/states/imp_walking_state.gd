@@ -13,7 +13,7 @@ func enter(_from: AbstractState)->void:
 	) as ImpMovementContext;
 	NegativeScaleUtil.set_emulated_flip_to_negative_x_scale(
 		body,
-		-_walking_context.movement_direction.x,
+		-sign(_walking_context.movement_direction.x),
 		0
 	);
 	
@@ -37,10 +37,9 @@ func process(_delta: float)->void:
 				knockpack_impetus,
 			);
 	
-func physics_process(delta: float):
-	body.velocity.x = clamp(
-		_walking_context.movement_direction.normalized().x * _walking_context.x_movement_speed,
-		-_walking_context.x_movement_speed,
-		_walking_context.x_movement_speed
+func physics_process(_delta: float):
+	body.velocity = (
+		_walking_context.movement_direction.normalized() *
+		_walking_context.movement_speed +
+		body.get_gravity()
 	);
-	#body.velocity += body.get_gravity() * delta;

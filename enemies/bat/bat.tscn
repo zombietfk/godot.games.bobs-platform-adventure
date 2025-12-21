@@ -1,8 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://cclnn5v3he5e0"]
+[gd_scene load_steps=24 format=3 uid="uid://cclnn5v3he5e0"]
 
 [ext_resource type="Script" uid="uid://vl20873o1c7u" path="res://enemies/bat/bat.gd" id="1_kjrhy"]
+[ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_2ie3h"]
 [ext_resource type="Texture2D" uid="uid://wwajk3e0kbue" path="res://enemies/bat/bat.png" id="2_ckyte"]
 [ext_resource type="Texture2D" uid="uid://b7q47j85sj5vy" path="res://enemies/bat/bat_hanging.png" id="3_hf1ur"]
+[ext_resource type="Script" uid="uid://c50uta7tnsqvd" path="res://enemies/bat/state_machine/states/bat_sleeping_state.gd" id="3_o4twe"]
+[ext_resource type="Script" uid="uid://dbav1fjuqmgc4" path="res://enemies/bat/state_machine/states/bat_gliding_state.gd" id="4_do1l7"]
+[ext_resource type="Script" uid="uid://dgv0nos0v06qp" path="res://enemies/bat/state_machine/states/bat_flapping_state.gd" id="5_hpvq7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yf5cq"]
 atlas = ExtResource("2_ckyte")
@@ -30,10 +34,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r6urb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf5cq")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 16.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oqvym"]
@@ -199,15 +206,36 @@ _data = {
 &"awaken": SubResource("Animation_kjrhy")
 }
 
-[node name="Bat" type="CharacterBody2D"]
+[node name="Bat" type="CharacterBody2D" node_paths=PackedStringArray("attack_shape_cast")]
 collision_layer = 2
 collision_mask = 66
 script = ExtResource("1_kjrhy")
+attack_shape_cast = NodePath("AttackShapeCast2D")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
+script = ExtResource("2_2ie3h")
+inital_state = NodePath("Sleep")
+
+[node name="Sleep" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_below_check_raycast", "hanging_sprite", "flying_sprite", "animation_player", "body")]
+script = ExtResource("3_o4twe")
+player_below_check_raycast = NodePath("../../PlayerBelowCheckRaycast2D")
+hanging_sprite = NodePath("../../Hanging")
+flying_sprite = NodePath("../../Flying")
+animation_player = NodePath("../../AnimationPlayer")
+body = NodePath("../..")
+
+[node name="Glide" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("4_do1l7")
+body = NodePath("../..")
+
+[node name="Flap" type="Node" parent="StateMachine" node_paths=PackedStringArray("flying_animated_sprite", "body")]
+script = ExtResource("5_hpvq7")
+flying_animated_sprite = NodePath("../../Flying")
+body = NodePath("../..")
 
 [node name="Flying" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_6gqkr")
-autoplay = "default"
 frame_progress = 0.6643059
 
 [node name="Hanging" type="AnimatedSprite2D" parent="."]
@@ -216,10 +244,16 @@ sprite_frames = SubResource("SpriteFrames_xbj4d")
 animation = &"waking_up"
 autoplay = "default"
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="PlayerBelowCheckRaycast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 512)
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+[node name="AttackShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
+position = Vector2(-2, 4)
+shape = SubResource("CircleShape2D_dy0p3")
+target_position = Vector2(0, 0)
+
+[node name="AttackShapeCast2D" type="ShapeCast2D" parent="AttackShapeCast2D"]
 visible = false
 position = Vector2(-2, 4)
 shape = SubResource("CircleShape2D_dy0p3")
@@ -235,6 +269,3 @@ root_node = NodePath("../Hanging")
 libraries = {
 &"": SubResource("AnimationLibrary_ckyte")
 }
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-navigation_layers = 0

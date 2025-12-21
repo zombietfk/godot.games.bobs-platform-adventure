@@ -23,13 +23,9 @@ var c_barrel_rotation_reset_timer: float = 0.0;
 # TRIGGERS
 func _on_player_interaction():
 	is_firing = true;
-	Main.instance.player.velocity = Vector2.ZERO;
-	Main.instance.player.is_movement_disabled = true;
 	
 func _on_player_interaction_end():
 	is_firing = false;
-	Main.instance.player.velocity = Vector2.ZERO;
-	Main.instance.player.is_movement_disabled = false;
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -40,7 +36,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		is_firing = false;
-		Main.instance.player.is_movement_disabled = false;
 		Main.instance.player.player_interaction.disconnect(_on_player_interaction);
 		Main.instance.player.player_interaction_end.disconnect(_on_player_interaction_end);
 		Main.instance.player.set_alert_notification_visibility(false);

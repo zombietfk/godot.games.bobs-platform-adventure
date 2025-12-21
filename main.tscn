@@ -179,13 +179,11 @@ layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("4_lquwl")
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera", "player_heath_ui", "lives_count_label") instance=ExtResource("1_0xm2m")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "player_heath_ui", "lives_count_label_ui") instance=ExtResource("1_0xm2m")]
 position = Vector2(32, 284)
 camera = NodePath("Camera2D")
 player_heath_ui = NodePath("../GameUI/UI/PlayerHealthUI")
-lives_count_label = NodePath("../GameUI/UI/LivesCount")
-max_health = 3
-current_health = 3
+lives_count_label_ui = NodePath("../GameUI/UI/LivesCount")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0

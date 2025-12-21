@@ -74,6 +74,7 @@ body = NodePath("../..")
 
 [node name="ChangeDirection" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
 script = ExtResource("4_d3unr")
+turn_around_timer = 0.3
 body = NodePath("../..")
 
 [node name="-----" type="Node" parent="StateMachine"]
@@ -86,7 +87,7 @@ x_movement_speed = 100.0
 self_modulate = Color(1, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_5iiwb")
 autoplay = "default"
-frame_progress = 0.7279889
+frame_progress = 0.8704022
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(5.25, 1)

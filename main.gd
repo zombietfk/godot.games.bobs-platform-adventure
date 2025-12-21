@@ -7,6 +7,8 @@ enum DIFFICULTY {
 	HARD = 3,
 }
 
+const STANDARD_UNIT = 64;
+
 # SETTINGS
 @export_file() var inital_level_path: String;
 @export_file() var inital_checkpoint_path: String;
