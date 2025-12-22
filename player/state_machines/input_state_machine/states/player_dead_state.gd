@@ -43,21 +43,13 @@ func _on_respawn_grace_timer_timeout()->void:
 		Main.load_level();
 	else:
 		Main.reset_lives_load_checkpoint_level();
-	body.damage(0, Vector2.ZERO);
-	transition.emit("Grounded");
-
-func _respawn()->void:
-	body.lives -= 1;
-	if body.lives >= 0:
-		Main.load_level();
-	else:
-		Main.reset_lives_load_checkpoint_level();
+	body.current_health = body.max_health;
 	body.damage(0, Vector2.ZERO);
 	transition.emit("Grounded");
 	
 func _on_respawn_timeout()->void:
 	body.global_position = Main.instance.level_instance.spawn_locations[
 		Main.instance.current_spawn_index
-	].global_position;
+	].position;
 	respawn_grace_timer.start();
 	

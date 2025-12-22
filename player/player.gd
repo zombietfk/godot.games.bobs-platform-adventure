@@ -51,7 +51,7 @@ func is_out_of_bounds() -> bool:
 	return !Rect2(
 		Main.level_instance.level_binding_box.position - Main.STANDARD_UNIT * Vector2.ONE,
 		Main.level_instance.level_binding_box.size - Main.level_instance.level_binding_box.position + Main.STANDARD_UNIT * Vector2.ONE * 2,
-	).has_point(position);
+	).has_point(global_position);
 	
 func damage(
 	amount: int,

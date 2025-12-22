@@ -1,7 +1,7 @@
 class_name ImpWalkingState;
 extends AbstractImpState;
 
-@export var knockpack_impetus = Vector2(500, 500);
+@export var knockpack_impetus = Vector2(1000, 1000);
 @export var floor_check_raycast: RayCast2D;
 @export var wall_check_raycast: RayCast2D;
 @export var attack_shape_cast: ShapeCast2D;

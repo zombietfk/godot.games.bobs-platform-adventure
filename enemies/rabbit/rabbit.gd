@@ -21,7 +21,7 @@ func _ready() -> void:
 			_turn_around();
 
 func _physics_process(delta: float) -> void:
-	if !is_on_floor() and $RayCast2D.is_colliding() or (
+	if $RayCast2D.is_colliding() or (
 		!$FloorCheckCast2D.is_colliding() and turnaround_on_platform_edge
 	):
 		_turn_around();
@@ -44,4 +44,4 @@ func _process_jump() -> void:
 func _turn_around() -> void:
 	jump_movement.x *= -1;
 	velocity.x *= -1;
-	scale.x = -1;
+	scale.x *= -1;

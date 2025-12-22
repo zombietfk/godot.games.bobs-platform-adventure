@@ -21,11 +21,14 @@ func physics_process(delta: float)->void:
 	_process_horizontal_input(_movement_context);
 	_process_cancel_jump_input();
 	_apply_horizontal_friction(delta);
-	body.velocity += (
-		body.get_gravity() * delta +
-		_movement_context.movement_impetus +
-		_movement_context.knockback_impetus
-	);
+	if _movement_context.knockback_impetus != Vector2.ZERO:
+		body.velocity = _movement_context.knockback_impetus;
+	else:
+		body.velocity += (
+			body.get_gravity() * delta +
+			_movement_context.movement_impetus +
+			_movement_context.knockback_impetus
+		);
 	_clamp_horizontal_movement(_movement_context.max_movement_speed);
 
 func _process_cancel_jump_input()->void:

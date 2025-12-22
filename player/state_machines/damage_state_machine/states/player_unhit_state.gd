@@ -29,7 +29,7 @@ func _take_damage(
 	body.velocity = Vector2.ZERO;
 	body.current_health -= amount;
 	_knockback_context.damage_immunity_duration = damage_immunity_after_hit;
-	_knockback_context.knockback_direction = from_direction;
+	_knockback_context.knockback_direction = -from_direction;
 	_knockback_context.knockback_strength = knockback_strength;
 	_knockback_context.knockback_duration = knockback_duration_in_s;
 	state_machine.current_state.transition.emit("Hit");

@@ -13,6 +13,7 @@ func enter(_from: AbstractState)->void:
 		_knockback_context.knockback_direction.normalized() *
 		_knockback_context.knockback_strength
 	);
+	body.velocity = Vector2.ZERO;
 	_inital_knockback_impetus = _movement_context.knockback_impetus;
 	_c_knockback_timer = _knockback_context.knockback_duration;
 	body.modulate.a = 0.5;
@@ -27,10 +28,5 @@ func process(delta: float)->void:
 	
 func physics_process(delta: float)->void:
 	_c_knockback_timer -= delta;
-	if _knockback_context.knockback_duration > 0:
-		_movement_context.knockback_impetus = (
-			_inital_knockback_impetus *
-			(_c_knockback_timer / _knockback_context.knockback_duration)
-		);
 	if _c_knockback_timer <= 0:
 		_movement_context.knockback_impetus = Vector2.ZERO;
