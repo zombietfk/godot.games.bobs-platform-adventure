@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=4 uid="uid://bmmpi22ejy5ko"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_4in5n"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_lihmd"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_4in5n"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_qx01s"]
+[ext_resource type="PackedScene" uid="uid://dikidq3cosqy1" path="res://objects/traps/spikes/moving/moving_spike.tscn" id="4_egkeh"]
+[ext_resource type="PackedScene" uid="uid://buo1dkp0kvwh2" path="res://enemies/rat/rat.tscn" id="5_ilpt2"]
+
+[sub_resource type="Curve2D" id="Curve2D_ilpt2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3.0517578e-05, -8, 0, 0, 0, 0, 0.00015258789, -40)
+}
+point_count = 2
+
+[node name="Level_8" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_4in5n")
+level_binding_box = Rect2(-64, -128, 832, 320)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-64, 160)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(832, 224)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wMAAgADAAMAAAD+/wYAAgADAAEAAAD+/wIAAgADAAIAAAD+/wcAAgADAAIAAAD//wgAAgACAAEAAAAAAAgAAgACAAEAAAABAAgAAgACAAEAAAACAAgAAgACAAEAAAADAAgAAgACAAEAAAAEAAgAAgACAAEAAAAFAAgAAgACAAEAAAAGAAYAAgAFAAMAAAAGAAcAAgAFAAQAAAAGAAEAAgACAAIAAAAGAAIAAgAFAAQAAAAGAAMAAgAFAAUAAAD//wEAAgACAAMAAAAAAAEAAgACAAMAAAABAAEAAgACAAMAAAACAAEAAgACAAMAAAADAAEAAgACAAMAAAAEAAEAAgACAAMAAAAFAAEAAgACAAMAAAAHAAgAAgACAAEAAAAIAAgAAgACAAEAAAAJAAgAAgACAAEAAAALAAgAAgACAAEAAAAMAAgAAgACAAEAAAANAAgAAgACAAEAAAAKAAgAAgACAAEAAAAOAAYAAgABAAEAAAAOAAcAAgABAAIAAAAOAAIAAgABAAIAAAAOAAMAAgABAAMAAAAHAAEAAgACAAMAAAAIAAEAAgACAAMAAAAJAAEAAgACAAMAAAAKAAEAAgACAAMAAAALAAEAAgACAAMAAAAMAAEAAgACAAMAAAANAAEAAgACAAMAAAAGAAgAAgACAAIAAAD+/wgAAgACAAIAAAA=")
+tile_set = ExtResource("2_lihmd")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_4in5n")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_qx01s")]
+position = Vector2(992, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bioh7kmbmtkno"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_qx01s")]
+position = Vector2(-160, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://brd67f76jwer3"
+to_spawn_location_with_index = 1
+
+[node name="MovingSpike" parent="." instance=ExtResource("4_egkeh")]
+position = Vector2(416, -7.6293945e-06)
+scale = Vector2(2, 3)
+curve = SubResource("Curve2D_ilpt2")
+speed = 33.0
+start_distance_ratio = 1.0
+
+[node name="PathFollow2D" parent="MovingSpike" index="0"]
+position = Vector2(3.0517578e-05, -8)
+
+[node name="Spike" parent="MovingSpike/PathFollow2D" index="0"]
+scale = Vector2(0.8, 0.8)
+
+[node name="Rat" parent="." instance=ExtResource("5_ilpt2")]
+position = Vector2(147, 288)
+
+[node name="Rat2" parent="." instance=ExtResource("5_ilpt2")]
+position = Vector2(-10, 288)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+
+[editable path="MovingSpike"]

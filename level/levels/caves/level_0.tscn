@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=4 uid="uid://cgrbopls2dqgk"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_pp2df"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_54rxp"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_w36hx"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_dffel"]
+
+[node name="Level_0" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_pp2df")
+level_binding_box = Rect2(0, 0, 704, 448)
+spawn_locations = [NodePath("EntrySpawnPoint"), null]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(160, 352)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAABAAkAAgACAAEAAAACAAkAAgACAAEAAAADAAkAAgACAAEAAAAEAAkAAgACAAIAAAAFAAkAAgACAAIAAAAGAAkAAgACAAIAAAAHAAkAAgACAAEAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAAKAAUAAgABAAIAAAAKAAYAAgABAAMAAAAKAAkAAgACAAEAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAKAAMAAgABAAIAAAAKAAQAAgABAAIAAAABAAIAAgACAAMAAAACAAIAAgACAAMAAAADAAIAAgACAAMAAAAEAAIAAgACAAMAAAAFAAIAAgACAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAEAAcAAgABAAEAAAAEAAgAAgABAAIAAAAFAAcAAgACAAEAAAAFAAgAAgACAAIAAAAGAAcAAgADAAEAAAAGAAgAAgADAAIAAAAIAAkAAgACAAEAAAAJAAkAAgACAAEAAAA=")
+tile_set = ExtResource("2_54rxp")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_w36hx")
+
+[node name="TeleportToLevelZone" parent="." instance=ExtResource("4_dffel")]
+position = Vector2(736, 319.99997)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://llqv2al5xrch"
+
+[connection signal="ready" from="." to="." method="_on_ready"]

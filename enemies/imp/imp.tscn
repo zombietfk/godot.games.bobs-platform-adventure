@@ -67,7 +67,6 @@ inital_state = NodePath("Walk")
 
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("floor_check_raycast", "wall_check_raycast", "attack_shape_cast", "body")]
 script = ExtResource("2_gngxf")
-knockpack_impetus = Vector2(1000, 400)
 floor_check_raycast = NodePath("../../FloorCheckRayCast2D")
 wall_check_raycast = NodePath("../../WallCheckRayCast2D")
 attack_shape_cast = NodePath("../../AttackShapeCast2D")

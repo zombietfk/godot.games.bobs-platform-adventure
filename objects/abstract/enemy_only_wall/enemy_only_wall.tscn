@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c53dd0xd2rwap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bxww"]
+size = Vector2(64, 64)
+
+[node name="EnemyOnlyWall" type="StaticBody2D"]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6bxww")

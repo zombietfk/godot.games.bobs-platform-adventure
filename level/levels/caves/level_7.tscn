@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=4 uid="uid://k7vpkulxbh70"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_fr8yo"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_6od14"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_cb01q"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_umaxs"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="4_6od14"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="4_fr8yo"]
+[ext_resource type="PackedScene" uid="uid://dmrrhkelp6h5m" path="res://objects/traps/boulder/factory/create_boulder_on_timeout_factory.tscn" id="6_cb01q"]
+
+[sub_resource type="Curve2D" id="Curve2D_fr8yo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, 0)
+}
+point_count = 2
+
+[node name="Level_6" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_fr8yo")
+level_binding_box = Rect2(-64, -128, 832, 320)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-64, 160)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(832, 224)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD//wYAAgAIAAEAAAD//wMAAgAIAAEAAAD+/wMAAgACAAMAAAD+/wYAAgACAAEAAAAAAAMAAgAJAAEAAAAAAAYAAgAJAAEAAAD+/wEAAgADAAIAAAD+/wIAAgADAAIAAAD+/wcAAgADAAIAAAD+/wgAAgADAAIAAAD//wAAAgACAAMAAAAAAAAAAgACAAMAAAABAAAAAgACAAMAAAACAAAAAgACAAMAAAADAAAAAgACAAMAAAAEAAAAAgACAAMAAAAFAAAAAgADAAMAAAAIAAAAAgABAAMAAAAJAAAAAgACAAMAAAAKAAAAAgACAAMAAAALAAAAAgACAAMAAAAMAAAAAgADAAMAAAAPAAAAAgABAAMAAAAQAAAAAgACAAMAAAARAAAAAgACAAMAAAASAAAAAgACAAMAAAATAAAAAgACAAMAAAAUAAAAAgACAAMAAAAVAAAAAgACAAMAAAAWAAEAAgABAAIAAAAWAAIAAgABAAIAAAAUAAMAAgAHAAEAAAAVAAMAAgAIAAEAAAAUAAYAAgAHAAEAAAAVAAYAAgAIAAEAAAAWAAcAAgABAAIAAAAWAAgAAgABAAIAAAAWAAMAAgACAAMAAAAWAAYAAgACAAEAAAA=")
+tile_set = ExtResource("2_6od14")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_umaxs")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_cb01q")]
+position = Vector2(1504, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bioh7kmbmtkno"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_cb01q")]
+position = Vector2(-160, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://brd67f76jwer3"
+to_spawn_location_with_index = 1
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(128, 224)
+curve = SubResource("Curve2D_fr8yo")
+script = ExtResource("4_6od14")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("4_fr8yo")]
+floating_displacement = 15
+on_land_displacement = 50
+randomize_inital_displacement = false
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(576, 224)
+curve = SubResource("Curve2D_fr8yo")
+script = ExtResource("4_6od14")
+start_distance_ratio = 1.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(192, 0)
+progress = 192.0
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("4_fr8yo")]
+floating_displacement = 15
+on_land_displacement = 50
+randomize_inital_displacement = false
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(1024, 224)
+curve = SubResource("Curve2D_fr8yo")
+script = ExtResource("4_6od14")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D3/PathFollow2D" instance=ExtResource("4_fr8yo")]
+floating_displacement = 15
+on_land_displacement = 50
+randomize_inital_displacement = false
+
+[node name="CreateBoulderOnTimeoutFactory" parent="." instance=ExtResource("6_cb01q")]
+position = Vector2(448, -224)
+fires_every_x_timer = 2.0
+
+[node name="CreateBoulderOnTimeoutFactory2" parent="." instance=ExtResource("6_cb01q")]
+position = Vector2(896, -224)
+fires_every_x_timer = 1.7
+
+[connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cucm55as7id28"]
+[gd_scene load_steps=7 format=3 uid="uid://cucm55as7id28"]
 
-[ext_resource type="Script" uid="uid://8r1rhr8wtcyx" path="res://objects/abstract/fall_on_pass_below/fall_on_pass_below.gd" id="1_t5fna"]
+[ext_resource type="Script" uid="uid://on4dxcv0t6dq" path="res://objects/traps/spikes/falling/falling_spike.gd" id="1_mrcqh"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="2_mrcqh"]
 
 [sub_resource type="Animation" id="Animation_7xwx0"]
@@ -16,6 +16,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spike:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_mrcqh"]
@@ -35,20 +47,44 @@ tracks/0/keys = {
 "values": [Vector2(-4, 0), Vector2(4, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_meopw"]
+resource_name = "respawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spike:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5.5950577e-06, 64), Vector2(2.7975289e-06, 32), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spike:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.12217305, -0.12217305, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4pty1"]
 _data = {
 &"RESET": SubResource("Animation_7xwx0"),
+&"respawn": SubResource("Animation_meopw"),
 &"spike_shake": SubResource("Animation_mrcqh")
 }
 
-[node name="FallingSpike" type="Node2D" node_paths=PackedStringArray("falling_node")]
+[node name="FallingSpike" type="Node2D"]
 z_index = -1
 rotation = 3.1415927
-script = ExtResource("1_t5fna")
-falling_node = NodePath("Spike")
-speed = 500.0
-fall_after = 0.3
-before_fall_animation_label = "spike_shake"
+script = ExtResource("1_mrcqh")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, -1024)

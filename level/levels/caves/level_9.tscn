@@ -1,0 +1,379 @@
+[gd_scene load_steps=12 format=4 uid="uid://bkbrum8vu2nyp"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_5j862"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_yqqvd"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="3_spdf4"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_ym2t5"]
+[ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="5_5j862"]
+[ext_resource type="PackedScene" uid="uid://buo1dkp0kvwh2" path="res://enemies/rat/rat.tscn" id="5_qfk1p"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="6_7hy1r"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="6_yqqvd"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="7_spdf4"]
+[ext_resource type="PackedScene" uid="uid://c53dd0xd2rwap" path="res://objects/abstract/enemy_only_wall/enemy_only_wall.tscn" id="8_52dqv"]
+
+[sub_resource type="Curve2D" id="Curve2D_qfk1p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0, -128)
+}
+point_count = 2
+
+[node name="Level_9" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_5j862")
+level_binding_box = Rect2(-128, -256, 1280, 256)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-64, 160)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(832, 224)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wMAAgADAAMAAAD+/wYAAgACAAEAAAAOAAYAAgACAAEAAAD//wYAAgACAAEAAAAAAAYAAgACAAEAAAABAAYAAgACAAEAAAACAAYAAgACAAEAAAADAAYAAgACAAEAAAAEAAYAAgACAAEAAAAGAAYAAgACAAEAAAAHAAYAAgACAAEAAAAIAAYAAgACAAEAAAAJAAYAAgACAAEAAAAKAAYAAgACAAEAAAALAAYAAgACAAEAAAANAAYAAgACAAEAAAAPAAYAAgACAAEAAAAQAAYAAgACAAEAAAARAAYAAgACAAEAAAASAAYAAgACAAEAAAATAAYAAgACAAEAAAATAAMAAgABAAMAAAATAAIAAgABAAIAAAATAAEAAgABAAIAAAATAAAAAgABAAIAAAANAP//AgACAAMAAAAOAP//AgACAAMAAAAPAP//AgACAAMAAAAQAP//AgACAAMAAAARAP//AgACAAMAAAASAP//AgACAAMAAAAHAP//AgACAAMAAAAIAP//AgACAAMAAAAJAP//AgACAAMAAAAKAP//AgACAAMAAAALAP//AgACAAMAAAD/////AgACAAMAAAAAAP//AgACAAMAAAABAP//AgACAAMAAAACAP//AgACAAMAAAADAP//AgACAAMAAAAEAP//AgACAAMAAAD+/wAAAgADAAIAAAD+/wEAAgADAAIAAAD+/wIAAgADAAIAAAAGAP//AgACAAMAAAAFAAIAAgAFAAQAAAAFAAMAAgAFAAUAAAAFAAAAAgAFAAQAAAAFAAEAAgAFAAQAAAAFAAYAAgACAAEAAAAMAAIAAgAFAAQAAAAMAAMAAgAFAAUAAAAMAAAAAgAFAAQAAAAMAAEAAgAFAAQAAAAMAAYAAgACAAEAAAA=")
+tile_set = ExtResource("2_yqqvd")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_ym2t5")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_spdf4")]
+position = Vector2(1312, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bioh7kmbmtkno"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_spdf4")]
+position = Vector2(-160, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://brd67f76jwer3"
+to_spawn_location_with_index = 1
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="FallingSpike" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(-48, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike2" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(16, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike3" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(80, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike4" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(144, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike5" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(208, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike6" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(272, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike7" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(-16, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike8" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(48, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike9" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(112, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike10" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(176, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike11" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(240, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="FallingSpike12" parent="Spikes" instance=ExtResource("5_5j862")]
+position = Vector2(304, -160)
+rotation = -3.1415925
+fall_speed = 300.0
+fall_after_timer = 1.0
+
+[node name="Spikes2" type="Node2D" parent="."]
+position = Vector2(448, 0)
+
+[node name="FallingSpike" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(-48, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike2" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(16, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike3" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(80, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike4" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(144, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike5" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(208, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike6" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(272, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike7" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(-16, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike8" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(48, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike9" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(112, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike10" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(176, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike11" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(240, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="FallingSpike12" parent="Spikes2" instance=ExtResource("5_5j862")]
+position = Vector2(304, -160)
+rotation = -3.1415925
+fall_speed = 320.0
+fall_after_timer = 0.75
+respawn_after_timer = 1.5
+
+[node name="Spikes3" type="Node2D" parent="."]
+position = Vector2(896, 0)
+
+[node name="FallingSpike" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(-48, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike2" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(16, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike3" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(80, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike4" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(144, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike5" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(208, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike6" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(272, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike7" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(-16, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike8" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(48, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike9" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(112, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike10" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(176, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike11" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(240, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="FallingSpike12" parent="Spikes3" instance=ExtResource("5_5j862")]
+position = Vector2(304, -160)
+rotation = -3.1415925
+fall_speed = 340.0
+fall_after_timer = 0.5
+respawn_after_timer = 1.0
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(352, 128)
+curve = SubResource("Curve2D_qfk1p")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yqqvd")]
+rotation = 1.5707964
+script = ExtResource("6_7hy1r")
+movement_path = NodePath("..")
+movement_speed = 25.6
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(800, 128)
+curve = SubResource("Curve2D_qfk1p")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D2/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yqqvd")]
+rotation = 1.5707964
+script = ExtResource("6_7hy1r")
+movement_path = NodePath("..")
+movement_speed = 12.0
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(1248, 128)
+curve = SubResource("Curve2D_qfk1p")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D3/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yqqvd")]
+rotation = 1.5707964
+script = ExtResource("6_7hy1r")
+movement_path = NodePath("..")
+movement_speed = 6.0
+
+[node name="Switch" parent="." instance=ExtResource("7_spdf4")]
+position = Vector2(288, 192)
+collision_mask = 1
+
+[node name="Switch2" parent="." instance=ExtResource("7_spdf4")]
+position = Vector2(416, 192)
+collision_mask = 1
+
+[node name="Switch3" parent="." instance=ExtResource("7_spdf4")]
+position = Vector2(736, 192)
+collision_mask = 1
+
+[node name="Switch4" parent="." instance=ExtResource("7_spdf4")]
+position = Vector2(864, 192)
+collision_mask = 1
+
+[node name="Switch5" parent="." instance=ExtResource("7_spdf4")]
+position = Vector2(1184, 192)
+collision_mask = 1
+
+[node name="EnemyOnlyWall" parent="." instance=ExtResource("8_52dqv")]
+position = Vector2(800, 160)
+
+[node name="EnemyOnlyWall2" parent="." instance=ExtResource("8_52dqv")]
+position = Vector2(1248, 160)
+
+[node name="Rat" parent="." instance=ExtResource("5_qfk1p")]
+position = Vector2(992, 160)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="Path2D/PathFollow2D/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch2" to="Path2D/PathFollow2D/Door" method="_on_switch_flipped_off"]
+[connection signal="switch_flipped_on" from="Switch2" to="Path2D/PathFollow2D/Door" method="_change_speed" binds= [620.0]]
+[connection signal="switch_flipped_on" from="Switch3" to="Path2D2/PathFollow2D/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch4" to="Path2D2/PathFollow2D/Door" method="_on_switch_flipped_off"]
+[connection signal="switch_flipped_on" from="Switch4" to="Path2D2/PathFollow2D/Door" method="_change_speed" binds= [620.0]]
+[connection signal="switch_flipped_on" from="Switch5" to="Path2D3/PathFollow2D/Door" method="_on_switch_flipped_on"]

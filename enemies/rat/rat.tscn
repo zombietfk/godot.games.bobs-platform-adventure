@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=3 uid="uid://buo1dkp0kvwh2"]
+
+[ext_resource type="Script" uid="uid://c1a3pr5gwgsmj" path="res://enemies/rat/rat.gd" id="1_60367"]
+[ext_resource type="Texture2D" uid="uid://d0cpfybw387a1" path="res://enemies/rat/rat_spritesheet.png" id="2_fcpyj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4in5n"]
+atlas = ExtResource("2_fcpyj")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lihmd"]
+atlas = ExtResource("2_fcpyj")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx01s"]
+atlas = ExtResource("2_fcpyj")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xf24p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4in5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lihmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx01s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lihmd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf24p"]
+atlas = ExtResource("2_fcpyj")
+region = Rect2(0, 32, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi23q"]
+atlas = ExtResource("2_fcpyj")
+region = Rect2(64, 32, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhoc0"]
+atlas = ExtResource("2_fcpyj")
+region = Rect2(128, 32, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4in5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf24p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi23q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhoc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi23q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ilpt2"]
+radius = 7.0
+height = 50.0
+
+[node name="Rat" type="CharacterBody2D" node_paths=PackedStringArray("wallcheck_raycast", "floorcheck_raycast", "idle_sprite_anim", "walking_sprite_anim")]
+collision_layer = 2
+collision_mask = 64
+script = ExtResource("1_60367")
+move_speed = 150.0
+idle_every_x_seconds_timer = 4.0
+idle_timer = 1.5
+wallcheck_raycast = NodePath("WallCheckRaycast2D")
+floorcheck_raycast = NodePath("FloorCheckRaycast2D")
+idle_sprite_anim = NodePath("IdleAnimatedSprite2D")
+walking_sprite_anim = NodePath("WalkingAnimatedSprite2D")
+
+[node name="WalkingAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, 20)
+sprite_frames = SubResource("SpriteFrames_xf24p")
+autoplay = "default"
+frame_progress = 0.5802739
+
+[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6, 4)
+sprite_frames = SubResource("SpriteFrames_4in5n")
+autoplay = "default"
+frame_progress = 0.66473585
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 20)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ilpt2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, 20)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ilpt2")
+
+[node name="FloorCheckRaycast2D" type="RayCast2D" parent="."]
+position = Vector2(-25, 20)
+target_position = Vector2(0, 64)
+collision_mask = 64
+
+[node name="WallCheckRaycast2D" type="RayCast2D" parent="."]
+position = Vector2(-4, 20)
+rotation = 1.5707964
+target_position = Vector2(1.9073486e-06, 34)
+collision_mask = 4160
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_attack_area_entered"]

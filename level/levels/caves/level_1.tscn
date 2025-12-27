@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=4 uid="uid://dkv5yjro7fpkr"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_f1d3x"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_eilrb"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_xpkyc"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_uvlp3"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_eilrb"]
+
+[node name="Level_0" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_f1d3x")
+level_binding_box = Rect2(0, 0, 704, 448)
+spawn_locations = [NodePath("EntrySpawnPoint"), null]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(160, 352)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAABAAkAAgACAAEAAAACAAkAAgACAAEAAAADAAkAAgADAAEAAAAHAAkAAgABAAEAAAAAAAUAAgADAAIAAAAAAAYAAgADAAMAAAAKAAUAAgABAAIAAAAKAAYAAgABAAMAAAAKAAkAAgACAAEAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAKAAMAAgABAAIAAAAKAAQAAgABAAIAAAABAAIAAgACAAMAAAACAAIAAgACAAMAAAADAAIAAgACAAMAAAAEAAIAAgACAAMAAAAFAAIAAgACAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAIAAkAAgACAAEAAAAJAAkAAgACAAEAAAAAAAkAAgACAAEAAAA=")
+tile_set = ExtResource("2_eilrb")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_xpkyc")
+
+[node name="TeleportToLevelZone" parent="." instance=ExtResource("4_uvlp3")]
+position = Vector2(736, 319.99997)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://llqv2al5xrch"
+
+[node name="TeleportToLevelZone2" parent="." instance=ExtResource("4_uvlp3")]
+position = Vector2(-32, 320)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://llqv2al5xrch"
+
+[node name="Spike" parent="." instance=ExtResource("5_eilrb")]
+position = Vector2(272, 416)
+
+[node name="Spike2" parent="." instance=ExtResource("5_eilrb")]
+position = Vector2(304, 416)
+
+[node name="Spike3" parent="." instance=ExtResource("5_eilrb")]
+position = Vector2(336, 416)
+
+[node name="Spike4" parent="." instance=ExtResource("5_eilrb")]
+position = Vector2(368, 416)
+
+[node name="Spike5" parent="." instance=ExtResource("5_eilrb")]
+position = Vector2(400, 416)
+
+[node name="Spike6" parent="." instance=ExtResource("5_eilrb")]
+position = Vector2(432, 416)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
