@@ -5,5 +5,6 @@
 
 [node name="CreateBoulderOnTimeoutFactory" type="Node2D"]
 script = ExtResource("1_am1k2")
+fire_on_ready = true
 boulder_scene = ExtResource("2_v170r")
 boulder_physics_mask = 0
