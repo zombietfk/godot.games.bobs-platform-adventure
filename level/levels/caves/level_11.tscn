@@ -1,0 +1,233 @@
+[gd_scene load_steps=13 format=4 uid="uid://bh343njjeji8k"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_s8uha"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_2aajd"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_2srip"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="4_2aajd"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_d0eou"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="5_2srip"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="5_fbq4g"]
+[ext_resource type="PackedScene" uid="uid://cclnn5v3he5e0" path="res://enemies/bat/bat.tscn" id="8_2srip"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="9_fbq4g"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="10_dhc6g"]
+
+[sub_resource type="Curve2D" id="Curve2D_2aajd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 448, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_4near"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0, -128)
+}
+point_count = 2
+
+[node name="Level_22" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_s8uha")
+level_binding_box = Rect2(-96, 0, 1824, 832)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.9, 0.9)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1824, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAD//wwAAgADAAIAAAD//w0AAgADAAIAAAD//w4AAgADAAIAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wUAAgADAAIAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAALAAMAAgACAAMAAAAMAAMAAgACAAMAAAANAAMAAgACAAMAAAAOAAMAAgACAAMAAAAPAAMAAgACAAMAAAAAAAMAAgACAAMAAAD//w8AAgADAAIAAAD//wQAAgADAAIAAAAEAA8AAgAHAAEAAAAFAA8AAgAJAAEAAAAEAAQAAgABAAMAAAAFAAQAAgADAAMAAAAMAA8AAgAHAAEAAAANAA8AAgAJAAEAAAAMAAQAAgABAAMAAAANAAQAAgADAAMAAAASAAsAAgABAAEAAAASAAwAAgABAAIAAAASAA0AAgABAAIAAAASAA4AAgABAAIAAAASAA8AAgABAAIAAAASAAQAAgABAAIAAAASAAUAAgABAAIAAAASAAYAAgABAAIAAAASAAcAAgABAAIAAAASAAgAAgABAAMAAAAQAAMAAgACAAMAAAARAAMAAgACAAMAAAD//xAAAgADAAIAAAD//xEAAgADAAIAAAASABAAAgABAAIAAAASABEAAgABAAIAAAATAAsAAgACAAEAAAAUAAsAAgACAAEAAAAVAAsAAgACAAEAAAATAAgAAgACAAMAAAAUAAgAAgACAAMAAAAVAAgAAgACAAMAAAA=")
+tile_set = ExtResource("2_2aajd")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_2srip")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(128, 640)
+curve = SubResource("Curve2D_2aajd")
+script = ExtResource("4_2aajd")
+speed = 32.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotation = 3.1415927
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("5_2srip")]
+position = Vector2(0, -2.4667283e-05)
+rotation = 3.1415925
+floating_displacement = 96
+on_land_displacement = 0
+randomize_inital_displacement = false
+bounce_timer = 1.0
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(128, 256)
+curve = SubResource("Curve2D_2aajd")
+script = ExtResource("4_2aajd")
+speed = 32.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+rotation = 3.1415927
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("5_2srip")]
+position = Vector2(0, -2.4667283e-05)
+rotation = 3.1415925
+floating_displacement = -96
+on_land_displacement = 0
+randomize_inital_displacement = false
+bounce_timer = 1.0
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(576, 640)
+curve = SubResource("Curve2D_2aajd")
+script = ExtResource("4_2aajd")
+speed = 32.0
+start_distance_ratio = 1.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+rotation = 3.1415927
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D3/PathFollow2D" instance=ExtResource("5_2srip")]
+position = Vector2(0, -2.4667283e-05)
+rotation = 3.1415925
+floating_displacement = 96
+on_land_displacement = 0
+randomize_inital_displacement = false
+bounce_timer = 1.0
+
+[node name="Path2D4" type="Path2D" parent="."]
+position = Vector2(576, 256)
+curve = SubResource("Curve2D_2aajd")
+script = ExtResource("4_2aajd")
+speed = 32.0
+start_distance_ratio = 1.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+rotation = 3.1415927
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D4/PathFollow2D" instance=ExtResource("5_2srip")]
+position = Vector2(0, -2.4667283e-05)
+rotation = 3.1415925
+floating_displacement = -96
+on_land_displacement = 0
+randomize_inital_displacement = false
+bounce_timer = 1.0
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_d0eou")]
+position = Vector2(1440, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_23.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_d0eou")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b7e2ilx4c2b4i"
+to_spawn_location_with_index = 1
+
+[node name="Switch" parent="." instance=ExtResource("5_fbq4g")]
+position = Vector2(320, 128)
+release_on_leave = true
+
+[node name="Switch2" parent="." instance=ExtResource("5_fbq4g")]
+position = Vector2(320, 768)
+release_on_leave = true
+
+[node name="Switch3" parent="." instance=ExtResource("5_fbq4g")]
+position = Vector2(832, 128)
+release_on_leave = true
+
+[node name="Switch4" parent="." instance=ExtResource("5_fbq4g")]
+position = Vector2(832, 768)
+release_on_leave = true
+
+[node name="Bat" parent="." instance=ExtResource("8_2srip")]
+position = Vector2(32, 96)
+
+[node name="PlayerBelowCheckRaycast2D" parent="Bat" index="3"]
+target_position = Vector2(0, 736)
+
+[node name="Bat2" parent="." instance=ExtResource("8_2srip")]
+position = Vector2(224, 96)
+
+[node name="PlayerBelowCheckRaycast2D" parent="Bat2" index="3"]
+target_position = Vector2(0, 736)
+
+[node name="Bat3" parent="." instance=ExtResource("8_2srip")]
+position = Vector2(416, 96)
+
+[node name="PlayerBelowCheckRaycast2D" parent="Bat3" index="3"]
+target_position = Vector2(0, 736)
+
+[node name="Path2D5" type="Path2D" parent="."]
+position = Vector2(1184, 448)
+curve = SubResource("Curve2D_4near")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D5/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("9_fbq4g")]
+rotation = 1.5707964
+script = ExtResource("10_dhc6g")
+movement_path = NodePath("..")
+movement_speed = 25.6
+
+[node name="Path2D6" type="Path2D" parent="."]
+position = Vector2(1248, 448)
+curve = SubResource("Curve2D_4near")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D6"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D6/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("9_fbq4g")]
+rotation = 1.5707964
+script = ExtResource("10_dhc6g")
+movement_path = NodePath("..")
+movement_speed = 25.6
+
+[node name="Path2D7" type="Path2D" parent="."]
+position = Vector2(1312, 448)
+curve = SubResource("Curve2D_4near")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D7/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("9_fbq4g")]
+rotation = 1.5707964
+script = ExtResource("10_dhc6g")
+movement_path = NodePath("..")
+movement_speed = 25.6
+
+[node name="Path2D8" type="Path2D" parent="."]
+position = Vector2(1376, 448)
+curve = SubResource("Curve2D_4near")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D8/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("9_fbq4g")]
+rotation = 1.5707964
+script = ExtResource("10_dhc6g")
+movement_path = NodePath("..")
+movement_speed = 25.6
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="Path2D5/PathFollow2D/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch2" to="Path2D6/PathFollow2D/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch3" to="Path2D7/PathFollow2D/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch4" to="Path2D8/PathFollow2D/Door" method="_on_switch_flipped_on"]
+
+[editable path="Bat"]
+[editable path="Bat2"]
+[editable path="Bat3"]

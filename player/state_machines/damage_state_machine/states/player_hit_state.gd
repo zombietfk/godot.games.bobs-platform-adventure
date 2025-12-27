@@ -14,7 +14,10 @@ func enter(_from: AbstractState)->void:
 		_knockback_context.knockback_strength
 	);
 	body.velocity = Vector2.ZERO;
-	_inital_knockback_impetus = _movement_context.knockback_impetus;
+	_inital_knockback_impetus = Vector2(_movement_context.knockback_impetus);
+	print('Hit')
+	print(_knockback_context.knockback_direction.normalized());
+	print(_knockback_context.knockback_strength);
 	_c_knockback_timer = _knockback_context.knockback_duration;
 	body.modulate.a = 0.5;
 	

@@ -11,6 +11,7 @@ var c_idle_timer: float = 0.0;
 @export var floorcheck_raycast: RayCast2D;
 @export var idle_sprite_anim: AnimatedSprite2D;
 @export var walking_sprite_anim: AnimatedSprite2D;
+@export var attack_check_shape_cast: ShapeCast2D;
 
 func _process(delta:float) -> void:
 	if is_idle:
@@ -39,16 +40,20 @@ func _process(delta:float) -> void:
 func _physics_process(delta: float) -> void:
 	velocity += get_gravity() * delta;
 	move_and_slide()
+	for n in attack_check_shape_cast.get_collision_count():
+		var collider = attack_check_shape_cast.get_collider(n);
+		if collider is Player:
+			collider.damage(
+				1,
+				attack_check_shape_cast.get_collision_normal(n),
+				Vector2(1000, 600),
+				0.3
+			);
 
 func _on_attack_area_entered(body: Node2D)->void:
 	if body is Player:
-		print(body.global_position - global_position);
-		body.damage(
-			1,
-			(global_position - body.global_position).normalized(),
-			Vector2(1000, 400),
-			0.3
-		);
+		print((global_position - body.global_position).normalized());
+		
 
 func _flip_direction()->void:
 	move_speed = -move_speed;

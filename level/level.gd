@@ -4,7 +4,7 @@ extends Node2D;
 # SETTINGS
 @export var level_binding_box: Rect2;
 @export var spawn_locations: Array[Marker2D];
-@export var camera_zoom_to: Vector2 = Vector2(1.3, 1.3);
+@export var camera_zoom_to: Vector2 = Vector2(1.0, 1.0);
 @export var camera_zoom_speed = 0.1;
 @export var pathfinding_tilemap: TileMapLayer;
 var _camera_zoom_timer: float = 2.0;

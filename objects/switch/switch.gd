@@ -8,7 +8,7 @@ extends Area2D;
 @export var persistant_trigger_name: String;
 
 # INTERNAL STATE
-var is_switched = false;
+var _is_switched = false;
 
 # TIMERS
 @export var switch_duration = 0.0;
@@ -35,7 +35,7 @@ func _ready() -> void:
 		switch_on(self);
 
 func _process(delta: float) -> void:
-	if has_timer and is_switched:
+	if has_timer and _is_switched:
 		c_switch_duration += delta;
 		if c_switch_duration >= switch_duration:
 			c_switch_duration = 0.0;
@@ -43,18 +43,18 @@ func _process(delta: float) -> void:
 		
 # METHODS
 func switch_on(by_body: Node2D):
-	if !is_switched:
+	if !_is_switched:
 		$AnimatedSprite2D.play("switch_flipped");
 		switch_flipped_on.emit(by_body);
-		is_switched = true;
+		_is_switched = true;
 		if is_persistant:
 			Main.persistant_trigger_labels.append(persistant_trigger_name);
 
 func switch_off(by_body: Node2D):
-	if is_switched:
+	if _is_switched:
 		$AnimatedSprite2D.play("default");
 		switch_flipped_off.emit(by_body);
-		is_switched = false;
+		_is_switched = false;
 		if is_persistant:
 			Main.persistant_trigger_labels.remove_at(
 				Main.persistant_trigger_labels.find(persistant_trigger_name)

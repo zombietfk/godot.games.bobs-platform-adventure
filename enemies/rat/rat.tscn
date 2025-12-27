@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://buo1dkp0kvwh2"]
+[gd_scene load_steps=13 format=3 uid="uid://buo1dkp0kvwh2"]
 
 [ext_resource type="Script" uid="uid://c1a3pr5gwgsmj" path="res://enemies/rat/rat.gd" id="1_60367"]
 [ext_resource type="Texture2D" uid="uid://d0cpfybw387a1" path="res://enemies/rat/rat_spritesheet.png" id="2_fcpyj"]
@@ -64,14 +64,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ilpt2"]
 radius = 7.0
 height = 50.0
 
-[node name="Rat" type="CharacterBody2D" node_paths=PackedStringArray("wallcheck_raycast", "floorcheck_raycast", "idle_sprite_anim", "walking_sprite_anim")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60367"]
+size = Vector2(48, 10)
+
+[node name="Rat" type="CharacterBody2D" node_paths=PackedStringArray("wallcheck_raycast", "floorcheck_raycast", "idle_sprite_anim", "walking_sprite_anim", "attack_check_shape_cast")]
 collision_layer = 2
 collision_mask = 64
 script = ExtResource("1_60367")
@@ -82,6 +85,7 @@ wallcheck_raycast = NodePath("WallCheckRaycast2D")
 floorcheck_raycast = NodePath("FloorCheckRaycast2D")
 idle_sprite_anim = NodePath("IdleAnimatedSprite2D")
 walking_sprite_anim = NodePath("WalkingAnimatedSprite2D")
+attack_check_shape_cast = NodePath("AttackCheckShapeCast2D")
 
 [node name="WalkingAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -101,13 +105,6 @@ position = Vector2(-3, 20)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ilpt2")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-3, 20)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_ilpt2")
-
 [node name="FloorCheckRaycast2D" type="RayCast2D" parent="."]
 position = Vector2(-25, 20)
 target_position = Vector2(0, 64)
@@ -119,4 +116,8 @@ rotation = 1.5707964
 target_position = Vector2(1.9073486e-06, 34)
 collision_mask = 4160
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_attack_area_entered"]
+[node name="AttackCheckShapeCast2D" type="ShapeCast2D" parent="."]
+position = Vector2(-3, 20)
+shape = SubResource("RectangleShape2D_60367")
+target_position = Vector2(0, 0)
+max_results = 1

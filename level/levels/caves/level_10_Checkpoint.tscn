@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=4 uid="uid://cq02vr7nrvuj8"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_ik612"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_efp0q"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_3yu6y"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_2mybr"]
+[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/checkpoint_flagpole.tscn" id="5_oy7d5"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="6_ik612"]
+
+[node name="Level_10_Checkpoint" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_ik612")
+level_binding_box = Rect2(-96, 0, 1824, 832)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.9, 0.9)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1824, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD//wsAAgACAAEAAAAAAAsAAgACAAEAAAD//wgAAgADAAMAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAABAAsAAgACAAEAAAAHAAsAAgACAAEAAAAIAAsAAgACAAEAAAAJAAgAAgABAAMAAAAJAAsAAgACAAEAAAADAAoAAgACAAEAAAAEAAoAAgACAAEAAAAFAAoAAgACAAEAAAAJAAcAAgABAAIAAAAJAAYAAgABAAIAAAAIAAUAAgAHAAUAAAAAAAUAAgAJAAUAAAABAAQAAgACAAMAAAACAAQAAgACAAMAAAADAAQAAgACAAMAAAAEAAQAAgACAAMAAAAFAAQAAgACAAMAAAAGAAQAAgACAAMAAAAHAAQAAgACAAMAAAACAAoAAgAHAAMAAAAGAAoAAgAJAAMAAAACAAsAAgALAAMAAAAGAAsAAgAPAAMAAAD//wUAAgAPAAcAAAAAAAQAAgAPAAcAAAAJAAUAAgALAAcAAAAIAAQAAgALAAcAAAA=")
+tile_set = ExtResource("2_efp0q")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_3yu6y")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_2mybr")]
+position = Vector2(672, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/level_23.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_2mybr")]
+position = Vector2(-96, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b7e2ilx4c2b4i"
+to_spawn_location_with_index = 1
+
+[node name="CheckpointFlagpole" parent="." instance=ExtResource("5_oy7d5")]
+position = Vector2(288, 423)
+
+[node name="Rabbit" parent="." instance=ExtResource("6_ik612")]
+position = Vector2(214, 437)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(10, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.75
+jump_timer = 1.5
+
+[node name="Rabbit2" parent="." instance=ExtResource("6_ik612")]
+position = Vector2(315, 437)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(10, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.75
+jump_timer = 1.5
+
+[node name="Rabbit3" parent="." instance=ExtResource("6_ik612")]
+position = Vector2(481, 500)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(10, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.75
+jump_timer = 1.5
+
+[node name="Rabbit4" parent="." instance=ExtResource("6_ik612")]
+position = Vector2(93, 500)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(10, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.75
+jump_timer = 1.5
+
+[connection signal="ready" from="." to="." method="_on_ready"]
