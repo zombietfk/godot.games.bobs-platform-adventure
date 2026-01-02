@@ -17,7 +17,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_17" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_12" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_v1ui5")
 level_binding_box = Rect2(0, 192, 1152, 1280)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
