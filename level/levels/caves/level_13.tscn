@@ -1,13 +1,17 @@
-[gd_scene load_steps=15 format=4 uid="uid://jr3onq8odump"]
+[gd_scene load_steps=20 format=4 uid="uid://jr3onq8odump"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_6363n"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_bwyj1"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_b51s1"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_7vs3t"]
+[ext_resource type="Script" uid="uid://dctl0135jgke1" path="res://enemies/spider/spider.gd" id="5_rofc7"]
 [ext_resource type="Texture2D" uid="uid://b0cironxsds00" path="res://enemies/spider/spider_sprtitesheet.png" id="5_tlpkr"]
+[ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="6_6363n"]
+[ext_resource type="Script" uid="uid://c1dt45tpukock" path="res://enemies/spider/state_machine/states/idle_spider_state.gd" id="7_bwyj1"]
+[ext_resource type="Script" uid="uid://bhhxrtitsychc" path="res://enemies/spider/state_machine/states/jumping_spider_state.gd" id="8_b51s1"]
+[ext_resource type="Script" uid="uid://boomykaof1yuw" path="res://enemies/spider/state_machine/states/walking_spider_state.gd" id="9_7vs3t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rofc7"]
-radius = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_71wns"]
 atlas = ExtResource("5_tlpkr")
@@ -83,7 +87,7 @@ position = Vector2(896, 480)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAD//wsAAgACAAEAAAAAAAsAAgADAAEAAAANAAsAAgABAAEAAAAAAAwAAgADAAIAAAAAAA0AAgADAAIAAAD//wgAAgACAAMAAAAAAAgAAgADAAMAAAAAAAcAAgADAAIAAAAAAAYAAgADAAIAAAANAAwAAgABAAIAAAANAA0AAgABAAIAAAANAAgAAgABAAMAAAAOAAsAAgACAAEAAAAOAAgAAgACAAMAAAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAAEAA4AAgACAAEAAAABAAUAAgACAAMAAAACAAUAAgACAAMAAAADAAUAAgACAAMAAAAEAAUAAgACAAMAAAAFAAUAAgACAAMAAAAGAAUAAgACAAMAAAAHAAUAAgACAAMAAAAIAAUAAgACAAMAAAAJAAUAAgACAAMAAAAKAAUAAgACAAMAAAALAAUAAgACAAMAAAANAAYAAgABAAIAAAANAAcAAgABAAIAAAAMAAUAAgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAAEAA4AAgACAAEAAAABAAsAAgACAAMAAAACAAsAAgAJAAEAAAACAAkAAgAJAAEAAAABAAoAAgADAAIAAAAEAAwAAgAFAAMAAAAEAA0AAgAFAAQAAAAJAAwAAgAFAAMAAAAJAA0AAgAFAAQAAAALAAsAAgAHAAEAAAALAAkAAgAHAAEAAAAMAAoAAgABAAIAAAAAAAgAAgADAAIAAAABAAkAAgACAAEAAAABAAcAAgACAAMAAAACAAcAAgACAAMAAAADAAcAAgACAAMAAAAEAAcAAgACAAMAAAAFAAcAAgACAAMAAAAGAAcAAgACAAMAAAAHAAcAAgACAAMAAAAIAAcAAgACAAMAAAAJAAcAAgACAAMAAAAKAAcAAgACAAMAAAALAAcAAgACAAMAAAAMAAcAAgACAAMAAAANAAgAAgABAAIAAAAMAAkAAgACAAEAAAAMAAsAAgACAAMAAAA=")
 tile_set = ExtResource("2_bwyj1")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
@@ -101,7 +105,22 @@ to_level_path = "uid://bp18vkl3xpcg7"
 to_spawn_location_with_index = 1
 
 [node name="Spider" type="CharacterBody2D" parent="."]
-position = Vector2(569.36835, 607.7723)
+position = Vector2(288, 336)
+rotation = -3.1415927
+script = ExtResource("5_rofc7")
+
+[node name="StateMachine" type="Node" parent="Spider" node_paths=PackedStringArray("inital_state")]
+script = ExtResource("6_6363n")
+inital_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="Spider/StateMachine"]
+script = ExtResource("7_bwyj1")
+
+[node name="JumpingState" type="Node" parent="Spider/StateMachine"]
+script = ExtResource("8_b51s1")
+
+[node name="WalkingState" type="Node" parent="Spider/StateMachine"]
+script = ExtResource("9_7vs3t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spider"]
 position = Vector2(-0.36834717, 8.227722)
@@ -110,12 +129,15 @@ shape = SubResource("CircleShape2D_rofc7")
 [node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="Spider"]
 sprite_frames = SubResource("SpriteFrames_6363n")
 autoplay = "default"
-frame_progress = 0.96109647
+frame_progress = 0.8923363
 
 [node name="JumpingAnimatedSprite2D" type="AnimatedSprite2D" parent="Spider"]
 visible = false
 position = Vector2(-0.36834717, 16.227722)
 sprite_frames = SubResource("SpriteFrames_tlpkr")
 autoplay = "default"
+
+[node name="AwakeningRayCast2D" type="RayCast2D" parent="Spider"]
+target_position = Vector2(0, -1000)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
