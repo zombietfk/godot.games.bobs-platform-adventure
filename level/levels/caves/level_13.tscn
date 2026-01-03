@@ -1,9 +1,74 @@
-[gd_scene load_steps=5 format=4 uid="uid://jr3onq8odump"]
+[gd_scene load_steps=15 format=4 uid="uid://jr3onq8odump"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_6363n"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_bwyj1"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_b51s1"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_7vs3t"]
+[ext_resource type="Texture2D" uid="uid://b0cironxsds00" path="res://enemies/spider/spider_sprtitesheet.png" id="5_tlpkr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rofc7"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71wns"]
+atlas = ExtResource("5_tlpkr")
+region = Rect2(0, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qnrm"]
+atlas = ExtResource("5_tlpkr")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofs5n"]
+atlas = ExtResource("5_tlpkr")
+region = Rect2(128, 0, 64, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6363n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71wns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qnrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofs5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qnrm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlpkr"]
+atlas = ExtResource("5_tlpkr")
+region = Rect2(0, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rofc7"]
+atlas = ExtResource("5_tlpkr")
+region = Rect2(64, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6363n"]
+atlas = ExtResource("5_tlpkr")
+region = Rect2(128, 48, 64, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tlpkr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlpkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rofc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6363n")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Level_12" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_6363n")
@@ -34,5 +99,23 @@ position = Vector2(-96, 448)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bp18vkl3xpcg7"
 to_spawn_location_with_index = 1
+
+[node name="Spider" type="CharacterBody2D" parent="."]
+position = Vector2(569.36835, 607.7723)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider"]
+position = Vector2(-0.36834717, 8.227722)
+shape = SubResource("CircleShape2D_rofc7")
+
+[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="Spider"]
+sprite_frames = SubResource("SpriteFrames_6363n")
+autoplay = "default"
+frame_progress = 0.96109647
+
+[node name="JumpingAnimatedSprite2D" type="AnimatedSprite2D" parent="Spider"]
+visible = false
+position = Vector2(-0.36834717, 16.227722)
+sprite_frames = SubResource("SpriteFrames_tlpkr")
+autoplay = "default"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
