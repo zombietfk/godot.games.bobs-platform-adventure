@@ -1,143 +1,45 @@
-[gd_scene load_steps=20 format=4 uid="uid://jr3onq8odump"]
+[gd_scene load_steps=6 format=4 uid="uid://jr3onq8odump"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_6363n"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_bwyj1"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_b51s1"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_7vs3t"]
-[ext_resource type="Script" uid="uid://dctl0135jgke1" path="res://enemies/spider/spider.gd" id="5_rofc7"]
-[ext_resource type="Texture2D" uid="uid://b0cironxsds00" path="res://enemies/spider/spider_sprtitesheet.png" id="5_tlpkr"]
-[ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="6_6363n"]
-[ext_resource type="Script" uid="uid://c1dt45tpukock" path="res://enemies/spider/state_machine/states/idle_spider_state.gd" id="7_bwyj1"]
-[ext_resource type="Script" uid="uid://bhhxrtitsychc" path="res://enemies/spider/state_machine/states/jumping_spider_state.gd" id="8_b51s1"]
-[ext_resource type="Script" uid="uid://boomykaof1yuw" path="res://enemies/spider/state_machine/states/walking_spider_state.gd" id="9_7vs3t"]
+[ext_resource type="PackedScene" uid="uid://2w50byocu5p" path="res://enemies/spider/spider.tscn" id="5_tlpkr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rofc7"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_71wns"]
-atlas = ExtResource("5_tlpkr")
-region = Rect2(0, 0, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5qnrm"]
-atlas = ExtResource("5_tlpkr")
-region = Rect2(64, 0, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ofs5n"]
-atlas = ExtResource("5_tlpkr")
-region = Rect2(128, 0, 64, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6363n"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_71wns")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5qnrm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ofs5n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5qnrm")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tlpkr"]
-atlas = ExtResource("5_tlpkr")
-region = Rect2(0, 48, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rofc7"]
-atlas = ExtResource("5_tlpkr")
-region = Rect2(64, 48, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6363n"]
-atlas = ExtResource("5_tlpkr")
-region = Rect2(128, 48, 64, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tlpkr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tlpkr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rofc7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6363n")
-}],
-"loop": false,
-"name": &"default",
-"speed": 8.0
-}]
-
-[node name="Level_12" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_13" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_6363n")
-level_binding_box = Rect2(0, 192, 1152, 1280)
+level_binding_box = Rect2(0, 256, 896, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(0, 480)
+position = Vector2(32, 672)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(896, 480)
+position = Vector2(864, 672)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAAEAA4AAgACAAEAAAABAAsAAgACAAMAAAACAAsAAgAJAAEAAAACAAkAAgAJAAEAAAABAAoAAgADAAIAAAAEAAwAAgAFAAMAAAAEAA0AAgAFAAQAAAAJAAwAAgAFAAMAAAAJAA0AAgAFAAQAAAALAAsAAgAHAAEAAAALAAkAAgAHAAEAAAAMAAoAAgABAAIAAAAAAAgAAgADAAIAAAABAAkAAgACAAEAAAABAAcAAgACAAMAAAACAAcAAgACAAMAAAADAAcAAgACAAMAAAAEAAcAAgACAAMAAAAFAAcAAgACAAMAAAAGAAcAAgACAAMAAAAHAAcAAgACAAMAAAAIAAcAAgACAAMAAAAJAAcAAgACAAMAAAAKAAcAAgACAAMAAAALAAcAAgACAAMAAAAMAAcAAgACAAMAAAANAAgAAgABAAIAAAAMAAkAAgACAAEAAAAMAAsAAgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAABAAsAAgACAAMAAAACAAsAAgAJAAEAAAACAAkAAgAJAAEAAAABAAoAAgADAAIAAAAEAAwAAgAFAAMAAAAEAA0AAgAFAAQAAAAJAAwAAgAFAAMAAAAJAA0AAgAFAAQAAAALAAsAAgAHAAEAAAALAAkAAgAHAAEAAAAMAAoAAgABAAIAAAAAAAgAAgADAAIAAAABAAkAAgACAAEAAAABAAcAAgACAAMAAAACAAcAAgACAAMAAAADAAcAAgACAAMAAAAEAAcAAgACAAMAAAAFAAcAAgACAAMAAAAGAAcAAgACAAMAAAAHAAcAAgACAAMAAAAIAAcAAgACAAMAAAAJAAcAAgACAAMAAAAKAAcAAgACAAMAAAALAAcAAgACAAMAAAAMAAcAAgACAAMAAAANAAgAAgABAAIAAAAMAAkAAgACAAEAAAAMAAsAAgACAAMAAAAAAAsAAgACAAMAAAANAAsAAgACAAMAAAAAAA4AAgACAAEAAAANAA4AAgACAAEAAAA=")
 tile_set = ExtResource("2_bwyj1")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
 tile_set = ExtResource("3_b51s1")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_7vs3t")]
-position = Vector2(992, 448)
+position = Vector2(928, 640)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://cuycqdwnf4y3h"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_7vs3t")]
-position = Vector2(-96, 448)
+position = Vector2(-32, 640)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bp18vkl3xpcg7"
 to_spawn_location_with_index = 1
 
-[node name="Spider" type="CharacterBody2D" parent="."]
+[node name="Spider" parent="." instance=ExtResource("5_tlpkr")]
 position = Vector2(288, 336)
-rotation = -3.1415927
-script = ExtResource("5_rofc7")
 
-[node name="StateMachine" type="Node" parent="Spider" node_paths=PackedStringArray("inital_state")]
-script = ExtResource("6_6363n")
-inital_state = NodePath("IdleState")
-
-[node name="IdleState" type="Node" parent="Spider/StateMachine"]
-script = ExtResource("7_bwyj1")
-
-[node name="JumpingState" type="Node" parent="Spider/StateMachine"]
-script = ExtResource("8_b51s1")
-
-[node name="WalkingState" type="Node" parent="Spider/StateMachine"]
-script = ExtResource("9_7vs3t")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider"]
-position = Vector2(-0.36834717, 8.227722)
-shape = SubResource("CircleShape2D_rofc7")
-
-[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="Spider"]
-sprite_frames = SubResource("SpriteFrames_6363n")
-autoplay = "default"
-frame_progress = 0.8923363
-
-[node name="JumpingAnimatedSprite2D" type="AnimatedSprite2D" parent="Spider"]
-visible = false
-position = Vector2(-0.36834717, 16.227722)
-sprite_frames = SubResource("SpriteFrames_tlpkr")
-autoplay = "default"
-
-[node name="AwakeningRayCast2D" type="RayCast2D" parent="Spider"]
-target_position = Vector2(0, -1000)
+[node name="Spider2" parent="." instance=ExtResource("5_tlpkr")]
+position = Vector2(608, 336)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -92,13 +92,13 @@ visible = false
 position = Vector2(0, 20)
 sprite_frames = SubResource("SpriteFrames_xf24p")
 autoplay = "default"
-frame_progress = 0.5802739
+frame_progress = 0.27158928
 
 [node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-6, 4)
 sprite_frames = SubResource("SpriteFrames_4in5n")
 autoplay = "default"
-frame_progress = 0.66473585
+frame_progress = 0.13168114
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 20)

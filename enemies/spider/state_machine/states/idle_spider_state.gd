@@ -2,8 +2,8 @@ class_name IdleSpiderState;
 extends AbstractSpiderState;
 
 @export var awakening_raycast: RayCast2D;
-@export var rotation_on_fall_timer = 0.5;
-var _target_rotation = 0;
+@export var rotation_on_fall_timer: float = 0.5;
+var _target_rotation: float = 0;
 var _is_falling_already = false;
 
 
@@ -37,4 +37,4 @@ func fall_down_and_exit_to_walking_state()->void:
 		body.velocity += body.get_gravity() * get_process_delta_time();
 	while !body.is_on_floor():
 		await get_tree().process_frame;
-	transition.emit("WalkingState");
+	transition.emit("FloorState");

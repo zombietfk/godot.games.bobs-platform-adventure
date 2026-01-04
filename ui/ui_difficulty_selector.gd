@@ -1,7 +1,7 @@
 class_name PlayerDifficultyUI;
 extends HBoxContainer;
 
-const level_1_path = "res://level/levels/level_1.tscn";
+const level_1_path = "res://level/levels/caves/level_1.tscn";
 
 func _on_hard_mode_pressed() -> void:
 	Main.difficulty = Main.DIFFICULTY.HARD;

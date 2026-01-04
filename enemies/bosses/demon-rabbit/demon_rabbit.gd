@@ -285,7 +285,6 @@ func recover_from_stun_and_reset() -> void:
 			velocity.y = -500;
 		else:
 			velocity.y -= global_position.y - current_platform_jump_location.global_position.y + get_gravity().y * 0.5;
-			print(velocity.y);
 	$CollisionShape2D.disabled = true;
 	is_jumping_to_new_target = true;
 	summon_timer *= 0.666;

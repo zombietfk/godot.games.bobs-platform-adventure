@@ -1,5 +1,15 @@
 class_name Spider;
-extends CharacterBody2D;
+extends AbstractEnemy;
 
-func _physics_process(delta: float) -> void:
+@export var knockback_strength = Vector2.ONE * 250;
+
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
+
+func _on_attack_area_entered(body: Node2D) -> void:
+	if body is Player:
+		body.damage(
+			1,
+			global_position - body.global_position,
+			knockback_strength
+		);
