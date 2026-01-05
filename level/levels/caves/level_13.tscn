@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=4 uid="uid://jr3onq8odump"]
+[gd_scene load_steps=10 format=4 uid="uid://jr3onq8odump"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_6363n"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_bwyj1"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_b51s1"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_7vs3t"]
 [ext_resource type="PackedScene" uid="uid://2w50byocu5p" path="res://enemies/spider/spider.tscn" id="5_tlpkr"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="6_f72qo"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="7_w5qtk"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="8_oyvyr"]
+
+[sub_resource type="Curve2D" id="Curve2D_5qnrm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0, -128)
+}
+point_count = 2
 
 [node name="Level_13" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_6363n")
@@ -42,4 +51,61 @@ position = Vector2(288, 336)
 [node name="Spider2" parent="." instance=ExtResource("5_tlpkr")]
 position = Vector2(608, 336)
 
+[node name="Switch" parent="." instance=ExtResource("8_oyvyr")]
+position = Vector2(448, 704)
+
+[node name="Switch2" parent="." instance=ExtResource("8_oyvyr")]
+position = Vector2(800, 384)
+
+[node name="Switch3" parent="." instance=ExtResource("8_oyvyr")]
+position = Vector2(96, 384)
+
+[node name="Path2D5" type="Path2D" parent="."]
+position = Vector2(736, 320)
+curve = SubResource("Curve2D_5qnrm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D5/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_f72qo")]
+rotation = 1.5707964
+script = ExtResource("7_w5qtk")
+movement_path = NodePath("..")
+movement_speed = 25.6
+
+[node name="Path2D6" type="Path2D" parent="."]
+position = Vector2(160, 320)
+curve = SubResource("Curve2D_5qnrm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D6"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D6/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_f72qo")]
+rotation = 1.5707964
+script = ExtResource("7_w5qtk")
+movement_path = NodePath("..")
+movement_speed = 25.6
+
+[node name="Path2D7" type="Path2D" parent="."]
+position = Vector2(800, 640)
+curve = SubResource("Curve2D_5qnrm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7"]
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D7/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_f72qo")]
+rotation = 1.5707964
+script = ExtResource("7_w5qtk")
+movement_path = NodePath("..")
+movement_speed = 25.6
+
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="Path2D5/PathFollow2D/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch2" to="Path2D6/PathFollow2D/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch3" to="Path2D7/PathFollow2D/Door" method="_on_switch_flipped_on"]

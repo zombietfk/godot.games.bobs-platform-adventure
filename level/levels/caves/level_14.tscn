@@ -1,0 +1,170 @@
+[gd_scene load_steps=19 format=4 uid="uid://cmmw41vavdu68"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_ocueu"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_jbume"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_xc2lr"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_7287j"]
+[ext_resource type="Texture2D" uid="uid://4sd8v7uqnsjm" path="res://enemies/mushroom/mushroom_spritesheet.png" id="5_8ffol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1wxs"]
+size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1d07"]
+atlas = ExtResource("5_8ffol")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hadi8"]
+atlas = ExtResource("5_8ffol")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocueu"]
+atlas = ExtResource("5_8ffol")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbume"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1d07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hadi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocueu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hadi8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ffol"]
+atlas = ExtResource("5_8ffol")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbume"]
+atlas = ExtResource("5_8ffol")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc2lr"]
+atlas = ExtResource("5_8ffol")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7287j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ffol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbume")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc2lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbume")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ffol")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7287j"]
+atlas = ExtResource("5_8ffol")
+region = Rect2(0, 128, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc1tv"]
+atlas = ExtResource("5_8ffol")
+region = Rect2(64, 128, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csl3h"]
+atlas = ExtResource("5_8ffol")
+region = Rect2(128, 128, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8w7ld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7287j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc1tv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csl3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc1tv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Level_13" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_ocueu")
+level_binding_box = Rect2(0, 256, 896, 768)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(32, 672)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(864, 672)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -224)
+tile_map_data = PackedByteArray("AAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAABAAsAAgACAAMAAAABAAoAAgADAAIAAAAMAAoAAgABAAIAAAABAAkAAgADAAIAAAABAAcAAgADAAIAAAAMAAcAAgABAAIAAAAMAAkAAgABAAIAAAAMAAsAAgACAAMAAAAAAAsAAgACAAMAAAANAAsAAgACAAMAAAAAAA4AAgACAAEAAAANAA4AAgACAAEAAAAMAAgAAgABAAIAAAABAAgAAgADAAIAAAACAAYAAgACAAMAAAADAAYAAgACAAMAAAAEAAYAAgACAAMAAAAFAAYAAgACAAMAAAAGAAYAAgACAAMAAAAHAAYAAgACAAMAAAAIAAYAAgACAAMAAAAJAAYAAgACAAMAAAAKAAYAAgACAAMAAAALAAYAAgACAAMAAAAEAA4AAgACAAEAAAAJAA4AAgACAAEAAAA=")
+tile_set = ExtResource("2_jbume")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_xc2lr")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_7287j")]
+position = Vector2(928, 640)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://cuycqdwnf4y3h"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_7287j")]
+position = Vector2(-32, 640)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bp18vkl3xpcg7"
+to_spawn_location_with_index = 1
+
+[node name="Mushroom" type="CharacterBody2D" parent="."]
+position = Vector2(576, 640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mushroom"]
+visible = false
+shape = SubResource("RectangleShape2D_y1wxs")
+
+[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="Mushroom"]
+sprite_frames = SubResource("SpriteFrames_jbume")
+frame_progress = 0.5694107
+
+[node name="PoofAnimatedSprite2D" type="AnimatedSprite2D" parent="Mushroom"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_7287j")
+frame = 4
+frame_progress = 0.56411463
+
+[node name="MushroomMan" type="CharacterBody2D" parent="."]
+position = Vector2(576, 640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MushroomMan"]
+visible = false
+shape = SubResource("RectangleShape2D_y1wxs")
+
+[node name="RunningAnimatedSprite2D" type="AnimatedSprite2D" parent="MushroomMan"]
+position = Vector2(-128, -16)
+sprite_frames = SubResource("SpriteFrames_8w7ld")
+frame_progress = 0.7568567
+
+[connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,7 +1,7 @@
 class_name Spider;
 extends AbstractEnemy;
 
-@export var knockback_strength = Vector2.ONE * 250;
+@export var knockback_strength = Vector2.ONE * 500;
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
