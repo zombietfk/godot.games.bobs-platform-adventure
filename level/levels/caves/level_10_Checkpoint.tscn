@@ -9,15 +9,14 @@
 
 [node name="Level_10_Checkpoint" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_ik612")
-level_binding_box = Rect2(-96, 0, 1824, 832)
+level_binding_box = Rect2(-64, 64, 640, 576)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
-camera_zoom_to = Vector2(0.9, 0.9)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-96, 480)
+position = Vector2(-32, 480)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1824, 480)
+position = Vector2(608, 480)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
@@ -30,12 +29,12 @@ tile_set = ExtResource("3_3yu6y")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_2mybr")]
 position = Vector2(672, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/level_23.tscn"
+to_level_path = "uid://bh343njjeji8k"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_2mybr")]
 position = Vector2(-96, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://b7e2ilx4c2b4i"
+to_level_path = "uid://db7pkela8qxg2"
 to_spawn_location_with_index = 1
 
 [node name="CheckpointFlagpole" parent="." instance=ExtResource("5_oy7d5")]

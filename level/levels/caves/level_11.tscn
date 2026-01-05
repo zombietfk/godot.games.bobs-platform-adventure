@@ -23,28 +23,28 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_22" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_11" type="Node2D" node_paths=PackedStringArray("spawn_locations", "pathfinding_tilemap")]
 script = ExtResource("1_s8uha")
-level_binding_box = Rect2(-96, 0, 1824, 832)
+level_binding_box = Rect2(-128, 0, 1472, 960)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
-camera_zoom_to = Vector2(0.9, 0.9)
+pathfinding_tilemap = NodePath("Level")
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-96, 480)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1824, 480)
+position = Vector2(1440, 480)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAD//wwAAgADAAIAAAD//w0AAgADAAIAAAD//w4AAgADAAIAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wUAAgADAAIAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAALAAMAAgACAAMAAAAMAAMAAgACAAMAAAANAAMAAgACAAMAAAAOAAMAAgACAAMAAAAPAAMAAgACAAMAAAAAAAMAAgACAAMAAAD//w8AAgADAAIAAAD//wQAAgADAAIAAAAEAA8AAgAHAAEAAAAFAA8AAgAJAAEAAAAEAAQAAgABAAMAAAAFAAQAAgADAAMAAAAMAA8AAgAHAAEAAAANAA8AAgAJAAEAAAAMAAQAAgABAAMAAAANAAQAAgADAAMAAAASAAsAAgABAAEAAAASAAwAAgABAAIAAAASAA0AAgABAAIAAAASAA4AAgABAAIAAAASAA8AAgABAAIAAAASAAQAAgABAAIAAAASAAUAAgABAAIAAAASAAYAAgABAAIAAAASAAcAAgABAAIAAAASAAgAAgABAAMAAAAQAAMAAgACAAMAAAARAAMAAgACAAMAAAD//xAAAgADAAIAAAD//xEAAgADAAIAAAASABAAAgABAAIAAAASABEAAgABAAIAAAATAAsAAgACAAEAAAAUAAsAAgACAAEAAAAVAAsAAgACAAEAAAATAAgAAgACAAMAAAAUAAgAAgACAAMAAAAVAAgAAgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAD//wwAAgADAAIAAAD//w0AAgADAAIAAAD//w4AAgADAAIAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wUAAgADAAIAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAALAAMAAgACAAMAAAAMAAMAAgACAAMAAAANAAMAAgACAAMAAAAOAAMAAgACAAMAAAAPAAMAAgACAAMAAAAAAAMAAgACAAMAAAD//w8AAgADAAIAAAD//wQAAgADAAIAAAAEAA8AAgAHAAEAAAAFAA8AAgAJAAEAAAAEAAQAAgABAAMAAAAFAAQAAgADAAMAAAAMAA8AAgAHAAEAAAANAA8AAgAJAAEAAAAMAAQAAgABAAMAAAANAAQAAgADAAMAAAASAAsAAgABAAEAAAASAAwAAgABAAIAAAASAA0AAgABAAIAAAASAA4AAgABAAIAAAASAA8AAgABAAIAAAASAAQAAgABAAIAAAASAAUAAgABAAIAAAASAAYAAgABAAIAAAASAAcAAgABAAIAAAASAAgAAgABAAMAAAAQAAMAAgACAAMAAAARAAMAAgACAAMAAAD//xAAAgADAAIAAAD//xEAAgADAAIAAAASABAAAgABAAIAAAASABEAAgABAAIAAAATAAsAAgACAAEAAAAUAAsAAgACAAEAAAAVAAsAAgACAAEAAAATAAgAAgACAAMAAAAUAAgAAgACAAMAAAAVAAgAAgACAAMAAAAWAAsAAgACAAEAAAAWAAgAAgACAAMAAAATAAUAAgACAAIAAAATAAYAAgACAAIAAAATAAcAAgACAAIAAAAUAAUAAgACAAIAAAAUAAYAAgACAAIAAAAUAAcAAgACAAIAAAAVAAUAAgACAAIAAAAVAAYAAgACAAIAAAAVAAcAAgACAAIAAAATAAQAAgACAAIAAAAUAAQAAgACAAIAAAAVAAQAAgACAAIAAAAWAAQAAgACAAIAAAAWAAUAAgACAAIAAAAWAAYAAgACAAIAAAAWAAcAAgACAAIAAAA=")
 tile_set = ExtResource("2_2aajd")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
 tile_set = ExtResource("3_2srip")
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(128, 640)
+position = Vector2(128, 576)
 curve = SubResource("Curve2D_2aajd")
 script = ExtResource("4_2aajd")
 speed = 32.0
@@ -56,13 +56,13 @@ rotates = false
 [node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("5_2srip")]
 position = Vector2(0, -2.4667283e-05)
 rotation = 3.1415925
-floating_displacement = 96
+floating_displacement = 128
 on_land_displacement = 0
 randomize_inital_displacement = false
 bounce_timer = 1.0
 
 [node name="Path2D2" type="Path2D" parent="."]
-position = Vector2(128, 256)
+position = Vector2(128, 320)
 curve = SubResource("Curve2D_2aajd")
 script = ExtResource("4_2aajd")
 speed = 32.0
@@ -74,13 +74,13 @@ rotates = false
 [node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("5_2srip")]
 position = Vector2(0, -2.4667283e-05)
 rotation = 3.1415925
-floating_displacement = -96
+floating_displacement = -128
 on_land_displacement = 0
 randomize_inital_displacement = false
 bounce_timer = 1.0
 
 [node name="Path2D3" type="Path2D" parent="."]
-position = Vector2(576, 640)
+position = Vector2(576, 576)
 curve = SubResource("Curve2D_2aajd")
 script = ExtResource("4_2aajd")
 speed = 32.0
@@ -93,13 +93,13 @@ rotates = false
 [node name="CloudPlatform" parent="Path2D3/PathFollow2D" instance=ExtResource("5_2srip")]
 position = Vector2(0, -2.4667283e-05)
 rotation = 3.1415925
-floating_displacement = 96
+floating_displacement = 128
 on_land_displacement = 0
 randomize_inital_displacement = false
 bounce_timer = 1.0
 
 [node name="Path2D4" type="Path2D" parent="."]
-position = Vector2(576, 256)
+position = Vector2(576, 320)
 curve = SubResource("Curve2D_2aajd")
 script = ExtResource("4_2aajd")
 speed = 32.0
@@ -112,40 +112,39 @@ rotates = false
 [node name="CloudPlatform" parent="Path2D4/PathFollow2D" instance=ExtResource("5_2srip")]
 position = Vector2(0, -2.4667283e-05)
 rotation = 3.1415925
-floating_displacement = -96
+floating_displacement = -128
 on_land_displacement = 0
 randomize_inital_displacement = false
 bounce_timer = 1.0
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_d0eou")]
-position = Vector2(1440, 448)
+position = Vector2(1504, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/level_23.tscn"
+to_level_path = "uid://byq78k0jb2l32"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_d0eou")]
 position = Vector2(-160, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://b7e2ilx4c2b4i"
+to_level_path = "uid://cq02vr7nrvuj8"
 to_spawn_location_with_index = 1
 
 [node name="Switch" parent="." instance=ExtResource("5_fbq4g")]
 position = Vector2(320, 128)
-release_on_leave = true
 
 [node name="Switch2" parent="." instance=ExtResource("5_fbq4g")]
 position = Vector2(320, 768)
-release_on_leave = true
 
 [node name="Switch3" parent="." instance=ExtResource("5_fbq4g")]
 position = Vector2(832, 128)
-release_on_leave = true
 
 [node name="Switch4" parent="." instance=ExtResource("5_fbq4g")]
 position = Vector2(832, 768)
-release_on_leave = true
 
 [node name="Bat" parent="." instance=ExtResource("8_2srip")]
 position = Vector2(32, 96)
+
+[node name="Glide" parent="Bat/StateMachine" index="1"]
+move_speed = 75.0
 
 [node name="PlayerBelowCheckRaycast2D" parent="Bat" index="3"]
 target_position = Vector2(0, 736)
@@ -153,11 +152,18 @@ target_position = Vector2(0, 736)
 [node name="Bat2" parent="." instance=ExtResource("8_2srip")]
 position = Vector2(224, 96)
 
+[node name="Glide" parent="Bat2/StateMachine" index="1"]
+move_speed = 110.0
+
 [node name="PlayerBelowCheckRaycast2D" parent="Bat2" index="3"]
 target_position = Vector2(0, 736)
 
 [node name="Bat3" parent="." instance=ExtResource("8_2srip")]
 position = Vector2(416, 96)
+
+[node name="Glide" parent="Bat3/StateMachine" index="1"]
+move_speed = 100.0
+flap_after_x_seconds_timer = 0.8
 
 [node name="PlayerBelowCheckRaycast2D" parent="Bat3" index="3"]
 target_position = Vector2(0, 736)

@@ -48,7 +48,7 @@ func _process_jump_input(delta: float):
 func _process_fall_through_platform_input():
 	if Input.is_action_pressed("drop"):
 		body.set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, false);
-	if Input.is_action_just_released("drop"):
+	if !Input.is_action_pressed("drop"):
 		body.set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, true);
 
 func _process_object_interaction_input():

@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1fppnc76mn0n"]
+
+[ext_resource type="Texture2D" uid="uid://4sd8v7uqnsjm" path="res://enemies/mushroom/mushroom_spritesheet.png" id="1_nddln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1wxs"]
+size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1d07"]
+atlas = ExtResource("1_nddln")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hadi8"]
+atlas = ExtResource("1_nddln")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocueu"]
+atlas = ExtResource("1_nddln")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbume"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1d07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hadi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocueu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hadi8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ffol"]
+atlas = ExtResource("1_nddln")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbume"]
+atlas = ExtResource("1_nddln")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc2lr"]
+atlas = ExtResource("1_nddln")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7287j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ffol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbume")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc2lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbume")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ffol")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Mushroom" type="CharacterBody2D"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_y1wxs")
+
+[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jbume")
+frame_progress = 0.5694107
+
+[node name="PoofAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_7287j")
+frame = 4
+frame_progress = 0.56411463

@@ -6,31 +6,35 @@
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_tnobo"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_4m5li"]
 
-[node name="Level_0" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_2" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_1reck")
-level_binding_box = Rect2(0, 0, 704, 448)
-spawn_locations = [NodePath("EntrySpawnPoint"), null]
+level_binding_box = Rect2(0, -64, 704, 448)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(160, 352)
+position = Vector2(32, 352)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(672, 352)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAABAAkAAgADAAEAAAAAAAUAAgADAAIAAAAAAAYAAgADAAMAAAAKAAUAAgABAAIAAAAKAAYAAgABAAMAAAAKAAkAAgACAAEAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAKAAMAAgABAAIAAAAKAAQAAgABAAIAAAABAAIAAgACAAMAAAACAAIAAgACAAMAAAADAAIAAgACAAMAAAAEAAIAAgACAAMAAAAFAAIAAgACAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAJAAkAAgABAAEAAAAAAAkAAgACAAEAAAAFAAkAAgAFAAMAAAA=")
+tile_map_data = PackedByteArray("AAABAAkAAgADAAEAAAAAAAUAAgADAAIAAAAAAAYAAgADAAMAAAAKAAUAAgABAAIAAAAKAAYAAgABAAMAAAAKAAkAAgACAAEAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAKAAMAAgABAAIAAAAKAAQAAgABAAIAAAABAAIAAgACAAMAAAACAAIAAgACAAMAAAADAAIAAgACAAMAAAAEAAIAAgACAAMAAAAFAAIAAgACAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAJAAkAAgABAAEAAAAAAAkAAgACAAEAAAAFAAkAAgAFAAMAAAAAAAIAAgAPAAcAAAAKAAIAAgALAAcAAAA=")
 tile_set = ExtResource("2_gljlm")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
 tile_set = ExtResource("3_ikdtc")
 
-[node name="TeleportToLevelZone" parent="." instance=ExtResource("4_tnobo")]
+[node name="TeleportToNextLevelZone" parent="." instance=ExtResource("4_tnobo")]
 position = Vector2(736, 319.99997)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://llqv2al5xrch"
+to_level_path = "uid://bremvu40aw6tq"
 
-[node name="TeleportToLevelZone2" parent="." instance=ExtResource("4_tnobo")]
+[node name="TeleportToPreviousLevelZone" parent="." instance=ExtResource("4_tnobo")]
 position = Vector2(-32, 320)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://llqv2al5xrch"
+to_level_path = "uid://dkv5yjro7fpkr"
+to_spawn_location_with_index = 1
 
 [node name="Spike" parent="." instance=ExtResource("5_4m5li")]
 position = Vector2(144, 416)

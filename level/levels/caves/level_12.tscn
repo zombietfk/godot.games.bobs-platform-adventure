@@ -17,16 +17,17 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_12" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_12" type="Node2D" node_paths=PackedStringArray("spawn_locations", "pathfinding_tilemap")]
 script = ExtResource("1_v1ui5")
-level_binding_box = Rect2(0, 192, 1152, 1280)
+level_binding_box = Rect2(-64, 192, 960, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+pathfinding_tilemap = NodePath("Level")
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(0, 480)
+position = Vector2(-32, 480)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(896, 480)
+position = Vector2(928, 480)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
@@ -40,12 +41,12 @@ tile_set = ExtResource("4_q5rjn")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("5_jdocr")]
 position = Vector2(992, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://cuycqdwnf4y3h"
+to_level_path = "uid://jr3onq8odump"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("5_jdocr")]
 position = Vector2(-96, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://bp18vkl3xpcg7"
+to_level_path = "uid://bh343njjeji8k"
 to_spawn_location_with_index = 1
 
 [node name="Rabbit" parent="." instance=ExtResource("6_11l0m")]

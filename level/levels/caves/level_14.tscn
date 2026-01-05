@@ -1,170 +1,69 @@
-[gd_scene load_steps=19 format=4 uid="uid://cmmw41vavdu68"]
+[gd_scene load_steps=7 format=4 uid="uid://cmmw41vavdu68"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_ocueu"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_jbume"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_xc2lr"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_7287j"]
-[ext_resource type="Texture2D" uid="uid://4sd8v7uqnsjm" path="res://enemies/mushroom/mushroom_spritesheet.png" id="5_8ffol"]
+[ext_resource type="PackedScene" uid="uid://cclnn5v3he5e0" path="res://enemies/bat/bat.tscn" id="5_8ffol"]
+[ext_resource type="PackedScene" uid="uid://dmrrhkelp6h5m" path="res://objects/traps/boulder/factory/create_boulder_on_timeout_factory.tscn" id="6_r1d07"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1wxs"]
-size = Vector2(64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r1d07"]
-atlas = ExtResource("5_8ffol")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hadi8"]
-atlas = ExtResource("5_8ffol")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ocueu"]
-atlas = ExtResource("5_8ffol")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jbume"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r1d07")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hadi8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ocueu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hadi8")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ffol"]
-atlas = ExtResource("5_8ffol")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jbume"]
-atlas = ExtResource("5_8ffol")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xc2lr"]
-atlas = ExtResource("5_8ffol")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7287j"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ffol")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbume")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xc2lr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbume")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ffol")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7287j"]
-atlas = ExtResource("5_8ffol")
-region = Rect2(0, 128, 64, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pc1tv"]
-atlas = ExtResource("5_8ffol")
-region = Rect2(64, 128, 64, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_csl3h"]
-atlas = ExtResource("5_8ffol")
-region = Rect2(128, 128, 64, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8w7ld"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7287j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pc1tv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_csl3h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pc1tv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="Level_13" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_14" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_ocueu")
-level_binding_box = Rect2(0, 256, 896, 768)
+level_binding_box = Rect2(0, 224, 1920, 800)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(32, 672)
+position = Vector2(32, 640)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(864, 672)
+position = Vector2(1872, 640)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -224)
-tile_map_data = PackedByteArray("AAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAABAAsAAgACAAMAAAABAAoAAgADAAIAAAAMAAoAAgABAAIAAAABAAkAAgADAAIAAAABAAcAAgADAAIAAAAMAAcAAgABAAIAAAAMAAkAAgABAAIAAAAMAAsAAgACAAMAAAAAAAsAAgACAAMAAAANAAsAAgACAAMAAAAAAA4AAgACAAEAAAANAA4AAgACAAEAAAAMAAgAAgABAAIAAAABAAgAAgADAAIAAAACAAYAAgACAAMAAAADAAYAAgACAAMAAAAEAAYAAgACAAMAAAAFAAYAAgACAAMAAAAGAAYAAgACAAMAAAAHAAYAAgACAAMAAAAIAAYAAgACAAMAAAAJAAYAAgACAAMAAAAKAAYAAgACAAMAAAALAAYAAgACAAMAAAAEAA4AAgACAAEAAAAJAA4AAgACAAEAAAA=")
+tile_map_data = PackedByteArray("AAABAA4AAgACAAEAAAABAAoAAgADAAIAAAABAAkAAgADAAIAAAAAAAsAAgACAAMAAAAAAA4AAgACAAEAAAABAAgAAgADAAIAAAABAAsAAgADAAMAAAACAAcAAgACAAMAAAADAAcAAgACAAMAAAAEAAcAAgACAAMAAAAFAAcAAgACAAMAAAAGAAcAAgADAAMAAAAKAAcAAgABAAMAAAALAAcAAgADAAMAAAACAA4AAgACAAEAAAADAA4AAgADAAEAAAAGAA4AAgAFAAMAAAAGAA8AAgAFAAQAAAAKAAwAAgAFAAMAAAAKAA0AAgAFAAQAAAAKAA4AAgAFAAQAAAAKAA8AAgAFAAQAAAAQAA8AAgAFAAMAAAAbAA4AAgABAAEAAAAcAA4AAgACAAEAAAAdAA4AAgACAAEAAAADAA8AAgADAAIAAAAbAA8AAgABAAIAAAAcAAsAAgABAAMAAAAcAAgAAgABAAIAAAAcAAkAAgABAAIAAAAcAAoAAgABAAIAAAAPAAcAAgABAAMAAAAQAAcAAgACAAMAAAARAAcAAgADAAMAAAAVAAcAAgABAAMAAAAWAAcAAgACAAMAAAAXAAcAAgACAAMAAAAYAAcAAgACAAMAAAAZAAcAAgACAAMAAAAaAAcAAgACAAMAAAAbAAcAAgACAAMAAAAdAAsAAgACAAMAAAAWAA4AAgAFAAMAAAAWAA8AAgAFAAQAAAA=")
 tile_set = ExtResource("2_jbume")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
 tile_set = ExtResource("3_xc2lr")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_7287j")]
-position = Vector2(928, 640)
+position = Vector2(1952, 608)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://cuycqdwnf4y3h"
+to_level_path = "res://level/levels/caves/level_15.tscn"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_7287j")]
-position = Vector2(-32, 640)
+position = Vector2(-32, 608)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://bp18vkl3xpcg7"
+to_level_path = "uid://jr3onq8odump"
 to_spawn_location_with_index = 1
 
-[node name="Mushroom" type="CharacterBody2D" parent="."]
-position = Vector2(576, 640)
+[node name="Bat" parent="." instance=ExtResource("5_8ffol")]
+position = Vector2(224, 320)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mushroom"]
-visible = false
-shape = SubResource("RectangleShape2D_y1wxs")
+[node name="Bat2" parent="." instance=ExtResource("5_8ffol")]
+position = Vector2(672, 320)
 
-[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="Mushroom"]
-sprite_frames = SubResource("SpriteFrames_jbume")
-frame_progress = 0.5694107
+[node name="Bat3" parent="." instance=ExtResource("5_8ffol")]
+position = Vector2(1056, 320)
 
-[node name="PoofAnimatedSprite2D" type="AnimatedSprite2D" parent="Mushroom"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_7287j")
-frame = 4
-frame_progress = 0.56411463
+[node name="Bat4" parent="." instance=ExtResource("5_8ffol")]
+position = Vector2(1440, 320)
 
-[node name="MushroomMan" type="CharacterBody2D" parent="."]
-position = Vector2(576, 640)
+[node name="CreateBoulderOnTimeoutFactory" parent="." instance=ExtResource("6_r1d07")]
+position = Vector2(544, 160)
+fire_on_ready = false
+inital_timer = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MushroomMan"]
-visible = false
-shape = SubResource("RectangleShape2D_y1wxs")
+[node name="CreateBoulderOnTimeoutFactory2" parent="." instance=ExtResource("6_r1d07")]
+position = Vector2(864, 160)
+fire_on_ready = false
+fires_every_x_timer = 2.5
+boulder_autodestroy_after_x_seconds_timer = 6.0
 
-[node name="RunningAnimatedSprite2D" type="AnimatedSprite2D" parent="MushroomMan"]
-position = Vector2(-128, -16)
-sprite_frames = SubResource("SpriteFrames_8w7ld")
-frame_progress = 0.7568567
+[node name="CreateBoulderOnTimeoutFactory3" parent="." instance=ExtResource("6_r1d07")]
+position = Vector2(1248, 160)
+fire_on_ready = false
+fires_every_x_timer = 2.75
+inital_timer = 2.5
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -7,31 +7,36 @@
 [ext_resource type="PackedScene" uid="uid://br8v05dfs0m3m" path="res://level/platforms/seesaw/seesaw.tscn" id="5_fiatm"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="6_2gmmv"]
 
-[node name="Level_0" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_5" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_hqji5")
-level_binding_box = Rect2(0, 0, 704, 448)
-spawn_locations = [NodePath("EntrySpawnPoint"), null]
+level_binding_box = Rect2(0, -576, 576, 448)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(160, 352)
+position = Vector2(32, -416)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(544, 352)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAABAAkAAgACAAEAAAAAAAUAAgADAAIAAAAAAAYAAgACAAIAAAAAAAMAAgACAAIAAAAAAAQAAgADAAIAAAAAAAkAAgACAAIAAAACAAkAAgACAAEAAAADAAkAAgACAAEAAAAAAAIAAgADAAIAAAAAAAEAAgADAAIAAAAAAAAAAgACAAIAAAAAAP//AgADAAIAAAAAAP7/AgADAAIAAAAAAP3/AgACAAEAAAAIAPz/AgABAAIAAAAIAP3/AgACAAIAAAAIAP7/AgABAAIAAAAIAP//AgABAAIAAAAIAAAAAgACAAIAAAAIAAEAAgABAAIAAAAIAAIAAgABAAIAAAAIAAMAAgACAAIAAAAIAAQAAgABAAIAAAAIAAUAAgABAAIAAAAIAAYAAgACAAMAAAAFAAkAAgACAAEAAAAGAAkAAgACAAEAAAAHAAkAAgACAAEAAAAIAAkAAgACAAEAAAAEAAkAAgACAAEAAAABAPr/AgACAAMAAAACAPr/AgACAAMAAAADAPr/AgACAAMAAAAEAPr/AgACAAMAAAAFAPr/AgACAAMAAAAGAPr/AgACAAMAAAAHAPr/AgACAAMAAAAIAPv/AgABAAIAAAAAAPr/AgACAAMAAAABAP3/AgAJAAEAAAAHAP3/AgAHAAEAAAAHAAAAAgAHAAEAAAAHAAMAAgAHAAEAAAAHAAYAAgAHAAEAAAABAAYAAgAJAAEAAAABAAMAAgAJAAEAAAABAAAAAgAJAAEAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAkAAgACAAEAAAAAAAUAAgADAAIAAAAAAAYAAgACAAIAAAAAAAMAAgACAAIAAAAAAAQAAgADAAIAAAAAAAkAAgACAAIAAAACAAkAAgACAAEAAAADAAkAAgACAAEAAAAAAAIAAgADAAIAAAAAAAEAAgADAAIAAAAAAAAAAgACAAIAAAAAAP//AgADAAIAAAAAAP7/AgADAAIAAAAAAP3/AgACAAEAAAAIAPz/AgABAAIAAAAIAP3/AgACAAIAAAAIAP7/AgABAAIAAAAIAP//AgABAAIAAAAIAAAAAgACAAIAAAAIAAEAAgABAAIAAAAIAAIAAgABAAIAAAAIAAMAAgACAAIAAAAIAAQAAgABAAIAAAAIAAUAAgABAAIAAAAIAAYAAgACAAMAAAAFAAkAAgACAAEAAAAGAAkAAgACAAEAAAAHAAkAAgACAAEAAAAIAAkAAgACAAEAAAAEAAkAAgACAAEAAAABAPr/AgACAAMAAAACAPr/AgACAAMAAAADAPr/AgACAAMAAAAEAPr/AgACAAMAAAAFAPr/AgACAAMAAAAGAPr/AgACAAMAAAAHAPr/AgACAAMAAAAIAPv/AgABAAIAAAAAAPr/AgACAAMAAAABAP3/AgAJAAEAAAAHAP3/AgAHAAEAAAAHAAAAAgAHAAEAAAAHAAMAAgAHAAEAAAAHAAYAAgAHAAEAAAABAAYAAgAJAAEAAAABAAMAAgAJAAEAAAABAAAAAgAJAAEAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAAIAPr/AgALAAcAAAA=")
 tile_set = ExtResource("2_fiatm")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAAQAPv/AAAWAA8AAAAQAAEAAAAWAA8AAAAQAAcAAAAWAA8AAAAQAAYAAAAWAAYAAAAQAAAAAAAWAAYAAAAQAPr/AAAWAAYAAAABABIAAAAfAAYAAAABAAwAAAAfAAYAAAABAAYAAAAfAAYAAAABAAAAAAAfAAYAAAABAPv/AAAfAA8AAAABAAEAAAAfAA8AAAABAAcAAAAfAA8AAAABAA0AAAAfAA8AAAA=")
 tile_set = ExtResource("3_2gmmv")
 
-[node name="TeleportToLevelZone" parent="." instance=ExtResource("4_nn378")]
+[node name="TeleportToNextLevelZone" parent="." instance=ExtResource("4_nn378")]
 position = Vector2(608, 320)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://llqv2al5xrch"
+to_level_path = "uid://dxkdtyngkfi1x"
 
-[node name="TeleportToLevelZone2" parent="." instance=ExtResource("4_nn378")]
+[node name="TeleportToPreviousLevelZone" parent="." instance=ExtResource("4_nn378")]
 position = Vector2(-32, -448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://llqv2al5xrch"
+to_level_path = "uid://dljx62mud24nt"
+to_spawn_location_with_index = 1
 
 [node name="Seesaw" parent="." instance=ExtResource("5_fiatm")]
 position = Vector2(288, -352)

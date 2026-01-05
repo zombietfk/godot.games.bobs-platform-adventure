@@ -52,7 +52,7 @@ animations = [{
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lquwl")
-inital_level_path = "uid://lkyue67li2aq"
+inital_level_path = "uid://cgrbopls2dqgk"
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 

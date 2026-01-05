@@ -226,6 +226,7 @@ body = NodePath("../..")
 
 [node name="Glide" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
 script = ExtResource("4_do1l7")
+move_speed = 150.0
 body = NodePath("../..")
 
 [node name="Flap" type="Node" parent="StateMachine" node_paths=PackedStringArray("flying_animated_sprite", "body")]

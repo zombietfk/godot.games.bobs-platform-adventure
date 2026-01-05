@@ -20,14 +20,14 @@ point_count = 2
 
 [node name="Level_6" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_n60so")
-level_binding_box = Rect2(-64, -128, 832, 320)
+level_binding_box = Rect2(-128, -192, 896, 384)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-64, 160)
+position = Vector2(-96, 160)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(832, 224)
+position = Vector2(864, 224)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
@@ -40,12 +40,12 @@ tile_set = ExtResource("3_6pad4")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_f6h7h")]
 position = Vector2(928, 192)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://bioh7kmbmtkno"
+to_level_path = "uid://k7vpkulxbh70"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_f6h7h")]
 position = Vector2(-160, 128)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://brd67f76jwer3"
+to_level_path = "uid://f6tqo6uxjshx"
 to_spawn_location_with_index = 1
 
 [node name="MovingSpike" parent="." instance=ExtResource("4_epdpu")]

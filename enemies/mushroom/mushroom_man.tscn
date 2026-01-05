@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://rj3yluedrk4u"]
+
+[ext_resource type="Texture2D" uid="uid://4sd8v7uqnsjm" path="res://enemies/mushroom/mushroom_spritesheet.png" id="1_ick2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1wxs"]
+size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7287j"]
+atlas = ExtResource("1_ick2k")
+region = Rect2(0, 128, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc1tv"]
+atlas = ExtResource("1_ick2k")
+region = Rect2(64, 128, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csl3h"]
+atlas = ExtResource("1_ick2k")
+region = Rect2(128, 128, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8w7ld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7287j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc1tv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csl3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc1tv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MushroomMan" type="CharacterBody2D"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_y1wxs")
+
+[node name="RunningAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-128, -16)
+sprite_frames = SubResource("SpriteFrames_8w7ld")
+frame_progress = 0.7568567

@@ -65,6 +65,7 @@ static func load_level(
 	current_level_path = level_path;
 	if level_instance != null:
 		level_instance.queue_free();
+	await Main.instance.get_tree().process_frame;
 	var level = load(level_path).instantiate() as Level;
 	level.ready.connect(instance._on_level_ready);
 	level_instance = level;
