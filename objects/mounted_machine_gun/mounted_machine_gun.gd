@@ -29,15 +29,15 @@ func _on_player_interaction_end():
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		Main.instance.player.player_interaction.connect(_on_player_interaction);
-		Main.instance.player.player_interaction_end.connect(_on_player_interaction_end);
+		Main.instance.player.on_player_interaction.connect(_on_player_interaction);
+		Main.instance.player.on_player_interaction_end.connect(_on_player_interaction_end);
 		Main.instance.player.set_alert_notification_visibility(true);
 	
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		is_firing = false;
-		Main.instance.player.player_interaction.disconnect(_on_player_interaction);
-		Main.instance.player.player_interaction_end.disconnect(_on_player_interaction_end);
+		Main.instance.player.on_player_interaction.disconnect(_on_player_interaction);
+		Main.instance.player.on_player_interaction_end.disconnect(_on_player_interaction_end);
 		Main.instance.player.set_alert_notification_visibility(false);
 	
 # LIFECYCLE

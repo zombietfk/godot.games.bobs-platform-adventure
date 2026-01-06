@@ -18,11 +18,15 @@ const VELOCITY_X_MIN = 10;
 @export var crush_check_raycast_down: RayCast2D;
 @export var alert_notifcation: Sprite2D;
 
-# SIGNALS
+# SIGNALSs
 @warning_ignore("unused_signal")
-signal player_interaction();
+signal on_web_enter(web: Web);
 @warning_ignore("unused_signal")
-signal player_interaction_end();
+signal on_web_exit(web: Web);
+@warning_ignore("unused_signal")
+signal on_player_interaction();
+@warning_ignore("unused_signal")
+signal on_player_interaction_end();
 signal on_take_damage(
 	amount: int,
 	from_direction: Vector2,

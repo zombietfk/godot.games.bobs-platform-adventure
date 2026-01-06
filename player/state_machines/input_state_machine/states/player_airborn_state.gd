@@ -8,13 +8,21 @@ func enter(_from: AbstractState)->void:
 	_movement_context = state_machine.get_context("MovementContext") as PlayerMovementContext;
 	if !body.on_kill.is_connected(_kill_player):
 		body.on_kill.connect(_kill_player);
+	if !body.on_web_enter.is_connected(_add_slowing_web):
+		body.on_web_enter.connect(_add_slowing_web);
+	if !body.on_web_exit.is_connected(_remove_slowing_web):
+		body.on_web_exit.connect(_remove_slowing_web);
 
 func exit(_to: AbstractState)->void:
 	if body.on_kill.is_connected(_kill_player):
 		body.on_kill.disconnect(_kill_player);
-	
+	if body.on_web_enter.is_connected(_add_slowing_web):
+		body.on_web_enter.disconnect(_add_slowing_web);
+	if body.on_web_exit.is_connected(_remove_slowing_web):
+		body.on_web_exit.disconnect(_remove_slowing_web);
+
 func process(_delta: float)->void:
-	if body.is_on_floor():
+	if body.is_on_floor() or _movement_context.slowed_by_webs.size() > 0:
 		transition.emit("Grounded");
 	
 func physics_process(delta: float)->void:

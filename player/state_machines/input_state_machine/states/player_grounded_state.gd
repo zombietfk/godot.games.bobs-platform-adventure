@@ -12,13 +12,25 @@ func enter(_from: AbstractState)->void:
 	_movement_context = state_machine.get_context("MovementContext") as PlayerMovementContext;
 	if !body.on_kill.is_connected(_kill_player):
 		body.on_kill.connect(_kill_player);
+	if !body.on_web_enter.is_connected(_add_slowing_web):
+		body.on_web_enter.connect(_add_slowing_web);
+	if !body.on_web_exit.is_connected(_remove_slowing_web):
+		body.on_web_exit.connect(_remove_slowing_web);
 	
 func exit(_to: AbstractState)->void:
 	if body.on_kill.is_connected(_kill_player):
 		body.on_kill.disconnect(_kill_player);
-	
+	if body.on_web_enter.is_connected(_add_slowing_web):
+		body.on_web_enter.disconnect(_add_slowing_web);
+	if body.on_web_exit.is_connected(_remove_slowing_web):
+		body.on_web_exit.disconnect(_remove_slowing_web);
+		
 func process(_delta: float)->void:
-	if !body.is_on_floor() and _c_jump_forgiveness_timer >= _jump_forgiveness_timer:
+	if (
+		!body.is_on_floor() and
+		_c_jump_forgiveness_timer >= _jump_forgiveness_timer and
+		!_movement_context.slowed_by_webs.size() > 0
+	):
 		transition.emit("Airborn");
 	
 func physics_process(delta: float)->void:
@@ -35,7 +47,17 @@ func physics_process(delta: float)->void:
 			_movement_context.movement_impetus +
 			_movement_context.knockback_impetus
 		);
-	_clamp_horizontal_movement(_movement_context.max_movement_speed);
+	if _movement_context.slowed_by_webs.size() > 0:
+		_clamp_horizontal_movement(
+			_movement_context.max_movement_speed *
+			_movement_context.slowed_movement_speed_factor
+		);
+		_clamp_vertical_movement(
+			jump_strength *
+			_movement_context.slowed_jump_impulse_factor
+		);
+	else:
+		_clamp_horizontal_movement(_movement_context.max_movement_speed);
 		
 func _process_jump_input(delta: float):
 	if body.is_on_floor():
@@ -53,9 +75,9 @@ func _process_fall_through_platform_input():
 
 func _process_object_interaction_input():
 	if Input.is_action_just_pressed("interaction"):
-		body.player_interaction.emit();
+		body.on_player_interaction.emit();
 	if Input.is_action_just_released("interaction"):
-		body.player_interaction_end.emit();
+		body.on_player_interaction_end.emit();
 
 func _jump() -> void:
 	body.velocity += Vector2(0, -jump_strength);

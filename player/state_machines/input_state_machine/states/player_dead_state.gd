@@ -9,6 +9,7 @@ var _movement_context: PlayerMovementContext;
 
 func enter(_from: AbstractState)->void:
 	_movement_context = state_machine.get_context("MovementContext") as PlayerMovementContext;
+	_movement_context.slowed_by_webs.clear();
 	_kill();
 	
 func exit(_to: AbstractState)->void:
