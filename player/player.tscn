@@ -105,7 +105,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_state_machine", "crush_check_raycast_up", "crush_check_raycast_down", "alert_notifcation")]
-collision_mask = 201
+collision_mask = 457
 floor_max_angle = 1.2217305
 floor_snap_length = 10.0
 platform_on_leave = 2

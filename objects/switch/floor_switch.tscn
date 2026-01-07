@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bus2730on4ksk"]
 
-[ext_resource type="Script" uid="uid://rdwh488h6m02" path="res://objects/switch/switch.gd" id="1_pceir"]
+[ext_resource type="Script" uid="uid://rdwh488h6m02" path="res://objects/switch/floor_switch.gd" id="1_pceir"]
 [ext_resource type="Texture2D" uid="uid://c1k8ev1c8d00o" path="res://objects/switch/switch_spritesheet.png" id="1_r7f0c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pceir"]
@@ -48,7 +48,7 @@ animations = [{
 radius = 8.0
 height = 40.0
 
-[node name="Switch" type="Area2D"]
+[node name="FloorSwitch" type="Area2D"]
 collision_layer = 56
 collision_mask = 7
 script = ExtResource("1_pceir")

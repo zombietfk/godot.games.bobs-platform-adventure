@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://c8ri35pk1b63d" path="res://objects/abstract/follow_path_cyclical/follow_path_sine_cyclical.gd" id="6_wi5wg"]
 [ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="7_ckqcf"]
 [ext_resource type="Script" uid="uid://8r1rhr8wtcyx" path="res://objects/abstract/fall_on_pass_below/fall_on_pass_below.gd" id="8_tj7p3"]
-[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="9_dwqjk"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="9_dwqjk"]
 
 [sub_resource type="Curve2D" id="Curve2D_dwqjk"]
 _data = {

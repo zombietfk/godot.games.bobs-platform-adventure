@@ -33,11 +33,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u7vsf"]
-radius = 128.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xroty"]
+size = Vector2(264, 72)
 
-[node name="Seesaw" type="Node2D"]
+[node name="Seesaw" type="Node2D" node_paths=PackedStringArray("saw_tiles", "pivot", "overlap_area")]
 script = ExtResource("1_xroty")
+saw_tiles = NodePath("Saw")
+pivot = NodePath("Pivot")
+overlap_area = NodePath("Area2D")
 
 [node name="Pivot" type="AnimatedSprite2D" parent="."]
 z_index = 3
@@ -54,7 +57,4 @@ tile_set = ExtResource("3_ubvnf")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_u7vsf")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_seesaw_area_enter"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_seesaw_area_leave"]
+shape = SubResource("RectangleShape2D_xroty")

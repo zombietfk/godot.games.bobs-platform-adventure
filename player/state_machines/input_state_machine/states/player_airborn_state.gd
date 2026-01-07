@@ -40,7 +40,7 @@ func physics_process(delta: float)->void:
 	_clamp_horizontal_movement(_movement_context.max_movement_speed);
 
 func _process_cancel_jump_input()->void:
-	if body.velocity.y < 0 and Input.is_action_just_released("jump"):
+	if body.velocity.y < 0 and !Input.is_action_pressed("jump"):
 		body.velocity.y = 0;
 		
 func _apply_horizontal_friction(delta) -> void:

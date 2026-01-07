@@ -8,6 +8,7 @@ extends Node2D;
 @export var boulder_autodestroy = true;
 @export var boulder_autodestroy_after_x_seconds_timer = 3.0;
 @export var boulder_use_gravity = true;
+@export var boulder_gravity_factor = 0.3;
 @export_flags_2d_physics var boulder_physics_mask: int = 1;
 
 func _create()->void:
@@ -19,4 +20,5 @@ func _create()->void:
 	boulder.position = global_position;
 	boulder.scale = boulder_scale;
 	boulder.collision_mask = boulder_physics_mask;
+	boulder.gravity_factor = boulder_gravity_factor;
 	Main.level_instance.add_child(boulder);

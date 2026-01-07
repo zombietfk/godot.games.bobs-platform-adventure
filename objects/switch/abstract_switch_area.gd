@@ -1,4 +1,5 @@
-class_name Switch;
+@abstract
+class_name AbstractSwitchArea;
 extends Area2D;
 
 # SETTINGS;
@@ -44,7 +45,7 @@ func _process(delta: float) -> void:
 # METHODS
 func switch_on(by_body: Node2D):
 	if !_is_switched:
-		$AnimatedSprite2D.play("switch_flipped");
+		_on_switch_on();
 		switch_flipped_on.emit(by_body);
 		_is_switched = true;
 		if is_persistant:
@@ -52,10 +53,16 @@ func switch_on(by_body: Node2D):
 
 func switch_off(by_body: Node2D):
 	if _is_switched:
-		$AnimatedSprite2D.play("default");
+		_on_switch_off();
 		switch_flipped_off.emit(by_body);
 		_is_switched = false;
 		if is_persistant:
 			Main.persistant_trigger_labels.remove_at(
 				Main.persistant_trigger_labels.find(persistant_trigger_name)
 			);
+
+@abstract
+func _on_switch_on();
+
+@abstract
+func _on_switch_off();

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="6_11l0m"]
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="7_nb8xc"]
 [ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="8_vn2ac"]
-[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/switch.tscn" id="9_heoj5"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="9_heoj5"]
 [ext_resource type="Script" uid="uid://bwuy62otllgkb" path="res://utils/connect_group_signals_on_spawn.gd" id="10_1sgm7"]
 [ext_resource type="PackedScene" uid="uid://bkb14r24qkb5h" path="res://objects/traps/boulder/factory/create_boulder_on_switch_press.tscn" id="10_db0oe"]
 

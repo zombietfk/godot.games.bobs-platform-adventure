@@ -1,25 +1,34 @@
 extends Node2D
 
-var is_on_platform = false;
-var player_body: Player;
-var rotation_speed = 0;
-@export var rotation_sensitivity = 0.001;
+var _rotation_speed = 0;
+@export var rotation_sensitivity = 0.1;
 @export var rotation_slowdown_ratio = 1;
+@export var saw_tiles: TileMapLayer;
+@export var pivot: Node2D;
+@export var overlap_area: Area2D;
 
-func _on_seesaw_area_enter(body: Node2D)->void:
-	if body is Player:
-		is_on_platform = true;
-		player_body = body;
-
-func _on_seesaw_area_leave(body: Node2D)->void:
-	if body is Player:
-		is_on_platform = false;
-		player_body = null;
-	
 func _physics_process(delta: float) -> void:
-	if is_on_platform and player_body and player_body.is_on_floor():
-		var y_difference_from_pivot = player_body.global_position.x - $Pivot.global_position.x;
-		rotation_speed += y_difference_from_pivot * rotation_sensitivity
+	var player = Main.instance.player;
+	var is_colliding = false;
+	for n in overlap_area.get_overlapping_bodies():
+		if n == player:
+			is_colliding = true;
+			break;
+	if is_colliding:
+		var pivot_point: Vector2 = pivot.global_position;
+		var player_local_to_pivot: Vector2 = player.global_position - pivot_point;
+		var player_local_to_rotated_pivot = player_local_to_pivot.rotated(
+			-rotation
+		);
+		var rotation_direction_sign: int = -sign(
+			player_local_to_rotated_pivot.x *
+			player_local_to_rotated_pivot.y
+		);
+		print(player_local_to_pivot.length());
+		if rotation_direction_sign != 0:
+			_rotation_speed = rotation_direction_sign * player_local_to_pivot.length() * rotation_sensitivity
+		else:
+			_rotation_speed = player_local_to_pivot.length() * rotation_sensitivity;
 	else:
-		rotation_speed *= (1 - rotation_slowdown_ratio * delta);
-	rotation_degrees += rotation_speed * delta;
+		_rotation_speed *= (1 - rotation_slowdown_ratio * delta);
+	rotation_degrees += _rotation_speed * delta;
