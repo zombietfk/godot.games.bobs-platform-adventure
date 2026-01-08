@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=4 uid="uid://skfhpyrykg4y"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_oo32e"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_kumds"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_qkxqn"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_woyrd"]
+[ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="5_aaooo"]
+
+[node name="Level_19" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_oo32e")
+level_binding_box = Rect2(-128, 128, 1856, 1088)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.9, 0.9)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1824, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAAAAAsAAgADAAEAAAD//wwAAgACAAIAAAD//w0AAgACAAIAAAD//w4AAgAPAAcAAAAaAAsAAgAHAAEAAAAbAAsAAgACAAEAAAAbAAwAAgABAAIAAAAbAA0AAgAMAAUAAAAbAA4AAgABAAIAAAAcAAsAAgACAAEAAAD+/wgAAgACAAMAAAD//wgAAgADAAIAAAD//wcAAgADAAIAAAAbAAgAAgACAAMAAAAcAAgAAgACAAMAAAAdAAgAAgACAAMAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAAdAAsAAgACAAEAAAD//w8AAgADAAIAAAD//xAAAgADAAIAAAD//xEAAgADAAIAAAD//xIAAgADAAIAAAD//xMAAgADAAIAAAAbAA8AAgABAAIAAAAbABAAAgABAAIAAAAbABEAAgABAAIAAAAbABIAAgABAAIAAAAbABMAAgABAAIAAAAAAAwAAgADAAIAAAAAAA0AAgADAAIAAAAAAA4AAgAJAAUAAAADAAsAAgAFAAEAAAAMAA4AAgAFAAEAAAAYAA0AAgAFAAEAAAATAAcAAgAFAAQAAAAVAA8AAgAFAAEAAAAaAA0AAgAHAAEAAAD//wUAAgACAAIAAAD//wYAAgAPAAcAAAAEAAUAAgALAAcAAAAIAAUAAgACAAMAAAAJAAUAAgACAAMAAAALAAUAAgANAAYAAAAPAAUAAgALAAcAAAAPAAYAAgABAAIAAAAQAAUAAgACAAIAAAAQAAYAAgACAAIAAAARAAUAAgAPAAcAAAATAAUAAgANAAYAAAATAAYAAgAFAAQAAAAVAAUAAgANAAYAAAAAAAUAAgAPAAcAAAAAAAYAAgADAAMAAAABAAUAAgACAAMAAAACAAUAAgACAAMAAAADAAUAAgACAAMAAAAEAAYAAgABAAIAAAAEAAcAAgAFAAUAAAAFAAUAAgAPAAcAAAAFAAYAAgADAAMAAAAGAAUAAgACAAMAAAAHAAUAAgACAAMAAAAKAAUAAgACAAMAAAALAAYAAgAFAAQAAAALAAcAAgAFAAUAAAAMAAUAAgACAAMAAAANAAUAAgANAAYAAAANAAYAAgAFAAUAAAAOAAUAAgACAAMAAAAPAAcAAgABAAIAAAAPAAgAAgABAAMAAAAQAAcAAgACAAIAAAAQAAgAAgADAAMAAAARAAYAAgADAAIAAAARAAcAAgADAAMAAAASAAUAAgACAAMAAAATAAgAAgAFAAUAAAAUAAUAAgACAAMAAAAVAAYAAgAFAAQAAAAVAAcAAgAFAAUAAAAWAAUAAgACAAMAAAAXAAUAAgALAAcAAAAYAAUAAgACAAIAAAAZAAUAAgACAAIAAAAZAAgAAgAHAAUAAAAaAAUAAgACAAIAAAAaAAgAAgACAAMAAAAOAA4AAgAFAAEAAAAUAA0AAgAFAAEAAAAHAAoAAgAFAAEAAAAYAAcAAgAHAAUAAAAXAAYAAgAHAAUAAAAYAAYAAgALAAcAAAAZAAcAAgALAAcAAAAaAAYAAgACAAIAAAAaAAcAAgACAAIAAAAZAAYAAgACAAIAAAAbAAUAAgACAAIAAAAbAAYAAgACAAIAAAAbAAcAAgACAAIAAAA=")
+tile_set = ExtResource("2_kumds")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_qkxqn")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_woyrd")]
+position = Vector2(1888, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://diro7gfk2fsfl"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_woyrd")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b6pp5p5fbj2og"
+to_spawn_location_with_index = 1
+
+[node name="FallingSpike" parent="." instance=ExtResource("5_aaooo")]
+position = Vector2(224, 240)
+scale = Vector2(1.6, 1.6)
+fall_after_timer = 0.2
+respawn_after_timer = 5.0
+
+[node name="FallingSpike2" parent="." instance=ExtResource("5_aaooo")]
+position = Vector2(480, 240)
+scale = Vector2(1.6, 1.6)
+fall_after_timer = 0.2
+respawn_after_timer = 5.0
+
+[node name="FallingSpike3" parent="." instance=ExtResource("5_aaooo")]
+position = Vector2(800, 240)
+scale = Vector2(1.6, 1.6)
+fall_after_timer = 0.2
+respawn_after_timer = 5.0
+
+[node name="FallingSpike4" parent="." instance=ExtResource("5_aaooo")]
+position = Vector2(928, 240)
+scale = Vector2(1.6, 1.6)
+fall_after_timer = 0.2
+respawn_after_timer = 5.0
+
+[node name="FallingSpike6" parent="." instance=ExtResource("5_aaooo")]
+position = Vector2(1312, 240)
+scale = Vector2(1.6, 1.6)
+fall_after_timer = 0.2
+respawn_after_timer = 5.0
+
+[node name="FallingSpike7" parent="." instance=ExtResource("5_aaooo")]
+position = Vector2(1376, 367.99997)
+scale = Vector2(1.6, 1.6)
+fall_after_timer = 0.3
+respawn_after_timer = 5.0
+
+[node name="RayCast2D" parent="FallingSpike7" index="0"]
+position = Vector2(79.99999, -10.000033)
+
+[node name="FallingSpike9" parent="." instance=ExtResource("5_aaooo")]
+position = Vector2(1120, 367.99997)
+scale = Vector2(1.6, 1.6)
+respawn_after_timer = 5.0
+
+[node name="RayCast2D" parent="FallingSpike9" index="0"]
+position = Vector2(119.99999, 89.99998)
+
+[node name="FallingSpike8" parent="." instance=ExtResource("5_aaooo")]
+position = Vector2(1704, 624)
+rotation = 0.0
+scale = Vector2(1.6, 1.6)
+fall_speed = 250.0
+fall_after_timer = 0.0
+respawn_after_timer = 5.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+
+[editable path="FallingSpike7"]
+[editable path="FallingSpike9"]
