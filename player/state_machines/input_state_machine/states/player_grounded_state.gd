@@ -80,6 +80,7 @@ func _process_object_interaction_input():
 		body.on_player_interaction_end.emit();
 
 func _jump() -> void:
+	_movement_context.airborn_from_jump = true;
 	body.velocity += Vector2(0, -jump_strength);
 
 func _apply_horizontal_friction(delta) -> void:

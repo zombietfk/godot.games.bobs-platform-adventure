@@ -70,5 +70,9 @@ func damage(
 		knockback_duration_in_s
 	);
 
+func override_jump_flag() -> void:
+	var movement_context = movement_state_machine.get_context("MovementContext") as PlayerMovementContext;
+	movement_context.airborn_from_jump = false;
+
 func set_alert_notification_visibility(show_alert = !alert_notifcation.visible):
 	alert_notifcation.visible = show_alert;
