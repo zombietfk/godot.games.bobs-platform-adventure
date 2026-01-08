@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="6_jif64"]
 [ext_resource type="Texture2D" uid="uid://dqu4as32vyksr" path="res://level/level_tileset.png" id="8_q36ls"]
 [ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="10_unolv"]
+[ext_resource type="PackedScene" uid="uid://cclnn5v3he5e0" path="res://enemies/bat/bat.tscn" id="11_q36ls"]
 
 [sub_resource type="Curve2D" id="Curve2D_unolv"]
 _data = {
@@ -134,8 +135,8 @@ physics_layer_0/collision_layer = 256
 physics_layer_0/collision_mask = 0
 sources/2 = SubResource("TileSetAtlasSource_2nfb2")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q36ls"]
-radius = 160.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unolv"]
+size = Vector2(322, 66)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q36ls"]
 resource_name = "Default"
@@ -254,12 +255,9 @@ physics_layer_0/collision_layer = 256
 physics_layer_0/collision_mask = 0
 sources/2 = SubResource("TileSetAtlasSource_q36ls")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_unolv"]
-radius = 160.0
-
 [node name="Level_18" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_5qw7s")
-level_binding_box = Rect2(0, 160, 768, 1120)
+level_binding_box = Rect2(0, 160, 768, 1312)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
@@ -270,7 +268,7 @@ position = Vector2(736, 640)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -224)
-tile_map_data = PackedByteArray("AAAAAAsAAgADAAMAAAAAAA4AAgACAAEAAAAAAAoAAgAPAAcAAAABAAkAAgACAAIAAAABAAgAAgACAAEAAAAAAAkAAgACAAIAAAABAA4AAgACAAEAAAACAA4AAgADAAEAAAAIAA4AAgABAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAACAA8AAgADAAIAAAACABAAAgADAAIAAAAIAA8AAgABAAIAAAAIABAAAgABAAIAAAACABEAAgADAAIAAAACABIAAgADAAIAAAACABMAAgADAAIAAAAIABEAAgABAAIAAAAIABIAAgABAAIAAAAIABMAAgABAAIAAAADABQAAgACAAEAAAAEABQAAgACAAEAAAAFABQAAgACAAEAAAAGABQAAgACAAEAAAAHABQAAgACAAEAAAABAAoAAgACAAMAAAACAAoAAgACAAMAAAADAAoAAgACAAMAAAAEAAoAAgADAAMAAAAGAAoAAgAHAAEAAAAHAAoAAgACAAMAAAAIAAoAAgACAAMAAAAJAAoAAgACAAMAAAAKAAoAAgALAAcAAAAKAAsAAgABAAMAAAAEAAkAAgADAAIAAAAEAAgAAgADAAEAAAACAAgAAgACAAEAAAADAAgAAgACAAEAAAAAAAcAAgADAAIAAAABAAYAAgACAAMAAAACAAYAAgACAAMAAAADAAYAAgACAAMAAAAEAAYAAgACAAMAAAAFAAYAAgACAAMAAAAGAAYAAgACAAMAAAAHAAcAAgABAAIAAAAGAAgAAgAHAAEAAAAHAAkAAgABAAIAAAALAAsAAgACAAMAAAALAA4AAgACAAEAAAAIAAYAAgACAAIAAAAIAAcAAgACAAIAAAAIAAgAAgACAAIAAAAIAAkAAgACAAIAAAAJAAYAAgACAAIAAAAJAAcAAgACAAIAAAAJAAgAAgACAAIAAAAJAAkAAgACAAIAAAAKAAYAAgACAAIAAAAKAAcAAgACAAIAAAAKAAgAAgACAAIAAAAKAAkAAgACAAIAAAALAAYAAgACAAIAAAALAAcAAgACAAIAAAALAAgAAgACAAIAAAALAAkAAgACAAIAAAALAAoAAgACAAIAAAAHAAYAAgALAAcAAAAHAAgAAgAMAAUAAAAAAAgAAgAPAAMAAAAAAAYAAgAPAAcAAAAIABQAAgALAAMAAAACABQAAgAPAAMAAAADAA4AAgACAAEAAAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAsAAgACAAMAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAACAA4AAgADAAEAAAAIAA4AAgAHAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAACAA8AAgADAAIAAAACABAAAgADAAIAAAACABEAAgADAAMAAAAIABEAAgABAAEAAAAIABIAAgABAAIAAAAIABMAAgABAAIAAAAKAAsAAgACAAMAAAALAAsAAgACAAMAAAALAA4AAgACAAEAAAAKAAcAAgACAAIAAAALAAcAAgACAAIAAAALAAgAAgACAAIAAAAIABQAAgABAAIAAAACABQAAgADAAEAAAACABUAAgADAAIAAAACABYAAgADAAIAAAAIABUAAgABAAIAAAAIABYAAgABAAIAAAADABcAAgACAAEAAAAEABcAAgACAAEAAAAFABcAAgACAAEAAAAGABcAAgACAAEAAAAHABcAAgACAAEAAAACABcAAgAPAAMAAAAIABcAAgALAAMAAAAEABUAAgAHAAEAAAAGABUAAgAJAAEAAAAFABUAAgACAAMAAAAFABQAAgAFAAMAAAABABIAAgADAAIAAAABABMAAgADAAIAAAAJAA8AAgABAAIAAAAJABAAAgABAAIAAAABABEAAgAPAAcAAAABABQAAgAPAAMAAAAJABEAAgALAAMAAAAEAAkAAgADAAEAAAAEAAoAAgADAAIAAAAHAAcAAgALAAcAAAAHAAgAAgABAAIAAAAHAAkAAgAMAAUAAAAHAAoAAgABAAIAAAAIAAcAAgACAAIAAAAIAAgAAgACAAIAAAAIAAkAAgACAAIAAAAIAAoAAgACAAIAAAAJAAcAAgACAAIAAAAJAAgAAgACAAIAAAAJAAkAAgACAAIAAAAJAAoAAgACAAIAAAABAAcAAgACAAMAAAABAAsAAgAIAAEAAAACAAcAAgACAAMAAAACAAkAAgAHAAEAAAACAAsAAgAIAAEAAAADAAcAAgACAAMAAAADAAkAAgACAAEAAAADAAsAAgACAAMAAAAEAAcAAgACAAMAAAAEAAsAAgADAAMAAAAFAAcAAgACAAMAAAAGAAcAAgACAAMAAAAGAAkAAgAHAAEAAAAGAAsAAgAHAAEAAAAHAAsAAgACAAMAAAAIAAsAAgACAAMAAAAJAAsAAgACAAMAAAAAAAcAAgAPAAcAAAAAAAgAAgADAAIAAAAKAAoAAgACAAIAAAALAAoAAgACAAIAAAALAAkAAgACAAIAAAAKAAkAAgACAAIAAAAKAAgAAgACAAIAAAADAAoAAgABAAIAAAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAA=")
 tile_set = ExtResource("2_67q10")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
@@ -317,28 +315,6 @@ script = ExtResource("6_0hagj")
 movement_path = NodePath("..")
 movement_speed = 25.6
 
-[node name="Seesaw" parent="." instance=ExtResource("5_oe87n")]
-position = Vector2(352, 576)
-
-[node name="Saw" parent="Seesaw" index="1"]
-position = Vector2(-32, -32)
-tile_map_data = PackedByteArray("AAD+/wAAAgAHAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAEAAAABAAAAAgAIAAEAAAACAAAAAgAJAAEAAAA=")
-tile_set = SubResource("TileSet_d1w0n")
-
-[node name="CollisionShape2D" parent="Seesaw/Area2D" index="0"]
-shape = SubResource("CircleShape2D_q36ls")
-
-[node name="Seesaw2" parent="." instance=ExtResource("5_oe87n")]
-position = Vector2(-208, 1168)
-
-[node name="Saw" parent="Seesaw2" index="1"]
-position = Vector2(-32, -32)
-tile_map_data = PackedByteArray("AAD+/wAAAgAHAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAEAAAABAAAAAgAIAAEAAAACAAAAAgAJAAEAAAA=")
-tile_set = SubResource("TileSet_2nfb2")
-
-[node name="CollisionShape2D" parent="Seesaw2/Area2D" index="0"]
-shape = SubResource("CircleShape2D_unolv")
-
 [node name="FloorSwitch" parent="." instance=ExtResource("6_jif64")]
 position = Vector2(512, 1024)
 rotation = -1.5707964
@@ -348,7 +324,45 @@ position = Vector2(192, 832)
 rotation = 1.5707964
 
 [node name="HealthUpgradeItem" parent="." instance=ExtResource("10_unolv")]
-position = Vector2(416, 256)
+position = Vector2(416, 320)
+
+[node name="Bat3" parent="." instance=ExtResource("11_q36ls")]
+position = Vector2(160, 448)
+collision_mask = 322
+
+[node name="Seesaw" parent="." instance=ExtResource("5_oe87n")]
+position = Vector2(352, 704)
+rotation_sensitivity = 0.2
+rotation_slowdown_ratio = 0.1
+
+[node name="Saw" parent="Seesaw" index="1"]
+position = Vector2(32, -32)
+tile_map_data = PackedByteArray("AAD+/wAAAgAIAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAEAAAABAAAAAgAJAAEAAAD9/wAAAgAHAAEAAAA=")
+tile_set = SubResource("TileSet_d1w0n")
+
+[node name="Area2D" parent="Seesaw" index="2"]
+position = Vector2(32, 0)
+
+[node name="CollisionShape2D" parent="Seesaw/Area2D" index="0"]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_unolv")
+
+[node name="Seesaw2" parent="." instance=ExtResource("5_oe87n")]
+position = Vector2(352, 896)
+rotation_sensitivity = 0.2
+rotation_slowdown_ratio = 0.1
+
+[node name="Saw" parent="Seesaw2" index="1"]
+position = Vector2(32, -32)
+tile_map_data = PackedByteArray("AAD+/wAAAgAIAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAEAAAABAAAAAgAJAAEAAAD9/wAAAgAHAAEAAAA=")
+tile_set = SubResource("TileSet_2nfb2")
+
+[node name="Area2D" parent="Seesaw2" index="2"]
+position = Vector2(32, 0)
+
+[node name="CollisionShape2D" parent="Seesaw2/Area2D" index="0"]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_unolv")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="FloorSwitch" to="Path2D7/PathFollow2D/Door" method="_on_switch_flipped_on"]

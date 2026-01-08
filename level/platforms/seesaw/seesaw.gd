@@ -2,7 +2,7 @@ extends Node2D
 
 var _rotation_speed = 0;
 @export var rotation_sensitivity = 0.1;
-@export var rotation_slowdown_ratio = 1;
+@export var rotation_slowdown_ratio: float = 1;
 @export var saw_tiles: TileMapLayer;
 @export var pivot: Node2D;
 @export var overlap_area: Area2D;
