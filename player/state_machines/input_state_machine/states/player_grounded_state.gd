@@ -5,7 +5,6 @@ var _movement_context: PlayerMovementContext;
 @export var _jump_forgiveness_timer: float = 0.08;
 var _c_jump_forgiveness_timer: float;
 @export var friction_strength: float = 9.0/8;
-@export var jump_strength: int = 850;
 @export var slope_slipperyness_factor: float = 1.6;
 
 func enter(_from: AbstractState)->void:
@@ -53,7 +52,7 @@ func physics_process(delta: float)->void:
 			_movement_context.slowed_movement_speed_factor
 		);
 		_clamp_vertical_movement(
-			jump_strength *
+			_movement_context.jump_strength *
 			_movement_context.slowed_jump_impulse_factor
 		);
 	else:
@@ -81,7 +80,7 @@ func _process_object_interaction_input():
 
 func _jump() -> void:
 	_movement_context.airborn_from_jump = true;
-	body.velocity += Vector2(0, -jump_strength);
+	body.velocity += Vector2(0, -_movement_context.jump_strength);
 
 func _apply_horizontal_friction(delta) -> void:
 	if _is_on_slope():

@@ -1,50 +1,95 @@
-[gd_scene load_steps=6 format=4 uid="uid://diro7gfk2fsfl"]
+[gd_scene load_steps=10 format=4 uid="uid://diro7gfk2fsfl"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_tp4lb"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_sjsda"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_t7581"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_mbxsw"]
-[ext_resource type="PackedScene" uid="uid://66k67ajayd8k" path="res://objects/gyser/gyser.tscn" id="5_a1bpy"]
+[ext_resource type="PackedScene" uid="uid://na80be7hljms" path="res://objects/web/web.tscn" id="5_in6wu"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="6_i4llx"]
+[ext_resource type="PackedScene" uid="uid://66k67ajayd8k" path="res://objects/gyser/gyser.tscn" id="7_i4llx"]
+[ext_resource type="PackedScene" uid="uid://2w50byocu5p" path="res://enemies/spider/spider.tscn" id="8_gvpy3"]
+[ext_resource type="PackedScene" uid="uid://buo1dkp0kvwh2" path="res://enemies/rat/rat.tscn" id="9_k71oi"]
 
 [node name="Level_20" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_tp4lb")
-level_binding_box = Rect2(0, -1000, 768, 704)
+level_binding_box = Rect2(-64, -896, 384, 704)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(32, 608)
+position = Vector2(-32, 608)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(736, 608)
+position = Vector2(288, -672)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -256)
-tile_map_data = PackedByteArray("AAAAAAsAAgADAAMAAAAAAA4AAgACAAEAAAALAAsAAgABAAMAAAALAA4AAgACAAEAAAALAAcAAgABAAIAAAALAAgAAgABAAIAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAALAAoAAgABAAIAAAALAAkAAgABAAIAAAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAsAAgADAAMAAAAAAA4AAgACAAEAAAAAAAcAAgADAAIAAAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAEAAYAAgABAAMAAAAAAAYAAgADAAIAAAAEAAwAAgABAAIAAAAEAA0AAgABAAIAAAAEAAoAAgABAAIAAAAEAAsAAgABAAIAAAAEAAkAAgABAAIAAAADAAgAAgAHAAEAAAABAAgAAgAJAAEAAAAEAAQAAgABAAIAAAAEAAUAAgABAAIAAAACAAMAAgAHAAEAAAADAAMAAgAIAAEAAAAEAAAAAgABAAIAAAAEAAEAAgABAAIAAAAEAAIAAgABAAIAAAAEAP//AgABAAIAAAAEAPv/AgABAAIAAAAEAPz/AgABAAIAAAAEAP3/AgABAAIAAAAEAP7/AgABAAIAAAADAPr/AgAHAAEAAAABAP//AgAIAAEAAAACAP//AgAJAAEAAAAAAAAAAgADAAIAAAAAAAEAAgADAAIAAAAAAAIAAgADAAIAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAPr/AgADAAIAAAAAAPv/AgADAAIAAAAAAPz/AgADAAIAAAAAAP3/AgADAAIAAAAAAP7/AgADAAIAAAAAAPn/AgADAAIAAAAAAPj/AgADAAIAAAAAAPf/AgADAAIAAAABAPb/AgACAAMAAAACAPb/AgACAAMAAAADAPb/AgACAAMAAAAFAPf/AgACAAMAAAAEAPr/AgACAAEAAAAFAPr/AgACAAEAAAD//w4AAgACAAEAAAD//wsAAgACAAMAAAAEAPf/AgAHAAUAAAAEAPb/AgALAAcAAAAEAAMAAgAMAAUAAAAAAP//AgAOAAUAAAAAAPb/AgAPAAcAAAAEAAgAAgACAAEAAAAAAAgAAgAOAAUAAAAFAAcAAgABAAIAAAAFAAgAAgALAAMAAAAFAAYAAgALAAcAAAA=")
 tile_set = ExtResource("2_sjsda")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
 tile_set = ExtResource("3_t7581")
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_mbxsw")]
-position = Vector2(800, 576)
+position = Vector2(416, -704)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/caves/level_19.tscn"
+to_level_path = "uid://m3l82q2pi5hi"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_mbxsw")]
-position = Vector2(-32, 576)
+position = Vector2(-96, 576)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://q5qpawrgycso"
-to_spawn_location_with_index = 1
+to_level_path = "uid://skfhpyrykg4y"
 
-[node name="Gyser" parent="." instance=ExtResource("5_a1bpy")]
-position = Vector2(384, 608)
+[node name="Web" parent="." instance=ExtResource("5_in6wu")]
+position = Vector2(96, -608)
 
-[node name="Gyser2" parent="." instance=ExtResource("5_a1bpy")]
-position = Vector2(96, 464)
-rotation = 1.5707964
+[node name="Web2" parent="." instance=ExtResource("5_in6wu")]
+position = Vector2(160, -672)
 
-[node name="Gyser3" parent="." instance=ExtResource("5_a1bpy")]
-position = Vector2(672, 480)
-rotation = -1.5707964
+[node name="Web4" parent="." instance=ExtResource("5_in6wu")]
+position = Vector2(224, -352)
+
+[node name="Web5" parent="." instance=ExtResource("5_in6wu")]
+position = Vector2(96, -544)
+
+[node name="Spike" parent="." instance=ExtResource("6_i4llx")]
+position = Vector2(96, 352)
+rotation = 3.1415927
+
+[node name="Spike2" parent="." instance=ExtResource("6_i4llx")]
+position = Vector2(224, 352)
+rotation = 3.1415927
+
+[node name="Spike3" parent="." instance=ExtResource("6_i4llx")]
+position = Vector2(96, -224)
+rotation = 3.1415927
+
+[node name="Gyser" parent="." instance=ExtResource("7_i4llx")]
+position = Vector2(160, 608)
+max_boost_power = 2500.0
+
+[node name="Gyser2" parent="." instance=ExtResource("7_i4llx")]
+position = Vector2(96, 224)
+max_boost_power = 2500.0
+
+[node name="Gyser3" parent="." instance=ExtResource("7_i4llx")]
+position = Vector2(240, -96)
+max_boost_power = 2500.0
+
+[node name="Gyser4" parent="." instance=ExtResource("7_i4llx")]
+position = Vector2(96, -352)
+max_boost_power = 2500.0
+
+[node name="Spider" parent="." instance=ExtResource("8_gvpy3")]
+position = Vector2(152, -808)
+
+[node name="AwakeningRayCast2D" parent="Spider" index="5"]
+target_position = Vector2(4.5776367e-05, -488)
+
+[node name="Rat" parent="." instance=ExtResource("9_k71oi")]
+position = Vector2(232, 224)
+idle_every_x_seconds_timer = 1.0
+idle_timer = 2.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+
+[editable path="Spider"]

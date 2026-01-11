@@ -36,9 +36,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xroty"]
 size = Vector2(264, 72)
 
-[node name="Seesaw" type="Node2D" node_paths=PackedStringArray("saw_tiles", "pivot", "overlap_area")]
+[node name="Seesaw" type="Node2D" node_paths=PackedStringArray("pivot", "overlap_area")]
 script = ExtResource("1_xroty")
-saw_tiles = NodePath("Saw")
 pivot = NodePath("Pivot")
 overlap_area = NodePath("Area2D")
 

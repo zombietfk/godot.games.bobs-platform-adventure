@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=4 uid="uid://c0y1qe12m74dr"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_pr7to"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_itp4f"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_xtbiq"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_ikkej"]
+[ext_resource type="PackedScene" uid="uid://buo1dkp0kvwh2" path="res://enemies/rat/rat.tscn" id="5_pr7to"]
+[ext_resource type="PackedScene" uid="uid://66k67ajayd8k" path="res://objects/gyser/gyser.tscn" id="6_itp4f"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="7_xtbiq"]
+
+[node name="Level_21" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_pr7to")
+level_binding_box = Rect2(-128, 128, 1856, 768)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+camera_zoom_to = Vector2(0.9, 0.9)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-96, 480)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1824, 480)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgADAAEAAAD//wwAAgADAAIAAAD//w0AAgADAAIAAAD//w4AAgADAAIAAAAbAAsAAgACAAEAAAAbAAwAAgABAAIAAAAbAA0AAgABAAIAAAAbAA4AAgABAAIAAAAcAAsAAgACAAEAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wcAAgADAAIAAAAbAAgAAgABAAMAAAAcAAgAAgACAAMAAAAdAAgAAgACAAMAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAAdAAsAAgACAAEAAAD//wUAAgACAAIAAAD//wYAAgAPAAcAAAAEAAUAAgACAAMAAAAIAAUAAgACAAMAAAAJAAUAAgACAAMAAAALAAUAAgACAAMAAAAPAAUAAgACAAMAAAAQAAUAAgACAAMAAAARAAUAAgACAAMAAAATAAUAAgACAAMAAAAVAAUAAgANAAYAAAAAAAUAAgAPAAcAAAAAAAYAAgADAAMAAAABAAUAAgACAAMAAAACAAUAAgACAAMAAAADAAUAAgACAAMAAAAFAAUAAgACAAMAAAAGAAUAAgACAAMAAAAHAAUAAgACAAMAAAAKAAUAAgACAAMAAAAMAAUAAgACAAMAAAANAAUAAgACAAMAAAAOAAUAAgANAAYAAAASAAUAAgACAAMAAAAUAAUAAgACAAMAAAAWAAUAAgACAAMAAAAXAAUAAgACAAMAAAAYAAUAAgACAAMAAAAZAAUAAgACAAMAAAAaAAUAAgACAAIAAAAbAAUAAgACAAIAAAAbAAYAAgACAAIAAAAbAAcAAgABAAIAAAAaAAYAAgABAAMAAAADAA0AAgAHAAEAAAAEAA0AAgAIAAEAAAAFAA0AAgAJAAEAAAAIAAsAAgAHAAEAAAAJAAsAAgAJAAEAAAANAA0AAgAHAAEAAAAOAA0AAgAIAAEAAAAQAAkAAgAJAAEAAAAPAAkAAgAHAAEAAAAPAA0AAgAJAAEAAAAVAAoAAgAIAAEAAAAUAAoAAgAHAAEAAAAVAAYAAgAFAAQAAAAVAAcAAgAFAAUAAAAOAAYAAgAFAAUAAAAZAAsAAgAHAAEAAAAaAAsAAgAIAAEAAAAWAAoAAgAJAAEAAAA=")
+tile_set = ExtResource("2_itp4f")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_xtbiq")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_ikkej")]
+position = Vector2(1616, 544)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://c0y1qe12m74dr"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_ikkej")]
+position = Vector2(-160, 448)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://m3l82q2pi5hi"
+to_spawn_location_with_index = 1
+
+[node name="Rat" parent="." instance=ExtResource("5_pr7to")]
+position = Vector2(352, 608)
+idle_every_x_seconds_timer = 1.5
+idle_timer = 2.0
+
+[node name="Rat2" parent="." instance=ExtResource("5_pr7to")]
+position = Vector2(544, 480)
+idle_every_x_seconds_timer = 1.5
+idle_timer = 2.0
+
+[node name="Rat3" parent="." instance=ExtResource("5_pr7to")]
+position = Vector2(984, 608)
+idle_every_x_seconds_timer = 1.5
+idle_timer = 2.0
+
+[node name="Rat4" parent="." instance=ExtResource("5_pr7to")]
+position = Vector2(1376, 416)
+idle_every_x_seconds_timer = 1.5
+idle_timer = 2.0
+
+[node name="Rat5" parent="." instance=ExtResource("5_pr7to")]
+position = Vector2(1056, 352)
+idle_every_x_seconds_timer = 1.5
+idle_timer = 2.0
+
+[node name="Gyser" parent="." instance=ExtResource("6_itp4f")]
+position = Vector2(928, 608)
+
+[node name="Spike" parent="." instance=ExtResource("7_xtbiq")]
+position = Vector2(992, 480)
+rotation = 3.1415927
+
+[node name="Spike2" parent="." instance=ExtResource("7_xtbiq")]
+position = Vector2(928, 288)
+rotation = 3.1415927
+
+[node name="Spike3" parent="." instance=ExtResource("7_xtbiq")]
+position = Vector2(32, 288)
+rotation = 3.1415927
+
+[node name="Spike4" parent="." instance=ExtResource("7_xtbiq")]
+position = Vector2(96, 224)
+rotation = 3.1415927
+
+[node name="Spike5" parent="." instance=ExtResource("7_xtbiq")]
+position = Vector2(1376, 352)
+rotation = 3.1415927
+
+[connection signal="ready" from="." to="." method="_on_ready"]
