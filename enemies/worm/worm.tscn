@@ -1,0 +1,155 @@
+[gd_scene load_steps=19 format=3 uid="uid://1ugdp78n2ire"]
+
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="1_3b7od"]
+[ext_resource type="Script" uid="uid://c78mv41m5mlbw" path="res://enemies/worm/worm.gd" id="2_g1av5"]
+[ext_resource type="Texture2D" uid="uid://dp2eabh2pp4jv" path="res://enemies/worm/worm_spritesheet.png" id="3_jb0sf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggl84"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7m68"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvbd0"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb0m7"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvpni"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljis1"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csatk"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3es0g"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idm8u"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0xhs"]
+atlas = ExtResource("3_jb0sf")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6028p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggl84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7m68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvbd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb0m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvpni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljis1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csatk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3es0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idm8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0xhs")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_22f82"]
+points = PackedVector2Array(20, -24, 32, 0, -32, 0, -20, -24, 0, -32)
+
+[sub_resource type="Animation" id="Animation_rvpni"]
+resource_name = "move_collider"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.7925267, -2.7925267]
+}
+
+[sub_resource type="Animation" id="Animation_ljis1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.7925267]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ljis1"]
+_data = {
+&"RESET": SubResource("Animation_ljis1"),
+&"move_collider": SubResource("Animation_rvpni")
+}
+
+[node name="WormWithPath" type="Path2D"]
+script = ExtResource("1_3b7od")
+speed = 100.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = -1.5707964
+
+[node name="Worm" type="Node2D" parent="PathFollow2D" node_paths=PackedStringArray("worm_path")]
+scale = Vector2(-0.8, 0.8)
+script = ExtResource("2_g1av5")
+worm_path = NodePath("../..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PathFollow2D/Worm"]
+sprite_frames = SubResource("SpriteFrames_6028p")
+autoplay = "default"
+frame = 9
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D/Worm"]
+rotation = 2.7925267
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Worm/Area2D"]
+shape = SubResource("ConvexPolygonShape2D_22f82")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow2D/Worm"]
+libraries = {
+&"": SubResource("AnimationLibrary_ljis1")
+}
+autoplay = "move_collider"
+
+[connection signal="body_entered" from="PathFollow2D/Worm/Area2D" to="PathFollow2D/Worm" method="_on_player_enter_attack_area"]

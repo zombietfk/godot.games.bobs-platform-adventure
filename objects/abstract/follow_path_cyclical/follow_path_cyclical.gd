@@ -7,7 +7,11 @@ extends Path2D;
 @export var cycle_path = true;
 
 # INTERNAL STATE
-var is_in_return_cycle = false;
+var paused = false;
+var _is_in_return_cycle = false;
+
+# SIGNALS
+signal path_end();
 
 # LIFECYCLE
 func _ready() -> void:
@@ -19,15 +23,21 @@ func _ready() -> void:
 	$PathFollow2D.progress_ratio = start_distance_ratio;
 	if cycle_path:
 		#Turn off looping if cyclical, causes issues
-		$PathFollow2D.loop = false; 
+		$PathFollow2D.loop = false;
 
 func _physics_process(delta: float) -> void:
+	if paused:
+		return;
 	if cycle_path:
 		if $PathFollow2D.progress_ratio >= 1:
-			is_in_return_cycle = true;
+			if _is_in_return_cycle == false:
+				path_end.emit();
+			_is_in_return_cycle = true;
 		if $PathFollow2D.progress_ratio <= 0:
-			is_in_return_cycle = false;
-	if is_in_return_cycle:
+			if _is_in_return_cycle == true:
+				path_end.emit();
+			_is_in_return_cycle = false;
+	if _is_in_return_cycle:
 		$PathFollow2D.progress += -speed * delta;	
 	else:
 		$PathFollow2D.progress += speed * delta;
