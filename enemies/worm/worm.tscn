@@ -79,7 +79,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_22f82"]
@@ -124,7 +124,7 @@ _data = {
 
 [node name="WormWithPath" type="Path2D"]
 script = ExtResource("1_3b7od")
-speed = 100.0
+speed = 80.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotation = -1.5707964

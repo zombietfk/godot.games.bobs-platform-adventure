@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://orrae1ttisvh"]
+
+[ext_resource type="Texture2D" uid="uid://bf6byab2t01vu" path="res://enemies/mushroom/spore_sprite.png" id="1_4gfid"]
+
+[sub_resource type="Curve" id="Curve_4gfid"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98936164, 0), -2.0858393, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_4gfid"]
+offsets = PackedFloat32Array(0, 0.28125, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.5176471, 1, 0, 1, 0, 0, 0, 0)
+
+[node name="MushroomSpore" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 8)
+amount = 200
+texture = ExtResource("1_4gfid")
+lifetime = 3.0
+explosiveness = 0.9
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, 25)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+radial_accel_min = -50.0
+radial_accel_max = 25.0
+scale_amount_min = 0.7
+scale_amount_max = 1.3
+scale_amount_curve = SubResource("Curve_4gfid")
+color_ramp = SubResource("Gradient_4gfid")

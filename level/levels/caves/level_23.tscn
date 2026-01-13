@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=4 uid="uid://3ckrrnlcb58l"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_kqfdq"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_ed8oq"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_h4xhd"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_tr6cj"]
+[ext_resource type="PackedScene" uid="uid://dmrrhkelp6h5m" path="res://objects/traps/boulder/factory/create_boulder_on_timeout_factory.tscn" id="5_vcdu6"]
+[ext_resource type="PackedScene" uid="uid://c1fppnc76mn0n" path="res://enemies/mushroom/mushroom.tscn" id="6_adbqa"]
+
+[node name="Level_23" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_kqfdq")
+level_binding_box = Rect2(0, 64, 1472, 768)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(32, 672)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1376, 672)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAIAA4AAgABAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAAAAsAAgACAAMAAAAAAA4AAgACAAEAAAANAA4AAgADAAEAAAAJAA4AAgACAAEAAAAAAAkAAgACAAIAAAAAAAoAAgACAAIAAAAAAAgAAgACAAIAAAARAA4AAgABAAEAAAASAA4AAgACAAEAAAATAA4AAgACAAEAAAAUAA4AAgACAAEAAAAVAA4AAgACAAEAAAAMAA4AAgACAAEAAAABAAsAAgAJAAUAAAACAAoAAgAJAAUAAAADAAkAAgAJAAUAAAAEAAgAAgADAAMAAAAIAAgAAgABAAMAAAAJAAgAAgACAAMAAAAKAAgAAgACAAMAAAALAAgAAgACAAMAAAAMAAgAAgACAAMAAAANAAgAAgADAAMAAAARAAgAAgABAAMAAAASAAkAAgAHAAUAAAATAAoAAgAHAAUAAAAUAAsAAgAHAAUAAAAVAAgAAgACAAIAAAAVAAkAAgACAAIAAAAVAAoAAgACAAIAAAAVAAsAAgACAAMAAAASAAgAAgALAAcAAAATAAgAAgACAAIAAAAUAAgAAgACAAIAAAATAAkAAgALAAcAAAAUAAkAAgACAAIAAAAUAAoAAgALAAcAAAABAAgAAgACAAIAAAACAAgAAgACAAIAAAADAAgAAgAPAAcAAAABAAkAAgACAAIAAAABAAoAAgAPAAcAAAACAAkAAgAPAAcAAAAEAA4AAgADAAEAAAAEAAcAAgADAAIAAAAEAAYAAgADAAIAAAANAAcAAgADAAIAAAANAAYAAgADAAIAAAAIAAYAAgABAAIAAAAIAAcAAgABAAIAAAARAAYAAgABAAIAAAARAAcAAgABAAIAAAA=")
+tile_set = ExtResource("2_ed8oq")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_h4xhd")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_tr6cj")]
+position = Vector2(1440, 640)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_23.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_tr6cj")]
+position = Vector2(-32, 640)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://c0y1qe12m74dr"
+to_spawn_location_with_index = 1
+
+[node name="CreateBoulderOnTimeoutFactory" parent="." instance=ExtResource("5_vcdu6")]
+position = Vector2(416, 96)
+boulder_scale = Vector2(3, 3)
+
+[node name="CreateBoulderOnTimeoutFactory2" parent="." instance=ExtResource("5_vcdu6")]
+position = Vector2(992, 96)
+boulder_scale = Vector2(3, 3)
+
+[node name="Mushroom" parent="." instance=ExtResource("6_adbqa")]
+position = Vector2(288, 672)
+poof_every_x_seconds = 2.0
+poof_timer_inital_offset = 2.0
+
+[node name="Mushroom2" parent="." instance=ExtResource("6_adbqa")]
+position = Vector2(544, 672)
+poof_every_x_seconds = 5.0
+
+[node name="Mushroom3" parent="." instance=ExtResource("6_adbqa")]
+position = Vector2(624, 672)
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 2.5
+
+[node name="Mushroom4" parent="." instance=ExtResource("6_adbqa")]
+position = Vector2(704, 672)
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 5.0
+
+[node name="Mushroom5" parent="." instance=ExtResource("6_adbqa")]
+position = Vector2(784, 672)
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 2.5
+
+[node name="Mushroom6" parent="." instance=ExtResource("6_adbqa")]
+position = Vector2(864, 672)
+poof_every_x_seconds = 5.0
+
+[node name="Mushroom7" parent="." instance=ExtResource("6_adbqa")]
+position = Vector2(1120, 672)
+poof_every_x_seconds = 2.0
+
+[node name="Mushroom8" parent="." instance=ExtResource("6_adbqa")]
+position = Vector2(1208, 496)
+rotation = 4.101524
+poof_timer_inital_offset = 1.0
+
+[node name="Mushroom10" parent="." instance=ExtResource("6_adbqa")]
+position = Vector2(824, 416)
+rotation = 3.1415927
+poof_every_x_seconds = 4.0
+poof_timer_inital_offset = 3.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]

@@ -23,7 +23,7 @@ point_count = 22
 
 [node name="Level_22" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_qc2kf")
-level_binding_box = Rect2(0, 256, 896, 768)
+level_binding_box = Rect2(0, 64, 1472, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
@@ -43,7 +43,7 @@ tile_set = ExtResource("3_6028p")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_4esvk")]
 position = Vector2(1504, 640)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/caves/level_23.tscn"
+to_level_path = "uid://3ckrrnlcb58l"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_4esvk")]
 position = Vector2(-32, 640)
