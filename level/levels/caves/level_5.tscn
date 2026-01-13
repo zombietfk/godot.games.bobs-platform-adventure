@@ -40,6 +40,7 @@ to_spawn_location_with_index = 1
 
 [node name="Seesaw" parent="." instance=ExtResource("5_fiatm")]
 position = Vector2(288, -352)
+rotation_sensitivity = 0.25
 
 [node name="Saw" parent="Seesaw" index="1"]
 position = Vector2(-32, -32)
@@ -47,6 +48,7 @@ tile_map_data = PackedByteArray("AAD+/wAAAgAHAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAE
 
 [node name="Seesaw2" parent="." instance=ExtResource("5_fiatm")]
 position = Vector2(288, -160)
+rotation_sensitivity = 0.25
 
 [node name="Saw" parent="Seesaw2" index="1"]
 position = Vector2(-32, -32)
@@ -54,6 +56,7 @@ tile_map_data = PackedByteArray("AAD+/wAAAgAHAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAE
 
 [node name="Seesaw3" parent="." instance=ExtResource("5_fiatm")]
 position = Vector2(288, 32)
+rotation_sensitivity = 0.25
 
 [node name="Saw" parent="Seesaw3" index="1"]
 position = Vector2(-32, -32)
@@ -61,6 +64,7 @@ tile_map_data = PackedByteArray("AAD+/wAAAgAHAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAE
 
 [node name="Seesaw4" parent="." instance=ExtResource("5_fiatm")]
 position = Vector2(288, 224)
+rotation_sensitivity = 0.25
 
 [node name="Saw" parent="Seesaw4" index="1"]
 position = Vector2(-32, -32)

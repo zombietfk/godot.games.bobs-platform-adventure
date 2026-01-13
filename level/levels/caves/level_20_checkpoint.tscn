@@ -10,14 +10,14 @@
 
 [node name="Level_20_Checkpoint" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_vwnxs")
-level_binding_box = Rect2(-64, -896, 384, 704)
+level_binding_box = Rect2(-64, 192, 512, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-32, 608)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(288, 608)
+position = Vector2(480, 608)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -256)

@@ -29,12 +29,12 @@ tile_set = ExtResource("3_h4xhd")
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_tr6cj")]
 position = Vector2(1440, 640)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/caves/level_23.tscn"
+to_level_path = "uid://ccli8umknrxob"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_tr6cj")]
 position = Vector2(-32, 640)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://c0y1qe12m74dr"
+to_level_path = "uid://dnatpeu38s1yh"
 to_spawn_location_with_index = 1
 
 [node name="CreateBoulderOnTimeoutFactory" parent="." instance=ExtResource("5_vcdu6")]

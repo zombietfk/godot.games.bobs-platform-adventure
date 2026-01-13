@@ -85,6 +85,21 @@ animations = [{
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_22f82"]
 points = PackedVector2Array(20, -24, 32, 0, -32, 0, -20, -24, 0, -32)
 
+[sub_resource type="Animation" id="Animation_ljis1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.7925267]
+}
+
 [sub_resource type="Animation" id="Animation_rvpni"]
 resource_name = "move_collider"
 length = 2.0
@@ -101,21 +116,6 @@ tracks/0/keys = {
 "values": [2.7925267, -2.7925267]
 }
 
-[sub_resource type="Animation" id="Animation_ljis1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.7925267]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ljis1"]
 _data = {
 &"RESET": SubResource("Animation_ljis1"),
@@ -123,6 +123,7 @@ _data = {
 }
 
 [node name="WormWithPath" type="Path2D"]
+z_index = -1
 script = ExtResource("1_3b7od")
 speed = 80.0
 
