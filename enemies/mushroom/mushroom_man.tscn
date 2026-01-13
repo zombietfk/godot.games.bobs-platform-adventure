@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://rj3yluedrk4u"]
+[gd_scene load_steps=17 format=3 uid="uid://rj3yluedrk4u"]
 
+[ext_resource type="Script" uid="uid://ba84r2kmu8vqq" path="res://enemies/mushroom/mushroom_man.gd" id="1_03pvi"]
 [ext_resource type="Texture2D" uid="uid://4sd8v7uqnsjm" path="res://enemies/mushroom/mushroom_spritesheet.png" id="1_ick2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1wxs"]
-size = Vector2(64, 64)
+size = Vector2(64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7287j"]
 atlas = ExtResource("1_ick2k")
@@ -34,7 +35,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 9.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ick2k"]
@@ -49,21 +50,18 @@ region = Rect2(64, 224, 64, 96)
 atlas = ExtResource("1_ick2k")
 region = Rect2(128, 224, 64, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fw4v4"]
-atlas = ExtResource("1_ick2k")
-region = Rect2(0, 128, 64, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g3iu2"]
-atlas = ExtResource("1_ick2k")
-region = Rect2(64, 128, 64, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tlck6"]
-atlas = ExtResource("1_ick2k")
-region = Rect2(128, 128, 64, 96)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_mb765"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ick2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ick2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ick2k")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ick2k")
 }, {
@@ -78,24 +76,54 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rw3m7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1d07"]
+atlas = ExtResource("1_ick2k")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hadi8"]
+atlas = ExtResource("1_ick2k")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocueu"]
+atlas = ExtResource("1_ick2k")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ick2k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1d07")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fw4v4")
+"texture": SubResource("AtlasTexture_hadi8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g3iu2")
+"texture": SubResource("AtlasTexture_ocueu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tlck6")
+"texture": SubResource("AtlasTexture_hadi8")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ick2k"]
+size = Vector2(256, 192)
+
 [node name="MushroomMan" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 448
+script = ExtResource("1_03pvi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_y1wxs")
 
 [node name="RunningAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -103,10 +131,29 @@ visible = false
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_8w7ld")
 autoplay = "default"
-frame_progress = 0.64063036
+frame_progress = 0.14627966
 
-[node name="AwakenAnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="AwakenAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_mb765")
-autoplay = "default"
 frame_progress = 0.39396742
+
+[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ick2k")
+autoplay = "default"
+
+[node name="AwakenArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AwakenArea2D"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_ick2k")
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackArea2D"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_y1wxs")
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_enter"]

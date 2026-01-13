@@ -7,7 +7,7 @@ extends Node
 static func set_emulated_flip_to_negative_x_scale(
 	body: CollisionObject2D,
 	to_x_scale: float,
-	base_rotation: float,
+	base_rotation: float = 0,
 ):
 	if to_x_scale == 0:
 		return;

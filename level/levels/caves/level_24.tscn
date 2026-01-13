@@ -288,6 +288,8 @@ rotation = 3.1415927
 [node name="Gyser2" parent="." instance=ExtResource("7_n3tfw")]
 position = Vector2(864, 672)
 rotation = 4.712389
+max_boost_power = 2500.0
+min_boost_power = 1000.0
 
 [node name="Gyser3" parent="." instance=ExtResource("7_n3tfw")]
 position = Vector2(1184, 480)
