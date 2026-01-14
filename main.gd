@@ -58,6 +58,7 @@ static func reset_lives_load_checkpoint_level() -> void:
 static func load_level(
 	level_path: String = current_spawn_level,
 	spawn_index: int = current_spawn_index,
+	zero_velocity = true,
 ) -> void:
 	Main.instance.player.camera.reparent(Main.instance.player);
 	Main.instance.player.camera.position = Vector2.ZERO;
@@ -75,7 +76,8 @@ static func load_level(
 	player.camera.limit_right = int(level_instance.level_binding_box.size.x);
 	player.camera.limit_bottom = int(level_instance.level_binding_box.size.y);
 	instance.call_deferred("add_child", level);
-	player.velocity = Vector2.ZERO;
+	if zero_velocity:
+		player.velocity = Vector2.ZERO;
 	player.global_position = level.spawn_locations[spawn_index].global_position;
 
 func _process(_delta: float) -> void:

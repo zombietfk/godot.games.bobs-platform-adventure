@@ -11,31 +11,37 @@
 [sub_resource type="Curve2D" id="Curve2D_bnh1a"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -384)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -640)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_044cv"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 384)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 640)
 }
 point_count = 2
 
 [node name="Level_28" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_hcuol")
 level_binding_box = Rect2(0, -64, 576, 832)
-spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), NodePath("SecretReturnPointA"), NodePath("SecretReturnPointB")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(32, 672)
+
+[node name="SecretReturnPointA" type="Marker2D" parent="."]
+position = Vector2(128, -32)
+
+[node name="SecretReturnPointB" type="Marker2D" parent="."]
+position = Vector2(448, -32)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(544, 160)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAAAAA4AAgADAAEAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAAAAA8AAgADAAIAAAAIAAMAAgABAAMAAAAIAAYAAgABAAEAAAAIAAcAAgABAAIAAAAIAAIAAgABAAIAAAAIAAgAAgABAAIAAAAIAAkAAgABAAIAAAAIAAoAAgABAAIAAAAIAAsAAgABAAIAAAAIAAwAAgABAAIAAAAIAA0AAgABAAIAAAAIAA4AAgABAAIAAAAIAA8AAgABAAIAAAAAAAIAAgADAAIAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAAAAAkAAgADAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAA4AAgADAAEAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAAAAA8AAgADAAIAAAAIAAMAAgABAAMAAAAIAAYAAgABAAEAAAAIAAcAAgABAAIAAAAIAAIAAgABAAIAAAAIAAgAAgABAAIAAAAIAAkAAgABAAIAAAAIAAoAAgABAAIAAAAIAAsAAgABAAIAAAAIAAwAAgABAAIAAAAIAA0AAgABAAIAAAAIAA4AAgABAAIAAAAIAA8AAgABAAIAAAAAAAIAAgADAAIAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAAAAAkAAgADAAIAAAADAAEAAgAHAAEAAAAEAAEAAgAIAAEAAAAFAAEAAgAJAAEAAAA=")
 tile_set = ExtResource("2_044cv")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
@@ -45,6 +51,21 @@ tile_set = ExtResource("3_bnh1a")
 position = Vector2(608, 128)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_29.tscn"
+
+[node name="ToSecretRoomTeleportZoneA" parent="." instance=ExtResource("4_efyo2")]
+position = Vector2(128, -96)
+rotation = 1.5707964
+scale = Vector2(4, 8.1)
+to_level_path = "uid://1b1ilam8308w"
+zero_player_velocity = false
+
+[node name="ToSecretRoomTeleportZoneB" parent="." instance=ExtResource("4_efyo2")]
+position = Vector2(448, -96)
+rotation = 1.5707964
+scale = Vector2(4, 8.1)
+to_level_path = "uid://1b1ilam8308w"
+to_spawn_location_with_index = 1
+zero_player_velocity = false
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_efyo2")]
 position = Vector2(-32, 640)
@@ -61,6 +82,8 @@ script = ExtResource("5_044cv")
 rotates = false
 
 [node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("5_fquso")]
+randomize_inital_displacement = false
+enable_displacement = false
 
 [node name="Path2D2" type="Path2D" parent="."]
 position = Vector2(448, 64)
@@ -71,10 +94,12 @@ script = ExtResource("5_044cv")
 rotates = false
 
 [node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("5_fquso")]
+randomize_inital_displacement = false
+enable_displacement = false
 
 [node name="CreateBoulderOnTimeoutFactory" parent="." instance=ExtResource("6_hcuol")]
 position = Vector2(288, -224)
-fires_every_x_timer = 0.75
+fires_every_x_timer = 0.78
 boulder_scale = Vector2(3, 3)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,0 +1,275 @@
+[gd_scene load_steps=11 format=4 uid="uid://cr8yld5cr0tw6"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_twymh"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_mtjyj"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_iat57"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_c62vk"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="5_3l8eo"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="6_frrft"]
+[ext_resource type="PackedScene" uid="uid://na80be7hljms" path="res://objects/web/web.tscn" id="8_iat57"]
+[ext_resource type="PackedScene" uid="uid://2w50byocu5p" path="res://enemies/spider/spider.tscn" id="8_mtjyj"]
+[ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="9_iat57"]
+
+[sub_resource type="Curve2D" id="Curve2D_twymh"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -192, 0, 0, 0, 0, 0, -384)
+}
+point_count = 2
+
+[node name="Level_29" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_twymh")
+level_binding_box = Rect2(0, -832, 1088, 832)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(32, 672)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(544, 160)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAAAAA4AAgACAAEAAAAAAAoAAgADAAIAAAAAAAsAAgACAAMAAAAIAA4AAgACAAEAAAAAAAMAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAAAAAkAAgADAAIAAAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAANAA4AAgACAAEAAAAOAA4AAgACAAEAAAABAAsAAgAJAAEAAAAPAA4AAgACAAEAAAAPAAcAAgAIAAEAAAAQAAYAAgABAAIAAAAQAAgAAgABAAIAAAAQAAkAAgABAAIAAAAQAAoAAgABAAIAAAAQAAsAAgABAAIAAAAQAA0AAgABAAIAAAAIAAwAAgAFAAEAAAAJAAoAAgAFAAEAAAAHAAgAAgAFAAEAAAABAAQAAgAIAAEAAAACAAQAAgAJAAEAAAABAAIAAgAJAAEAAAAOAAAAAgAHAAEAAAAPAAAAAgAIAAEAAAAQAAEAAgABAAIAAAAQAAIAAgABAAIAAAAQAAMAAgABAAIAAAAQAAQAAgABAAIAAAAQAAUAAgABAAIAAAAAAPz/AgADAAIAAAAAAP7/AgADAAIAAAAAAP//AgADAAIAAAAAAAAAAgADAAIAAAAAAAEAAgADAAIAAAAQAP7/AgABAAEAAAAQAP//AgABAAIAAAAQAPv/AgABAAMAAAAQAPn/AgABAAIAAAAQAPr/AgABAAIAAAAAAPn/AgADAAIAAAAAAPr/AgADAAIAAAABAPj/AgADAAMAAAACAPf/AgADAAMAAAAPAPj/AgAHAAUAAAAOAPf/AgABAAMAAAADAPb/AgACAAMAAAAEAPb/AgACAAMAAAAFAPb/AgACAAMAAAAGAPb/AgACAAMAAAAHAPb/AgACAAMAAAAIAPb/AgACAAMAAAAJAPb/AgACAAMAAAAKAPb/AgACAAMAAAALAPb/AgACAAMAAAAMAPb/AgACAAMAAAANAPb/AgACAAMAAAAOAAcAAgAHAAEAAAABAAgAAgAIAAEAAAACAAgAAgAJAAEAAAAPAAQAAgAHAAEAAAAPAAwAAgAHAAEAAAABAP3/AgAJAAEAAAABAPv/AgAJAAEAAAAHAAIAAgAFAAEAAAAEAAAAAgAFAAEAAAAFAP7/AgAFAAEAAAA=")
+tile_set = ExtResource("2_mtjyj")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_iat57")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_c62vk")]
+position = Vector2(1120, -384)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_30.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_c62vk")]
+position = Vector2(-32, 640)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://b0nap6fal5nig"
+to_spawn_location_with_index = 1
+
+[node name="Spider" parent="." instance=ExtResource("8_mtjyj")]
+position = Vector2(864, 672)
+
+[node name="AwakeningRayCast2D" parent="Spider" index="5"]
+target_position = Vector2(960, 6.1035156e-05)
+
+[node name="Spider4" parent="." instance=ExtResource("8_mtjyj")]
+position = Vector2(992, 672)
+
+[node name="AwakeningRayCast2D" parent="Spider4" index="5"]
+target_position = Vector2(960, 6.1035156e-05)
+
+[node name="Spider2" parent="." instance=ExtResource("8_mtjyj")]
+position = Vector2(608, 672)
+
+[node name="AwakeningRayCast2D" parent="Spider2" index="5"]
+target_position = Vector2(960, 6.1035156e-05)
+
+[node name="Spider3" parent="." instance=ExtResource("8_mtjyj")]
+position = Vector2(736, 672)
+
+[node name="AwakeningRayCast2D" parent="Spider3" index="5"]
+target_position = Vector2(960, 6.1035156e-05)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(640, 416)
+curve = SubResource("Curve2D_twymh")
+script = ExtResource("5_3l8eo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(0, -192)
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("6_frrft")]
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(512, -192)
+curve = SubResource("Curve2D_twymh")
+script = ExtResource("5_3l8eo")
+start_distance_ratio = 1.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(0, -192)
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("6_frrft")]
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(768, -256)
+curve = SubResource("Curve2D_twymh")
+script = ExtResource("5_3l8eo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+position = Vector2(0, -192)
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D3/PathFollow2D" instance=ExtResource("6_frrft")]
+
+[node name="Web" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, 288)
+
+[node name="Web2" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, 224)
+
+[node name="Web3" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(160, 288)
+
+[node name="Web4" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(992, 224)
+
+[node name="Web5" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(992, 352)
+
+[node name="Web6" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(928, 352)
+
+[node name="Web7" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(992, 416)
+
+[node name="Web8" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, -416)
+
+[node name="Web9" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(160, -672)
+
+[node name="Web10" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(224, -736)
+
+[node name="Web11" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(288, -736)
+
+[node name="Web12" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(224, -672)
+
+[node name="Web13" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, -608)
+
+[node name="Web14" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(288, -672)
+
+[node name="Web15" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(352, -736)
+
+[node name="Web16" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(992, -416)
+
+[node name="Web17" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(992, -352)
+
+[node name="Web18" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(1056, -416)
+
+[node name="Web19" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(1056, -352)
+
+[node name="Web20" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(992, -288)
+
+[node name="Web21" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(992, -480)
+
+[node name="Web22" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(928, -224)
+
+[node name="Web23" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(992, -224)
+
+[node name="Web24" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(992, -96)
+
+[node name="Web25" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, 416)
+
+[node name="Web26" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, -288)
+
+[node name="Web27" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, -224)
+
+[node name="Web28" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, -224)
+
+[node name="Web29" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(544, 672)
+
+[node name="Web30" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(608, 544)
+
+[node name="Web31" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(608, 608)
+
+[node name="Web32" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(608, 672)
+
+[node name="Web33" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(672, 672)
+
+[node name="Web34" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(480, 32)
+
+[node name="Web35" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(416, -32)
+
+[node name="Web36" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(416, 32)
+
+[node name="Web37" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(352, 32)
+
+[node name="Web38" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(352, 96)
+
+[node name="Web39" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(288, 96)
+
+[node name="Web40" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(224, 96)
+
+[node name="Web41" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(224, 160)
+
+[node name="Web42" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(160, 160)
+
+[node name="Web43" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(160, 224)
+
+[node name="Web44" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, 160)
+
+[node name="Web45" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(160, 32)
+
+[node name="Web46" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(96, 32)
+
+[node name="Web47" parent="." instance=ExtResource("8_iat57")]
+position = Vector2(160, -32)
+
+[node name="FallingSpike3" parent="." instance=ExtResource("9_iat57")]
+position = Vector2(736, -736)
+
+[node name="RayCast2D" parent="FallingSpike3" index="0"]
+target_position = Vector2(-6.1035156e-05, -416)
+
+[node name="FallingSpike4" parent="." instance=ExtResource("9_iat57")]
+position = Vector2(800, -736)
+
+[node name="RayCast2D" parent="FallingSpike4" index="0"]
+target_position = Vector2(-6.1035156e-05, -416)
+
+[node name="FallingSpike5" parent="." instance=ExtResource("9_iat57")]
+position = Vector2(928, -672)
+
+[node name="RayCast2D" parent="FallingSpike5" index="0"]
+target_position = Vector2(-6.1035156e-05, -480)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+
+[editable path="Spider"]
+[editable path="Spider4"]
+[editable path="Spider2"]
+[editable path="Spider3"]
+[editable path="FallingSpike3"]
+[editable path="FallingSpike4"]
+[editable path="FallingSpike5"]
