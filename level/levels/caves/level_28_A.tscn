@@ -61,8 +61,14 @@ position = Vector2(288, 416)
 [node name="Bat" parent="." instance=ExtResource("7_7nrx0")]
 position = Vector2(32, 608)
 
+[node name="PlayerBelowCheckRaycast2D" parent="Bat" index="3"]
+target_position = Vector2(256, 160)
+
 [node name="Bat2" parent="." instance=ExtResource("7_7nrx0")]
 position = Vector2(96, 608)
+
+[node name="PlayerBelowCheckRaycast2D" parent="Bat2" index="3"]
+target_position = Vector2(128, 160)
 
 [node name="Bat3" parent="." instance=ExtResource("7_7nrx0")]
 position = Vector2(160, 608)
@@ -73,10 +79,20 @@ position = Vector2(416, 608)
 [node name="Bat8" parent="." instance=ExtResource("7_7nrx0")]
 position = Vector2(480, 608)
 
+[node name="PlayerBelowCheckRaycast2D" parent="Bat8" index="3"]
+target_position = Vector2(-128, 160)
+
 [node name="Bat9" parent="." instance=ExtResource("7_7nrx0")]
 position = Vector2(544, 608)
+
+[node name="PlayerBelowCheckRaycast2D" parent="Bat9" index="3"]
+target_position = Vector2(-256, 160)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 
 [editable path="ToNextLevelTeleportZone"]
 [editable path="ToPreviousLevelTeleportZone"]
+[editable path="Bat"]
+[editable path="Bat2"]
+[editable path="Bat8"]
+[editable path="Bat9"]
