@@ -28,7 +28,7 @@ point_count = 2
 
 [node name="Level_25" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_81yy7")
-level_binding_box = Rect2(0, 192, 2304, 1024)
+level_binding_box = Rect2(0, 192, 2432, 1024)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]

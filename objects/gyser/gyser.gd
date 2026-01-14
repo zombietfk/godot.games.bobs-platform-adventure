@@ -7,9 +7,13 @@ extends Node2D;
 @export var shoot_water_every_x_seconds: float = 3.0;
 @export var max_boost_power: float = 2000;
 @export var min_boost_power: float = 500;
+@export var gyser_shoot_water_timer_offset: float = 0.0;
 var _gyser_height: float = 200;
 var _c_shoot_water_every_x_seconds: float;
 var _is_water_shooting = false;
+
+func _ready()->void:
+	_c_shoot_water_every_x_seconds = gyser_shoot_water_timer_offset;
 
 func _process(delta: float)->void:
 	if _is_water_shooting:
@@ -30,6 +34,6 @@ func _shoot_water()->void:
 	_is_water_shooting = true;
 	water_effect_particle_effect.emitting = true;
 	lift_effect_animation_player.play("ResizeLiftArea");
-	await lift_effect_animation_player.animation_finished;
+	await water_effect_particle_effect.finished;
 	lift_effect_animation_player.play("RESET");
 	_is_water_shooting = false;

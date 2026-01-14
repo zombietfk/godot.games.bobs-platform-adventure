@@ -44,7 +44,8 @@ point_count = 4
 offsets = PackedFloat32Array(0, 0.10687023, 1)
 colors = PackedColorArray(1, 1, 1, 0, 18.892157, 18.892157, 18.892157, 0.94509804, 1, 1, 1, 0.5019608)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_in6wu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nts0k"]
+resource_local_to_scene = true
 size = Vector2(20, 0)
 
 [sub_resource type="Animation" id="Animation_in6wu"]
@@ -176,7 +177,7 @@ color_ramp = SubResource("Gradient_a1bpy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LiftArea2D"]
 position = Vector2(0, 32)
-shape = SubResource("RectangleShape2D_in6wu")
+shape = SubResource("RectangleShape2D_nts0k")
 
 [node name="ParticleEffectAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

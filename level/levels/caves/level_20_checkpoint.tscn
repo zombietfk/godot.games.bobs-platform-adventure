@@ -35,7 +35,7 @@ to_level_path = "uid://c0y1qe12m74dr"
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_3nxys")]
 position = Vector2(-96, 576)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://skfhpyrykg4y"
+to_level_path = "uid://diro7gfk2fsfl"
 to_spawn_location_with_index = 1
 
 [node name="Rat" parent="." instance=ExtResource("9_hojji")]

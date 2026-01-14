@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=4 uid="uid://cjyt7ufelywbh"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_xplyg"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_0wkgd"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_3l6o4"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_ple6l"]
+[ext_resource type="PackedScene" uid="uid://1ugdp78n2ire" path="res://enemies/worm/worm.tscn" id="5_ivmnp"]
+[ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="6_xplyg"]
+
+[sub_resource type="Curve2D" id="Curve2D_ivmnp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64, 0, 0, 0, 0, 64, -64, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Level_26" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_xplyg")
+level_binding_box = Rect2(0, 0, 960, 896)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(32, 672)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(928, 160)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAAAAA4AAgADAAEAAAAAAAgAAgADAAIAAAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAADAA4AAgAFAAEAAAAFAAwAAgAFAAEAAAAHAAoAAgAFAAEAAAAJAAgAAgAFAAEAAAALAAYAAgAFAAEAAAAOAAYAAgABAAEAAAAOAAcAAgABAAIAAAAOAAgAAgABAAIAAAAOAAkAAgABAAIAAAAOAAoAAgABAAIAAAAOAAsAAgABAAIAAAAOAAwAAgABAAIAAAAOAA0AAgABAAIAAAAOAA4AAgABAAIAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAALAAMAAgACAAMAAAAMAAMAAgACAAMAAAANAAMAAgACAAMAAAAOAAMAAgACAAMAAAAAAA8AAgADAAIAAAAAABAAAgADAAIAAAAOAA8AAgABAAIAAAAOABAAAgABAAIAAAA=")
+tile_set = ExtResource("2_0wkgd")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_3l6o4")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_ple6l")]
+position = Vector2(992, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://do64ugblw26ev"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_ple6l")]
+position = Vector2(-32, 640)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://hkpjmwek6es0"
+to_spawn_location_with_index = 1
+
+[node name="WormWithPath" parent="." instance=ExtResource("5_ivmnp")]
+position = Vector2(192, 768)
+curve = SubResource("Curve2D_ivmnp")
+speed = 32.0
+start_distance_ratio = 0.75
+cycle_path = false
+
+[node name="WormWithPath2" parent="." instance=ExtResource("5_ivmnp")]
+position = Vector2(320, 640)
+curve = SubResource("Curve2D_ivmnp")
+speed = 32.0
+start_distance_ratio = 0.75
+cycle_path = false
+
+[node name="WormWithPath3" parent="." instance=ExtResource("5_ivmnp")]
+position = Vector2(448, 512)
+curve = SubResource("Curve2D_ivmnp")
+speed = 32.0
+start_distance_ratio = 0.75
+cycle_path = false
+
+[node name="WormWithPath4" parent="." instance=ExtResource("5_ivmnp")]
+position = Vector2(576, 384)
+curve = SubResource("Curve2D_ivmnp")
+speed = 32.0
+start_distance_ratio = 0.75
+cycle_path = false
+
+[node name="WormWithPath5" parent="." instance=ExtResource("5_ivmnp")]
+position = Vector2(704, 256)
+curve = SubResource("Curve2D_ivmnp")
+speed = 32.0
+start_distance_ratio = 0.75
+cycle_path = false
+
+[node name="FallingSpike" parent="." instance=ExtResource("6_xplyg")]
+position = Vector2(224, 96)
+fall_speed = 400.0
+
+[node name="FallingSpike2" parent="." instance=ExtResource("6_xplyg")]
+position = Vector2(352, 96)
+fall_speed = 400.0
+
+[node name="FallingSpike3" parent="." instance=ExtResource("6_xplyg")]
+position = Vector2(480, 96)
+fall_speed = 400.0
+
+[node name="FallingSpike4" parent="." instance=ExtResource("6_xplyg")]
+position = Vector2(608, 96)
+fall_speed = 400.0
+
+[node name="FallingSpike5" parent="." instance=ExtResource("6_xplyg")]
+position = Vector2(736, 96)
+fall_speed = 400.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]

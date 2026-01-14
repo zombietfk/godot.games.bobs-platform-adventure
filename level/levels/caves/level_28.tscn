@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=4 uid="uid://b0nap6fal5nig"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_hcuol"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_044cv"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_bnh1a"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_efyo2"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="5_044cv"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="5_fquso"]
+[ext_resource type="PackedScene" uid="uid://dmrrhkelp6h5m" path="res://objects/traps/boulder/factory/create_boulder_on_timeout_factory.tscn" id="6_hcuol"]
+
+[sub_resource type="Curve2D" id="Curve2D_bnh1a"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_044cv"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 384)
+}
+point_count = 2
+
+[node name="Level_28" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_hcuol")
+level_binding_box = Rect2(0, -64, 576, 832)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(32, 672)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(544, 160)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAAAAA4AAgADAAEAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAAAAA8AAgADAAIAAAAIAAMAAgABAAMAAAAIAAYAAgABAAEAAAAIAAcAAgABAAIAAAAIAAIAAgABAAIAAAAIAAgAAgABAAIAAAAIAAkAAgABAAIAAAAIAAoAAgABAAIAAAAIAAsAAgABAAIAAAAIAAwAAgABAAIAAAAIAA0AAgABAAIAAAAIAA4AAgABAAIAAAAIAA8AAgABAAIAAAAAAAIAAgADAAIAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAAAAAkAAgADAAIAAAA=")
+tile_set = ExtResource("2_044cv")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_bnh1a")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_efyo2")]
+position = Vector2(608, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_29.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_efyo2")]
+position = Vector2(-32, 640)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://do64ugblw26ev"
+to_spawn_location_with_index = 1
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(128, 704)
+curve = SubResource("Curve2D_bnh1a")
+script = ExtResource("5_044cv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("5_fquso")]
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(448, 64)
+curve = SubResource("Curve2D_044cv")
+script = ExtResource("5_044cv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("5_fquso")]
+
+[node name="CreateBoulderOnTimeoutFactory" parent="." instance=ExtResource("6_hcuol")]
+position = Vector2(288, -224)
+fires_every_x_timer = 0.75
+boulder_scale = Vector2(3, 3)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
