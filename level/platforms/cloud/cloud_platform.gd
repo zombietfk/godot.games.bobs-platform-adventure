@@ -6,6 +6,7 @@ extends AnimatableBody2D;
 @export var on_land_displacement = 15;
 @export var randomize_inital_displacement: bool = true;
 @export var enable_displacement = true;
+@export var start_disabled = false;
 
 # INTERNAL STATE
 var anchor_position: Vector2;
@@ -30,6 +31,8 @@ func _ready() -> void:
 	anchor_position = position;
 	if randomize_inital_displacement:
 		c_timer = randf() * PI;
+	if start_disabled:
+		disable();
 
 func _process_displacement(delta: float) -> void:
 	if c_bounce_timer < bounce_timer:
@@ -76,3 +79,17 @@ func _physics_process(delta: float) -> void:
 	if enable_displacement:
 		_process_displacement(delta);
 	_process_is_player_on_platform_flags();
+
+func disable() -> void:
+	visible = false;
+	process_mode = Node.PROCESS_MODE_DISABLED;
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.disabled = true;
+
+func enable() -> void:
+	visible = true;
+	process_mode = Node.PROCESS_MODE_INHERIT;
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.disabled = false;

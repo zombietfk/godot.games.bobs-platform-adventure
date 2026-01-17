@@ -1,122 +1,29 @@
-[gd_scene load_steps=19 format=4 uid="uid://biqdhyqxc8ik4"]
+[gd_scene load_steps=9 format=4 uid="uid://biqdhyqxc8ik4"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_6yvwj"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_a0nqb"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_1i6tr"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_wqvuy"]
-[ext_resource type="Texture2D" uid="uid://c0jv6kpj0g2e4" path="res://enemies/bosses/bear/bear_spritesheet.png" id="5_sndsq"]
+[ext_resource type="PackedScene" uid="uid://cnpqchhe7urre" path="res://enemies/bosses/bear/bear.tscn" id="5_sndsq"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="6_i0nrg"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="7_uv71f"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sndsq"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(0, 256, 128, 128)
+[sub_resource type="Curve2D" id="Curve2D_6yvwj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 448, 0)
+}
+point_count = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_22i1v"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(128, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0nrg"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(256, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uv71f"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6yvwj"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a0nqb"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1i6tr"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(0, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqvuy"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(128, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_35i14"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(256, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3dgm3"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(384, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4uwgl"]
-atlas = ExtResource("5_sndsq")
-region = Rect2(256, 128, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6yvwj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sndsq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_22i1v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i0nrg")
-}],
-"loop": true,
-"name": &"forward",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uv71f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6yvwj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a0nqb")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1i6tr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqvuy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_35i14")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3dgm3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4uwgl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqvuy")
-}],
-"loop": true,
-"name": &"running",
-"speed": 10.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6nln"]
-size = Vector2(64, 112)
-
-[node name="Level_29" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_30" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_6yvwj")
-level_binding_box = Rect2(0, -832, 1088, 832)
+level_binding_box = Rect2(0, 384, 1024, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
 position = Vector2(32, 672)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(544, 160)
+position = Vector2(992, 672)
 
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_wqvuy")]
 position = Vector2(1056, 640)
@@ -131,23 +38,41 @@ to_spawn_location_with_index = 1
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAANAA4AAgACAAEAAAAOAA4AAgACAAEAAAAPAA4AAgACAAEAAAAPAAoAAgABAAIAAAAPAAsAAgABAAMAAAAPAAkAAgABAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAADAA4AAgACAAEAAAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAAOAA4AAgACAAEAAAAPAA4AAgACAAEAAAAPAAoAAgABAAIAAAAPAAsAAgABAAMAAAAPAAkAAgABAAIAAAACAAwAAgAFAAMAAAACAA0AAgAFAAQAAAANAAwAAgAFAAMAAAANAA0AAgAFAAQAAAA=")
 tile_set = ExtResource("2_a0nqb")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
 tile_set = ExtResource("3_1i6tr")
 
-[node name="Bear" type="CharacterBody2D" parent="."]
+[node name="Bear" parent="." instance=ExtResource("5_sndsq")]
 position = Vector2(512, 640)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bear"]
-position = Vector2(0, 8)
-sprite_frames = SubResource("SpriteFrames_6yvwj")
-animation = &"running"
-frame_progress = 0.084949546
+[node name="Stage2State" parent="Bear/StateMachine" index="2" node_paths=PackedStringArray("middle_stage_marker", "cloud_platform")]
+middle_stage_marker = NodePath("../../../Marker2D")
+cloud_platform = NodePath("../../../Path2D/PathFollow2D/CloudPlatform")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bear"]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_t6nln")
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(512, 640)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(288, 496)
+curve = SubResource("Curve2D_6yvwj")
+script = ExtResource("6_i0nrg")
+speed = 32.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotation = 3.1415927
+rotates = false
+
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("7_uv71f")]
+position = Vector2(0, -2.4667283e-05)
+rotation = 3.1415925
+floating_displacement = 128
+on_land_displacement = 0
+randomize_inital_displacement = false
+start_disabled = true
+bounce_timer = 1.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+
+[editable path="Bear"]
