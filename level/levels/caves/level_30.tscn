@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://biqdhyqxc8ik4"]
+[gd_scene load_steps=10 format=4 uid="uid://biqdhyqxc8ik4"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_6yvwj"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_a0nqb"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_1i6tr"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_wqvuy"]
 [ext_resource type="PackedScene" uid="uid://cnpqchhe7urre" path="res://enemies/bosses/bear/bear.tscn" id="5_sndsq"]
+[ext_resource type="PackedScene" uid="uid://1imiby0dqakp" path="res://enemies/bosses/bear/beehive_on_track.tscn" id="6_6yvwj"]
 [ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="6_i0nrg"]
 [ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="7_uv71f"]
 
@@ -16,7 +17,7 @@ point_count = 2
 
 [node name="Level_30" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_6yvwj")
-level_binding_box = Rect2(0, 384, 1024, 768)
+level_binding_box = Rect2(0, 256, 1024, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
@@ -38,7 +39,7 @@ to_spawn_location_with_index = 1
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAADAA4AAgACAAEAAAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAAOAA4AAgACAAEAAAAPAA4AAgACAAEAAAAPAAoAAgABAAIAAAAPAAsAAgABAAMAAAAPAAkAAgABAAIAAAACAAwAAgAFAAMAAAACAA0AAgAFAAQAAAANAAwAAgAFAAMAAAANAA0AAgAFAAQAAAA=")
+tile_map_data = PackedByteArray("AAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAADAA4AAgACAAEAAAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAAOAA4AAgACAAEAAAAPAA4AAgACAAEAAAAPAAoAAgABAAIAAAAPAAsAAgABAAMAAAAPAAkAAgABAAIAAAACAAwAAgAFAAMAAAACAA0AAgAFAAQAAAANAAwAAgAFAAMAAAANAA0AAgAFAAQAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAAPAAcAAgABAAIAAAAPAAgAAgABAAIAAAABAAcAAgACAAMAAAACAAcAAgACAAMAAAANAAcAAgACAAMAAAAOAAcAAgACAAMAAAA=")
 tile_set = ExtResource("2_a0nqb")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level"]
@@ -47,8 +48,13 @@ tile_set = ExtResource("3_1i6tr")
 [node name="Bear" parent="." instance=ExtResource("5_sndsq")]
 position = Vector2(512, 640)
 
-[node name="Stage2State" parent="Bear/StateMachine" index="2" node_paths=PackedStringArray("middle_stage_marker", "cloud_platform")]
+[node name="Stage2State" parent="Bear/StateMachine" index="2" node_paths=PackedStringArray("middle_stage_marker", "cloud_platform", "beehive_spawn_points")]
 middle_stage_marker = NodePath("../../../Marker2D")
+cloud_platform = NodePath("../../../Path2D/PathFollow2D/CloudPlatform")
+beehive_scene = ExtResource("6_6yvwj")
+beehive_spawn_points = [NodePath("../../../BeehiveSpawnPoints/Marker2D2"), NodePath("../../../BeehiveSpawnPoints/Marker2D3"), NodePath("../../../BeehiveSpawnPoints/Marker2D4"), NodePath("../../../BeehiveSpawnPoints/Marker2D5"), NodePath("../../../BeehiveSpawnPoints/Marker2D6"), NodePath("../../../BeehiveSpawnPoints/Marker2D7"), NodePath("../../../BeehiveSpawnPoints/Marker2D8"), NodePath("../../../BeehiveSpawnPoints/Marker2D9"), NodePath("../../../BeehiveSpawnPoints/Marker2D10"), NodePath("../../../BeehiveSpawnPoints/Marker2D11")]
+
+[node name="Stage3State" parent="Bear/StateMachine" index="3" node_paths=PackedStringArray("cloud_platform")]
 cloud_platform = NodePath("../../../Path2D/PathFollow2D/CloudPlatform")
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -58,7 +64,7 @@ position = Vector2(512, 640)
 position = Vector2(288, 496)
 curve = SubResource("Curve2D_6yvwj")
 script = ExtResource("6_i0nrg")
-speed = 32.0
+speed = 96.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 rotation = 3.1415927
@@ -72,6 +78,38 @@ on_land_displacement = 0
 randomize_inital_displacement = false
 start_disabled = true
 bounce_timer = 1.0
+
+[node name="BeehiveSpawnPoints" type="Node2D" parent="."]
+position = Vector2(224, 224)
+
+[node name="Marker2D2" type="Marker2D" parent="BeehiveSpawnPoints"]
+
+[node name="Marker2D3" type="Marker2D" parent="BeehiveSpawnPoints"]
+position = Vector2(64, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="BeehiveSpawnPoints"]
+position = Vector2(128, 0)
+
+[node name="Marker2D5" type="Marker2D" parent="BeehiveSpawnPoints"]
+position = Vector2(192, 0)
+
+[node name="Marker2D6" type="Marker2D" parent="BeehiveSpawnPoints"]
+position = Vector2(256, 0)
+
+[node name="Marker2D7" type="Marker2D" parent="BeehiveSpawnPoints"]
+position = Vector2(320, 0)
+
+[node name="Marker2D8" type="Marker2D" parent="BeehiveSpawnPoints"]
+position = Vector2(384, 0)
+
+[node name="Marker2D9" type="Marker2D" parent="BeehiveSpawnPoints"]
+position = Vector2(448, 0)
+
+[node name="Marker2D10" type="Marker2D" parent="BeehiveSpawnPoints"]
+position = Vector2(512, 0)
+
+[node name="Marker2D11" type="Marker2D" parent="BeehiveSpawnPoints"]
+position = Vector2(576, 0)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 

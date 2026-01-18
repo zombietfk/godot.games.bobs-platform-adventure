@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3 uid="uid://0foley1yyksl"]
+
+[ext_resource type="Script" uid="uid://bhgfkv22i54w5" path="res://enemies/bosses/bear/beehive.gd" id="1_0pror"]
+[ext_resource type="Texture2D" uid="uid://cmd2ax2r42536" path="res://enemies/bosses/bear/beehive_spritesheet.png" id="1_nowwx"]
+[ext_resource type="PackedScene" uid="uid://cgh3te1rg0qr2" path="res://enemies/bosses/bear/bee.tscn" id="2_0dlvn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yvwj"]
+atlas = ExtResource("1_nowwx")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0nqb"]
+atlas = ExtResource("1_nowwx")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i6tr"]
+atlas = ExtResource("1_nowwx")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqvuy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yvwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0nqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i6tr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35i14"]
+radius = 14.0
+
+[sub_resource type="Animation" id="Animation_0pror"]
+resource_name = "sway"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.43333334, 0.56666666, 0.7, 0.9, 1.1, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.2617993877991494, 0.2617993877991494, -0.2617993877991494, 0.2617993877991494, -0.2617993877991494, 0.2617993877991494, -0.2617993877991494, 0.2617993877991494, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0dlvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0dlvn"]
+_data = {
+&"RESET": SubResource("Animation_0dlvn"),
+&"sway": SubResource("Animation_0pror")
+}
+
+[node name="Beehive" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("1_0pror")
+bee_scene = ExtResource("2_0dlvn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wqvuy")
+autoplay = "default"
+frame_progress = 0.19771004
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_35i14")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_35i14")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0dlvn")
+}
+autoplay = "sway"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_enter_area2D"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_boss_bear_area_enter"]

@@ -1,7 +1,11 @@
 class_name Bear;
 extends CharacterBody2D;
 
+var is_beehived = false;
 var _knockback_strength = 600;
+
+@warning_ignore("unused_signal")
+signal on_hit_by_beehive();
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cnpqchhe7urre"]
+[gd_scene load_steps=27 format=3 uid="uid://cnpqchhe7urre"]
 
 [ext_resource type="Script" uid="uid://b1u8qm1vl6vc2" path="res://enemies/bosses/bear/bear.gd" id="1_8pevx"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_wk4eq"]
@@ -6,6 +6,24 @@
 [ext_resource type="Script" uid="uid://reud4gw014r" path="res://enemies/bosses/bear/state_machine/states/idle_bear_state.gd" id="3_wk4eq"]
 [ext_resource type="Script" uid="uid://cb0piri4pxpp5" path="res://enemies/bosses/bear/state_machine/states/stage_one_bear_state.gd" id="4_5wfqs"]
 [ext_resource type="Script" uid="uid://dl3ymyiitrik3" path="res://enemies/bosses/bear/state_machine/states/stage_two_bear_state.gd" id="5_gdq1p"]
+[ext_resource type="PackedScene" uid="uid://0foley1yyksl" path="res://enemies/bosses/bear/beehive.tscn" id="6_fv0hc"]
+[ext_resource type="Script" uid="uid://bas42nixfc8ky" path="res://enemies/bosses/bear/state_machine/states/stage_three_bear_state.gd" id="7_1x621"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x621"]
+atlas = ExtResource("3_5wfqs")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvxgs"]
+atlas = ExtResource("3_5wfqs")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5bll"]
+atlas = ExtResource("3_5wfqs")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcpk8"]
+atlas = ExtResource("3_5wfqs")
+region = Rect2(384, 384, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sndsq"]
 atlas = ExtResource("3_5wfqs")
@@ -53,6 +71,29 @@ region = Rect2(256, 128, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6yvwj"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x621")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvxgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5bll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcpk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5bll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvxgs")
+}],
+"loop": true,
+"name": &"beehived",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sndsq")
@@ -133,18 +174,23 @@ bear = NodePath("../..")
 
 [node name="Stage2State" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite", "bear")]
 script = ExtResource("5_gdq1p")
+beehive_scene = ExtResource("6_fv0hc")
 animated_sprite = NodePath("../../AnimatedSprite2D")
 bear = NodePath("../..")
 
-[node name="Stage3State" type="Node" parent="StateMachine"]
-
-[node name="Stage4State" type="Node" parent="StateMachine"]
+[node name="Stage3State" type="Node" parent="StateMachine" node_paths=PackedStringArray("wallcheck_raycast", "animated_sprite", "bear")]
+script = ExtResource("7_1x621")
+wallcheck_raycast = NodePath("../../WallcheckRayCast2D")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+bear = NodePath("../..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, 16)
 sprite_frames = SubResource("SpriteFrames_6yvwj")
-animation = &"running"
+animation = &"beehived"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.59411687
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

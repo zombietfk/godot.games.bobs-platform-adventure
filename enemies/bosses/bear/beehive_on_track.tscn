@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://1imiby0dqakp"]
+
+[ext_resource type="PackedScene" uid="uid://0foley1yyksl" path="res://enemies/bosses/bear/beehive.tscn" id="1_tx05l"]
+[ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="2_cvpbl"]
+
+[sub_resource type="Curve2D" id="Curve2D_6cyqf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48)
+}
+point_count = 2
+
+[node name="BeehiveOnTrack" type="Node2D"]
+
+[node name="Path2DLinear" type="Path2D" parent="."]
+curve = SubResource("Curve2D_6cyqf")
+script = ExtResource("2_cvpbl")
+speed = 25.0
+metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear"]
+rotates = false
+loop = false
+
+[node name="Beehive" parent="Path2DLinear/PathFollow2D" instance=ExtResource("1_tx05l")]

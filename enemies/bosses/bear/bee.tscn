@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgh3te1rg0qr2"]
+
+[ext_resource type="Texture2D" uid="uid://cwd4ddl4d4oy3" path="res://enemies/bosses/bear/bee_sprite.png" id="1_k25c4"]
+[ext_resource type="Script" uid="uid://cn7dm4lcticbi" path="res://enemies/bosses/bear/bee.gd" id="1_uk8xb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0nqb"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqvuy"]
+atlas = ExtResource("1_k25c4")
+region = Rect2(8, 8, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_35i14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqvuy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bee" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_uk8xb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a0nqb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
+sprite_frames = SubResource("SpriteFrames_35i14")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_a0nqb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_enter_bee_attack_area"]

@@ -1,25 +1,37 @@
-class_name StateTwoBearState;
+class_name StageTwoBearState;
 extends AbstractBearState;
 
 @export var middle_stage_marker: Marker2D;
 @export var time: float = 2.0;
 @export var cloud_platform: CloudPlatform;
+@export var beehive_scene: PackedScene;
+@export var beehive_spawn_points: Array[Marker2D];
+var _already_used_spawn_point: Array[Marker2D];
 var _move_speed = 75;
 var _min_distance_to_marker = 8;
-var _jump_strength = -2500;
+var _jump_strength = -600;
+var _jump_count = 0;
+var _c_time = 0;
 
 func enter(_from: AbstractState)->void:
 	cloud_platform.enable();
 	animated_sprite.animation = "running";
+	_already_used_spawn_point.clear();
+	_jump_count = 0;
+	_c_time = 0;
 
 func exit(_to: AbstractState)->void:
 	pass;
 
-func process(_delta: float)->void:
-	pass;
+func process(delta: float)->void:
+	var x_distance_to_marker = middle_stage_marker.global_position.x - bear.global_position.x;
+	if abs(x_distance_to_marker) < _min_distance_to_marker:
+		_c_time += delta;
+	if _c_time > time and bear.is_on_floor():
+		animated_sprite.animation = "idle";
+		transition.emit("Stage3State");
 	
 func physics_process(delta: float)->void:
-	#print(bear.velocity);
 	var x_distance_to_marker = middle_stage_marker.global_position.x - bear.global_position.x;
 	if abs(x_distance_to_marker) > _min_distance_to_marker:
 		animated_sprite.animation = "running";
@@ -31,12 +43,20 @@ func physics_process(delta: float)->void:
 		bear.global_position.x = middle_stage_marker.global_position.x;
 		animated_sprite.animation = "forward";
 		if bear.is_on_floor():
-			print(bear.velocity);
-			bear.velocity.y = -500;
-			print('Bear Jump');
-			_summon_beehive();
+			if _jump_count == 1:
+				_summon_beehive();
+			bear.velocity.y = _jump_strength;
+			_jump_count += 1;
 	bear.velocity += bear.get_gravity() * delta;
 
 func _summon_beehive()->void:
-	print('Summon Beehive')
-	pass;
+	if !bear.is_beehived:
+		var pathed_beehive: Node2D = beehive_scene.instantiate();
+		var spawn_point = beehive_spawn_points.pick_random();
+		while _already_used_spawn_point.has(spawn_point):
+			spawn_point = beehive_spawn_points.pick_random();
+		_already_used_spawn_point.append(spawn_point);
+		pathed_beehive.global_position = beehive_spawn_points.pick_random().global_position;
+		Main.instance.level_instance.add_child(pathed_beehive);
+		var beehive: Beehive = pathed_beehive.find_child("Beehive");
+		beehive.on_destroy.connect(_summon_beehive);
