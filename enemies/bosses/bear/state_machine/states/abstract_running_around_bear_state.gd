@@ -13,9 +13,32 @@ var _running_impetus: Vector2;
 var _jump_impetus: Vector2;
 var _jump_strength: float = -2700;
 var _max_running_impetus: Vector2 = Vector2(400, 0);
+var _interrupt_wait_then_run: bool = false;
+
+var _lives_remaining_stats = {
+	"move_acceleration_sqr": [
+		0.022,
+		0.015,
+		0.01,
+	],
+	"_wait_time_before_run": [
+		0.5,
+		0.8,
+		1
+	],
+	"_max_running_impetus" : [
+		Vector2(600, 0),
+		Vector2(500, 0),
+		Vector2(400, 0)
+	]
+}
 
 func enter(_from: AbstractState)->void:
+	move_acceleration_sqr = _lives_remaining_stats["move_acceleration_sqr"][bear.lives - 1];
+	_wait_time_before_run = _lives_remaining_stats["_wait_time_before_run"][bear.lives - 1];
+	_max_running_impetus = _lives_remaining_stats["_max_running_impetus"][bear.lives - 1];
 	animated_sprite.animation = "forward";
+	NegativeScaleUtil.set_emulated_flip_to_negative_x_scale(bear, _direction);
 	_wait_then_run();
 	
 func exit(_to: AbstractState)->void:
@@ -40,14 +63,17 @@ func physics_process(delta: float)->void:
 	_jump_impetus = _jump_impetus * (1 - delta);
 
 func _change_direction()->void:
-	bear.scale.x = -bear.scale.x;
 	_direction = -_direction;
+	NegativeScaleUtil.set_emulated_flip_to_negative_x_scale(bear, _direction);
 
 func _wait_then_run()->void:
+	_interrupt_wait_then_run = false;
 	_move_acceleration = move_acceleration_sqr;
 	animated_sprite.animation = "idle";
 	_is_running = false;
 	await get_tree().create_timer(_wait_time_before_run).timeout;
+	if _interrupt_wait_then_run:
+		return;
 	animated_sprite.animation = "running";
 	_is_running = true;
 	await _jump_after(randf_range(jump_timer_range.x, jump_timer_range.y));

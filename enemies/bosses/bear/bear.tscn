@@ -1,150 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://cnpqchhe7urre"]
+[gd_scene load_steps=10 format=3 uid="uid://cnpqchhe7urre"]
 
 [ext_resource type="Script" uid="uid://b1u8qm1vl6vc2" path="res://enemies/bosses/bear/bear.gd" id="1_8pevx"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_wk4eq"]
-[ext_resource type="Texture2D" uid="uid://c0jv6kpj0g2e4" path="res://enemies/bosses/bear/bear_spritesheet.png" id="3_5wfqs"]
 [ext_resource type="Script" uid="uid://reud4gw014r" path="res://enemies/bosses/bear/state_machine/states/idle_bear_state.gd" id="3_wk4eq"]
 [ext_resource type="Script" uid="uid://cb0piri4pxpp5" path="res://enemies/bosses/bear/state_machine/states/stage_one_bear_state.gd" id="4_5wfqs"]
 [ext_resource type="Script" uid="uid://dl3ymyiitrik3" path="res://enemies/bosses/bear/state_machine/states/stage_two_bear_state.gd" id="5_gdq1p"]
 [ext_resource type="PackedScene" uid="uid://0foley1yyksl" path="res://enemies/bosses/bear/beehive.tscn" id="6_fv0hc"]
 [ext_resource type="Script" uid="uid://bas42nixfc8ky" path="res://enemies/bosses/bear/state_machine/states/stage_three_bear_state.gd" id="7_1x621"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1x621"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(0, 384, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mvxgs"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(128, 384, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f5bll"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(256, 384, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pcpk8"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(384, 384, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sndsq"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(0, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_22i1v"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(128, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0nrg"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(256, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uv71f"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6yvwj"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a0nqb"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1i6tr"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(0, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqvuy"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(128, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_35i14"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(256, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3dgm3"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(384, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4uwgl"]
-atlas = ExtResource("3_5wfqs")
-region = Rect2(256, 128, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6yvwj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1x621")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mvxgs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f5bll")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pcpk8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f5bll")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mvxgs")
-}],
-"loop": true,
-"name": &"beehived",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sndsq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_22i1v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i0nrg")
-}],
-"loop": true,
-"name": &"forward",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uv71f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6yvwj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a0nqb")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1i6tr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqvuy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_35i14")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3dgm3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4uwgl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqvuy")
-}],
-"loop": true,
-"name": &"running",
-"speed": 10.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6nln"]
 size = Vector2(64, 112)
@@ -163,34 +25,26 @@ inital_state = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite", "bear")]
 script = ExtResource("3_wk4eq")
-animated_sprite = NodePath("../../AnimatedSprite2D")
+animated_sprite = NodePath("")
 bear = NodePath("../..")
 
 [node name="Stage1State" type="Node" parent="StateMachine" node_paths=PackedStringArray("wallcheck_raycast", "animated_sprite", "bear")]
 script = ExtResource("4_5wfqs")
 wallcheck_raycast = NodePath("../../WallcheckRayCast2D")
-animated_sprite = NodePath("../../AnimatedSprite2D")
+animated_sprite = NodePath("")
 bear = NodePath("../..")
 
 [node name="Stage2State" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite", "bear")]
 script = ExtResource("5_gdq1p")
 beehive_scene = ExtResource("6_fv0hc")
-animated_sprite = NodePath("../../AnimatedSprite2D")
+animated_sprite = NodePath("")
 bear = NodePath("../..")
 
 [node name="Stage3State" type="Node" parent="StateMachine" node_paths=PackedStringArray("wallcheck_raycast", "animated_sprite", "bear")]
 script = ExtResource("7_1x621")
 wallcheck_raycast = NodePath("../../WallcheckRayCast2D")
-animated_sprite = NodePath("../../AnimatedSprite2D")
+animated_sprite = NodePath("")
 bear = NodePath("../..")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8, 16)
-sprite_frames = SubResource("SpriteFrames_6yvwj")
-animation = &"beehived"
-autoplay = "idle"
-frame = 3
-frame_progress = 0.59411687
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

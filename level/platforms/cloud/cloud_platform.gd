@@ -11,6 +11,7 @@ extends AnimatableBody2D;
 # INTERNAL STATE
 var anchor_position: Vector2;
 var displace_position: Vector2 = Vector2.ZERO;
+var _original_scale: Vector2;
 
 # TIMERS
 @export var bounce_timer: float = 0.5;
@@ -29,10 +30,11 @@ signal player_exited();
 # LIFECYCLE
 func _ready() -> void:
 	anchor_position = position;
+	_original_scale = scale;
 	if randomize_inital_displacement:
 		c_timer = randf() * PI;
 	if start_disabled:
-		disable();
+		disable(true);
 
 func _process_displacement(delta: float) -> void:
 	if c_bounce_timer < bounce_timer:
@@ -80,7 +82,13 @@ func _physics_process(delta: float) -> void:
 		_process_displacement(delta);
 	_process_is_player_on_platform_flags();
 
-func disable() -> void:
+func disable(skip_lerp: bool = false) -> void:
+	if !skip_lerp:
+		var scale_down_timer = 1.0;
+		while scale_down_timer > 0:
+			scale_down_timer -= get_process_delta_time();
+			scale = lerp(Vector2.ZERO, _original_scale, scale_down_timer);
+			await get_tree().process_frame;
 	visible = false;
 	process_mode = Node.PROCESS_MODE_DISABLED;
 	for child in get_children():
@@ -93,3 +101,8 @@ func enable() -> void:
 	for child in get_children():
 		if child is CollisionShape2D:
 			child.disabled = false;
+	var scale_down_timer = 1.0;
+	while scale_down_timer > 0:
+		scale_down_timer -= get_process_delta_time();
+		scale = lerp(_original_scale, Vector2.ZERO, scale_down_timer);
+		await get_tree().process_frame;

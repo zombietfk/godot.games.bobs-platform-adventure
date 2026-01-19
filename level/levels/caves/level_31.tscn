@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=4 uid="uid://bt5bnysw7wsfs"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_xqaxs"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_qhddp"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_8v3ng"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_yretr"]
+[ext_resource type="PackedScene" uid="uid://0foley1yyksl" path="res://enemies/bosses/bear/beehive.tscn" id="5_cy6g2"]
+[ext_resource type="PackedScene" uid="uid://66k67ajayd8k" path="res://objects/gyser/gyser.tscn" id="6_iues0"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="7_8v3ng"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="8_yretr"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="9_yretr"]
+[ext_resource type="PackedScene" uid="uid://rj3yluedrk4u" path="res://enemies/mushroom/mushroom_man.tscn" id="10_gojgs"]
+[ext_resource type="PackedScene" uid="uid://c1fppnc76mn0n" path="res://enemies/mushroom/mushroom.tscn" id="11_iues0"]
+
+[sub_resource type="Curve2D" id="Curve2D_gojgs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 448, 0, 0, 0, 0, 288, 320)
+}
+point_count = 2
+
+[node name="Level_31" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_xqaxs")
+level_binding_box = Rect2(0, 192, 960, 1152)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(32, 672)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1248, 672)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAAAAA4AAgACAAEAAAAAAAsAAgACAAMAAAAAAA8AAgADAAIAAAAAABIAAgADAAIAAAADABMAAgAFAAMAAAAMABMAAgABAAEAAAANAAcAAgACAAMAAAABAA4AAgAIAAEAAAACAA4AAgACAAEAAAADAAoAAgAFAAQAAAADAAsAAgAFAAQAAAADAAwAAgAFAAQAAAADAA0AAgAFAAQAAAADAAkAAgABAAEAAAAEAAkAAgAJAAEAAAAGAAkAAgAHAAEAAAAHAAkAAgAIAAEAAAAIAAkAAgAJAAEAAAAKAAkAAgAFAAMAAAAKAAwAAgAFAAQAAAAKAAoAAgAFAAQAAAAKAAsAAgAFAAQAAAAKAA0AAgAFAAQAAAAKAA4AAgAFAAQAAAADAA4AAgADAAMAAAABAAsAAgADAAMAAAABAAgAAgADAAIAAAABAAkAAgADAAIAAAABAAoAAgADAAIAAAACAAcAAgACAAMAAAADAAcAAgADAAMAAAAHAAcAAgAFAAUAAAALAAcAAgABAAMAAAAMAAcAAgACAAMAAAAMAAkAAgAFAAMAAAAMAAoAAgAFAAQAAAAMAAsAAgAFAAQAAAAMAAwAAgAFAAQAAAAMAA0AAgAFAAQAAAAMAA4AAgAFAAQAAAAMAA8AAgAFAAQAAAAFAA4AAgAFAAQAAAAFAAwAAgAFAAQAAAAFAA0AAgAFAAQAAAAFAAsAAgABAAEAAAAGAAsAAgAIAAEAAAAHAAsAAgAIAAEAAAAIAAsAAgADAAEAAAAIAAwAAgAFAAQAAAABABEAAgACAAMAAAACABEAAgACAAMAAAADABEAAgAIAAEAAAAEABEAAgAIAAEAAAAFABEAAgADAAEAAAAKABEAAgABAAEAAAALABEAAgAIAAEAAAAMABEAAgADAAMAAAANABMAAgACAAEAAAAOABIAAgABAAIAAAAOABEAAgABAAIAAAAOABAAAgABAAIAAAAOAA8AAgABAAIAAAAOAA4AAgABAAIAAAAOAA0AAgABAAIAAAAOAAwAAgABAAIAAAAOAAsAAgABAAIAAAAOAAoAAgABAAIAAAAOAAkAAgABAAIAAAAOAAgAAgABAAIAAAAAABMAAgADAAIAAAAMABAAAgAFAAQAAAAKAA8AAgADAAMAAAAJAA8AAgAIAAEAAAAGAA8AAgAIAAEAAAAFAA8AAgABAAMAAAAIAA0AAgADAAMAAAAHAA0AAgAHAAEAAAAFAAYAAgACAAMAAAAJAAYAAgACAAMAAAAIAAYAAgACAAMAAAAEAAYAAgACAAMAAAACAA8AAgAFAAQAAAACABAAAgADAAIAAAAFABIAAgABAAMAAAAKABIAAgADAAMAAAAGABIAAgAIAAEAAAAHABIAAgAIAAEAAAAIABIAAgAIAAEAAAAJABIAAgAIAAEAAAAEABQAAgACAAEAAAAFABQAAgACAAEAAAAGABQAAgACAAEAAAAHABQAAgACAAEAAAAIABQAAgACAAEAAAAJABQAAgACAAEAAAAKABQAAgACAAEAAAALABQAAgACAAEAAAAAABQAAgADAAIAAAADABQAAgABAAIAAAAGAAYAAgACAAMAAAAKAAYAAgACAAMAAAAFAAgAAgAFAAEAAAAJAAgAAgAFAAEAAAAIAA8AAgAIAAEAAAAHAA8AAgAIAAEAAAABABAAAgACAAEAAAAMAAYAAgACAAIAAAAMAAUAAgACAAIAAAALAAYAAgALAAcAAAALAAUAAgACAAIAAAANAAUAAgACAAIAAAANAAYAAgACAAIAAAAHAAYAAgANAAYAAAAAABAAAgAPAAMAAAAAABEAAgAPAAcAAAAMABQAAgALAAMAAAAOABMAAgALAAMAAAABAAcAAgAPAAcAAAADAAYAAgAPAAcAAAAOAAcAAgALAAcAAAA=")
+tile_set = ExtResource("2_qhddp")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_8v3ng")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_yretr")]
+position = Vector2(128, 1184)
+rotation = 1.5707964
+scale = Vector2(4, 8.1)
+to_level_path = "uid://biqdhyqxc8ik4"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_yretr")]
+position = Vector2(-32, 640)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://bt5bnysw7wsfs"
+to_spawn_location_with_index = 1
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(512, -128)
+curve = SubResource("Curve2D_gojgs")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(288, 448)
+rotates = false
+loop = false
+
+[node name="Door6" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_8v3ng")]
+script = ExtResource("8_yretr")
+movement_path = NodePath("..")
+movement_speed = 250.0
+
+[node name="FloorSwitch" parent="." instance=ExtResource("9_yretr")]
+position = Vector2(480, 640)
+
+[node name="Beehive" parent="." instance=ExtResource("5_cy6g2")]
+position = Vector2(96, 784)
+spawn_bee_every_x_seconds = 2.5
+max_spawn_bees = 4
+
+[node name="Gyser" parent="." instance=ExtResource("6_iues0")]
+position = Vector2(160, 672)
+shoot_water_every_x_seconds = 2.0
+max_boost_power = 2200.0
+min_boost_power = 800.0
+gyser_shoot_water_timer_offset = 0.5
+
+[node name="Gyser2" parent="." instance=ExtResource("6_iues0")]
+position = Vector2(608, 736)
+shoot_water_every_x_seconds = 2.0
+gyser_shoot_water_timer_offset = 1.0
+
+[node name="Gyser3" parent="." instance=ExtResource("6_iues0")]
+position = Vector2(288, 864)
+shoot_water_every_x_seconds = 2.0
+max_boost_power = 2700.0
+min_boost_power = 700.0
+gyser_shoot_water_timer_offset = 0.7
+
+[node name="Gyser4" parent="." instance=ExtResource("6_iues0")]
+position = Vector2(736, 864)
+shoot_water_every_x_seconds = 2.0
+max_boost_power = 3200.0
+min_boost_power = 1100.0
+gyser_shoot_water_timer_offset = 1.2
+
+[node name="MushroomMan" parent="." instance=ExtResource("10_gojgs")]
+position = Vector2(512, 928)
+
+[node name="Mushroom" parent="." instance=ExtResource("11_iues0")]
+position = Vector2(288, 1056)
+
+[node name="Mushroom3" parent="." instance=ExtResource("11_iues0")]
+position = Vector2(672, 352)
+
+[node name="Mushroom2" parent="." instance=ExtResource("11_iues0")]
+position = Vector2(352, 480)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="FloorSwitch" to="Path2D/PathFollow2D/Door6" method="_on_switch_flipped_on"]

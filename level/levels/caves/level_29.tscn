@@ -26,7 +26,7 @@ spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 position = Vector2(32, 672)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(544, 160)
+position = Vector2(1056, -352)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)

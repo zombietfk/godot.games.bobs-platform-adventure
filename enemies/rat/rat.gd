@@ -50,11 +50,6 @@ func _physics_process(delta: float) -> void:
 				0.3
 			);
 
-func _on_attack_area_entered(body: Node2D)->void:
-	if body is Player:
-		print((global_position - body.global_position).normalized());
-		
-
 func _flip_direction()->void:
 	move_speed = -move_speed;
 	scale.x = -scale.x;

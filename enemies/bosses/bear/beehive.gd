@@ -6,17 +6,21 @@ extends CharacterBody2D
 @export var spawn_bee_every_x_seconds: float = 5;
 @export var max_spawn_bees: int = 3;
 @export var bee_scene: PackedScene;
+@export var optional_activation_area: Area2D;
+@onready var animation_player: AnimationPlayer = $AnimationPlayer;
 var _bees_spawned = 0;
 var _c_spawn_bee_timer = 0;
 var _is_being_destroyed = false;
 
 signal on_destroy();
+signal on_knocked_down();
 
 func _ready() -> void:
 	pass;
 
 func _on_player_enter_area2D(body: Node2D) -> void:
 	if !is_falling and body is Player:
+		on_knocked_down.emit();
 		is_falling = true;
 
 func _on_boss_bear_area_enter(body: Node2D) -> void:
@@ -26,14 +30,27 @@ func _on_boss_bear_area_enter(body: Node2D) -> void:
 
 func _process(delta: float) -> void:
 	_c_spawn_bee_timer += delta;
-	if _c_spawn_bee_timer > spawn_bee_every_x_seconds and _bees_spawned < max_spawn_bees:
+	var is_active = true;
+	if optional_activation_area and !optional_activation_area.overlaps_body(Main.instance.player):
+		is_active = false;
+	if (_c_spawn_bee_timer > spawn_bee_every_x_seconds and 
+		_bees_spawned < max_spawn_bees and
+		is_active and
+		!is_falling and
+		!_is_being_destroyed
+	):
 		_c_spawn_bee_timer = 0;
+		_bees_spawned += 1;
+		if !animation_player.is_playing():
+			animation_player.play("sway");
+		await get_tree().create_timer(1).timeout;
+		if is_falling or _is_being_destroyed:
+			return;
 		var bee: Bee = bee_scene.instantiate();
-		on_destroy.connect(bee.gib_and_kill);
+		on_knocked_down.connect(bee.gib_and_kill);
 		bee.on_death.connect(_reduce_bees_spawned_counter);
 		bee.global_position = global_position;
 		Main.instance.level_instance.add_child(bee);
-		_bees_spawned += 1;
 	if is_falling and is_on_floor():
 		is_falling = false;
 		_free_after_x_seconds(2.0);

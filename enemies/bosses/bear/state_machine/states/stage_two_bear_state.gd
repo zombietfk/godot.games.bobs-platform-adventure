@@ -13,12 +13,28 @@ var _jump_strength = -600;
 var _jump_count = 0;
 var _c_time = 0;
 
+var _beehive_difficulty_by_bear_lives_remaining = [
+	{
+		"spawn_bee_every_x_seconds" : 0.15,
+		"max_spawn_bees": 10,
+	},
+	{
+		"spawn_bee_every_x_seconds" : 0.3,
+		"max_spawn_bees": 5,
+	},
+	{
+		"spawn_bee_every_x_seconds" : 0.75,
+		"max_spawn_bees": 2,
+	},
+];
+
 func enter(_from: AbstractState)->void:
 	cloud_platform.enable();
 	animated_sprite.animation = "running";
 	_already_used_spawn_point.clear();
 	_jump_count = 0;
 	_c_time = 0;
+	bear.velocity = Vector2.ZERO;
 
 func exit(_to: AbstractState)->void:
 	pass;
@@ -37,7 +53,12 @@ func physics_process(delta: float)->void:
 		animated_sprite.animation = "running";
 		NegativeScaleUtil.set_emulated_flip_to_negative_x_scale(bear, sign(x_distance_to_marker));
 		var direction = sign(x_distance_to_marker);
-		bear.velocity = direction * _move_speed * Vector2.RIGHT;
+		bear.velocity += direction * _move_speed * delta * Vector2.RIGHT;
+		bear.velocity.x = clamp(
+			bear.velocity.x,
+			-_move_speed,
+			_move_speed
+		);
 	else:
 		bear.velocity.x = 0;
 		bear.global_position.x = middle_stage_marker.global_position.x;
@@ -59,4 +80,7 @@ func _summon_beehive()->void:
 		pathed_beehive.global_position = beehive_spawn_points.pick_random().global_position;
 		Main.instance.level_instance.add_child(pathed_beehive);
 		var beehive: Beehive = pathed_beehive.find_child("Beehive");
+		var difficulty_adjustment = _beehive_difficulty_by_bear_lives_remaining[bear.lives - 1];
+		beehive.spawn_bee_every_x_seconds = difficulty_adjustment["spawn_bee_every_x_seconds"];
+		beehive.max_spawn_bees = difficulty_adjustment["max_spawn_bees"];
 		beehive.on_destroy.connect(_summon_beehive);

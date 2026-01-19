@@ -102,7 +102,6 @@ shape = SubResource("CircleShape2D_35i14")
 libraries = {
 &"": SubResource("AnimationLibrary_0dlvn")
 }
-autoplay = "sway"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_player_enter_area2D"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_boss_bear_area_enter"]

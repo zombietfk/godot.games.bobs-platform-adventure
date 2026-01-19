@@ -23,7 +23,6 @@ func _physics_process(delta: float) -> void:
 			player_local_to_rotated_pivot.x *
 			player_local_to_rotated_pivot.y
 		);
-		print(player_local_to_pivot.length());
 		if rotation_direction_sign != 0:
 			_rotation_speed = rotation_direction_sign * player_local_to_pivot.length() * rotation_sensitivity
 		else:

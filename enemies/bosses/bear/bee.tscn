@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgh3te1rg0qr2"]
+[gd_scene load_steps=9 format=3 uid="uid://cgh3te1rg0qr2"]
 
 [ext_resource type="Texture2D" uid="uid://cwd4ddl4d4oy3" path="res://enemies/bosses/bear/bee_sprite.png" id="1_k25c4"]
 [ext_resource type="Script" uid="uid://cn7dm4lcticbi" path="res://enemies/bosses/bear/bee.gd" id="1_uk8xb"]
@@ -10,15 +10,36 @@ radius = 6.0
 atlas = ExtResource("1_k25c4")
 region = Rect2(8, 8, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk8xb"]
+atlas = ExtResource("1_k25c4")
+region = Rect2(40, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42qhd"]
+atlas = ExtResource("1_k25c4")
+region = Rect2(72, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onoon"]
+atlas = ExtResource("1_k25c4")
+region = Rect2(40, 8, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_35i14"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wqvuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk8xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42qhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onoon")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 18.0
 }]
 
 [node name="Bee" type="CharacterBody2D"]
@@ -32,6 +53,8 @@ shape = SubResource("CircleShape2D_a0nqb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_35i14")
+autoplay = "default"
+frame_progress = 0.28876364
 
 [node name="Area2D" type="Area2D" parent="."]
 

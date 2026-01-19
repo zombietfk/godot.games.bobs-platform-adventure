@@ -5,7 +5,7 @@ extends AbstractEnemy;
 @export var travel_speed: float = 175;
 var _travel_direction: Vector2;
 var _brownian_variance: Vector2 = Vector2(0.01, 0.01);
-var _has_stung = false;
+var _is_dying = false;
 
 func _ready() -> void:
 	_travel_direction = (
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	));
 
 func _physics_process(delta: float) -> void:
-	if _has_stung:
+	if _is_dying:
 		rotation_degrees += 90 * delta;
 		velocity += get_gravity() * delta;
 	else:
@@ -40,6 +40,11 @@ func _free_after_x_seconds(x: float)->void:
 	queue_free();
 
 func _on_player_enter_bee_attack_area(body: Node2D)->void:
-	if body is Player and !_has_stung:
+	if body is Player and !_is_dying:
 		body.damage(1, Vector2.ZERO, Vector2.ZERO, 0);
-		_has_stung = true;
+		_is_dying = true;
+
+func gib_and_kill()->void:
+	_is_dying = true;
+	await get_tree().create_timer(5).timeout;
+	queue_free();

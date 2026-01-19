@@ -13,8 +13,6 @@ func enter(_from: AbstractState)->void:
 		0,
 		body.global_position.y - Main.instance.player.global_position.y + body.get_gravity().y * 0.5,
 	);
-	print('Diff ', body.global_position.y - Main.instance.player.global_position.y)
-	print('Jumping ', _jump_impulse);
 	body.velocity = _jump_impulse;
 
 func exit(_to: AbstractState)->void:
