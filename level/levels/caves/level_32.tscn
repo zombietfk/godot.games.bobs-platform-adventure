@@ -37,7 +37,7 @@ position = Vector2(928, 672)
 [node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("2_rmubv")]
 position = Vector2(992, 640)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/caves/level_30.tscn"
+to_level_path = "uid://bf61ovcgft1ic"
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
@@ -76,7 +76,7 @@ rotates = false
 [node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("8_goq3y")]
 position = Vector2(0, -2.4667283e-05)
 rotation = 3.1415925
-floating_displacement = 128
+floating_displacement = 96
 on_land_displacement = 0
 randomize_inital_displacement = false
 start_disabled = true
@@ -129,5 +129,6 @@ movement_path = NodePath("..")
 movement_speed = 250.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="on_death" from="Bear" to="Path2D2/PathFollow2D/Door6" method="_on_switch_flipped_on"]
 
 [editable path="Bear"]

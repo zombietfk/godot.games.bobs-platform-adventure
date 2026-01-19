@@ -5,9 +5,9 @@ var _passes_to_make = 1;
 var _passes_made = 0;
 
 var lives_remaining_passes_to_make = [
-	20,
-	14,
 	8,
+	7,
+	6,
 ];
 
 func enter(_from: AbstractState)->void:

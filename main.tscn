@@ -184,6 +184,8 @@ position = Vector2(32, 284)
 camera = NodePath("Camera2D")
 player_heath_ui = NodePath("../GameUI/UI/PlayerHealthUI")
 lives_count_label_ui = NodePath("../GameUI/UI/LivesCount")
+max_health = 6
+current_health = 6
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0

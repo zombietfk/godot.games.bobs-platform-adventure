@@ -42,9 +42,10 @@ func _free_after_x_seconds(x: float)->void:
 func _on_player_enter_bee_attack_area(body: Node2D)->void:
 	if body is Player and !_is_dying:
 		body.damage(1, Vector2.ZERO, Vector2.ZERO, 0);
-		_is_dying = true;
+		gib_and_kill();
 
 func gib_and_kill()->void:
 	_is_dying = true;
+	on_death.emit();
 	await get_tree().create_timer(5).timeout;
 	queue_free();

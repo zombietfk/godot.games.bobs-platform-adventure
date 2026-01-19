@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var falling_rotation_speed = 180;
 @export var spawn_bee_every_x_seconds: float = 5;
 @export var max_spawn_bees: int = 3;
+@export var wait_before_first_bee_spawn: float = 0.0;
 @export var bee_scene: PackedScene;
 @export var optional_activation_area: Area2D;
 @onready var animation_player: AnimationPlayer = $AnimationPlayer;
@@ -16,12 +17,16 @@ signal on_destroy();
 signal on_knocked_down();
 
 func _ready() -> void:
-	pass;
+	_c_spawn_bee_timer -= wait_before_first_bee_spawn;
 
-func _on_player_enter_area2D(body: Node2D) -> void:
-	if !is_falling and body is Player:
+func knockdown_beehive() -> void:
+	if !is_falling:
 		on_knocked_down.emit();
 		is_falling = true;
+
+func _on_player_enter_area2D(body: Node2D) -> void:
+	if body is Player:
+		knockdown_beehive();
 
 func _on_boss_bear_area_enter(body: Node2D) -> void:
 	if is_falling and body is Bear:

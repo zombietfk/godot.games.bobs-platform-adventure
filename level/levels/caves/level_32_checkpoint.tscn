@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=4 uid="uid://bf61ovcgft1ic"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_e5ogh"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_av7h0"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_jr080"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_eqbda"]
+[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/checkpoint_flagpole.tscn" id="5_j3roy"]
+
+[node name="Level_32_checkpoint" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_e5ogh")
+level_binding_box = Rect2(0, -832, 1088, 832)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(96, 224)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(672, 224)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAABAAcAAgACAAEAAAACAAcAAgACAAEAAAADAAcAAgACAAEAAAAEAAcAAgACAAEAAAAFAAcAAgACAAEAAAAGAAcAAgACAAEAAAAHAAcAAgACAAEAAAAIAAcAAgACAAEAAAAJAAcAAgACAAEAAAAKAAcAAgACAAEAAAABAAQAAgACAAMAAAACAAQAAgACAAMAAAADAAQAAgADAAMAAAAIAAQAAgABAAMAAAAJAAQAAgACAAMAAAAKAAQAAgACAAMAAAADAAIAAgADAAIAAAADAAMAAgADAAIAAAAEAAEAAgACAAMAAAAFAAEAAgACAAMAAAAGAAEAAgACAAMAAAAHAAEAAgACAAMAAAAIAAIAAgABAAIAAAAIAAMAAgABAAIAAAA=")
+tile_set = ExtResource("2_av7h0")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_jr080")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_eqbda")]
+position = Vector2(736, 192)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://ikv58wb746ny"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_eqbda")]
+position = Vector2(32, 192)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://biqdhyqxc8ik4"
+to_spawn_location_with_index = 1
+
+[node name="CheckpointFlagpole" parent="." instance=ExtResource("5_j3roy")]
+z_index = -1
+position = Vector2(384, 237)
+level_path = "uid://bf61ovcgft1ic"
+
+[connection signal="ready" from="." to="." method="_on_ready"]

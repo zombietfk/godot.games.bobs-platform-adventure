@@ -16,17 +16,19 @@ var _c_time = 0;
 var _beehive_difficulty_by_bear_lives_remaining = [
 	{
 		"spawn_bee_every_x_seconds" : 0.15,
-		"max_spawn_bees": 10,
+		"max_spawn_bees": 3,
 	},
 	{
 		"spawn_bee_every_x_seconds" : 0.3,
-		"max_spawn_bees": 5,
+		"max_spawn_bees": 1,
 	},
 	{
 		"spawn_bee_every_x_seconds" : 0.75,
-		"max_spawn_bees": 2,
+		"max_spawn_bees": 1,
 	},
 ];
+
+var beehives_to_summon_by_lives_remaining = [ 1, 2, 3 ]
 
 func enter(_from: AbstractState)->void:
 	cloud_platform.enable();
@@ -65,7 +67,10 @@ func physics_process(delta: float)->void:
 		animated_sprite.animation = "forward";
 		if bear.is_on_floor():
 			if _jump_count == 1:
-				_summon_beehive();
+				var summoned_count = beehives_to_summon_by_lives_remaining[bear.lives - 1];
+				while summoned_count > 0:
+					_summon_beehive();
+					summoned_count -= 1;
 			bear.velocity.y = _jump_strength;
 			_jump_count += 1;
 	bear.velocity += bear.get_gravity() * delta;
@@ -74,6 +79,7 @@ func _summon_beehive()->void:
 	if !bear.is_beehived:
 		var pathed_beehive: Node2D = beehive_scene.instantiate();
 		var spawn_point = beehive_spawn_points.pick_random();
+		print(_already_used_spawn_point.size());
 		while _already_used_spawn_point.has(spawn_point):
 			spawn_point = beehive_spawn_points.pick_random();
 		_already_used_spawn_point.append(spawn_point);
@@ -83,4 +89,11 @@ func _summon_beehive()->void:
 		var difficulty_adjustment = _beehive_difficulty_by_bear_lives_remaining[bear.lives - 1];
 		beehive.spawn_bee_every_x_seconds = difficulty_adjustment["spawn_bee_every_x_seconds"];
 		beehive.max_spawn_bees = difficulty_adjustment["max_spawn_bees"];
-		beehive.on_destroy.connect(_summon_beehive);
+		beehive.wait_before_first_bee_spawn = 1.5;
+		beehive.on_destroy.connect(func():
+			_summon_beehive();
+			_already_used_spawn_point.remove_at(
+				_already_used_spawn_point.find(beehive)
+			);
+		);
+		bear.on_hit_by_beehive.connect(beehive.knockdown_beehive);

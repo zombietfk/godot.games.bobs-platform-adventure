@@ -46,6 +46,7 @@ animations = [{
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_uk8xb")
+travel_speed = 250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a0nqb")
@@ -54,7 +55,7 @@ shape = SubResource("CircleShape2D_a0nqb")
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_35i14")
 autoplay = "default"
-frame_progress = 0.28876364
+frame_progress = 0.5780802
 
 [node name="Area2D" type="Area2D" parent="."]
 

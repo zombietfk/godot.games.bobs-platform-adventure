@@ -20,9 +20,9 @@ func _on_attack_area_enter(body: Node2D)->void:
 		);
 
 func gib_and_kill() -> void:
+	var original_scale = scale;
 	for i in 100:
 		Gib.spawn(global_position, Vector2(sin((i * 4) / 50.0), -1));
-		scale.x -= 0.01;
-		scale.y += 0.01;
+		scale = lerp(original_scale, Vector2.ZERO, i / 100.0);
 		await get_tree().create_timer(0.05).timeout;
 	super.gib_and_kill();

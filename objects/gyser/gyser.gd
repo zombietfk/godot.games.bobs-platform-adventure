@@ -34,6 +34,6 @@ func _shoot_water()->void:
 	_is_water_shooting = true;
 	water_effect_particle_effect.emitting = true;
 	lift_effect_animation_player.play("ResizeLiftArea");
-	await water_effect_particle_effect.finished;
+	await get_tree().create_timer(water_effect_particle_effect.lifetime * 0.85).timeout;
 	lift_effect_animation_player.play("RESET");
 	_is_water_shooting = false;

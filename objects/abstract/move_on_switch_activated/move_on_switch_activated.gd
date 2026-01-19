@@ -6,10 +6,10 @@ extends Node2D;
 
 var _is_switched_on = false;
 
-func _on_switch_flipped_on(_by: Node2D,) -> void:
+func _on_switch_flipped_on(_by: Node2D = null) -> void:
 	_is_switched_on = true;
 
-func _on_switch_flipped_off(_by: Node2D) -> void:
+func _on_switch_flipped_off(_by: Node2D = null) -> void:
 	_is_switched_on = false;
 
 func _change_speed(_by: Node2D, to: float) -> void:

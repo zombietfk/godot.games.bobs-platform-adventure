@@ -27,7 +27,7 @@ spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), nu
 camera_zoom_to = Vector2(0.9, 0.9)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-96, 480)
+position = Vector2(-160, 480)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(608, -672)
@@ -46,7 +46,7 @@ scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_31.tscn"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_wqvuy")]
-position = Vector2(-160, 448)
+position = Vector2(-224, 448)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://cr8yld5cr0tw6"
 to_spawn_location_with_index = 1

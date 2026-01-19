@@ -27,7 +27,7 @@ spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 position = Vector2(32, 672)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1248, 672)
+position = Vector2(128, 1120)
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(0, -192)
@@ -41,7 +41,7 @@ tile_set = ExtResource("3_8v3ng")
 position = Vector2(128, 1184)
 rotation = 1.5707964
 scale = Vector2(4, 8.1)
-to_level_path = "uid://biqdhyqxc8ik4"
+to_level_path = "uid://dtv20uql2kyac"
 
 [node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_yretr")]
 position = Vector2(-32, 640)
