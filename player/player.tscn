@@ -104,7 +104,7 @@ _data = {
 &"floating_alert": SubResource("Animation_g1dw6")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_state_machine", "crush_check_raycast_up", "crush_check_raycast_down", "alert_notifcation")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_state_machine", "crush_check_raycast_up", "crush_check_raycast_down", "crush_check_raycast_left", "crush_check_raycast_right", "alert_notifcation")]
 collision_mask = 457
 floor_max_angle = 1.2217305
 floor_snap_length = 10.0
@@ -115,6 +115,8 @@ script = ExtResource("1_rkbax")
 movement_state_machine = NodePath("StateMachines/MovementStateMachine")
 crush_check_raycast_up = NodePath("CrushCheckUpCast")
 crush_check_raycast_down = NodePath("CrushCheckDownCast")
+crush_check_raycast_left = NodePath("CrushCheckLeftCast")
+crush_check_raycast_right = NodePath("CrushCheckRightCast")
 alert_notifcation = NodePath("AlertNotification")
 
 [node name="StateMachines" type="Node" parent="."]
@@ -191,10 +193,18 @@ libraries = {
 }
 autoplay = "floating_alert"
 
+[node name="CrushCheckUpCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, -20)
+collision_mask = 64
+
 [node name="CrushCheckDownCast" type="RayCast2D" parent="."]
 target_position = Vector2(0, 25)
 collision_mask = 64
 
-[node name="CrushCheckUpCast" type="RayCast2D" parent="."]
-target_position = Vector2(0, -20)
+[node name="CrushCheckRightCast" type="RayCast2D" parent="."]
+target_position = Vector2(13, 0)
+collision_mask = 64
+
+[node name="CrushCheckLeftCast" type="RayCast2D" parent="."]
+target_position = Vector2(-10, 0)
 collision_mask = 64

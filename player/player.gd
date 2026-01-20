@@ -16,6 +16,8 @@ const VELOCITY_X_MIN = 10;
 @export var lives = 50;
 @export var crush_check_raycast_up: RayCast2D;
 @export var crush_check_raycast_down: RayCast2D;
+@export var crush_check_raycast_left: RayCast2D;
+@export var crush_check_raycast_right: RayCast2D;
 @export var alert_notifcation: Sprite2D;
 
 # SIGNALSs
@@ -40,6 +42,8 @@ func _process(_delta: float) -> void:
 	if is_out_of_bounds() or current_health <= 0:
 		on_kill.emit();
 	if crush_check_raycast_up.is_colliding() and crush_check_raycast_down.is_colliding():
+		on_kill.emit();
+	if crush_check_raycast_left.is_colliding() and crush_check_raycast_right.is_colliding():
 		on_kill.emit();
 	lives_count_label_ui.text = var_to_str(lives);
 	player_heath_ui.update_health_bar(current_health, max_health);
