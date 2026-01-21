@@ -1,0 +1,158 @@
+[gd_scene load_steps=15 format=3 uid="uid://yulxjviy6kcd"]
+
+[ext_resource type="Script" uid="uid://vl20873o1c7u" path="res://enemies/bat/bat.gd" id="1_4uhr5"]
+[ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_7jse1"]
+[ext_resource type="Script" uid="uid://dbav1fjuqmgc4" path="res://enemies/bat/state_machine/states/bat_gliding_state.gd" id="4_47mlw"]
+[ext_resource type="Script" uid="uid://dgv0nos0v06qp" path="res://enemies/bat/state_machine/states/bat_flapping_state.gd" id="5_o5v3e"]
+[ext_resource type="Texture2D" uid="uid://wwajk3e0kbue" path="res://enemies/bat/bat.png" id="6_55std"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf5cq"]
+atlas = ExtResource("6_55std")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6urb"]
+atlas = ExtResource("6_55std")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0ltb"]
+atlas = ExtResource("6_55std")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6gqkr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf5cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6urb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0ltb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6urb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf5cq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dy0p3"]
+radius = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjrhy"]
+radius = 17.0
+height = 56.0
+
+[sub_resource type="Animation" id="Animation_ckyte"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.49803922)]
+}
+
+[sub_resource type="Animation" id="Animation_kjrhy"]
+resource_name = "awaken"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.225),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-4, 0), Vector2(4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.49803922), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ckyte"]
+_data = {
+&"RESET": SubResource("Animation_ckyte"),
+&"awaken": SubResource("Animation_kjrhy")
+}
+
+[node name="Bat" type="CharacterBody2D" node_paths=PackedStringArray("attack_shape_cast")]
+collision_layer = 2
+collision_mask = 66
+script = ExtResource("1_4uhr5")
+attack_shape_cast = NodePath("AttackShapeCast2D")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
+script = ExtResource("2_7jse1")
+inital_state = NodePath("Flap")
+
+[node name="Glide" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("4_47mlw")
+move_speed = 150.0
+body = NodePath("../..")
+
+[node name="Flap" type="Node" parent="StateMachine" node_paths=PackedStringArray("flying_animated_sprite", "body")]
+script = ExtResource("5_o5v3e")
+flying_animated_sprite = NodePath("../../Flying")
+body = NodePath("../..")
+
+[node name="Flying" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6gqkr")
+frame_progress = 0.6643059
+
+[node name="AttackShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
+position = Vector2(-2, 4)
+shape = SubResource("CircleShape2D_dy0p3")
+target_position = Vector2(0, 0)
+
+[node name="AttackShapeCast2D" type="ShapeCast2D" parent="AttackShapeCast2D"]
+visible = false
+position = Vector2(-2, 4)
+shape = SubResource("CircleShape2D_dy0p3")
+target_position = Vector2(0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_kjrhy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+libraries = {
+&"": SubResource("AnimationLibrary_ckyte")
+}

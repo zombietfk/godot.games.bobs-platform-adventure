@@ -7,6 +7,7 @@ extends Node2D;
 @export var camera_zoom_to: Vector2 = Vector2(1.0, 1.0);
 @export var camera_zoom_speed = 0.1;
 @export var pathfinding_tilemap: TileMapLayer;
+@export var camera_offset: Vector2 = Vector2.ZERO;
 var _camera_zoom_timer: float = 2.0;
 var _c_camera_zoom_timer: float = 0;
 var astar_pathfinding_grid: AStarGrid2D;
@@ -20,6 +21,7 @@ func _ready()->void:
 	if pathfinding_tilemap:
 		astar_pathfinding_grid = AStarGrid2D.new()
 		_setup_astar();
+	Main.instance.player.camera.position = camera_offset;
 
 func _process(delta: float) -> void:
 	if Main.instance.player.camera.zoom != camera_zoom_to:

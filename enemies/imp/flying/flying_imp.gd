@@ -1,5 +1,5 @@
 class_name FlyingImp;
-extends CharacterBody2D;
+extends AbstractEnemy;
 
 var floating_displacement_timer = 0.0;
 var floating_displacement_magnitude = 0.1;

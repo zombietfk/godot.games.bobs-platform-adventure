@@ -81,5 +81,5 @@ static func load_level(
 	player.global_position = level.spawn_locations[spawn_index].global_position;
 
 func _process(_delta: float) -> void:
-	if Input.is_physical_key_pressed(KEY_H):
-		$GameUI.visible = false;
+	if Input.is_action_just_pressed("ui_text_backspace"):
+		$GameUI/UI/CheatBox.visible = !$GameUI/UI/CheatBox.visible;
