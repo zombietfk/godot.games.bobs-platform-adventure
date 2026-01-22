@@ -1,0 +1,310 @@
+[gd_scene load_steps=15 format=4 uid="uid://bak66jhe63jvf"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_yo5r5"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="2_v0t2x"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="3_lbcks"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="4_uxq4s"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="5_sitof"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="6_3wk2w"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="7_3wk2w"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="7_swc31"]
+
+[sub_resource type="Curve2D" id="Curve2D_swc31"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, -384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_sitof"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, -64)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_3wk2w"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, -192)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_551i5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 128, 256)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_phddu"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 320)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_yg7ny"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, -576)
+}
+point_count = 2
+
+[node name="Level_36" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_yo5r5")
+level_binding_box = Rect2(128, -192, 1216, 960)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(160, 288)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1024, 192)
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("2_v0t2x")]
+position = Vector2(1248, 832)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_37.tscn"
+
+[node name="ToPreviousLevelTeleportZone2" parent="." instance=ExtResource("2_v0t2x")]
+position = Vector2(96, 256)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://dwfu3yhlcyl5b"
+to_spawn_location_with_index = 1
+
+[node name="Spike" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(288, 672)
+
+[node name="Spike2" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(320, 672)
+
+[node name="Spike3" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(352, 672)
+
+[node name="Spike4" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(384, 672)
+
+[node name="Spike5" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(416, 672)
+
+[node name="Spike6" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(448, 672)
+
+[node name="Spike7" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(480, 672)
+
+[node name="Spike8" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(608, 416)
+
+[node name="Spike9" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(640, 416)
+
+[node name="Spike10" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(672, 416)
+
+[node name="Spike11" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(704, 416)
+
+[node name="Spike12" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(736, 416)
+
+[node name="Spike13" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(768, 416)
+
+[node name="Spike14" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(800, 416)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(544, 416)
+curve = SubResource("Curve2D_swc31")
+script = ExtResource("6_3wk2w")
+speed = 150.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(0, 256)
+rotates = false
+loop = false
+
+[node name="Block" type="TileMapLayer" parent="Path2D/PathFollow2D"]
+position = Vector2(32, -32)
+tile_map_data = PackedByteArray("AAD//wAAAgAFAAEAAAA=")
+tile_set = ExtResource("3_lbcks")
+use_kinematic_bodies = true
+
+[node name="FloorSwitch" parent="Path2D/PathFollow2D" instance=ExtResource("5_sitof")]
+position = Vector2(-32, 0)
+rotation = -1.5707964
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(864, -32)
+curve = SubResource("Curve2D_sitof")
+script = ExtResource("6_3wk2w")
+speed = 100.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(0, 256)
+rotates = false
+loop = false
+
+[node name="Block" type="TileMapLayer" parent="Path2D2/PathFollow2D"]
+position = Vector2(32, -32)
+tile_map_data = PackedByteArray("AAD//wAAAgAFAAEAAAA=")
+tile_set = ExtResource("3_lbcks")
+use_kinematic_bodies = true
+
+[node name="FloorSwitch" parent="Path2D2/PathFollow2D" instance=ExtResource("5_sitof")]
+position = Vector2(-32, 0)
+rotation = -1.5707964
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(1184, 416)
+curve = SubResource("Curve2D_3wk2w")
+script = ExtResource("6_3wk2w")
+speed = 125.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+position = Vector2(0, 256)
+rotates = false
+loop = false
+
+[node name="Block" type="TileMapLayer" parent="Path2D3/PathFollow2D"]
+position = Vector2(32, -32)
+tile_map_data = PackedByteArray("AAD//wAAAgAFAAEAAAA=")
+tile_set = ExtResource("3_lbcks")
+use_kinematic_bodies = true
+
+[node name="FloorSwitch" parent="Path2D3/PathFollow2D" instance=ExtResource("5_sitof")]
+position = Vector2(-32, 0)
+rotation = -1.5707964
+
+[node name="Path2D4" type="Path2D" parent="."]
+position = Vector2(992, -160)
+curve = SubResource("Curve2D_551i5")
+script = ExtResource("6_3wk2w")
+speed = 40.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+position = Vector2(0, 256)
+rotates = false
+loop = false
+
+[node name="Block" type="TileMapLayer" parent="Path2D4/PathFollow2D"]
+position = Vector2(32, -32)
+tile_map_data = PackedByteArray("AAD//wAAAgAFAAEAAAA=")
+tile_set = ExtResource("3_lbcks")
+use_kinematic_bodies = true
+
+[node name="FloorSwitch" parent="Path2D4/PathFollow2D" instance=ExtResource("5_sitof")]
+position = Vector2(0, 32)
+rotation = 3.1415927
+
+[node name="Path2D5" type="Path2D" parent="."]
+position = Vector2(864, 32)
+curve = SubResource("Curve2D_phddu")
+script = ExtResource("7_3wk2w")
+movement_speed = 640.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
+position = Vector2(0, 256)
+rotates = false
+loop = false
+
+[node name="Block" type="TileMapLayer" parent="Path2D5/PathFollow2D"]
+position = Vector2(32, -32)
+tile_map_data = PackedByteArray("AAD//wAAAgAFAAEAAAA=")
+tile_set = ExtResource("3_lbcks")
+use_kinematic_bodies = true
+
+[node name="Path2D6" type="Path2D" parent="."]
+position = Vector2(864, 352)
+curve = SubResource("Curve2D_phddu")
+script = ExtResource("7_3wk2w")
+movement_speed = 640.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D6"]
+position = Vector2(0, 256)
+rotates = false
+loop = false
+
+[node name="Block" type="TileMapLayer" parent="Path2D6/PathFollow2D"]
+position = Vector2(32, -32)
+tile_map_data = PackedByteArray("AAD//wAAAgAFAAEAAAA=")
+tile_set = ExtResource("3_lbcks")
+use_kinematic_bodies = true
+
+[node name="Path2D7" type="Path2D" parent="."]
+position = Vector2(736, 352)
+curve = SubResource("Curve2D_phddu")
+script = ExtResource("7_3wk2w")
+movement_speed = 640.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7"]
+position = Vector2(0, 256)
+rotates = false
+loop = false
+
+[node name="Block" type="TileMapLayer" parent="Path2D7/PathFollow2D"]
+position = Vector2(32, -32)
+tile_map_data = PackedByteArray("AAD//wAAAgAFAAEAAAA=")
+tile_set = ExtResource("3_lbcks")
+use_kinematic_bodies = true
+
+[node name="Spike15" parent="Path2D7/PathFollow2D" instance=ExtResource("7_swc31")]
+position = Vector2(192, 70)
+scale = Vector2(0.8, 0.8)
+
+[node name="Spike16" parent="Path2D7/PathFollow2D" instance=ExtResource("7_swc31")]
+position = Vector2(224, 70)
+scale = Vector2(0.8, 0.8)
+
+[node name="Spike17" parent="Path2D7/PathFollow2D" instance=ExtResource("7_swc31")]
+position = Vector2(256, 70)
+scale = Vector2(0.8, 0.8)
+
+[node name="Spike18" parent="Path2D7/PathFollow2D" instance=ExtResource("7_swc31")]
+position = Vector2(288, 70)
+scale = Vector2(0.8, 0.8)
+
+[node name="Spike19" parent="Path2D7/PathFollow2D" instance=ExtResource("7_swc31")]
+position = Vector2(320, 70)
+scale = Vector2(0.8, 0.8)
+
+[node name="Spike20" parent="Path2D7/PathFollow2D" instance=ExtResource("7_swc31")]
+position = Vector2(353, 70)
+scale = Vector2(0.8, 0.8)
+
+[node name="Path2D8" type="Path2D" parent="."]
+position = Vector2(384, 480)
+curve = SubResource("Curve2D_yg7ny")
+script = ExtResource("7_3wk2w")
+movement_speed = 300.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8"]
+position = Vector2(0, 256)
+rotates = false
+loop = false
+
+[node name="Block" type="TileMapLayer" parent="Path2D8/PathFollow2D"]
+position = Vector2(-64, -32)
+tile_map_data = PackedByteArray("AAD//wAAAgABAAEAAAAAAAAAAgACAAEAAAABAAAAAgACAAEAAAACAAAAAgADAAEAAAD//wEAAgABAAIAAAAAAAEAAgACAAIAAAD//wIAAgABAAIAAAAAAAIAAgACAAIAAAD//wMAAgABAAIAAAAAAAMAAgACAAIAAAD//wQAAgABAAIAAAAAAAQAAgACAAIAAAD//wUAAgABAAIAAAAAAAUAAgACAAIAAAD//wYAAgABAAIAAAAAAAYAAgACAAIAAAD//wcAAgABAAIAAAAAAAcAAgACAAIAAAD//wgAAgABAAIAAAAAAAgAAgACAAIAAAD//wkAAgABAAIAAAAAAAkAAgACAAIAAAD//woAAgABAAIAAAAAAAoAAgACAAIAAAD//wsAAgABAAIAAAAAAAsAAgACAAIAAAD//wwAAgABAAMAAAAAAAwAAgACAAMAAAABAAEAAgACAAIAAAACAAEAAgADAAIAAAABAAIAAgACAAIAAAACAAIAAgADAAIAAAABAAMAAgACAAIAAAACAAMAAgADAAIAAAABAAQAAgACAAIAAAACAAQAAgADAAIAAAABAAUAAgACAAIAAAACAAUAAgADAAIAAAABAAYAAgACAAIAAAACAAYAAgADAAIAAAABAAcAAgACAAIAAAACAAcAAgADAAIAAAABAAgAAgACAAIAAAACAAgAAgADAAIAAAABAAkAAgACAAIAAAACAAkAAgADAAIAAAABAAoAAgACAAIAAAACAAoAAgADAAIAAAABAAsAAgACAAIAAAACAAsAAgADAAIAAAABAAwAAgACAAMAAAACAAwAAgADAAMAAAA=")
+tile_set = ExtResource("3_lbcks")
+use_kinematic_bodies = true
+
+[node name="Spike21" parent="." instance=ExtResource("7_swc31")]
+position = Vector2(1120, 678)
+scale = Vector2(0.8, 0.8)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAACAAgAAgACAAEAAAADAAgAAgADAAEAAAACAAUAAgACAAMAAAADAAUAAgADAAMAAAADAAQAAgADAAIAAAADAAkAAgADAAIAAAADAAMAAgADAAIAAAADAAoAAgADAAIAAAADAAsAAgADAAIAAAADAAwAAgADAAIAAAADAA0AAgADAAIAAAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAAgAAgAFAAQAAAAIAAkAAgAFAAQAAAAIAAoAAgABAAIAAAAIAAsAAgABAAIAAAAIAAwAAgAFAAQAAAAIAA0AAgAFAAQAAAAIAAUAAgAFAAQAAAAIAAYAAgAFAAQAAAAIAAcAAgAFAAQAAAAIAAQAAgAFAAQAAAAIAAMAAgAFAAMAAAADAAEAAgADAAIAAAADAAIAAgADAAIAAAAEAAAAAgACAAMAAAAFAAAAAgACAAMAAAAGAAAAAgACAAMAAAAHAAAAAgACAAMAAAAIAAAAAgAJAAUAAAAMAAAAAgAHAAUAAAANAAEAAgABAAIAAAANAAIAAgABAAIAAAANAAMAAgABAAIAAAANAAQAAgABAAIAAAANAAUAAgABAAIAAAANAAYAAgAFAAUAAAANAAgAAgAFAAMAAAANAAkAAgAFAAQAAAAJAAoAAgACAAEAAAAKAAoAAgACAAEAAAALAAoAAgACAAEAAAAMAAoAAgACAAEAAAANAAoAAgADAAIAAAAOAAUAAgAJAAUAAAASAAYAAgABAAIAAAASAAcAAgABAAIAAAASAAgAAgABAAIAAAASAAkAAgABAAIAAAASAAoAAgABAAIAAAASAAsAAgABAAIAAAASAAwAAgABAAIAAAASAA0AAgABAAIAAAAOAA4AAgAIAAEAAAAPAA4AAgAIAAEAAAAQAA4AAgAIAAEAAAARAA4AAgAIAAEAAAANAA0AAgADAAEAAAANAAsAAgADAAMAAAALAAsAAgACAAMAAAAMAAsAAgACAAMAAAAJAAsAAgACAAMAAAAKAAsAAgACAAMAAAALAA0AAgABAAEAAAAMAA0AAgACAAEAAAAIAA4AAgADAAIAAAAIAA8AAgADAAIAAAAIABAAAgADAAIAAAAJABEAAgACAAEAAAAKABEAAgACAAEAAAALABEAAgACAAEAAAAMABEAAgACAAEAAAANABEAAgACAAEAAAAOABEAAgACAAEAAAAPABEAAgACAAEAAAAQABEAAgACAAEAAAARABEAAgACAAEAAAALAA4AAgABAAMAAAAMAA4AAgACAAMAAAANAA4AAgACAAMAAAASAA4AAgACAAMAAAASABEAAgACAAEAAAAJAP//AgACAAMAAAAKAP//AgACAAMAAAALAP//AgACAAMAAAASAAUAAgABAAIAAAAPAAQAAgACAAMAAAAQAAQAAgACAAMAAAARAAQAAgACAAMAAAAOAAQAAgAPAAcAAAASAAQAAgALAAcAAAANAAAAAgALAAcAAAAMAP//AgALAAcAAAADAAAAAgAPAAcAAAAIAP//AgAPAAcAAAADAA4AAgAPAAMAAAAIABEAAgAPAAMAAAA=")
+tile_set = ExtResource("3_lbcks")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("4_uxq4s")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Path2D/PathFollow2D/FloorSwitch" to="Path2D8" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Path2D2/PathFollow2D/FloorSwitch" to="Path2D5" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Path2D3/PathFollow2D/FloorSwitch" to="Path2D7" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Path2D4/PathFollow2D/FloorSwitch" to="Path2D6" method="_on_switch_flipped_on"]

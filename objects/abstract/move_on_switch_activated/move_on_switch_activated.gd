@@ -6,6 +6,10 @@ extends Node2D;
 
 var _is_switched_on = false;
 
+func _ready()->void:
+	if !movement_path:
+		movement_path = $PathFollow2D;
+
 func _on_switch_flipped_on(_by: Node2D = null) -> void:
 	_is_switched_on = true;
 
