@@ -1,0 +1,2551 @@
+[gd_scene load_steps=13 format=4 uid="uid://cg1bqo2ggwmt4"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_3h864"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_rkqc1"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_xjhmp"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_vskja"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="5_irw12"]
+[ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="6_7h6xf"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="7_wtvq0"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="8_1fbju"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="9_rwfvt"]
+[ext_resource type="PackedScene" uid="uid://dyor0okde2rnm" path="res://enemies/imp/imp.tscn" id="10_ig47q"]
+[ext_resource type="PackedScene" uid="uid://bwm72kx7ki3v6" path="res://objects/traps/sawblade/shooter/sawblade_timed_shooter.tscn" id="11_fe2pv"]
+
+[sub_resource type="Curve2D" id="Curve2D_mq6f8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
+}
+point_count = 2
+
+[node name="Level_38" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_3h864")
+level_binding_box = Rect2(-896, -128, 1536, 896)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+camera_zoom_to = Vector2(0.7, 0.7)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-896, 800)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(1536, 800)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(192, -63)
+tile_map_data = PackedByteArray("AAD//w4AAgACAAEAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgACAAEAAAAEAA4AAgACAAEAAAD+/w4AAgACAAEAAAD+/wsAAgAIAAEAAAD//wsAAgAIAAEAAAAAAAsAAgAIAAEAAAABAAsAAgAIAAEAAAACAAsAAgACAAMAAAADAAsAAgAIAAEAAAD//wgAAgAJAAEAAAAEAAgAAgAHAAEAAAD+/wUAAgAIAAEAAAD//wUAAgAIAAEAAAAAAAUAAgAIAAEAAAABAAUAAgAIAAEAAAACAAUAAgAIAAEAAAADAAUAAgAJAAEAAAD//wIAAgAIAAEAAAAAAAIAAgAIAAEAAAABAAIAAgAIAAEAAAACAAIAAgAIAAEAAAADAAIAAgAIAAEAAAAEAAIAAgAIAAEAAAD+////AgACAAMAAAD/////AgACAAMAAAAAAP//AgACAAMAAAABAP//AgACAAMAAAAEAP//AgACAAMAAADu/wsAAgACAAMAAADu/w4AAgACAAEAAADv/wEAAgACAAIAAADv/wIAAgACAAIAAADv/wMAAgACAAIAAADv/wQAAgACAAIAAADv/wUAAgACAAIAAADv/wYAAgACAAIAAADv/wcAAgACAAIAAADv/wgAAgACAAIAAADv/wkAAgACAAIAAADv/woAAgACAAIAAADv/wsAAgACAAMAAADv/w4AAgACAAEAAADw////AgACAAIAAADw/wAAAgADAAIAAADw/wEAAgADAAIAAADw/wIAAgACAAIAAADw/wMAAgADAAIAAADw/wQAAgADAAIAAADw/wUAAgACAAIAAADw/wYAAgADAAIAAADw/wcAAgADAAIAAADw/wgAAgADAAIAAADw/wkAAgACAAIAAADw/woAAgADAAIAAADw/wsAAgACAAMAAADw/w4AAgACAAEAAADx////AgACAAMAAADx/wUAAgAIAAEAAADx/wkAAgAJAAEAAADx/wsAAgAIAAEAAADx/w4AAgACAAEAAAASAP//AgACAAMAAAASAAIAAgAIAAEAAAASAA4AAgACAAEAAAATAP//AgACAAIAAAATAAAAAgABAAIAAAATAAEAAgABAAIAAAATAAIAAgACAAIAAAATAAMAAgABAAIAAAATAAQAAgABAAIAAAATAAUAAgACAAIAAAATAAYAAgABAAIAAAATAAcAAgABAAIAAAATAAgAAgABAAIAAAATAAkAAgACAAIAAAATAAoAAgABAAIAAAATAAsAAgACAAMAAAATAA4AAgACAAEAAAAUAP//AgACAAIAAAAUAAAAAgACAAIAAAAUAAEAAgACAAIAAAAUAAIAAgACAAIAAAAUAAMAAgACAAIAAAAUAAQAAgACAAIAAAAUAAUAAgACAAIAAAAUAAYAAgACAAIAAAAUAAcAAgACAAIAAAAUAAgAAgACAAIAAAAUAAkAAgACAAIAAAAUAAoAAgACAAIAAAAUAAsAAgACAAMAAAAUAA4AAgACAAEAAAAVAAsAAgACAAMAAAAVAA4AAgACAAEAAAAFAP//AgACAAMAAAAGAP//AgACAAMAAAAHAP//AgACAAMAAAAIAP//AgACAAMAAAAJAP//AgACAAMAAAAKAP//AgACAAMAAAALAP//AgACAAMAAAAMAP//AgACAAMAAAANAP//AgACAAMAAAAOAP//AgACAAMAAAAPAP//AgACAAMAAAAQAP//AgACAAMAAAARAP//AgACAAMAAADy////AgACAAMAAADz////AgACAAMAAAD0////AgACAAMAAAD1////AgACAAMAAAD2////AgACAAMAAAD3////AgACAAMAAAD4////AgACAAMAAAD5////AgACAAMAAAD6////AgACAAMAAAD7////AgACAAMAAAD8////AgACAAMAAAD9////AgACAAMAAADy/wsAAgAIAAEAAADz/wsAAgAIAAEAAAD0/wsAAgAIAAEAAAD1/wsAAgAIAAEAAAD2/wsAAgAIAAEAAAD3/wsAAgAJAAEAAAD7/wsAAgAHAAEAAAD8/wsAAgAIAAEAAAD9/wsAAgAIAAEAAAAEAAsAAgAIAAEAAAAFAAsAAgAIAAEAAAAGAAsAAgAIAAEAAAAHAAsAAgAIAAEAAAAIAAsAAgAJAAEAAAAMAAsAAgAHAAEAAAASAAsAAgAIAAEAAAARAAsAAgAIAAEAAAAQAAsAAgAIAAEAAAAOAAsAAgAIAAEAAAANAAsAAgAIAAEAAAAPAAsAAgAIAAEAAAD+/wgAAgAIAAEAAAD2/wgAAgAIAAEAAAD3/wgAAgAIAAEAAAD4/wgAAgAIAAEAAAD5/wgAAgAIAAEAAAD6/wgAAgACAAMAAAD7/wgAAgAIAAEAAAD8/wgAAgAIAAEAAAD9/wgAAgAIAAEAAAAFAAgAAgAIAAEAAAAGAAgAAgAIAAEAAAAHAAgAAgAIAAEAAAAIAAgAAgAIAAEAAAAJAAgAAgAIAAEAAAAKAAgAAgAIAAEAAAALAAgAAgAIAAEAAAAMAAgAAgACAAMAAAANAAgAAgAIAAEAAAAOAAgAAgAJAAEAAADz/wgAAgAHAAEAAAD0/wgAAgAIAAEAAAD1/wgAAgAIAAEAAAD8/wUAAgAHAAEAAAD9/wUAAgAIAAEAAADy/wUAAgAIAAEAAADz/wUAAgAIAAEAAAD0/wUAAgACAAMAAAD1/wUAAgAIAAEAAAD2/wUAAgAIAAEAAAD3/wUAAgAIAAEAAAD4/wUAAgAJAAEAAADx/wIAAgAIAAEAAADy/wIAAgAIAAEAAADz/wIAAgAJAAEAAAD3/wIAAgAHAAEAAAD4/wIAAgAIAAEAAAD5/wIAAgAIAAEAAAD6/wIAAgAIAAEAAAD+/wIAAgAIAAEAAAAHAAUAAgAHAAEAAAAIAAUAAgACAAMAAAAJAAUAAgAJAAEAAAAOAAUAAgAHAAEAAAAPAAUAAgACAAMAAAAQAAUAAgAIAAEAAAARAAUAAgAIAAEAAAASAAUAAgAIAAEAAAARAAIAAgAHAAEAAAAKAAIAAgAHAAEAAAALAAIAAgAIAAEAAAAMAAIAAgAIAAEAAAANAAIAAgAJAAEAAAAFAAIAAgAIAAEAAAAGAAIAAgAJAAEAAAD7/wIAAgAIAAEAAAD8/wIAAgAIAAEAAAD9/wIAAgAIAAEAAADy/w4AAgACAAEAAADz/w4AAgACAAEAAAD0/w4AAgACAAEAAAD1/w4AAgACAAEAAAD2/w4AAgACAAEAAAD3/w4AAgACAAEAAAD4/w4AAgACAAEAAAD5/w4AAgACAAIAAAD6/w4AAgACAAEAAAD7/w4AAgACAAEAAAD8/w4AAgACAAEAAAD9/w4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAIAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAANAA4AAgACAAEAAAAOAA4AAgACAAEAAAAPAA4AAgACAAEAAAAQAA4AAgACAAEAAAARAA4AAgACAAEAAAACAP//AgACAAMAAAADAP//AgACAAMAAAAMAAcAAgAFAAMAAAD6/wcAAgAFAAMAAAACAAoAAgAFAAMAAAASAAkAAgAHAAEAAAD0/wQAAgAFAAMAAAAIAAMAAgAFAAMAAAAIAAQAAgAFAAQAAAAPAAQAAgAFAAMAAAD5/w0AAgAFAAMAAAAKAA0AAgAFAAMAAADv/wAAAgACAAIAAADv////AgACAAIAAAA=")
+tile_set = ExtResource("2_rkqc1")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AADh/xIAAAAfAAYAAADh/woAAAAfAAYAAADh/wQAAAAfAAYAAADh/xYAAAAfAAYAAADz/xwAAAAfAAYAAAAVABwAAAAfAAYAAAAZABAAAAAfAAYAAAAfAAoAAAAfAAYAAAARAAoAAAAfAAYAAAD1/xAAAAAfAAYAAADp/woAAAAfAAYAAAAFABYAAAAfAAYAAAAeAAoAAAAWAAYAAAAYABAAAAAWAAYAAAAQAAoAAAAWAAYAAAAEABYAAAAWAAYAAAAUABwAAAAWAAYAAADy/xwAAAAWAAYAAAD0/xAAAAAWAAYAAADo/woAAAAWAAYAAADh/xMAAAAdAA0AAADh/wsAAAAdAA0AAADh/wUAAAAdAA0AAAAmABMAAAAWAA8AAAAmAAsAAAAWAA8AAAAmAAUAAAAWAA8AAAAmAAQAAAAWAAYAAAAmAAoAAAAWAAYAAAAmABIAAAAWAAYAAAAmABYAAAAWAAYAAADh////AAAfAA8AAAAmAP//AAAWAA8AAAA=")
+tile_set = ExtResource("3_xjhmp")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_vskja")]
+position = Vector2(1632, 768)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_39.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_vskja")]
+position = Vector2(-992, 768)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://dpk0yf8ygshns"
+to_spawn_location_with_index = 1
+
+[node name="Rabbits" type="Node" parent="."]
+
+[node name="Rabbit" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(32, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit2" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(64, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit3" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(96, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit4" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(128, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit5" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(160, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit6" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(192, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit10" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-64, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit11" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-32, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit12" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(0, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit13" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(32, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit14" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(64, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit15" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(96, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit16" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(128, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit17" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(448, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit21" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(576, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit22" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(608, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit23" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(640, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit25" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1032, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit26" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1064, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit27" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1096, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit30" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1192, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit31" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1224, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit32" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1256, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit33" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1152, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit34" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1184, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit40" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1376, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit43" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(576, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit44" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(608, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit45" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(640, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit47" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(704, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit50" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(104, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit51" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(136, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit52" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(168, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit53" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(200, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit55" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(264, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit56" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(296, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit57" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-744, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit60" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-648, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit61" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-616, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit62" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-584, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit63" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-552, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit64" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-520, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit65" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-568, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit66" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-536, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit70" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-408, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit71" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-376, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit72" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-344, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit73" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-656, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit74" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-624, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit75" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-592, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit76" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-560, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit77" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-528, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit88" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-216, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit100" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-448, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit101" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-416, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit102" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-384, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit103" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-352, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit104" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-320, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit105" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-88, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit106" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-56, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit107" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-24, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit108" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(8, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit110" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(72, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit111" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(104, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit112" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(136, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit113" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-56, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit114" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-24, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit115" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(8, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit116" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(40, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit117" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(72, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit118" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(104, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit120" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(168, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit121" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(480, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit122" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(512, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit123" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(544, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit124" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(576, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit125" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(608, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit126" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(640, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit127" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(672, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit130" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(752, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit143" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(808, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit144" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(840, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit145" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-32, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit146" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(0, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit147" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(32, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit157" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(328, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit158" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(360, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit160" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(424, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit161" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(72, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit162" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(104, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit163" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(136, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit164" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(168, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit165" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(200, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit166" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(232, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit167" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(264, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit168" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(296, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit170" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-472, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit171" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-440, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit172" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-408, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit173" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-376, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit174" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-344, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit175" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-312, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit176" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-280, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit177" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-376, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit178" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-344, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit180" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-280, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit181" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-248, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit182" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-216, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit183" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-184, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit184" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-152, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit185" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-240, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit186" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-208, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit187" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-176, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit188" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-144, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit220" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(392, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit221" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(424, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit222" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(456, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit223" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(488, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit224" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(520, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit225" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(384, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit226" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(416, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit227" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(448, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit228" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(480, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit230" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(544, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit231" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(576, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit232" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(608, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit233" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-752, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit234" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-720, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit235" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-688, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit236" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-656, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit237" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-624, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit238" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-592, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit240" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-736, 200)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit241" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-752, 168)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit242" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-720, 168)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit246" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-696, 208)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit330" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-720, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit331" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-688, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit332" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-656, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit333" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-624, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit334" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-592, 240)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit247" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-664, 208)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit248" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-632, 208)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit250" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(704, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit251" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(736, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit252" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(872, 736)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit253" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(800, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit254" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(832, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit255" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(864, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit256" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(896, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit257" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(920, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit335" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(872, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit336" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(904, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit337" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(936, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit338" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(968, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit258" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(952, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit260" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1016, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit261" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1048, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit262" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1080, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit263" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1112, 40)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit264" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1112, 88)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit265" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1120, 216)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit266" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1184, 168)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit267" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1216, 168)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit268" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1248, 168)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit270" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1312, 168)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit271" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1344, 168)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit272" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1376, 168)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit273" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(848, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit274" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(880, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit275" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(912, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit276" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(944, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit277" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(784, 432)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit278" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1008, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit280" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1072, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit281" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1104, 424)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit282" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1192, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit283" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1224, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit287" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1352, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit288" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1384, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit290" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(528, 792)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit291" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(280, 816)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit301" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(280, 600)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit302" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(376, 560)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit303" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(408, 560)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit304" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(440, 560)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit305" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1104, 16)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit306" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1104, 64)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit307" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1136, 64)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit308" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1336, 16)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit310" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-224, 752)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit311" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1296, 16)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit312" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1328, 16)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit313" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-528, 408)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit314" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-496, 408)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit315" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-152, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit316" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-120, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit317" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-88, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit318" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-320, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit320" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-256, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit321" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-744, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit322" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-712, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit323" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-680, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit324" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-648, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit325" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-616, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit326" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-584, 352)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit356" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-352, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit357" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-320, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit358" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-288, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit364" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-96, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit365" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-64, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit366" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(-32, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit367" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(0, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit368" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(32, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit370" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(96, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit371" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(128, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit372" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(168, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit373" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(200, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit400" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(168, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit401" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(200, 48)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit374" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(232, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit375" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(264, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit376" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(296, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit377" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(328, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit378" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(360, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit379" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(392, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit380" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(392, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit384" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(520, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit385" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(552, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit386" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(584, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit387" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(616, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit388" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(840, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit395" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1064, -8)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit455" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(504, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit457" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(568, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit458" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(600, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit459" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(632, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit460" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(968, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit467" parent="Rabbits" instance=ExtResource("5_irw12")]
+z_index = 1
+position = Vector2(1192, 624)
+collision_mask = 3648
+jump_movement = Vector2(250, -100)
+turnaround_on_platform_edge = true
+jump_variance = Vector2(250, 200)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="HealthUpgradeItem" parent="." instance=ExtResource("6_7h6xf")]
+position = Vector2(-736, 224)
+pickup_unique_name = "hp_pickup_2"
+
+[node name="Switch" parent="." instance=ExtResource("7_wtvq0")]
+position = Vector2(960, 64)
+collision_layer = 8
+collision_mask = 1
+
+[node name="DoorPath" type="Path2D" parent="."]
+position = Vector2(1440, 768)
+curve = SubResource("Curve2D_mq6f8")
+
+[node name="DoorPathFollow" type="PathFollow2D" parent="DoorPath"]
+rotates = false
+loop = false
+
+[node name="Door" parent="DoorPath/DoorPathFollow" node_paths=PackedStringArray("movement_path") instance=ExtResource("8_1fbju")]
+script = ExtResource("9_rwfvt")
+movement_path = NodePath("..")
+
+[node name="Imps" type="Node" parent="."]
+
+[node name="Imp" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(-616, 616)
+
+[node name="Imp2" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(-408, 424)
+
+[node name="Imp16" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(-448, 232)
+
+[node name="Imp3" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(848, 424)
+
+[node name="Imp4" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(584, 424)
+
+[node name="Imp5" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(584, 616)
+
+[node name="Imp6" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(168, 616)
+
+[node name="Imp7" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(1248, 616)
+
+[node name="Imp8" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(1248, 232)
+
+[node name="Imp9" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(968, 40)
+
+[node name="Imp10" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(480, 40)
+
+[node name="Imp11" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(272, 40)
+
+[node name="Imp12" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(-192, 40)
+
+[node name="Imp13" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(-72, 40)
+
+[node name="Imp14" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(-672, 40)
+
+[node name="Imp15" parent="Imps" instance=ExtResource("10_ig47q")]
+position = Vector2(200, 232)
+
+[node name="Sawblade_Shooter" parent="." instance=ExtResource("11_fe2pv")]
+position = Vector2(-800, 608)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(1, 0)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 8
+sawblade_physics_mask = 5
+
+[node name="Sawblade_Shooter2" parent="." instance=ExtResource("11_fe2pv")]
+position = Vector2(1440, 416)
+sawblade_travel_speed = 500
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 8
+sawblade_physics_mask = 5
+
+[node name="Sawblade_Shooter3" parent="." instance=ExtResource("11_fe2pv")]
+position = Vector2(-800, 224)
+sawblade_travel_speed = 500
+sawblade_travel_direction = Vector2(1, 0)
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 8
+sawblade_physics_mask = 5
+
+[node name="Sawblade_Shooter4" parent="." instance=ExtResource("11_fe2pv")]
+position = Vector2(1440, 32)
+sawblade_travel_speed = 500
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 8
+sawblade_physics_mask = 5
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="Switch" to="DoorPath/DoorPathFollow/Door" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="Switch" to="Sawblade_Shooter" method="_enable_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="Switch" to="Sawblade_Shooter2" method="_enable_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="Switch" to="Sawblade_Shooter3" method="_enable_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="Switch" to="Sawblade_Shooter4" method="_enable_sawblade_on_swtich_press"]

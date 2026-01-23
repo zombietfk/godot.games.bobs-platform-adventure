@@ -9,6 +9,7 @@ var _c_stop_spawn_timer: float = 0;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	_c_stop_spawn_timer += delta;
 	if _c_stop_spawn_timer > stop_spawning_after_x_seconds:
 		return;
 	_c_spawn_timer += delta;
