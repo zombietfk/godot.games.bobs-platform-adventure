@@ -1,0 +1,187 @@
+[gd_scene load_steps=15 format=4 uid="uid://c4snfn4mlu03j"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_j0fb4"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_i1440"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_gdkmv"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_t2jay"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="5_2bvxp"]
+[ext_resource type="Script" uid="uid://bs5ceg4cciah2" path="res://level/scripts/level_enemy_death_controller.gd" id="5_vkgue"]
+[ext_resource type="PackedScene" uid="uid://b8mbn7xxabui" path="res://objects/traps/sawblade/shooter/sawblade_shooter_on_switch.tscn" id="6_854qg"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="7_tisur"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="8_d7wxu"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="9_57k55"]
+[ext_resource type="PackedScene" uid="uid://dyor0okde2rnm" path="res://enemies/imp/imp.tscn" id="10_1u8vp"]
+[ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="10_j0fb4"]
+[ext_resource type="PackedScene" uid="uid://cvvugxo477807" path="res://enemies/bosses/demon-rabbit/level-clear/demon_rabbit_level_clear.tscn" id="13_gdkmv"]
+
+[sub_resource type="Curve2D" id="Curve2D_i1440"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
+}
+point_count = 2
+
+[node name="Level_39" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_j0fb4")
+level_binding_box = Rect2(-960, 512, -192, 1088)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-928, 800)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-224, 800)
+
+[node name="Level" type="TileMapLayer" parent="."]
+position = Vector2(192, -63)
+tile_map_data = PackedByteArray("AADu/w4AAgACAAEAAADv/w4AAgACAAEAAADw/w4AAgAIAAEAAADx/w4AAgAIAAEAAADy/w4AAgAIAAEAAADz/w4AAgAIAAEAAADu/wsAAgACAAMAAADv/wsAAgACAAMAAADw/wsAAgAJAAUAAADx/woAAgAJAAUAAADy/wkAAgACAAMAAADz/wkAAgACAAMAAAD0/wkAAgACAAMAAAD1/wkAAgACAAMAAAD2/woAAgAHAAUAAAD3/wsAAgAHAAUAAAD4/wsAAgACAAMAAAD5/wsAAgACAAMAAAD0/w4AAgAIAAEAAAD1/w4AAgAIAAEAAAD2/w4AAgAIAAEAAAD3/w4AAgAIAAEAAAD4/w4AAgACAAEAAAD5/w4AAgACAAEAAADv/w8AAgADAAIAAAD4/w8AAgABAAIAAAD4/xAAAgABAAIAAADv/xAAAgADAAIAAADw/xEAAgACAAEAAADx/xEAAgACAAEAAADy/xEAAgACAAEAAADz/xEAAgACAAEAAAD0/xEAAgACAAEAAAD1/xEAAgACAAEAAAD2/xEAAgACAAEAAAD3/xEAAgACAAEAAADv/xEAAgAPAAMAAAD4/xEAAgALAAMAAAD3/woAAgALAAcAAAD2/wkAAgALAAcAAADw/woAAgAPAAcAAADx/wkAAgAPAAcAAADu/wkAAgACAAIAAADu/woAAgACAAIAAADv/wkAAgACAAIAAADv/woAAgACAAIAAAD4/wkAAgACAAIAAAD4/woAAgACAAIAAAD5/wkAAgACAAIAAAD5/woAAgACAAIAAADu/wcAAgACAAIAAADu/wgAAgACAAIAAADv/wcAAgACAAIAAADv/wgAAgACAAIAAADw/wcAAgACAAIAAADw/wgAAgACAAIAAADx/wcAAgACAAIAAADx/wgAAgACAAIAAADy/wcAAgACAAIAAADy/wgAAgACAAIAAADz/wcAAgACAAIAAADz/wgAAgACAAIAAAD0/wcAAgACAAIAAAD0/wgAAgACAAIAAAD1/wcAAgACAAIAAAD1/wgAAgACAAIAAAD2/wcAAgACAAIAAAD2/wgAAgACAAIAAAD3/wcAAgACAAIAAAD3/wgAAgACAAIAAAD4/wcAAgACAAIAAAD4/wgAAgACAAIAAAD5/wcAAgACAAIAAAD5/wgAAgACAAIAAADw/wkAAgACAAIAAAD3/wkAAgACAAIAAAD5/w8AAgACAAIAAAD5/xAAAgACAAIAAAD5/xEAAgACAAIAAADu/w8AAgACAAIAAADu/xAAAgACAAIAAADu/xEAAgACAAIAAADu/xIAAgACAAIAAADv/xIAAgACAAIAAADw/xIAAgACAAIAAADx/xIAAgACAAIAAADy/xIAAgACAAIAAADz/xIAAgACAAIAAAD0/xIAAgACAAIAAAD1/xIAAgACAAIAAAD2/xIAAgACAAIAAAD3/xIAAgACAAIAAAD4/xIAAgACAAIAAAD5/xIAAgACAAIAAADu/wYAAgACAAIAAADv/wYAAgACAAIAAADw/wYAAgACAAIAAADx/wYAAgACAAIAAADy/wYAAgACAAIAAADz/wYAAgACAAIAAAD0/wYAAgACAAIAAAD1/wYAAgACAAIAAAD2/wYAAgACAAIAAAD3/wYAAgACAAIAAAD4/wYAAgACAAIAAAD5/wYAAgACAAIAAADu/xMAAgACAAIAAADv/xMAAgACAAIAAADw/xMAAgACAAIAAADx/xMAAgACAAIAAADy/xMAAgACAAIAAADz/xMAAgACAAIAAAD0/xMAAgACAAIAAAD1/xMAAgACAAIAAAD2/xMAAgACAAIAAAD3/xMAAgACAAIAAAD4/xMAAgACAAIAAAD5/xMAAgACAAIAAAA=")
+tile_set = ExtResource("2_i1440")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+tile_set = ExtResource("3_gdkmv")
+
+[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_t2jay")]
+position = Vector2(-160, 768)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_40.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_t2jay")]
+position = Vector2(-992, 768)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://cg1bqo2ggwmt4"
+to_spawn_location_with_index = 1
+
+[node name="LevelEnemyDeathController" type="Node" parent="." node_paths=PackedStringArray("demon_bunny_spawn_point")]
+script = ExtResource("5_vkgue")
+demon_bunny_scene = ExtResource("13_gdkmv")
+demon_bunny_spawn_point = NodePath("DemonRabbitSpawnPoint")
+
+[node name="DemonRabbitSpawnPoint" type="Marker2D" parent="LevelEnemyDeathController"]
+position = Vector2(-576, 288)
+
+[node name="FloorSwitch" parent="." instance=ExtResource("7_tisur")]
+position = Vector2(-768, 832)
+collision_mask = 1
+release_on_leave = true
+
+[node name="FloorSwitch2" parent="." instance=ExtResource("7_tisur")]
+position = Vector2(-576, 832)
+collision_mask = 1
+release_on_leave = true
+
+[node name="FloorSwitch3" parent="." instance=ExtResource("7_tisur")]
+position = Vector2(-384, 832)
+collision_mask = 1
+release_on_leave = true
+
+[node name="Sawblade_Shooter_On_Switch" parent="." instance=ExtResource("6_854qg")]
+position = Vector2(-768, 448)
+sawblade_travel_speed = 400
+sawblade_travel_direction = Vector2(0, 1)
+
+[node name="Sawblade_Shooter_On_Switch2" parent="." instance=ExtResource("6_854qg")]
+position = Vector2(-576, 448)
+sawblade_travel_speed = 400
+sawblade_travel_direction = Vector2(0, 1)
+
+[node name="Sawblade_Shooter_On_Switch3" parent="." instance=ExtResource("6_854qg")]
+position = Vector2(-384, 448)
+sawblade_travel_speed = 400
+sawblade_travel_direction = Vector2(0, 1)
+
+[node name="Rabbit" parent="." instance=ExtResource("5_2bvxp")]
+position = Vector2(-800, 992)
+collision_layer = 5
+jump_variance = Vector2(50, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit2" parent="." instance=ExtResource("5_2bvxp")]
+position = Vector2(-672, 992)
+collision_layer = 5
+jump_variance = Vector2(50, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit3" parent="." instance=ExtResource("5_2bvxp")]
+position = Vector2(-576, 992)
+collision_layer = 5
+jump_variance = Vector2(50, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit4" parent="." instance=ExtResource("5_2bvxp")]
+position = Vector2(-512, 992)
+collision_layer = 5
+jump_variance = Vector2(50, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit5" parent="." instance=ExtResource("5_2bvxp")]
+position = Vector2(-448, 992)
+collision_layer = 5
+jump_variance = Vector2(50, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit6" parent="." instance=ExtResource("5_2bvxp")]
+position = Vector2(-384, 992)
+collision_layer = 5
+jump_variance = Vector2(50, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Rabbit7" parent="." instance=ExtResource("5_2bvxp")]
+position = Vector2(-640, 992)
+collision_layer = 5
+jump_variance = Vector2(50, 50)
+randomize_starting_direction = true
+jump_timer_variance = 0.5
+
+[node name="Imp" parent="." instance=ExtResource("10_1u8vp")]
+position = Vector2(-768, 992)
+collision_layer = 5
+
+[node name="Imp2" parent="." instance=ExtResource("10_1u8vp")]
+position = Vector2(-512, 992)
+collision_layer = 5
+
+[node name="Imp3" parent="." instance=ExtResource("10_1u8vp")]
+position = Vector2(-352, 992)
+collision_layer = 5
+
+[node name="Imp4" parent="." instance=ExtResource("10_1u8vp")]
+position = Vector2(-576, 992)
+collision_layer = 5
+
+[node name="Path2DLinear" type="Path2D" parent="."]
+position = Vector2(-288, 768)
+curve = SubResource("Curve2D_i1440")
+script = ExtResource("10_j0fb4")
+metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear" node_paths=PackedStringArray("movement_path")]
+rotation = -1.5707964
+rotates = false
+loop = false
+script = ExtResource("9_57k55")
+movement_path = NodePath(".")
+
+[node name="Door" parent="Path2DLinear/PathFollow2D" instance=ExtResource("8_d7wxu")]
+rotation = 1.5707964
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="all_imps_killed" from="LevelEnemyDeathController" to="Path2DLinear/PathFollow2D" method="_on_switch_flipped_on"]
+[connection signal="switch_flipped_on" from="FloorSwitch" to="Sawblade_Shooter_On_Switch" method="_fire_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="FloorSwitch2" to="Sawblade_Shooter_On_Switch2" method="_fire_sawblade_on_swtich_press"]
+[connection signal="switch_flipped_on" from="FloorSwitch3" to="Sawblade_Shooter_On_Switch3" method="_fire_sawblade_on_swtich_press"]
+[connection signal="on_death" from="Rabbit" to="LevelEnemyDeathController" method="on_bunny_death_handler"]
+[connection signal="on_death" from="Rabbit2" to="LevelEnemyDeathController" method="on_bunny_death_handler"]
+[connection signal="on_death" from="Rabbit3" to="LevelEnemyDeathController" method="on_bunny_death_handler"]
+[connection signal="on_death" from="Rabbit4" to="LevelEnemyDeathController" method="on_bunny_death_handler"]
+[connection signal="on_death" from="Rabbit5" to="LevelEnemyDeathController" method="on_bunny_death_handler"]
+[connection signal="on_death" from="Rabbit6" to="LevelEnemyDeathController" method="on_bunny_death_handler"]
+[connection signal="on_death" from="Rabbit7" to="LevelEnemyDeathController" method="on_bunny_death_handler"]
+[connection signal="on_death" from="Imp" to="LevelEnemyDeathController" method="on_imp_killed"]
+[connection signal="on_death" from="Imp2" to="LevelEnemyDeathController" method="on_imp_killed"]
+[connection signal="on_death" from="Imp3" to="LevelEnemyDeathController" method="on_imp_killed"]
+[connection signal="on_death" from="Imp4" to="LevelEnemyDeathController" method="on_imp_killed"]

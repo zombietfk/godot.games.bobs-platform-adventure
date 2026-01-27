@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvvugxo477807"]
+
+[ext_resource type="Script" uid="uid://cdmjifboo5e8g" path="res://enemies/bosses/demon-rabbit/level-clear/demon_rabbit_level_clear.gd" id="1_y1hk2"]
+[ext_resource type="SpriteFrames" uid="uid://bm0ynqus6gxsc" path="res://enemies/bosses/demon-rabbit/demon_rabbit_sprites.tres" id="2_wxlrj"]
+[ext_resource type="Texture2D" uid="uid://jphbfbr6mhm8" path="res://enemies/bosses/demon-rabbit/pitchfork.png" id="3_nf0bk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmrix"]
+radius = 41.0
+
+[sub_resource type="Animation" id="Animation_i52du"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bv7or"]
+resource_name = "spin_pitchfork"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.66, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 12.566370614359172, 18.84955592153876]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i52du"]
+_data = {
+&"RESET": SubResource("Animation_i52du"),
+&"spin_pitchfork": SubResource("Animation_bv7or")
+}
+
+[node name="DemonRabbitLevelClear" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 65
+script = ExtResource("1_y1hk2")
+enable_colliders_after_x_seconds = 0.6
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+scale = Vector2(0.5, 0.5)
+target_position = Vector2(-96, 0)
+collision_mask = 64
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(3.33786e-06, 3.33786e-06)
+sprite_frames = ExtResource("2_wxlrj")
+animation = &"angry"
+autoplay = "default"
+frame_progress = 0.52716213
+speed_scale = 0.7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 32)
+shape = SubResource("CircleShape2D_jmrix")
+
+[node name="PitchforkOriginMarker" type="Marker2D" parent="."]
+position = Vector2(14, 37)
+
+[node name="Pitchfork" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(14, 37)
+texture = ExtResource("3_nf0bk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pitchfork"]
+libraries = {
+&"": SubResource("AnimationLibrary_i52du")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="Pitchfork"]
+position = Vector2(14, 2)
+target_position = Vector2(-38, 0)

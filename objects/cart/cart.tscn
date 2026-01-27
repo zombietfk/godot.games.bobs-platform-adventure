@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://c14gr6iob0flb"]
+
+[ext_resource type="Texture2D" uid="uid://clji6ilrmgmib" path="res://objects/cart/minecart_spritesheet.png" id="1_na6r7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btuh4"]
+atlas = ExtResource("1_na6r7")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4c7n"]
+atlas = ExtResource("1_na6r7")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dcdr"]
+atlas = ExtResource("1_na6r7")
+region = Rect2(0, 128, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l4p7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btuh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4c7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dcdr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76h8p"]
+size = Vector2(56, 8.499999)
+
+[node name="Cart" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l4p7d")
+frame_progress = 0.44150725
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17.5)
+shape = SubResource("RectangleShape2D_76h8p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-35, -3)
+rotation = 1.134464
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_76h8p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(35, -3)
+rotation = -1.134464
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_76h8p")
