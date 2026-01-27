@@ -39,6 +39,9 @@ func _kill()->void:
 		Gib.spawn(body.global_position, -body.velocity);
 	
 func _on_respawn_grace_timer_timeout()->void:
+	if body.get_parent() != Main.instance:
+		body.reparent(Main.instance);
+	body.rotation = 0;
 	body.lives -= 1;
 	if body.lives >= 0:
 		Main.load_level();

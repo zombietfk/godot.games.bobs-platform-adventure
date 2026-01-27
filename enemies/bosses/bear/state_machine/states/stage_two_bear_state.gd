@@ -79,7 +79,6 @@ func _summon_beehive()->void:
 	if !bear.is_beehived:
 		var pathed_beehive: Node2D = beehive_scene.instantiate();
 		var spawn_point = beehive_spawn_points.pick_random();
-		print(_already_used_spawn_point.size());
 		while _already_used_spawn_point.has(spawn_point):
 			spawn_point = beehive_spawn_points.pick_random();
 		_already_used_spawn_point.append(spawn_point);

@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c14gr6iob0flb"]
+[gd_scene load_steps=11 format=3 uid="uid://c14gr6iob0flb"]
 
+[ext_resource type="Script" uid="uid://dkgmrqr5tlxp2" path="res://objects/cart/cart.gd" id="1_jq3dk"]
 [ext_resource type="Texture2D" uid="uid://clji6ilrmgmib" path="res://objects/cart/minecart_spritesheet.png" id="1_na6r7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btuh4"]
@@ -31,27 +32,71 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq3dk"]
+size = Vector2(64, 5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76h8p"]
-size = Vector2(56, 8.499999)
+size = Vector2(32.625, 4.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_na6r7"]
+size = Vector2(64, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xidb"]
+size = Vector2(10, 64)
 
 [node name="Cart" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 8
+collision_mask = 64
+floor_snap_length = 8.0
+script = ExtResource("1_jq3dk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_l4p7d")
+autoplay = "default"
 frame_progress = 0.44150725
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 17.5)
-shape = SubResource("RectangleShape2D_76h8p")
+z_index = 2
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_jq3dk")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-35, -3)
-rotation = 1.134464
-scale = Vector2(0.99999994, 0.99999994)
+z_index = 2
+position = Vector2(-30, -3)
+rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_76h8p")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(35, -3)
-rotation = -1.134464
+z_index = 2
+position = Vector2(29.9375, -3.3125)
+rotation = 1.5707964
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_76h8p")
+
+[node name="InCartArea" type="Area2D" parent="."]
+z_index = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InCartArea"]
+shape = SubResource("RectangleShape2D_na6r7")
+
+[node name="CharacterLockArea" type="Marker2D" parent="."]
+z_index = 2
+position = Vector2(0, -34)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+z_index = 2
+position = Vector2(23, 0)
+target_position = Vector2(0, 88)
+collision_mask = 64
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+z_index = 2
+position = Vector2(39, -2)
+shape = SubResource("RectangleShape2D_7xidb")
+target_position = Vector2(0, 0)
+collision_mask = 6
+
+[connection signal="body_entered" from="InCartArea" to="." method="_is_player_in_cart" unbinds=1]
