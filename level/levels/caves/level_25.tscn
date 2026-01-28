@@ -58,26 +58,27 @@ to_spawn_location_with_index = 1
 
 [node name="Mushroom" parent="." unique_id=1271928131 instance=ExtResource("5_4g4jd")]
 position = Vector2(224, 544.00006)
-poof_every_x_seconds = 2.0
+poof_every_x_seconds = 5.0
 poof_timer_inital_offset = 1.0
 
 [node name="Mushroom3" parent="." unique_id=1362463950 instance=ExtResource("5_4g4jd")]
 position = Vector2(928, 672)
+poof_every_x_seconds = 4.0
 
 [node name="Mushroom4" parent="." unique_id=567593050 instance=ExtResource("5_4g4jd")]
 position = Vector2(672, 672.00006)
-poof_every_x_seconds = 2.5
+poof_every_x_seconds = 5.0
 poof_timer_inital_offset = 2.0
 
 [node name="Mushroom6" parent="." unique_id=2018633664 instance=ExtResource("5_4g4jd")]
 position = Vector2(1568, 352)
 rotation = -2.417281
-poof_every_x_seconds = 1.9
+poof_every_x_seconds = 3.8
 
 [node name="Mushroom2" parent="." unique_id=1611443172 instance=ExtResource("5_4g4jd")]
 position = Vector2(416, 608.00006)
 rotation = 3.1415927
-poof_every_x_seconds = 2.5
+poof_every_x_seconds = 5.0
 poof_timer_inital_offset = 2.0
 
 [node name="MushroomMan" parent="." unique_id=970232998 instance=ExtResource("6_e4jkq")]

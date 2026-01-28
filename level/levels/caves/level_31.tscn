@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bt5bnysw7wsfs"]
+[gd_scene format=4 uid="uid://bt5bnysw7wsfs"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_xqaxs"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_qhddp"]
@@ -18,95 +18,97 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_31" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_31" type="Node2D" unique_id=161083876 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_xqaxs")
 level_binding_box = Rect2(0, 192, 960, 1152)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=581242364]
 position = Vector2(32, 672)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=907213190]
 position = Vector2(128, 1120)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1940656816]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAAAAA4AAgACAAEAAAAAAAsAAgACAAMAAAAAAA8AAgADAAIAAAAAABIAAgADAAIAAAADABMAAgAFAAMAAAAMABMAAgABAAEAAAANAAcAAgACAAMAAAABAA4AAgAIAAEAAAACAA4AAgACAAEAAAADAAoAAgAFAAQAAAADAAsAAgAFAAQAAAADAAwAAgAFAAQAAAADAA0AAgAFAAQAAAADAAkAAgABAAEAAAAEAAkAAgAJAAEAAAAGAAkAAgAHAAEAAAAHAAkAAgAIAAEAAAAIAAkAAgAJAAEAAAAKAAkAAgAFAAMAAAAKAAwAAgAFAAQAAAAKAAoAAgAFAAQAAAAKAAsAAgAFAAQAAAAKAA0AAgAFAAQAAAAKAA4AAgAFAAQAAAADAA4AAgADAAMAAAABAAsAAgADAAMAAAABAAgAAgADAAIAAAABAAkAAgADAAIAAAABAAoAAgADAAIAAAACAAcAAgACAAMAAAADAAcAAgADAAMAAAAHAAcAAgAFAAUAAAALAAcAAgABAAMAAAAMAAcAAgACAAMAAAAMAAkAAgAFAAMAAAAMAAoAAgAFAAQAAAAMAAsAAgAFAAQAAAAMAAwAAgAFAAQAAAAMAA0AAgAFAAQAAAAMAA4AAgAFAAQAAAAMAA8AAgAFAAQAAAAFAA4AAgAFAAQAAAAFAAwAAgAFAAQAAAAFAA0AAgAFAAQAAAAFAAsAAgABAAEAAAAGAAsAAgAIAAEAAAAHAAsAAgAIAAEAAAAIAAsAAgADAAEAAAAIAAwAAgAFAAQAAAABABEAAgACAAMAAAACABEAAgACAAMAAAADABEAAgAIAAEAAAAEABEAAgAIAAEAAAAFABEAAgADAAEAAAAKABEAAgABAAEAAAALABEAAgAIAAEAAAAMABEAAgADAAMAAAANABMAAgACAAEAAAAOABIAAgABAAIAAAAOABEAAgABAAIAAAAOABAAAgABAAIAAAAOAA8AAgABAAIAAAAOAA4AAgABAAIAAAAOAA0AAgABAAIAAAAOAAwAAgABAAIAAAAOAAsAAgABAAIAAAAOAAoAAgABAAIAAAAOAAkAAgABAAIAAAAOAAgAAgABAAIAAAAAABMAAgADAAIAAAAMABAAAgAFAAQAAAAKAA8AAgADAAMAAAAJAA8AAgAIAAEAAAAGAA8AAgAIAAEAAAAFAA8AAgABAAMAAAAIAA0AAgADAAMAAAAHAA0AAgAHAAEAAAAFAAYAAgACAAMAAAAJAAYAAgACAAMAAAAIAAYAAgACAAMAAAAEAAYAAgACAAMAAAACAA8AAgAFAAQAAAACABAAAgADAAIAAAAFABIAAgABAAMAAAAKABIAAgADAAMAAAAGABIAAgAIAAEAAAAHABIAAgAIAAEAAAAIABIAAgAIAAEAAAAJABIAAgAIAAEAAAAEABQAAgACAAEAAAAFABQAAgACAAEAAAAGABQAAgACAAEAAAAHABQAAgACAAEAAAAIABQAAgACAAEAAAAJABQAAgACAAEAAAAKABQAAgACAAEAAAALABQAAgACAAEAAAAAABQAAgADAAIAAAADABQAAgABAAIAAAAGAAYAAgACAAMAAAAKAAYAAgACAAMAAAAFAAgAAgAFAAEAAAAJAAgAAgAFAAEAAAAIAA8AAgAIAAEAAAAHAA8AAgAIAAEAAAABABAAAgACAAEAAAAMAAYAAgACAAIAAAAMAAUAAgACAAIAAAALAAYAAgALAAcAAAALAAUAAgACAAIAAAANAAUAAgACAAIAAAANAAYAAgACAAIAAAAHAAYAAgANAAYAAAAAABAAAgAPAAMAAAAAABEAAgAPAAcAAAAMABQAAgALAAMAAAAOABMAAgALAAMAAAABAAcAAgAPAAcAAAADAAYAAgAPAAcAAAAOAAcAAgALAAcAAAA=")
 tile_set = ExtResource("2_qhddp")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=1992803579]
 tile_set = ExtResource("3_8v3ng")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_yretr")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1278501502 instance=ExtResource("4_yretr")]
 position = Vector2(128, 1184)
 rotation = 1.5707964
 scale = Vector2(4, 8.1)
 to_level_path = "uid://dtv20uql2kyac"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_yretr")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=2025739316 instance=ExtResource("4_yretr")]
 position = Vector2(-32, 640)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bt5bnysw7wsfs"
 to_spawn_location_with_index = 1
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=980392915]
 position = Vector2(512, -128)
 curve = SubResource("Curve2D_gojgs")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=419557392]
 position = Vector2(288, 448)
 rotates = false
 loop = false
 
-[node name="Door6" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_8v3ng")]
+[node name="Door6" parent="Path2D/PathFollow2D" unique_id=90234567 node_paths=PackedStringArray("movement_path") instance=ExtResource("7_8v3ng")]
 script = ExtResource("8_yretr")
 movement_path = NodePath("..")
 movement_speed = 250.0
 
-[node name="FloorSwitch" parent="." instance=ExtResource("9_yretr")]
+[node name="FloorSwitch" parent="." unique_id=1125370641 instance=ExtResource("9_yretr")]
 position = Vector2(480, 640)
 
-[node name="Beehive" parent="." instance=ExtResource("5_cy6g2")]
+[node name="Beehive" parent="." unique_id=159619918 instance=ExtResource("5_cy6g2")]
 position = Vector2(96, 784)
 spawn_bee_every_x_seconds = 2.5
 max_spawn_bees = 4
 
-[node name="Gyser" parent="." instance=ExtResource("6_iues0")]
+[node name="Gyser" parent="." unique_id=643563849 instance=ExtResource("6_iues0")]
 position = Vector2(160, 672)
 shoot_water_every_x_seconds = 2.0
 max_boost_power = 2200.0
 min_boost_power = 800.0
 gyser_shoot_water_timer_offset = 0.5
 
-[node name="Gyser2" parent="." instance=ExtResource("6_iues0")]
+[node name="Gyser2" parent="." unique_id=1983788008 instance=ExtResource("6_iues0")]
 position = Vector2(608, 736)
 shoot_water_every_x_seconds = 2.0
 gyser_shoot_water_timer_offset = 1.0
 
-[node name="Gyser3" parent="." instance=ExtResource("6_iues0")]
+[node name="Gyser3" parent="." unique_id=150310048 instance=ExtResource("6_iues0")]
 position = Vector2(288, 864)
 shoot_water_every_x_seconds = 2.0
 max_boost_power = 2700.0
 min_boost_power = 700.0
 gyser_shoot_water_timer_offset = 0.7
 
-[node name="Gyser4" parent="." instance=ExtResource("6_iues0")]
+[node name="Gyser4" parent="." unique_id=1717097711 instance=ExtResource("6_iues0")]
 position = Vector2(736, 864)
 shoot_water_every_x_seconds = 2.0
 max_boost_power = 3200.0
 min_boost_power = 1100.0
 gyser_shoot_water_timer_offset = 1.2
 
-[node name="MushroomMan" parent="." instance=ExtResource("10_gojgs")]
+[node name="MushroomMan" parent="." unique_id=1880634974 instance=ExtResource("10_gojgs")]
 position = Vector2(512, 928)
 
-[node name="Mushroom" parent="." instance=ExtResource("11_iues0")]
+[node name="Mushroom" parent="." unique_id=711323934 instance=ExtResource("11_iues0")]
 position = Vector2(288, 1056)
+poof_every_x_seconds = 5.0
 
-[node name="Mushroom3" parent="." instance=ExtResource("11_iues0")]
+[node name="Mushroom3" parent="." unique_id=491732034 instance=ExtResource("11_iues0")]
 position = Vector2(672, 352)
+poof_every_x_seconds = 4.0
 
-[node name="Mushroom2" parent="." instance=ExtResource("11_iues0")]
+[node name="Mushroom2" parent="." unique_id=1121792885 instance=ExtResource("11_iues0")]
 position = Vector2(352, 480)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

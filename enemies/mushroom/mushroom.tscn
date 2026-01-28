@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1fppnc76mn0n"]
+[gd_scene format=3 uid="uid://c1fppnc76mn0n"]
 
 [ext_resource type="Script" uid="uid://c48r563involf" path="res://enemies/mushroom/mushroom.gd" id="1_k2em4"]
 [ext_resource type="Texture2D" uid="uid://4sd8v7uqnsjm" path="res://enemies/mushroom/mushroom_spritesheet.png" id="1_nddln"]
+[ext_resource type="PackedScene" uid="uid://orrae1ttisvh" path="res://enemies/mushroom/mushroom_spore.tscn" id="2_8hikq"]
 [ext_resource type="Texture2D" uid="uid://bf6byab2t01vu" path="res://enemies/mushroom/spore_sprite.png" id="3_ofswk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1d07"]
@@ -79,109 +80,21 @@ point_count = 2
 offsets = PackedFloat32Array(0.44921875, 0.75390625)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ofswk"]
-radius = 32.0
-height = 96.0
-
-[sub_resource type="Animation" id="Animation_ofswk"]
-resource_name = "poof"
-length = 1.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/CollisionShape2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.5, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -32), Vector2(0, -64), Vector2(0, -80), Vector2(0, -112)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionShape2D:shape:radius")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 1.5, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [31.999998, 32.0, 48.0, 48.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:height")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 1.5, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [63.999996, 96.0, 127.99999, 160.0]
-}
-
-[sub_resource type="Animation" id="Animation_8hikq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/CollisionShape2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -32)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionShape2D:shape:radius")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [32.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:shape:height")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [96.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8hikq"]
-_data = {
-&"RESET": SubResource("Animation_8hikq"),
-&"poof": SubResource("Animation_ofswk")
-}
-
-[node name="Mushroom" type="Node2D"]
+[node name="Mushroom" type="Node2D" unique_id=325479647]
 script = ExtResource("1_k2em4")
 poof_every_x_seconds = 3.0
+spore_scene = ExtResource("2_8hikq")
 
-[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1472144353]
 sprite_frames = SubResource("SpriteFrames_jbume")
 autoplay = "default"
 frame_progress = 0.5694107
 
-[node name="PoofAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PoofAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1315328896]
 visible = false
 sprite_frames = SubResource("SpriteFrames_7287j")
 
-[node name="PoofSpores" type="CPUParticles2D" parent="."]
+[node name="PoofSpores" type="CPUParticles2D" parent="." unique_id=732381456]
 emitting = false
 amount = 200
 texture = ExtResource("3_ofswk")
@@ -204,18 +117,3 @@ scale_amount_min = 0.7
 scale_amount_max = 1.3
 scale_amount_curve = SubResource("Curve_8hikq")
 color_ramp = SubResource("Gradient_28mhn")
-
-[node name="Area2D" type="Area2D" parent="."]
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -32)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_ofswk")
-
-[node name="PoofSporeCollisionAreaAnim" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_8hikq")
-}
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_spore_hit"]

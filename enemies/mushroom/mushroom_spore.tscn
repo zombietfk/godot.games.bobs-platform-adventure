@@ -1,36 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://orrae1ttisvh"]
+[gd_scene format=3 uid="uid://orrae1ttisvh"]
 
-[ext_resource type="Texture2D" uid="uid://bf6byab2t01vu" path="res://enemies/mushroom/spore_sprite.png" id="1_4gfid"]
+[ext_resource type="Texture2D" uid="uid://buxyn73houmk" path="res://enemies/mushroom/large_spore_spritesheet.png" id="1_4gfid"]
+[ext_resource type="Script" uid="uid://br84xmj3vgbef" path="res://enemies/mushroom/mushroom_spore.gd" id="1_5cwe6"]
 
-[sub_resource type="Curve" id="Curve_4gfid"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98936164, 0), -2.0858393, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cwe6"]
+atlas = ExtResource("1_4gfid")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="Gradient" id="Gradient_4gfid"]
-offsets = PackedFloat32Array(0, 0.28125, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.5176471, 1, 0, 1, 0, 0, 0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_decx5"]
+atlas = ExtResource("1_4gfid")
+region = Rect2(16, 0, 16, 16)
 
-[node name="MushroomSpore" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tuxj"]
+atlas = ExtResource("1_4gfid")
+region = Rect2(32, 0, 16, 16)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, 8)
-amount = 200
-texture = ExtResource("1_4gfid")
-lifetime = 3.0
-explosiveness = 0.9
-lifetime_randomness = 1.0
-emission_shape = 1
-emission_sphere_radius = 50.0
-direction = Vector2(0, -1)
-spread = 25.0
-gravity = Vector2(0, 25)
-initial_velocity_min = 50.0
-initial_velocity_max = 100.0
-angular_velocity_min = -180.0
-angular_velocity_max = 180.0
-radial_accel_min = -50.0
-radial_accel_max = 25.0
-scale_amount_min = 0.7
-scale_amount_max = 1.3
-scale_amount_curve = SubResource("Curve_4gfid")
-color_ramp = SubResource("Gradient_4gfid")
+[sub_resource type="SpriteFrames" id="SpriteFrames_rj43b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cwe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_decx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tuxj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vuicb"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cwe6"]
+radius = 7.0
+
+[node name="MushroomSpore" type="RigidBody2D" unique_id=1305028670]
+collision_layer = 8
+collision_mask = 64
+gravity_scale = 0.07
+script = ExtResource("1_5cwe6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=152063675]
+sprite_frames = SubResource("SpriteFrames_rj43b")
+autoplay = "default"
+frame_progress = 0.7397931
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=511930898]
+shape = SubResource("CircleShape2D_vuicb")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1455573064]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=243578007]
+shape = SubResource("CircleShape2D_5cwe6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_player_hit_spore" unbinds=1]
