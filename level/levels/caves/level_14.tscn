@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cmmw41vavdu68"]
+[gd_scene format=4 uid="uid://cmmw41vavdu68"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_ocueu"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_jbume"]
@@ -7,60 +7,60 @@
 [ext_resource type="PackedScene" uid="uid://cclnn5v3he5e0" path="res://enemies/bat/bat.tscn" id="5_8ffol"]
 [ext_resource type="PackedScene" uid="uid://dmrrhkelp6h5m" path="res://objects/traps/boulder/factory/create_boulder_on_timeout_factory.tscn" id="6_r1d07"]
 
-[node name="Level_14" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_14" type="Node2D" unique_id=216346138 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_ocueu")
 level_binding_box = Rect2(0, 224, 1920, 800)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=174489781]
 position = Vector2(32, 640)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=2028269753]
 position = Vector2(1872, 640)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=515591188]
 position = Vector2(0, -224)
-tile_map_data = PackedByteArray("AAABAA4AAgACAAEAAAABAAoAAgADAAIAAAABAAkAAgADAAIAAAAAAAsAAgACAAMAAAAAAA4AAgACAAEAAAABAAgAAgADAAIAAAABAAsAAgADAAMAAAACAAcAAgACAAMAAAADAAcAAgACAAMAAAAEAAcAAgACAAMAAAAFAAcAAgACAAMAAAAGAAcAAgADAAMAAAAKAAcAAgABAAMAAAALAAcAAgADAAMAAAACAA4AAgACAAEAAAADAA4AAgADAAEAAAAGAA4AAgAFAAMAAAAGAA8AAgAFAAQAAAAKAAwAAgAFAAMAAAAKAA0AAgAFAAQAAAAKAA4AAgAFAAQAAAAKAA8AAgAFAAQAAAAQAA8AAgAFAAMAAAAbAA4AAgABAAEAAAAcAA4AAgACAAEAAAAdAA4AAgACAAEAAAADAA8AAgADAAIAAAAbAA8AAgABAAIAAAAcAAsAAgABAAMAAAAcAAgAAgABAAIAAAAcAAkAAgABAAIAAAAcAAoAAgABAAIAAAAPAAcAAgABAAMAAAAQAAcAAgACAAMAAAARAAcAAgADAAMAAAAVAAcAAgABAAMAAAAWAAcAAgACAAMAAAAXAAcAAgACAAMAAAAYAAcAAgACAAMAAAAZAAcAAgACAAMAAAAaAAcAAgACAAMAAAAbAAcAAgACAAMAAAAdAAsAAgACAAMAAAAVAA4AAgAFAAMAAAAVAA8AAgAFAAQAAAA=")
+tile_map_data = PackedByteArray("AAABAA4AAgACAAEAAAABAAoAAgADAAIAAAABAAkAAgADAAIAAAAAAAsAAgACAAMAAAAAAA4AAgACAAEAAAABAAgAAgADAAIAAAABAAsAAgADAAMAAAACAAcAAgACAAMAAAADAAcAAgACAAMAAAAEAAcAAgACAAMAAAAFAAcAAgACAAMAAAAGAAcAAgADAAMAAAAKAAcAAgABAAMAAAALAAcAAgADAAMAAAACAA4AAgACAAEAAAADAA4AAgADAAEAAAAGAA4AAgAFAAMAAAAGAA8AAgAFAAQAAAAKAAwAAgAFAAMAAAAKAA0AAgAFAAQAAAAKAA4AAgAFAAQAAAAKAA8AAgAFAAQAAAAQAA8AAgAFAAMAAAAbAA4AAgACAAEAAAAcAA4AAgACAAEAAAAdAA4AAgACAAEAAAADAA8AAgADAAIAAAAbAA8AAgACAAIAAAAcAAsAAgABAAMAAAAcAAgAAgABAAIAAAAcAAkAAgABAAIAAAAcAAoAAgABAAIAAAAPAAcAAgABAAMAAAAQAAcAAgACAAMAAAARAAcAAgADAAMAAAAVAAcAAgABAAMAAAAWAAcAAgACAAMAAAAXAAcAAgACAAMAAAAYAAcAAgACAAMAAAAZAAcAAgACAAMAAAAaAAcAAgACAAMAAAAbAAcAAgACAAMAAAAdAAsAAgACAAMAAAAVAA4AAgAFAAMAAAAVAA8AAgAFAAQAAAAaAA4AAgABAAEAAAAaAA8AAgABAAIAAAA=")
 tile_set = ExtResource("2_jbume")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=558762209]
 tile_set = ExtResource("3_xc2lr")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_7287j")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1946718315 instance=ExtResource("4_7287j")]
 position = Vector2(1952, 608)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_15.tscn"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_7287j")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=254670067 instance=ExtResource("4_7287j")]
 position = Vector2(-32, 608)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://jr3onq8odump"
 to_spawn_location_with_index = 1
 
-[node name="Bat" parent="." instance=ExtResource("5_8ffol")]
+[node name="Bat" parent="." unique_id=1246269693 instance=ExtResource("5_8ffol")]
 position = Vector2(224, 320)
 
-[node name="Bat2" parent="." instance=ExtResource("5_8ffol")]
+[node name="Bat2" parent="." unique_id=1414793460 instance=ExtResource("5_8ffol")]
 position = Vector2(672, 320)
 
-[node name="Bat3" parent="." instance=ExtResource("5_8ffol")]
+[node name="Bat3" parent="." unique_id=394306469 instance=ExtResource("5_8ffol")]
 position = Vector2(1056, 320)
 
-[node name="Bat4" parent="." instance=ExtResource("5_8ffol")]
+[node name="Bat4" parent="." unique_id=1536442111 instance=ExtResource("5_8ffol")]
 position = Vector2(1376, 320)
 
-[node name="CreateBoulderOnTimeoutFactory" parent="." instance=ExtResource("6_r1d07")]
+[node name="CreateBoulderOnTimeoutFactory" parent="." unique_id=929627388 instance=ExtResource("6_r1d07")]
 position = Vector2(544, 160)
 fire_on_ready = false
 inital_timer = 2.0
 
-[node name="CreateBoulderOnTimeoutFactory2" parent="." instance=ExtResource("6_r1d07")]
+[node name="CreateBoulderOnTimeoutFactory2" parent="." unique_id=2055949623 instance=ExtResource("6_r1d07")]
 position = Vector2(864, 160)
 fire_on_ready = false
 fires_every_x_timer = 2.5
 boulder_autodestroy_after_x_seconds_timer = 6.0
 
-[node name="CreateBoulderOnTimeoutFactory3" parent="." instance=ExtResource("6_r1d07")]
+[node name="CreateBoulderOnTimeoutFactory3" parent="." unique_id=1466757444 instance=ExtResource("6_r1d07")]
 position = Vector2(1248, 160)
 fire_on_ready = false
 fires_every_x_timer = 2.75

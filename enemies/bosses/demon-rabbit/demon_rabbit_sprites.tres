@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://bm0ynqus6gxsc"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bm0ynqus6gxsc"]
 
 [ext_resource type="Texture2D" uid="uid://dhrsd3uroq8c5" path="res://enemies/bosses/demon-rabbit/demon_rabbit_spreadsheet.png" id="1_nbasu"]
 

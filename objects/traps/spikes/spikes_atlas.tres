@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://citeb5adh0d6f"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://citeb5adh0d6f"]
 
 [ext_resource type="Texture2D" uid="uid://c3qcpxgjt87h5" path="res://objects/traps/spikes/spikes_atlas.png" id="1_f4fv4"]
 

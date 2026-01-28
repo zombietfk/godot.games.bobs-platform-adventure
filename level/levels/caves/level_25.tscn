@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://hkpjmwek6es0"]
+[gd_scene format=4 uid="uid://hkpjmwek6es0"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_81yy7"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_w7h8g"]
@@ -26,74 +26,74 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_25" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_25" type="Node2D" unique_id=338871769 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_81yy7")
 level_binding_box = Rect2(0, 192, 2432, 1024)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1984, 288)
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1223920340]
+position = Vector2(32, 672)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1699778680]
 position = Vector2(2400, 416)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1113224795]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAAAAAsAAgADAAMAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAAwAAgABAAEAAAAEAAoAAgAFAAMAAAAGAAsAAgAFAAUAAAAHAAkAAgADAAMAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAANAA4AAgACAAEAAAAPAA4AAgACAAEAAAAQAA4AAgACAAEAAAARAA4AAgACAAEAAAASAA4AAgACAAEAAAATAA4AAgACAAEAAAAUAA4AAgACAAEAAAAVAA4AAgACAAIAAAAWAA4AAgACAAEAAAAXAA4AAgACAAEAAAAYAA4AAgACAAEAAAAZAA4AAgACAAEAAAAaAA4AAgACAAEAAAAbAA4AAgACAAEAAAAcAA4AAgACAAEAAAAdAA4AAgACAAEAAAAeAA4AAgADAAIAAAAEAAwAAgADAAIAAAAEAA0AAgADAAIAAAAEAAsAAgAFAAQAAAADAA0AAgABAAIAAAAGAAoAAgAFAAQAAAAGAAgAAgABAAIAAAAGAAkAAgABAAIAAAAIAAcAAgACAAMAAAAJAAcAAgACAAMAAAAKAAcAAgACAAMAAAALAAcAAgACAAMAAAAMAAcAAgACAAMAAAANAAcAAgACAAMAAAAOAAcAAgACAAMAAAAPAAcAAgACAAMAAAAQAAcAAgACAAMAAAARAAcAAgACAAMAAAASAAcAAgACAAMAAAATAAcAAgACAAMAAAAUAAcAAgACAAMAAAAVAAcAAgACAAMAAAAWAAcAAgACAAMAAAAXAAcAAgACAAMAAAAYAAcAAgACAAMAAAAZAAcAAgALAAcAAAAaAAcAAgACAAIAAAAbAAcAAgADAAIAAAAgAAcAAgABAAMAAAAhAAcAAgACAAMAAAAFAAcAAgACAAMAAAAEAAcAAgACAAMAAAADAAcAAgACAAMAAAACAAcAAgACAAMAAAABAAcAAgACAAMAAAAAAAoAAgADAAIAAAAAAAgAAgADAAIAAAAAAAkAAgADAAIAAAAHAAgAAgADAAIAAAAVAAkAAgAFAAMAAAAVAAoAAgAFAAQAAAAVAAsAAgAFAAQAAAAVAAwAAgAFAAQAAAAVAA0AAgAFAAQAAAAZAAoAAgABAAIAAAAaAAoAAgACAAIAAAAbAAoAAgADAAIAAAAZAAsAAgABAAMAAAAaAAsAAgACAAMAAAAbAAsAAgADAAMAAAAZAAgAAgABAAIAAAAaAAgAAgACAAIAAAAbAAgAAgADAAIAAAAZAAkAAgABAAIAAAAaAAkAAgACAAIAAAAbAAkAAgADAAIAAAAeAAwAAgAFAAQAAAAeAA0AAgAFAAQAAAAeAAoAAgAFAAQAAAAeAAsAAgAFAAQAAAAeAAkAAgAFAAQAAAAcAAYAAgACAAMAAAAdAAYAAgACAAMAAAAeAAYAAgACAAMAAAAfAAYAAgACAAMAAAAeAAgAAgAFAAMAAAAbAAYAAgAPAAcAAAAgAAYAAgALAAcAAAAeAA8AAgADAAIAAAAeABAAAgADAAIAAAAeABEAAgADAAIAAAAeABIAAgADAAIAAAADAA4AAgALAAMAAAAEAA4AAgAPAAMAAAAAAAcAAgAPAAcAAAAHAAcAAgAPAAcAAAAGAAcAAgALAAcAAAAOAA4AAgACAAEAAAAkAAcAAgACAAMAAAAkAAoAAgABAAEAAAAkAAsAAgABAAIAAAAkAAwAAgABAAIAAAAkAA0AAgABAAIAAAAkAA4AAgABAAIAAAAkAA8AAgABAAIAAAAkABAAAgABAAIAAAAkABEAAgABAAIAAAAkABIAAgABAAIAAAAlAAcAAgACAAMAAAAlAAoAAgACAAEAAAAiAAcAAgACAAMAAAAjAAcAAgACAAMAAAA=")
 tile_set = ExtResource("2_w7h8g")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=476598383]
 tile_set = ExtResource("3_nbnbd")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_alydq")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=2048516504 instance=ExtResource("4_alydq")]
 position = Vector2(2464, 384)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_26.tscn"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_alydq")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=1492018146 instance=ExtResource("4_alydq")]
 position = Vector2(-32, 640)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://ccli8umknrxob"
 to_spawn_location_with_index = 1
 
-[node name="Mushroom" parent="." instance=ExtResource("5_4g4jd")]
+[node name="Mushroom" parent="." unique_id=1271928131 instance=ExtResource("5_4g4jd")]
 position = Vector2(224, 544.00006)
 poof_every_x_seconds = 2.0
 poof_timer_inital_offset = 1.0
 
-[node name="Mushroom3" parent="." instance=ExtResource("5_4g4jd")]
+[node name="Mushroom3" parent="." unique_id=1362463950 instance=ExtResource("5_4g4jd")]
 position = Vector2(928, 672)
 
-[node name="Mushroom4" parent="." instance=ExtResource("5_4g4jd")]
+[node name="Mushroom4" parent="." unique_id=567593050 instance=ExtResource("5_4g4jd")]
 position = Vector2(672, 672.00006)
 poof_every_x_seconds = 2.5
 poof_timer_inital_offset = 2.0
 
-[node name="Mushroom6" parent="." instance=ExtResource("5_4g4jd")]
+[node name="Mushroom6" parent="." unique_id=2018633664 instance=ExtResource("5_4g4jd")]
 position = Vector2(1568, 352)
 rotation = -2.417281
 poof_every_x_seconds = 1.9
 
-[node name="Mushroom2" parent="." instance=ExtResource("5_4g4jd")]
+[node name="Mushroom2" parent="." unique_id=1611443172 instance=ExtResource("5_4g4jd")]
 position = Vector2(416, 608.00006)
 rotation = 3.1415927
 poof_every_x_seconds = 2.5
 poof_timer_inital_offset = 2.0
 
-[node name="MushroomMan" parent="." instance=ExtResource("6_e4jkq")]
+[node name="MushroomMan" parent="." unique_id=970232998 instance=ExtResource("6_e4jkq")]
 position = Vector2(1088, 672)
 
-[node name="MushroomMan3" parent="." instance=ExtResource("6_e4jkq")]
+[node name="MushroomMan3" parent="." unique_id=2058935338 instance=ExtResource("6_e4jkq")]
 position = Vector2(1472, 672)
 
-[node name="MushroomMan4" parent="." instance=ExtResource("6_e4jkq")]
+[node name="MushroomMan4" parent="." unique_id=1434997088 instance=ExtResource("6_e4jkq")]
 position = Vector2(2144, 928)
 chase_time = 1.0
 
-[node name="MushroomMan2" parent="." instance=ExtResource("6_e4jkq")]
+[node name="MushroomMan2" parent="." unique_id=1404830998 instance=ExtResource("6_e4jkq")]
 position = Vector2(448, 672)
 
-[node name="SwitchArea" parent="." instance=ExtResource("7_81yy7")]
+[node name="SwitchArea" parent="." unique_id=644318239 instance=ExtResource("7_81yy7")]
 position = Vector2(2080, 896)
 collision_mask = 1
 
@@ -101,45 +101,45 @@ collision_mask = 1
 position = Vector2(64, 48)
 shape = SubResource("RectangleShape2D_w7h8g")
 
-[node name="Path2D" type="Path2D" parent="." node_paths=PackedStringArray("movement_path")]
+[node name="Path2D" type="Path2D" parent="." unique_id=1212398504 node_paths=PackedStringArray("movement_path")]
 position = Vector2(1984, 960)
 curve = SubResource("Curve2D_81yy7")
 script = ExtResource("8_w7h8g")
 movement_path = NodePath("PathFollow2D")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=333496723]
 rotates = false
 loop = false
 
-[node name="Platform" type="TileMapLayer" parent="Path2D/PathFollow2D"]
+[node name="Platform" type="TileMapLayer" parent="Path2D/PathFollow2D" unique_id=1616724654]
 tile_map_data = PackedByteArray("AAAAAAAAAgABAAEAAAAAAAEAAgABAAIAAAAAAAIAAgABAAIAAAAAAAMAAgABAAIAAAAAAAQAAgABAAIAAAAAAAUAAgABAAIAAAAAAAYAAgABAAIAAAABAAAAAgACAAEAAAABAAEAAgACAAIAAAABAAIAAgACAAIAAAABAAMAAgACAAIAAAABAAQAAgACAAIAAAABAAUAAgACAAIAAAABAAYAAgACAAIAAAAEAAAAAgADAAEAAAAEAAEAAgADAAIAAAAEAAIAAgADAAIAAAAEAAMAAgADAAIAAAAEAAQAAgADAAIAAAAEAAUAAgADAAIAAAAEAAYAAgADAAIAAAADAAAAAgACAAEAAAACAAAAAgACAAEAAAADAAYAAgACAAIAAAADAAUAAgACAAIAAAADAAQAAgACAAIAAAADAAMAAgACAAIAAAADAAIAAgACAAIAAAADAAEAAgACAAIAAAACAAEAAgACAAIAAAACAAIAAgACAAIAAAACAAMAAgACAAIAAAACAAQAAgACAAIAAAACAAUAAgACAAIAAAACAAYAAgACAAIAAAA=")
 tile_set = ExtResource("2_w7h8g")
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="." unique_id=1900490013]
 position = Vector2(1280, 384)
 curve = SubResource("Curve2D_fdiul")
 script = ExtResource("9_alydq")
 speed = 40.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1247739007]
 position = Vector2(0, 192)
 rotates = false
 
-[node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("9_nbnbd")]
+[node name="CloudPlatform" parent="Path2D2/PathFollow2D" unique_id=86872822 instance=ExtResource("9_nbnbd")]
 randomize_inital_displacement = false
 enable_displacement = false
 
-[node name="Path2D3" type="Path2D" parent="."]
+[node name="Path2D3" type="Path2D" parent="." unique_id=2145332428]
 position = Vector2(1856, 416)
 curve = SubResource("Curve2D_fdiul")
 script = ExtResource("9_alydq")
 speed = 40.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3" unique_id=1363188430]
 position = Vector2(0, 192)
 rotates = false
 
-[node name="CloudPlatform" parent="Path2D3/PathFollow2D" instance=ExtResource("9_nbnbd")]
+[node name="CloudPlatform" parent="Path2D3/PathFollow2D" unique_id=23281809 instance=ExtResource("9_nbnbd")]
 randomize_inital_displacement = false
 enable_displacement = false
 
