@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dd4hda4w5qubs"]
+[gd_scene format=3 uid="uid://dd4hda4w5qubs"]
 
 [ext_resource type="Script" uid="uid://caoku7dqkwa54" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_2ieo8"]
@@ -104,7 +104,7 @@ _data = {
 &"floating_alert": SubResource("Animation_g1dw6")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_state_machine", "crush_check_raycast_up", "crush_check_raycast_down", "crush_check_raycast_left", "crush_check_raycast_right", "alert_notifcation")]
+[node name="Player" type="CharacterBody2D" unique_id=102336245 node_paths=PackedStringArray("movement_state_machine", "crush_check_raycast_up", "crush_check_raycast_down", "crush_check_raycast_left", "crush_check_raycast_right", "alert_notifcation")]
 collision_mask = 457
 floor_max_angle = 1.2217305
 floor_snap_length = 10.0
@@ -119,49 +119,49 @@ crush_check_raycast_left = NodePath("CrushCheckLeftCast")
 crush_check_raycast_right = NodePath("CrushCheckRightCast")
 alert_notifcation = NodePath("AlertNotification")
 
-[node name="StateMachines" type="Node" parent="."]
+[node name="StateMachines" type="Node" parent="." unique_id=1027280309]
 
-[node name="MovementStateMachine" type="Node" parent="StateMachines" node_paths=PackedStringArray("inital_state", "external_contexts")]
+[node name="MovementStateMachine" type="Node" parent="StateMachines" unique_id=1520474224 node_paths=PackedStringArray("inital_state", "external_contexts")]
 script = ExtResource("2_2ieo8")
 inital_state = NodePath("Grounded")
 external_contexts = [NodePath("../MovementContext"), NodePath("../KnockbackContext")]
 
-[node name="Airborn" type="Node" parent="StateMachines/MovementStateMachine" node_paths=PackedStringArray("body")]
+[node name="Airborn" type="Node" parent="StateMachines/MovementStateMachine" unique_id=1712774903 node_paths=PackedStringArray("body")]
 script = ExtResource("3_ebec5")
 body = NodePath("../../..")
 
-[node name="Dead" type="Node" parent="StateMachines/MovementStateMachine" node_paths=PackedStringArray("respawn_grace_timer", "respawn_timer", "body")]
+[node name="Dead" type="Node" parent="StateMachines/MovementStateMachine" unique_id=496044455 node_paths=PackedStringArray("respawn_grace_timer", "respawn_timer", "body")]
 script = ExtResource("4_yllr7")
 respawn_grace_timer = NodePath("../../../RespawnGraceTimer")
 respawn_timer = NodePath("../../../RespawnTimer")
 body = NodePath("../../..")
 
-[node name="Grounded" type="Node" parent="StateMachines/MovementStateMachine" node_paths=PackedStringArray("body")]
+[node name="Grounded" type="Node" parent="StateMachines/MovementStateMachine" unique_id=1414701339 node_paths=PackedStringArray("body")]
 script = ExtResource("5_kb6p2")
 body = NodePath("../../..")
 
-[node name="DamageStateMachine" type="Node" parent="StateMachines" node_paths=PackedStringArray("inital_state", "external_contexts")]
+[node name="DamageStateMachine" type="Node" parent="StateMachines" unique_id=328724308 node_paths=PackedStringArray("inital_state", "external_contexts")]
 script = ExtResource("2_2ieo8")
 inital_state = NodePath("Unhit")
 external_contexts = [NodePath("../MovementContext"), NodePath("../KnockbackContext")]
 
-[node name="Unhit" type="Node" parent="StateMachines/DamageStateMachine" node_paths=PackedStringArray("body")]
+[node name="Unhit" type="Node" parent="StateMachines/DamageStateMachine" unique_id=1169973366 node_paths=PackedStringArray("body")]
 script = ExtResource("6_wodsf")
 body = NodePath("../../..")
 
-[node name="Hit" type="Node" parent="StateMachines/DamageStateMachine" node_paths=PackedStringArray("body")]
+[node name="Hit" type="Node" parent="StateMachines/DamageStateMachine" unique_id=2120937373 node_paths=PackedStringArray("body")]
 script = ExtResource("7_32hag")
 body = NodePath("../../..")
 
-[node name="---" type="Node" parent="StateMachines"]
+[node name="---" type="Node" parent="StateMachines" unique_id=1268298447]
 
-[node name="MovementContext" type="Node" parent="StateMachines"]
+[node name="MovementContext" type="Node" parent="StateMachines" unique_id=1161384804]
 script = ExtResource("8_tqiix")
 
-[node name="KnockbackContext" type="Node" parent="StateMachines"]
+[node name="KnockbackContext" type="Node" parent="StateMachines" unique_id=69681423]
 script = ExtResource("9_e7oew")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1363409703]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_rgyib")
 animation = &"idle"
@@ -169,42 +169,40 @@ autoplay = "idle"
 frame = 2
 frame_progress = 0.673187
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475461127]
 position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_g1dw6")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="RespawnTimer" type="Timer" parent="."]
+[node name="RespawnTimer" type="Timer" parent="." unique_id=1149675791]
 wait_time = 2.5
 one_shot = true
 
-[node name="RespawnGraceTimer" type="Timer" parent="."]
+[node name="RespawnGraceTimer" type="Timer" parent="." unique_id=1790384715]
 wait_time = 0.05
 one_shot = true
 
-[node name="AlertNotification" type="Sprite2D" parent="."]
+[node name="AlertNotification" type="Sprite2D" parent="." unique_id=1058166985]
 visible = false
 position = Vector2(0, -48)
 texture = ExtResource("3_g1dw6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AlertNotification"]
-libraries = {
-&"": SubResource("AnimationLibrary_qjkh3")
-}
-autoplay = "floating_alert"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AlertNotification" unique_id=105253156]
+libraries/ = SubResource("AnimationLibrary_qjkh3")
+autoplay = &"floating_alert"
 
-[node name="CrushCheckUpCast" type="RayCast2D" parent="."]
+[node name="CrushCheckUpCast" type="RayCast2D" parent="." unique_id=1222294373]
 target_position = Vector2(0, -20)
 collision_mask = 64
 
-[node name="CrushCheckDownCast" type="RayCast2D" parent="."]
+[node name="CrushCheckDownCast" type="RayCast2D" parent="." unique_id=372649569]
 target_position = Vector2(0, 25)
 collision_mask = 64
 
-[node name="CrushCheckRightCast" type="RayCast2D" parent="."]
+[node name="CrushCheckRightCast" type="RayCast2D" parent="." unique_id=1585377723]
 target_position = Vector2(13, 0)
 collision_mask = 64
 
-[node name="CrushCheckLeftCast" type="RayCast2D" parent="."]
+[node name="CrushCheckLeftCast" type="RayCast2D" parent="." unique_id=1948678328]
 target_position = Vector2(-10, 0)
 collision_mask = 64

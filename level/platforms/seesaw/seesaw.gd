@@ -4,14 +4,24 @@ var _rotation_speed = 0;
 @export var rotation_sensitivity = 0.1;
 @export var rotation_slowdown_ratio: float = 1;
 @export var pivot: Node2D;
-@export var overlap_area: Area2D;
+@export var top_bottom_overlap_area: Area2D;
+@export var left_right_overlap_area: Area2D;
+
+enum OverlappingDirection { NONE = 0, LR_SIDE = -1, TB_SIDE = 1 };
 
 func _physics_process(delta: float) -> void:
 	var player = Main.instance.player;
 	var is_colliding = false;
-	for n in overlap_area.get_overlapping_bodies():
+	var overlapping_direction = OverlappingDirection.NONE;
+	for n in top_bottom_overlap_area.get_overlapping_bodies():
 		if n == player:
 			is_colliding = true;
+			overlapping_direction = OverlappingDirection.TB_SIDE;
+			break;
+	for n in left_right_overlap_area.get_overlapping_bodies():
+		if n == player:
+			is_colliding = true;
+			overlapping_direction = OverlappingDirection.LR_SIDE;
 			break;
 	if is_colliding:
 		var pivot_point: Vector2 = pivot.global_position;
@@ -22,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		var rotation_direction_sign: int = -sign(
 			player_local_to_rotated_pivot.x *
 			player_local_to_rotated_pivot.y
-		);
+		) * overlapping_direction;
 		if rotation_direction_sign != 0:
 			_rotation_speed = rotation_direction_sign * player_local_to_pivot.length() * rotation_sensitivity
 		else:

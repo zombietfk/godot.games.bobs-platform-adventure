@@ -1,0 +1,196 @@
+[gd_scene format=4 uid="uid://d31f78tda8l2r"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_yxms3"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="3_ls4bl"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="4_5mlxn"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="5_n4il4"]
+[ext_resource type="PackedScene" uid="uid://br8v05dfs0m3m" path="res://level/platforms/seesaw/seesaw.tscn" id="6_2mmuu"]
+[ext_resource type="PackedScene" uid="uid://1ugdp78n2ire" path="res://enemies/worm/worm.tscn" id="7_6nw8o"]
+[ext_resource type="PackedScene" uid="uid://dmrrhkelp6h5m" path="res://objects/traps/boulder/factory/create_boulder_on_timeout_factory.tscn" id="7_yxms3"]
+
+[sub_resource type="Curve2D" id="Curve2D_yxms3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 32, 256, 0, 0, 0, 0, -32, 256, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 32, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_3nuke"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 64, 256, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_6nw8o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 256, 64, 0, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Level_44" type="Node2D" unique_id=1826482816 node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_yxms3")
+level_binding_box = Rect2(-128, 0, 1216, 576)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=444357591]
+position = Vector2(-32, 160)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1167209650]
+position = Vector2(1184, 160)
+
+[node name="Level" type="TileMapLayer" parent="." unique_id=981757416]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAAAAAMAAgACAAMAAAABAAMAAgACAAMAAAACAAMAAgADAAMAAAAFAAMAAgAFAAUAAAAIAAMAAgAFAAUAAAALAAMAAgAFAAUAAAAOAAMAAgABAAMAAAAPAAMAAgACAAMAAAAQAAMAAgACAAMAAAARAAMAAgACAAMAAAARAAYAAgABAAIAAAARAAcAAgABAAIAAAARAAgAAgABAAIAAAARAAkAAgABAAIAAAARAAoAAgABAAIAAAASAAYAAgACAAEAAAASAAMAAgACAAMAAAD//wMAAgACAAMAAAARAAUAAgAFAAMAAAARAAsAAgABAAIAAAD//wYAAgADAAEAAAD//wcAAgADAAIAAAD//wgAAgADAAIAAAD//wkAAgADAAIAAAD//woAAgADAAIAAAD//wsAAgADAAIAAAA=")
+tile_set = ExtResource("3_ls4bl")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=532875060]
+tile_set = ExtResource("4_5mlxn")
+
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1446610799 instance=ExtResource("5_n4il4")]
+position = Vector2(1248, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_45.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=1186594248 instance=ExtResource("5_n4il4")]
+position = Vector2(-96, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://oqv4363geo4j"
+to_spawn_location_with_index = 1
+
+[node name="Seesaw" parent="." unique_id=924279190 instance=ExtResource("6_2mmuu")]
+position = Vector2(160, 384)
+rotation = -1.5707964
+rotation_sensitivity = 0.2
+
+[node name="WormWithPath" parent="Seesaw" unique_id=592741544 instance=ExtResource("7_6nw8o")]
+position = Vector2(-128, 0)
+rotation = -1.5707964
+curve = SubResource("Curve2D_yxms3")
+start_distance_ratio = 0.7
+cycle_path = false
+
+[node name="Seesaw4" parent="." unique_id=1513419362 instance=ExtResource("6_2mmuu")]
+position = Vector2(352, 320)
+rotation = -1.5707964
+rotation_sensitivity = 0.4
+
+[node name="WormWithPath4" parent="Seesaw4" unique_id=1732526050 instance=ExtResource("7_6nw8o")]
+position = Vector2(-128.00003, 32)
+rotation = -1.5707964
+curve = SubResource("Curve2D_3nuke")
+speed = 400.0
+start_distance_ratio = 0.8
+cycle_path = false
+
+[node name="PathFollow2D" parent="Seesaw4/WormWithPath4" index="0"]
+rotation = 0.0
+
+[node name="Worm" parent="Seesaw4/WormWithPath4/PathFollow2D" index="0"]
+in_ground_time = 0.3
+
+[node name="AnimationPlayer" parent="Seesaw4/WormWithPath4/PathFollow2D/Worm" index="2"]
+autoplay = &"move_collider"
+
+[node name="Seesaw5" parent="." unique_id=1323023353 instance=ExtResource("6_2mmuu")]
+position = Vector2(736, 384)
+rotation = -1.5707964
+rotation_sensitivity = 0.5
+
+[node name="WormWithPath" parent="Seesaw5" unique_id=252244029 instance=ExtResource("7_6nw8o")]
+position = Vector2(-128, 0)
+rotation = -1.5707964
+curve = SubResource("Curve2D_yxms3")
+start_distance_ratio = 0.7
+cycle_path = false
+
+[node name="Seesaw2" parent="." unique_id=10483643 instance=ExtResource("6_2mmuu")]
+position = Vector2(544, 512)
+rotation = -1.5707964
+rotation_sensitivity = 0.35
+rotation_slowdown_ratio = 0.4
+
+[node name="WormWithPath2" parent="Seesaw2" unique_id=1087956963 instance=ExtResource("7_6nw8o")]
+position = Vector2(-128, -32)
+curve = SubResource("Curve2D_6nw8o")
+speed = 180.0
+start_distance_ratio = 0.25
+cycle_path = false
+
+[node name="PathFollow2D" parent="Seesaw2/WormWithPath2" index="0"]
+rotation = 0.0
+
+[node name="Worm" parent="Seesaw2/WormWithPath2/PathFollow2D" index="0"]
+in_ground_time = 0.6
+
+[node name="AnimationPlayer" parent="Seesaw2/WormWithPath2/PathFollow2D/Worm" index="2"]
+autoplay = &"move_collider"
+
+[node name="Seesaw3" parent="." unique_id=725940208 instance=ExtResource("6_2mmuu")]
+position = Vector2(928, 320)
+rotation = -1.5707964
+rotation_sensitivity = 0.3
+rotation_slowdown_ratio = 0.7
+
+[node name="WormWithPath3" parent="Seesaw3" unique_id=1235205027 instance=ExtResource("7_6nw8o")]
+position = Vector2(-128.00003, 32)
+rotation = -1.5707964
+curve = SubResource("Curve2D_3nuke")
+speed = 400.0
+start_distance_ratio = 0.2
+cycle_path = false
+
+[node name="PathFollow2D" parent="Seesaw3/WormWithPath3" index="0"]
+rotation = 0.0
+
+[node name="Worm" parent="Seesaw3/WormWithPath3/PathFollow2D" index="0"]
+in_ground_time = 0.3
+
+[node name="AnimationPlayer" parent="Seesaw3/WormWithPath3/PathFollow2D/Worm" index="2"]
+autoplay = &"move_collider"
+
+[node name="WormWithPath4" parent="Seesaw3" unique_id=1703336980 instance=ExtResource("7_6nw8o")]
+position = Vector2(-128.00003, 32)
+rotation = -1.5707964
+curve = SubResource("Curve2D_3nuke")
+speed = 400.0
+start_distance_ratio = 0.8
+cycle_path = false
+
+[node name="PathFollow2D" parent="Seesaw3/WormWithPath4" index="0"]
+rotation = 0.0
+
+[node name="Worm" parent="Seesaw3/WormWithPath4/PathFollow2D" index="0"]
+in_ground_time = 0.3
+
+[node name="AnimationPlayer" parent="Seesaw3/WormWithPath4/PathFollow2D/Worm" index="2"]
+autoplay = &"move_collider"
+
+[node name="CreateBoulderOnTimeoutFactory" parent="." unique_id=100059299 instance=ExtResource("7_yxms3")]
+position = Vector2(256, -128)
+fires_every_x_timer = 8.0
+inital_timer = 6.0
+
+[node name="CreateBoulderOnTimeoutFactory2" parent="." unique_id=105568919 instance=ExtResource("7_yxms3")]
+position = Vector2(448, -128)
+fires_every_x_timer = 8.0
+inital_timer = 4.0
+
+[node name="CreateBoulderOnTimeoutFactory3" parent="." unique_id=1759415679 instance=ExtResource("7_yxms3")]
+position = Vector2(640, -128)
+fires_every_x_timer = 8.0
+inital_timer = 2.0
+
+[node name="CreateBoulderOnTimeoutFactory4" parent="." unique_id=1185431778 instance=ExtResource("7_yxms3")]
+position = Vector2(832, -128)
+fires_every_x_timer = 8.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+
+[editable path="Seesaw"]
+[editable path="Seesaw4"]
+[editable path="Seesaw4/WormWithPath4"]
+[editable path="Seesaw5"]
+[editable path="Seesaw2"]
+[editable path="Seesaw2/WormWithPath2"]
+[editable path="Seesaw3"]
+[editable path="Seesaw3/WormWithPath3"]
+[editable path="Seesaw3/WormWithPath4"]

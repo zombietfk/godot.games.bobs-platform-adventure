@@ -1,0 +1,361 @@
+[gd_scene format=4 uid="uid://c2ikb4ojmlk2g"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_07xbl"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_5j3gg"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_mr0ka"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_2hss0"]
+[ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="5_22878"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="6_07xbl"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="7_5j3gg"]
+[ext_resource type="PackedScene" uid="uid://c1fppnc76mn0n" path="res://enemies/mushroom/mushroom.tscn" id="8_mr0ka"]
+
+[sub_resource type="Curve2D" id="Curve2D_5j3gg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 448)
+}
+point_count = 2
+
+[node name="Level_46" type="Node2D" unique_id=1053393873 node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_07xbl")
+level_binding_box = Rect2(0, -128, 1472, 576)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1906738804]
+position = Vector2(32, 160)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1503765258]
+position = Vector2(1440, 160)
+
+[node name="Level" type="TileMapLayer" parent="." unique_id=160411321]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAAAAAgAAgADAAIAAAAAAAYAAgADAAEAAAAAAAcAAgADAAIAAAAWAAMAAgABAAMAAAAWAAYAAgABAAEAAAAWAAcAAgABAAIAAAAWAAgAAgABAAIAAAAAAAMAAgADAAMAAAACAAEAAgACAAMAAAADAAEAAgACAAMAAAAEAAEAAgACAAMAAAAFAAEAAgACAAMAAAAGAAEAAgACAAMAAAAHAAEAAgACAAMAAAAIAAEAAgACAAMAAAAJAAEAAgACAAMAAAAKAAEAAgACAAMAAAALAAEAAgACAAMAAAAMAAEAAgACAAMAAAANAAEAAgACAAMAAAAOAAEAAgACAAMAAAAPAAEAAgACAAMAAAAQAAEAAgACAAMAAAARAAEAAgACAAMAAAASAAEAAgACAAMAAAATAAEAAgACAAMAAAAUAAEAAgACAAMAAAABAAsAAgACAAEAAAACAAsAAgACAAEAAAADAAsAAgACAAEAAAAEAAsAAgACAAEAAAAFAAsAAgACAAEAAAAGAAsAAgACAAEAAAAHAAsAAgACAAEAAAAIAAsAAgACAAEAAAAJAAsAAgACAAEAAAAKAAsAAgACAAEAAAALAAsAAgACAAEAAAAMAAsAAgACAAEAAAANAAsAAgACAAEAAAAOAAsAAgACAAEAAAAPAAsAAgACAAEAAAAQAAsAAgACAAEAAAARAAsAAgACAAEAAAASAAsAAgACAAEAAAATAAsAAgACAAEAAAAUAAsAAgACAAEAAAAVAAsAAgACAAEAAAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAAWAAkAAgABAAIAAAAWAAoAAgABAAIAAAAVAAIAAgAHAAUAAAABAAIAAgAJAAUAAAAAAAIAAgAPAAcAAAABAAEAAgAPAAcAAAAWAAIAAgALAAcAAAAVAAEAAgALAAcAAAAAAAsAAgAPAAMAAAAWAAsAAgALAAMAAAA=")
+tile_set = ExtResource("2_5j3gg")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=919414452]
+tile_set = ExtResource("3_mr0ka")
+
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1331089556 instance=ExtResource("4_2hss0")]
+position = Vector2(1504, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_47.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=481388761 instance=ExtResource("4_2hss0")]
+position = Vector2(-32, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://mf0fuumvgp62"
+to_spawn_location_with_index = 1
+
+[node name="Path2DCyclical" type="Path2D" parent="." unique_id=1047362649]
+position = Vector2(224, 2)
+curve = SubResource("Curve2D_5j3gg")
+script = ExtResource("6_07xbl")
+speed = 200.0
+start_distance_ratio = 1.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DCyclical" unique_id=1406632642]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2DCyclical/PathFollow2D" unique_id=2144690200 instance=ExtResource("5_22878")]
+floating_displacement = 0
+on_land_displacement = 16
+randomize_inital_displacement = false
+bounce_timer = 1.0
+
+[node name="Path2DCyclical2" type="Path2D" parent="." unique_id=223680966]
+position = Vector2(480, 2)
+curve = SubResource("Curve2D_5j3gg")
+script = ExtResource("6_07xbl")
+speed = 200.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DCyclical2" unique_id=806915889]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2DCyclical2/PathFollow2D" unique_id=1195142932 instance=ExtResource("5_22878")]
+floating_displacement = 0
+on_land_displacement = 16
+randomize_inital_displacement = false
+bounce_timer = 1.0
+
+[node name="Path2DCyclical3" type="Path2D" parent="." unique_id=303932602]
+position = Vector2(736, 2)
+curve = SubResource("Curve2D_5j3gg")
+script = ExtResource("6_07xbl")
+speed = 200.0
+start_distance_ratio = 1.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DCyclical3" unique_id=232277913]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2DCyclical3/PathFollow2D" unique_id=19200507 instance=ExtResource("5_22878")]
+floating_displacement = 0
+on_land_displacement = 16
+randomize_inital_displacement = false
+bounce_timer = 1.0
+
+[node name="Path2DCyclical4" type="Path2D" parent="." unique_id=1145306047]
+position = Vector2(992, 2)
+curve = SubResource("Curve2D_5j3gg")
+script = ExtResource("6_07xbl")
+speed = 200.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DCyclical4" unique_id=419494770]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2DCyclical4/PathFollow2D" unique_id=1237992224 instance=ExtResource("5_22878")]
+floating_displacement = 0
+on_land_displacement = 16
+randomize_inital_displacement = false
+bounce_timer = 1.0
+
+[node name="Path2DCyclical5" type="Path2D" parent="." unique_id=692131082]
+position = Vector2(1248, 0)
+curve = SubResource("Curve2D_5j3gg")
+script = ExtResource("6_07xbl")
+speed = 200.0
+start_distance_ratio = 1.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DCyclical5" unique_id=448005810]
+rotates = false
+
+[node name="CloudPlatform" parent="Path2DCyclical5/PathFollow2D" unique_id=1625283721 instance=ExtResource("5_22878")]
+floating_displacement = 0
+on_land_displacement = 16
+randomize_inital_displacement = false
+bounce_timer = 1.0
+
+[node name="Spike" parent="." unique_id=1813851555 instance=ExtResource("7_5j3gg")]
+position = Vector2(96, 480)
+
+[node name="Spike2" parent="." unique_id=106655514 instance=ExtResource("7_5j3gg")]
+position = Vector2(128, 480)
+
+[node name="Spike3" parent="." unique_id=1396634614 instance=ExtResource("7_5j3gg")]
+position = Vector2(160, 480)
+
+[node name="Spike7" parent="." unique_id=460306547 instance=ExtResource("7_5j3gg")]
+position = Vector2(288, 480)
+
+[node name="Spike8" parent="." unique_id=526304943 instance=ExtResource("7_5j3gg")]
+position = Vector2(320, 480)
+
+[node name="Spike9" parent="." unique_id=1289966481 instance=ExtResource("7_5j3gg")]
+position = Vector2(352, 480)
+
+[node name="Spike10" parent="." unique_id=949570527 instance=ExtResource("7_5j3gg")]
+position = Vector2(384, 480)
+
+[node name="Spike11" parent="." unique_id=921165596 instance=ExtResource("7_5j3gg")]
+position = Vector2(416, 480)
+
+[node name="Spike15" parent="." unique_id=1076874296 instance=ExtResource("7_5j3gg")]
+position = Vector2(544, 480)
+
+[node name="Spike16" parent="." unique_id=1054885168 instance=ExtResource("7_5j3gg")]
+position = Vector2(576, 480)
+
+[node name="Spike17" parent="." unique_id=2104819908 instance=ExtResource("7_5j3gg")]
+position = Vector2(608, 480)
+
+[node name="Spike18" parent="." unique_id=2023858537 instance=ExtResource("7_5j3gg")]
+position = Vector2(640, 480)
+
+[node name="Spike19" parent="." unique_id=300479881 instance=ExtResource("7_5j3gg")]
+position = Vector2(672, 480)
+
+[node name="Spike23" parent="." unique_id=2059912257 instance=ExtResource("7_5j3gg")]
+position = Vector2(800, 480)
+
+[node name="Spike24" parent="." unique_id=1763954784 instance=ExtResource("7_5j3gg")]
+position = Vector2(832, 480)
+
+[node name="Spike25" parent="." unique_id=1425898911 instance=ExtResource("7_5j3gg")]
+position = Vector2(864, 480)
+
+[node name="Spike26" parent="." unique_id=1137898458 instance=ExtResource("7_5j3gg")]
+position = Vector2(896, 480)
+
+[node name="Spike27" parent="." unique_id=1991793543 instance=ExtResource("7_5j3gg")]
+position = Vector2(928, 480)
+
+[node name="Spike31" parent="." unique_id=1890317465 instance=ExtResource("7_5j3gg")]
+position = Vector2(1056, 480)
+
+[node name="Spike32" parent="." unique_id=1069212090 instance=ExtResource("7_5j3gg")]
+position = Vector2(1088, 480)
+
+[node name="Spike33" parent="." unique_id=855467218 instance=ExtResource("7_5j3gg")]
+position = Vector2(1120, 480)
+
+[node name="Spike34" parent="." unique_id=937542460 instance=ExtResource("7_5j3gg")]
+position = Vector2(1152, 480)
+
+[node name="Spike35" parent="." unique_id=2041349979 instance=ExtResource("7_5j3gg")]
+position = Vector2(1184, 480)
+
+[node name="Spike39" parent="." unique_id=1446357251 instance=ExtResource("7_5j3gg")]
+position = Vector2(1312, 480)
+
+[node name="Spike40" parent="." unique_id=166475134 instance=ExtResource("7_5j3gg")]
+position = Vector2(1344, 480)
+
+[node name="Spike41" parent="." unique_id=642635175 instance=ExtResource("7_5j3gg")]
+position = Vector2(1376, 480)
+
+[node name="Spike6" parent="." unique_id=1389815775 instance=ExtResource("7_5j3gg")]
+position = Vector2(160, -32)
+rotation = 3.1415927
+
+[node name="Spike12" parent="." unique_id=525623614 instance=ExtResource("7_5j3gg")]
+position = Vector2(288, -32)
+rotation = 3.1415927
+
+[node name="Spike13" parent="." unique_id=1328970328 instance=ExtResource("7_5j3gg")]
+position = Vector2(320, -32)
+rotation = 3.1415927
+
+[node name="Spike14" parent="." unique_id=1677808131 instance=ExtResource("7_5j3gg")]
+position = Vector2(352, -32)
+rotation = 3.1415927
+
+[node name="Spike20" parent="." unique_id=1599191321 instance=ExtResource("7_5j3gg")]
+position = Vector2(384, -32)
+rotation = 3.1415927
+
+[node name="Spike21" parent="." unique_id=349089655 instance=ExtResource("7_5j3gg")]
+position = Vector2(416, -32)
+rotation = 3.1415927
+
+[node name="Spike22" parent="." unique_id=1822157964 instance=ExtResource("7_5j3gg")]
+position = Vector2(544, -32)
+rotation = 3.1415927
+
+[node name="Spike28" parent="." unique_id=1918098847 instance=ExtResource("7_5j3gg")]
+position = Vector2(576, -32)
+rotation = 3.1415927
+
+[node name="Spike29" parent="." unique_id=125804809 instance=ExtResource("7_5j3gg")]
+position = Vector2(608, -32)
+rotation = 3.1415927
+
+[node name="Spike30" parent="." unique_id=2145926400 instance=ExtResource("7_5j3gg")]
+position = Vector2(640, -32)
+rotation = 3.1415927
+
+[node name="Spike36" parent="." unique_id=1507489108 instance=ExtResource("7_5j3gg")]
+position = Vector2(672, -32)
+rotation = 3.1415927
+
+[node name="Spike37" parent="." unique_id=566315566 instance=ExtResource("7_5j3gg")]
+position = Vector2(800, -32)
+rotation = 3.1415927
+
+[node name="Spike38" parent="." unique_id=9656559 instance=ExtResource("7_5j3gg")]
+position = Vector2(832, -32)
+rotation = 3.1415927
+
+[node name="Spike42" parent="." unique_id=1855873485 instance=ExtResource("7_5j3gg")]
+position = Vector2(864, -32)
+rotation = 3.1415927
+
+[node name="Spike43" parent="." unique_id=670843814 instance=ExtResource("7_5j3gg")]
+position = Vector2(896, -32)
+rotation = 3.1415927
+
+[node name="Spike44" parent="." unique_id=344117879 instance=ExtResource("7_5j3gg")]
+position = Vector2(928, -32)
+rotation = 3.1415927
+
+[node name="Spike45" parent="." unique_id=618754251 instance=ExtResource("7_5j3gg")]
+position = Vector2(1056, -32)
+rotation = 3.1415927
+
+[node name="Spike46" parent="." unique_id=1590182282 instance=ExtResource("7_5j3gg")]
+position = Vector2(1088, -32)
+rotation = 3.1415927
+
+[node name="Spike47" parent="." unique_id=925090650 instance=ExtResource("7_5j3gg")]
+position = Vector2(1120, -32)
+rotation = 3.1415927
+
+[node name="Spike48" parent="." unique_id=443919718 instance=ExtResource("7_5j3gg")]
+position = Vector2(1152, -32)
+rotation = 3.1415927
+
+[node name="Spike49" parent="." unique_id=1019108654 instance=ExtResource("7_5j3gg")]
+position = Vector2(1184, -32)
+rotation = 3.1415927
+
+[node name="Spike50" parent="." unique_id=1370563800 instance=ExtResource("7_5j3gg")]
+position = Vector2(1312, -32)
+rotation = 3.1415927
+
+[node name="Mushroom" parent="." unique_id=325479647 instance=ExtResource("8_mr0ka")]
+position = Vector2(224, 480)
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 4.0
+spore_release_force = 420.0
+
+[node name="Mushroom2" parent="." unique_id=392363726 instance=ExtResource("8_mr0ka")]
+position = Vector2(480, 480)
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 3.0
+spore_release_force = 420.0
+
+[node name="Mushroom3" parent="." unique_id=2025938832 instance=ExtResource("8_mr0ka")]
+position = Vector2(736, 480)
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 2.0
+spore_release_force = 420.0
+
+[node name="Mushroom4" parent="." unique_id=1406068743 instance=ExtResource("8_mr0ka")]
+position = Vector2(992, 480)
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 1.0
+spore_release_force = 420.0
+
+[node name="Mushroom5" parent="." unique_id=21565002 instance=ExtResource("8_mr0ka")]
+position = Vector2(1248, 480)
+poof_every_x_seconds = 5.0
+spore_release_force = 420.0
+
+[node name="Mushroom6" parent="." unique_id=1487993131 instance=ExtResource("8_mr0ka")]
+position = Vector2(224, -32)
+rotation = 3.1415927
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 4.5
+spore_release_arc_in_degrees = 58.0
+
+[node name="Mushroom7" parent="." unique_id=1694106927 instance=ExtResource("8_mr0ka")]
+position = Vector2(480, -32)
+rotation = 3.1415927
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 3.5
+spore_release_arc_in_degrees = 58.0
+
+[node name="Mushroom8" parent="." unique_id=990937948 instance=ExtResource("8_mr0ka")]
+position = Vector2(736, -32)
+rotation = 3.1415927
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 2.5
+spore_release_arc_in_degrees = 58.0
+
+[node name="Mushroom9" parent="." unique_id=82018 instance=ExtResource("8_mr0ka")]
+position = Vector2(992, -32)
+rotation = 3.1415927
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 1.5
+spore_release_arc_in_degrees = 58.0
+
+[node name="Mushroom10" parent="." unique_id=267531496 instance=ExtResource("8_mr0ka")]
+position = Vector2(1248, -32)
+rotation = 3.1415927
+poof_every_x_seconds = 5.0
+poof_timer_inital_offset = 0.5
+spore_release_arc_in_degrees = 58.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]

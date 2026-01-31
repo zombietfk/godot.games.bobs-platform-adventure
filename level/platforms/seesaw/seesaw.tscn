@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://br8v05dfs0m3m"]
+[gd_scene format=3 uid="uid://br8v05dfs0m3m"]
 
 [ext_resource type="Script" uid="uid://cujr8u1e3kwcq" path="res://level/platforms/seesaw/seesaw.gd" id="1_xroty"]
 [ext_resource type="Texture2D" uid="uid://csbgstbk3iit4" path="res://ui/circular_circle.png" id="2_34ik4"]
@@ -34,26 +34,35 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xroty"]
-size = Vector2(264, 72)
+size = Vector2(256, 72)
 
-[node name="Seesaw" type="Node2D" node_paths=PackedStringArray("pivot", "overlap_area")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34ik4"]
+size = Vector2(264, 64)
+
+[node name="Seesaw" type="Node2D" unique_id=1467739484 node_paths=PackedStringArray("pivot", "top_bottom_overlap_area", "left_right_overlap_area")]
 script = ExtResource("1_xroty")
 pivot = NodePath("Pivot")
-overlap_area = NodePath("Area2D")
+top_bottom_overlap_area = NodePath("TopBottomArea2D")
+left_right_overlap_area = NodePath("LeftRightArea2D")
 
-[node name="Pivot" type="AnimatedSprite2D" parent="."]
+[node name="Pivot" type="AnimatedSprite2D" parent="." unique_id=539144381]
 z_index = 3
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xje3c")
 autoplay = "default"
 frame_progress = 0.36928505
 
-[node name="Saw" type="TileMapLayer" parent="."]
+[node name="Saw" type="TileMapLayer" parent="." unique_id=1563443192]
 position = Vector2(0, -32)
 tile_map_data = PackedByteArray(0, 0, 254, 255, 0, 0, 2, 0, 7, 0, 1, 0, 0, 0, 255, 255, 0, 0, 2, 0, 8, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 8, 0, 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 9, 0, 1, 0, 0, 0)
 tile_set = ExtResource("3_ubvnf")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="TopBottomArea2D" type="Area2D" parent="." unique_id=1672735116]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBottomArea2D" unique_id=797721061]
 shape = SubResource("RectangleShape2D_xroty")
+
+[node name="LeftRightArea2D" type="Area2D" parent="." unique_id=1517164251]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftRightArea2D" unique_id=731696263]
+shape = SubResource("RectangleShape2D_34ik4")

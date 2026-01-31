@@ -1,0 +1,81 @@
+[gd_scene format=4 uid="uid://mf0fuumvgp62"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_rcm1x"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_ax3a0"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_my5hf"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_4aqsh"]
+[ext_resource type="PackedScene" uid="uid://dmrrhkelp6h5m" path="res://objects/traps/boulder/factory/create_boulder_on_timeout_factory.tscn" id="5_a733h"]
+[ext_resource type="PackedScene" uid="uid://bwm72kx7ki3v6" path="res://objects/traps/sawblade/shooter/sawblade_timed_shooter.tscn" id="6_xtuda"]
+
+[node name="Level_45" type="Node2D" unique_id=1826482816 node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_rcm1x")
+level_binding_box = Rect2(-64, -1216, 448, 256)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=444357591]
+position = Vector2(-32, 160)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1167209650]
+position = Vector2(416, -992)
+
+[node name="Level" type="TileMapLayer" parent="." unique_id=981757416]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD//wMAAgACAAMAAAD//wYAAgACAAEAAAAAAAYAAgACAAEAAAABAAYAAgACAAEAAAACAAYAAgACAAEAAAADAAYAAgACAAEAAAAEAAYAAgACAAEAAAAEAAUAAgAHAAUAAAAEAAQAAgAHAAMAAAAAAAMAAgACAAMAAAABAAMAAgAJAAUAAAABAAIAAgAJAAMAAAAFAAIAAgABAAIAAAAFAAMAAgABAAIAAAAEAAEAAgAHAAUAAAAEAAAAAgAHAAMAAAABAP//AgAJAAUAAAABAP7/AgAJAAMAAAAAAAAAAgADAAIAAAAAAAEAAgADAAIAAAAEAP3/AgAHAAUAAAAEAPz/AgAHAAMAAAAFAP7/AgABAAIAAAAFAP//AgABAAIAAAAAAPz/AgADAAIAAAAAAP3/AgADAAIAAAABAPv/AgAJAAUAAAABAPr/AgAJAAMAAAAFAPr/AgABAAIAAAAFAPv/AgABAAIAAAAEAPn/AgAHAAUAAAAEAPj/AgAHAAMAAAABAPf/AgAJAAUAAAABAPb/AgAJAAMAAAAAAPj/AgADAAIAAAAAAPn/AgADAAIAAAAFAPX/AgABAAIAAAAFAPb/AgABAAIAAAAFAPf/AgABAAIAAAAFAPT/AgABAAEAAAAGAPT/AgACAAEAAAAFAPH/AgACAAMAAAAGAPH/AgACAAMAAAAEAPH/AgAHAAUAAAABAPH/AgAJAAUAAAAAAPL/AgADAAIAAAAAAPP/AgADAAIAAAAAAPT/AgADAAIAAAAAAPX/AgADAAIAAAAAAPH/AgAPAAcAAAAAAPf/AgAPAAcAAAAAAPv/AgAPAAcAAAAAAP//AgAPAAcAAAAAAAIAAgAPAAMAAAAAAP7/AgAPAAMAAAAAAPr/AgAPAAMAAAAAAPb/AgAPAAMAAAAFAPj/AgALAAMAAAAFAPz/AgALAAMAAAAFAAAAAgALAAMAAAAFAAEAAgALAAcAAAAFAP3/AgALAAcAAAAFAPn/AgALAAcAAAAFAAQAAgALAAMAAAAFAAYAAgALAAMAAAAFAAUAAgALAAcAAAABAPD/AgADAAIAAAAEAPD/AgABAAIAAAA=")
+tile_set = ExtResource("2_ax3a0")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=532875060]
+tile_set = ExtResource("3_my5hf")
+
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1446610799 instance=ExtResource("4_4aqsh")]
+position = Vector2(480, -1024)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://c2ikb4ojmlk2g"
+
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=1186594248 instance=ExtResource("4_4aqsh")]
+position = Vector2(-96, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://d31f78tda8l2r"
+to_spawn_location_with_index = 1
+
+[node name="CreateBoulderOnTimeoutFactory" parent="." unique_id=417656938 instance=ExtResource("5_a733h")]
+position = Vector2(192, -1344)
+inital_timer = 3.0
+boulder_scale = Vector2(1.5, 1.5)
+
+[node name="Sawblade_Shooter_On_Timeout" parent="." unique_id=1276635275 instance=ExtResource("6_xtuda")]
+position = Vector2(448, 0)
+sawblade_travel_speed = 300
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 3
+is_enabled = true
+sawblade_scale = Vector2(1.5, 1.5)
+fires_every_x_timer = 2.0
+
+[node name="Sawblade_Shooter_On_Timeout2" parent="." unique_id=1910746752 instance=ExtResource("6_xtuda")]
+position = Vector2(448, -256)
+sawblade_travel_speed = 300
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 3
+is_enabled = true
+sawblade_scale = Vector2(1.5, 1.5)
+fires_every_x_timer = 2.0
+
+[node name="Sawblade_Shooter_On_Timeout3" parent="." unique_id=966162146 instance=ExtResource("6_xtuda")]
+position = Vector2(448, -512)
+sawblade_travel_speed = 300
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 3
+is_enabled = true
+sawblade_scale = Vector2(1.5, 1.5)
+fires_every_x_timer = 2.0
+
+[node name="Sawblade_Shooter_On_Timeout4" parent="." unique_id=199615869 instance=ExtResource("6_xtuda")]
+position = Vector2(448, -768)
+sawblade_travel_speed = 300
+sawblade_autodestroy = true
+sawblade_autodestroy_after_x_seconds_timer = 3
+is_enabled = true
+sawblade_scale = Vector2(1.5, 1.5)
+fires_every_x_timer = 2.0
+
+[connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://oqv4363geo4j"]
+[gd_scene format=4 uid="uid://oqv4363geo4j"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_11dq3"]
-[ext_resource type="Texture2D" uid="uid://cdgcstses45pg" path="res://ui/health_heart_icon.png" id="2_rtkka"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="3_uyqcr"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="4_xuhqr"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="5_011va"]
@@ -15,71 +14,66 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_16" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_43" type="Node2D" unique_id=1886371944 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_11dq3")
-level_binding_box = Rect2(0, 192, 896, 1216)
+level_binding_box = Rect2(-64, 192, 960, 1216)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
-camera_zoom_to = Vector2(1.1, 1.1)
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(0, 480)
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1259937]
+position = Vector2(-32, 480)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(896, 480)
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=166719122]
+position = Vector2(928, 480)
 
-[node name="HealthHeartIcon" type="Sprite2D" parent="."]
-position = Vector2(96, -384)
-texture = ExtResource("2_rtkka")
-
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=787584595]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAACAAsAAgAJAAEAAAABAAwAAgADAAMAAAAAAA0AAgADAAIAAAAAAA4AAgADAAIAAAAAAA8AAgADAAIAAAAAABAAAgADAAIAAAAAABEAAgADAAIAAAAAABIAAgADAAIAAAAAABMAAgADAAIAAAAAABQAAgADAAIAAAAAABUAAgADAAIAAAAGAAcAAgABAAIAAAAGAAgAAgABAAIAAAAGAAkAAgABAAIAAAAGAAoAAgABAAIAAAAGAAsAAgABAAIAAAAGAAwAAgABAAIAAAAGAA0AAgABAAIAAAAGAA4AAgABAAIAAAAGAA8AAgABAAMAAAAHAA8AAgACAAMAAAAIAA8AAgADAAMAAAAHAAcAAgACAAIAAAAIAAcAAgADAAIAAAAHAAgAAgACAAIAAAAIAAgAAgADAAIAAAAHAAkAAgACAAIAAAAIAAkAAgADAAIAAAAHAAoAAgACAAIAAAAIAAoAAgADAAIAAAAHAAsAAgACAAIAAAAIAAsAAgADAAIAAAAHAAwAAgACAAIAAAAIAAwAAgADAAIAAAAHAA0AAgACAAIAAAAIAA0AAgADAAIAAAAHAA4AAgACAAIAAAAIAA4AAgADAAIAAAADAAYAAgACAAMAAAAEAAYAAgACAAMAAAAFAAYAAgACAAMAAAACAAcAAgADAAIAAAACAAgAAgADAAMAAAD//wgAAgACAAMAAAAAAAgAAgACAAMAAAABAAgAAgACAAMAAAD//wsAAgACAAEAAAAAAAsAAgACAAEAAAABAAsAAgACAAEAAAAAAAwAAgAPAAcAAAACAAYAAgAPAAcAAAAGAAYAAgALAAcAAAAGABQAAgABAAEAAAAGABUAAgABAAIAAAAHABQAAgACAAEAAAAHABUAAgACAAIAAAAIABQAAgADAAEAAAAIABUAAgADAAIAAAAMABUAAgABAAIAAAAMABQAAgABAAIAAAAMABMAAgABAAIAAAAMABIAAgABAAIAAAAMABEAAgABAAIAAAAMABAAAgABAAIAAAAMAA8AAgABAAIAAAAMAA4AAgABAAIAAAAMAA0AAgABAAIAAAAMAAwAAgABAAIAAAAMAAsAAgABAAEAAAAJAAYAAgACAAMAAAAKAAYAAgACAAMAAAALAAYAAgACAAMAAAAMAAcAAgABAAMAAAANAAsAAgACAAEAAAAOAAsAAgACAAEAAAANAAgAAgABAAMAAAAOAAgAAgACAAMAAAAIAAYAAgAPAAcAAAAMAAYAAgALAAcAAAANAAcAAgALAAcAAAA=")
 tile_set = ExtResource("3_uyqcr")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=354239988]
 tile_map_data = PackedByteArray("AAADABcAAAAfAA8AAAA=")
 tile_set = ExtResource("4_xuhqr")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("5_011va")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=524023811 instance=ExtResource("5_011va")]
 position = Vector2(992, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://bp18vkl3xpcg7"
+to_level_path = "uid://d31f78tda8l2r"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("5_011va")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=994031899 instance=ExtResource("5_011va")]
 position = Vector2(-96, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://c7dovovc84h81"
+to_level_path = "uid://w1huu4k68vfs"
 to_spawn_location_with_index = 1
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=1836252159]
 curve = SubResource("Curve2D_r5ys4")
 script = ExtResource("6_qr7df")
 speed = 300.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=284801336]
 position = Vector2(288, 512)
 rotates = false
 
-[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("7_iar71")]
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" unique_id=741449804 instance=ExtResource("7_iar71")]
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="." unique_id=312699289]
 position = Vector2(384, 0)
 curve = SubResource("Curve2D_r5ys4")
 script = ExtResource("6_qr7df")
 speed = 300.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1629571640]
 position = Vector2(288, 1151.8499)
 progress = 640.0
 rotates = false
 
-[node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("7_iar71")]
+[node name="CloudPlatform" parent="Path2D2/PathFollow2D" unique_id=742191965 instance=ExtResource("7_iar71")]
 
-[node name="Sawblade" parent="." instance=ExtResource("8_6a013")]
+[node name="Sawblade" parent="." unique_id=1059035812 instance=ExtResource("8_6a013")]
 position = Vector2(480, 1120)
 scale = Vector2(3, 3)
 
-[node name="Sawblade2" parent="." instance=ExtResource("8_6a013")]
+[node name="Sawblade2" parent="." unique_id=731815596 instance=ExtResource("8_6a013")]
 position = Vector2(480, 800.00006)
 scale = Vector2(3, 3)
 

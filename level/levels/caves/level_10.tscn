@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://db7pkela8qxg2"]
+[gd_scene format=4 uid="uid://db7pkela8qxg2"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_356ua"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_581h7"]
@@ -7,89 +7,89 @@
 [ext_resource type="PackedScene" uid="uid://b8mbn7xxabui" path="res://objects/traps/sawblade/shooter/sawblade_shooter_on_switch.tscn" id="6_fv43r"]
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="8_4njbc"]
 
-[node name="Level_10" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_10" type="Node2D" unique_id=2141065503 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_356ua")
 level_binding_box = Rect2(-128, 0, 2816, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=2007124342]
 position = Vector2(-96, 480)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1167865838]
 position = Vector2(2784, 480)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1711618149]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgACAAEAAAAAAAsAAgAJAAEAAAD//wwAAgADAAIAAAD//w0AAgADAAIAAAD//w4AAgADAAIAAAAGAA0AAgAFAAMAAAAGAA4AAgAFAAQAAAAKAAsAAgAFAAMAAAAKAAwAAgAFAAQAAAAKAA0AAgAFAAQAAAAKAA4AAgAFAAQAAAANAAoAAgAFAAQAAAANAAsAAgAFAAQAAAANAAwAAgAFAAQAAAANAA0AAgAFAAQAAAANAA4AAgAFAAQAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wQAAgADAAIAAAD//wUAAgADAAIAAAD//wYAAgADAAIAAAD//wcAAgADAAIAAAABAAMAAgACAAMAAAACAAMAAgACAAMAAAADAAMAAgACAAMAAAAEAAMAAgACAAMAAAAFAAMAAgACAAMAAAAGAAMAAgACAAMAAAAHAAMAAgACAAMAAAAIAAMAAgACAAMAAAAJAAMAAgACAAMAAAAKAAMAAgACAAMAAAALAAMAAgACAAMAAAAMAAMAAgACAAMAAAANAAMAAgACAAMAAAAOAAMAAgACAAMAAAAPAAMAAgACAAMAAAAQAAMAAgACAAMAAAARAAMAAgACAAMAAAASAAMAAgACAAMAAAATAAMAAgACAAMAAAAUAAMAAgACAAMAAAAVAAMAAgACAAMAAAAWAAMAAgACAAMAAAD//wMAAgAPAAcAAAAAAAMAAgACAAMAAAANAAkAAgAFAAMAAAAVAA4AAgACAAEAAAAkAAMAAgACAAMAAAAlAAMAAgACAAMAAAAaAAwAAgAFAAMAAAAaAA0AAgAFAAQAAAAaAA4AAgAFAAQAAAAfAAwAAgAFAAMAAAAfAA0AAgAFAAQAAAAfAA4AAgAFAAQAAAAkAAwAAgAFAAMAAAAkAA0AAgAFAAQAAAAkAA4AAgAFAAQAAAAoAAMAAgACAAMAAAApAAMAAgACAAMAAAApAAsAAgAHAAEAAAAqAAgAAgABAAMAAAAqAAsAAgACAAEAAAAqAAMAAgALAAcAAAAqAAQAAgABAAIAAAAqAAUAAgABAAIAAAAqAAYAAgABAAIAAAAqAAcAAgABAAIAAAAqAAwAAgABAAIAAAAqAA0AAgABAAIAAAAqAA4AAgABAAIAAAArAAgAAgACAAMAAAArAAsAAgACAAEAAAAXAAMAAgACAAMAAAAYAAMAAgACAAMAAAAZAAMAAgACAAMAAAAaAAMAAgACAAMAAAAbAAMAAgACAAMAAAAcAAMAAgACAAMAAAAdAAMAAgACAAMAAAAeAAMAAgACAAMAAAAfAAMAAgACAAMAAAAgAAMAAgACAAMAAAAhAAMAAgACAAMAAAAiAAMAAgACAAMAAAAjAAMAAgACAAMAAAAmAAMAAgACAAMAAAAnAAMAAgACAAMAAAAUAA4AAgABAAEAAAAWAA4AAgADAAEAAAA=")
 tile_set = ExtResource("2_581h7")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=396146675]
 tile_set = ExtResource("3_aiflk")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_b8utg")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=620492521 instance=ExtResource("4_b8utg")]
 position = Vector2(2848, 448)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://cq02vr7nrvuj8"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_b8utg")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=1504460860 instance=ExtResource("4_b8utg")]
 position = Vector2(-160, 448)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bkbrum8vu2nyp"
 to_spawn_location_with_index = 1
 
-[node name="Switch" parent="." instance=ExtResource("8_4njbc")]
+[node name="Switch" parent="." unique_id=1495269562 instance=ExtResource("8_4njbc")]
 position = Vector2(416, 640)
 release_on_leave = true
 
-[node name="Switch2" parent="." instance=ExtResource("8_4njbc")]
+[node name="Switch2" parent="." unique_id=1793306014 instance=ExtResource("8_4njbc")]
 position = Vector2(672, 512)
 release_on_leave = true
 
-[node name="Switch3" parent="." instance=ExtResource("8_4njbc")]
+[node name="Switch3" parent="." unique_id=117706483 instance=ExtResource("8_4njbc")]
 position = Vector2(864, 384)
 release_on_leave = true
 
-[node name="Switch4" parent="." instance=ExtResource("8_4njbc")]
+[node name="Switch4" parent="." unique_id=805929830 instance=ExtResource("8_4njbc")]
 position = Vector2(1376, 704)
 release_on_leave = true
 
-[node name="Switch5" parent="." instance=ExtResource("8_4njbc")]
+[node name="Switch5" parent="." unique_id=490269343 instance=ExtResource("8_4njbc")]
 position = Vector2(1696, 576)
 release_on_leave = true
 
-[node name="Switch6" parent="." instance=ExtResource("8_4njbc")]
+[node name="Switch6" parent="." unique_id=566782357 instance=ExtResource("8_4njbc")]
 position = Vector2(2016, 576)
 release_on_leave = true
 
-[node name="Switch7" parent="." instance=ExtResource("8_4njbc")]
+[node name="Switch7" parent="." unique_id=471907291 instance=ExtResource("8_4njbc")]
 position = Vector2(2336, 576)
 release_on_leave = true
 
-[node name="Sawblade_Shooter_On_Switch" parent="." instance=ExtResource("6_fv43r")]
+[node name="Sawblade_Shooter_On_Switch" parent="." unique_id=1859785940 instance=ExtResource("6_fv43r")]
 position = Vector2(2880, 640)
 sawblade_travel_speed = 600
 sawblade_autodestroy = true
 sawblade_autodestroy_after_x_seconds_timer = 10
 
-[node name="Sawblade_Shooter_On_Switch2" parent="." instance=ExtResource("6_fv43r")]
+[node name="Sawblade_Shooter_On_Switch2" parent="." unique_id=243460623 instance=ExtResource("6_fv43r")]
 position = Vector2(2880, 512)
 sawblade_travel_speed = 600
 sawblade_autodestroy = true
 sawblade_autodestroy_after_x_seconds_timer = 10
 
-[node name="Sawblade_Shooter_On_Switch3" parent="." instance=ExtResource("6_fv43r")]
+[node name="Sawblade_Shooter_On_Switch3" parent="." unique_id=1726811993 instance=ExtResource("6_fv43r")]
 position = Vector2(2880, 384)
 sawblade_travel_speed = 600
 sawblade_autodestroy = true
 sawblade_autodestroy_after_x_seconds_timer = 10
 
-[node name="Sawblade_Shooter_On_Switch4" parent="." instance=ExtResource("6_fv43r")]
+[node name="Sawblade_Shooter_On_Switch4" parent="." unique_id=1885612858 instance=ExtResource("6_fv43r")]
 position = Vector2(2880, 704)
 sawblade_travel_speed = 600
 sawblade_autodestroy = true
 sawblade_autodestroy_after_x_seconds_timer = 10
 
-[node name="Sawblade_Shooter_On_Switch5" parent="." instance=ExtResource("6_fv43r")]
+[node name="Sawblade_Shooter_On_Switch5" parent="." unique_id=1952785560 instance=ExtResource("6_fv43r")]
 position = Vector2(2880, 576)
 sawblade_travel_speed = 600
 sawblade_autodestroy = true

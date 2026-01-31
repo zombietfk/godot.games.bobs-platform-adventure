@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://c5gkaje5rtnwe"]
+[gd_scene format=4 uid="uid://c5gkaje5rtnwe"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_wg8eo"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="2_rmubv"]
@@ -15,38 +15,38 @@ _data = {
 }
 point_count = 27
 
-[node name="Level_30" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_41" type="Node2D" unique_id=343448559 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_wg8eo")
-level_binding_box = Rect2(-96, -64, 1056, 960)
+level_binding_box = Rect2(-192, -64, 1152, 960)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
 camera_zoom_to = Vector2(0.9, 0.9)
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-96, 480)
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=994656651]
+position = Vector2(-160, 480)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(1056, 480)
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=124184101]
+position = Vector2(1120, 480)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1523582930]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgADAAEAAAD//w4AAgACAAIAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wQAAgACAAIAAAD//wUAAgACAAIAAAD//wYAAgACAAIAAAD//wcAAgACAAIAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAD//wMAAgACAAIAAAD//w8AAgACAAIAAAD//xAAAgACAAIAAAD//wwAAgACAAIAAAD//w0AAgACAAIAAAAEABAAAgAJAAMAAAAKABAAAgAHAAMAAAAAAAwAAgAJAAMAAAAAABEAAgACAAIAAAABAA0AAgAJAAMAAAABABEAAgACAAIAAAACAA4AAgAJAAMAAAACABEAAgACAAIAAAADAA8AAgAJAAMAAAADABEAAgACAAIAAAAEABEAAgACAAIAAAAFABEAAgACAAEAAAAGABEAAgACAAEAAAAHABEAAgACAAEAAAAIABEAAgACAAEAAAAJABEAAgACAAEAAAAKABEAAgACAAIAAAALAA8AAgAHAAMAAAALABEAAgACAAIAAAAMAA4AAgAHAAMAAAAMABEAAgACAAIAAAANAA0AAgAHAAMAAAANABEAAgACAAIAAAAOAAwAAgAHAAMAAAAOABEAAgACAAIAAAAPAAwAAgACAAIAAAAPABEAAgACAAIAAAAQAAwAAgACAAIAAAAQABEAAgACAAIAAAARAAwAAgACAAIAAAAEAAMAAgAJAAUAAAAKAAMAAgAHAAUAAAAAAAIAAgACAAIAAAAAAAcAAgAJAAUAAAABAAIAAgACAAIAAAABAAYAAgAJAAUAAAACAAIAAgACAAIAAAACAAUAAgAJAAUAAAADAAIAAgACAAIAAAADAAQAAgAJAAUAAAAEAAIAAgACAAIAAAAFAAIAAgACAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAKAAIAAgACAAIAAAALAAIAAgACAAIAAAALAAQAAgAHAAUAAAAMAAIAAgACAAIAAAAMAAUAAgAHAAUAAAANAAIAAgACAAIAAAANAAYAAgAHAAUAAAAOAAIAAgACAAIAAAAOAAcAAgAHAAUAAAAPAAIAAgACAAIAAAAPAAcAAgACAAIAAAAQAAIAAgACAAIAAAAQAAcAAgACAAIAAAARAAcAAgACAAIAAAAAAA0AAgACAAIAAAAAAA4AAgACAAIAAAAAAA8AAgACAAIAAAAAABAAAgACAAIAAAABAA8AAgACAAIAAAABABAAAgACAAIAAAACAA8AAgACAAIAAAACABAAAgACAAIAAAABAA4AAgACAAIAAAADABAAAgACAAIAAAALABAAAgACAAIAAAAMABAAAgACAAIAAAANABAAAgACAAIAAAAOABAAAgACAAIAAAAPABAAAgACAAIAAAAMAA8AAgACAAIAAAANAA8AAgACAAIAAAAOAA8AAgACAAIAAAAPAA8AAgACAAIAAAAQAA8AAgACAAIAAAAQABAAAgACAAIAAAARAA8AAgACAAIAAAARABAAAgACAAIAAAAOAA0AAgACAAIAAAAOAA4AAgACAAIAAAAPAA0AAgACAAIAAAAPAA4AAgACAAIAAAAQAA0AAgACAAIAAAAQAA4AAgACAAIAAAARAA0AAgACAAIAAAARAA4AAgACAAIAAAANAA4AAgACAAIAAAAAAAMAAgACAAIAAAAAAAQAAgACAAIAAAAAAAUAAgACAAIAAAAAAAYAAgACAAIAAAABAAMAAgACAAIAAAABAAQAAgACAAIAAAABAAUAAgACAAIAAAACAAMAAgACAAIAAAADAAMAAgACAAIAAAACAAQAAgACAAIAAAALAAMAAgACAAIAAAAMAAMAAgACAAIAAAANAAMAAgACAAIAAAAOAAMAAgACAAIAAAAPAAMAAgACAAIAAAAQAAMAAgACAAIAAAARAAMAAgACAAIAAAAOAAQAAgACAAIAAAAOAAUAAgACAAIAAAAOAAYAAgACAAIAAAAPAAQAAgACAAIAAAAPAAUAAgACAAIAAAAPAAYAAgACAAIAAAAQAAQAAgACAAIAAAAQAAUAAgACAAIAAAAQAAYAAgACAAIAAAARAAQAAgACAAIAAAARAAUAAgACAAIAAAARAAYAAgACAAIAAAANAAQAAgACAAIAAAANAAUAAgACAAIAAAAMAAQAAgACAAIAAAAPAAsAAgABAAEAAAAPAAgAAgABAAMAAAAQAAsAAgACAAEAAAARAAsAAgACAAEAAAAQAAgAAgACAAMAAAARAAgAAgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAD+/wsAAgACAAEAAAD//wsAAgADAAEAAAD//w4AAgACAAIAAAD+/wgAAgACAAMAAAD//wgAAgADAAMAAAD//wQAAgACAAIAAAD//wUAAgACAAIAAAD//wYAAgACAAIAAAD//wcAAgAPAAcAAAD9/wgAAgACAAMAAAD9/wsAAgACAAEAAAD//wMAAgACAAIAAAD//w8AAgACAAIAAAD//xAAAgACAAIAAAD//wwAAgAPAAMAAAD//w0AAgACAAIAAAAEABAAAgAJAAMAAAAKABAAAgAHAAMAAAAAAAwAAgAJAAMAAAAAABEAAgACAAIAAAABAA0AAgAJAAMAAAABABEAAgACAAIAAAACAA4AAgAJAAMAAAACABEAAgACAAIAAAADAA8AAgAJAAMAAAADABEAAgACAAIAAAAEABEAAgAPAAMAAAAFABEAAgACAAEAAAAGABEAAgACAAEAAAAHABEAAgACAAEAAAAIABEAAgACAAEAAAAJABEAAgACAAEAAAAKABEAAgALAAMAAAALAA8AAgAHAAMAAAALABEAAgACAAIAAAAMAA4AAgAHAAMAAAAMABEAAgACAAIAAAANAA0AAgAHAAMAAAANABEAAgACAAIAAAAOAAwAAgAHAAMAAAAOABEAAgACAAIAAAAPAAwAAgALAAMAAAAPABEAAgACAAIAAAAQAAwAAgACAAIAAAAQABEAAgACAAIAAAARAAwAAgACAAIAAAAEAAMAAgAJAAUAAAAKAAMAAgAHAAUAAAAAAAIAAgACAAIAAAAAAAcAAgAJAAUAAAABAAIAAgACAAIAAAABAAYAAgAJAAUAAAACAAIAAgACAAIAAAACAAUAAgAJAAUAAAADAAIAAgACAAIAAAADAAQAAgAJAAUAAAAEAAIAAgAPAAcAAAAFAAIAAgACAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAKAAIAAgALAAcAAAALAAIAAgACAAIAAAALAAQAAgAHAAUAAAAMAAIAAgACAAIAAAAMAAUAAgAHAAUAAAANAAIAAgACAAIAAAANAAYAAgAHAAUAAAAOAAIAAgACAAIAAAAOAAcAAgAHAAUAAAAPAAIAAgACAAIAAAAPAAcAAgALAAcAAAAQAAIAAgACAAIAAAAQAAcAAgACAAIAAAARAAcAAgACAAIAAAAAAA0AAgACAAIAAAAAAA4AAgACAAIAAAAAAA8AAgACAAIAAAAAABAAAgACAAIAAAABAA8AAgACAAIAAAABABAAAgACAAIAAAACAA8AAgACAAIAAAACABAAAgACAAIAAAABAA4AAgACAAIAAAADABAAAgACAAIAAAALABAAAgACAAIAAAAMABAAAgACAAIAAAANABAAAgACAAIAAAAOABAAAgACAAIAAAAPABAAAgACAAIAAAAMAA8AAgACAAIAAAANAA8AAgACAAIAAAAOAA8AAgACAAIAAAAPAA8AAgACAAIAAAAQAA8AAgACAAIAAAAQABAAAgACAAIAAAARAA8AAgACAAIAAAARABAAAgACAAIAAAAOAA0AAgACAAIAAAAOAA4AAgACAAIAAAAPAA0AAgACAAIAAAAPAA4AAgACAAIAAAAQAA0AAgACAAIAAAAQAA4AAgACAAIAAAARAA0AAgACAAIAAAARAA4AAgACAAIAAAANAA4AAgACAAIAAAAAAAMAAgACAAIAAAAAAAQAAgACAAIAAAAAAAUAAgACAAIAAAAAAAYAAgACAAIAAAABAAMAAgACAAIAAAABAAQAAgACAAIAAAABAAUAAgACAAIAAAACAAMAAgACAAIAAAADAAMAAgACAAIAAAACAAQAAgACAAIAAAALAAMAAgACAAIAAAAMAAMAAgACAAIAAAANAAMAAgACAAIAAAAOAAMAAgACAAIAAAAPAAMAAgACAAIAAAAQAAMAAgACAAIAAAARAAMAAgACAAIAAAAOAAQAAgACAAIAAAAOAAUAAgACAAIAAAAOAAYAAgACAAIAAAAPAAQAAgACAAIAAAAPAAUAAgACAAIAAAAPAAYAAgACAAIAAAAQAAQAAgACAAIAAAAQAAUAAgACAAIAAAAQAAYAAgACAAIAAAARAAQAAgACAAIAAAARAAUAAgACAAIAAAARAAYAAgACAAIAAAANAAQAAgACAAIAAAANAAUAAgACAAIAAAAMAAQAAgACAAIAAAAPAAsAAgABAAEAAAAPAAgAAgABAAMAAAAQAAsAAgACAAEAAAARAAsAAgACAAEAAAAQAAgAAgACAAMAAAARAAgAAgACAAMAAAA=")
 tile_set = ExtResource("3_hjkwv")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=694006272]
 tile_set = ExtResource("4_sywym")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("2_rmubv")]
-position = Vector2(1120, 448)
+[node name="ToNextLevelTeleportZone" parent="." unique_id=722485882 instance=ExtResource("2_rmubv")]
+position = Vector2(1184, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/level_24.tscn"
+to_level_path = "uid://w1huu4k68vfs"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("2_rmubv")]
-position = Vector2(-160, 448)
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=1584093236 instance=ExtResource("2_rmubv")]
+position = Vector2(-224, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://b3xkt036gq5el"
+to_level_path = "uid://dcned4rgrnxi7"
 to_spawn_location_with_index = 1
 
-[node name="CloudPlatform" parent="." instance=ExtResource("8_goq3y")]
+[node name="CloudPlatform" parent="." unique_id=1349213751 instance=ExtResource("8_goq3y")]
 position = Vector2(480, 448)
 scale = Vector2(4, 3)
 floating_displacement = 35
@@ -54,188 +54,188 @@ on_land_displacement = 65
 randomize_inital_displacement = false
 bounce_timer = 10.0
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=318926376]
 position = Vector2(480, 672)
 curve = SubResource("Curve2D_4vbp4")
 script = ExtResource("6_lpygh")
 speed = 300.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=666585021]
 position = Vector2(-320, -224)
 rotates = false
 
-[node name="Sawblade" parent="Path2D/PathFollow2D" instance=ExtResource("7_ia0cw")]
+[node name="Sawblade" parent="Path2D/PathFollow2D" unique_id=1483737807 instance=ExtResource("7_ia0cw")]
 scale = Vector2(3, 3)
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="." unique_id=81128289]
 position = Vector2(480, 672)
 curve = SubResource("Curve2D_4vbp4")
 script = ExtResource("6_lpygh")
 speed = 300.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1058669885]
 position = Vector2(320, -224)
 progress = 997.31744
 rotates = false
 
-[node name="Sawblade" parent="Path2D2/PathFollow2D" instance=ExtResource("7_ia0cw")]
+[node name="Sawblade" parent="Path2D2/PathFollow2D" unique_id=216245480 instance=ExtResource("7_ia0cw")]
 scale = Vector2(3, 3)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=1949383073]
 
-[node name="Spike" parent="Node2D" instance=ExtResource("8_18jwc")]
+[node name="Spike" parent="Node2D" unique_id=458835670 instance=ExtResource("8_18jwc")]
 position = Vector2(352, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike2" parent="Node2D" instance=ExtResource("8_18jwc")]
+[node name="Spike2" parent="Node2D" unique_id=424246488 instance=ExtResource("8_18jwc")]
 position = Vector2(416, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike3" parent="Node2D" instance=ExtResource("8_18jwc")]
+[node name="Spike3" parent="Node2D" unique_id=773289345 instance=ExtResource("8_18jwc")]
 position = Vector2(480, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike4" parent="Node2D" instance=ExtResource("8_18jwc")]
+[node name="Spike4" parent="Node2D" unique_id=1038963612 instance=ExtResource("8_18jwc")]
 position = Vector2(544, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike5" parent="Node2D" instance=ExtResource("8_18jwc")]
+[node name="Spike5" parent="Node2D" unique_id=477300627 instance=ExtResource("8_18jwc")]
 position = Vector2(608, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Node2D4" type="Node2D" parent="."]
+[node name="Node2D4" type="Node2D" parent="." unique_id=781184639]
 position = Vector2(960, 896)
 rotation = 3.1415927
 
-[node name="Spike" parent="Node2D4" instance=ExtResource("8_18jwc")]
+[node name="Spike" parent="Node2D4" unique_id=351295325 instance=ExtResource("8_18jwc")]
 position = Vector2(352, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike2" parent="Node2D4" instance=ExtResource("8_18jwc")]
+[node name="Spike2" parent="Node2D4" unique_id=337431858 instance=ExtResource("8_18jwc")]
 position = Vector2(416, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike3" parent="Node2D4" instance=ExtResource("8_18jwc")]
+[node name="Spike3" parent="Node2D4" unique_id=141434567 instance=ExtResource("8_18jwc")]
 position = Vector2(480, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike4" parent="Node2D4" instance=ExtResource("8_18jwc")]
+[node name="Spike4" parent="Node2D4" unique_id=16566050 instance=ExtResource("8_18jwc")]
 position = Vector2(544, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike5" parent="Node2D4" instance=ExtResource("8_18jwc")]
+[node name="Spike5" parent="Node2D4" unique_id=160420127 instance=ExtResource("8_18jwc")]
 position = Vector2(608, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="Node2D2" type="Node2D" parent="." unique_id=1009836267]
 position = Vector2(429, -240)
 rotation = 0.7853982
 
-[node name="Spike" parent="Node2D2" instance=ExtResource("8_18jwc")]
+[node name="Spike" parent="Node2D2" unique_id=1444104476 instance=ExtResource("8_18jwc")]
 position = Vector2(352, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike2" parent="Node2D2" instance=ExtResource("8_18jwc")]
+[node name="Spike2" parent="Node2D2" unique_id=836893401 instance=ExtResource("8_18jwc")]
 position = Vector2(416, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike3" parent="Node2D2" instance=ExtResource("8_18jwc")]
+[node name="Spike3" parent="Node2D2" unique_id=968187166 instance=ExtResource("8_18jwc")]
 position = Vector2(480, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike4" parent="Node2D2" instance=ExtResource("8_18jwc")]
+[node name="Spike4" parent="Node2D2" unique_id=888420459 instance=ExtResource("8_18jwc")]
 position = Vector2(544, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike5" parent="Node2D2" instance=ExtResource("8_18jwc")]
+[node name="Spike5" parent="Node2D2" unique_id=832541940 instance=ExtResource("8_18jwc")]
 position = Vector2(608, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike6" parent="Node2D2" instance=ExtResource("8_18jwc")]
+[node name="Spike6" parent="Node2D2" unique_id=1302822615 instance=ExtResource("8_18jwc")]
 position = Vector2(672, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Node2D5" type="Node2D" parent="."]
+[node name="Node2D5" type="Node2D" parent="." unique_id=880968912]
 position = Vector2(-192.00003, 480.00003)
 rotation = -0.7853982
 
-[node name="Spike" parent="Node2D5" instance=ExtResource("8_18jwc")]
+[node name="Spike" parent="Node2D5" unique_id=2043067092 instance=ExtResource("8_18jwc")]
 position = Vector2(352, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike2" parent="Node2D5" instance=ExtResource("8_18jwc")]
+[node name="Spike2" parent="Node2D5" unique_id=428219860 instance=ExtResource("8_18jwc")]
 position = Vector2(416, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike3" parent="Node2D5" instance=ExtResource("8_18jwc")]
+[node name="Spike3" parent="Node2D5" unique_id=530778242 instance=ExtResource("8_18jwc")]
 position = Vector2(480, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike4" parent="Node2D5" instance=ExtResource("8_18jwc")]
+[node name="Spike4" parent="Node2D5" unique_id=1031305722 instance=ExtResource("8_18jwc")]
 position = Vector2(544, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike5" parent="Node2D5" instance=ExtResource("8_18jwc")]
+[node name="Spike5" parent="Node2D5" unique_id=1241262399 instance=ExtResource("8_18jwc")]
 position = Vector2(608, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike6" parent="Node2D5" instance=ExtResource("8_18jwc")]
+[node name="Spike6" parent="Node2D5" unique_id=1024938076 instance=ExtResource("8_18jwc")]
 position = Vector2(672, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Node2D3" type="Node2D" parent="."]
+[node name="Node2D3" type="Node2D" parent="." unique_id=105419199]
 position = Vector2(1152, 416)
 rotation = 2.3561945
 
-[node name="Spike" parent="Node2D3" instance=ExtResource("8_18jwc")]
+[node name="Spike" parent="Node2D3" unique_id=2020054394 instance=ExtResource("8_18jwc")]
 position = Vector2(352, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike2" parent="Node2D3" instance=ExtResource("8_18jwc")]
+[node name="Spike2" parent="Node2D3" unique_id=1809516998 instance=ExtResource("8_18jwc")]
 position = Vector2(416, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike3" parent="Node2D3" instance=ExtResource("8_18jwc")]
+[node name="Spike3" parent="Node2D3" unique_id=1565226933 instance=ExtResource("8_18jwc")]
 position = Vector2(480, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike4" parent="Node2D3" instance=ExtResource("8_18jwc")]
+[node name="Spike4" parent="Node2D3" unique_id=597739416 instance=ExtResource("8_18jwc")]
 position = Vector2(544, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike5" parent="Node2D3" instance=ExtResource("8_18jwc")]
+[node name="Spike5" parent="Node2D3" unique_id=664043238 instance=ExtResource("8_18jwc")]
 position = Vector2(608, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike6" parent="Node2D3" instance=ExtResource("8_18jwc")]
+[node name="Spike6" parent="Node2D3" unique_id=505446766 instance=ExtResource("8_18jwc")]
 position = Vector2(672, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Node2D6" type="Node2D" parent="."]
+[node name="Node2D6" type="Node2D" parent="." unique_id=1213166052]
 position = Vector2(531, 1136.0001)
 rotation = -2.3561945
 
-[node name="Spike" parent="Node2D6" instance=ExtResource("8_18jwc")]
+[node name="Spike" parent="Node2D6" unique_id=1071366266 instance=ExtResource("8_18jwc")]
 position = Vector2(352, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike2" parent="Node2D6" instance=ExtResource("8_18jwc")]
+[node name="Spike2" parent="Node2D6" unique_id=2122824408 instance=ExtResource("8_18jwc")]
 position = Vector2(416, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike3" parent="Node2D6" instance=ExtResource("8_18jwc")]
+[node name="Spike3" parent="Node2D6" unique_id=957849315 instance=ExtResource("8_18jwc")]
 position = Vector2(480, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike4" parent="Node2D6" instance=ExtResource("8_18jwc")]
+[node name="Spike4" parent="Node2D6" unique_id=788685414 instance=ExtResource("8_18jwc")]
 position = Vector2(544, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike5" parent="Node2D6" instance=ExtResource("8_18jwc")]
+[node name="Spike5" parent="Node2D6" unique_id=731666486 instance=ExtResource("8_18jwc")]
 position = Vector2(608, 848)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spike6" parent="Node2D6" instance=ExtResource("8_18jwc")]
+[node name="Spike6" parent="Node2D6" unique_id=1747249571 instance=ExtResource("8_18jwc")]
 position = Vector2(672, 848)
 scale = Vector2(1.7, 1.7)
 

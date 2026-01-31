@@ -5,6 +5,7 @@ var is_in_motion := false;
 var movement_speed_acceleration := 312.0;
 var movement_speed_aggregate := 0.0;
 var max_movement_speed := 480.0;
+var max_brakeing_speed := 240.0;
 var jump_strength := 1000.0;
 var last_travel_direction := Vector2.ZERO;
 var _c_change_rotation_timer := 0.0;
@@ -42,7 +43,6 @@ func _physics_process(delta: float) -> void:
 			var floor_normal = $RayCast2D.get_collision_normal();
 			if _c_change_rotation_timer <= 0:
 				last_travel_direction = Vector2(-floor_normal.y, floor_normal.x);
-				print('set rotation ', floor_normal.angle() + PI / 2);
 				target_rotation = floor_normal.angle() + PI / 2
 				_c_change_rotation_timer = change_rotation_timer;
 		_travel_time = delta;
@@ -55,7 +55,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide();
 	if velocity.y >= 0:
 		apply_floor_snap();
-	velocity.x = clamp(velocity.x, -max_movement_speed, max_movement_speed);
+	if Input.is_action_pressed("move_left") and is_on_floor():
+		velocity.x = clamp(velocity.x, -max_brakeing_speed, max_brakeing_speed);
+		$BrakeParticles2D.emitting = true;
+	else:
+		velocity.x = clamp(velocity.x, -max_movement_speed, max_movement_speed);
+		$BrakeParticles2D.emitting = false;
 
 func _jump_in_cart() -> void:
 	if is_on_floor():

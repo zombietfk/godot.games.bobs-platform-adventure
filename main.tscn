@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c63fm78u50tjr"]
+[gd_scene format=3 uid="uid://c63fm78u50tjr"]
 
 [ext_resource type="PackedScene" uid="uid://dd4hda4w5qubs" path="res://player/player.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dvork0tghl73f" path="res://ui/player_health_ui.gd" id="1_7mycd"]
@@ -50,13 +50,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1316412496]
 script = ExtResource("1_lquwl")
 inital_level_path = "uid://cgrbopls2dqgk"
 
-[node name="GameUI" type="CanvasLayer" parent="."]
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=22984036]
 
-[node name="UI" type="Control" parent="GameUI"]
+[node name="UI" type="Control" parent="GameUI" unique_id=431155183]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,7 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="PlayerHealthUI" type="HBoxContainer" parent="GameUI/UI"]
+[node name="PlayerHealthUI" type="HBoxContainer" parent="GameUI/UI" unique_id=1155720784]
 layout_direction = 2
 layout_mode = 0
 offset_right = 640.0
@@ -76,7 +76,7 @@ script = ExtResource("1_7mycd")
 ui_heart_container_scene = ExtResource("2_lquwl")
 metadata/_edit_use_anchors_ = true
 
-[node name="LoadingPanel" type="PanelContainer" parent="GameUI/UI"]
+[node name="LoadingPanel" type="PanelContainer" parent="GameUI/UI" unique_id=319267982]
 visible = false
 clip_contents = true
 layout_mode = 1
@@ -87,18 +87,18 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="GameUI/UI/LoadingPanel"]
+[node name="ColorRect" type="ColorRect" parent="GameUI/UI/LoadingPanel" unique_id=65807023]
 layout_mode = 2
 color = Color(0.412152, 0.412152, 0.412152, 1)
 
-[node name="Label" type="Label" parent="GameUI/UI/LoadingPanel"]
+[node name="Label" type="Label" parent="GameUI/UI/LoadingPanel" unique_id=392840209]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LivesLabel" type="Label" parent="GameUI/UI"]
+[node name="LivesLabel" type="Label" parent="GameUI/UI" unique_id=1386310491]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 33.0
@@ -107,7 +107,7 @@ offset_bottom = 56.0
 text = "lives -"
 label_settings = SubResource("LabelSettings_ycdy4")
 
-[node name="LivesCount" type="Label" parent="GameUI/UI"]
+[node name="LivesCount" type="Label" parent="GameUI/UI" unique_id=862914046]
 layout_mode = 0
 offset_left = 96.0
 offset_top = 32.0
@@ -116,7 +116,7 @@ offset_bottom = 55.0
 text = "0"
 label_settings = SubResource("LabelSettings_ycdy4")
 
-[node name="CheatBox" type="VBoxContainer" parent="GameUI/UI"]
+[node name="CheatBox" type="VBoxContainer" parent="GameUI/UI" unique_id=1799829156]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 64.0
@@ -124,29 +124,29 @@ offset_right = 178.0
 offset_bottom = 104.0
 scale = Vector2(0.5, 0.5)
 
-[node name="Label" type="Label" parent="GameUI/UI/CheatBox"]
+[node name="Label" type="Label" parent="GameUI/UI/CheatBox" unique_id=2093403817]
 layout_mode = 2
 text = "CHEATS!"
 label_settings = SubResource("LabelSettings_dg77c")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/UI/CheatBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/UI/CheatBox" unique_id=1914341158]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="GameUI/UI/CheatBox/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="GameUI/UI/CheatBox/HBoxContainer" unique_id=1480521766]
 layout_mode = 2
 script = ExtResource("9_4c57u")
 
-[node name="Button" type="Button" parent="GameUI/UI/CheatBox/HBoxContainer"]
+[node name="Button" type="Button" parent="GameUI/UI/CheatBox/HBoxContainer" unique_id=1384866236]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_efxa6")
 text = "Warp LvL"
 
-[node name="Label2" type="Label" parent="GameUI/UI/CheatBox"]
+[node name="Label2" type="Label" parent="GameUI/UI/CheatBox" unique_id=1023801457]
 layout_mode = 2
 text = "DIFFICULTY CHANGE"
 label_settings = SubResource("LabelSettings_dg77c")
 
-[node name="PlayerDifficultyUI" type="HBoxContainer" parent="GameUI/UI/CheatBox"]
+[node name="PlayerDifficultyUI" type="HBoxContainer" parent="GameUI/UI/CheatBox" unique_id=2078173515]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 0
@@ -155,39 +155,37 @@ alignment = 2
 script = ExtResource("4_kek77")
 metadata/_edit_use_anchors_ = true
 
-[node name="Selector" type="Control" parent="GameUI/UI/CheatBox/PlayerDifficultyUI"]
+[node name="Selector" type="Control" parent="GameUI/UI/CheatBox/PlayerDifficultyUI" unique_id=320112925]
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameUI/UI/CheatBox/PlayerDifficultyUI/Selector"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameUI/UI/CheatBox/PlayerDifficultyUI/Selector" unique_id=865270467]
 position = Vector2(35, 35)
 sprite_frames = SubResource("SpriteFrames_dg77c")
 autoplay = "default"
 frame_progress = 0.26171932
 
-[node name="EasyMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI"]
+[node name="EasyMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI" unique_id=407327518]
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("6_272bh")
 
-[node name="NormalMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI"]
+[node name="NormalMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI" unique_id=1441266399]
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("5_7mycd")
 
-[node name="HardMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI"]
+[node name="HardMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI" unique_id=1368942507]
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("4_lquwl")
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera", "player_heath_ui", "lives_count_label_ui") instance=ExtResource("1_0xm2m")]
+[node name="Player" parent="." unique_id=389177389 node_paths=PackedStringArray("camera", "player_heath_ui", "lives_count_label_ui") instance=ExtResource("1_0xm2m")]
 position = Vector2(32, 284)
 camera = NodePath("Camera2D")
 player_heath_ui = NodePath("../GameUI/UI/PlayerHealthUI")
 lives_count_label_ui = NodePath("../GameUI/UI/LivesCount")
-max_health = 6
-current_health = 6
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=382210141]
 limit_left = 0
 limit_top = -1000000
 limit_bottom = 600

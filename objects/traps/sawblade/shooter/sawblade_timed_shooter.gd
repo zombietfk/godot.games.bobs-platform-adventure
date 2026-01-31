@@ -8,6 +8,7 @@ extends Node2D;
 @export var sawblade_autodestroy_after_x_seconds_timer = 0;
 @export_flags_2d_physics var sawblade_physics_mask: int = 1;
 @export var is_enabled = false;
+@export var sawblade_scale: Vector2 = Vector2.ONE;
 
 @export var fires_every_x_timer = 3.0;
 var c_fires_every_x_timer = fires_every_x_timer;
@@ -21,6 +22,7 @@ func _process(delta: float) -> void:
 		if c_fires_every_x_timer > fires_every_x_timer:
 			c_fires_every_x_timer = 0;
 			var sawblade: Sawblade = sawblade_scene.instantiate();
+			sawblade.scale = sawblade_scale;
 			sawblade.travel_speed = sawblade_travel_speed;
 			sawblade.travel_direction = sawblade_travel_direction;
 			sawblade.autodestroy = sawblade_autodestroy;
