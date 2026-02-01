@@ -1,9 +1,10 @@
 class_name Bear;
 extends AbstractEnemy;
 
-var is_beehived = false;
-var _knockback_strength = 600;
-@export var lives = 3;
+var is_beehived := false;
+var _knockback_strength := 600;
+@export var lives := 3;
+@onready var state_machine: StateMachine = $StateMachine;
 
 @warning_ignore("unused_signal")
 signal on_hit_by_beehive();

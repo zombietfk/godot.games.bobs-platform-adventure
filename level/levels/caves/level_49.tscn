@@ -1,0 +1,1160 @@
+[gd_scene format=4 uid="uid://dv0nsf80uxmpo"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_plgov"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_fvgwv"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_76sjl"]
+[ext_resource type="Script" uid="uid://bhj705hwpanuo" path="res://level/platforms/rotating/rotating_platform_over_time.gd" id="4_uuyqe"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_wl40v"]
+[ext_resource type="PackedScene" uid="uid://d2awbw2sd1tv7" path="res://objects/traps/boulder/boulder_physics.tscn" id="5_jksjo"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="9_sajdd"]
+
+[node name="Level_49" type="Node2D" unique_id=1053393873 node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_plgov")
+level_binding_box = Rect2(-1088, -2112, 3136, 1856)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+camera_zoom_to = Vector2(0.5, 0.5)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1906738804]
+position = Vector2(-1056, -96)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1503765258]
+position = Vector2(3104, -96)
+
+[node name="Level" type="TileMapLayer" parent="." unique_id=160411321]
+tile_map_data = PackedByteArray("AADv////AgAFAAEAAAAwAP//AgAFAAEAAAA=")
+tile_set = ExtResource("2_fvgwv")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=919414452]
+tile_set = ExtResource("3_76sjl")
+
+[node name="Ring" type="TileMapLayer" parent="." unique_id=768922356]
+position = Vector2(1024, -128)
+rotation = 0.7853982
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("2_fvgwv")
+use_kinematic_bodies = true
+script = ExtResource("4_uuyqe")
+speed = 5.0
+
+[node name="MiniLevel" type="TileMapLayer" parent="Ring" unique_id=883622706]
+tile_set = ExtResource("3_76sjl")
+
+[node name="SpikeSet" type="Node2D" parent="Ring" unique_id=1616875388]
+
+[node name="Spike" parent="Ring/SpikeSet" unique_id=922180158 instance=ExtResource("9_sajdd")]
+position = Vector2(1086.1161, 1357.6451)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring/SpikeSet" unique_id=572021276 instance=ExtResource("9_sajdd")]
+position = Vector2(1108.7435, 1335.0177)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring/SpikeSet" unique_id=1765718548 instance=ExtResource("9_sajdd")]
+position = Vector2(1131.371, 1312.3903)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring/SpikeSet" unique_id=1941786670 instance=ExtResource("9_sajdd")]
+position = Vector2(1153.9984, 1289.7631)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring/SpikeSet" unique_id=2039343230 instance=ExtResource("9_sajdd")]
+position = Vector2(1176.6259, 1267.1355)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring/SpikeSet" unique_id=940024293 instance=ExtResource("9_sajdd")]
+position = Vector2(1199.2532, 1244.508)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring/SpikeSet" unique_id=1410422840 instance=ExtResource("9_sajdd")]
+position = Vector2(1221.8806, 1221.8806)
+rotation = -0.7853982
+
+[node name="Spike8" parent="Ring/SpikeSet" unique_id=309254440 instance=ExtResource("9_sajdd")]
+position = Vector2(1244.508, 1199.2532)
+rotation = -0.7853982
+
+[node name="Spike9" parent="Ring/SpikeSet" unique_id=692141452 instance=ExtResource("9_sajdd")]
+position = Vector2(1267.1354, 1176.6257)
+rotation = -0.7853982
+
+[node name="Spike10" parent="Ring/SpikeSet" unique_id=764664313 instance=ExtResource("9_sajdd")]
+position = Vector2(1289.7628, 1153.9983)
+rotation = -0.7853982
+
+[node name="Spike11" parent="Ring/SpikeSet" unique_id=1718421357 instance=ExtResource("9_sajdd")]
+position = Vector2(1312.3903, 1131.371)
+rotation = -0.7853982
+
+[node name="Spike12" parent="Ring/SpikeSet" unique_id=62126625 instance=ExtResource("9_sajdd")]
+position = Vector2(1335.0177, 1108.7435)
+rotation = -0.7853982
+
+[node name="Spike13" parent="Ring/SpikeSet" unique_id=469614400 instance=ExtResource("9_sajdd")]
+position = Vector2(1357.6451, 1086.1161)
+rotation = -0.7853982
+
+[node name="Spike14" parent="Ring/SpikeSet" unique_id=1840201893 instance=ExtResource("9_sajdd")]
+position = Vector2(1380.2726, 1063.4888)
+rotation = -0.7853982
+
+[node name="Spike15" parent="Ring/SpikeSet" unique_id=71250823 instance=ExtResource("9_sajdd")]
+position = Vector2(1402.9, 1040.8613)
+rotation = -0.7853982
+
+[node name="Spike16" parent="Ring/SpikeSet" unique_id=109280337 instance=ExtResource("9_sajdd")]
+position = Vector2(1425.5275, 1018.23395)
+rotation = -0.7853982
+
+[node name="SpikeSet2" type="Node2D" parent="Ring" unique_id=1924928940]
+position = Vector2(0, -3.0517578e-05)
+rotation = 3.1415927
+
+[node name="Spike" parent="Ring/SpikeSet2" unique_id=1565877618 instance=ExtResource("9_sajdd")]
+position = Vector2(1086.1161, 1357.6451)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring/SpikeSet2" unique_id=60092499 instance=ExtResource("9_sajdd")]
+position = Vector2(1108.7435, 1335.0177)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring/SpikeSet2" unique_id=409455448 instance=ExtResource("9_sajdd")]
+position = Vector2(1131.371, 1312.3903)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring/SpikeSet2" unique_id=756119345 instance=ExtResource("9_sajdd")]
+position = Vector2(1153.9984, 1289.7631)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring/SpikeSet2" unique_id=1473952324 instance=ExtResource("9_sajdd")]
+position = Vector2(1176.6259, 1267.1355)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring/SpikeSet2" unique_id=226764474 instance=ExtResource("9_sajdd")]
+position = Vector2(1199.2532, 1244.508)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring/SpikeSet2" unique_id=411476569 instance=ExtResource("9_sajdd")]
+position = Vector2(1221.8806, 1221.8806)
+rotation = -0.7853982
+
+[node name="Spike8" parent="Ring/SpikeSet2" unique_id=1907503262 instance=ExtResource("9_sajdd")]
+position = Vector2(1244.508, 1199.2532)
+rotation = -0.7853982
+
+[node name="Spike9" parent="Ring/SpikeSet2" unique_id=1259565319 instance=ExtResource("9_sajdd")]
+position = Vector2(1267.1354, 1176.6257)
+rotation = -0.7853982
+
+[node name="Spike10" parent="Ring/SpikeSet2" unique_id=852891597 instance=ExtResource("9_sajdd")]
+position = Vector2(1289.7628, 1153.9983)
+rotation = -0.7853982
+
+[node name="Spike11" parent="Ring/SpikeSet2" unique_id=551872813 instance=ExtResource("9_sajdd")]
+position = Vector2(1312.3903, 1131.371)
+rotation = -0.7853982
+
+[node name="Spike12" parent="Ring/SpikeSet2" unique_id=1529568820 instance=ExtResource("9_sajdd")]
+position = Vector2(1335.0177, 1108.7435)
+rotation = -0.7853982
+
+[node name="Spike13" parent="Ring/SpikeSet2" unique_id=142794491 instance=ExtResource("9_sajdd")]
+position = Vector2(1357.6451, 1086.1161)
+rotation = -0.7853982
+
+[node name="Spike14" parent="Ring/SpikeSet2" unique_id=668721908 instance=ExtResource("9_sajdd")]
+position = Vector2(1380.2726, 1063.4888)
+rotation = -0.7853982
+
+[node name="Spike15" parent="Ring/SpikeSet2" unique_id=227490259 instance=ExtResource("9_sajdd")]
+position = Vector2(1402.9, 1040.8613)
+rotation = -0.7853982
+
+[node name="Spike16" parent="Ring/SpikeSet2" unique_id=1257936135 instance=ExtResource("9_sajdd")]
+position = Vector2(1425.5275, 1018.23395)
+rotation = -0.7853982
+
+[node name="SpikeSet3" type="Node2D" parent="Ring" unique_id=1833584267]
+position = Vector2(-67.88226, -67.8822)
+rotation = 1.5707964
+
+[node name="Spike" parent="Ring/SpikeSet3" unique_id=1403618458 instance=ExtResource("9_sajdd")]
+position = Vector2(1086.1161, 1357.6451)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring/SpikeSet3" unique_id=1978171369 instance=ExtResource("9_sajdd")]
+position = Vector2(1108.7435, 1335.0177)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring/SpikeSet3" unique_id=1436970627 instance=ExtResource("9_sajdd")]
+position = Vector2(1131.371, 1312.3903)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring/SpikeSet3" unique_id=990864162 instance=ExtResource("9_sajdd")]
+position = Vector2(1153.9984, 1289.7631)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring/SpikeSet3" unique_id=1958017758 instance=ExtResource("9_sajdd")]
+position = Vector2(1176.6259, 1267.1355)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring/SpikeSet3" unique_id=1906583325 instance=ExtResource("9_sajdd")]
+position = Vector2(1199.2532, 1244.508)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring/SpikeSet3" unique_id=1749691449 instance=ExtResource("9_sajdd")]
+position = Vector2(1221.8806, 1221.8806)
+rotation = -0.7853982
+
+[node name="Spike8" parent="Ring/SpikeSet3" unique_id=683520000 instance=ExtResource("9_sajdd")]
+position = Vector2(1244.508, 1199.2532)
+rotation = -0.7853982
+
+[node name="Spike9" parent="Ring/SpikeSet3" unique_id=1330332460 instance=ExtResource("9_sajdd")]
+position = Vector2(1267.1354, 1176.6257)
+rotation = -0.7853982
+
+[node name="Spike10" parent="Ring/SpikeSet3" unique_id=1553427001 instance=ExtResource("9_sajdd")]
+position = Vector2(1289.7628, 1153.9983)
+rotation = -0.7853982
+
+[node name="Spike11" parent="Ring/SpikeSet3" unique_id=27428908 instance=ExtResource("9_sajdd")]
+position = Vector2(1312.3903, 1131.371)
+rotation = -0.7853982
+
+[node name="Spike12" parent="Ring/SpikeSet3" unique_id=67927751 instance=ExtResource("9_sajdd")]
+position = Vector2(1335.0177, 1108.7435)
+rotation = -0.7853982
+
+[node name="Spike13" parent="Ring/SpikeSet3" unique_id=390809945 instance=ExtResource("9_sajdd")]
+position = Vector2(1357.6451, 1086.1161)
+rotation = -0.7853982
+
+[node name="Spike14" parent="Ring/SpikeSet3" unique_id=1858635242 instance=ExtResource("9_sajdd")]
+position = Vector2(1380.2726, 1063.4888)
+rotation = -0.7853982
+
+[node name="Spike15" parent="Ring/SpikeSet3" unique_id=1323330449 instance=ExtResource("9_sajdd")]
+position = Vector2(1402.9, 1040.8613)
+rotation = -0.7853982
+
+[node name="Spike16" parent="Ring/SpikeSet3" unique_id=343283275 instance=ExtResource("9_sajdd")]
+position = Vector2(1425.5275, 1018.23395)
+rotation = -0.7853982
+
+[node name="SpikeSet4" type="Node2D" parent="Ring" unique_id=375026213]
+position = Vector2(67.882324, 67.881836)
+rotation = -1.5707964
+
+[node name="Spike" parent="Ring/SpikeSet4" unique_id=436592819 instance=ExtResource("9_sajdd")]
+position = Vector2(1086.1161, 1357.6451)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring/SpikeSet4" unique_id=755100596 instance=ExtResource("9_sajdd")]
+position = Vector2(1108.7435, 1335.0177)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring/SpikeSet4" unique_id=915482347 instance=ExtResource("9_sajdd")]
+position = Vector2(1131.371, 1312.3903)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring/SpikeSet4" unique_id=748970557 instance=ExtResource("9_sajdd")]
+position = Vector2(1153.9984, 1289.7631)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring/SpikeSet4" unique_id=1094743296 instance=ExtResource("9_sajdd")]
+position = Vector2(1176.6259, 1267.1355)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring/SpikeSet4" unique_id=331042507 instance=ExtResource("9_sajdd")]
+position = Vector2(1199.2532, 1244.508)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring/SpikeSet4" unique_id=1422031284 instance=ExtResource("9_sajdd")]
+position = Vector2(1221.8806, 1221.8806)
+rotation = -0.7853982
+
+[node name="Spike8" parent="Ring/SpikeSet4" unique_id=1236106837 instance=ExtResource("9_sajdd")]
+position = Vector2(1244.508, 1199.2532)
+rotation = -0.7853982
+
+[node name="Spike9" parent="Ring/SpikeSet4" unique_id=1561300897 instance=ExtResource("9_sajdd")]
+position = Vector2(1267.1354, 1176.6257)
+rotation = -0.7853982
+
+[node name="Spike10" parent="Ring/SpikeSet4" unique_id=527951861 instance=ExtResource("9_sajdd")]
+position = Vector2(1289.7628, 1153.9983)
+rotation = -0.7853982
+
+[node name="Spike11" parent="Ring/SpikeSet4" unique_id=990949792 instance=ExtResource("9_sajdd")]
+position = Vector2(1312.3903, 1131.371)
+rotation = -0.7853982
+
+[node name="Spike12" parent="Ring/SpikeSet4" unique_id=1808831352 instance=ExtResource("9_sajdd")]
+position = Vector2(1335.0177, 1108.7435)
+rotation = -0.7853982
+
+[node name="Spike13" parent="Ring/SpikeSet4" unique_id=357314667 instance=ExtResource("9_sajdd")]
+position = Vector2(1357.6451, 1086.1161)
+rotation = -0.7853982
+
+[node name="Spike14" parent="Ring/SpikeSet4" unique_id=1331502690 instance=ExtResource("9_sajdd")]
+position = Vector2(1380.2726, 1063.4888)
+rotation = -0.7853982
+
+[node name="Spike15" parent="Ring/SpikeSet4" unique_id=2121187887 instance=ExtResource("9_sajdd")]
+position = Vector2(1402.9, 1040.8613)
+rotation = -0.7853982
+
+[node name="Spike16" parent="Ring/SpikeSet4" unique_id=793132027 instance=ExtResource("9_sajdd")]
+position = Vector2(1425.5275, 1018.23395)
+rotation = -0.7853982
+
+[node name="Ring2" type="TileMapLayer" parent="." unique_id=394306056]
+position = Vector2(1024, -128)
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("2_fvgwv")
+use_kinematic_bodies = true
+script = ExtResource("4_uuyqe")
+speed = -10.0
+
+[node name="SpikeSet5" type="Node2D" parent="Ring2" unique_id=560800262]
+position = Vector2(-32, 1056)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Spike" parent="Ring2/SpikeSet5" unique_id=317311527 instance=ExtResource("9_sajdd")]
+position = Vector2(-407.29346, 407.2936)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring2/SpikeSet5" unique_id=1766804087 instance=ExtResource("9_sajdd")]
+position = Vector2(-384.66602, 384.66617)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring2/SpikeSet5" unique_id=211208314 instance=ExtResource("9_sajdd")]
+position = Vector2(-362.03857, 362.03873)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring2/SpikeSet5" unique_id=836223327 instance=ExtResource("9_sajdd")]
+position = Vector2(-339.41113, 339.41153)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring2/SpikeSet5" unique_id=2015084972 instance=ExtResource("9_sajdd")]
+position = Vector2(-316.78366, 316.78397)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring2/SpikeSet5" unique_id=33188039 instance=ExtResource("9_sajdd")]
+position = Vector2(-294.15634, 294.15652)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring2/SpikeSet5" unique_id=215792769 instance=ExtResource("9_sajdd")]
+position = Vector2(-271.5289, 271.52908)
+rotation = -0.7853982
+
+[node name="Spike8" parent="Ring2/SpikeSet5" unique_id=804783965 instance=ExtResource("9_sajdd")]
+position = Vector2(-248.90146, 248.90164)
+rotation = -0.7853982
+
+[node name="Spike9" parent="Ring2/SpikeSet5" unique_id=3221050 instance=ExtResource("9_sajdd")]
+position = Vector2(-226.27414, 226.2742)
+rotation = -0.7853982
+
+[node name="Spike10" parent="Ring2/SpikeSet5" unique_id=1383400763 instance=ExtResource("9_sajdd")]
+position = Vector2(-203.6467, 203.64676)
+rotation = -0.7853982
+
+[node name="Spike11" parent="Ring2/SpikeSet5" unique_id=1877434038 instance=ExtResource("9_sajdd")]
+position = Vector2(-181.01926, 181.01944)
+rotation = -0.7853982
+
+[node name="Spike12" parent="Ring2/SpikeSet5" unique_id=1673374707 instance=ExtResource("9_sajdd")]
+position = Vector2(-158.39182, 158.392)
+rotation = -0.7853982
+
+[node name="Spike13" parent="Ring2/SpikeSet5" unique_id=1867391446 instance=ExtResource("9_sajdd")]
+position = Vector2(-135.76437, 135.76456)
+rotation = -0.7853982
+
+[node name="Spike14" parent="Ring2/SpikeSet5" unique_id=1923341350 instance=ExtResource("9_sajdd")]
+position = Vector2(-113.13694, 113.13724)
+rotation = -0.7853982
+
+[node name="Spike15" parent="Ring2/SpikeSet5" unique_id=217384998 instance=ExtResource("9_sajdd")]
+position = Vector2(-90.5095, 90.509796)
+rotation = -0.7853982
+
+[node name="Spike16" parent="Ring2/SpikeSet5" unique_id=803580298 instance=ExtResource("9_sajdd")]
+position = Vector2(-67.882065, 67.882416)
+rotation = -0.7853982
+
+[node name="Spike17" parent="Ring2/SpikeSet5" unique_id=1959367710 instance=ExtResource("9_sajdd")]
+position = Vector2(-45.254745, 45.254852)
+rotation = -0.7853982
+
+[node name="Spike18" parent="Ring2/SpikeSet5" unique_id=1246676462 instance=ExtResource("9_sajdd")]
+position = Vector2(-22.627304, 22.62741)
+rotation = -0.7853982
+
+[node name="Spike19" parent="Ring2/SpikeSet5" unique_id=1232509073 instance=ExtResource("9_sajdd")]
+position = Vector2(0.0001373291, -3.0517578e-05)
+rotation = -0.7853982
+
+[node name="Spike20" parent="Ring2/SpikeSet5" unique_id=1972576900 instance=ExtResource("9_sajdd")]
+position = Vector2(22.627579, -22.627228)
+rotation = -0.7853982
+
+[node name="Spike21" parent="Ring2/SpikeSet5" unique_id=161795778 instance=ExtResource("9_sajdd")]
+position = Vector2(45.25502, -45.25476)
+rotation = -0.7853982
+
+[node name="Spike22" parent="Ring2/SpikeSet5" unique_id=164783912 instance=ExtResource("9_sajdd")]
+position = Vector2(67.88234, -67.8822)
+rotation = -0.7853982
+
+[node name="Spike23" parent="Ring2/SpikeSet5" unique_id=1975534365 instance=ExtResource("9_sajdd")]
+position = Vector2(90.50978, -90.50964)
+rotation = -0.7853982
+
+[node name="Spike24" parent="Ring2/SpikeSet5" unique_id=1214399286 instance=ExtResource("9_sajdd")]
+position = Vector2(113.13722, -113.137085)
+rotation = -0.7853982
+
+[node name="Spike25" parent="Ring2/SpikeSet5" unique_id=1635977526 instance=ExtResource("9_sajdd")]
+position = Vector2(135.76454, -135.76453)
+rotation = -0.7853982
+
+[node name="Spike26" parent="Ring2/SpikeSet5" unique_id=627965261 instance=ExtResource("9_sajdd")]
+position = Vector2(158.39198, -158.39197)
+rotation = -0.7853982
+
+[node name="Spike27" parent="Ring2/SpikeSet5" unique_id=951417004 instance=ExtResource("9_sajdd")]
+position = Vector2(181.01942, -181.01929)
+rotation = -0.7853982
+
+[node name="Spike28" parent="Ring2/SpikeSet5" unique_id=74648873 instance=ExtResource("9_sajdd")]
+position = Vector2(203.64687, -203.64673)
+rotation = -0.7853982
+
+[node name="Spike29" parent="Ring2/SpikeSet5" unique_id=1867676888 instance=ExtResource("9_sajdd")]
+position = Vector2(226.2743, -226.27417)
+rotation = -0.7853982
+
+[node name="Spike30" parent="Ring2/SpikeSet5" unique_id=1200565362 instance=ExtResource("9_sajdd")]
+position = Vector2(248.90175, -248.90149)
+rotation = -0.7853982
+
+[node name="Spike31" parent="Ring2/SpikeSet5" unique_id=1633978626 instance=ExtResource("9_sajdd")]
+position = Vector2(271.52917, -271.52893)
+rotation = -0.7853982
+
+[node name="Spike32" parent="Ring2/SpikeSet5" unique_id=1551696795 instance=ExtResource("9_sajdd")]
+position = Vector2(294.15662, -294.15637)
+rotation = -0.7853982
+
+[node name="Spike33" parent="Ring2/SpikeSet5" unique_id=1579924254 instance=ExtResource("9_sajdd")]
+position = Vector2(316.78387, -316.78394)
+rotation = -0.7853982
+
+[node name="Spike34" parent="Ring2/SpikeSet5" unique_id=1710372263 instance=ExtResource("9_sajdd")]
+position = Vector2(339.41132, -339.41138)
+rotation = -0.7853982
+
+[node name="Spike35" parent="Ring2/SpikeSet5" unique_id=1795462979 instance=ExtResource("9_sajdd")]
+position = Vector2(362.03876, -362.0387)
+rotation = -0.7853982
+
+[node name="Spike36" parent="Ring2/SpikeSet5" unique_id=981844468 instance=ExtResource("9_sajdd")]
+position = Vector2(384.6662, -384.66614)
+rotation = -0.7853982
+
+[node name="Spike37" parent="Ring2/SpikeSet5" unique_id=1865020043 instance=ExtResource("9_sajdd")]
+position = Vector2(407.29364, -407.29358)
+rotation = -0.7853982
+
+[node name="Spike38" parent="Ring2/SpikeSet5" unique_id=929449866 instance=ExtResource("9_sajdd")]
+position = Vector2(429.92096, -429.92102)
+rotation = -0.7853982
+
+[node name="Spike39" parent="Ring2/SpikeSet5" unique_id=1554542026 instance=ExtResource("9_sajdd")]
+position = Vector2(452.5484, -452.54846)
+rotation = -0.7853982
+
+[node name="SpikeSet6" type="Node2D" parent="Ring2" unique_id=1094705370]
+position = Vector2(-1056, -32)
+rotation = 2.3561945
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Spike" parent="Ring2/SpikeSet6" unique_id=101197897 instance=ExtResource("9_sajdd")]
+position = Vector2(-407.29346, 407.2936)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring2/SpikeSet6" unique_id=572787000 instance=ExtResource("9_sajdd")]
+position = Vector2(-384.66602, 384.66617)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring2/SpikeSet6" unique_id=1710610886 instance=ExtResource("9_sajdd")]
+position = Vector2(-362.03857, 362.03873)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring2/SpikeSet6" unique_id=614395838 instance=ExtResource("9_sajdd")]
+position = Vector2(-339.41113, 339.41153)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring2/SpikeSet6" unique_id=1239147219 instance=ExtResource("9_sajdd")]
+position = Vector2(-316.78366, 316.78397)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring2/SpikeSet6" unique_id=35606922 instance=ExtResource("9_sajdd")]
+position = Vector2(-294.15634, 294.15652)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring2/SpikeSet6" unique_id=1482794570 instance=ExtResource("9_sajdd")]
+position = Vector2(-271.5289, 271.52908)
+rotation = -0.7853982
+
+[node name="Spike8" parent="Ring2/SpikeSet6" unique_id=1539613241 instance=ExtResource("9_sajdd")]
+position = Vector2(-248.90146, 248.90164)
+rotation = -0.7853982
+
+[node name="Spike9" parent="Ring2/SpikeSet6" unique_id=1571747956 instance=ExtResource("9_sajdd")]
+position = Vector2(-226.27414, 226.2742)
+rotation = -0.7853982
+
+[node name="Spike10" parent="Ring2/SpikeSet6" unique_id=730806001 instance=ExtResource("9_sajdd")]
+position = Vector2(-203.6467, 203.64676)
+rotation = -0.7853982
+
+[node name="Spike11" parent="Ring2/SpikeSet6" unique_id=590261938 instance=ExtResource("9_sajdd")]
+position = Vector2(-181.01926, 181.01944)
+rotation = -0.7853982
+
+[node name="Spike12" parent="Ring2/SpikeSet6" unique_id=377770954 instance=ExtResource("9_sajdd")]
+position = Vector2(-158.39182, 158.392)
+rotation = -0.7853982
+
+[node name="Spike13" parent="Ring2/SpikeSet6" unique_id=377837657 instance=ExtResource("9_sajdd")]
+position = Vector2(-135.76437, 135.76456)
+rotation = -0.7853982
+
+[node name="Spike14" parent="Ring2/SpikeSet6" unique_id=1523569897 instance=ExtResource("9_sajdd")]
+position = Vector2(-113.13694, 113.13724)
+rotation = -0.7853982
+
+[node name="Spike15" parent="Ring2/SpikeSet6" unique_id=1953584227 instance=ExtResource("9_sajdd")]
+position = Vector2(-90.5095, 90.509796)
+rotation = -0.7853982
+
+[node name="Spike16" parent="Ring2/SpikeSet6" unique_id=1177815030 instance=ExtResource("9_sajdd")]
+position = Vector2(-67.882065, 67.882416)
+rotation = -0.7853982
+
+[node name="Spike17" parent="Ring2/SpikeSet6" unique_id=1401544752 instance=ExtResource("9_sajdd")]
+position = Vector2(-45.254745, 45.254852)
+rotation = -0.7853982
+
+[node name="Spike18" parent="Ring2/SpikeSet6" unique_id=146769291 instance=ExtResource("9_sajdd")]
+position = Vector2(-22.627304, 22.62741)
+rotation = -0.7853982
+
+[node name="Spike19" parent="Ring2/SpikeSet6" unique_id=1761278306 instance=ExtResource("9_sajdd")]
+position = Vector2(0.0001373291, -3.0517578e-05)
+rotation = -0.7853982
+
+[node name="Spike20" parent="Ring2/SpikeSet6" unique_id=1590702161 instance=ExtResource("9_sajdd")]
+position = Vector2(22.627579, -22.627228)
+rotation = -0.7853982
+
+[node name="Spike21" parent="Ring2/SpikeSet6" unique_id=2089934762 instance=ExtResource("9_sajdd")]
+position = Vector2(45.25502, -45.25476)
+rotation = -0.7853982
+
+[node name="Spike22" parent="Ring2/SpikeSet6" unique_id=1035934632 instance=ExtResource("9_sajdd")]
+position = Vector2(67.88234, -67.8822)
+rotation = -0.7853982
+
+[node name="Spike23" parent="Ring2/SpikeSet6" unique_id=1833386362 instance=ExtResource("9_sajdd")]
+position = Vector2(90.50978, -90.50964)
+rotation = -0.7853982
+
+[node name="Spike24" parent="Ring2/SpikeSet6" unique_id=1086469207 instance=ExtResource("9_sajdd")]
+position = Vector2(113.13722, -113.137085)
+rotation = -0.7853982
+
+[node name="Spike25" parent="Ring2/SpikeSet6" unique_id=584940295 instance=ExtResource("9_sajdd")]
+position = Vector2(135.76454, -135.76453)
+rotation = -0.7853982
+
+[node name="Spike26" parent="Ring2/SpikeSet6" unique_id=340850313 instance=ExtResource("9_sajdd")]
+position = Vector2(158.39198, -158.39197)
+rotation = -0.7853982
+
+[node name="Spike27" parent="Ring2/SpikeSet6" unique_id=21862467 instance=ExtResource("9_sajdd")]
+position = Vector2(181.01942, -181.01929)
+rotation = -0.7853982
+
+[node name="Spike28" parent="Ring2/SpikeSet6" unique_id=108481344 instance=ExtResource("9_sajdd")]
+position = Vector2(203.64687, -203.64673)
+rotation = -0.7853982
+
+[node name="Spike29" parent="Ring2/SpikeSet6" unique_id=532948400 instance=ExtResource("9_sajdd")]
+position = Vector2(226.2743, -226.27417)
+rotation = -0.7853982
+
+[node name="Spike30" parent="Ring2/SpikeSet6" unique_id=569403479 instance=ExtResource("9_sajdd")]
+position = Vector2(248.90175, -248.90149)
+rotation = -0.7853982
+
+[node name="Spike31" parent="Ring2/SpikeSet6" unique_id=1856793340 instance=ExtResource("9_sajdd")]
+position = Vector2(271.52917, -271.52893)
+rotation = -0.7853982
+
+[node name="Spike32" parent="Ring2/SpikeSet6" unique_id=2009754215 instance=ExtResource("9_sajdd")]
+position = Vector2(294.15662, -294.15637)
+rotation = -0.7853982
+
+[node name="Spike33" parent="Ring2/SpikeSet6" unique_id=1190862940 instance=ExtResource("9_sajdd")]
+position = Vector2(316.78387, -316.78394)
+rotation = -0.7853982
+
+[node name="Spike34" parent="Ring2/SpikeSet6" unique_id=307542700 instance=ExtResource("9_sajdd")]
+position = Vector2(339.41132, -339.41138)
+rotation = -0.7853982
+
+[node name="Spike35" parent="Ring2/SpikeSet6" unique_id=1119817249 instance=ExtResource("9_sajdd")]
+position = Vector2(362.03876, -362.0387)
+rotation = -0.7853982
+
+[node name="Spike36" parent="Ring2/SpikeSet6" unique_id=1056792688 instance=ExtResource("9_sajdd")]
+position = Vector2(384.6662, -384.66614)
+rotation = -0.7853982
+
+[node name="Spike37" parent="Ring2/SpikeSet6" unique_id=1923296321 instance=ExtResource("9_sajdd")]
+position = Vector2(407.29364, -407.29358)
+rotation = -0.7853982
+
+[node name="Spike38" parent="Ring2/SpikeSet6" unique_id=476774216 instance=ExtResource("9_sajdd")]
+position = Vector2(429.92096, -429.92102)
+rotation = -0.7853982
+
+[node name="Spike39" parent="Ring2/SpikeSet6" unique_id=837044394 instance=ExtResource("9_sajdd")]
+position = Vector2(452.5484, -452.54846)
+rotation = -0.7853982
+
+[node name="SpikeSet7" type="Node2D" parent="Ring2" unique_id=62297438]
+position = Vector2(32, -1056)
+rotation = -2.3561945
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Spike" parent="Ring2/SpikeSet7" unique_id=2119638105 instance=ExtResource("9_sajdd")]
+position = Vector2(-407.29346, 407.2936)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring2/SpikeSet7" unique_id=1936822920 instance=ExtResource("9_sajdd")]
+position = Vector2(-384.66602, 384.66617)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring2/SpikeSet7" unique_id=1781541437 instance=ExtResource("9_sajdd")]
+position = Vector2(-362.03857, 362.03873)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring2/SpikeSet7" unique_id=898463827 instance=ExtResource("9_sajdd")]
+position = Vector2(-339.41113, 339.41153)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring2/SpikeSet7" unique_id=1421657200 instance=ExtResource("9_sajdd")]
+position = Vector2(-316.78366, 316.78397)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring2/SpikeSet7" unique_id=147105744 instance=ExtResource("9_sajdd")]
+position = Vector2(-294.15634, 294.15652)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring2/SpikeSet7" unique_id=1334062360 instance=ExtResource("9_sajdd")]
+position = Vector2(-271.5289, 271.52908)
+rotation = -0.7853982
+
+[node name="Spike8" parent="Ring2/SpikeSet7" unique_id=393045242 instance=ExtResource("9_sajdd")]
+position = Vector2(-248.90146, 248.90164)
+rotation = -0.7853982
+
+[node name="Spike9" parent="Ring2/SpikeSet7" unique_id=732559095 instance=ExtResource("9_sajdd")]
+position = Vector2(-226.27414, 226.2742)
+rotation = -0.7853982
+
+[node name="Spike10" parent="Ring2/SpikeSet7" unique_id=1258958038 instance=ExtResource("9_sajdd")]
+position = Vector2(-203.6467, 203.64676)
+rotation = -0.7853982
+
+[node name="Spike11" parent="Ring2/SpikeSet7" unique_id=54935152 instance=ExtResource("9_sajdd")]
+position = Vector2(-181.01926, 181.01944)
+rotation = -0.7853982
+
+[node name="Spike12" parent="Ring2/SpikeSet7" unique_id=1368333309 instance=ExtResource("9_sajdd")]
+position = Vector2(-158.39182, 158.392)
+rotation = -0.7853982
+
+[node name="Spike13" parent="Ring2/SpikeSet7" unique_id=1488303330 instance=ExtResource("9_sajdd")]
+position = Vector2(-135.76437, 135.76456)
+rotation = -0.7853982
+
+[node name="Spike14" parent="Ring2/SpikeSet7" unique_id=794803189 instance=ExtResource("9_sajdd")]
+position = Vector2(-113.13694, 113.13724)
+rotation = -0.7853982
+
+[node name="Spike15" parent="Ring2/SpikeSet7" unique_id=1968135568 instance=ExtResource("9_sajdd")]
+position = Vector2(-90.5095, 90.509796)
+rotation = -0.7853982
+
+[node name="Spike16" parent="Ring2/SpikeSet7" unique_id=382595276 instance=ExtResource("9_sajdd")]
+position = Vector2(-67.882065, 67.882416)
+rotation = -0.7853982
+
+[node name="Spike17" parent="Ring2/SpikeSet7" unique_id=1184797470 instance=ExtResource("9_sajdd")]
+position = Vector2(-45.254745, 45.254852)
+rotation = -0.7853982
+
+[node name="Spike18" parent="Ring2/SpikeSet7" unique_id=2102841540 instance=ExtResource("9_sajdd")]
+position = Vector2(-22.627304, 22.62741)
+rotation = -0.7853982
+
+[node name="Spike19" parent="Ring2/SpikeSet7" unique_id=1508487371 instance=ExtResource("9_sajdd")]
+position = Vector2(0.0001373291, -3.0517578e-05)
+rotation = -0.7853982
+
+[node name="Spike20" parent="Ring2/SpikeSet7" unique_id=1667504512 instance=ExtResource("9_sajdd")]
+position = Vector2(22.627579, -22.627228)
+rotation = -0.7853982
+
+[node name="Spike21" parent="Ring2/SpikeSet7" unique_id=153000005 instance=ExtResource("9_sajdd")]
+position = Vector2(45.25502, -45.25476)
+rotation = -0.7853982
+
+[node name="Spike22" parent="Ring2/SpikeSet7" unique_id=1800672595 instance=ExtResource("9_sajdd")]
+position = Vector2(67.88234, -67.8822)
+rotation = -0.7853982
+
+[node name="Spike23" parent="Ring2/SpikeSet7" unique_id=1942981581 instance=ExtResource("9_sajdd")]
+position = Vector2(90.50978, -90.50964)
+rotation = -0.7853982
+
+[node name="Spike24" parent="Ring2/SpikeSet7" unique_id=1531660523 instance=ExtResource("9_sajdd")]
+position = Vector2(113.13722, -113.137085)
+rotation = -0.7853982
+
+[node name="Spike25" parent="Ring2/SpikeSet7" unique_id=165136736 instance=ExtResource("9_sajdd")]
+position = Vector2(135.76454, -135.76453)
+rotation = -0.7853982
+
+[node name="Spike26" parent="Ring2/SpikeSet7" unique_id=39571402 instance=ExtResource("9_sajdd")]
+position = Vector2(158.39198, -158.39197)
+rotation = -0.7853982
+
+[node name="Spike27" parent="Ring2/SpikeSet7" unique_id=2010331809 instance=ExtResource("9_sajdd")]
+position = Vector2(181.01942, -181.01929)
+rotation = -0.7853982
+
+[node name="Spike28" parent="Ring2/SpikeSet7" unique_id=1806824077 instance=ExtResource("9_sajdd")]
+position = Vector2(203.64687, -203.64673)
+rotation = -0.7853982
+
+[node name="Spike29" parent="Ring2/SpikeSet7" unique_id=965036114 instance=ExtResource("9_sajdd")]
+position = Vector2(226.2743, -226.27417)
+rotation = -0.7853982
+
+[node name="Spike30" parent="Ring2/SpikeSet7" unique_id=2069896907 instance=ExtResource("9_sajdd")]
+position = Vector2(248.90175, -248.90149)
+rotation = -0.7853982
+
+[node name="Spike31" parent="Ring2/SpikeSet7" unique_id=1620395403 instance=ExtResource("9_sajdd")]
+position = Vector2(271.52917, -271.52893)
+rotation = -0.7853982
+
+[node name="Spike32" parent="Ring2/SpikeSet7" unique_id=1694758905 instance=ExtResource("9_sajdd")]
+position = Vector2(294.15662, -294.15637)
+rotation = -0.7853982
+
+[node name="Spike33" parent="Ring2/SpikeSet7" unique_id=69884 instance=ExtResource("9_sajdd")]
+position = Vector2(316.78387, -316.78394)
+rotation = -0.7853982
+
+[node name="Spike34" parent="Ring2/SpikeSet7" unique_id=838604037 instance=ExtResource("9_sajdd")]
+position = Vector2(339.41132, -339.41138)
+rotation = -0.7853982
+
+[node name="Spike35" parent="Ring2/SpikeSet7" unique_id=1741390100 instance=ExtResource("9_sajdd")]
+position = Vector2(362.03876, -362.0387)
+rotation = -0.7853982
+
+[node name="Spike36" parent="Ring2/SpikeSet7" unique_id=1459752796 instance=ExtResource("9_sajdd")]
+position = Vector2(384.6662, -384.66614)
+rotation = -0.7853982
+
+[node name="Spike37" parent="Ring2/SpikeSet7" unique_id=80375714 instance=ExtResource("9_sajdd")]
+position = Vector2(407.29364, -407.29358)
+rotation = -0.7853982
+
+[node name="Spike38" parent="Ring2/SpikeSet7" unique_id=1488638834 instance=ExtResource("9_sajdd")]
+position = Vector2(429.92096, -429.92102)
+rotation = -0.7853982
+
+[node name="Spike39" parent="Ring2/SpikeSet7" unique_id=391620260 instance=ExtResource("9_sajdd")]
+position = Vector2(452.5484, -452.54846)
+rotation = -0.7853982
+
+[node name="SpikeSet8" type="Node2D" parent="Ring2" unique_id=271211878]
+position = Vector2(1056, 32)
+rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Spike" parent="Ring2/SpikeSet8" unique_id=1812209595 instance=ExtResource("9_sajdd")]
+position = Vector2(-407.29346, 407.2936)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring2/SpikeSet8" unique_id=1351256577 instance=ExtResource("9_sajdd")]
+position = Vector2(-384.66602, 384.66617)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring2/SpikeSet8" unique_id=1601016058 instance=ExtResource("9_sajdd")]
+position = Vector2(-362.03857, 362.03873)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring2/SpikeSet8" unique_id=195860294 instance=ExtResource("9_sajdd")]
+position = Vector2(-339.41113, 339.41153)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring2/SpikeSet8" unique_id=1767344041 instance=ExtResource("9_sajdd")]
+position = Vector2(-316.78366, 316.78397)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring2/SpikeSet8" unique_id=1322590033 instance=ExtResource("9_sajdd")]
+position = Vector2(-294.15634, 294.15652)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring2/SpikeSet8" unique_id=885109367 instance=ExtResource("9_sajdd")]
+position = Vector2(-271.5289, 271.52908)
+rotation = -0.7853982
+
+[node name="Spike8" parent="Ring2/SpikeSet8" unique_id=1880034064 instance=ExtResource("9_sajdd")]
+position = Vector2(-248.90146, 248.90164)
+rotation = -0.7853982
+
+[node name="Spike9" parent="Ring2/SpikeSet8" unique_id=609685782 instance=ExtResource("9_sajdd")]
+position = Vector2(-226.27414, 226.2742)
+rotation = -0.7853982
+
+[node name="Spike10" parent="Ring2/SpikeSet8" unique_id=1340002984 instance=ExtResource("9_sajdd")]
+position = Vector2(-203.6467, 203.64676)
+rotation = -0.7853982
+
+[node name="Spike11" parent="Ring2/SpikeSet8" unique_id=2048644333 instance=ExtResource("9_sajdd")]
+position = Vector2(-181.01926, 181.01944)
+rotation = -0.7853982
+
+[node name="Spike12" parent="Ring2/SpikeSet8" unique_id=1257264053 instance=ExtResource("9_sajdd")]
+position = Vector2(-158.39182, 158.392)
+rotation = -0.7853982
+
+[node name="Spike13" parent="Ring2/SpikeSet8" unique_id=1727209940 instance=ExtResource("9_sajdd")]
+position = Vector2(-135.76437, 135.76456)
+rotation = -0.7853982
+
+[node name="Spike14" parent="Ring2/SpikeSet8" unique_id=1983402032 instance=ExtResource("9_sajdd")]
+position = Vector2(-113.13694, 113.13724)
+rotation = -0.7853982
+
+[node name="Spike15" parent="Ring2/SpikeSet8" unique_id=1409273006 instance=ExtResource("9_sajdd")]
+position = Vector2(-90.5095, 90.509796)
+rotation = -0.7853982
+
+[node name="Spike16" parent="Ring2/SpikeSet8" unique_id=1047922888 instance=ExtResource("9_sajdd")]
+position = Vector2(-67.882065, 67.882416)
+rotation = -0.7853982
+
+[node name="Spike17" parent="Ring2/SpikeSet8" unique_id=1272137316 instance=ExtResource("9_sajdd")]
+position = Vector2(-45.254745, 45.254852)
+rotation = -0.7853982
+
+[node name="Spike18" parent="Ring2/SpikeSet8" unique_id=1559944274 instance=ExtResource("9_sajdd")]
+position = Vector2(-22.627304, 22.62741)
+rotation = -0.7853982
+
+[node name="Spike19" parent="Ring2/SpikeSet8" unique_id=1407143700 instance=ExtResource("9_sajdd")]
+position = Vector2(0.0001373291, -3.0517578e-05)
+rotation = -0.7853982
+
+[node name="Spike20" parent="Ring2/SpikeSet8" unique_id=824102116 instance=ExtResource("9_sajdd")]
+position = Vector2(22.627579, -22.627228)
+rotation = -0.7853982
+
+[node name="Spike21" parent="Ring2/SpikeSet8" unique_id=1019197004 instance=ExtResource("9_sajdd")]
+position = Vector2(45.25502, -45.25476)
+rotation = -0.7853982
+
+[node name="Spike22" parent="Ring2/SpikeSet8" unique_id=1062176523 instance=ExtResource("9_sajdd")]
+position = Vector2(67.88234, -67.8822)
+rotation = -0.7853982
+
+[node name="Spike23" parent="Ring2/SpikeSet8" unique_id=311876524 instance=ExtResource("9_sajdd")]
+position = Vector2(90.50978, -90.50964)
+rotation = -0.7853982
+
+[node name="Spike24" parent="Ring2/SpikeSet8" unique_id=854210688 instance=ExtResource("9_sajdd")]
+position = Vector2(113.13722, -113.137085)
+rotation = -0.7853982
+
+[node name="Spike25" parent="Ring2/SpikeSet8" unique_id=633032275 instance=ExtResource("9_sajdd")]
+position = Vector2(135.76454, -135.76453)
+rotation = -0.7853982
+
+[node name="Spike26" parent="Ring2/SpikeSet8" unique_id=1929325897 instance=ExtResource("9_sajdd")]
+position = Vector2(158.39198, -158.39197)
+rotation = -0.7853982
+
+[node name="Spike27" parent="Ring2/SpikeSet8" unique_id=28778533 instance=ExtResource("9_sajdd")]
+position = Vector2(181.01942, -181.01929)
+rotation = -0.7853982
+
+[node name="Spike28" parent="Ring2/SpikeSet8" unique_id=452467307 instance=ExtResource("9_sajdd")]
+position = Vector2(203.64687, -203.64673)
+rotation = -0.7853982
+
+[node name="Spike29" parent="Ring2/SpikeSet8" unique_id=413830472 instance=ExtResource("9_sajdd")]
+position = Vector2(226.2743, -226.27417)
+rotation = -0.7853982
+
+[node name="Spike30" parent="Ring2/SpikeSet8" unique_id=882845797 instance=ExtResource("9_sajdd")]
+position = Vector2(248.90175, -248.90149)
+rotation = -0.7853982
+
+[node name="Spike31" parent="Ring2/SpikeSet8" unique_id=369167046 instance=ExtResource("9_sajdd")]
+position = Vector2(271.52917, -271.52893)
+rotation = -0.7853982
+
+[node name="Spike32" parent="Ring2/SpikeSet8" unique_id=1428753112 instance=ExtResource("9_sajdd")]
+position = Vector2(294.15662, -294.15637)
+rotation = -0.7853982
+
+[node name="Spike33" parent="Ring2/SpikeSet8" unique_id=1772693219 instance=ExtResource("9_sajdd")]
+position = Vector2(316.78387, -316.78394)
+rotation = -0.7853982
+
+[node name="Spike34" parent="Ring2/SpikeSet8" unique_id=610770599 instance=ExtResource("9_sajdd")]
+position = Vector2(339.41132, -339.41138)
+rotation = -0.7853982
+
+[node name="Spike35" parent="Ring2/SpikeSet8" unique_id=283869389 instance=ExtResource("9_sajdd")]
+position = Vector2(362.03876, -362.0387)
+rotation = -0.7853982
+
+[node name="Spike36" parent="Ring2/SpikeSet8" unique_id=356019041 instance=ExtResource("9_sajdd")]
+position = Vector2(384.6662, -384.66614)
+rotation = -0.7853982
+
+[node name="Spike37" parent="Ring2/SpikeSet8" unique_id=1697504776 instance=ExtResource("9_sajdd")]
+position = Vector2(407.29364, -407.29358)
+rotation = -0.7853982
+
+[node name="Spike38" parent="Ring2/SpikeSet8" unique_id=296784532 instance=ExtResource("9_sajdd")]
+position = Vector2(429.92096, -429.92102)
+rotation = -0.7853982
+
+[node name="Spike39" parent="Ring2/SpikeSet8" unique_id=495783639 instance=ExtResource("9_sajdd")]
+position = Vector2(452.5484, -452.54846)
+rotation = -0.7853982
+
+[node name="MiniLevel" type="TileMapLayer" parent="Ring2" unique_id=1117037716]
+tile_set = ExtResource("3_76sjl")
+
+[node name="Ring3" type="TileMapLayer" parent="." unique_id=1727841644]
+position = Vector2(1024, -128)
+rotation = 0.7853982
+tile_map_data = PackedByteArray("AAD0/wIAAgAFAAQAAAD0/wMAAgAFAAQAAAD0/wQAAgAFAAQAAAD0/wUAAgAFAAQAAAD0/wYAAgAFAAQAAAD0/wcAAgAFAAQAAAALAAIAAgAFAAQAAAALAAMAAgAFAAQAAAALAAQAAgAFAAQAAAALAAUAAgAFAAQAAAALAAYAAgAFAAQAAAALAAcAAgAFAAQAAAD4/wsAAgAIAAEAAAD5/wsAAgAIAAEAAAD6/wsAAgAIAAEAAAD7/wsAAgAIAAEAAAD8/wsAAgAIAAEAAAD9/wsAAgAJAAEAAAABAAsAAgAIAAEAAAACAAsAAgAIAAEAAAADAAsAAgAIAAEAAAAEAAsAAgAIAAEAAAAFAAsAAgAIAAEAAAAGAAsAAgAIAAEAAAAHAAsAAgAIAAEAAAD0//f/AgAHAAMAAAD0//j/AgAFAAQAAAD0//n/AgAFAAQAAAD0//r/AgAFAAQAAAD0//v/AgAFAAQAAAD0//z/AgAFAAQAAAD0//3/AgAFAAQAAAD0//7/AgAFAAUAAAALAPf/AgAJAAMAAAALAPj/AgAFAAQAAAALAPn/AgAFAAQAAAALAPr/AgAFAAQAAAALAPv/AgAFAAQAAAALAPz/AgAFAAQAAAALAP3/AgAFAAQAAAALAP7/AgAFAAUAAAD4//T/AgAIAAEAAAD5//T/AgAIAAEAAAD6//T/AgAIAAEAAAD7//T/AgAIAAEAAAD8//T/AgAIAAEAAAD9//T/AgAIAAEAAAD+//T/AgAJAAEAAAACAPT/AgAIAAEAAAADAPT/AgAIAAEAAAAEAPT/AgAIAAEAAAAFAPT/AgAIAAEAAAAGAPT/AgAIAAEAAAAHAPT/AgAIAAEAAAD0/wgAAgAHAAUAAAD1/wkAAgAHAAUAAAD1/wgAAgAJAAMAAAD3/woAAgAJAAMAAAD3/wsAAgAHAAUAAAAIAAsAAgAJAAUAAAAIAAoAAgAHAAMAAAALAAgAAgAJAAUAAAAKAAgAAgAHAAMAAAAKAAkAAgAJAAUAAAAKAPf/AgAHAAUAAAAIAPT/AgAJAAMAAAAIAPX/AgAHAAUAAAD2//X/AgAHAAMAAAD3//T/AgAHAAMAAAD3//X/AgAJAAUAAAD1//f/AgAJAAUAAAAJAAkAAgAHAAMAAAAJAAoAAgAJAAUAAAD1//b/AgAHAAMAAAD2//b/AgAJAAUAAAD2/wkAAgAJAAMAAAD2/woAAgAHAAUAAAAJAPX/AgAJAAMAAAAJAPb/AgAHAAUAAAAKAPb/AgAJAAMAAAD//wsAAgAHAAEAAAAAAAsAAgAIAAEAAAAAAPT/AgAHAAEAAAABAPT/AgAIAAEAAAD0/wAAAgAFAAMAAAD0/wEAAgAFAAQAAAALAAEAAgAFAAQAAAALAAAAAgAFAAMAAAA=")
+tile_set = ExtResource("2_fvgwv")
+use_kinematic_bodies = true
+script = ExtResource("4_uuyqe")
+speed = 15.0
+
+[node name="SpikeSet9" type="Node2D" parent="Ring3" unique_id=474675592]
+position = Vector2(582.656, 582.656)
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="Spike" parent="Ring3/SpikeSet9" unique_id=396168250 instance=ExtResource("9_sajdd")]
+position = Vector2(-67.88223, 67.88226)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring3/SpikeSet9" unique_id=1124825896 instance=ExtResource("9_sajdd")]
+position = Vector2(-45.25479, 45.25482)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring3/SpikeSet9" unique_id=1823408148 instance=ExtResource("9_sajdd")]
+position = Vector2(-22.62735, 22.62738)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring3/SpikeSet9" unique_id=104366407 instance=ExtResource("9_sajdd")]
+position = Vector2(9.1552734e-05, 0.00018310547)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring3/SpikeSet9" unique_id=1139898529 instance=ExtResource("9_sajdd")]
+position = Vector2(22.627563, -22.62738)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring3/SpikeSet9" unique_id=864155362 instance=ExtResource("9_sajdd")]
+position = Vector2(45.254883, -45.25482)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring3/SpikeSet9" unique_id=503830410 instance=ExtResource("9_sajdd")]
+position = Vector2(67.882324, -67.88226)
+rotation = -0.7853982
+
+[node name="SpikeSet10" type="Node2D" parent="Ring3" unique_id=1792239206]
+position = Vector2(-582.65594, -582.656)
+rotation = 3.1415927
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="Spike" parent="Ring3/SpikeSet10" unique_id=1431546259 instance=ExtResource("9_sajdd")]
+position = Vector2(-67.88223, 67.88226)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring3/SpikeSet10" unique_id=1470157054 instance=ExtResource("9_sajdd")]
+position = Vector2(-45.25479, 45.25482)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring3/SpikeSet10" unique_id=804781102 instance=ExtResource("9_sajdd")]
+position = Vector2(-22.62735, 22.62738)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring3/SpikeSet10" unique_id=3861187 instance=ExtResource("9_sajdd")]
+position = Vector2(9.1552734e-05, 0.00018310547)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring3/SpikeSet10" unique_id=1369621572 instance=ExtResource("9_sajdd")]
+position = Vector2(22.627563, -22.62738)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring3/SpikeSet10" unique_id=1268931109 instance=ExtResource("9_sajdd")]
+position = Vector2(45.254883, -45.25482)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring3/SpikeSet10" unique_id=725110088 instance=ExtResource("9_sajdd")]
+position = Vector2(67.882324, -67.88226)
+rotation = -0.7853982
+
+[node name="SpikeSet11" type="Node2D" parent="Ring3" unique_id=831508776]
+position = Vector2(-582.656, 582.65594)
+rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="Spike" parent="Ring3/SpikeSet11" unique_id=1906805856 instance=ExtResource("9_sajdd")]
+position = Vector2(-67.88223, 67.88226)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring3/SpikeSet11" unique_id=835456862 instance=ExtResource("9_sajdd")]
+position = Vector2(-45.25479, 45.25482)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring3/SpikeSet11" unique_id=1513642050 instance=ExtResource("9_sajdd")]
+position = Vector2(-22.62735, 22.62738)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring3/SpikeSet11" unique_id=36410973 instance=ExtResource("9_sajdd")]
+position = Vector2(9.1552734e-05, 0.00018310547)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring3/SpikeSet11" unique_id=1307595928 instance=ExtResource("9_sajdd")]
+position = Vector2(22.627563, -22.62738)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring3/SpikeSet11" unique_id=479551910 instance=ExtResource("9_sajdd")]
+position = Vector2(45.254883, -45.25482)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring3/SpikeSet11" unique_id=1686468206 instance=ExtResource("9_sajdd")]
+position = Vector2(67.882324, -67.88226)
+rotation = -0.7853982
+
+[node name="SpikeSet12" type="Node2D" parent="Ring3" unique_id=1729481343]
+position = Vector2(582.6559, -582.656)
+rotation = -1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="Spike" parent="Ring3/SpikeSet12" unique_id=1734926149 instance=ExtResource("9_sajdd")]
+position = Vector2(-67.88223, 67.88226)
+rotation = -0.7853982
+
+[node name="Spike2" parent="Ring3/SpikeSet12" unique_id=831429926 instance=ExtResource("9_sajdd")]
+position = Vector2(-45.25479, 45.25482)
+rotation = -0.7853982
+
+[node name="Spike3" parent="Ring3/SpikeSet12" unique_id=1173658500 instance=ExtResource("9_sajdd")]
+position = Vector2(-22.62735, 22.62738)
+rotation = -0.7853982
+
+[node name="Spike4" parent="Ring3/SpikeSet12" unique_id=1015064252 instance=ExtResource("9_sajdd")]
+position = Vector2(9.1552734e-05, 0.00018310547)
+rotation = -0.7853982
+
+[node name="Spike5" parent="Ring3/SpikeSet12" unique_id=771455655 instance=ExtResource("9_sajdd")]
+position = Vector2(22.627563, -22.62738)
+rotation = -0.7853982
+
+[node name="Spike6" parent="Ring3/SpikeSet12" unique_id=1788810122 instance=ExtResource("9_sajdd")]
+position = Vector2(45.254883, -45.25482)
+rotation = -0.7853982
+
+[node name="Spike7" parent="Ring3/SpikeSet12" unique_id=339421966 instance=ExtResource("9_sajdd")]
+position = Vector2(67.882324, -67.88226)
+rotation = -0.7853982
+
+[node name="MiniLevel" type="TileMapLayer" parent="Ring3" unique_id=2137584116]
+tile_set = ExtResource("3_76sjl")
+
+[node name="Ring4" type="TileMapLayer" parent="." unique_id=214792520]
+position = Vector2(1024, -128)
+tile_map_data = PackedByteArray("AAAGAPn/AgAJAAMAAAAGAPz/AgAFAAMAAAAGAP3/AgAFAAQAAAAGAP7/AgAFAAQAAAAGAP//AgAFAAQAAAAGAAAAAgAFAAQAAAAGAAEAAgAFAAQAAAAGAAIAAgAFAAQAAAAGAAUAAgAFAAQAAAAGAAYAAgAJAAUAAAD5//n/AgAHAAMAAAD5//r/AgAFAAQAAAD5//v/AgAFAAQAAAD5//z/AgAFAAQAAAD5//3/AgAFAAQAAAD5//7/AgAFAAQAAAD5////AgAFAAQAAAD5/wAAAgAFAAQAAAD5/wEAAgAFAAQAAAD5/wIAAgAFAAQAAAD5/wYAAgAHAAUAAAD5/wUAAgAFAAMAAAD6/wYAAgAIAAEAAAD7/wYAAgAIAAEAAAD8/wYAAgAIAAEAAAD9/wYAAgAIAAEAAAD+/wYAAgAIAAEAAAD//wYAAgAIAAEAAAAAAAYAAgAIAAEAAAABAAYAAgAIAAEAAAACAAYAAgAIAAEAAAADAAYAAgAIAAEAAAAEAAYAAgAIAAEAAAAFAAYAAgAIAAEAAAAGAAQAAgAFAAQAAAD5/wMAAgAFAAUAAAD6//n/AgAIAAEAAAD7//n/AgAIAAEAAAD8//n/AgAIAAEAAAD9//n/AgAIAAEAAAD+//n/AgAIAAEAAAD///n/AgAIAAEAAAAAAPn/AgAIAAEAAAABAPn/AgAIAAEAAAACAPn/AgAIAAEAAAADAPn/AgAIAAEAAAAEAPn/AgAIAAEAAAAFAPn/AgAIAAEAAAAGAPr/AgAFAAUAAAAGAAMAAgAFAAQAAAA=")
+tile_set = ExtResource("2_fvgwv")
+use_kinematic_bodies = true
+script = ExtResource("4_uuyqe")
+speed = -20.0
+
+[node name="MiniLevel" type="TileMapLayer" parent="Ring4" unique_id=495015872]
+tile_set = ExtResource("3_76sjl")
+
+[node name="Ring5" type="TileMapLayer" parent="." unique_id=584759885]
+position = Vector2(1024, -128)
+tile_map_data = PackedByteArray("AAD9//3/AgAHAAMAAAD9//7/AgAFAAQAAAD9////AgAFAAUAAAD+//3/AgAIAAEAAAD///3/AgAIAAEAAAAAAP3/AgAIAAEAAAABAP3/AgAIAAEAAAACAP3/AgAJAAMAAAACAP7/AgAFAAUAAAD9/wEAAgAFAAMAAAD9/wIAAgAHAAUAAAD+/wIAAgAIAAEAAAD//wIAAgAIAAEAAAAAAAIAAgAIAAEAAAABAAIAAgAIAAEAAAACAAAAAgAFAAMAAAACAAEAAgAFAAQAAAACAAIAAgAJAAUAAAA=")
+tile_set = ExtResource("2_fvgwv")
+use_kinematic_bodies = true
+script = ExtResource("4_uuyqe")
+speed = 25.0
+
+[node name="MiniLevel" type="TileMapLayer" parent="Ring5" unique_id=951235062]
+tile_set = ExtResource("3_76sjl")
+
+[node name="Ring6" type="TileMapLayer" parent="." unique_id=541013779]
+position = Vector2(1024, -128)
+tile_map_data = PackedByteArray("AAD/////AgAHAAMAAAD//wAAAgAHAAUAAAAAAP//AgAJAAMAAAAAAAAAAgAJAAUAAAA=")
+tile_set = ExtResource("2_fvgwv")
+use_kinematic_bodies = true
+script = ExtResource("4_uuyqe")
+speed = -30.0
+
+[node name="MiniLevel" type="TileMapLayer" parent="Ring6" unique_id=802106505]
+tile_set = ExtResource("3_76sjl")
+
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1331089556 instance=ExtResource("4_wl40v")]
+position = Vector2(3168, -128)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_49.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=481388761 instance=ExtResource("4_wl40v")]
+position = Vector2(-1120, -128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://cnqitqsr7h08l"
+to_spawn_location_with_index = 1
+
+[node name="Boulder" parent="." unique_id=1750975140 instance=ExtResource("5_jksjo")]
+position = Vector2(-464, -152)
+mass = 1000.0
+gravity_rotation_enabled = true
+gravity_rotation_speed = 180
+
+[connection signal="ready" from="." to="." method="_on_ready"]

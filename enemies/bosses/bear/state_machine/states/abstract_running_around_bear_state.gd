@@ -73,6 +73,7 @@ func _wait_then_run()->void:
 	_is_running = false;
 	await get_tree().create_timer(_wait_time_before_run).timeout;
 	if _interrupt_wait_then_run:
+		_is_running = true;
 		return;
 	animated_sprite.animation = "running";
 	_is_running = true;
@@ -80,4 +81,6 @@ func _wait_then_run()->void:
 
 func _jump_after(t: float)->void:
 	await get_tree().create_timer(t).timeout;
+	if _interrupt_wait_then_run:
+		return;
 	_jump_impetus.y = _jump_strength;

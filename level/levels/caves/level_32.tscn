@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://biqdhyqxc8ik4"]
+[gd_scene format=4 uid="uid://biqdhyqxc8ik4"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_wg8eo"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="2_rmubv"]
@@ -23,31 +23,31 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_32" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_32" type="Node2D" unique_id=1012174741 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_wg8eo")
 level_binding_box = Rect2(192, 256, 960, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=208771327]
 position = Vector2(320, 288)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1692914397]
 position = Vector2(928, 672)
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("2_rmubv")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=613458633 instance=ExtResource("2_rmubv")]
 position = Vector2(992, 640)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bf61ovcgft1ic"
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=408074911]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAAEAA4AAgACAAEAAAAFAA4AAgACAAEAAAAGAA4AAgACAAEAAAAHAA4AAgACAAEAAAAIAA4AAgACAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAALAA4AAgACAAEAAAAMAA4AAgACAAEAAAAOAA4AAgACAAEAAAAPAA4AAgACAAEAAAAOAAoAAgABAAIAAAAOAAsAAgABAAMAAAAOAAkAAgABAAIAAAAOAAgAAgABAAIAAAAOAAcAAgABAAIAAAAOAAYAAgABAAIAAAAPAAsAAgACAAMAAAANAA4AAgACAAEAAAADAA4AAgAPAAMAAAADAAYAAgADAAIAAAADAAcAAgADAAIAAAADAAgAAgADAAIAAAADAAkAAgADAAIAAAADAAoAAgADAAIAAAADAAsAAgADAAIAAAADAAwAAgADAAIAAAADAA0AAgADAAIAAAAEAAUAAgACAAMAAAAFAAUAAgACAAMAAAAGAAUAAgACAAMAAAAHAAUAAgACAAMAAAAIAAUAAgACAAMAAAAJAAUAAgACAAMAAAAKAAUAAgACAAMAAAALAAUAAgACAAMAAAAMAAUAAgACAAMAAAANAAUAAgACAAMAAAA=")
 tile_set = ExtResource("3_hjkwv")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=66067958]
 tile_set = ExtResource("4_sywym")
 
-[node name="Bear" parent="." instance=ExtResource("5_1aovf")]
+[node name="Bear" parent="." unique_id=1501094790 instance=ExtResource("5_1aovf")]
 position = Vector2(544, 640)
 gib_count = 25
 
@@ -60,20 +60,20 @@ beehive_spawn_points = [NodePath("../../../BeehiveSpawnPoints/Marker2D2"), NodeP
 [node name="Stage3State" parent="Bear/StateMachine" index="3" node_paths=PackedStringArray("cloud_platform")]
 cloud_platform = NodePath("../../../Path2D/PathFollow2D/CloudPlatform")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1290960844]
 position = Vector2(544, 640)
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=1707046201]
 position = Vector2(352, 496)
 curve = SubResource("Curve2D_6yvwj")
 script = ExtResource("7_uqflo")
 speed = 96.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=162790917]
 rotation = 3.1415927
 rotates = false
 
-[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("8_goq3y")]
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" unique_id=1119863539 instance=ExtResource("8_goq3y")]
 position = Vector2(0, -2.4667283e-05)
 rotation = 3.1415925
 floating_displacement = 96
@@ -82,48 +82,48 @@ randomize_inital_displacement = false
 start_disabled = true
 bounce_timer = 1.0
 
-[node name="BeehiveSpawnPoints" type="Node2D" parent="."]
+[node name="BeehiveSpawnPoints" type="Node2D" parent="." unique_id=167317541]
 position = Vector2(288, 224)
 
-[node name="Marker2D2" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D2" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=783513365]
 
-[node name="Marker2D3" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D3" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=1322597461]
 position = Vector2(64, 0)
 
-[node name="Marker2D4" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D4" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=543853281]
 position = Vector2(128, 0)
 
-[node name="Marker2D5" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D5" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=3048564]
 position = Vector2(192, 0)
 
-[node name="Marker2D6" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D6" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=951740969]
 position = Vector2(256, 0)
 
-[node name="Marker2D7" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D7" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=1017951263]
 position = Vector2(320, 0)
 
-[node name="Marker2D8" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D8" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=1577805129]
 position = Vector2(384, 0)
 
-[node name="Marker2D9" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D9" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=1937015563]
 position = Vector2(448, 0)
 
-[node name="Marker2D10" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D10" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=798464073]
 position = Vector2(512, 0)
 
-[node name="Marker2D11" type="Marker2D" parent="BeehiveSpawnPoints"]
+[node name="Marker2D11" type="Marker2D" parent="BeehiveSpawnPoints" unique_id=1483669260]
 position = Vector2(576, 0)
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="." unique_id=806197628]
 position = Vector2(640, 192)
 curve = SubResource("Curve2D_sywym")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1929449844]
 position = Vector2(288, 448)
 rotates = false
 loop = false
 
-[node name="Door6" parent="Path2D2/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("9_rmubv")]
+[node name="Door6" parent="Path2D2/PathFollow2D" unique_id=1269272337 node_paths=PackedStringArray("movement_path") instance=ExtResource("9_rmubv")]
 script = ExtResource("10_hjkwv")
 movement_path = NodePath("..")
 movement_speed = 250.0

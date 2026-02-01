@@ -1,0 +1,311 @@
+[gd_scene format=4 uid="uid://cnqitqsr7h08l"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_pau4w"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_v0sw3"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_eg3l2"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_n8bh1"]
+[ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="5_pu2cg"]
+[ext_resource type="Script" uid="uid://bhj705hwpanuo" path="res://level/platforms/rotating/rotating_platform_over_time.gd" id="6_iax4v"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="7_k5cnk"]
+[ext_resource type="PackedScene" uid="uid://c1fppnc76mn0n" path="res://enemies/mushroom/mushroom.tscn" id="8_cslax"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="8_eg3l2"]
+[ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="8_pau4w"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="9_n8bh1"]
+[ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying/flying_imp.tscn" id="12_pu2cg"]
+
+[sub_resource type="Curve2D" id="Curve2D_qeonq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 128, 0, 0, 0, 0, 0, -704)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_pu2cg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
+}
+point_count = 2
+
+[node name="Level_47" type="Node2D" unique_id=1053393873 node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_pau4w")
+level_binding_box = Rect2(-64, -1088, 1600, 256)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1906738804]
+position = Vector2(-32, -96)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1503765258]
+position = Vector2(1568, 160)
+
+[node name="Level" type="TileMapLayer" parent="." unique_id=160411321]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAAWAAMAAgAHAAEAAAAWAAYAAgABAAEAAAAAAAMAAgADAAIAAAAAAP7/AgADAAEAAAAAAP//AgADAAMAAAAWAP7/AgABAAIAAAAWAP//AgABAAMAAAAAAPX/AgADAAIAAAAAAPb/AgADAAIAAAAAAPf/AgADAAIAAAAAAPj/AgADAAIAAAAAAPn/AgADAAIAAAAAAPr/AgADAAMAAAAWAPn/AgABAAEAAAAWAPr/AgABAAIAAAAWAPv/AgABAAIAAAAWAPz/AgABAAIAAAAWAP3/AgABAAIAAAAWAPX/AgABAAMAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAXAPb/AgABAAIAAAAXAPf/AgABAAIAAAAXAPj/AgABAAIAAAAXAAAAAgABAAIAAAAXAAEAAgABAAIAAAAXAAIAAgABAAIAAAD///v/AgADAAIAAAD///z/AgADAAIAAAD///3/AgADAAIAAAAXAAMAAgACAAMAAAAYAAMAAgACAAMAAAAXAAYAAgACAAEAAAAYAAYAAgACAAEAAAAAAAYAAgADAAIAAAAAAAIAAgADAAEAAAD/////AgACAAMAAAD//wIAAgACAAEAAAAAAPP/AgADAAIAAAAAAPT/AgADAAIAAAABAPL/AgACAAMAAAACAPL/AgACAAMAAAADAPL/AgACAAMAAAAEAPL/AgACAAMAAAAFAPL/AgACAAMAAAAGAPL/AgACAAMAAAAHAPL/AgACAAMAAAAIAPL/AgACAAMAAAAJAPL/AgACAAMAAAAKAPL/AgACAAMAAAALAPL/AgACAAMAAAAMAPL/AgACAAMAAAANAPL/AgACAAMAAAAOAPL/AgACAAMAAAAPAPL/AgACAAMAAAAQAPL/AgACAAMAAAARAPL/AgACAAMAAAASAPL/AgACAAMAAAATAPL/AgACAAMAAAAUAPL/AgACAAMAAAAVAPL/AgACAAMAAAAWAPP/AgABAAIAAAAWAPT/AgABAAIAAAA=")
+tile_set = ExtResource("2_v0sw3")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=919414452]
+tile_set = ExtResource("3_eg3l2")
+
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1331089556 instance=ExtResource("4_n8bh1")]
+position = Vector2(1632, 128)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_48.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=481388761 instance=ExtResource("4_n8bh1")]
+position = Vector2(-96, -128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://c2ikb4ojmlk2g"
+to_spawn_location_with_index = 1
+
+[node name="Path2DCyclical" type="Path2D" parent="." unique_id=967166441]
+position = Vector2(320, -96)
+curve = SubResource("Curve2D_qeonq")
+script = ExtResource("5_pu2cg")
+speed = 70.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DCyclical" unique_id=270665415]
+position = Vector2(0, 128)
+rotates = false
+
+[node name="SpinningPlatformPivot" type="Node2D" parent="Path2DCyclical/PathFollow2D" unique_id=1782531333]
+script = ExtResource("6_iax4v")
+speed = 25.0
+
+[node name="SpinningPlatform" type="TileMapLayer" parent="Path2DCyclical/PathFollow2D/SpinningPlatformPivot" unique_id=353557275]
+position = Vector2(-32, -32)
+tile_map_data = PackedByteArray("AAAAAAAAAgANAAUAAAAAAP7/AgAFAAQAAAAAAP3/AgAFAAMAAAAAAAIAAgAFAAQAAAAAAAMAAgAFAAUAAAD+/wAAAgAIAAEAAAD9/wAAAgAHAAEAAAACAAAAAgAIAAEAAAADAAAAAgAJAAEAAAAAAP//AgAFAAQAAAAAAAEAAgAFAAQAAAABAAAAAgAIAAEAAAD//wAAAgAIAAEAAAA=")
+tile_set = ExtResource("2_v0sw3")
+use_kinematic_bodies = true
+
+[node name="Mushroom" parent="Path2DCyclical/PathFollow2D/SpinningPlatformPivot" unique_id=325479647 instance=ExtResource("8_cslax")]
+position = Vector2(192, 64)
+rotation = -3.1415927
+poof_every_x_seconds = 2.0
+spore_count = 6
+spore_release_arc_in_degrees = 55.0
+spore_release_force = 516.0
+
+[node name="Spike" parent="Path2DCyclical/PathFollow2D/SpinningPlatformPivot" unique_id=1573982552 instance=ExtResource("7_k5cnk")]
+position = Vector2(64, 128)
+rotation = 1.5707964
+
+[node name="Path2DCyclical2" type="Path2D" parent="." unique_id=1206210505]
+position = Vector2(736, -96)
+curve = SubResource("Curve2D_qeonq")
+script = ExtResource("5_pu2cg")
+speed = 70.0
+start_distance_ratio = 1.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DCyclical2" unique_id=328896614]
+position = Vector2(0, 128)
+rotates = false
+
+[node name="SpinningPlatformPivot" type="Node2D" parent="Path2DCyclical2/PathFollow2D" unique_id=1164000736]
+rotation = 0.7853982
+script = ExtResource("6_iax4v")
+speed = -30.0
+
+[node name="SpinningPlatform" type="TileMapLayer" parent="Path2DCyclical2/PathFollow2D/SpinningPlatformPivot" unique_id=1450523252]
+position = Vector2(-32, -32)
+tile_map_data = PackedByteArray("AAD+/wAAAgAHAAEAAAD//wAAAgAIAAEAAAAAAP7/AgAFAAMAAAAAAP//AgAFAAQAAAAAAAAAAgANAAUAAAAAAAEAAgAFAAQAAAAAAAIAAgAFAAUAAAABAAAAAgAIAAEAAAACAAAAAgAJAAEAAAA=")
+tile_set = ExtResource("2_v0sw3")
+use_kinematic_bodies = true
+
+[node name="Spike2" parent="Path2DCyclical2/PathFollow2D/SpinningPlatformPivot" unique_id=427131663 instance=ExtResource("7_k5cnk")]
+position = Vector2(64, -128)
+rotation = 1.5707964
+
+[node name="Spike3" parent="Path2DCyclical2/PathFollow2D/SpinningPlatformPivot" unique_id=937041002 instance=ExtResource("7_k5cnk")]
+position = Vector2(-64, -128)
+rotation = -1.5707964
+
+[node name="Path2DCyclical3" type="Path2D" parent="." unique_id=73798430]
+position = Vector2(1152, -96)
+curve = SubResource("Curve2D_qeonq")
+script = ExtResource("5_pu2cg")
+speed = 70.0
+metadata/_custom_type_script = "uid://cun18auwrqa22"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DCyclical3" unique_id=126682208]
+position = Vector2(0, 128)
+rotates = false
+
+[node name="SpinningPlatformPivot" type="Node2D" parent="Path2DCyclical3/PathFollow2D" unique_id=507600877]
+script = ExtResource("6_iax4v")
+speed = 25.0
+
+[node name="SpinningPlatform" type="TileMapLayer" parent="Path2DCyclical3/PathFollow2D/SpinningPlatformPivot" unique_id=170063022]
+position = Vector2(-32, -32)
+tile_map_data = PackedByteArray("AAD+/wAAAgAIAAEAAAD//wAAAgAIAAEAAAAAAP7/AgAFAAQAAAAAAP//AgAFAAQAAAAAAAAAAgANAAUAAAAAAAEAAgAFAAQAAAAAAAIAAgAFAAQAAAABAAAAAgAIAAEAAAACAAAAAgAIAAEAAAADAAAAAgAJAAEAAAD9/wAAAgAHAAEAAAAAAP3/AgAFAAMAAAAAAAMAAgAFAAUAAAA=")
+tile_set = ExtResource("2_v0sw3")
+use_kinematic_bodies = true
+
+[node name="Mushroom" parent="Path2DCyclical3/PathFollow2D/SpinningPlatformPivot" unique_id=2043951590 instance=ExtResource("8_cslax")]
+position = Vector2(-192, -64)
+poof_every_x_seconds = 2.0
+poof_timer_inital_offset = 1.0
+spore_count = 6
+spore_release_arc_in_degrees = 55.0
+spore_release_force = 516.0
+
+[node name="Spike4" parent="Path2DCyclical3/PathFollow2D/SpinningPlatformPivot" unique_id=787023526 instance=ExtResource("7_k5cnk")]
+position = Vector2(-128, 64)
+rotation = 3.1415927
+
+[node name="Spike" parent="." unique_id=694679176 instance=ExtResource("7_k5cnk")]
+position = Vector2(96, 224)
+
+[node name="Spike2" parent="." unique_id=309653000 instance=ExtResource("7_k5cnk")]
+position = Vector2(128, 224)
+
+[node name="Spike3" parent="." unique_id=1259475605 instance=ExtResource("7_k5cnk")]
+position = Vector2(160, 224)
+
+[node name="Spike4" parent="." unique_id=1349553880 instance=ExtResource("7_k5cnk")]
+position = Vector2(192, 224)
+
+[node name="Spike5" parent="." unique_id=1704547826 instance=ExtResource("7_k5cnk")]
+position = Vector2(224, 224)
+
+[node name="Spike6" parent="." unique_id=366718241 instance=ExtResource("7_k5cnk")]
+position = Vector2(256, 224)
+
+[node name="Spike7" parent="." unique_id=1038240673 instance=ExtResource("7_k5cnk")]
+position = Vector2(288, 224)
+
+[node name="Spike8" parent="." unique_id=352947346 instance=ExtResource("7_k5cnk")]
+position = Vector2(320, 224)
+
+[node name="Spike9" parent="." unique_id=813123 instance=ExtResource("7_k5cnk")]
+position = Vector2(352, 224)
+
+[node name="Spike10" parent="." unique_id=1936120221 instance=ExtResource("7_k5cnk")]
+position = Vector2(384, 224)
+
+[node name="Spike11" parent="." unique_id=1460884649 instance=ExtResource("7_k5cnk")]
+position = Vector2(416, 224)
+
+[node name="Spike12" parent="." unique_id=1291860957 instance=ExtResource("7_k5cnk")]
+position = Vector2(448, 224)
+
+[node name="Spike13" parent="." unique_id=1046358277 instance=ExtResource("7_k5cnk")]
+position = Vector2(480, 224)
+
+[node name="Spike14" parent="." unique_id=580105310 instance=ExtResource("7_k5cnk")]
+position = Vector2(512, 224)
+
+[node name="Spike15" parent="." unique_id=367251071 instance=ExtResource("7_k5cnk")]
+position = Vector2(544, 224)
+
+[node name="Spike16" parent="." unique_id=1095040907 instance=ExtResource("7_k5cnk")]
+position = Vector2(576, 224)
+
+[node name="Spike17" parent="." unique_id=553858248 instance=ExtResource("7_k5cnk")]
+position = Vector2(608, 224)
+
+[node name="Spike18" parent="." unique_id=94671219 instance=ExtResource("7_k5cnk")]
+position = Vector2(640, 224)
+
+[node name="Spike19" parent="." unique_id=1584196632 instance=ExtResource("7_k5cnk")]
+position = Vector2(672, 224)
+
+[node name="Spike20" parent="." unique_id=556796410 instance=ExtResource("7_k5cnk")]
+position = Vector2(704, 224)
+
+[node name="Spike21" parent="." unique_id=1728955822 instance=ExtResource("7_k5cnk")]
+position = Vector2(736, 224)
+
+[node name="Spike22" parent="." unique_id=1582790198 instance=ExtResource("7_k5cnk")]
+position = Vector2(768, 224)
+
+[node name="Spike23" parent="." unique_id=610297948 instance=ExtResource("7_k5cnk")]
+position = Vector2(800, 224)
+
+[node name="Spike24" parent="." unique_id=492091874 instance=ExtResource("7_k5cnk")]
+position = Vector2(832, 224)
+
+[node name="Spike25" parent="." unique_id=1002963759 instance=ExtResource("7_k5cnk")]
+position = Vector2(864, 224)
+
+[node name="Spike26" parent="." unique_id=1875766865 instance=ExtResource("7_k5cnk")]
+position = Vector2(896, 224)
+
+[node name="Spike27" parent="." unique_id=270748273 instance=ExtResource("7_k5cnk")]
+position = Vector2(928, 224)
+
+[node name="Spike28" parent="." unique_id=1002711474 instance=ExtResource("7_k5cnk")]
+position = Vector2(960, 224)
+
+[node name="Spike29" parent="." unique_id=21209683 instance=ExtResource("7_k5cnk")]
+position = Vector2(992, 224)
+
+[node name="Spike30" parent="." unique_id=457502501 instance=ExtResource("7_k5cnk")]
+position = Vector2(1024, 224)
+
+[node name="Spike31" parent="." unique_id=1679054995 instance=ExtResource("7_k5cnk")]
+position = Vector2(1056, 224)
+
+[node name="Spike32" parent="." unique_id=979628379 instance=ExtResource("7_k5cnk")]
+position = Vector2(1088, 224)
+
+[node name="Spike33" parent="." unique_id=506796417 instance=ExtResource("7_k5cnk")]
+position = Vector2(1120, 224)
+
+[node name="Spike34" parent="." unique_id=985804525 instance=ExtResource("7_k5cnk")]
+position = Vector2(1152, 224)
+
+[node name="Spike35" parent="." unique_id=150659427 instance=ExtResource("7_k5cnk")]
+position = Vector2(1184, 224)
+
+[node name="Spike36" parent="." unique_id=869181823 instance=ExtResource("7_k5cnk")]
+position = Vector2(1216, 224)
+
+[node name="Spike37" parent="." unique_id=1874492607 instance=ExtResource("7_k5cnk")]
+position = Vector2(1248, 224)
+
+[node name="Spike38" parent="." unique_id=1624161866 instance=ExtResource("7_k5cnk")]
+position = Vector2(1280, 224)
+
+[node name="Spike39" parent="." unique_id=578397204 instance=ExtResource("7_k5cnk")]
+position = Vector2(1312, 224)
+
+[node name="Spike40" parent="." unique_id=609821667 instance=ExtResource("7_k5cnk")]
+position = Vector2(1344, 224)
+
+[node name="Spike41" parent="." unique_id=746970769 instance=ExtResource("7_k5cnk")]
+position = Vector2(1376, 224)
+
+[node name="DoorPath" type="Path2D" parent="." unique_id=1266886879]
+position = Vector2(1504, 128)
+curve = SubResource("Curve2D_pu2cg")
+
+[node name="DoorPathFollow" type="PathFollow2D" parent="DoorPath" unique_id=1152736942]
+rotates = false
+loop = false
+
+[node name="Door" parent="DoorPath/DoorPathFollow" unique_id=282938399 node_paths=PackedStringArray("movement_path") instance=ExtResource("8_eg3l2")]
+script = ExtResource("9_n8bh1")
+movement_path = NodePath("..")
+
+[node name="FloorSwitch" parent="." unique_id=670347318 instance=ExtResource("8_pau4w")]
+position = Vector2(1472, -736)
+rotation = -1.5707964
+
+[node name="FlyingImp2" parent="." unique_id=637502456 instance=ExtResource("12_pu2cg")]
+position = Vector2(768, -416)
+
+[node name="Seek" parent="FlyingImp2/StateMachine" parent_id_path=PackedInt32Array(637502456, 1059472708) index="0" unique_id=898710189]
+seeking_speed = 110
+prepare_attack_at_range = 200.0
+
+[node name="Attack" parent="FlyingImp2/StateMachine" parent_id_path=PackedInt32Array(637502456, 1059472708) index="1" unique_id=1857367376]
+attacking_speed = 650
+attacking_length_timer = 1.6
+
+[node name="PrepareAttack" parent="FlyingImp2/StateMachine" parent_id_path=PackedInt32Array(637502456, 1059472708) index="2" unique_id=233037493]
+attack_pause_length_timer = 1.5
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="switch_flipped_on" from="FloorSwitch" to="DoorPath/DoorPathFollow/Door" method="_on_switch_flipped_on"]
+
+[editable path="FlyingImp2"]

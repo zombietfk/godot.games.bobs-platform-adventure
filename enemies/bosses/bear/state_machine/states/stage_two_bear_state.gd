@@ -15,16 +15,16 @@ var _c_time = 0;
 
 var _beehive_difficulty_by_bear_lives_remaining = [
 	{
-		"spawn_bee_every_x_seconds" : 0.15,
+		"spawn_bee_every_x_seconds" : 1,
 		"max_spawn_bees": 3,
 	},
 	{
-		"spawn_bee_every_x_seconds" : 0.3,
+		"spawn_bee_every_x_seconds" : 2,
 		"max_spawn_bees": 1,
 	},
 	{
-		"spawn_bee_every_x_seconds" : 0.75,
-		"max_spawn_bees": 1,
+		"spawn_bee_every_x_seconds" : 60,
+		"max_spawn_bees": 0,
 	},
 ];
 
@@ -92,7 +92,7 @@ func _summon_beehive()->void:
 		beehive.on_destroy.connect(func():
 			_summon_beehive();
 			_already_used_spawn_point.remove_at(
-				_already_used_spawn_point.find(beehive)
+				_already_used_spawn_point.find(spawn_point)
 			);
 		);
 		bear.on_hit_by_beehive.connect(beehive.knockdown_beehive);

@@ -1,0 +1,77 @@
+[gd_scene format=4 uid="uid://ctgtjilwg6b8y"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_qvpkm"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_535yt"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_1emap"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_h3ykl"]
+[ext_resource type="PackedScene" uid="uid://d2awbw2sd1tv7" path="res://objects/traps/boulder/boulder_physics.tscn" id="5_04y6c"]
+[ext_resource type="Script" uid="uid://dh22qt2lnpoi7" path="res://objects/enemy_spawner.gd" id="6_p4idy"]
+[ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="7_1prxa"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="8_jalx2"]
+[ext_resource type="PackedScene" uid="uid://cclnn5v3he5e0" path="res://enemies/bat/bat.tscn" id="8_sqiir"]
+
+[node name="Level_48" type="Node2D" unique_id=1053393873 node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_qvpkm")
+level_binding_box = Rect2(-64, -2688, 1408, 64)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+camera_zoom_to = Vector2(0.5, 0.5)
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1906738804]
+position = Vector2(-32, -96)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1503765258]
+position = Vector2(1376, -2464)
+
+[node name="Level" type="TileMapLayer" parent="." unique_id=160411321]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAD/////AgACAAMAAAD//wIAAgACAAEAAAAFAAIAAgAHAAMAAAAGAAEAAgAHAAMAAAAHAAAAAgAHAAMAAAAIAP//AgAHAAMAAAAJAP7/AgAHAAMAAAAKAP3/AgAHAAMAAAALAPz/AgAHAAMAAAAMAPv/AgAHAAMAAAANAPr/AgAHAAMAAAAOAPn/AgAHAAMAAAAPAPj/AgAHAAMAAAAQAPf/AgAHAAMAAAARAPb/AgAHAAMAAAASAPX/AgAHAAMAAAATAPT/AgAHAAMAAAAUAPP/AgAHAAMAAAAFAP//AgAJAAUAAAAGAP7/AgAJAAUAAAAJAPv/AgAHAAcAADAKAPr/AgAJAAUAAAALAPn/AgAJAAUAAAAMAPj/AgAJAAUAAAAOAPb/AgAHAAcAADAPAPX/AgAJAAUAAAARAPP/AgAHAAcAADASAPL/AgAJAAUAAAASAPD/AgAJAAMAAAARAO//AgAJAAMAAAAQAO7/AgAJAAMAAAAPAO3/AgAJAAMAAAAOAOz/AgAJAAMAAAANAOv/AgAJAAMAAAAMAOr/AgAJAAMAAAALAOn/AgAJAAMAAAAKAOj/AgAJAAMAAAAJAOf/AgAJAAMAAAAIAOb/AgAJAAMAAAAFAOP/AgAJAAMAAAAGAOT/AgAJAAMAAAAHAOX/AgAJAAMAAAAEAOL/AgADAAIAAAAEAOH/AgADAAIAAAAEAOD/AgADAAIAAAAEAN//AgADAAIAAAAEAN7/AgADAAIAAAAEAN3/AgADAAIAAAAEANz/AgADAAIAAAAEANv/AgADAAIAAAAEANr/AgADAAIAAAAEANn/AgADAAIAAAAHAN7/AgAHAAcAADAHAN3/AgABAAIAAAAHANz/AgABAAIAAAAHANv/AgABAAIAAAAHANr/AgABAAIAAAAHANn/AgABAAIAAAATAO7/AgAHAAUAAAAPAOr/AgAHAAUAAAAOAOn/AgAHAAUAAAANAOj/AgAHAAUAAAALAOb/AgAHAAcAACAKAOX/AgAHAAUAAAAJAOT/AgAHAAUAAAAIAOP/AgAHAAUAAAAHAOL/AgAHAAUAAAAHAOH/AgAHAAMAAAAIAOD/AgAHAAMAAAAJAN//AgAHAAMAAAAKAN7/AgAHAAMAAAALAN3/AgAHAAMAAAAMAN3/AgACAAEAAAANAN3/AgACAAEAAAAOAN3/AgACAAEAAAAPAN3/AgACAAEAAAAQAN3/AgACAAEAAAARAN3/AgACAAEAAAASAN3/AgACAAEAAAATAN3/AgACAAEAAAAUAN3/AgACAAEAAAAUANr/AgACAAMAAAATANr/AgACAAMAAAASANr/AgACAAMAAAARANr/AgACAAMAAAAQANr/AgACAAMAAAAPANr/AgACAAMAAAAOANr/AgACAAMAAAANANr/AgACAAMAAAAMANr/AgACAAMAAAAKANv/AgAJAAUAAAAJANz/AgAJAAUAAAAIAN3/AgAJAAUAAAALANr/AgACAAMAAAAVAPL/AgABAAIAAAAVAPH/AgABAAIAAAAVAPD/AgABAAIAAAASAPH/AgADAAIAAAAVAN3/AgACAAEAAAAVANr/AgACAAMAAAAAAP//AgAJAAUAAAABAP7/AgAJAAUAAAAEAP//AgAHAAUAAAADAP7/AgAHAAUAAAACAP3/AgACAAMAAAAAAAMAAgAJAAUAAAABAAIAAgAIAAEAAAAAAAIAAgACAAEAAAACAAIAAgAHAAcAAHAFAAMAAgABAAIAAAAGAAIAAgALAAMAAAAHAAEAAgALAAMAAAAIAAAAAgALAAMAAAAJAP//AgALAAMAAAAKAP7/AgALAAMAAAALAP3/AgALAAMAAAAMAPz/AgALAAMAAAANAPv/AgALAAMAAAAOAPr/AgALAAMAAAAPAPn/AgALAAMAAAAQAPj/AgALAAMAAAARAPf/AgALAAMAAAASAPb/AgALAAMAAAATAPX/AgALAAMAAAAUAPT/AgALAAMAAAAVAPP/AgALAAMAAAAFAP7/AgAPAAcAAAAGAP3/AgADAAIAAAAJAPr/AgABAAIAAAAKAPn/AgAPAAcAAAALAPj/AgAPAAcAAAAMAPf/AgADAAIAAAAOAPX/AgABAAIAAAAPAPT/AgADAAIAAAARAPL/AgABAAIAAAAAAP7/AgAPAAcAAAABAP3/AgAPAAcAAAAIANz/AgAPAAcAAAAJANv/AgAPAAcAAAAKANr/AgAPAAcAAAAIAOH/AgALAAMAAAAJAOD/AgALAAMAAAAKAN//AgALAAMAAAALAN7/AgALAAMAAAAEAOP/AgAPAAMAAAAFAOT/AgAPAAMAAAAGAOX/AgAPAAMAAAAHAOb/AgAPAAMAAAAIAOf/AgAPAAMAAAAJAOj/AgAPAAMAAAAKAOn/AgAPAAMAAAALAOr/AgAPAAMAAAAMAOv/AgAPAAMAAAANAOz/AgAPAAMAAAAOAO3/AgAPAAMAAAAPAO7/AgAPAAMAAAAQAO//AgAPAAMAAAARAPD/AgAPAAMAAAAVAO//AgABAAIAAAATAO3/AgABAAIAAAAPAOn/AgALAAcAAAAOAOj/AgALAAcAAAANAOf/AgABAAIAAAALAOX/AgADAAIAAAAKAOT/AgALAAcAAAAJAOP/AgALAAcAAAAIAOL/AgALAAcAAAAGAPz/AgADAAIAAAAGAPv/AgADAAIAAAAGAPr/AgADAAIAAAAMAPb/AgADAAIAAAAMAPX/AgADAAIAAAAMAPT/AgADAAIAAAAMAPP/AgADAAIAAAAMAPL/AgADAAIAAAAMAPH/AgADAAIAAAAMAPD/AgADAAIAAAAMAO//AgADAAIAAAAMAO7/AgADAAIAAAAOAPT/AgABAAIAAAAOAPP/AgABAAIAAAAOAPL/AgABAAIAAAAOAPH/AgABAAIAAAAOAPD/AgABAAIAAAAOAO//AgABAAIAAAAOAO7/AgABAAIAAAAJAPn/AgABAAIAAAAJAPj/AgABAAIAAAAGAPj/AgADAAIAAAAGAPn/AgADAAIAAAAPAPP/AgADAAIAAAAPAPL/AgADAAIAAAAPAPH/AgADAAIAAAARAPH/AgABAAIAAAATAOz/AgABAAIAAAATAOv/AgABAAIAAAATAOr/AgABAAIAAAATAOn/AgABAAIAAAALAOT/AgADAAIAAAANAOb/AgABAAIAAAANAOX/AgABAAIAAAANAOT/AgABAAIAAAAMAOP/AgACAAMAAAANAO3/AgACAAMAAAAQAPD/AgACAAMAAAAHAPf/AgACAAMAAAAIAPf/AgACAAMAAAAGAPf/AgAPAAcAAAAJAPf/AgALAAcAAAAMAO3/AgAPAAcAAAAPAPD/AgAPAAcAAAARAOr/AgADAAIAAAARAOv/AgADAAIAAAARAOz/AgAHAAcAACAQAOv/AgAHAAUAAAAQAOr/AgALAAcAAAARAOn/AgADAAIAAAALAOP/AgAPAAcAAAANAOP/AgALAAcAAAARAOj/AgADAAIAAAARAOf/AgADAAIAAAARAOb/AgADAAIAAAARAOX/AgADAAIAAAARAOT/AgADAAIAAAARAOP/AgADAAIAAAARAOL/AgADAAIAAAARAOH/AgADAAIAAAARAOD/AgADAAIAAAATAOj/AgABAAIAAAATAOf/AgABAAIAAAATAOb/AgABAAIAAAATAOX/AgABAAIAAAATAOT/AgABAAIAAAATAOP/AgABAAIAAAATAOL/AgABAAIAAAATAOH/AgABAAIAAAATAOD/AgABAAIAAAASAN//AgACAAMAAAARAN//AgAPAAcAAAATAN//AgALAAcAAAAUAO7/AgACAAMAAAAVAO7/AgALAAcAAAA=")
+tile_set = ExtResource("2_535yt")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=919414452]
+tile_set = ExtResource("3_1emap")
+
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1331089556 instance=ExtResource("4_h3ykl")]
+position = Vector2(1440, -2496)
+scale = Vector2(4, 8.1)
+to_level_path = "res://level/levels/caves/level_49.tscn"
+
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=481388761 instance=ExtResource("4_h3ykl")]
+position = Vector2(-96, -128)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://cnqitqsr7h08l"
+to_spawn_location_with_index = 1
+
+[node name="Boulder" parent="." unique_id=1750975140 instance=ExtResource("5_04y6c")]
+position = Vector2(608, -384)
+
+[node name="Boulder2" parent="." unique_id=1433364671 instance=ExtResource("5_04y6c")]
+position = Vector2(768, -1696)
+
+[node name="BoulderSpawner" type="Node2D" parent="." unique_id=1550182147]
+position = Vector2(384, -2752)
+script = ExtResource("6_p4idy")
+enemy_scene = ExtResource("5_04y6c")
+spawn_every_x_seconds = 5.0
+stop_spawning_after_period = false
+stop_spawning_after_x_seconds = 999.0
+
+[node name="FallingSpike" parent="." unique_id=354693448 instance=ExtResource("7_1prxa")]
+position = Vector2(864, -1312)
+fall_speed = 350.0
+fall_after_timer = 0.5
+respawn_after_timer = 5.0
+
+[node name="FallingSpike2" parent="." unique_id=1516963608 instance=ExtResource("7_1prxa")]
+position = Vector2(1184, -2208)
+fall_speed = 350.0
+fall_after_timer = 0.5
+respawn_after_timer = 5.0
+
+[node name="Bat" parent="." unique_id=1787964239 instance=ExtResource("8_sqiir")]
+position = Vector2(160, -288)
+
+[node name="Spike" parent="." unique_id=2118772582 instance=ExtResource("8_jalx2")]
+position = Vector2(1312, -1248)
+rotation = 3.1415927
+
+[connection signal="ready" from="." to="." method="_on_ready"]

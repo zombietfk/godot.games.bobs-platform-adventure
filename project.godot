@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 window/stretch/scale=1.5
 window/vsync/vsync_mode=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/project-time-tracker/plugin.cfg")
+
 [input]
 
 ui_accept={
@@ -439,6 +443,12 @@ aim_up={
 common/physics_ticks_per_second=240
 2d/default_gravity=1920.0
 common/default_gravity=8.0
+
+[project_time_traker]
+
+sections/show_sections=true
+sections/show_graphs=true
+afk/afk_timer=300
 
 [rendering]
 

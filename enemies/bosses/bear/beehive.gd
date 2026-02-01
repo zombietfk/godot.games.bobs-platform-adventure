@@ -29,9 +29,10 @@ func _on_player_enter_area2D(body: Node2D) -> void:
 		knockdown_beehive();
 
 func _on_boss_bear_area_enter(body: Node2D) -> void:
-	if is_falling and body is Bear:
-		body.on_hit_by_beehive.emit();
-		queue_free();
+	if body is Bear and is_falling:
+		if body.state_machine.current_state is StageThreeBearState and !body.is_beehived:
+			body.on_hit_by_beehive.emit();
+			queue_free();
 
 func _process(delta: float) -> void:
 	_c_spawn_bee_timer += delta;
