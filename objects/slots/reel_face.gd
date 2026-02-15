@@ -1,4 +1,4 @@
-class_name SlotFace;
+class_name ReelFace;
 extends Node2D;
 
 enum Values {
@@ -12,7 +12,7 @@ enum Values {
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer;
 @export var face_value: Values = Values.PITCHFORK;
-@export var next_face: SlotFace;
+@export var next_face: ReelFace;
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D;
 
 func switch_to_next_face()->void:
@@ -58,11 +58,14 @@ func stop()->void:
 		).length * 0.5,
 	);
 
+func spin()->void:
+	animation_player.play();
+
 func _tween_animation_from_current_position_to(to: float)->void:
-	animation_player.pause();
+	animation_player.speed_scale = 0;
 	var original_animation_position := animation_player.current_animation_position;
 	var c_durtaion := 0.0;
-	var durtaion := randf_range(0.4, 1.6);
+	var durtaion := 1.0;
 	while c_durtaion < durtaion:
 		var seek_position = lerp(original_animation_position, to, c_durtaion / durtaion);
 		animation_player.seek(seek_position, true);

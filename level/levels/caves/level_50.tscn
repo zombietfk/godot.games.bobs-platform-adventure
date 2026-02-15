@@ -4,14 +4,20 @@
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_5p3ro"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_se30l"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_lieyi"]
+[ext_resource type="Script" uid="uid://l6sodqykds7e" path="res://enemies/bosses/demon-rabbit/demon_bunny.gd" id="5_5vagu"]
 [ext_resource type="Texture2D" uid="uid://ctkhl2np0n4hg" path="res://enemies/bosses/demon-rabbit/demon_rabbit_shield.png" id="5_gv4dq"]
 [ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="6_2qow0"]
 [ext_resource type="SpriteFrames" uid="uid://bm0ynqus6gxsc" path="res://enemies/bosses/demon-rabbit/demon_rabbit_sprites.tres" id="6_geej5"]
+[ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="6_nphm7"]
 [ext_resource type="Texture2D" uid="uid://jphbfbr6mhm8" path="res://enemies/bosses/demon-rabbit/pitchfork.png" id="7_plgov"]
-[ext_resource type="Script" uid="uid://b5r2dlqget504" path="res://objects/slots/slot_face.gd" id="9_fvgwv"]
+[ext_resource type="Script" uid="uid://ck3ako1qxoafe" path="res://enemies/bosses/demon-rabbit/state_machine/states/demon_bunny_stage_one_state.gd" id="7_sajdd"]
+[ext_resource type="Script" uid="uid://brolk62jwg6tn" path="res://enemies/bosses/demon-rabbit/state_machine/states/demon_bunny_stage_two_state.gd" id="8_sajdd"]
+[ext_resource type="Script" uid="uid://b5r2dlqget504" path="res://objects/slots/reel_face.gd" id="9_fvgwv"]
 [ext_resource type="Texture2D" uid="uid://71v0qc16koph" path="res://objects/slots/slot_reel_icons_spreadsheet.png" id="9_plgov"]
-[ext_resource type="Script" uid="uid://dayg0uqyroh2j" path="res://objects/slots/slot.gd" id="9_wl40v"]
+[ext_resource type="Script" uid="uid://comihsbhv3eb" path="res://objects/slots/slot.gd" id="9_wl40v"]
+[ext_resource type="Script" uid="uid://dayg0uqyroh2j" path="res://objects/slots/reel.gd" id="10_jksjo"]
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="11_76sjl"]
+[ext_resource type="Script" uid="uid://bwbg88mrcs5m4" path="res://enemies/bosses/demon-rabbit/pitchfork.gd" id="12_wjq65"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61886"]
 atlas = ExtResource("5_gv4dq")
@@ -50,6 +56,7 @@ radius = 41.0
 
 [sub_resource type="Animation" id="Animation_i52du"]
 length = 0.001
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,6 +72,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bv7or"]
 resource_name = "spin_pitchfork"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -86,9 +94,9 @@ _data = {
 
 [sub_resource type="Curve2D" id="Curve2D_geej5"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 448, 928, 0, 0, 0, 0, 448, 928, 0, 0, 0, 0, 1024, 928, 0, 0, 0, 0, 1024, 992, 0, 0, 0, 0, 448, 992, 0, 0, 0, 0, 448, 928)
+"points": PackedVector2Array(0, 0, 0, 0, 512, 928, 0, 0, 0, 0, 832, 928, 0, 0, 0, 0, 832, 992, 0, 0, 0, 0, 512, 992, 0, 0, 0, 0, 512, 928)
 }
-point_count = 6
+point_count = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvgwv"]
 atlas = ExtResource("9_plgov")
@@ -437,9 +445,9 @@ _data = {
 
 [node name="Level_50" type="Node2D" unique_id=1052754089 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_qms8o")
-level_binding_box = Rect2(256, 384, 1664, 1152)
+level_binding_box = Rect2(384, 384, 1344, 1152)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
-camera_zoom_to = Vector2(0.6, 0.6)
+camera_zoom_to = Vector2(0.8, 0.8)
 camera_zoom_speed = 0.01
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1426282439]
@@ -450,11 +458,11 @@ position = Vector2(2144, 480)
 
 [node name="Level" type="TileMapLayer" parent="." unique_id=536247868]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAAKABQAAgACAAEAAAALABQAAgACAAEAAAAMABQAAgACAAEAAAAJABQAAgACAAEAAAANABQAAgACAAEAAAAOABQAAgACAAEAAAAPABQAAgACAAEAAAAQABQAAgACAAEAAAAFABQAAgACAAEAAAAGABQAAgACAAEAAAAHABQAAgACAAEAAAAIABQAAgACAAEAAAAEAAwAAgADAAIAAAAEAA0AAgADAAIAAAAEAA4AAgADAAIAAAAEAA8AAgADAAIAAAAEABAAAgADAAIAAAAEABEAAgADAAIAAAAEABIAAgADAAIAAAAEABMAAgADAAIAAAAEAAoAAgADAAIAAAAEAAsAAgADAAIAAAAEAAkAAgADAAIAAAAVABQAAgACAAEAAAAWABQAAgACAAEAAAAXABQAAgACAAEAAAAYABQAAgACAAEAAAAZAAoAAgABAAIAAAAZAAsAAgABAAIAAAAZAAwAAgABAAIAAAAZAA0AAgABAAIAAAAZAA4AAgABAAIAAAAZAA8AAgABAAIAAAAZABAAAgABAAIAAAAZABEAAgABAAIAAAAZABIAAgABAAIAAAAZABMAAgABAAIAAAARABQAAgACAAEAAAASABQAAgACAAEAAAATABQAAgACAAEAAAAUABQAAgACAAEAAAATABEAAgAHAAEAAAAUABEAAgAIAAEAAAAVABEAAgAIAAEAAAAWABEAAgAJAAEAAAAEAAgAAgADAAIAAAAZAAgAAgABAAIAAAAZAAkAAgABAAIAAAAIAAcAAgACAAMAAAAJAAcAAgACAAMAAAAKAAcAAgACAAMAAAALAAcAAgACAAMAAAAMAAcAAgACAAMAAAANAAcAAgACAAMAAAAOAAcAAgACAAMAAAAPAAcAAgACAAMAAAAQAAcAAgACAAMAAAARAAcAAgACAAMAAAASAAcAAgACAAMAAAATAAcAAgACAAMAAAAUAAcAAgACAAMAAAAVAAcAAgACAAMAAAAWAAcAAgACAAMAAAAXAAcAAgACAAMAAAAYAAcAAgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAKABQAAgACAAEAAAALABQAAgACAAEAAAAMABQAAgACAAEAAAANABQAAgACAAEAAAAOABQAAgACAAEAAAAPABQAAgACAAEAAAAQABQAAgACAAEAAAARABQAAgACAAEAAAASABQAAgACAAEAAAATABQAAgACAAEAAAAUABQAAgACAAEAAAAGABQAAgACAAEAAAAHABQAAgACAAEAAAAIABQAAgACAAEAAAAJABQAAgACAAEAAAAFAAgAAgADAAIAAAAFAAkAAgADAAIAAAAFAAoAAgADAAIAAAAFAAsAAgADAAIAAAAFAAwAAgADAAIAAAAFAA0AAgADAAIAAAAFAA4AAgADAAIAAAAFAA8AAgADAAIAAAAFABAAAgADAAIAAAAFABEAAgADAAIAAAAFABIAAgADAAIAAAAFABMAAgADAAIAAAAQABEAAgAHAAEAAAARABEAAgAIAAEAAAASABEAAgAJAAEAAAAVAAoAAgABAAIAAAAVAAsAAgABAAIAAAAVAAwAAgABAAIAAAAVAA0AAgABAAIAAAAVAA4AAgABAAIAAAAVAA8AAgABAAIAAAAVABAAAgABAAIAAAAVABEAAgABAAIAAAAVABIAAgABAAIAAAAVABMAAgABAAIAAAAVAAkAAgABAAIAAAAJAAgAAgACAAMAAAAKAAgAAgACAAMAAAALAAgAAgACAAMAAAAMAAgAAgACAAMAAAANAAgAAgACAAMAAAAOAAgAAgACAAMAAAAPAAgAAgACAAMAAAAQAAgAAgACAAMAAAARAAgAAgACAAMAAAASAAgAAgACAAMAAAATAAgAAgACAAMAAAAUAAgAAgACAAMAAAA=")
 tile_set = ExtResource("2_5p3ro")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=1387092544]
-tile_map_data = PackedByteArray("AAASABkAAAACAAIAAAASABoAAAACAAcAAAATABkAAAAHAAIAAAATABoAAAAHAAcAAAAWABkAAAACAAIAAAAWABoAAAACAAcAAAAXABkAAAAHAAIAAAAXABoAAAAHAAcAAAAaABkAAAACAAIAAAAaABoAAAACAAcAAAAbABkAAAAHAAIAAAAbABoAAAAHAAcAAAA=")
+tile_map_data = PackedByteArray("AAAPABkAAAACAAIAAAAPABoAAAACAAcAAAAQABkAAAAHAAIAAAAQABoAAAAHAAcAAAAUABkAAAACAAIAAAAUABoAAAACAAcAAAAVABkAAAAHAAIAAAAVABoAAAAHAAcAAAAZABkAAAACAAIAAAAZABoAAAACAAcAAAAaABkAAAAHAAIAAAAaABoAAAAHAAcAAAALABAAAAAGAAQAAAAMABAAAAAHAAQAAAALABEAAAAGAAQAAAAMABEAAAAHAAQAAAALABIAAAAGAAQAAAAMABIAAAAHAAQAAAALABMAAAAGAAQAAAAMABMAAAAHAAQAAAALABQAAAAGAAQAAAAMABQAAAAHAAQAAAALABUAAAAGAAQAAAAMABUAAAAHAAQAAAALABYAAAAGAAQAAAAMABYAAAAHAAQAAAALABcAAAAGAAQAAAAMABcAAAAHAAQAAAALABgAAAAGAAQAAAAMABgAAAAHAAQAAAALABkAAAAGAAQAAAAMABkAAAAHAAQAAAALABoAAAAGAAQAAAAMABoAAAAHAAQAAAALABsAAAAGAAQAAAAMABsAAAAHAAQAAAALABwAAAAGAAQAAAAMABwAAAAHAAQAAAALAB0AAAAGAAQAAAAMAB0AAAAHAAQAAAALAB4AAAAGAAQAAAAMAB4AAAAHAAQAAAALAB8AAAAGAAQAAAAMAB8AAAAHAAQAAAALACAAAAAGAAQAAAAMACAAAAAHAAQAAAALACEAAAAGAAQAAAAMACEAAAAHAAQAAAALACIAAAAGAAQAAAAMACIAAAAHAAQAAAALACMAAAAGAAQAAAAMACMAAAAHAAQAAAALACQAAAAGAAQAAAAMACQAAAAHAAQAAAALACUAAAAGAAQAAAAMACUAAAAHAAQAAAALACYAAAAGAAQAAAAMACYAAAAHAAQAAAALACcAAAAGAAQAAAAMACcAAAAHAAQAAAApABIAAAACAAQAAAAqABIAAAADAAQAAAApABMAAAACAAQAAAAqABMAAAADAAQAAAApABQAAAACAAQAAAAqABQAAAADAAQAAAApABUAAAACAAQAAAAqABUAAAADAAQAAAApABYAAAACAAQAAAAqABYAAAADAAQAAAApABcAAAACAAQAAAAqABcAAAADAAQAAAApABgAAAACAAQAAAAqABgAAAADAAQAAAApABkAAAACAAQAAAAqABkAAAADAAQAAAApABoAAAACAAQAAAAqABoAAAADAAQAAAApABsAAAACAAQAAAAqABsAAAADAAQAAAApABwAAAACAAQAAAAqABwAAAADAAQAAAApAB0AAAACAAQAAAAqAB0AAAADAAQAAAApAB4AAAACAAQAAAAqAB4AAAADAAQAAAApAB8AAAACAAQAAAAqAB8AAAADAAQAAAApACAAAAACAAQAAAAqACAAAAADAAQAAAApACEAAAACAAQAAAAqACEAAAADAAQAAAApACIAAAACAAQAAAAqACIAAAADAAQAAAApACMAAAACAAQAAAAqACMAAAADAAQAAAApACQAAAACAAQAAAAqACQAAAADAAQAAAApACUAAAACAAQAAAAqACUAAAADAAQAAAApACYAAAACAAQAAAAqACYAAAADAAQAAAApACcAAAACAAQAAAAqACcAAAADAAQAAAAMACgAAAAfAAYAAAApACgAAAAWAAYAAAApABEAAAAWAA8AAAASABAAAAACAAYAAAASABEAAAACAAcAAAATABEAAAADAAcAAAA=")
 tile_set = ExtResource("3_se30l")
 
 [node name="ToNextLevelTeleportZone" parent="." unique_id=1678569333 instance=ExtResource("4_lieyi")]
@@ -468,11 +476,25 @@ scale = Vector2(4, 8.1)
 to_level_path = "uid://b3mv21r6xcn7b"
 to_spawn_location_with_index = 1
 
-[node name="DemonRabbit" type="CharacterBody2D" parent="." unique_id=1851863627]
-position = Vector2(1344, 672.00006)
+[node name="DemonRabbit" type="CharacterBody2D" parent="." unique_id=1851863627 node_paths=PackedStringArray("slots")]
+position = Vector2(1120, 752)
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 64
+script = ExtResource("5_5vagu")
+slots = NodePath("../Slot")
+
+[node name="StateMachine" type="Node" parent="DemonRabbit" unique_id=1600860637 node_paths=PackedStringArray("inital_state")]
+script = ExtResource("6_nphm7")
+inital_state = NodePath("StageOne")
+
+[node name="StageOne" type="Node" parent="DemonRabbit/StateMachine" unique_id=1058901099 node_paths=PackedStringArray("body")]
+script = ExtResource("7_sajdd")
+body = NodePath("../..")
+
+[node name="StageTwo" type="Node" parent="DemonRabbit/StateMachine" unique_id=1762179082 node_paths=PackedStringArray("body")]
+script = ExtResource("8_sajdd")
+body = NodePath("../..")
 
 [node name="ForceField" type="AnimatedSprite2D" parent="DemonRabbit" unique_id=1444562339]
 modulate = Color(1, 0, 0, 1)
@@ -494,7 +516,6 @@ position = Vector2(3.33786e-06, 3.33786e-06)
 sprite_frames = ExtResource("6_geej5")
 animation = &"angry"
 autoplay = "default"
-frame_progress = 0.52716213
 speed_scale = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DemonRabbit" unique_id=1904839515]
@@ -508,6 +529,7 @@ position = Vector2(14, 37)
 modulate = Color(1, 0, 0, 1)
 position = Vector2(14, 37)
 texture = ExtResource("7_plgov")
+script = ExtResource("12_wjq65")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DemonRabbit/Pitchfork" unique_id=1214196303]
 libraries/ = SubResource("AnimationLibrary_i52du")
@@ -522,7 +544,7 @@ script = ExtResource("6_2qow0")
 metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear" unique_id=1329965944]
-position = Vector2(447.89673, 928)
+position = Vector2(512, 928)
 rotates = false
 
 [node name="Level" type="TileMapLayer" parent="Path2DLinear/PathFollow2D" unique_id=1519674090]
@@ -538,7 +560,7 @@ start_ratio = 0.5
 metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear2" unique_id=600655998]
-position = Vector2(447.89673, 928)
+position = Vector2(512, 928)
 rotates = false
 
 [node name="Level" type="TileMapLayer" parent="Path2DLinear2/PathFollow2D" unique_id=1019436840]
@@ -547,169 +569,178 @@ tile_map_data = PackedByteArray("AAAGABEAAgAHAAEAAAAHABEAAgAJAAEAAAA=")
 tile_set = ExtResource("2_5p3ro")
 use_kinematic_bodies = true
 
-[node name="Slot" type="Node2D" parent="." unique_id=1977099022]
-position = Vector2(608, 720)
-script = ExtResource("9_wl40v")
-
-[node name="Face1" type="Node2D" parent="Slot" unique_id=1290116092 node_paths=PackedStringArray("next_face")]
-scale = Vector2(1, 0.5)
-script = ExtResource("9_fvgwv")
-next_face = NodePath("../Face2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Face1" unique_id=742416643]
-sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
-autoplay = "pitchfork"
-frame_progress = 0.44644535
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Face1" unique_id=1553479507]
-libraries/ = SubResource("AnimationLibrary_fvgwv")
-autoplay = &"reel_1"
-
-[node name="Face2" type="Node2D" parent="Slot" unique_id=17687219 node_paths=PackedStringArray("next_face")]
-position = Vector2(0, 64)
-script = ExtResource("9_fvgwv")
-next_face = NodePath("../Face3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Face2" unique_id=60120726]
-sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
-autoplay = "pitchfork"
-frame_progress = 0.8443048
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Face2" unique_id=1047702832]
-root_node = NodePath("../../Face1")
-libraries/ = SubResource("AnimationLibrary_fvgwv")
-autoplay = &"reel_2"
-
-[node name="Face3" type="Node2D" parent="Slot" unique_id=299677643]
-position = Vector2(0, 128)
-scale = Vector2(1, 1e-05)
-script = ExtResource("9_fvgwv")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Face3" unique_id=2069502605]
-sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
-autoplay = "pitchfork"
-frame_progress = 0.8443048
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Face3" unique_id=1925496531]
-root_node = NodePath("../../Face1")
-libraries/ = SubResource("AnimationLibrary_fvgwv")
-autoplay = &"reel_3"
-
-[node name="Slot2" type="Node2D" parent="." unique_id=1209147719]
-position = Vector2(736, 720)
-script = ExtResource("9_wl40v")
-
-[node name="Face1" type="Node2D" parent="Slot2" unique_id=1393703691 node_paths=PackedStringArray("next_face")]
-scale = Vector2(1, 0.5)
-script = ExtResource("9_fvgwv")
-next_face = NodePath("../Face2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot2/Face1" unique_id=1474259393]
-sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
-autoplay = "pitchfork"
-frame_progress = 0.86855596
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot2/Face1" unique_id=1139697464]
-libraries/ = SubResource("AnimationLibrary_fvgwv")
-autoplay = &"reel_1"
-
-[node name="Face2" type="Node2D" parent="Slot2" unique_id=1362504904 node_paths=PackedStringArray("next_face")]
-position = Vector2(0, 64)
-script = ExtResource("9_fvgwv")
-next_face = NodePath("../Face3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot2/Face2" unique_id=1228081389]
-sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
-autoplay = "pitchfork"
-frame_progress = 0.8443048
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot2/Face2" unique_id=799054946]
-root_node = NodePath("../../Face1")
-libraries/ = SubResource("AnimationLibrary_fvgwv")
-autoplay = &"reel_2"
-
-[node name="Face3" type="Node2D" parent="Slot2" unique_id=544381342]
-position = Vector2(0, 128)
-scale = Vector2(1, 1e-05)
-script = ExtResource("9_fvgwv")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot2/Face3" unique_id=1354711515]
-sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
-autoplay = "pitchfork"
-frame_progress = 0.8443048
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot2/Face3" unique_id=94565113]
-root_node = NodePath("../../Face1")
-libraries/ = SubResource("AnimationLibrary_fvgwv")
-autoplay = &"reel_3"
-
-[node name="Slot3" type="Node2D" parent="." unique_id=1360197331]
-position = Vector2(864, 720)
-script = ExtResource("9_wl40v")
-
-[node name="Face1" type="Node2D" parent="Slot3" unique_id=1053429833 node_paths=PackedStringArray("next_face")]
-scale = Vector2(1, 0.5)
-script = ExtResource("9_fvgwv")
-next_face = NodePath("../Face2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot3/Face1" unique_id=1169800182]
-sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
-autoplay = "pitchfork"
-frame_progress = 0.86855596
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot3/Face1" unique_id=310648182]
-libraries/ = SubResource("AnimationLibrary_fvgwv")
-autoplay = &"reel_1"
-
-[node name="Face2" type="Node2D" parent="Slot3" unique_id=1852758802 node_paths=PackedStringArray("next_face")]
-position = Vector2(0, 64)
-script = ExtResource("9_fvgwv")
-next_face = NodePath("../Face3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot3/Face2" unique_id=1084835361]
-sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
-autoplay = "pitchfork"
-frame_progress = 0.8443048
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot3/Face2" unique_id=675009599]
-root_node = NodePath("../../Face1")
-libraries/ = SubResource("AnimationLibrary_fvgwv")
-autoplay = &"reel_2"
-
-[node name="Face3" type="Node2D" parent="Slot3" unique_id=184493441]
-position = Vector2(0, 128)
-scale = Vector2(1, 1e-05)
-script = ExtResource("9_fvgwv")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot3/Face3" unique_id=224807790]
-sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
-autoplay = "pitchfork"
-frame_progress = 0.8443048
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot3/Face3" unique_id=862103474]
-root_node = NodePath("../../Face1")
-libraries/ = SubResource("AnimationLibrary_fvgwv")
-autoplay = &"reel_3"
-
 [node name="FloorSwitch" parent="." unique_id=145944332 instance=ExtResource("11_76sjl")]
-position = Vector2(608, 672)
+position = Vector2(512, 672)
+has_timer = true
+switch_duration = 1.0
 
 [node name="FloorSwitch2" parent="." unique_id=1898220577 instance=ExtResource("11_76sjl")]
-position = Vector2(736, 672)
+position = Vector2(672, 672)
+has_timer = true
+switch_duration = 1.0
 
 [node name="FloorSwitch3" parent="." unique_id=90442388 instance=ExtResource("11_76sjl")]
-position = Vector2(864, 672)
+position = Vector2(832, 672)
+has_timer = true
+switch_duration = 1.0
+
+[node name="Slot" type="Node2D" parent="." unique_id=751778029]
+script = ExtResource("9_wl40v")
+
+[node name="Reel" type="Node2D" parent="Slot" unique_id=1977099022]
+position = Vector2(512, 720)
+script = ExtResource("10_jksjo")
+
+[node name="Face1" type="Node2D" parent="Slot/Reel" unique_id=1290116092 node_paths=PackedStringArray("next_face")]
+scale = Vector2(1, 0.5)
+script = ExtResource("9_fvgwv")
+next_face = NodePath("../Face2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Reel/Face1" unique_id=742416643]
+sprite_frames = SubResource("SpriteFrames_lssyx")
+animation = &"spike"
+autoplay = "pitchfork"
+frame_progress = 0.06406685
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Reel/Face1" unique_id=1553479507]
+libraries/ = SubResource("AnimationLibrary_fvgwv")
+autoplay = &"reel_1"
+
+[node name="Face2" type="Node2D" parent="Slot/Reel" unique_id=17687219 node_paths=PackedStringArray("next_face")]
+position = Vector2(0, 64)
+script = ExtResource("9_fvgwv")
+next_face = NodePath("../Face3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Reel/Face2" unique_id=60120726]
+sprite_frames = SubResource("SpriteFrames_lssyx")
+animation = &"spike"
+autoplay = "pitchfork"
+frame_progress = 0.8443048
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Reel/Face2" unique_id=1047702832]
+root_node = NodePath("../../Face1")
+libraries/ = SubResource("AnimationLibrary_fvgwv")
+autoplay = &"reel_2"
+
+[node name="Face3" type="Node2D" parent="Slot/Reel" unique_id=299677643]
+position = Vector2(0, 128)
+scale = Vector2(1, 1e-05)
+script = ExtResource("9_fvgwv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Reel/Face3" unique_id=2069502605]
+sprite_frames = SubResource("SpriteFrames_lssyx")
+animation = &"spike"
+autoplay = "pitchfork"
+frame_progress = 0.8443048
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Reel/Face3" unique_id=1925496531]
+root_node = NodePath("../../Face1")
+libraries/ = SubResource("AnimationLibrary_fvgwv")
+autoplay = &"reel_3"
+
+[node name="Reel2" type="Node2D" parent="Slot" unique_id=1209147719]
+position = Vector2(672, 720)
+script = ExtResource("10_jksjo")
+
+[node name="Face1" type="Node2D" parent="Slot/Reel2" unique_id=1393703691 node_paths=PackedStringArray("next_face")]
+scale = Vector2(1, 0.5)
+script = ExtResource("9_fvgwv")
+next_face = NodePath("../Face2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Reel2/Face1" unique_id=1474259393]
+sprite_frames = SubResource("SpriteFrames_lssyx")
+animation = &"spike"
+autoplay = "pitchfork"
+frame_progress = 0.86855596
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Reel2/Face1" unique_id=1139697464]
+libraries/ = SubResource("AnimationLibrary_fvgwv")
+autoplay = &"reel_1"
+
+[node name="Face2" type="Node2D" parent="Slot/Reel2" unique_id=1362504904 node_paths=PackedStringArray("next_face")]
+position = Vector2(0, 64)
+script = ExtResource("9_fvgwv")
+next_face = NodePath("../Face3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Reel2/Face2" unique_id=1228081389]
+sprite_frames = SubResource("SpriteFrames_lssyx")
+animation = &"spike"
+autoplay = "pitchfork"
+frame_progress = 0.8443048
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Reel2/Face2" unique_id=799054946]
+root_node = NodePath("../../Face1")
+libraries/ = SubResource("AnimationLibrary_fvgwv")
+autoplay = &"reel_2"
+
+[node name="Face3" type="Node2D" parent="Slot/Reel2" unique_id=544381342]
+position = Vector2(0, 128)
+scale = Vector2(1, 1e-05)
+script = ExtResource("9_fvgwv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Reel2/Face3" unique_id=1354711515]
+sprite_frames = SubResource("SpriteFrames_lssyx")
+animation = &"spike"
+autoplay = "pitchfork"
+frame_progress = 0.8443048
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Reel2/Face3" unique_id=94565113]
+root_node = NodePath("../../Face1")
+libraries/ = SubResource("AnimationLibrary_fvgwv")
+autoplay = &"reel_3"
+
+[node name="Reel3" type="Node2D" parent="Slot" unique_id=1360197331]
+position = Vector2(832, 720)
+script = ExtResource("10_jksjo")
+
+[node name="Face1" type="Node2D" parent="Slot/Reel3" unique_id=1053429833 node_paths=PackedStringArray("next_face")]
+scale = Vector2(1, 0.5)
+script = ExtResource("9_fvgwv")
+next_face = NodePath("../Face2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Reel3/Face1" unique_id=1169800182]
+sprite_frames = SubResource("SpriteFrames_lssyx")
+animation = &"spike"
+autoplay = "pitchfork"
+frame_progress = 0.86855596
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Reel3/Face1" unique_id=310648182]
+libraries/ = SubResource("AnimationLibrary_fvgwv")
+autoplay = &"reel_1"
+
+[node name="Face2" type="Node2D" parent="Slot/Reel3" unique_id=1852758802 node_paths=PackedStringArray("next_face")]
+position = Vector2(0, 64)
+script = ExtResource("9_fvgwv")
+next_face = NodePath("../Face3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Reel3/Face2" unique_id=1084835361]
+sprite_frames = SubResource("SpriteFrames_lssyx")
+animation = &"spike"
+autoplay = "pitchfork"
+frame_progress = 0.8443048
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Reel3/Face2" unique_id=675009599]
+root_node = NodePath("../../Face1")
+libraries/ = SubResource("AnimationLibrary_fvgwv")
+autoplay = &"reel_2"
+
+[node name="Face3" type="Node2D" parent="Slot/Reel3" unique_id=184493441]
+position = Vector2(0, 128)
+scale = Vector2(1, 1e-05)
+script = ExtResource("9_fvgwv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot/Reel3/Face3" unique_id=224807790]
+sprite_frames = SubResource("SpriteFrames_lssyx")
+animation = &"spike"
+autoplay = "pitchfork"
+frame_progress = 0.8443048
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slot/Reel3/Face3" unique_id=862103474]
+root_node = NodePath("../../Face1")
+libraries/ = SubResource("AnimationLibrary_fvgwv")
+autoplay = &"reel_3"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="switch_flipped_on" from="FloorSwitch" to="Slot" method="hold_real" unbinds=1]
-[connection signal="switch_flipped_on" from="FloorSwitch2" to="Slot2" method="hold_real" unbinds=1]
-[connection signal="switch_flipped_on" from="FloorSwitch3" to="Slot3" method="hold_real" unbinds=1]
+[connection signal="switch_flipped_on" from="FloorSwitch" to="Slot/Reel" method="hold_reel" unbinds=1]
+[connection signal="switch_flipped_on" from="FloorSwitch2" to="Slot/Reel2" method="hold_reel" unbinds=1]
+[connection signal="switch_flipped_on" from="FloorSwitch3" to="Slot/Reel3" method="hold_reel" unbinds=1]
