@@ -40,7 +40,7 @@ func _setup_astar():
 	astar_pathfinding_grid.region = pathfinding_tilemap.get_used_rect();
 	astar_pathfinding_grid.cell_size = pathfinding_tilemap.tile_set.tile_size;
 	astar_pathfinding_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES;
-	astar_pathfinding_grid.offset = pathfinding_tilemap.tile_set.tile_size / 2;
+	astar_pathfinding_grid.offset = pathfinding_tilemap.tile_set.tile_size / 2.0;
 	astar_pathfinding_grid.update();
 	for cell in pathfinding_tilemap.get_used_cells():
 		var tile_data = pathfinding_tilemap.get_cell_tile_data(cell);

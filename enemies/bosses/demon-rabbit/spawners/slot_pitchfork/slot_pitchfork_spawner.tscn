@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ngno17n1l57r"]
+
+[ext_resource type="Script" uid="uid://dho0exk6pywki" path="res://enemies/bosses/demon-rabbit/spawners/slot_pitchfork/slot_pitchfork_spawner.gd" id="1_xgf8k"]
+[ext_resource type="PackedScene" uid="uid://bg1nkcykdkrl" path="res://enemies/bosses/demon-rabbit/spawners/slot_pitchfork/slot_pitchfork.tscn" id="2_8c70x"]
+
+[node name="PitchforkSpawner" type="Node2D" unique_id=738302690 node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("1_xgf8k")
+spawn_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
+pitchfork_scene = ExtResource("2_8c70x")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1026962821]
+position = Vector2(0, -32)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=1578392507]
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=1287411983]
+position = Vector2(0, 32)

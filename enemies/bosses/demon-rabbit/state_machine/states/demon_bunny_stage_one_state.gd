@@ -85,3 +85,12 @@ func _throw_pitchfork_to_and_return(
 		c_inbound_duration += get_process_delta_time();
 	body.pitchfork.animation_player.stop();
 	_is_holding_pitchfork = true;
+
+func _reset_state_variables()->void:
+	_c_idle_jump_timer := 0.0;
+	_c_throw_pitchfork_timer := 0.0;
+	_pitchfork_speed := 1000;
+	_pitchfork_throw_duration := 1.5;
+	_pitchfork_return_duration := 2;
+	_is_holding_pitchfork := true;
+	_c_state_duration_timer := 0.0;

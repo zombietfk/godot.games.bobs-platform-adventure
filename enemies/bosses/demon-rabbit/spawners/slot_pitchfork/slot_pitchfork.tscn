@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bg1nkcykdkrl"]
+
+[ext_resource type="Script" uid="uid://jcm2mfcf1mhk" path="res://enemies/bosses/demon-rabbit/spawners/slot_pitchfork/slot_pitchfork.gd" id="1_s3xpu"]
+[ext_resource type="Texture2D" uid="uid://jphbfbr6mhm8" path="res://enemies/bosses/demon-rabbit/pitchfork.png" id="1_xr3f2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3xpu"]
+radius = 8.5440035
+
+[node name="Pitchfork" type="Node2D" unique_id=423296397]
+scale = Vector2(2, 2)
+script = ExtResource("1_s3xpu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1961217941]
+modulate = Color(1, 0, 0, 1)
+rotation = 3.1415927
+texture = ExtResource("1_xr3f2")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=31092663]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1176226341]
+position = Vector2(16, 0)
+shape = SubResource("CircleShape2D_s3xpu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_damage_player_in_area2d"]
