@@ -5,7 +5,6 @@
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_se30l"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_lieyi"]
 [ext_resource type="Script" uid="uid://l6sodqykds7e" path="res://enemies/bosses/demon-rabbit/demon_bunny.gd" id="5_5vagu"]
-[ext_resource type="Texture2D" uid="uid://ctkhl2np0n4hg" path="res://enemies/bosses/demon-rabbit/demon_rabbit_shield.png" id="5_gv4dq"]
 [ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="6_2qow0"]
 [ext_resource type="SpriteFrames" uid="uid://bm0ynqus6gxsc" path="res://enemies/bosses/demon-rabbit/demon_rabbit_sprites.tres" id="6_geej5"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="6_nphm7"]
@@ -21,38 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://ngno17n1l57r" path="res://enemies/bosses/demon-rabbit/spawners/slot_pitchfork/slot_pitchfork_spawner.tscn" id="19_8r4um"]
 [ext_resource type="Texture2D" uid="uid://bkbewj8k7no3v" path="res://objects/slots/hold_icon_sprite.png" id="20_psb4i"]
 [ext_resource type="Texture2D" uid="uid://csom0ud3bort6" path="res://objects/slots/jackpot_banner_sprite.png" id="21_2ubnh"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_61886"]
-atlas = ExtResource("5_gv4dq")
-region = Rect2(0, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m8xq6"]
-atlas = ExtResource("5_gv4dq")
-region = Rect2(160, 0, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_470ce"]
-atlas = ExtResource("5_gv4dq")
-region = Rect2(320, 0, 160, 160)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8ednx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_61886")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m8xq6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_470ce")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_i52du"]
-radius = 77.00649
+[ext_resource type="PackedScene" uid="uid://bbn7u27p8pohs" path="res://enemies/bosses/demon-rabbit/spawners/slot_imp/slot_flying_imp.tscn" id="21_opxan"]
+[ext_resource type="Script" uid="uid://dh22qt2lnpoi7" path="res://objects/enemy_spawner.gd" id="22_02g23"]
+[ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying/flying_imp.tscn" id="22_lssyx"]
+[ext_resource type="PackedScene" uid="uid://kvp0ujme0hae" path="res://enemies/bosses/demon-rabbit/spawners/slot_boulder/slot_boulder.tscn" id="23_x6o5y"]
+[ext_resource type="PackedScene" uid="uid://cyox6cbypd3c2" path="res://enemies/bosses/demon-rabbit/spawners/slot_spike/slot_spike.tscn" id="24_bd8oj"]
+[ext_resource type="PackedScene" uid="uid://b2u0n5g4c7pf4" path="res://enemies/spider/awakened_spider.tscn" id="26_opxan"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmrix"]
 radius = 41.0
@@ -107,17 +80,17 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvgwv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nphm7"]
 atlas = ExtResource("9_plgov")
-region = Rect2(0, 64, 64, 64)
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_76sjl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sajdd"]
 atlas = ExtResource("9_plgov")
-region = Rect2(64, 64, 64, 64)
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wl40v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjq65"]
 atlas = ExtResource("9_plgov")
-region = Rect2(128, 64, 64, 64)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jksjo"]
 atlas = ExtResource("9_plgov")
@@ -131,18 +104,6 @@ region = Rect2(64, 128, 64, 64)
 atlas = ExtResource("9_plgov")
 region = Rect2(128, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nphm7"]
-atlas = ExtResource("9_plgov")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sajdd"]
-atlas = ExtResource("9_plgov")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wjq65"]
-atlas = ExtResource("9_plgov")
-region = Rect2(128, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8r4um"]
 atlas = ExtResource("9_plgov")
 region = Rect2(0, 192, 64, 64)
@@ -154,6 +115,14 @@ region = Rect2(64, 192, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ubnh"]
 atlas = ExtResource("9_plgov")
 region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvgwv"]
+atlas = ExtResource("9_plgov")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76sjl"]
+atlas = ExtResource("9_plgov")
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02g23"]
 atlas = ExtResource("9_plgov")
@@ -171,34 +140,6 @@ region = Rect2(128, 256, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fvgwv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_76sjl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wl40v")
-}],
-"loop": true,
-"name": &"bat",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jksjo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5vagu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_meifo")
-}],
-"loop": true,
-"name": &"gun",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_nphm7")
 }, {
 "duration": 1.0,
@@ -213,6 +154,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_jksjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vagu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meifo")
+}],
+"loop": true,
+"name": &"rabbit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8r4um")
 }, {
 "duration": 1.0,
@@ -223,6 +178,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvgwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76sjl")
+}],
+"loop": true,
+"name": &"spider",
 "speed": 5.0
 }, {
 "frames": [{
@@ -467,7 +433,7 @@ position = Vector2(2144, 480)
 
 [node name="Level" type="TileMapLayer" parent="." unique_id=536247868]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAAFAAgAAgADAAIAAAAFAAkAAgADAAIAAAAFAAoAAgADAAIAAAAFAAsAAgADAAIAAAAFAAwAAgADAAIAAAAFAA0AAgADAAIAAAAFAA4AAgADAAIAAAAFAA8AAgADAAIAAAAFABAAAgADAAIAAAAFABEAAgADAAIAAAAFABIAAgADAAIAAAAFABMAAgADAAIAAAAQABEAAgAHAAEAAAARABEAAgAIAAEAAAASABEAAgAJAAEAAAAVAAoAAgABAAIAAAAVAAsAAgABAAIAAAAVAAwAAgABAAIAAAAVAA0AAgABAAIAAAAVAA4AAgABAAIAAAAVAA8AAgABAAIAAAAVABAAAgABAAIAAAAVABEAAgABAAIAAAAVABIAAgABAAIAAAAVABMAAgABAAIAAAAVAAkAAgABAAIAAAAJAAgAAgACAAMAAAAKAAgAAgACAAMAAAALAAgAAgACAAMAAAAMAAgAAgACAAMAAAANAAgAAgACAAMAAAAOAAgAAgACAAMAAAAPAAgAAgACAAMAAAAQAAgAAgACAAMAAAARAAgAAgACAAMAAAASAAgAAgACAAMAAAATAAgAAgACAAMAAAAUAAgAAgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAFAAgAAgADAAIAAAAFAAkAAgADAAIAAAAFAAoAAgADAAIAAAAFAAsAAgADAAIAAAAFAAwAAgADAAIAAAAFAA0AAgADAAIAAAAFAA4AAgADAAIAAAAFAA8AAgADAAIAAAAFABAAAgADAAIAAAAFABEAAgADAAIAAAAFABIAAgADAAIAAAAFABMAAgADAAIAAAAQABEAAgAHAAEAAAARABEAAgAIAAEAAAASABEAAgAJAAEAAAAVAAoAAgABAAIAAAAVAAsAAgABAAIAAAAVAAwAAgABAAIAAAAVAA0AAgABAAIAAAAVAA4AAgABAAIAAAAVAA8AAgABAAIAAAAVABAAAgABAAIAAAAVABEAAgABAAIAAAAVABIAAgABAAIAAAAVABMAAgABAAIAAAAVAAkAAgABAAIAAAAJAAgAAgACAAMAAAAKAAgAAgACAAMAAAALAAgAAgACAAMAAAAMAAgAAgACAAMAAAANAAgAAgACAAMAAAAOAAgAAgACAAMAAAAPAAgAAgADAAMAAAATAAgAAgABAAMAAAAUAAgAAgACAAMAAAA=")
 tile_set = ExtResource("2_5p3ro")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=711802277]
@@ -499,37 +465,23 @@ inital_state = NodePath("StageOne")
 
 [node name="StageOne" type="Node" parent="DemonRabbit/StateMachine" unique_id=1058901099 node_paths=PackedStringArray("body")]
 script = ExtResource("7_sajdd")
-idle_jump_timer = null
-throw_pitchfork_timer = null
-jump_strength = null
-state_duration_timer = null
 body = NodePath("../..")
 
-[node name="StageTwo" type="Node" parent="DemonRabbit/StateMachine" unique_id=1762179082 node_paths=PackedStringArray("pitchfork_spawners", "slots_path", "body")]
+[node name="StageTwo" type="Node" parent="DemonRabbit/StateMachine" unique_id=1762179082 node_paths=PackedStringArray("pitchfork_spawners", "rock_spawners", "spike_spawners", "spider_spawners", "imp_spawner", "slots_path", "body")]
 script = ExtResource("8_sajdd")
 pitchfork_spawners = [NodePath("../../../PitchforkSpawner"), NodePath("../../../PitchforkSpawner2"), NodePath("../../../PitchforkSpawner3")]
+rock_spawners = [NodePath("../../../RockSpawner"), NodePath("../../../RockSpawner2"), NodePath("../../../RockSpawner3")]
+spike_spawners = [NodePath("../../../SpikeSpawner"), NodePath("../../../SpikeSpawner2"), NodePath("../../../SpikeSpawner3")]
+spider_spawners = [NodePath("../../../SpiderSpawner"), NodePath("../../../SpiderSpawner2"), NodePath("../../../SpiderSpawner3")]
+imp_spawner = NodePath("../../../ImpSpawner")
 slots_path = NodePath("../../../SlotsPath2D/PathFollow2D")
 body = NodePath("../..")
-
-[node name="ForceField" type="AnimatedSprite2D" parent="DemonRabbit" unique_id=1444562339]
-modulate = Color(1, 0, 0, 1)
-z_index = -1
-position = Vector2(0, 4)
-sprite_frames = SubResource("SpriteFrames_8ednx")
-autoplay = "default"
-frame_progress = 0.6269801
-
-[node name="StaticBody2D" type="StaticBody2D" parent="DemonRabbit/ForceField" unique_id=641827559]
-collision_layer = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DemonRabbit/ForceField/StaticBody2D" unique_id=219520055]
-shape = SubResource("CircleShape2D_i52du")
 
 [node name="Body" type="AnimatedSprite2D" parent="DemonRabbit" unique_id=1052564435]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(3.33786e-06, 3.33786e-06)
 sprite_frames = ExtResource("6_geej5")
-animation = &"angry"
+animation = &"stunned"
 autoplay = "default"
 speed_scale = 0.7
 
@@ -553,15 +505,6 @@ libraries/ = SubResource("AnimationLibrary_i52du")
 position = Vector2(14, 2)
 target_position = Vector2(-38, 0)
 
-[node name="PitchforkSpawner" parent="." unique_id=738302690 instance=ExtResource("19_8r4um")]
-position = Vector2(320, 960)
-
-[node name="PitchforkSpawner2" parent="." unique_id=1604021801 instance=ExtResource("19_8r4um")]
-position = Vector2(320, 832)
-
-[node name="PitchforkSpawner3" parent="." unique_id=1390925016 instance=ExtResource("19_8r4um")]
-position = Vector2(320, 704)
-
 [node name="Path2DLinear" type="Path2D" parent="." unique_id=305918026]
 position = Vector2(-32, 0)
 curve = SubResource("Curve2D_geej5")
@@ -582,7 +525,7 @@ use_kinematic_bodies = true
 position = Vector2(-32, 0)
 curve = SubResource("Curve2D_geej5")
 script = ExtResource("6_2qow0")
-start_ratio = 0.33
+start_ratio = 0.25
 metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear2" unique_id=600655998]
@@ -599,7 +542,7 @@ use_kinematic_bodies = true
 position = Vector2(-32, 0)
 curve = SubResource("Curve2D_geej5")
 script = ExtResource("6_2qow0")
-start_ratio = 0.66
+start_ratio = 0.5
 metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear3" unique_id=1759865277]
@@ -607,6 +550,23 @@ position = Vector2(512, 928)
 rotates = false
 
 [node name="Level" type="TileMapLayer" parent="Path2DLinear3/PathFollow2D" unique_id=564850716]
+position = Vector2(-448, -1120)
+tile_map_data = PackedByteArray("AAAHABEAAgAFAAEAAAA=")
+tile_set = ExtResource("2_5p3ro")
+use_kinematic_bodies = true
+
+[node name="Path2DLinear4" type="Path2D" parent="." unique_id=228866098]
+position = Vector2(-32, 0)
+curve = SubResource("Curve2D_geej5")
+script = ExtResource("6_2qow0")
+start_ratio = 0.75
+metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear4" unique_id=822756452]
+position = Vector2(512, 928)
+rotates = false
+
+[node name="Level" type="TileMapLayer" parent="Path2DLinear4/PathFollow2D" unique_id=1066742065]
 position = Vector2(-448, -1120)
 tile_map_data = PackedByteArray("AAAHABEAAgAFAAEAAAA=")
 tile_set = ExtResource("2_5p3ro")
@@ -664,9 +624,8 @@ next_face = NodePath("../Face3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SlotsPath2D/PathFollow2D/Slot/Reel/Face2" unique_id=60120726]
 sprite_frames = SubResource("SpriteFrames_lssyx")
-animation = &"spike"
+animation = &"rabbit"
 autoplay = "pitchfork"
-frame_progress = 0.8443048
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SlotsPath2D/PathFollow2D/Slot/Reel/Face2" unique_id=1047702832]
 root_node = NodePath("../../Face1")
@@ -814,6 +773,92 @@ texture = ExtResource("20_psb4i")
 [node name="Sprite2D4" type="Sprite2D" parent="SlotsPath2D/PathFollow2D/MiniLevel" unique_id=1144057076]
 position = Vector2(576, 768)
 texture = ExtResource("21_2ubnh")
+
+[node name="ImpSpawner" type="Marker2D" parent="." unique_id=1020159798]
+position = Vector2(1376, 768)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("21_opxan")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="SuperRabbitSpawner" type="Marker2D" parent="." unique_id=883260866]
+position = Vector2(480, 256)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("22_lssyx")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="PitchforkSpawner" parent="." unique_id=738302690 instance=ExtResource("19_8r4um")]
+position = Vector2(320, 960)
+
+[node name="PitchforkSpawner2" parent="." unique_id=1604021801 instance=ExtResource("19_8r4um")]
+position = Vector2(320, 832)
+
+[node name="PitchforkSpawner3" parent="." unique_id=1390925016 instance=ExtResource("19_8r4um")]
+position = Vector2(320, 704)
+
+[node name="RockSpawner" type="Marker2D" parent="." unique_id=971065515]
+position = Vector2(512, 256)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("23_x6o5y")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="RockSpawner2" type="Marker2D" parent="." unique_id=1713918366]
+position = Vector2(672, 256)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("23_x6o5y")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="RockSpawner3" type="Marker2D" parent="." unique_id=343038461]
+position = Vector2(832, 256)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("23_x6o5y")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="SpikeSpawner" type="Marker2D" parent="." unique_id=1320730127]
+position = Vector2(512, 1216)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("24_bd8oj")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="SpikeSpawner2" type="Marker2D" parent="." unique_id=504650028]
+position = Vector2(672, 1216)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("24_bd8oj")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="SpikeSpawner3" type="Marker2D" parent="." unique_id=494294796]
+position = Vector2(832, 1216)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("24_bd8oj")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="SpiderSpawner" type="Marker2D" parent="." unique_id=483958748]
+position = Vector2(1056, 256)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("26_opxan")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="SpiderSpawner2" type="Marker2D" parent="." unique_id=1066450366]
+position = Vector2(1120, 256)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("26_opxan")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
+
+[node name="SpiderSpawner3" type="Marker2D" parent="." unique_id=8186882]
+position = Vector2(1184, 256)
+script = ExtResource("22_02g23")
+enemy_scene = ExtResource("26_opxan")
+spawn_every_x_seconds = 0.0
+stop_spawning_after_x_seconds = 0.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch" to="SlotsPath2D/PathFollow2D/Slot/Reel" method="hold_reel" unbinds=1]

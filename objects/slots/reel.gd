@@ -7,8 +7,8 @@ extends Node2D;
 
 var is_spinning = false;
 
-var min_base_animation_speed: float = 0.8;
-var max_base_animation_speed: float = 1.6;
+var min_base_animation_speed: float = 1.1;
+var max_base_animation_speed: float = 1.4;
 
 func stop()->void:
 	slot_face_1.stop();

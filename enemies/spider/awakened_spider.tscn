@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2u0n5g4c7pf4"]
+[gd_scene format=3 uid="uid://b2u0n5g4c7pf4"]
 
 [ext_resource type="Script" uid="uid://dctl0135jgke1" path="res://enemies/spider/spider.gd" id="1_6c48s"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_uq6ar"]
@@ -110,50 +110,48 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gejh1"]
 radius = 12.0
 
-[node name="Spider" type="CharacterBody2D"]
+[node name="Spider" type="CharacterBody2D" unique_id=1007119507]
 collision_layer = 2
 collision_mask = 64
 script = ExtResource("1_6c48s")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_bwyj1")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=369028181]
+libraries/ = SubResource("AnimationLibrary_bwyj1")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1200130386 node_paths=PackedStringArray("inital_state")]
 script = ExtResource("2_uq6ar")
 inital_state = NodePath("FloorState")
 
-[node name="JumpingState" type="Node" parent="StateMachine" node_paths=PackedStringArray("jumping_animated_sprite", "body")]
+[node name="JumpingState" type="Node" parent="StateMachine" unique_id=1940019074 node_paths=PackedStringArray("jumping_animated_sprite", "body")]
 script = ExtResource("4_tl8ph")
 jumping_animated_sprite = NodePath("../../JumpingAnimatedSprite2D")
 body = NodePath("../..")
 
-[node name="FloorState" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_player", "idle_animated_sprite", "body")]
+[node name="FloorState" type="Node" parent="StateMachine" unique_id=567098096 node_paths=PackedStringArray("animation_player", "idle_animated_sprite", "body")]
 script = ExtResource("5_6aeb2")
 animation_player = NodePath("../../AnimationPlayer")
 idle_animated_sprite = NodePath("../../IdleAnimatedSprite2D")
 body = NodePath("../..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1737273793]
 position = Vector2(-0.36834717, 8.227722)
 shape = SubResource("CircleShape2D_rofc7")
 
-[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1665639524]
 sprite_frames = SubResource("SpriteFrames_6363n")
 autoplay = "default"
 frame_progress = 0.66773224
 
-[node name="JumpingAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="JumpingAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=806206349]
 visible = false
 position = Vector2(-0.36834717, 16.227722)
 sprite_frames = SubResource("SpriteFrames_tlpkr")
 autoplay = "default"
 
-[node name="AttackArea2D" type="Area2D" parent="."]
+[node name="AttackArea2D" type="Area2D" parent="." unique_id=772804834]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=1780378922]
 position = Vector2(-7.1525574e-07, 8)
 shape = SubResource("CircleShape2D_gejh1")
 

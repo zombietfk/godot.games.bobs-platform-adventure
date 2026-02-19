@@ -1,7 +1,26 @@
 class_name DemonBunny;
-extends CharacterBody2D
+extends AbstractEnemy;
 
 @export var slots : Slot;
 @onready var pitchfork : DemonBunnyPitchfork = $Pitchfork;
 @onready var pitchfork_origin_marker: Marker2D = $PitchforkOriginMarker;
 @onready var sprite_body: AnimatedSprite2D = $Body;
+
+var health = 3;
+
+signal on_damage();
+
+func take_damage()->void:
+	health -= 1;
+	if health == 0:
+		on_death.emit();
+	else:
+		on_damage.emit();
+
+func gib_and_kill() -> void:
+	var original_scale = scale;
+	for i in 100:
+		Gib.spawn(global_position, Vector2(sin((i * 4) / 50.0), -1));
+		scale = lerp(original_scale, Vector2.ZERO, i / 100.0);
+		await get_tree().create_timer(0.05).timeout;
+	super.gib_and_kill();

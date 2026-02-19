@@ -15,6 +15,8 @@ func exit(_to: AbstractState)->void:
 	animation_player.stop();
 
 func process(delta: float)->void:
+	if !body.is_on_floor():
+		return;
 	_c_jump_every_x_seconds_timer += delta;
 	if _c_jump_every_x_seconds_timer > jump_every_x_seconds_timer / 2:
 		animation_player.play("shake");
@@ -23,4 +25,4 @@ func process(delta: float)->void:
 		transition.emit("JumpingState");
 	
 func physics_process(_delta: float)->void:
-	pass;
+	body.velocity += body.get_gravity() * _delta;

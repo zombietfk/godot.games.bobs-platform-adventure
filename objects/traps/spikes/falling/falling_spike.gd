@@ -8,6 +8,7 @@ extends Node2D;
 @export var fall_after_timer: float = 0.4;
 @export var respawns = true;
 @export var respawn_after_timer: float = 2;
+@export var ignore_raycast_check := false;
 
 var _inital_position: Vector2;
 var _current_state: SpikeState = SpikeState.IDLE;
@@ -20,7 +21,7 @@ func _ready()->void:
 func _process(_delta: float) -> void:
 	if _current_state == SpikeState.IDLE:
 		var collision = player_below_check_raycast.get_collider();
-		if collision is Player:
+		if collision is Player or ignore_raycast_check:
 			_current_state = SpikeState.TRIGGERED;
 			animation_player.play("spike_shake");
 			await get_tree().create_timer(fall_after_timer).timeout;

@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://ddnwiys13s3es"]
+
+[ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="1_ioktx"]
+[ext_resource type="Texture2D" uid="uid://b2mtbbeq4bb1r" path="res://enemies/rabbit/super_rabbit_spritesheet.png" id="2_0kt6x"]
+[ext_resource type="Script" uid="uid://cvj3wmfkyo4wv" path="res://enemies/rabbit/super_rabbit.gd" id="3_d448s"]
+
+[sub_resource type="Curve2D" id="Curve2D_q4j7r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 96, 0, 0, 0, 0, 13, 178, 0, 0, 0, 0, 25, 236, 0, 0, 0, 0, 42, 291, 0, 0, 0, 0, 64, 345, 0, 0, 0, 0, 91, 389, 0, 0, 0, 0, 120, 422, 0, 0, 0, 0, 156, 453, 0, 0, 0, 0, 193, 477, 0, 0, 0, 0, 234, 499, 0, 0, 0, 0, 281, 517, 0, 0, 0, 0, 329, 530, 0, 0, 0, 0, 376, 539, 0, 0, 0, 0, 419, 544, 0, 0, 0, 0, 643, 544)
+}
+point_count = 16
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4j7r"]
+atlas = ExtResource("2_0kt6x")
+region = Rect2(8, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocdvy"]
+atlas = ExtResource("2_0kt6x")
+region = Rect2(72, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykkyn"]
+atlas = ExtResource("2_0kt6x")
+region = Rect2(136, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3xmg"]
+atlas = ExtResource("2_0kt6x")
+region = Rect2(200, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfy6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4j7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocdvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykkyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3xmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykkyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocdvy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1djo"]
+radius = 15.0
+
+[node name="SuperBunnyPath" type="Node2D" unique_id=2104571356]
+script = ExtResource("3_d448s")
+
+[node name="SuperBunnyPath" type="Path2D" parent="." unique_id=1129267791]
+curve = SubResource("Curve2D_q4j7r")
+script = ExtResource("1_ioktx")
+speed = 300.0
+metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SuperBunnyPath" unique_id=89666331]
+position = Vector2(3, 0)
+rotation = 1.5707964
+loop = false
+
+[node name="SuperBunny" type="AnimatedSprite2D" parent="SuperBunnyPath/PathFollow2D" unique_id=1107411545]
+position = Vector2(-3, 0)
+sprite_frames = SubResource("SpriteFrames_gfy6r")
+autoplay = "default"
+frame_progress = 0.3425206
+
+[node name="SuperBunny2" type="AnimatedSprite2D" parent="SuperBunnyPath/PathFollow2D/SuperBunny" unique_id=1410420683]
+position = Vector2(-28.999998, 32)
+sprite_frames = SubResource("SpriteFrames_gfy6r")
+autoplay = "default"
+frame_progress = 0.12312348
+
+[node name="SuperBunny3" type="AnimatedSprite2D" parent="SuperBunnyPath/PathFollow2D/SuperBunny" unique_id=827937490]
+position = Vector2(-29, -32)
+sprite_frames = SubResource("SpriteFrames_gfy6r")
+autoplay = "default"
+frame_progress = 0.12312348
+
+[node name="Area2D" type="Area2D" parent="SuperBunnyPath/PathFollow2D/SuperBunny" unique_id=1823649643]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SuperBunnyPath/PathFollow2D/SuperBunny/Area2D" unique_id=408587208]
+position = Vector2(6, 4)
+shape = SubResource("CircleShape2D_n1djo")
+
+[connection signal="body_entered" from="SuperBunnyPath/PathFollow2D/SuperBunny/Area2D" to="." method="_on_hit_demon_bunny"]

@@ -12,11 +12,12 @@ var _pitchfork_return_duration := 2;
 var _is_holding_pitchfork := true;
 
 @export var jump_strength := 500.0;
-@export var state_duration_timer := 15.0;
+@export var state_duration_timer := 0.0;
 var _c_state_duration_timer := 0.0;
 
 func enter(_from: AbstractState)->void:
-	pass;
+	body.sprite_body.play("default");
+	_reset_state_variables();
 
 func exit(_to: AbstractState)->void:
 	pass;
@@ -87,10 +88,10 @@ func _throw_pitchfork_to_and_return(
 	_is_holding_pitchfork = true;
 
 func _reset_state_variables()->void:
-	_c_idle_jump_timer := 0.0;
-	_c_throw_pitchfork_timer := 0.0;
-	_pitchfork_speed := 1000;
-	_pitchfork_throw_duration := 1.5;
-	_pitchfork_return_duration := 2;
-	_is_holding_pitchfork := true;
-	_c_state_duration_timer := 0.0;
+	_c_idle_jump_timer = 0.0;
+	_c_throw_pitchfork_timer = 0.0;
+	_pitchfork_speed = 1000;
+	_pitchfork_throw_duration = 1.5;
+	_pitchfork_return_duration = 2;
+	_is_holding_pitchfork = true;
+	_c_state_duration_timer = 0.0;

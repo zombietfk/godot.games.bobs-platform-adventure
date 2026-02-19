@@ -4,10 +4,10 @@ extends Node2D;
 enum Values {
 	UNDEFINED,
 	PITCHFORK,
-	BAT,
+	SPIDER,
 	ROCK,
 	SPIKE,
-	GUN
+	RABBIT,
 }
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer;
@@ -25,10 +25,10 @@ func _get_random_face()->Values:
 	var roll := randf();
 	var threshholds := {
 		Values.PITCHFORK : 0.225,
-		Values.BAT: 0.225,
+		Values.SPIDER: 0.225,
 		Values.ROCK: 0.225,
 		Values.SPIKE: 0.225,
-		Values.GUN: 0.1,
+		Values.RABBIT: 0.1,
 	};
 	var aggregate := 0.0;
 	for key in threshholds:
@@ -42,14 +42,14 @@ func _change_face_to(face: Values)->void:
 	match face:
 		Values.PITCHFORK:
 			sprite.animation = "pitchfork";
-		Values.BAT:
-			sprite.animation = "bat";
+		Values.SPIDER:
+			sprite.animation = "spider";
 		Values.ROCK:
 			sprite.animation = "rock";
 		Values.SPIKE:
 			sprite.animation = "spike";
-		Values.GUN:
-			sprite.animation = "gun";
+		Values.RABBIT:
+			sprite.animation = "rabbit";
 
 func stop()->void:
 	await _tween_animation_from_current_position_to(
