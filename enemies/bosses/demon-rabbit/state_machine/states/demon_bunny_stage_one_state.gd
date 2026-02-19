@@ -6,13 +6,13 @@ var _c_idle_jump_timer := 0.0;
 
 @export var throw_pitchfork_timer := 5.0;
 var _c_throw_pitchfork_timer := 0.0;
-var _pitchfork_speed := 1000;
+var _pitchfork_speed := 1000.0;
 var _pitchfork_throw_duration := 1.5;
-var _pitchfork_return_duration := 2;
+var _pitchfork_return_duration := 2.0;
 var _is_holding_pitchfork := true;
 
 @export var jump_strength := 500.0;
-@export var state_duration_timer := 0.0;
+@export var state_duration_timer := 15.0;
 var _c_state_duration_timer := 0.0;
 
 func enter(_from: AbstractState)->void:
@@ -88,10 +88,29 @@ func _throw_pitchfork_to_and_return(
 	_is_holding_pitchfork = true;
 
 func _reset_state_variables()->void:
+	match body.health:
+		1:
+			state_duration_timer = 24.0
+			throw_pitchfork_timer = 3.0;
+			_pitchfork_speed = 1500;
+			_pitchfork_throw_duration = 1;
+			_pitchfork_return_duration = 1.25;
+			pass;
+		2:
+			state_duration_timer = 20.0;
+			throw_pitchfork_timer = 4.0;
+			_pitchfork_speed = 1250;
+			_pitchfork_throw_duration = 1.25;
+			_pitchfork_return_duration = 1.5;
+			pass;
+		_:
+			state_duration_timer = 15.0;
+			throw_pitchfork_timer = 5.0;
+			_pitchfork_speed = 1000;
+			_pitchfork_throw_duration = 1.5;
+			_pitchfork_return_duration = 2.0;
+			pass;
 	_c_idle_jump_timer = 0.0;
 	_c_throw_pitchfork_timer = 0.0;
-	_pitchfork_speed = 1000;
-	_pitchfork_throw_duration = 1.5;
-	_pitchfork_return_duration = 2;
 	_is_holding_pitchfork = true;
 	_c_state_duration_timer = 0.0;

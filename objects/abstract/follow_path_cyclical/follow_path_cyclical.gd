@@ -32,11 +32,11 @@ func _physics_process(delta: float) -> void:
 		if $PathFollow2D.progress_ratio >= 1:
 			if _is_in_return_cycle == false:
 				path_end.emit();
-			_is_in_return_cycle = true;
+			_is_in_return_cycle = !_is_in_return_cycle;
 		if $PathFollow2D.progress_ratio <= 0:
 			if _is_in_return_cycle == true:
 				path_end.emit();
-			_is_in_return_cycle = false;
+			_is_in_return_cycle = !_is_in_return_cycle;
 	if _is_in_return_cycle:
 		$PathFollow2D.progress += -speed * delta;	
 	else:

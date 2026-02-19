@@ -22,10 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://csom0ud3bort6" path="res://objects/slots/jackpot_banner_sprite.png" id="21_2ubnh"]
 [ext_resource type="PackedScene" uid="uid://bbn7u27p8pohs" path="res://enemies/bosses/demon-rabbit/spawners/slot_imp/slot_flying_imp.tscn" id="21_opxan"]
 [ext_resource type="Script" uid="uid://dh22qt2lnpoi7" path="res://objects/enemy_spawner.gd" id="22_02g23"]
-[ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying/flying_imp.tscn" id="22_lssyx"]
 [ext_resource type="PackedScene" uid="uid://kvp0ujme0hae" path="res://enemies/bosses/demon-rabbit/spawners/slot_boulder/slot_boulder.tscn" id="23_x6o5y"]
 [ext_resource type="PackedScene" uid="uid://cyox6cbypd3c2" path="res://enemies/bosses/demon-rabbit/spawners/slot_spike/slot_spike.tscn" id="24_bd8oj"]
 [ext_resource type="PackedScene" uid="uid://b2u0n5g4c7pf4" path="res://enemies/spider/awakened_spider.tscn" id="26_opxan"]
+[ext_resource type="PackedScene" uid="uid://ddnwiys13s3es" path="res://enemies/bosses/demon-rabbit/spawners/slot_superbunny/slot_superbunny.tscn" id="27_n1djo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmrix"]
 radius = 41.0
@@ -467,13 +467,14 @@ inital_state = NodePath("StageOne")
 script = ExtResource("7_sajdd")
 body = NodePath("../..")
 
-[node name="StageTwo" type="Node" parent="DemonRabbit/StateMachine" unique_id=1762179082 node_paths=PackedStringArray("pitchfork_spawners", "rock_spawners", "spike_spawners", "spider_spawners", "imp_spawner", "slots_path", "body")]
+[node name="StageTwo" type="Node" parent="DemonRabbit/StateMachine" unique_id=1762179082 node_paths=PackedStringArray("pitchfork_spawners", "rock_spawners", "spike_spawners", "spider_spawners", "imp_spawner", "super_bunny_spawner", "slots_path", "body")]
 script = ExtResource("8_sajdd")
 pitchfork_spawners = [NodePath("../../../PitchforkSpawner"), NodePath("../../../PitchforkSpawner2"), NodePath("../../../PitchforkSpawner3")]
 rock_spawners = [NodePath("../../../RockSpawner"), NodePath("../../../RockSpawner2"), NodePath("../../../RockSpawner3")]
 spike_spawners = [NodePath("../../../SpikeSpawner"), NodePath("../../../SpikeSpawner2"), NodePath("../../../SpikeSpawner3")]
 spider_spawners = [NodePath("../../../SpiderSpawner"), NodePath("../../../SpiderSpawner2"), NodePath("../../../SpiderSpawner3")]
 imp_spawner = NodePath("../../../ImpSpawner")
+super_bunny_spawner = NodePath("../../../SuperRabbitSpawner")
 slots_path = NodePath("../../../SlotsPath2D/PathFollow2D")
 body = NodePath("../..")
 
@@ -784,7 +785,7 @@ stop_spawning_after_x_seconds = 0.0
 [node name="SuperRabbitSpawner" type="Marker2D" parent="." unique_id=883260866]
 position = Vector2(480, 256)
 script = ExtResource("22_02g23")
-enemy_scene = ExtResource("22_lssyx")
+enemy_scene = ExtResource("27_n1djo")
 spawn_every_x_seconds = 0.0
 stop_spawning_after_x_seconds = 0.0
 
@@ -861,6 +862,8 @@ spawn_every_x_seconds = 0.0
 stop_spawning_after_x_seconds = 0.0
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="on_damage" from="DemonRabbit" to="DemonRabbit/StateMachine/StageTwo" method="_on_take_damage"]
+[connection signal="on_death" from="DemonRabbit" to="DemonRabbit/StateMachine/StageTwo" method="_on_death"]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch" to="SlotsPath2D/PathFollow2D/Slot/Reel" method="hold_reel" unbinds=1]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch2" to="SlotsPath2D/PathFollow2D/Slot/Reel2" method="hold_reel" unbinds=1]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch3" to="SlotsPath2D/PathFollow2D/Slot/Reel3" method="hold_reel" unbinds=1]

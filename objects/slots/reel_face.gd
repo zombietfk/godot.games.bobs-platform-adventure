@@ -24,11 +24,11 @@ func switch_to_next_face()->void:
 func _get_random_face()->Values:
 	var roll := randf();
 	var threshholds := {
-		Values.PITCHFORK : 0.225,
-		Values.SPIDER: 0.225,
-		Values.ROCK: 0.225,
-		Values.SPIKE: 0.225,
-		Values.RABBIT: 0.1,
+		Values.PITCHFORK : 0.2,
+		Values.SPIDER: 0.2,
+		Values.ROCK: 0.2,
+		Values.SPIKE: 0.2,
+		Values.RABBIT: 0.2,
 	};
 	var aggregate := 0.0;
 	for key in threshholds:

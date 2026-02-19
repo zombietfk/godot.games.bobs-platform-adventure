@@ -6,7 +6,6 @@ extends Node2D
 @onready var reel_3 : Reel = $Reel3;
 var is_spinning = false;
 var _spin_cooldown_period := 1.0;
-var spin_duration := 3.0;
 
 signal stopped_spinning(reel_values: Array[ReelFace.Values]);
 
@@ -29,11 +28,11 @@ func _await_all_reels_stopped()->void:
 	] as Array[ReelFace.Values]);
 	is_spinning = false;
 
-func spin_all_reels()->void:
+func spin_all_reels(speed_min: float, speed_max: float)->void:
 	if is_spinning:
 		return;
-	reel_1.spin();
-	reel_2.spin();
-	reel_3.spin();
+	reel_1.spin(speed_min, speed_max);
+	reel_2.spin(speed_min, speed_max);
+	reel_3.spin(speed_min, speed_max);
 	is_spinning = true;
 	_await_all_reels_stopped();
