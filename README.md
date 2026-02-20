@@ -9,9 +9,9 @@
 
 ## Info
 
-Welcome to Bob's Big Platform Adventure! A very by the numbers, totally f̲a̲i̲r̲ platforming game with n̲o̲t̲h̲i̲n̲g̲ weird going on at all!
+Welcome to Bob's Big Platform Adventure! Bob got completely lost while spelunking in a rabbit hole! Oh no! Can you help him navigate the trecherous warren to get back to the surface!?
 
-Made with Godot - Currently a work in progress. Watch this space for when the first builds come out!
+A preview release is now available to play in your browser on [itch.io](https://zombietfk.itch.io/bobs-big-adventure?secret=iGevrZl22ceOg6Hnqa2KcPX33o) now!
 
 ## Screenshots
 
