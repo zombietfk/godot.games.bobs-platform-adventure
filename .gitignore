@@ -3,3 +3,4 @@ addons/
 .godot/
 /android/
 .tutorial_stuff/
+builds/**/*
