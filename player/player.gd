@@ -67,12 +67,13 @@ func damage(
 	knockback_strength: Vector2 = Vector2.ZERO,
 	knockback_duration_in_s: float = 0.2,
 ) -> void:
-	on_take_damage.emit(
-		amount,
-		from_direction,
-		knockback_strength,
-		knockback_duration_in_s
-	);
+	if current_health > 0:
+		on_take_damage.emit(
+			amount,
+			from_direction,
+			knockback_strength,
+			knockback_duration_in_s
+		);
 
 func override_jump_flag() -> void:
 	var movement_context = movement_state_machine.get_context("MovementContext") as PlayerMovementContext;

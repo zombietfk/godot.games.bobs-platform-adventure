@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://chexfeuf8dlqk"]
+[gd_scene format=3 uid="uid://chexfeuf8dlqk"]
 
 [ext_resource type="Script" uid="uid://dg15e357yqpmu" path="res://player/gibs/gib.gd" id="1_m8na8"]
 [ext_resource type="Texture2D" uid="uid://urm1ha2q50co" path="res://player/gibs/gib-1.png" id="2_entj7"]
@@ -18,28 +18,45 @@
 [ext_resource type="Texture2D" uid="uid://bppk4m7ofouob" path="res://player/gibs/gib-15.png" id="16_ogpou"]
 [ext_resource type="Texture2D" uid="uid://n1n3l5ms84mu" path="res://player/gibs/gib-16.png" id="17_7jhod"]
 [ext_resource type="Texture2D" uid="uid://dhcinybelemym" path="res://player/gibs/gib-17.png" id="18_g7hvg"]
+[ext_resource type="AudioStream" uid="uid://2a8bgjxjhata" path="res://sound_effects/splat_4.mp3" id="19_entj7"]
+[ext_resource type="AudioStream" uid="uid://tsmqfyg3t3qd" path="res://sound_effects/splat_5.mp3" id="20_l4afj"]
+[ext_resource type="AudioStream" uid="uid://ds7844p1232ri" path="res://sound_effects/splat_6.mp3" id="21_bcd6m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tce3k"]
 radius = 5.0
 
-[node name="Gib" type="RigidBody2D"]
+[node name="Gib" type="RigidBody2D" unique_id=939158044 node_paths=PackedStringArray("gib_sounds")]
 z_index = 2
 collision_layer = 0
 collision_mask = 64
 gravity_scale = 0.208
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_m8na8")
 gib_sprites = Array[Texture2D]([ExtResource("2_entj7"), ExtResource("3_l4afj"), ExtResource("4_bcd6m"), ExtResource("5_2ao3l"), ExtResource("6_4pkxo"), ExtResource("7_icytd"), ExtResource("8_uw6e4"), ExtResource("9_dayla"), ExtResource("10_w756p"), ExtResource("11_jxhab"), ExtResource("12_o75jn"), ExtResource("13_dws27"), ExtResource("14_sjcs8"), ExtResource("15_ljgig"), ExtResource("16_ogpou"), ExtResource("17_7jhod"), ExtResource("18_g7hvg")])
 inital_force = 500.0
+gib_sounds = [NodePath("Sounds/GibAudioStreamPlayer1"), NodePath("Sounds/GibAudioStreamPlayer2"), NodePath("Sounds/GibAudioStreamPlayer3")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sounds" type="Node" parent="." unique_id=352968862]
+
+[node name="GibAudioStreamPlayer1" type="AudioStreamPlayer" parent="Sounds" unique_id=355145941]
+stream = ExtResource("19_entj7")
+
+[node name="GibAudioStreamPlayer2" type="AudioStreamPlayer" parent="Sounds" unique_id=1883859659]
+stream = ExtResource("20_l4afj")
+
+[node name="GibAudioStreamPlayer3" type="AudioStreamPlayer" parent="Sounds" unique_id=902478757]
+stream = ExtResource("21_bcd6m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=475736040]
 scale = Vector2(2, 2)
 texture = ExtResource("2_entj7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=653431037]
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_tce3k")
 
-[node name="DespawnTimer" type="Timer" parent="."]
+[node name="DespawnTimer" type="Timer" parent="." unique_id=346566959]
 wait_time = 3.0
 one_shot = true
 autostart = true

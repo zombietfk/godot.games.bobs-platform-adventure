@@ -6,6 +6,7 @@ extends RigidBody2D
 @export var inital_force: float = 10;
 @export_range(-1, 1) var force_horizontal_direction_bias: float = 0;
 @export_range(-1, 1) var force_vertical_direction_bias: float = 0;
+@export var gib_sounds: Array[AudioStreamPlayer];
 
 # INTERNAL STATE
 var shrink_timer = 0.3;
@@ -53,3 +54,25 @@ func _process(delta: float) -> void:
 			Vector2.ZERO,
 			c_shrink_timer / shrink_timer
 		);
+
+var _has_had_contact = false;
+
+func _physics_process(_delta: float) -> void:
+	if get_contact_count() > 0 and _has_had_contact == false:
+		_has_had_contact = true;
+		_play_gib_sound();
+	elif get_contact_count() == 0:
+		_has_had_contact = false;
+
+func _play_gib_sound()->void:
+	var roll_lower_bond := 0;
+	var roll_upper_bound := 9;
+	var roll = randi_range(roll_lower_bond, roll_upper_bound);
+	if roll <= 6:
+		return;
+	elif roll <= 7:
+		gib_sounds[0].play();
+	elif roll <= 8:
+		gib_sounds[1].play();
+	elif roll <= 9:
+		gib_sounds[2].play();

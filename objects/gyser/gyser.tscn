@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://66k67ajayd8k"]
+[gd_scene format=3 uid="uid://66k67ajayd8k"]
 
 [ext_resource type="Script" uid="uid://ck1wjj3wqvaxf" path="res://objects/gyser/gyser.gd" id="1_nts0k"]
+[ext_resource type="AudioStream" uid="uid://rhkypmp8h446" path="res://sound_effects/steam_1.mp3" id="2_r4qmr"]
 [ext_resource type="Texture2D" uid="uid://cafngpty4rhpd" path="res://objects/gyser/gyser_spritesheet.png" id="2_wh8wh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_in6wu"]
@@ -147,16 +148,19 @@ _data = {
 &"ResizeLiftArea": SubResource("Animation_i4llx")
 }
 
-[node name="Gyser" type="Node2D"]
+[node name="Gyser" type="Node2D" unique_id=763963805]
 script = ExtResource("1_nts0k")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1333275263]
+stream = ExtResource("2_r4qmr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=450898246]
 position = Vector2(0, 24)
 sprite_frames = SubResource("SpriteFrames_k71oi")
 autoplay = "default"
 frame_progress = 0.92354804
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=163860063]
 position = Vector2(0, 8)
 emitting = false
 amount = 50
@@ -173,19 +177,15 @@ scale_amount_max = 1.3
 scale_amount_curve = SubResource("Curve_a1bpy")
 color_ramp = SubResource("Gradient_a1bpy")
 
-[node name="LiftArea2D" type="Area2D" parent="."]
+[node name="LiftArea2D" type="Area2D" parent="." unique_id=1569493419]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LiftArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LiftArea2D" unique_id=431679615]
 position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_nts0k")
 
-[node name="ParticleEffectAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_in6wu")
-}
-autoplay = "gyser_smoke"
+[node name="ParticleEffectAnimationPlayer" type="AnimationPlayer" parent="." unique_id=915180912]
+libraries/ = SubResource("AnimationLibrary_in6wu")
+autoplay = &"gyser_smoke"
 
-[node name="LiftAreaAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_gvpy3")
-}
+[node name="LiftAreaAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1610492563]
+libraries/ = SubResource("AnimationLibrary_gvpy3")

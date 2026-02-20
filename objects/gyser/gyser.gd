@@ -8,6 +8,8 @@ extends Node2D;
 @export var max_boost_power: float = 2000;
 @export var min_boost_power: float = 500;
 @export var gyser_shoot_water_timer_offset: float = 0.0;
+@onready var gyser_sound: AudioStreamPlayer = $AudioStreamPlayer;
+
 var _gyser_height: float = 200;
 var _c_shoot_water_every_x_seconds: float;
 var _is_water_shooting = false;
@@ -34,6 +36,7 @@ func _shoot_water()->void:
 	_is_water_shooting = true;
 	water_effect_particle_effect.emitting = true;
 	lift_effect_animation_player.play("ResizeLiftArea");
+	gyser_sound.play();
 	await get_tree().create_timer(water_effect_particle_effect.lifetime * 0.85).timeout;
 	lift_effect_animation_player.play("RESET");
 	_is_water_shooting = false;

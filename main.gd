@@ -25,6 +25,7 @@ static var checkpoint_spawn_level: String;
 static var checkpoint_spawn_index = 0;
 static var difficulty = DIFFICULTY.EASY;
 static var persistant_trigger_labels: Array[String] = [];
+static var music: AudioStreamPlayer;
 
 # TRIGGERS
 func _on_level_ready() -> void:
@@ -32,6 +33,7 @@ func _on_level_ready() -> void:
 
 # LIFECYCLE
 func _ready() -> void:
+	music = $GameMusicAudioStreamPlayer;
 	player = $Player;
 	instance = self;
 	RenderingServer.set_default_clear_color(Color.BLACK);

@@ -10,6 +10,7 @@ extends Node2D;
 @onready var idle_animation: AnimatedSprite2D = $IdleAnimatedSprite2D;
 @onready var poof_animation: AnimatedSprite2D = $PoofAnimatedSprite2D;
 @onready var spore_particles: CPUParticles2D = $PoofSpores;
+@onready var spore_release_sound: AudioStreamPlayer = $AudioStreamPlayer;
 
 func _ready()->void:
 	_poof(poof_timer_inital_offset);
@@ -22,6 +23,7 @@ func _poof(remaining_timer: float = 0)->void:
 	poof_animation.visible = true;
 	poof_animation.play();
 	spore_particles.emitting = true;
+	spore_release_sound.play();
 	var spore_release_rotation_degrees := -spore_release_arc_in_degrees;
 	var arc_step := (spore_release_arc_in_degrees / spore_count) * 2;
 	spore_release_rotation_degrees += arc_step / 2;

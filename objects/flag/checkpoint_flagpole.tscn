@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://dtcuxsjxmk3o6"]
+[gd_scene format=3 uid="uid://dtcuxsjxmk3o6"]
 
 [ext_resource type="Script" uid="uid://w3k14f5hn7er" path="res://objects/flag/checkpoint_flagpole.gd" id="1_b1bc4"]
 [ext_resource type="Texture2D" uid="uid://cuj4uic7abyky" path="res://objects/flag/flagpole_spritesheet.png" id="2_pk8b5"]
+[ext_resource type="AudioStream" uid="uid://cv7lqdxrys6vi" path="res://sound_effects/tada_1.mp3" id="2_uo2mk"]
 [ext_resource type="Script" uid="uid://djq4d4knkv1da" path="res://objects/flag/checkpoint_flag.gd" id="3_kaw7s"]
 [ext_resource type="Texture2D" uid="uid://cvx72hv61cght" path="res://objects/flag/flag_spritesheet.png" id="4_7lbva"]
 [ext_resource type="Texture2D" uid="uid://635y7nh3j3a1" path="res://objects/confetti.png" id="5_pk8b5"]
@@ -148,37 +149,40 @@ polygon = PackedVector2Array(200, 0, 200, 25, -200, 25, -200, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
 size = Vector2(20, 120)
 
-[node name="CheckpointFlagpole" type="Node2D"]
+[node name="CheckpointFlagpole" type="Node2D" unique_id=1398330232]
 script = ExtResource("1_b1bc4")
 
-[node name="Pole" type="Node2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=672199562]
+stream = ExtResource("2_uo2mk")
+
+[node name="Pole" type="Node2D" parent="." unique_id=103735103]
 position = Vector2(-8, -1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pole"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pole" unique_id=1810550952]
 position = Vector2(10, -31)
 sprite_frames = SubResource("SpriteFrames_vivmo")
 animation = &"waving"
 autoplay = "waving"
 frame_progress = 0.582564
 
-[node name="Flag" type="Node2D" parent="." node_paths=PackedStringArray("confetti_particles_2d")]
+[node name="Flag" type="Node2D" parent="." unique_id=1278038817 node_paths=PackedStringArray("confetti_particles_2d")]
 z_index = -1
 position = Vector2(-8, 59)
 script = ExtResource("3_kaw7s")
 confetti_particles_2d = NodePath("../Confetti/GPUParticles2D")
 raise_duration = 0.333
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flag"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flag" unique_id=757034028]
 position = Vector2(11, -5)
 sprite_frames = SubResource("SpriteFrames_ryguw")
 autoplay = "default"
 frame_progress = 0.288067
 
-[node name="Confetti" type="Node2D" parent="."]
+[node name="Confetti" type="Node2D" parent="." unique_id=256497748]
 z_index = 2
 position = Vector2(1, -78)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Confetti"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Confetti" unique_id=75272398]
 material = SubResource("CanvasItemMaterial_kaw7s")
 emitting = false
 amount = 128
@@ -188,15 +192,15 @@ one_shot = true
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_kaw7s")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Confetti/GPUParticles2D"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Confetti/GPUParticles2D" unique_id=2056292993]
 position = Vector2(-1, 104)
 occluder = SubResource("OccluderPolygon2D_pk8b5")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1124460367]
 position = Vector2(-1, -29)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1597526009]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5vw27")
 

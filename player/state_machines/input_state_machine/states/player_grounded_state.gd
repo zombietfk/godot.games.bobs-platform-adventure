@@ -6,6 +6,7 @@ var _movement_context: PlayerMovementContext;
 var _c_jump_forgiveness_timer: float;
 @export var friction_strength: float = 9.0/8;
 @export var slope_slipperyness_factor: float = 1.6;
+@export var jump_sound: AudioStreamPlayer;
 
 func enter(_from: AbstractState)->void:
 	_movement_context = state_machine.get_context("MovementContext") as PlayerMovementContext;
@@ -79,6 +80,7 @@ func _process_object_interaction_input():
 		body.on_player_interaction_end.emit();
 
 func _jump() -> void:
+	jump_sound.play();
 	_movement_context.airborn_from_jump = true;
 	body.velocity += Vector2(0, -_movement_context.jump_strength);
 

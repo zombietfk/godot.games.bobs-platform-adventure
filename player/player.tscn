@@ -2,14 +2,22 @@
 
 [ext_resource type="Script" uid="uid://caoku7dqkwa54" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_2ieo8"]
+[ext_resource type="AudioStream" uid="uid://c7utqvbm4ixyv" path="res://sound_effects/jump_1.mp3" id="2_ebec5"]
 [ext_resource type="Texture2D" uid="uid://csatwk1neiden" path="res://player/bob_idle_spritesheet.png" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://dd6lpf0ufyjvy" path="res://player/state_machines/input_state_machine/states/player_airborn_state.gd" id="3_ebec5"]
 [ext_resource type="Texture2D" uid="uid://c1aitfjmkljul" path="res://player/exclamation.png" id="3_g1dw6"]
+[ext_resource type="AudioStream" uid="uid://becgv5a77yhul" path="res://sound_effects/ow_1.mp3" id="3_yllr7"]
+[ext_resource type="AudioStream" uid="uid://bdssxyobrddr7" path="res://sound_effects/ow_2.mp3" id="4_kb6p2"]
 [ext_resource type="Script" uid="uid://6sq6en5cj5dn" path="res://player/state_machines/input_state_machine/states/player_dead_state.gd" id="4_yllr7"]
 [ext_resource type="Script" uid="uid://4uqoom2pm42p" path="res://player/state_machines/input_state_machine/states/player_grounded_state.gd" id="5_kb6p2"]
+[ext_resource type="AudioStream" uid="uid://dvgamqqfphdf3" path="res://sound_effects/ow_3.mp3" id="5_wodsf"]
+[ext_resource type="AudioStream" uid="uid://coeidw8wfwlfj" path="res://sound_effects/splat_1.mp3" id="6_e7oew"]
 [ext_resource type="Script" uid="uid://bwyuksqm3gq2a" path="res://player/state_machines/damage_state_machine/states/player_unhit_state.gd" id="6_wodsf"]
 [ext_resource type="Script" uid="uid://w1nnak65hmur" path="res://player/state_machines/damage_state_machine/states/player_hit_state.gd" id="7_32hag"]
+[ext_resource type="AudioStream" uid="uid://0ya8a006qcra" path="res://sound_effects/splat_2.mp3" id="7_c35mf"]
+[ext_resource type="AudioStream" uid="uid://dgo40sumqq5un" path="res://sound_effects/splat_3.mp3" id="8_65viv"]
 [ext_resource type="Script" uid="uid://e0omv0ocm82o" path="res://player/state_machines/contexts/player_movement_context.gd" id="8_tqiix"]
+[ext_resource type="AudioStream" uid="uid://by5xkfg4xhuea" path="res://sound_effects/doomguy_death.mp3" id="9_c35mf"]
 [ext_resource type="Script" uid="uid://dxlm1rmw2kkip" path="res://player/state_machines/contexts/player_knockback_context.gd" id="9_e7oew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1dw6"]
@@ -119,6 +127,36 @@ crush_check_raycast_left = NodePath("CrushCheckLeftCast")
 crush_check_raycast_right = NodePath("CrushCheckRightCast")
 alert_notifcation = NodePath("AlertNotification")
 
+[node name="Sounds" type="Node" parent="." unique_id=72420908]
+
+[node name="JumpAudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds" unique_id=1098018690]
+stream = ExtResource("2_ebec5")
+
+[node name="DamageEffects" type="Node" parent="Sounds" unique_id=2054445739]
+
+[node name="DamageSoundEffect1" type="AudioStreamPlayer" parent="Sounds/DamageEffects" unique_id=99186333]
+stream = ExtResource("3_yllr7")
+
+[node name="DamageSoundEffect2" type="AudioStreamPlayer" parent="Sounds/DamageEffects" unique_id=1974455851]
+stream = ExtResource("4_kb6p2")
+
+[node name="DamageSoundEffect3" type="AudioStreamPlayer" parent="Sounds/DamageEffects" unique_id=1157301214]
+stream = ExtResource("5_wodsf")
+
+[node name="DeathEffects" type="Node" parent="Sounds" unique_id=1063976133]
+
+[node name="DeathSoundEffect1" type="AudioStreamPlayer" parent="Sounds/DeathEffects" unique_id=166194176]
+stream = ExtResource("6_e7oew")
+
+[node name="DeathSoundEffect2" type="AudioStreamPlayer" parent="Sounds/DeathEffects" unique_id=1007630423]
+stream = ExtResource("7_c35mf")
+
+[node name="DeathSoundEffect3" type="AudioStreamPlayer" parent="Sounds/DeathEffects" unique_id=592135562]
+stream = ExtResource("8_65viv")
+
+[node name="DeathSoundEffect4" type="AudioStreamPlayer" parent="Sounds/DeathEffects" unique_id=1350427120]
+stream = ExtResource("9_c35mf")
+
 [node name="StateMachines" type="Node" parent="." unique_id=1027280309]
 
 [node name="MovementStateMachine" type="Node" parent="StateMachines" unique_id=1520474224 node_paths=PackedStringArray("inital_state", "external_contexts")]
@@ -130,14 +168,16 @@ external_contexts = [NodePath("../MovementContext"), NodePath("../KnockbackConte
 script = ExtResource("3_ebec5")
 body = NodePath("../../..")
 
-[node name="Dead" type="Node" parent="StateMachines/MovementStateMachine" unique_id=496044455 node_paths=PackedStringArray("respawn_grace_timer", "respawn_timer", "body")]
+[node name="Dead" type="Node" parent="StateMachines/MovementStateMachine" unique_id=496044455 node_paths=PackedStringArray("respawn_grace_timer", "respawn_timer", "death_sounds", "body")]
 script = ExtResource("4_yllr7")
 respawn_grace_timer = NodePath("../../../RespawnGraceTimer")
 respawn_timer = NodePath("../../../RespawnTimer")
+death_sounds = [NodePath("../../../Sounds/DeathEffects/DeathSoundEffect1"), NodePath("../../../Sounds/DeathEffects/DeathSoundEffect2"), NodePath("../../../Sounds/DeathEffects/DeathSoundEffect3"), NodePath("../../../Sounds/DeathEffects/DeathSoundEffect4")]
 body = NodePath("../../..")
 
-[node name="Grounded" type="Node" parent="StateMachines/MovementStateMachine" unique_id=1414701339 node_paths=PackedStringArray("body")]
+[node name="Grounded" type="Node" parent="StateMachines/MovementStateMachine" unique_id=1414701339 node_paths=PackedStringArray("jump_sound", "body")]
 script = ExtResource("5_kb6p2")
+jump_sound = NodePath("../../../Sounds/JumpAudioStreamPlayer")
 body = NodePath("../../..")
 
 [node name="DamageStateMachine" type="Node" parent="StateMachines" unique_id=328724308 node_paths=PackedStringArray("inital_state", "external_contexts")]
@@ -145,8 +185,9 @@ script = ExtResource("2_2ieo8")
 inital_state = NodePath("Unhit")
 external_contexts = [NodePath("../MovementContext"), NodePath("../KnockbackContext")]
 
-[node name="Unhit" type="Node" parent="StateMachines/DamageStateMachine" unique_id=1169973366 node_paths=PackedStringArray("body")]
+[node name="Unhit" type="Node" parent="StateMachines/DamageStateMachine" unique_id=1169973366 node_paths=PackedStringArray("damaged_sounds", "body")]
 script = ExtResource("6_wodsf")
+damaged_sounds = [NodePath("../../../Sounds/DamageEffects/DamageSoundEffect1"), NodePath("../../../Sounds/DamageEffects/DamageSoundEffect2"), NodePath("../../../Sounds/DamageEffects/DamageSoundEffect3")]
 body = NodePath("../../..")
 
 [node name="Hit" type="Node" parent="StateMachines/DamageStateMachine" unique_id=2120937373 node_paths=PackedStringArray("body")]

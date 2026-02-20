@@ -8,10 +8,13 @@
 [node name="Level_0" type="Node2D" unique_id=1504185619 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_pp2df")
 level_binding_box = Rect2(0, -64, 704, 448)
-spawn_locations = [NodePath("EntrySpawnPoint"), null]
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=486256698]
 position = Vector2(160, 352)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1456260816]
+position = Vector2(608, 352)
 
 [node name="Level" type="TileMapLayer" parent="." unique_id=913483066]
 position = Vector2(0, -192)

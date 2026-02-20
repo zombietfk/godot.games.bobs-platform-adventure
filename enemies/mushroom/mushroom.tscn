@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c48r563involf" path="res://enemies/mushroom/mushroom.gd" id="1_k2em4"]
 [ext_resource type="Texture2D" uid="uid://4sd8v7uqnsjm" path="res://enemies/mushroom/mushroom_spritesheet.png" id="1_nddln"]
 [ext_resource type="PackedScene" uid="uid://orrae1ttisvh" path="res://enemies/mushroom/mushroom_spore.tscn" id="2_8hikq"]
+[ext_resource type="AudioStream" uid="uid://dqmvxbjity3kx" path="res://sound_effects/gas_1.mp3" id="3_28mhn"]
 [ext_resource type="Texture2D" uid="uid://bf6byab2t01vu" path="res://enemies/mushroom/spore_sprite.png" id="3_ofswk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1d07"]
@@ -84,6 +85,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 script = ExtResource("1_k2em4")
 poof_every_x_seconds = 3.0
 spore_scene = ExtResource("2_8hikq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=493917181]
+stream = ExtResource("3_28mhn")
 
 [node name="IdleAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1472144353]
 sprite_frames = SubResource("SpriteFrames_jbume")

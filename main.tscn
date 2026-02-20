@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dvork0tghl73f" path="res://ui/player_health_ui.gd" id="1_7mycd"]
 [ext_resource type="Script" uid="uid://ds76dsnvp602l" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bt74wnjkyby2u" path="res://ui/ui_heart_container.tscn" id="2_lquwl"]
+[ext_resource type="AudioStream" uid="uid://dytsp84th4riy" path="res://stub_music.mp3" id="2_ycdy4"]
 [ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="4_dg77c"]
 [ext_resource type="FontFile" uid="uid://cl83hp2mdm2xw" path="res://ui/HomeVideoBold-R90Dv.ttf" id="4_efxa6"]
 [ext_resource type="Script" uid="uid://ctgkcqkl80emy" path="res://ui/ui_difficulty_selector.gd" id="4_kek77"]
@@ -53,6 +54,11 @@ animations = [{
 [node name="Main" type="Node2D" unique_id=1316412496]
 script = ExtResource("1_lquwl")
 inital_level_path = "uid://cgrbopls2dqgk"
+
+[node name="GameMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=673001295]
+stream = ExtResource("2_ycdy4")
+autoplay = true
+parameters/looping = true
 
 [node name="GameUI" type="CanvasLayer" parent="." unique_id=22984036]
 

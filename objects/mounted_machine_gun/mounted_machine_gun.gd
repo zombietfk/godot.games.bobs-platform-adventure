@@ -9,6 +9,7 @@ extends Node2D;
 @export var machine_gun_bullet_direction_variance = Vector2.ZERO;
 @export var machine_gun_bullet_speed: float = 500;
 @export_flags_2d_physics var machine_gun_bullet_collisison_mask;
+@onready var shoot_sound: AudioStreamPlayer = $AudioStreamPlayer;
 
 # INTERNAL STATE
 var barrel_rotation: float = 0;
@@ -82,7 +83,8 @@ func _process(delta: float) -> void:
 		).rotated(deg_to_rad(barrel_rotation * scale.x));
 		m_gun_bullet.movement_speed = machine_gun_bullet_speed;
 		m_gun_bullet.collision_raycast.collision_mask = machine_gun_bullet_collisison_mask;
-
+		shoot_sound.play();
+		
 var is_being_flipped = false;
 
 func flip_gun_direction()->void:

@@ -6,13 +6,17 @@ var _movement_context: PlayerMovementContext;
 @export var respawn_grace_timer: Timer;
 @export var respawn_timer: Timer;
 @export var gib_count = 50;
+@export var death_sounds: Array[AudioStreamPlayer];
 
 func enter(_from: AbstractState)->void:
+	Main.instance.music.stop();
 	_movement_context = state_machine.get_context("MovementContext") as PlayerMovementContext;
 	_movement_context.slowed_by_webs.clear();
+	_play_death_sound();
 	_kill();
 	
 func exit(_to: AbstractState)->void:
+	Main.instance.music.play();
 	body.visible = true;
 	if respawn_timer.timeout.is_connected(_on_respawn_timeout):
 		respawn_timer.timeout.disconnect(_on_respawn_timeout);
@@ -57,3 +61,15 @@ func _on_respawn_timeout()->void:
 	].position;
 	respawn_grace_timer.start();
 	
+func _play_death_sound()->void:
+	var roll_lower_bond := 0;
+	var roll_upper_bound := 100;
+	var roll = randi_range(roll_lower_bond, roll_upper_bound);
+	if roll <= 1:
+		death_sounds[3].play();
+	elif roll <= 33:
+		death_sounds[0].play();
+	elif roll <= 66:
+		death_sounds[1].play();
+	else:
+		death_sounds[2].play();

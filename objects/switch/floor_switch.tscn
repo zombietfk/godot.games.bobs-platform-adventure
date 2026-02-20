@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bus2730on4ksk"]
+[gd_scene format=3 uid="uid://bus2730on4ksk"]
 
 [ext_resource type="Script" uid="uid://rdwh488h6m02" path="res://objects/switch/floor_switch.gd" id="1_pceir"]
 [ext_resource type="Texture2D" uid="uid://c1k8ev1c8d00o" path="res://objects/switch/switch_spritesheet.png" id="1_r7f0c"]
+[ext_resource type="AudioStream" uid="uid://cklx3d3p0fr28" path="res://sound_effects/switch_1.mp3" id="2_7b3vp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pceir"]
 atlas = ExtResource("1_r7f0c")
@@ -48,17 +49,20 @@ animations = [{
 radius = 8.0
 height = 40.0
 
-[node name="FloorSwitch" type="Area2D"]
+[node name="FloorSwitch" type="Area2D" unique_id=2121188994]
 collision_layer = 56
 collision_mask = 7
 script = ExtResource("1_pceir")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1755048813]
+stream = ExtResource("2_7b3vp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=136567829]
 sprite_frames = SubResource("SpriteFrames_egaae")
 autoplay = "default"
 frame_progress = 0.10950923
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1307496904]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_r7f0c")
 
