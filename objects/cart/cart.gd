@@ -13,9 +13,12 @@ var change_rotation_timer := 0.2;
 var target_rotation := 0.0;
 var disembarked := false;
 var _travel_time := 0.0;
+@onready var cart_sound : AudioStreamPlayer = $AudioStreamPlayer;
 
 func _process(_delta: float) -> void:
 	if _is_player_in_cart():
+		if is_in_motion == false:
+			cart_sound.play();
 		is_in_motion = true;
 		Main.instance.player.velocity = Vector2.ZERO;
 
@@ -55,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide();
 	if velocity.y >= 0:
 		apply_floor_snap();
-	if Input.is_action_pressed("move_left") and is_on_floor():
+	if Input.is_action_pressed("move_left") and is_on_floor() and is_in_motion:
 		velocity.x = clamp(velocity.x, -max_brakeing_speed, max_brakeing_speed);
 		$BrakeParticles2D.emitting = true;
 	else:
@@ -73,6 +76,7 @@ func _is_player_in_cart() -> bool:
 	return $InCartArea.overlaps_body(Main.instance.player);
 
 func _disembark_player()->void:
+	cart_sound.stop();
 	Main.instance.player.velocity.y += 600;
 	velocity.x = 0;
 	disembarked = true;

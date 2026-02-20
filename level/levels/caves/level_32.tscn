@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="8_goq3y"]
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="9_rmubv"]
 [ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="10_hjkwv"]
+[ext_resource type="AudioStream" uid="uid://dflr62khea82a" path="res://boss_music.mp3" id="11_sywym"]
 
 [sub_resource type="Curve2D" id="Curve2D_6yvwj"]
 _data = {
@@ -23,10 +24,11 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_32" type="Node2D" unique_id=1012174741 node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_32" type="Node2D" unique_id=1012174741 node_paths=PackedStringArray("spawn_locations", "music_override")]
 script = ExtResource("1_wg8eo")
 level_binding_box = Rect2(192, 256, 960, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+music_override = NodePath("BossMusicAudioStreamPlayer")
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=208771327]
 position = Vector2(320, 288)
@@ -51,13 +53,13 @@ tile_set = ExtResource("4_sywym")
 position = Vector2(544, 640)
 gib_count = 25
 
-[node name="Stage2State" parent="Bear/StateMachine" index="2" node_paths=PackedStringArray("middle_stage_marker", "cloud_platform", "beehive_spawn_points")]
+[node name="Stage2State" parent="Bear/StateMachine" parent_id_path=PackedInt32Array(1501094790, 1428274771) index="2" unique_id=2067914384 node_paths=PackedStringArray("middle_stage_marker", "cloud_platform", "beehive_spawn_points")]
 middle_stage_marker = NodePath("../../../Marker2D")
 cloud_platform = NodePath("../../../Path2D/PathFollow2D/CloudPlatform")
 beehive_scene = ExtResource("6_ucm8x")
 beehive_spawn_points = [NodePath("../../../BeehiveSpawnPoints/Marker2D2"), NodePath("../../../BeehiveSpawnPoints/Marker2D3"), NodePath("../../../BeehiveSpawnPoints/Marker2D4"), NodePath("../../../BeehiveSpawnPoints/Marker2D5"), NodePath("../../../BeehiveSpawnPoints/Marker2D6"), NodePath("../../../BeehiveSpawnPoints/Marker2D7"), NodePath("../../../BeehiveSpawnPoints/Marker2D8"), NodePath("../../../BeehiveSpawnPoints/Marker2D9"), NodePath("../../../BeehiveSpawnPoints/Marker2D10"), NodePath("../../../BeehiveSpawnPoints/Marker2D11")]
 
-[node name="Stage3State" parent="Bear/StateMachine" index="3" node_paths=PackedStringArray("cloud_platform")]
+[node name="Stage3State" parent="Bear/StateMachine" parent_id_path=PackedInt32Array(1501094790, 1428274771) index="3" unique_id=1381109869 node_paths=PackedStringArray("cloud_platform")]
 cloud_platform = NodePath("../../../Path2D/PathFollow2D/CloudPlatform")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1290960844]
@@ -127,6 +129,10 @@ loop = false
 script = ExtResource("10_hjkwv")
 movement_path = NodePath("..")
 movement_speed = 250.0
+
+[node name="BossMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1443969908]
+stream = ExtResource("11_sywym")
+parameters/looping = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="on_death" from="Bear" to="Path2D2/PathFollow2D/Door6" method="_on_switch_flipped_on"]

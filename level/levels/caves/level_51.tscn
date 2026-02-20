@@ -1,0 +1,97 @@
+[gd_scene format=4 uid="uid://c1erl7bnnoa87"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_rcbqq"]
+[ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="2_7uowy"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_o0u44"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_g1pj3"]
+[ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="3_ocfky"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_8hcfh"]
+[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/checkpoint_flagpole.tscn" id="4_35wsb"]
+[ext_resource type="Texture2D" uid="uid://dh2t3yqy7jnph" path="res://ui/face_smile.png" id="5_vnpiu"]
+[ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="6_tva36"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ocfky"]
+font = ExtResource("2_7uowy")
+font_size = 32
+
+[node name="Level_51" type="Node2D" unique_id=1504185619 node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_rcbqq")
+level_binding_box = Rect2(0, -64, 704, 448)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("")]
+
+[node name="Spike" parent="." unique_id=942304117 instance=ExtResource("3_ocfky")]
+position = Vector2(608, 352)
+
+[node name="CheckpointFlagpole" parent="." unique_id=1398330232 instance=ExtResource("4_35wsb")]
+position = Vector2(352, 363)
+
+[node name="Control" type="Control" parent="." unique_id=640627207]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=357876392]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 608.0
+offset_bottom = 224.0
+text = "That's All For Now Folks!
+
+Thanks For Playing!"
+label_settings = SubResource("LabelSettings_ocfky")
+
+[node name="FaceSmile" type="TextureRect" parent="Control" unique_id=101300453]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 183.0
+offset_right = 566.0
+offset_bottom = 247.0
+texture = ExtResource("5_vnpiu")
+
+[node name="Rabbit" parent="Control" unique_id=738928563 instance=ExtResource("6_tva36")]
+position = Vector2(284, 369)
+turnaround_on_platform_edge = true
+randomize_starting_direction = true
+jump_timer_variance = 1.0
+jump_timer = 2.0
+
+[node name="Rabbit2" parent="Control" unique_id=1601033526 instance=ExtResource("6_tva36")]
+position = Vector2(432, 367)
+turnaround_on_platform_edge = true
+randomize_starting_direction = true
+jump_timer_variance = 1.0
+jump_timer = 2.0
+
+[node name="Rabbit3" parent="Control" unique_id=308288551 instance=ExtResource("6_tva36")]
+position = Vector2(517, 369)
+turnaround_on_platform_edge = true
+randomize_starting_direction = true
+jump_timer_variance = 1.0
+jump_timer = 2.0
+
+[node name="Rabbit4" parent="Control" unique_id=1060413558 instance=ExtResource("6_tva36")]
+position = Vector2(192, 367)
+turnaround_on_platform_edge = true
+randomize_starting_direction = true
+jump_timer_variance = 1.0
+jump_timer = 2.0
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=486256698]
+position = Vector2(32, 352)
+
+[node name="Level" type="TileMapLayer" parent="." unique_id=913483066]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAABAAkAAgACAAEAAAACAAkAAgACAAEAAAADAAkAAgACAAEAAAAHAAkAAgACAAEAAAAAAAUAAgADAAIAAAAAAAYAAgADAAMAAAAKAAUAAgABAAIAAAAKAAYAAgABAAIAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAKAAMAAgABAAIAAAAKAAQAAgABAAIAAAABAAIAAgACAAMAAAACAAIAAgACAAMAAAADAAIAAgACAAMAAAAEAAIAAgACAAMAAAAFAAIAAgACAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAIAAkAAgACAAEAAAAJAAkAAgACAAEAAAAAAAIAAgAPAAcAAAAKAAIAAgALAAcAAAAAAAkAAgACAAEAAAAKAAcAAgABAAIAAAAKAAgAAgABAAIAAAAKAAkAAgALAAMAAAAEAAkAAgACAAEAAAAFAAkAAgACAAEAAAAGAAkAAgACAAEAAAA=")
+tile_set = ExtResource("2_o0u44")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=953369791]
+tile_set = ExtResource("3_g1pj3")
+
+[node name="TeleportToLevelZone" parent="." unique_id=873573120 instance=ExtResource("4_8hcfh")]
+position = Vector2(-32, 320)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://cgrbopls2dqgk"
+
+[connection signal="ready" from="." to="." method="_on_ready"]

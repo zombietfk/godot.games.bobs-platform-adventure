@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dpk0yf8ygshns"]
+[gd_scene format=4 uid="uid://dpk0yf8ygshns"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_wyvig"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="2_8830o"]
@@ -42,332 +42,332 @@ point_count = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_208wo"]
 size = Vector2(128, 128)
 
-[node name="Level_37" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_37" type="Node2D" unique_id=874353304 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_wyvig")
 level_binding_box = Rect2(0, -192, 1536, 640)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=212936896]
 position = Vector2(96, 288)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1553459684]
 position = Vector2(1504, 544)
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("2_8830o")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1288451259 instance=ExtResource("2_8830o")]
 position = Vector2(1568, 512)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_38.tscn"
 
-[node name="ToPreviousLevelTeleportZone2" parent="." instance=ExtResource("2_8830o")]
+[node name="ToPreviousLevelTeleportZone2" parent="." unique_id=793463530 instance=ExtResource("2_8830o")]
 position = Vector2(32, 256)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bak66jhe63jvf"
 to_spawn_location_with_index = 1
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=136280433]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAACAAgAAgABAAEAAAADAAgAAgACAAEAAAAEAAgAAgADAAEAAAAFAAgAAgABAAEAAAAGAAgAAgADAAEAAAAHAAgAAgABAAEAAAAIAAgAAgACAAEAAAAJAAgAAgADAAEAAAAMAAQAAgAFAAQAAAAMAAUAAgAFAAUAAAANAAUAAgABAAMAAAAOAAUAAgACAAMAAAAPAAUAAgADAAMAAAAKAAgAAgABAAEAAAALAAgAAgADAAEAAAALAAkAAgADAAMAAAAKAAkAAgABAAMAAAAJAAoAAgADAAMAAAAJAAsAAgAJAAEAAAAKAAwAAgABAAEAAAALAAwAAgADAAEAAAAMAAwAAgABAAEAAAANAAwAAgADAAEAAAAOAAwAAgABAAEAAAAPAAwAAgADAAEAAAAQAAkAAgABAAMAAAAQAAYAAgABAAEAAAAQAAcAAgABAAMAAAAQAAgAAgABAAEAAAAUAAkAAgABAAMAAAAVAAkAAgACAAMAAAASAAwAAgABAAEAAAATAAwAAgADAAEAAAAWAAwAAgABAAEAAAAWAAkAAgADAAMAAAABAAgAAgADAAEAAAABAAUAAgADAAMAAAACAAkAAgABAAIAAAACAAoAAgADAAEAAAADAAkAAgACAAIAAAADAAoAAgACAAMAAAAEAAkAAgADAAIAAAAEAAoAAgADAAMAAAAGAAkAAgADAAMAAAAFAAkAAgABAAMAAAAIAAoAAgACAAMAAAAIAAsAAgAHAAEAAAAKAA0AAgABAAMAAAAMAA0AAgABAAMAAAAOAA0AAgABAAMAAAALAA0AAgADAAMAAAANAA0AAgADAAMAAAAPAA0AAgADAAMAAAANAAMAAgABAAEAAAANAAQAAgABAAIAAAAOAAMAAgACAAEAAAAOAAQAAgACAAIAAAAPAAMAAgABAAMAAAAPAAQAAgADAAIAAAAMAAIAAgAFAAMAAAAMAAMAAgAFAAQAAAARAAYAAgADAAEAAAARAAcAAgADAAMAAAARAAgAAgADAAEAAAARAAkAAgADAAMAAAAGAAIAAgABAAEAAAAGAAMAAgABAAMAAAAHAAIAAgADAAEAAAAHAAMAAgADAAMAAAAQAAQAAgABAAEAAAAQAAUAAgABAAMAAAARAAQAAgADAAEAAAARAAUAAgADAAMAAAASAAYAAgABAAEAAAASAAcAAgABAAMAAAATAAYAAgADAAEAAAATAAcAAgADAAMAAAAGAAoAAgABAAEAAAAGAAsAAgABAAMAAAAHAAoAAgABAAMAAAAHAAsAAgADAAMAAAAAAAgAAgABAAEAAAAAAAkAAgABAAMAAAABAAkAAgADAAMAAAAAAAQAAgABAAEAAAAAAAUAAgABAAMAAAABAAQAAgADAAEAAAAHAAwAAgABAAEAAAAHAA0AAgABAAIAAAAHAA4AAgABAAMAAAAIAAwAAgACAAEAAAAIAA0AAgACAAIAAAAIAA4AAgACAAMAAAAJAAwAAgADAAEAAAAJAA0AAgADAAIAAAAJAA4AAgADAAMAAAAUAAcAAgABAAEAAAAUAAgAAgABAAIAAAAVAAcAAgACAAEAAAAVAAgAAgACAAIAAAAWAAcAAgADAAEAAAAWAAgAAgADAAIAAAAHAAkAAgABAAIAAAAIAAkAAgACAAIAAAAJAAkAAgADAAIAAAADAAEAAgABAAEAAAADAAIAAgABAAIAAAADAAMAAgABAAMAAAAEAAEAAgACAAEAAAAEAAIAAgACAAIAAAAEAAMAAgACAAMAAAAFAAEAAgADAAEAAAAFAAIAAgADAAIAAAAFAAMAAgADAAMAAAAAAAEAAgABAAEAAAAAAAIAAgABAAIAAAAAAAMAAgABAAMAAAABAAEAAgACAAEAAAABAAIAAgACAAIAAAABAAMAAgACAAMAAAACAAEAAgADAAEAAAACAAIAAgADAAIAAAACAAMAAgADAAMAAAAHAP//AgABAAEAAAAHAAAAAgABAAIAAAAHAAEAAgABAAMAAAAIAP//AgACAAEAAAAIAAAAAgACAAIAAAAIAAEAAgACAAMAAAAJAP//AgADAAEAAAAJAAAAAgADAAIAAAAJAAEAAgADAAMAAAAKAAAAAgABAAEAAAAKAAEAAgABAAMAAAALAAAAAgADAAEAAAALAAEAAgADAAMAAAANAAEAAgABAAEAAAANAAIAAgABAAMAAAAOAAEAAgADAAEAAAAOAAIAAgADAAMAAAANAA4AAgABAAEAAAANAA8AAgABAAMAAAAOAA4AAgADAAEAAAAOAA8AAgADAAMAAAAKAA4AAgABAAEAAAAKAA8AAgABAAIAAAAKABAAAgABAAMAAAALAA4AAgACAAEAAAALAA8AAgACAAIAAAALABAAAgACAAMAAAAMAA4AAgADAAEAAAAMAA8AAgADAAIAAAAMABAAAgADAAMAAAASAA0AAgABAAMAAAATAA0AAgADAAMAAAAWAA0AAgABAAMAAAAXAAwAAgADAAEAAAAXAA0AAgADAAMAAAARAA4AAgAHAAEAAAASAA4AAgAJAAEAAAATAA4AAgAHAAEAAAAUAA4AAgAJAAEAAAAPAA4AAgAHAAEAAAAQAA4AAgAJAAEAAAAVAA4AAgABAAEAAAAVAA8AAgABAAIAAAAVABAAAgABAAMAAAAWAA4AAgACAAEAAAAWAA8AAgACAAIAAAAWABAAAgACAAMAAAAXAA4AAgADAAEAAAAXAA8AAgADAAIAAAAXABAAAgADAAMAAAASAAIAAgABAAEAAAASAAMAAgABAAIAAAASAAQAAgABAAMAAAASAAUAAgAFAAUAAAABAAoAAgABAAEAAAABAAsAAgACAAEAAAACAAsAAgADAAEAAAAEAAsAAgABAAEAAAAEAAwAAgACAAEAAAAFAAsAAgADAAEAAAAFAAwAAgADAAEAAAAFAA0AAgADAAIAAAAGAAwAAgADAAEAAAAGAA0AAgADAAMAAAAAAAsAAgABAAEAAAAAAAwAAgABAAIAAAAAAA0AAgABAAMAAAABAAwAAgACAAIAAAABAA0AAgACAAMAAAACAAwAAgADAAIAAAACAA0AAgADAAMAAAADAAwAAgABAAEAAAADAA0AAgABAAIAAAADAA4AAgABAAMAAAAEAA0AAgACAAIAAAAEAA4AAgACAAMAAAAFAA4AAgADAAMAAAAUAAQAAgADAAMAAAAUAAUAAgABAAIAAAAUAAYAAgABAAMAAAAVAAQAAgACAAEAAAAVAAUAAgACAAIAAAAVAAYAAgACAAMAAAAWAAQAAgABAAEAAAAWAAUAAgABAAMAAAAWAAYAAgADAAMAAAATAAIAAgACAAEAAAATAAMAAgACAAIAAAATAAQAAgACAAMAAAAUAAIAAgADAAEAAAAUAAMAAgADAAIAAAAPAAEAAgABAAEAAAAPAAIAAgABAAIAAAAQAAEAAgACAAEAAAAQAAIAAgACAAIAAAAQAAMAAgACAAMAAAARAAEAAgADAAEAAAARAAIAAgADAAIAAAARAAMAAgADAAMAAAAXAAgAAgABAAEAAAAXAAkAAgABAAMAAAAYAAgAAgADAAEAAAAYAAkAAgADAAMAAAAXAAYAAgABAAEAAAAXAAcAAgABAAMAAAAYAAYAAgADAAEAAAAYAAcAAgADAAMAAAAXAAQAAgADAAEAAAAXAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=925296182]
 tile_set = ExtResource("8_xqdvy")
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=2124787872]
 position = Vector2(0, -192)
 curve = SubResource("Curve2D_it25s")
 script = ExtResource("7_jdxlw")
 movement_speed = 175.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=379696731]
 position = Vector2(192, 320)
 rotation = 1.5707964
 rotates = false
 loop = false
 
-[node name="Block" type="TileMapLayer" parent="Path2D/PathFollow2D"]
+[node name="Block" type="TileMapLayer" parent="Path2D/PathFollow2D" unique_id=1328392996]
 position = Vector2(-320, 192.00002)
 rotation = -1.5707964
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="." unique_id=114405837]
 position = Vector2(128, -192)
 curve = SubResource("Curve2D_it25s")
 script = ExtResource("7_jdxlw")
 movement_speed = 175.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1779305786]
 position = Vector2(192, 320)
 rotation = 1.5707964
 rotates = false
 loop = false
 
-[node name="Block2" type="TileMapLayer" parent="Path2D2/PathFollow2D"]
+[node name="Block2" type="TileMapLayer" parent="Path2D2/PathFollow2D" unique_id=1144345915]
 position = Vector2(-320, 192)
 rotation = -1.5707964
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Path2D3" type="Path2D" parent="."]
+[node name="Path2D3" type="Path2D" parent="." unique_id=772070164]
 position = Vector2(256, -192)
 curve = SubResource("Curve2D_it25s")
 script = ExtResource("7_jdxlw")
 movement_speed = 175.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3" unique_id=1333220746]
 position = Vector2(192, 320)
 rotation = 1.5707964
 rotates = false
 loop = false
 
-[node name="Block3" type="TileMapLayer" parent="Path2D3/PathFollow2D"]
+[node name="Block3" type="TileMapLayer" parent="Path2D3/PathFollow2D" unique_id=988320530]
 position = Vector2(-320, 192.00002)
 rotation = -1.5707964
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Path2D4" type="Path2D" parent="."]
+[node name="Path2D4" type="Path2D" parent="." unique_id=1518698152]
 position = Vector2(416, -160)
 curve = SubResource("Curve2D_ms804")
 script = ExtResource("7_jdxlw")
 movement_speed = 175.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4" unique_id=841535028]
 position = Vector2(288, 416)
 rotation = 3.1415927
 rotates = false
 loop = false
 
-[node name="Block4" type="TileMapLayer" parent="Path2D4/PathFollow2D"]
+[node name="Block4" type="TileMapLayer" parent="Path2D4/PathFollow2D" unique_id=1847735935]
 position = Vector2(192, 320)
 rotation = 3.1415925
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Path2D5" type="Path2D" parent="."]
+[node name="Path2D5" type="Path2D" parent="." unique_id=1555695239]
 position = Vector2(384, -320)
 curve = SubResource("Curve2D_it25s")
 script = ExtResource("7_jdxlw")
 movement_speed = 175.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5" unique_id=1833014590]
 position = Vector2(192, 320)
 rotation = 1.5707964
 rotates = false
 loop = false
 
-[node name="Block5" type="TileMapLayer" parent="Path2D5/PathFollow2D"]
+[node name="Block5" type="TileMapLayer" parent="Path2D5/PathFollow2D" unique_id=743726142]
 position = Vector2(-320, 192)
 rotation = -1.5707964
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Path2D6" type="Path2D" parent="."]
+[node name="Path2D6" type="Path2D" parent="." unique_id=1495214504]
 position = Vector2(512, -320)
 curve = SubResource("Curve2D_pb203")
 script = ExtResource("7_jdxlw")
 movement_speed = 210.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D6"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D6" unique_id=717893243]
 position = Vector2(192, 320)
 rotation = 1.5707964
 rotates = false
 loop = false
 
-[node name="Block6" type="TileMapLayer" parent="Path2D6/PathFollow2D"]
+[node name="Block6" type="TileMapLayer" parent="Path2D6/PathFollow2D" unique_id=1674982625]
 position = Vector2(-320, 192)
 rotation = -1.5707964
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Path2D7" type="Path2D" parent="."]
+[node name="Path2D7" type="Path2D" parent="." unique_id=1917714523]
 position = Vector2(640, 64)
 curve = SubResource("Curve2D_208wo")
 script = ExtResource("7_jdxlw")
 movement_speed = 175.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7" unique_id=1761773786]
 position = Vector2(192, 320)
 rotation = -1.5707964
 rotates = false
 loop = false
 
-[node name="Block7" type="TileMapLayer" parent="Path2D7/PathFollow2D"]
+[node name="Block7" type="TileMapLayer" parent="Path2D7/PathFollow2D" unique_id=1187981997]
 position = Vector2(320, -192)
 rotation = 1.5707964
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Path2D8" type="Path2D" parent="."]
+[node name="Path2D8" type="Path2D" parent="." unique_id=2090434256]
 position = Vector2(896, 192)
 curve = SubResource("Curve2D_wyvig")
 script = ExtResource("7_jdxlw")
 movement_speed = 350.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8" unique_id=995613569]
 position = Vector2(192, 320)
 rotation = 3.1415927
 rotates = false
 loop = false
 
-[node name="Block8" type="TileMapLayer" parent="Path2D8/PathFollow2D"]
+[node name="Block8" type="TileMapLayer" parent="Path2D8/PathFollow2D" unique_id=938556969]
 position = Vector2(192, 320)
 rotation = 3.1415925
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Spike2" parent="Path2D8/PathFollow2D" instance=ExtResource("3_7pyts")]
+[node name="Spike2" parent="Path2D8/PathFollow2D" unique_id=2065425775 instance=ExtResource("3_7pyts")]
 position = Vector2(-96, -7.6293945e-06)
 rotation = -1.5707964
 
-[node name="Path2D9" type="Path2D" parent="."]
+[node name="Path2D9" type="Path2D" parent="." unique_id=251743259]
 position = Vector2(896, 320)
 curve = SubResource("Curve2D_208wo")
 script = ExtResource("7_jdxlw")
 movement_speed = 150.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D9"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D9" unique_id=739484492]
 position = Vector2(192, 320)
 rotation = -1.5707964
 rotates = false
 loop = false
 
-[node name="Block9" type="TileMapLayer" parent="Path2D9/PathFollow2D"]
+[node name="Block9" type="TileMapLayer" parent="Path2D9/PathFollow2D" unique_id=789936784]
 position = Vector2(320.00003, -192)
 rotation = 1.5707964
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Path2D10" type="Path2D" parent="."]
+[node name="Path2D10" type="Path2D" parent="." unique_id=516517567]
 position = Vector2(1024, 64)
 curve = SubResource("Curve2D_it25s")
 script = ExtResource("7_jdxlw")
 movement_speed = 175.0
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D10"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D10" unique_id=2096250847]
 position = Vector2(192, 320)
 rotation = 1.5707964
 rotates = false
 loop = false
 
-[node name="Block10" type="TileMapLayer" parent="Path2D10/PathFollow2D"]
+[node name="Block10" type="TileMapLayer" parent="Path2D10/PathFollow2D" unique_id=715992523]
 position = Vector2(-320, 192)
 rotation = -1.5707964
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="Path2D11" type="Path2D" parent="."]
+[node name="Path2D11" type="Path2D" parent="." unique_id=1250485569]
 position = Vector2(1152, 320)
 curve = SubResource("Curve2D_208wo")
 script = ExtResource("7_jdxlw")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D11"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D11" unique_id=623354793]
 position = Vector2(192, 320)
 rotation = -1.5707964
 rotates = false
 loop = false
 
-[node name="Block11" type="TileMapLayer" parent="Path2D11/PathFollow2D"]
+[node name="Block11" type="TileMapLayer" parent="Path2D11/PathFollow2D" unique_id=1844761627]
 position = Vector2(320, -192)
 rotation = 1.5707964
 tile_map_data = PackedByteArray("AAACAAQAAgABAAEAAAADAAQAAgADAAEAAAACAAUAAgABAAMAAAADAAUAAgADAAMAAAA=")
 tile_set = ExtResource("5_k1hwp")
 
-[node name="SwitchArea" type="Area2D" parent="."]
+[node name="SwitchArea" type="Area2D" parent="." unique_id=1142668477]
 position = Vector2(192, 256)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea" unique_id=1839358161]
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea2" type="Area2D" parent="."]
+[node name="SwitchArea2" type="Area2D" parent="." unique_id=1211999894]
 position = Vector2(320, 256)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea2" unique_id=1033043854]
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea3" type="Area2D" parent="."]
+[node name="SwitchArea3" type="Area2D" parent="." unique_id=1131467526]
 position = Vector2(448, 256)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea3" unique_id=962856771]
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea4" type="Area2D" parent="."]
+[node name="SwitchArea4" type="Area2D" parent="." unique_id=1614069840]
 position = Vector2(576, 256)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea4" unique_id=68337718]
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea5" type="Area2D" parent="."]
+[node name="SwitchArea5" type="Area2D" parent="." unique_id=1856087319]
 position = Vector2(576, 128)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea5" unique_id=812795972]
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea6" type="Area2D" parent="."]
+[node name="SwitchArea6" type="Area2D" parent="." unique_id=667180959]
 position = Vector2(704, 256)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea6" unique_id=1915085727]
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea7" type="Area2D" parent="."]
+[node name="SwitchArea7" type="Area2D" parent="." unique_id=651320500]
 position = Vector2(832, 256)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea7" unique_id=1939210426]
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea8" type="Area2D" parent="."]
+[node name="SwitchArea8" type="Area2D" parent="." unique_id=601266232]
 position = Vector2(960, 512)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea8" unique_id=484534978]
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea9" type="Area2D" parent="."]
+[node name="SwitchArea9" type="Area2D" parent="." unique_id=376559802]
 position = Vector2(1088, 512)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea9" unique_id=41801090]
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea10" type="Area2D" parent="."]
+[node name="SwitchArea10" type="Area2D" parent="." unique_id=788931729]
 position = Vector2(1344, 512)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea10" unique_id=2135485800]
 position = Vector2(-128, 0)
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="SwitchArea11" type="Area2D" parent="."]
+[node name="SwitchArea11" type="Area2D" parent="." unique_id=163543934]
 position = Vector2(1216, 512)
 script = ExtResource("6_pb203")
 metadata/_custom_type_script = "uid://bi7ptgy860xyp"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchArea11" unique_id=1381962359]
 position = Vector2(128, 0)
 shape = SubResource("RectangleShape2D_208wo")
 
-[node name="Spike" parent="." instance=ExtResource("3_7pyts")]
+[node name="Spike" parent="." unique_id=663211016 instance=ExtResource("3_7pyts")]
 position = Vector2(160, 128)
 rotation = 1.5707964
 
-[node name="HealthUpgradeItem" parent="." instance=ExtResource("8_wyvig")]
+[node name="HealthUpgradeItem" parent="." unique_id=1596860145 instance=ExtResource("8_wyvig")]
 z_index = -1
 position = Vector2(224, 128)
 

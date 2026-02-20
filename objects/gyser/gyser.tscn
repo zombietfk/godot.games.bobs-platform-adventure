@@ -151,8 +151,9 @@ _data = {
 [node name="Gyser" type="Node2D" unique_id=763963805]
 script = ExtResource("1_nts0k")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1333275263]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1518741199]
 stream = ExtResource("2_r4qmr")
+max_distance = 960.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=450898246]
 position = Vector2(0, 24)

@@ -1,12 +1,14 @@
 class_name JumpingSpiderState;
 extends AbstractSpiderState;
 
+@export var jump_sound: AudioStreamPlayer2D;
 @export var jumping_animated_sprite: AnimatedSprite2D;
 @export var max_horizontal_jump_speed = 300;
 var _jump_impulse: Vector2 = Vector2.ZERO;
 var airbone_check_flag = false;
 
 func enter(_from: AbstractState)->void:
+	jump_sound.play();
 	airbone_check_flag = false;
 	jumping_animated_sprite.visible = true;
 	_jump_impulse = -Vector2(

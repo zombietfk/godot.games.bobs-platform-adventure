@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dh22qt2lnpoi7" path="res://objects/enemy_spawner.gd" id="8_3dcdr"]
 [ext_resource type="PackedScene" uid="uid://dpuo2ngxebltb" path="res://enemies/bosses/demon-rabbit/level-clear/demon_rabbit_level_clear_fixed_player_pos.tscn" id="8_8wx7j"]
 [ext_resource type="PackedScene" uid="uid://c0f040qno7j70" path="res://objects/switch/switch_area.tscn" id="9_l4p7d"]
+[ext_resource type="AudioStream" uid="uid://h5v4kaacqk6c" path="res://sound_effects/evil_laugh.mp3" id="9_m1s2r"]
 [ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="9_opopm"]
 [ext_resource type="PackedScene" uid="uid://c53dd0xd2rwap" path="res://objects/abstract/enemy_only_wall/enemy_only_wall.tscn" id="10_8wx7j"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="11_upjaq"]
@@ -38,11 +39,11 @@ size = Vector2(192, 32)
 
 [node name="Level_40" type="Node2D" unique_id=1898631213 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_s7gn5")
-level_binding_box = Rect2(-960, 0, 19520, 1728)
+level_binding_box = Rect2(-960, 0, 21184, 1728)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=778275850]
-position = Vector2(3968, 512)
+position = Vector2(-928, 800)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1465255025]
 position = Vector2(21152, 1632)
@@ -79,6 +80,9 @@ script = ExtResource("8_3dcdr")
 enemy_scene = ExtResource("8_8wx7j")
 spawn_every_x_seconds = 1000.0
 stop_spawning_after_x_seconds = 0.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node2D" unique_id=1447106982]
+stream = ExtResource("9_m1s2r")
 
 [node name="SwitchArea" parent="." unique_id=1507766034 instance=ExtResource("9_l4p7d")]
 position = Vector2(-448, 768)
@@ -208,6 +212,7 @@ scale = Vector2(2, 2)
 
 [node name="HealthUpgradeItem" parent="." unique_id=353959936 instance=ExtResource("12_djdyk")]
 position = Vector2(15520, 992)
+pickup_unique_name = "level_40_hp_up"
 
 [node name="Spike8" parent="." unique_id=1640337967 instance=ExtResource("11_upjaq")]
 position = Vector2(16032, 1056)

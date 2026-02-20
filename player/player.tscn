@@ -127,6 +127,9 @@ crush_check_raycast_left = NodePath("CrushCheckLeftCast")
 crush_check_raycast_right = NodePath("CrushCheckRightCast")
 alert_notifcation = NodePath("AlertNotification")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1874452395]
+current = true
+
 [node name="Sounds" type="Node" parent="." unique_id=72420908]
 
 [node name="JumpAudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds" unique_id=1098018690]
@@ -136,12 +139,14 @@ stream = ExtResource("2_ebec5")
 
 [node name="DamageSoundEffect1" type="AudioStreamPlayer" parent="Sounds/DamageEffects" unique_id=99186333]
 stream = ExtResource("3_yllr7")
+volume_db = 8.0
 
 [node name="DamageSoundEffect2" type="AudioStreamPlayer" parent="Sounds/DamageEffects" unique_id=1974455851]
 stream = ExtResource("4_kb6p2")
 
 [node name="DamageSoundEffect3" type="AudioStreamPlayer" parent="Sounds/DamageEffects" unique_id=1157301214]
 stream = ExtResource("5_wodsf")
+volume_db = 16.0
 
 [node name="DeathEffects" type="Node" parent="Sounds" unique_id=1063976133]
 
@@ -150,12 +155,16 @@ stream = ExtResource("6_e7oew")
 
 [node name="DeathSoundEffect2" type="AudioStreamPlayer" parent="Sounds/DeathEffects" unique_id=1007630423]
 stream = ExtResource("7_c35mf")
+volume_db = 8.0
 
 [node name="DeathSoundEffect3" type="AudioStreamPlayer" parent="Sounds/DeathEffects" unique_id=592135562]
 stream = ExtResource("8_65viv")
+volume_db = 4.0
 
 [node name="DeathSoundEffect4" type="AudioStreamPlayer" parent="Sounds/DeathEffects" unique_id=1350427120]
 stream = ExtResource("9_c35mf")
+volume_db = 4.0
+pitch_scale = 0.8
 
 [node name="StateMachines" type="Node" parent="." unique_id=1027280309]
 

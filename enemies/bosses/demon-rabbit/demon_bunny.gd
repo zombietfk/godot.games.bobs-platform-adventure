@@ -10,6 +10,9 @@ var health = 3;
 
 signal on_damage();
 
+func _ready()->void:
+	gib_and_kill();
+
 func take_damage()->void:
 	health -= 1;
 	print('health', health);

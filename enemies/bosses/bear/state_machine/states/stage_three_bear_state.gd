@@ -4,6 +4,9 @@ extends AbstractRunningAroundBearState;
 @export var beehived_move_speed: float = 550.0;
 @export var rage_duration = 10;
 @export var cloud_platform: CloudPlatform;
+@export var beehive_hit_sound: AudioStreamPlayer;
+@export var bear_growl_sound: AudioStreamPlayer;
+
 var _c_rage_duration = 0;
 var _is_dying = false;
 
@@ -48,6 +51,8 @@ func physics_process(delta: float)->void:
 		bear.velocity = _direction * beehived_move_speed * Vector2.RIGHT + bear.get_gravity();
 
 func _hit_by_beehive()->void:
+	beehive_hit_sound.play();
+	bear_growl_sound.play();
 	cloud_platform.disable();
 	bear.is_beehived = true;
 	_interrupt_wait_then_run = true;

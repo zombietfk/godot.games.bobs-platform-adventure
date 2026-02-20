@@ -5,6 +5,8 @@ extends AbstractBearState;
 @export var wallcheck_raycast: RayCast2D;
 @export var move_acceleration_sqr = 0.01;
 @export var jump_timer_range: Vector2 = Vector2(0.6, 1.2);
+@export var bear_roar_sounds: Array[AudioStreamPlayer];
+
 var _move_acceleration = 0.1;
 var _direction: int = 1;
 var _is_running = false;
@@ -76,7 +78,8 @@ func _wait_then_run()->void:
 		_is_running = true;
 		return;
 	animated_sprite.animation = "running";
-	_is_running = true;
+	_is_running = true; 
+	bear_roar_sounds.pick_random().play();
 	await _jump_after(randf_range(jump_timer_range.x, jump_timer_range.y));
 
 func _jump_after(t: float)->void:

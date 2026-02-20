@@ -8,7 +8,7 @@ extends Node2D;
 @export var max_boost_power: float = 2000;
 @export var min_boost_power: float = 500;
 @export var gyser_shoot_water_timer_offset: float = 0.0;
-@onready var gyser_sound: AudioStreamPlayer = $AudioStreamPlayer;
+@onready var gyser_sound: AudioStreamPlayer2D = $AudioStreamPlayer;
 
 var _gyser_height: float = 200;
 var _c_shoot_water_every_x_seconds: float;

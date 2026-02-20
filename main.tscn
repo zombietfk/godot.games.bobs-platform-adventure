@@ -51,7 +51,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_w48qg"]
+font = ExtResource("4_dg77c")
+font_size = 48
+
 [node name="Main" type="Node2D" unique_id=1316412496]
+process_mode = 3
 script = ExtResource("1_lquwl")
 inital_level_path = "uid://cgrbopls2dqgk"
 
@@ -123,6 +128,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_ycdy4")
 
 [node name="CheatBox" type="VBoxContainer" parent="GameUI/UI" unique_id=1799829156]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 64.0
@@ -140,11 +146,13 @@ layout_mode = 2
 
 [node name="LineEdit" type="LineEdit" parent="GameUI/UI/CheatBox/HBoxContainer" unique_id=1480521766]
 layout_mode = 2
+editable = false
 script = ExtResource("9_4c57u")
 
 [node name="Button" type="Button" parent="GameUI/UI/CheatBox/HBoxContainer" unique_id=1384866236]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_efxa6")
+disabled = true
 text = "Warp LvL"
 
 [node name="Label2" type="Label" parent="GameUI/UI/CheatBox" unique_id=1023801457]
@@ -185,7 +193,36 @@ layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("4_lquwl")
 
+[node name="PauseUI" type="Panel" parent="GameUI/UI" unique_id=1291900376]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GameUI/UI/PauseUI" unique_id=530971016]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -200.0
+offset_right = 288.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameUI/UI/PauseUI/CenterContainer" unique_id=2055303644]
+layout_mode = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_w48qg")
+
 [node name="Player" parent="." unique_id=389177389 node_paths=PackedStringArray("camera", "player_heath_ui", "lives_count_label_ui") instance=ExtResource("1_0xm2m")]
+process_mode = 1
 position = Vector2(32, 284)
 camera = NodePath("Camera2D")
 player_heath_ui = NodePath("../GameUI/UI/PlayerHealthUI")

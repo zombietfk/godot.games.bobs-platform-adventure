@@ -1,8 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://cnpqchhe7urre"]
+[gd_scene format=3 uid="uid://cnpqchhe7urre"]
 
 [ext_resource type="Script" uid="uid://b1u8qm1vl6vc2" path="res://enemies/bosses/bear/bear.gd" id="1_8pevx"]
+[ext_resource type="AudioStream" uid="uid://tx2iw50nnrcv" path="res://sound_effects/bear_1.mp3" id="2_f5bll"]
+[ext_resource type="AudioStream" uid="uid://bdycg33dgxlis" path="res://sound_effects/pop_1.mp3" id="2_mvxgs"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_wk4eq"]
 [ext_resource type="Texture2D" uid="uid://c0jv6kpj0g2e4" path="res://enemies/bosses/bear/bear_spritesheet.png" id="3_5wfqs"]
+[ext_resource type="AudioStream" uid="uid://b5k6tl8udmqfo" path="res://sound_effects/bear_2.mp3" id="3_pcpk8"]
 [ext_resource type="Script" uid="uid://reud4gw014r" path="res://enemies/bosses/bear/state_machine/states/idle_bear_state.gd" id="3_wk4eq"]
 [ext_resource type="Script" uid="uid://cb0piri4pxpp5" path="res://enemies/bosses/bear/state_machine/states/stage_one_bear_state.gd" id="4_5wfqs"]
 [ext_resource type="Script" uid="uid://dl3ymyiitrik3" path="res://enemies/bosses/bear/state_machine/states/stage_two_bear_state.gd" id="5_gdq1p"]
@@ -152,56 +155,72 @@ size = Vector2(64, 112)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wfqs"]
 size = Vector2(72, 104)
 
-[node name="Bear" type="CharacterBody2D"]
+[node name="Bear" type="CharacterBody2D" unique_id=1505277429]
 collision_layer = 2
 collision_mask = 64
 script = ExtResource("1_8pevx")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("inital_state")]
+[node name="Sounds" type="Node" parent="." unique_id=1082330546]
+
+[node name="GrowlAudioStreamPlayer1" type="AudioStreamPlayer" parent="Sounds" unique_id=161444139]
+stream = ExtResource("2_f5bll")
+volume_db = 8.0
+
+[node name="GrowlAudioStreamPlayer2" type="AudioStreamPlayer" parent="Sounds" unique_id=1212661763]
+stream = ExtResource("3_pcpk8")
+
+[node name="BeehiveHitSoundPlayer1" type="AudioStreamPlayer" parent="Sounds" unique_id=1370780969]
+stream = ExtResource("2_mvxgs")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1428274771 node_paths=PackedStringArray("inital_state")]
 script = ExtResource("2_wk4eq")
 inital_state = NodePath("IdleState")
 
-[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite", "bear")]
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1795932113 node_paths=PackedStringArray("animated_sprite", "bear")]
 script = ExtResource("3_wk4eq")
 animated_sprite = NodePath("../../AnimatedSprite2D")
 bear = NodePath("../..")
 
-[node name="Stage1State" type="Node" parent="StateMachine" node_paths=PackedStringArray("wallcheck_raycast", "animated_sprite", "bear")]
+[node name="Stage1State" type="Node" parent="StateMachine" unique_id=1122517403 node_paths=PackedStringArray("wallcheck_raycast", "bear_roar_sounds", "animated_sprite", "bear")]
 script = ExtResource("4_5wfqs")
 wallcheck_raycast = NodePath("../../WallcheckRayCast2D")
+bear_roar_sounds = [NodePath("../../Sounds/GrowlAudioStreamPlayer1"), NodePath("../../Sounds/GrowlAudioStreamPlayer2")]
 animated_sprite = NodePath("../../AnimatedSprite2D")
 bear = NodePath("../..")
 
-[node name="Stage2State" type="Node" parent="StateMachine" node_paths=PackedStringArray("animated_sprite", "bear")]
+[node name="Stage2State" type="Node" parent="StateMachine" unique_id=2067914384 node_paths=PackedStringArray("animated_sprite", "bear")]
 script = ExtResource("5_gdq1p")
 beehive_scene = ExtResource("6_fv0hc")
 animated_sprite = NodePath("../../AnimatedSprite2D")
 bear = NodePath("../..")
 
-[node name="Stage3State" type="Node" parent="StateMachine" node_paths=PackedStringArray("wallcheck_raycast", "animated_sprite", "bear")]
+[node name="Stage3State" type="Node" parent="StateMachine" unique_id=1381109869 node_paths=PackedStringArray("beehive_hit_sound", "bear_growl_sound", "wallcheck_raycast", "bear_roar_sounds", "animated_sprite", "bear")]
 script = ExtResource("7_1x621")
+beehive_hit_sound = NodePath("../../Sounds/BeehiveHitSoundPlayer1")
+bear_growl_sound = NodePath("../../Sounds/GrowlAudioStreamPlayer2")
 wallcheck_raycast = NodePath("../../WallcheckRayCast2D")
+bear_roar_sounds = [NodePath("../../Sounds/GrowlAudioStreamPlayer1"), NodePath("../../Sounds/GrowlAudioStreamPlayer2")]
 animated_sprite = NodePath("../../AnimatedSprite2D")
 bear = NodePath("../..")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=173779221]
 position = Vector2(-8, 16)
 sprite_frames = SubResource("SpriteFrames_6yvwj")
 animation = &"beehived"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1291589574]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_t6nln")
 
-[node name="WallcheckRayCast2D" type="RayCast2D" parent="."]
+[node name="WallcheckRayCast2D" type="RayCast2D" parent="." unique_id=545264584]
 target_position = Vector2(64, 0)
 collision_mask = 64
 
-[node name="AttackArea2D" type="Area2D" parent="."]
+[node name="AttackArea2D" type="Area2D" parent="." unique_id=1866923197]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=134200552]
 position = Vector2(-4, 12)
 shape = SubResource("RectangleShape2D_5wfqs")
 

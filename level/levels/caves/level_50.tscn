@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_qms8o"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_5p3ro"]
+[ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="2_q4j7r"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_se30l"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_lieyi"]
 [ext_resource type="Script" uid="uid://l6sodqykds7e" path="res://enemies/bosses/demon-rabbit/demon_bunny.gd" id="5_5vagu"]
@@ -26,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://cyox6cbypd3c2" path="res://enemies/bosses/demon-rabbit/spawners/slot_spike/slot_spike.tscn" id="24_bd8oj"]
 [ext_resource type="PackedScene" uid="uid://b2u0n5g4c7pf4" path="res://enemies/spider/awakened_spider.tscn" id="26_opxan"]
 [ext_resource type="PackedScene" uid="uid://ddnwiys13s3es" path="res://enemies/bosses/demon-rabbit/spawners/slot_superbunny/slot_superbunny.tscn" id="27_n1djo"]
+[ext_resource type="AudioStream" uid="uid://dflr62khea82a" path="res://boss_music.mp3" id="27_q4j7r"]
+[ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="29_ocdvy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmrix"]
 radius = 41.0
@@ -418,12 +421,19 @@ _data = {
 &"reel_3": SubResource("Animation_jksjo")
 }
 
-[node name="Level_50" type="Node2D" unique_id=1052754089 node_paths=PackedStringArray("spawn_locations")]
+[sub_resource type="Curve2D" id="Curve2D_ocdvy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1344, 832, 0, 0, 0, 0, 1344, 704)
+}
+point_count = 2
+
+[node name="Level_50" type="Node2D" unique_id=1052754089 node_paths=PackedStringArray("spawn_locations", "music_override")]
 script = ExtResource("1_qms8o")
 level_binding_box = Rect2(384, 320, 1344, 1088)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
 camera_zoom_to = Vector2(0.8, 0.8)
 camera_zoom_speed = 0.01
+music_override = NodePath("BossMusicAudioStreamPlayer")
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1426282439]
 position = Vector2(512, 832)
@@ -433,23 +443,17 @@ position = Vector2(2144, 480)
 
 [node name="Level" type="TileMapLayer" parent="." unique_id=536247868]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAAFAAgAAgADAAIAAAAFAAkAAgADAAIAAAAFAAoAAgADAAIAAAAFAAsAAgADAAIAAAAFAAwAAgADAAIAAAAFAA0AAgADAAIAAAAFAA4AAgADAAIAAAAFAA8AAgADAAIAAAAFABAAAgADAAIAAAAFABEAAgADAAIAAAAFABIAAgADAAIAAAAFABMAAgADAAIAAAAQABEAAgAHAAEAAAARABEAAgAIAAEAAAASABEAAgAJAAEAAAAVAAoAAgABAAIAAAAVAAsAAgABAAIAAAAVAAwAAgABAAIAAAAVAA0AAgABAAIAAAAVAA4AAgABAAIAAAAVAA8AAgABAAIAAAAVABAAAgABAAIAAAAVABEAAgABAAIAAAAVABIAAgABAAIAAAAVABMAAgABAAIAAAAVAAkAAgABAAIAAAAJAAgAAgACAAMAAAAKAAgAAgACAAMAAAALAAgAAgACAAMAAAAMAAgAAgACAAMAAAANAAgAAgACAAMAAAAOAAgAAgACAAMAAAAPAAgAAgADAAMAAAATAAgAAgABAAMAAAAUAAgAAgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAFAAgAAgADAAIAAAAFAAkAAgADAAIAAAAFAAoAAgADAAIAAAAFAAsAAgADAAIAAAAFAAwAAgADAAIAAAAFAA0AAgADAAIAAAAFAA4AAgADAAIAAAAFAA8AAgADAAIAAAAFABAAAgADAAIAAAAFABEAAgADAAIAAAAFABIAAgADAAIAAAAFABMAAgADAAIAAAAQABEAAgAHAAEAAAARABEAAgAIAAEAAAASABEAAgAJAAEAAAAVAAoAAgABAAIAAAAVAAsAAgABAAIAAAAVAAwAAgABAAIAAAAVAA0AAgABAAIAAAAVABIAAgABAAIAAAAVABMAAgABAAIAAAAVAAkAAgABAAIAAAAJAAgAAgACAAMAAAAKAAgAAgACAAMAAAALAAgAAgACAAMAAAAMAAgAAgACAAMAAAANAAgAAgACAAMAAAAOAAgAAgACAAMAAAAPAAgAAgADAAMAAAATAAgAAgABAAMAAAAUAAgAAgACAAMAAAAVABEAAgABAAEAAAAVAA4AAgABAAMAAAA=")
 tile_set = ExtResource("2_5p3ro")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=711802277]
-tile_map_data = PackedByteArray("AAALABAAAAAGAAQAAAAMABAAAAAHAAQAAAALABEAAAAGAAQAAAAMABEAAAAHAAQAAAALABIAAAAGAAQAAAAMABIAAAAHAAQAAAALABMAAAAGAAQAAAAMABMAAAAHAAQAAAALABQAAAAGAAQAAAAMABQAAAAHAAQAAAALABUAAAAGAAQAAAAMABUAAAAHAAQAAAALABYAAAAGAAQAAAAMABYAAAAHAAQAAAALABcAAAAGAAQAAAAMABcAAAAHAAQAAAALABgAAAAGAAQAAAAMABgAAAAHAAQAAAALABkAAAAGAAQAAAAMABkAAAAHAAQAAAALABoAAAAGAAQAAAAMABoAAAAHAAQAAAALABsAAAAGAAQAAAAMABsAAAAHAAQAAAALABwAAAAGAAQAAAAMABwAAAAHAAQAAAALAB0AAAAGAAQAAAAMAB0AAAAHAAQAAAALAB4AAAAGAAQAAAAMAB4AAAAHAAQAAAALAB8AAAAGAAQAAAAMAB8AAAAHAAQAAAALACAAAAAGAAQAAAAMACAAAAAHAAQAAAALACEAAAAGAAQAAAAMACEAAAAHAAQAAAALACIAAAAGAAQAAAAMACIAAAAHAAQAAAALACMAAAAGAAQAAAAMACMAAAAHAAQAAAALACQAAAAGAAQAAAAMACQAAAAHAAQAAAALACUAAAAGAAQAAAAMACUAAAAHAAQAAAALACYAAAAGAAQAAAAMACYAAAAHAAQAAAALACcAAAAGAAQAAAAMACcAAAAHAAQAAAApABIAAAACAAQAAAAqABIAAAADAAQAAAApABMAAAACAAQAAAAqABMAAAADAAQAAAApABQAAAACAAQAAAAqABQAAAADAAQAAAApABUAAAACAAQAAAAqABUAAAADAAQAAAApABYAAAACAAQAAAAqABYAAAADAAQAAAApABcAAAACAAQAAAAqABcAAAADAAQAAAApABgAAAACAAQAAAAqABgAAAADAAQAAAApABkAAAACAAQAAAAqABkAAAADAAQAAAApABoAAAACAAQAAAAqABoAAAADAAQAAAApABsAAAACAAQAAAAqABsAAAADAAQAAAApABwAAAACAAQAAAAqABwAAAADAAQAAAApAB0AAAACAAQAAAAqAB0AAAADAAQAAAApAB4AAAACAAQAAAAqAB4AAAADAAQAAAApAB8AAAACAAQAAAAqAB8AAAADAAQAAAApACAAAAACAAQAAAAqACAAAAADAAQAAAApACEAAAACAAQAAAAqACEAAAADAAQAAAApACIAAAACAAQAAAAqACIAAAADAAQAAAApACMAAAACAAQAAAAqACMAAAADAAQAAAApACQAAAACAAQAAAAqACQAAAADAAQAAAApACUAAAACAAQAAAAqACUAAAADAAQAAAApACYAAAACAAQAAAAqACYAAAADAAQAAAApACcAAAACAAQAAAAqACcAAAADAAQAAAAMACgAAAAfAAYAAAApACgAAAAWAAYAAAApABEAAAAWAA8AAAASABAAAAACAAYAAAASABEAAAACAAcAAAATABEAAAADAAcAAAA=")
+tile_map_data = PackedByteArray("AAALABAAAAAGAAQAAAAMABAAAAAHAAQAAAALABEAAAAGAAQAAAAMABEAAAAHAAQAAAALABIAAAAGAAQAAAAMABIAAAAHAAQAAAALABMAAAAGAAQAAAAMABMAAAAHAAQAAAALABQAAAAGAAQAAAAMABQAAAAHAAQAAAALABUAAAAGAAQAAAAMABUAAAAHAAQAAAALABYAAAAGAAQAAAAMABYAAAAHAAQAAAALABcAAAAGAAQAAAAMABcAAAAHAAQAAAALABgAAAAGAAQAAAAMABgAAAAHAAQAAAALABkAAAAGAAQAAAAMABkAAAAHAAQAAAALABoAAAAGAAQAAAAMABoAAAAHAAQAAAALABsAAAAGAAQAAAAMABsAAAAHAAQAAAALABwAAAAGAAQAAAAMABwAAAAHAAQAAAALAB0AAAAGAAQAAAAMAB0AAAAHAAQAAAALAB4AAAAGAAQAAAAMAB4AAAAHAAQAAAALAB8AAAAGAAQAAAAMAB8AAAAHAAQAAAALACAAAAAGAAQAAAAMACAAAAAHAAQAAAALACEAAAAGAAQAAAAMACEAAAAHAAQAAAALACIAAAAGAAQAAAAMACIAAAAHAAQAAAALACMAAAAGAAQAAAAMACMAAAAHAAQAAAALACQAAAAGAAQAAAAMACQAAAAHAAQAAAALACUAAAAGAAQAAAAMACUAAAAHAAQAAAALACYAAAAGAAQAAAAMACYAAAAHAAQAAAALACcAAAAGAAQAAAAMACcAAAAHAAQAAAApABIAAAACAAQAAAAqABIAAAADAAQAAAApABMAAAACAAQAAAAqABMAAAADAAQAAAApABQAAAACAAQAAAAqABQAAAADAAQAAAApABUAAAACAAQAAAAqABUAAAADAAQAAAApABYAAAACAAQAAAAqABYAAAADAAQAAAApABcAAAACAAQAAAAqABcAAAADAAQAAAApABgAAAACAAQAAAAqABgAAAADAAQAAAApABkAAAACAAQAAAAqABkAAAADAAQAAAApABoAAAACAAQAAAAqABoAAAADAAQAAAApABsAAAACAAQAAAAqABsAAAADAAQAAAApABwAAAACAAYAAAAqABwAAAADAAYAAAApACMAAAACAAMAAAAqACMAAAADAAMAAAApACQAAAACAAQAAAAqACQAAAADAAQAAAApACUAAAACAAQAAAAqACUAAAADAAQAAAApACYAAAACAAQAAAAqACYAAAADAAQAAAApACcAAAACAAQAAAAqACcAAAADAAQAAAAMACgAAAAfAAYAAAApACgAAAAWAAYAAAApABEAAAAWAA8AAAASABAAAAACAAYAAAASABEAAAACAAcAAAATABEAAAADAAcAAAAqACIAAAADAAIAAAApACIAAAACAAIAAAApAB0AAAACAAcAAAAqAB0AAAADAAcAAAA=")
 tile_set = ExtResource("3_se30l")
 
 [node name="ToNextLevelTeleportZone" parent="." unique_id=1678569333 instance=ExtResource("4_lieyi")]
-position = Vector2(2208, 448)
+position = Vector2(1440, 832)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/level_22.tscn"
-
-[node name="ToPreviousLevelTeleportZone" parent="." unique_id=1995164977 instance=ExtResource("4_lieyi")]
-position = Vector2(-288, 448)
-scale = Vector2(4, 8.1)
-to_level_path = "uid://b3mv21r6xcn7b"
-to_spawn_location_with_index = 1
+to_level_path = "uid://c1erl7bnnoa87"
 
 [node name="DemonRabbit" type="CharacterBody2D" parent="." unique_id=1851863627 node_paths=PackedStringArray("slots")]
 position = Vector2(1120, 752)
@@ -861,9 +865,26 @@ enemy_scene = ExtResource("26_opxan")
 spawn_every_x_seconds = 0.0
 stop_spawning_after_x_seconds = 0.0
 
+[node name="BossMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1450441113]
+stream = ExtResource("27_q4j7r")
+parameters/looping = true
+
+[node name="Path2D" type="Path2D" parent="." unique_id=802491862]
+curve = SubResource("Curve2D_ocdvy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=726502068]
+position = Vector2(1344, 832)
+rotates = false
+loop = false
+
+[node name="Door" parent="Path2D/PathFollow2D" unique_id=1534481248 node_paths=PackedStringArray("movement_path") instance=ExtResource("2_q4j7r")]
+script = ExtResource("29_ocdvy")
+movement_path = NodePath("..")
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="on_damage" from="DemonRabbit" to="DemonRabbit/StateMachine/StageTwo" method="_on_take_damage"]
 [connection signal="on_death" from="DemonRabbit" to="DemonRabbit/StateMachine/StageTwo" method="_on_death"]
+[connection signal="on_death" from="DemonRabbit" to="Path2D/PathFollow2D/Door" method="_on_switch_flipped_on"]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch" to="SlotsPath2D/PathFollow2D/Slot/Reel" method="hold_reel" unbinds=1]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch2" to="SlotsPath2D/PathFollow2D/Slot/Reel2" method="hold_reel" unbinds=1]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch3" to="SlotsPath2D/PathFollow2D/Slot/Reel3" method="hold_reel" unbinds=1]

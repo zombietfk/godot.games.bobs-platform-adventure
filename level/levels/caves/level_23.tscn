@@ -54,20 +54,10 @@ poof_timer_inital_offset = 2.0
 position = Vector2(544, 672)
 poof_every_x_seconds = 5.0
 
-[node name="Mushroom3" parent="." unique_id=708823976 instance=ExtResource("6_adbqa")]
-position = Vector2(624, 672)
-poof_every_x_seconds = 5.0
-poof_timer_inital_offset = 2.5
-
 [node name="Mushroom4" parent="." unique_id=1925849586 instance=ExtResource("6_adbqa")]
 position = Vector2(704, 672)
 poof_every_x_seconds = 5.0
 poof_timer_inital_offset = 5.0
-
-[node name="Mushroom5" parent="." unique_id=1937302262 instance=ExtResource("6_adbqa")]
-position = Vector2(784, 672)
-poof_every_x_seconds = 5.0
-poof_timer_inital_offset = 2.5
 
 [node name="Mushroom6" parent="." unique_id=1301724853 instance=ExtResource("6_adbqa")]
 position = Vector2(864, 672)

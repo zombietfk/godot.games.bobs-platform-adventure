@@ -70,6 +70,7 @@ static func load_level(
 		level_instance.queue_free();
 	await Main.instance.get_tree().process_frame;
 	var level = load(level_path).instantiate() as Level;
+	level.process_mode = Node.PROCESS_MODE_PAUSABLE;
 	level.ready.connect(instance._on_level_ready);
 	level_instance = level;
 	# Set limits for game camera
@@ -83,5 +84,11 @@ static func load_level(
 	player.global_position = level.spawn_locations[spawn_index].global_position;
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_text_backspace"):
+	if Input.is_action_just_pressed("pause_game"):
+		$GameUI/UI/PauseUI.visible = !$GameUI/UI/PauseUI.visible; 
+		get_tree().paused = !get_tree().paused;
+		Main.instance.music.stream_paused = !Main.instance.music.stream_paused; 
+	if Input.is_action_just_pressed("cheat_menu"):
 		$GameUI/UI/CheatBox.visible = !$GameUI/UI/CheatBox.visible;
+		$GameUI/UI/CheatBox/HBoxContainer/Button.disabled = !$GameUI/UI/CheatBox/HBoxContainer/Button.disabled;
+		$GameUI/UI/CheatBox/HBoxContainer/LineEdit.editable = !$GameUI/UI/CheatBox/HBoxContainer/LineEdit.editable;

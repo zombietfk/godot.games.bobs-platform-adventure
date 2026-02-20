@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://q5qpawrgycso"]
+[gd_scene format=4 uid="uid://q5qpawrgycso"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_3rose"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_n3wck"]
@@ -7,281 +7,335 @@
 [ext_resource type="PackedScene" uid="uid://bkb14r24qkb5h" path="res://objects/traps/boulder/factory/create_boulder_on_switch_press.tscn" id="6_77gkp"]
 [ext_resource type="PackedScene" uid="uid://na80be7hljms" path="res://objects/web/web.tscn" id="7_3rose"]
 [ext_resource type="PackedScene" uid="uid://c0f040qno7j70" path="res://objects/switch/switch_area.tscn" id="7_w2xo2"]
+[ext_resource type="Texture2D" uid="uid://bd4mebmw75evm" path="res://objects/danger_area_spritesheet.png" id="8_n3wck"]
 
-[node name="Level_17" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk054"]
+atlas = ExtResource("8_n3wck")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewtre"]
+atlas = ExtResource("8_n3wck")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4wsh"]
+atlas = ExtResource("8_n3wck")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kh8ow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk054")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewtre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4wsh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Level_17" type="Node2D" unique_id=1859938625 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_3rose")
 level_binding_box = Rect2(0, 288, 1728, 1120)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=829571604]
 position = Vector2(32, 640)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=626980786]
 position = Vector2(1696, 640)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1225751119]
 position = Vector2(0, -224)
 tile_map_data = PackedByteArray("AAAAAAsAAgADAAMAAAAAAA4AAgADAAEAAAAAAA8AAgADAAIAAAAAABAAAgADAAIAAAAAABEAAgADAAIAAAAAABIAAgADAAIAAAAAABMAAgADAAIAAAAAABQAAgADAAIAAAAAAAoAAgADAAIAAAABAAkAAgADAAMAAAACAAgAAgACAAMAAAADAAgAAgACAAMAAAAEAAgAAgACAAMAAAAFAAgAAgACAAMAAAAGAAgAAgACAAMAAAAHAAgAAgACAAMAAAAIAAgAAgADAAMAAAALAAgAAgABAAMAAAAMAAgAAgACAAMAAAARAAgAAgABAAMAAAASAAgAAgACAAMAAAATAAgAAgACAAMAAAAUAAgAAgACAAMAAAAVAAgAAgACAAMAAAAWAAgAAgACAAMAAAAXAAgAAgACAAMAAAAYAAgAAgACAAMAAAAZAAkAAgABAAMAAAAaAAoAAgABAAIAAAAaAAsAAgABAAMAAAAaAA4AAgABAAEAAAAaAA8AAgABAAIAAAAaABAAAgABAAIAAAAaABEAAgABAAIAAAAaABIAAgABAAIAAAAaABMAAgABAAIAAAAaABQAAgABAAIAAAAOAAgAAgADAAMAAAABAAgAAgAPAAcAAAAAAAkAAgAPAAcAAAAaAAkAAgALAAcAAAAZAAgAAgALAAcAAAANAAgAAgACAAMAAAA=")
 tile_set = ExtResource("2_n3wck")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=842715425]
 tile_set = ExtResource("3_kh8ow")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_msljh")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1646069527 instance=ExtResource("4_msljh")]
 position = Vector2(1760, 608)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_18.tscn"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_msljh")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=305539860 instance=ExtResource("4_msljh")]
 position = Vector2(-32, 608)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://c10d77the2xl6"
 to_spawn_location_with_index = 1
 
-[node name="CreateBoulderOnSwitchPress" parent="." instance=ExtResource("6_77gkp")]
+[node name="CreateBoulderOnSwitchPress" parent="." unique_id=161150835 instance=ExtResource("6_77gkp")]
 position = Vector2(640, 224)
 boulder_scale = Vector2(2, 2)
 boulder_gravity_factor = 4.0
 
-[node name="CreateBoulderOnSwitchPress2" parent="." instance=ExtResource("6_77gkp")]
+[node name="CreateBoulderOnSwitchPress2" parent="." unique_id=1637974481 instance=ExtResource("6_77gkp")]
 position = Vector2(1024, 224)
 boulder_scale = Vector2(2, 2)
 boulder_gravity_factor = 4.0
 
-[node name="SwitchArea" parent="." instance=ExtResource("7_w2xo2")]
+[node name="SwitchArea" parent="." unique_id=488442322 instance=ExtResource("7_w2xo2")]
 position = Vector2(640, 504)
 release_on_leave = true
 
-[node name="SwitchArea2" parent="." instance=ExtResource("7_w2xo2")]
+[node name="SwitchArea2" parent="." unique_id=330107616 instance=ExtResource("7_w2xo2")]
 position = Vector2(640, 776)
 release_on_leave = true
 
-[node name="SwitchArea4" parent="." instance=ExtResource("7_w2xo2")]
+[node name="SwitchArea4" parent="." unique_id=1594297941 instance=ExtResource("7_w2xo2")]
 position = Vector2(1024, 472)
 release_on_leave = true
 
-[node name="SwitchArea5" parent="." instance=ExtResource("7_w2xo2")]
+[node name="SwitchArea5" parent="." unique_id=2024787822 instance=ExtResource("7_w2xo2")]
 position = Vector2(1024, 744)
 release_on_leave = true
 
-[node name="Web" parent="." instance=ExtResource("7_3rose")]
+[node name="Web" parent="." unique_id=1898204915 instance=ExtResource("7_3rose")]
 position = Vector2(112, 640)
 
-[node name="Web2" parent="." instance=ExtResource("7_3rose")]
+[node name="Web2" parent="." unique_id=1254640608 instance=ExtResource("7_3rose")]
 position = Vector2(288, 576)
 
-[node name="Web3" parent="." instance=ExtResource("7_3rose")]
+[node name="Web3" parent="." unique_id=1845323214 instance=ExtResource("7_3rose")]
 position = Vector2(288, 512)
 
-[node name="Web4" parent="." instance=ExtResource("7_3rose")]
+[node name="Web4" parent="." unique_id=1197992763 instance=ExtResource("7_3rose")]
 position = Vector2(96, 704)
 
-[node name="Web28" parent="." instance=ExtResource("7_3rose")]
+[node name="Web28" parent="." unique_id=747556213 instance=ExtResource("7_3rose")]
 position = Vector2(96, 768)
 
-[node name="Web29" parent="." instance=ExtResource("7_3rose")]
+[node name="Web29" parent="." unique_id=100881269 instance=ExtResource("7_3rose")]
 position = Vector2(160, 704)
 
-[node name="Web30" parent="." instance=ExtResource("7_3rose")]
+[node name="Web30" parent="." unique_id=498240696 instance=ExtResource("7_3rose")]
 position = Vector2(96, 832)
 
-[node name="Web31" parent="." instance=ExtResource("7_3rose")]
+[node name="Web31" parent="." unique_id=1970727656 instance=ExtResource("7_3rose")]
 position = Vector2(352, 448)
 
-[node name="Web32" parent="." instance=ExtResource("7_3rose")]
+[node name="Web32" parent="." unique_id=1009304099 instance=ExtResource("7_3rose")]
 position = Vector2(352, 384)
 
-[node name="Web33" parent="." instance=ExtResource("7_3rose")]
+[node name="Web33" parent="." unique_id=1030650994 instance=ExtResource("7_3rose")]
 position = Vector2(416, 384)
 
-[node name="Web38" parent="." instance=ExtResource("7_3rose")]
+[node name="Web38" parent="." unique_id=1816731610 instance=ExtResource("7_3rose")]
 position = Vector2(288, 384)
 
-[node name="Web43" parent="." instance=ExtResource("7_3rose")]
+[node name="Web43" parent="." unique_id=563492654 instance=ExtResource("7_3rose")]
 position = Vector2(1632, 480)
 
-[node name="Web44" parent="." instance=ExtResource("7_3rose")]
+[node name="Web44" parent="." unique_id=1298051284 instance=ExtResource("7_3rose")]
 position = Vector2(1568, 480)
 
-[node name="Web45" parent="." instance=ExtResource("7_3rose")]
+[node name="Web45" parent="." unique_id=1374352112 instance=ExtResource("7_3rose")]
 position = Vector2(1568, 416)
 
-[node name="Web51" parent="." instance=ExtResource("7_3rose")]
+[node name="Web51" parent="." unique_id=107433703 instance=ExtResource("7_3rose")]
 position = Vector2(1504, 384)
 
-[node name="Web61" parent="." instance=ExtResource("7_3rose")]
+[node name="Web61" parent="." unique_id=1254519550 instance=ExtResource("7_3rose")]
 position = Vector2(1504, 448)
 
-[node name="Web70" parent="." instance=ExtResource("7_3rose")]
+[node name="Web70" parent="." unique_id=843109493 instance=ExtResource("7_3rose")]
 position = Vector2(1440, 384)
 
-[node name="Web7" parent="." instance=ExtResource("7_3rose")]
+[node name="Web7" parent="." unique_id=184158227 instance=ExtResource("7_3rose")]
 position = Vector2(240, 640)
 
-[node name="Web8" parent="." instance=ExtResource("7_3rose")]
+[node name="Web8" parent="." unique_id=718864390 instance=ExtResource("7_3rose")]
 position = Vector2(176, 640)
 
-[node name="Web9" parent="." instance=ExtResource("7_3rose")]
+[node name="Web9" parent="." unique_id=299239976 instance=ExtResource("7_3rose")]
 position = Vector2(224, 576)
 
-[node name="Web5" parent="." instance=ExtResource("7_3rose")]
+[node name="Web5" parent="." unique_id=2081903013 instance=ExtResource("7_3rose")]
 position = Vector2(352, 512)
 
-[node name="Web6" parent="." instance=ExtResource("7_3rose")]
+[node name="Web6" parent="." unique_id=1251197499 instance=ExtResource("7_3rose")]
 position = Vector2(352, 576)
 
-[node name="Web10" parent="." instance=ExtResource("7_3rose")]
+[node name="Web10" parent="." unique_id=157669434 instance=ExtResource("7_3rose")]
 position = Vector2(416, 544)
 
-[node name="Web11" parent="." instance=ExtResource("7_3rose")]
+[node name="Web11" parent="." unique_id=1451928480 instance=ExtResource("7_3rose")]
 position = Vector2(416, 608)
 
-[node name="Web12" parent="." instance=ExtResource("7_3rose")]
+[node name="Web12" parent="." unique_id=654126224 instance=ExtResource("7_3rose")]
 position = Vector2(416, 480)
 
-[node name="Web13" parent="." instance=ExtResource("7_3rose")]
+[node name="Web13" parent="." unique_id=1496504688 instance=ExtResource("7_3rose")]
 position = Vector2(480, 592)
 
-[node name="Web14" parent="." instance=ExtResource("7_3rose")]
+[node name="Web14" parent="." unique_id=272524612 instance=ExtResource("7_3rose")]
 position = Vector2(480, 656)
 
-[node name="Web15" parent="." instance=ExtResource("7_3rose")]
+[node name="Web15" parent="." unique_id=1908784779 instance=ExtResource("7_3rose")]
 position = Vector2(480, 528)
 
-[node name="Web16" parent="." instance=ExtResource("7_3rose")]
+[node name="Web16" parent="." unique_id=281847661 instance=ExtResource("7_3rose")]
 position = Vector2(544, 624)
 
-[node name="Web17" parent="." instance=ExtResource("7_3rose")]
+[node name="Web17" parent="." unique_id=1166217228 instance=ExtResource("7_3rose")]
 position = Vector2(544, 688)
 
-[node name="Web18" parent="." instance=ExtResource("7_3rose")]
+[node name="Web18" parent="." unique_id=310064940 instance=ExtResource("7_3rose")]
 position = Vector2(544, 560)
 
-[node name="Web19" parent="." instance=ExtResource("7_3rose")]
+[node name="Web19" parent="." unique_id=2116470773 instance=ExtResource("7_3rose")]
 position = Vector2(608, 608)
 
-[node name="Web20" parent="." instance=ExtResource("7_3rose")]
+[node name="Web20" parent="." unique_id=1732264302 instance=ExtResource("7_3rose")]
 position = Vector2(672, 608)
 
-[node name="Web21" parent="." instance=ExtResource("7_3rose")]
+[node name="Web21" parent="." unique_id=1054608074 instance=ExtResource("7_3rose")]
 position = Vector2(608, 672)
 
-[node name="Web22" parent="." instance=ExtResource("7_3rose")]
+[node name="Web22" parent="." unique_id=724530248 instance=ExtResource("7_3rose")]
 position = Vector2(736, 576)
 
-[node name="Web23" parent="." instance=ExtResource("7_3rose")]
+[node name="Web23" parent="." unique_id=1849807487 instance=ExtResource("7_3rose")]
 position = Vector2(736, 640)
 
-[node name="Web25" parent="." instance=ExtResource("7_3rose")]
+[node name="Web25" parent="." unique_id=1784702593 instance=ExtResource("7_3rose")]
 position = Vector2(736, 768)
 
-[node name="Web24" parent="." instance=ExtResource("7_3rose")]
+[node name="Web24" parent="." unique_id=1727121167 instance=ExtResource("7_3rose")]
 position = Vector2(672, 672)
 
-[node name="Web27" parent="." instance=ExtResource("7_3rose")]
+[node name="Web27" parent="." unique_id=808930517 instance=ExtResource("7_3rose")]
 position = Vector2(736, 704)
 
-[node name="Web35" parent="." instance=ExtResource("7_3rose")]
+[node name="Web35" parent="." unique_id=252064794 instance=ExtResource("7_3rose")]
 position = Vector2(928, 752)
 
-[node name="Web36" parent="." instance=ExtResource("7_3rose")]
+[node name="Web36" parent="." unique_id=664258782 instance=ExtResource("7_3rose")]
 position = Vector2(928, 688)
 
-[node name="Web37" parent="." instance=ExtResource("7_3rose")]
+[node name="Web37" parent="." unique_id=269022767 instance=ExtResource("7_3rose")]
 position = Vector2(928, 624)
 
-[node name="Web39" parent="." instance=ExtResource("7_3rose")]
+[node name="Web39" parent="." unique_id=479165023 instance=ExtResource("7_3rose")]
 position = Vector2(992, 640)
 
-[node name="Web40" parent="." instance=ExtResource("7_3rose")]
+[node name="Web40" parent="." unique_id=262098873 instance=ExtResource("7_3rose")]
 position = Vector2(1056, 640)
 
-[node name="Web41" parent="." instance=ExtResource("7_3rose")]
+[node name="Web41" parent="." unique_id=660345208 instance=ExtResource("7_3rose")]
 position = Vector2(1056, 576)
 
-[node name="Web42" parent="." instance=ExtResource("7_3rose")]
+[node name="Web42" parent="." unique_id=208595896 instance=ExtResource("7_3rose")]
 position = Vector2(1120, 560)
 
-[node name="Web46" parent="." instance=ExtResource("7_3rose")]
+[node name="Web46" parent="." unique_id=984385104 instance=ExtResource("7_3rose")]
 position = Vector2(1120, 688)
 
-[node name="Web47" parent="." instance=ExtResource("7_3rose")]
+[node name="Web47" parent="." unique_id=1393656116 instance=ExtResource("7_3rose")]
 position = Vector2(1120, 624)
 
-[node name="Web48" parent="." instance=ExtResource("7_3rose")]
+[node name="Web48" parent="." unique_id=1342955512 instance=ExtResource("7_3rose")]
 position = Vector2(1120, 816)
 
-[node name="Web49" parent="." instance=ExtResource("7_3rose")]
+[node name="Web49" parent="." unique_id=917400156 instance=ExtResource("7_3rose")]
 position = Vector2(1120, 752)
 
-[node name="Web50" parent="." instance=ExtResource("7_3rose")]
+[node name="Web50" parent="." unique_id=38371563 instance=ExtResource("7_3rose")]
 position = Vector2(1184, 816)
 
-[node name="Web52" parent="." instance=ExtResource("7_3rose")]
+[node name="Web52" parent="." unique_id=1077810944 instance=ExtResource("7_3rose")]
 position = Vector2(1440, 704)
 
-[node name="Web62" parent="." instance=ExtResource("7_3rose")]
+[node name="Web62" parent="." unique_id=1557886651 instance=ExtResource("7_3rose")]
 position = Vector2(1440, 768)
 
-[node name="Web71" parent="." instance=ExtResource("7_3rose")]
+[node name="Web71" parent="." unique_id=359867223 instance=ExtResource("7_3rose")]
 position = Vector2(1504, 832)
 
-[node name="Web72" parent="." instance=ExtResource("7_3rose")]
+[node name="Web72" parent="." unique_id=210540874 instance=ExtResource("7_3rose")]
 position = Vector2(1568, 896)
 
-[node name="Web73" parent="." instance=ExtResource("7_3rose")]
+[node name="Web73" parent="." unique_id=147096168 instance=ExtResource("7_3rose")]
 position = Vector2(1632, 960)
 
-[node name="Web74" parent="." instance=ExtResource("7_3rose")]
+[node name="Web74" parent="." unique_id=821319703 instance=ExtResource("7_3rose")]
 position = Vector2(1632, 896)
 
-[node name="Web75" parent="." instance=ExtResource("7_3rose")]
+[node name="Web75" parent="." unique_id=866236213 instance=ExtResource("7_3rose")]
 position = Vector2(1440, 832)
 
-[node name="Web76" parent="." instance=ExtResource("7_3rose")]
+[node name="Web76" parent="." unique_id=38430550 instance=ExtResource("7_3rose")]
 position = Vector2(1504, 896)
 
-[node name="Web63" parent="." instance=ExtResource("7_3rose")]
+[node name="Web63" parent="." unique_id=1339114790 instance=ExtResource("7_3rose")]
 position = Vector2(1504, 672)
 
-[node name="Web64" parent="." instance=ExtResource("7_3rose")]
+[node name="Web64" parent="." unique_id=711458149 instance=ExtResource("7_3rose")]
 position = Vector2(1568, 640)
 
-[node name="Web65" parent="." instance=ExtResource("7_3rose")]
+[node name="Web65" parent="." unique_id=1630837624 instance=ExtResource("7_3rose")]
 position = Vector2(1632, 672)
 
-[node name="Web66" parent="." instance=ExtResource("7_3rose")]
+[node name="Web66" parent="." unique_id=167593846 instance=ExtResource("7_3rose")]
 position = Vector2(1632, 608)
 
-[node name="Web67" parent="." instance=ExtResource("7_3rose")]
+[node name="Web67" parent="." unique_id=711232039 instance=ExtResource("7_3rose")]
 position = Vector2(1632, 544)
 
-[node name="Web53" parent="." instance=ExtResource("7_3rose")]
+[node name="Web53" parent="." unique_id=1365059649 instance=ExtResource("7_3rose")]
 position = Vector2(1248, 816)
 
-[node name="Web54" parent="." instance=ExtResource("7_3rose")]
+[node name="Web54" parent="." unique_id=1340109963 instance=ExtResource("7_3rose")]
 position = Vector2(1312, 864)
 
-[node name="Web55" parent="." instance=ExtResource("7_3rose")]
+[node name="Web55" parent="." unique_id=1457124676 instance=ExtResource("7_3rose")]
 position = Vector2(1312, 800)
 
-[node name="Web68" parent="." instance=ExtResource("7_3rose")]
+[node name="Web68" parent="." unique_id=1419253729 instance=ExtResource("7_3rose")]
 position = Vector2(1248, 880)
 
-[node name="Web69" parent="." instance=ExtResource("7_3rose")]
+[node name="Web69" parent="." unique_id=2021930437 instance=ExtResource("7_3rose")]
 position = Vector2(1184, 752)
 
-[node name="Web56" parent="." instance=ExtResource("7_3rose")]
+[node name="Web56" parent="." unique_id=447246133 instance=ExtResource("7_3rose")]
 position = Vector2(1376, 816)
 
-[node name="Web57" parent="." instance=ExtResource("7_3rose")]
+[node name="Web57" parent="." unique_id=668454202 instance=ExtResource("7_3rose")]
 position = Vector2(1376, 752)
 
-[node name="Web58" parent="." instance=ExtResource("7_3rose")]
+[node name="Web58" parent="." unique_id=1720471572 instance=ExtResource("7_3rose")]
 position = Vector2(992, 576)
 
-[node name="Web59" parent="." instance=ExtResource("7_3rose")]
+[node name="Web59" parent="." unique_id=1101247974 instance=ExtResource("7_3rose")]
 position = Vector2(928, 560)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=893891226]
+position = Vector2(640, 512)
+scale = Vector2(2, 1.9999999)
+sprite_frames = SubResource("SpriteFrames_kh8ow")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=847640175]
+position = Vector2(1024, 480)
+scale = Vector2(2, 1.9999999)
+sprite_frames = SubResource("SpriteFrames_kh8ow")
+autoplay = "default"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="." unique_id=964986022]
+position = Vector2(1024, 736)
+scale = Vector2(2, 1.9999999)
+sprite_frames = SubResource("SpriteFrames_kh8ow")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1241988450]
+position = Vector2(640, 768)
+scale = Vector2(2, 1.9999999)
+sprite_frames = SubResource("SpriteFrames_kh8ow")
+autoplay = "default"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="SwitchArea" to="CreateBoulderOnSwitchPress" method="_fire_boulder_on_swtich_press"]

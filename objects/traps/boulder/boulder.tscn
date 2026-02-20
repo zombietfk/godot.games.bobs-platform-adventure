@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi3xpgkcdygkk"]
+[gd_scene format=3 uid="uid://bi3xpgkcdygkk"]
 
 [ext_resource type="Script" uid="uid://bubd5led40nog" path="res://objects/traps/boulder/boulder.gd" id="1_ynfem"]
+[ext_resource type="AudioStream" uid="uid://bj7p5s3yxvdnl" path="res://sound_effects/swish_1.mp3" id="2_n2x6v"]
 [ext_resource type="Texture2D" uid="uid://b2txoe7d7ju3x" path="res://objects/traps/boulder/boulder.png" id="2_pb4r6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb4r6"]
@@ -73,29 +74,31 @@ _data = {
 &"spin_sawblade": SubResource("Animation_0hunc")
 }
 
-[node name="Boulder" type="CharacterBody2D"]
+[node name="Boulder" type="CharacterBody2D" unique_id=1669734907]
 z_index = -1
 scale = Vector2(2, 2)
 collision_layer = 512
 collision_mask = 0
 script = ExtResource("1_ynfem")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1054065251]
+stream = ExtResource("2_n2x6v")
+max_distance = 960.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1510803003]
 sprite_frames = SubResource("SpriteFrames_fhb0k")
 frame_progress = 0.44781804
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1511892824]
 shape = SubResource("CircleShape2D_0hunc")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_jqo0m")
-}
-autoplay = "spin_sawblade"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1212117273]
+libraries/ = SubResource("AnimationLibrary_jqo0m")
+autoplay = &"spin_sawblade"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1323784599]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1269298512]
 shape = SubResource("CircleShape2D_0hunc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

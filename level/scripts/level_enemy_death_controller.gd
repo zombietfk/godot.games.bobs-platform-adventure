@@ -8,6 +8,7 @@ var _is_door_already_opened := false;
 @export var total_imps_to_be_killed := 4;
 @export var demon_bunny_scene: PackedScene;
 @export var demon_bunny_spawn_point: Marker2D;
+@export var summon_sound: AudioStreamPlayer;
 signal all_imps_killed(); 
 
 func on_bunny_death_handler() -> void:
@@ -32,6 +33,7 @@ func _summon_demon_bunny_to_kill_player()->void:
 	if _is_demon_bunny_already_summoned:
 		return;
 	_is_demon_bunny_already_summoned = true;
+	summon_sound.play();
 	var bunny = demon_bunny_scene.instantiate() as Node2D;
 	Main.instance.level_instance.add_child(bunny);
 	bunny.global_position = demon_bunny_spawn_point.global_position;

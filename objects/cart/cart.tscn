@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkgmrqr5tlxp2" path="res://objects/cart/cart.gd" id="1_jq3dk"]
 [ext_resource type="Texture2D" uid="uid://clji6ilrmgmib" path="res://objects/cart/minecart_spritesheet.png" id="1_na6r7"]
+[ext_resource type="AudioStream" uid="uid://cj384imrkhe16" path="res://sound_effects/cart_1.mp3" id="2_7xidb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btuh4"]
 atlas = ExtResource("1_na6r7")
@@ -54,6 +55,10 @@ collision_layer = 8
 collision_mask = 64
 floor_snap_length = 8.0
 script = ExtResource("1_jq3dk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1881918845]
+stream = ExtResource("2_7xidb")
+parameters/looping = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=35864881]
 z_index = 2

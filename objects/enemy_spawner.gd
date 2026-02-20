@@ -6,12 +6,15 @@ extends Node2D
 var _c_spawn_timer: float = 0;
 @export var stop_spawning_after_period := true;
 @export var stop_spawning_after_x_seconds: float = 30;
+@export var play_sound_on_spawn: AudioStreamPlayer2D = null;
 var _c_stop_spawn_timer: float = 0;
 
 func _spawn_on_trigger()->void:
 	spawn();
 
 func spawn()->Node2D:
+	if play_sound_on_spawn != null:
+		play_sound_on_spawn.play();
 	var enemy: Node2D = enemy_scene.instantiate();
 	enemy.global_position = global_position;
 	Main.instance.level_instance.add_child(enemy);

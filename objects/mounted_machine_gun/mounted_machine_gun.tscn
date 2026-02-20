@@ -71,7 +71,7 @@ machine_gun_bullet_collisison_mask = 454
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=418495579]
 stream = ExtResource("2_qse1y")
-max_polyphony = 8
+max_polyphony = 16
 
 [node name="BarrelPivot" type="Node2D" parent="." unique_id=1729658671]
 position = Vector2(3, 15)

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dhlm8oerqsx8g"]
+
+[ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://buko0op3ok08h" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://bo7vwjgkdvcgm" path="res://player/bob_sprite.png" id="2_7vrkn"]
+[ext_resource type="AudioStream" uid="uid://be6xey68t1ytg" path="res://menu_music.mp3" id="4_jix8l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fu7sn"]
+font = ExtResource("1_06t4h")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7vrkn"]
+font = ExtResource("1_06t4h")
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_06t4h"]
+default_font = ExtResource("1_06t4h")
+default_font_size = 32
+
+[node name="MainMenu" type="Node2D" unique_id=934825764]
+script = ExtResource("1_fu7sn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=707458833]
+layer = 0
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1812880919]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Version" type="Label" parent="CanvasLayer/Control" unique_id=822671300]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_right = 125.0
+grow_vertical = 0
+text = "version 0.1.0"
+label_settings = SubResource("LabelSettings_fu7sn")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=1062002665]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer" unique_id=709238559]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=75660526]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1868216866]
+layout_mode = 2
+texture = ExtResource("2_7vrkn")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer" unique_id=872424232]
+layout_mode = 2
+text = "BOB'S BIG AVENTURE!"
+label_settings = SubResource("LabelSettings_7vrkn")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1303368107]
+layout_mode = 2
+theme = SubResource("Theme_06t4h")
+text = "Start!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2002043816]
+stream = ExtResource("4_jix8l")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Button" to="." method="_begin_game"]

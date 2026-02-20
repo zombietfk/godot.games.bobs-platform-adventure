@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var bee_scene: PackedScene;
 @export var optional_activation_area: Area2D;
 @onready var animation_player: AnimationPlayer = $AnimationPlayer;
+@onready var bee_release_sound: AudioStreamPlayer = $AudioStreamPlayer;
+
 var _bees_spawned = 0;
 var _c_spawn_bee_timer = 0;
 var _is_being_destroyed = false;
@@ -49,6 +51,7 @@ func _process(delta: float) -> void:
 		_bees_spawned += 1;
 		if !animation_player.is_playing():
 			animation_player.play("sway");
+			bee_release_sound.play();
 		await get_tree().create_timer(1).timeout;
 		if is_falling or _is_being_destroyed:
 			return;

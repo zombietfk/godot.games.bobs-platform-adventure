@@ -8,12 +8,14 @@ extends CharacterBody2D
 @export var use_gravity = true;
 @export var gravity_factor = 0.3;
 @export var max_speed = 400;
+@onready var swish_sound: AudioStreamPlayer2D = $AudioStreamPlayer;
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method('gib_and_kill'):
 		body.gib_and_kill();
 
 func _ready()->void:
+	swish_sound.play();
 	velocity = travel_direction.normalized() * travel_speed;
 
 func _physics_process(delta: float) -> void:

@@ -8,12 +8,21 @@ extends Node2D;
 @export var camera_zoom_speed = 0.1;
 @export var pathfinding_tilemap: TileMapLayer;
 @export var camera_offset: Vector2 = Vector2.ZERO;
+@export var music_override: AudioStreamPlayer;
 var _camera_zoom_timer: float = 2.0;
 var _c_camera_zoom_timer: float = 0;
 var astar_pathfinding_grid: AStarGrid2D;
 
 # LIFECYCLE
 func _ready()->void:
+	if music_override:
+		Main.instance.music.stop();
+		music_override.play();
+		Main.instance.player.on_kill.connect(func ()->void:
+			music_override.stop();
+		);
+	elif !Main.instance.music.playing:
+		Main.instance.music.play();
 	if !pathfinding_tilemap:
 		for c in get_children():
 			if c is TileMapLayer:

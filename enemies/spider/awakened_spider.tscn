@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_uq6ar"]
 [ext_resource type="Script" uid="uid://bhhxrtitsychc" path="res://enemies/spider/state_machine/states/jumping_spider_state.gd" id="4_tl8ph"]
 [ext_resource type="Script" uid="uid://boomykaof1yuw" path="res://enemies/spider/state_machine/states/walking_spider_state.gd" id="5_6aeb2"]
+[ext_resource type="AudioStream" uid="uid://b7g12vbqnxnqr" path="res://sound_effects/jump_2.mp3" id="6_6c48s"]
 [ext_resource type="Texture2D" uid="uid://b0cironxsds00" path="res://enemies/spider/spider_sprtitesheet.png" id="6_6tquv"]
 
 [sub_resource type="Animation" id="Animation_bwyj1"]
@@ -122,8 +123,9 @@ libraries/ = SubResource("AnimationLibrary_bwyj1")
 script = ExtResource("2_uq6ar")
 inital_state = NodePath("FloorState")
 
-[node name="JumpingState" type="Node" parent="StateMachine" unique_id=1940019074 node_paths=PackedStringArray("jumping_animated_sprite", "body")]
+[node name="JumpingState" type="Node" parent="StateMachine" unique_id=1940019074 node_paths=PackedStringArray("jump_sound", "jumping_animated_sprite", "body")]
 script = ExtResource("4_tl8ph")
+jump_sound = NodePath("../../AudioStreamPlayer2D")
 jumping_animated_sprite = NodePath("../../JumpingAnimatedSprite2D")
 body = NodePath("../..")
 
@@ -154,5 +156,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=1780378922]
 position = Vector2(-7.1525574e-07, 8)
 shape = SubResource("CircleShape2D_gejh1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1486000027]
+stream = ExtResource("6_6c48s")
+max_distance = 960.0
 
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_entered"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://0foley1yyksl"]
+[gd_scene format=3 uid="uid://0foley1yyksl"]
 
 [ext_resource type="Script" uid="uid://bhgfkv22i54w5" path="res://enemies/bosses/bear/beehive.gd" id="1_0pror"]
 [ext_resource type="Texture2D" uid="uid://cmd2ax2r42536" path="res://enemies/bosses/bear/beehive_spritesheet.png" id="1_nowwx"]
 [ext_resource type="PackedScene" uid="uid://cgh3te1rg0qr2" path="res://enemies/bosses/bear/bee.tscn" id="2_0dlvn"]
+[ext_resource type="AudioStream" uid="uid://dw80o07l4p0fp" path="res://sound_effects/buzz_2.mp3" id="3_bbn3c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yvwj"]
 atlas = ExtResource("1_nowwx")
@@ -36,6 +37,21 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_35i14"]
 radius = 14.0
 
+[sub_resource type="Animation" id="Animation_0dlvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_0pror"]
 resource_name = "sway"
 length = 5.0
@@ -53,55 +69,41 @@ tracks/0/keys = {
 "values": [0.0, -0.2617993877991494, 0.2617993877991494, -0.2617993877991494, 0.2617993877991494, -0.2617993877991494, 0.2617993877991494, -0.2617993877991494, 0.2617993877991494, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_0dlvn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0dlvn"]
 _data = {
 &"RESET": SubResource("Animation_0dlvn"),
 &"sway": SubResource("Animation_0pror")
 }
 
-[node name="Beehive" type="CharacterBody2D"]
+[node name="Beehive" type="CharacterBody2D" unique_id=1822803399]
 z_index = -1
 collision_layer = 0
 collision_mask = 64
 script = ExtResource("1_0pror")
 bee_scene = ExtResource("2_0dlvn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1113359022]
+stream = ExtResource("3_bbn3c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=166478565]
 sprite_frames = SubResource("SpriteFrames_wqvuy")
 autoplay = "default"
 frame_progress = 0.19771004
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=373853757]
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_35i14")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1659350801]
 collision_layer = 0
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1028654990]
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_35i14")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0dlvn")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1474716110]
+libraries/ = SubResource("AnimationLibrary_0dlvn")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_player_enter_area2D"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_boss_bear_area_enter"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_enter_area2D"]

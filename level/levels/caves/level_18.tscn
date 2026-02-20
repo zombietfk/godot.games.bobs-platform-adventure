@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b6pp5p5fbj2og"]
+[gd_scene format=4 uid="uid://b6pp5p5fbj2og"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_5qw7s"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_67q10"]
@@ -135,9 +135,6 @@ physics_layer_0/collision_layer = 256
 physics_layer_0/collision_mask = 0
 sources/2 = SubResource("TileSetAtlasSource_2nfb2")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_unolv"]
-size = Vector2(322, 66)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q36ls"]
 resource_name = "Default"
 texture = ExtResource("8_q36ls")
@@ -255,114 +252,101 @@ physics_layer_0/collision_layer = 256
 physics_layer_0/collision_mask = 0
 sources/2 = SubResource("TileSetAtlasSource_q36ls")
 
-[node name="Level_18" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_18" type="Node2D" unique_id=1482559752 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_5qw7s")
 level_binding_box = Rect2(0, 160, 768, 1312)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1428981190]
 position = Vector2(32, 640)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=218888145]
 position = Vector2(736, 640)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1676999489]
 position = Vector2(0, -224)
 tile_map_data = PackedByteArray("AAAAAAsAAgACAAMAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAACAA4AAgADAAEAAAAIAA4AAgAHAAEAAAAJAA4AAgACAAEAAAAKAA4AAgACAAEAAAACAA8AAgADAAIAAAACABAAAgADAAIAAAACABEAAgADAAMAAAAIABEAAgABAAEAAAAIABIAAgABAAIAAAAIABMAAgABAAIAAAAKAAsAAgACAAMAAAALAAsAAgACAAMAAAALAA4AAgACAAEAAAAKAAcAAgACAAIAAAALAAcAAgACAAIAAAALAAgAAgACAAIAAAAIABQAAgABAAIAAAACABQAAgADAAEAAAACABUAAgADAAIAAAACABYAAgADAAIAAAAIABUAAgABAAIAAAAIABYAAgABAAIAAAADABcAAgACAAEAAAAEABcAAgACAAEAAAAFABcAAgACAAEAAAAGABcAAgACAAEAAAAHABcAAgACAAEAAAACABcAAgAPAAMAAAAIABcAAgALAAMAAAAEABUAAgAHAAEAAAAGABUAAgAJAAEAAAAFABUAAgACAAMAAAAFABQAAgAFAAMAAAABABIAAgADAAIAAAABABMAAgADAAIAAAAJAA8AAgABAAIAAAAJABAAAgABAAIAAAABABEAAgAPAAcAAAABABQAAgAPAAMAAAAJABEAAgALAAMAAAAEAAkAAgADAAEAAAAEAAoAAgADAAIAAAAHAAcAAgALAAcAAAAHAAgAAgABAAIAAAAHAAkAAgAMAAUAAAAHAAoAAgABAAIAAAAIAAcAAgACAAIAAAAIAAgAAgACAAIAAAAIAAkAAgACAAIAAAAIAAoAAgACAAIAAAAJAAcAAgACAAIAAAAJAAgAAgACAAIAAAAJAAkAAgACAAIAAAAJAAoAAgACAAIAAAABAAcAAgACAAMAAAABAAsAAgAIAAEAAAACAAcAAgACAAMAAAACAAkAAgAHAAEAAAACAAsAAgAIAAEAAAADAAcAAgACAAMAAAADAAkAAgACAAEAAAADAAsAAgACAAMAAAAEAAcAAgACAAMAAAAEAAsAAgADAAMAAAAFAAcAAgACAAMAAAAGAAcAAgACAAMAAAAGAAkAAgAHAAEAAAAGAAsAAgAHAAEAAAAHAAsAAgACAAMAAAAIAAsAAgACAAMAAAAJAAsAAgACAAMAAAAAAAcAAgAPAAcAAAAAAAgAAgADAAIAAAAKAAoAAgACAAIAAAALAAoAAgACAAIAAAALAAkAAgACAAIAAAAKAAkAAgACAAIAAAAKAAgAAgACAAIAAAADAAoAAgABAAIAAAAAAAkAAgADAAIAAAAAAAoAAgADAAIAAAA=")
 tile_set = ExtResource("2_67q10")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=2058448874]
 tile_set = ExtResource("3_0hagj")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_unolv")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1394637802 instance=ExtResource("4_unolv")]
 position = Vector2(800, 608)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_19.tscn"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_unolv")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=742523803 instance=ExtResource("4_unolv")]
 position = Vector2(-32, 608)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://q5qpawrgycso"
 to_spawn_location_with_index = 1
 
-[node name="Path2D7" type="Path2D" parent="."]
+[node name="Path2D7" type="Path2D" parent="." unique_id=1602938998]
 position = Vector2(672, 608)
 curve = SubResource("Curve2D_unolv")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7" unique_id=912097680]
 rotation = -1.5707964
 rotates = false
 loop = false
 
-[node name="Door" parent="Path2D7/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("5_67q10")]
+[node name="Door" parent="Path2D7/PathFollow2D" unique_id=1864396589 node_paths=PackedStringArray("movement_path") instance=ExtResource("5_67q10")]
 rotation = 1.5707964
 script = ExtResource("6_0hagj")
 movement_path = NodePath("..")
 movement_speed = 25.6
 
-[node name="Path2D8" type="Path2D" parent="."]
+[node name="Path2D8" type="Path2D" parent="." unique_id=1999311112]
 position = Vector2(736, 608)
 curve = SubResource("Curve2D_unolv")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D8" unique_id=244169473]
 rotation = -1.5707964
 rotates = false
 loop = false
 
-[node name="Door" parent="Path2D8/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("5_67q10")]
+[node name="Door" parent="Path2D8/PathFollow2D" unique_id=1864848939 node_paths=PackedStringArray("movement_path") instance=ExtResource("5_67q10")]
 rotation = 1.5707964
 script = ExtResource("6_0hagj")
 movement_path = NodePath("..")
 movement_speed = 25.6
 
-[node name="FloorSwitch" parent="." instance=ExtResource("6_jif64")]
+[node name="FloorSwitch" parent="." unique_id=1923146738 instance=ExtResource("6_jif64")]
 position = Vector2(512, 1024)
 rotation = -1.5707964
 
-[node name="FloorSwitch2" parent="." instance=ExtResource("6_jif64")]
+[node name="FloorSwitch2" parent="." unique_id=1173136306 instance=ExtResource("6_jif64")]
 position = Vector2(192, 832)
 rotation = 1.5707964
 
-[node name="HealthUpgradeItem" parent="." instance=ExtResource("10_unolv")]
+[node name="HealthUpgradeItem" parent="." unique_id=1963235365 instance=ExtResource("10_unolv")]
 position = Vector2(416, 320)
+pickup_unique_name = "level_18_hp_up"
 
-[node name="Bat3" parent="." instance=ExtResource("11_q36ls")]
+[node name="Bat3" parent="." unique_id=1421170487 instance=ExtResource("11_q36ls")]
 position = Vector2(160, 448)
 collision_mask = 322
 
-[node name="Seesaw" parent="." instance=ExtResource("5_oe87n")]
+[node name="Seesaw" parent="." unique_id=2080561641 instance=ExtResource("5_oe87n")]
 position = Vector2(352, 704)
 rotation_sensitivity = 0.2
 rotation_slowdown_ratio = 0.1
 
-[node name="Saw" parent="Seesaw" index="1"]
+[node name="Saw" parent="Seesaw" index="1" unique_id=1563443192]
 position = Vector2(32, -32)
 tile_map_data = PackedByteArray("AAD+/wAAAgAIAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAEAAAABAAAAAgAJAAEAAAD9/wAAAgAHAAEAAAA=")
 tile_set = SubResource("TileSet_d1w0n")
 
-[node name="Area2D" parent="Seesaw" index="2"]
-position = Vector2(32, 0)
-
-[node name="CollisionShape2D" parent="Seesaw/Area2D" index="0"]
-position = Vector2(-32, 0)
-shape = SubResource("RectangleShape2D_unolv")
-
-[node name="Seesaw2" parent="." instance=ExtResource("5_oe87n")]
+[node name="Seesaw2" parent="." unique_id=2112026436 instance=ExtResource("5_oe87n")]
 position = Vector2(352, 896)
 rotation_sensitivity = 0.2
 rotation_slowdown_ratio = 0.1
 
-[node name="Saw" parent="Seesaw2" index="1"]
+[node name="Saw" parent="Seesaw2" index="1" unique_id=1563443192]
 position = Vector2(32, -32)
 tile_map_data = PackedByteArray("AAD+/wAAAgAIAAEAAAD//wAAAgAIAAEAAAAAAAAAAgAIAAEAAAABAAAAAgAJAAEAAAD9/wAAAgAHAAEAAAA=")
 tile_set = SubResource("TileSet_2nfb2")
-
-[node name="Area2D" parent="Seesaw2" index="2"]
-position = Vector2(32, 0)
-
-[node name="CollisionShape2D" parent="Seesaw2/Area2D" index="0"]
-position = Vector2(-32, 0)
-shape = SubResource("RectangleShape2D_unolv")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="FloorSwitch" to="Path2D7/PathFollow2D/Door" method="_on_switch_flipped_on"]
