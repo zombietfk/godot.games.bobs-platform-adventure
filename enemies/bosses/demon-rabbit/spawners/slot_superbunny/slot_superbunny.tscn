@@ -2,13 +2,50 @@
 
 [ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="1_ioktx"]
 [ext_resource type="Texture2D" uid="uid://b2mtbbeq4bb1r" path="res://enemies/rabbit/super_rabbit_spritesheet.png" id="2_0kt6x"]
+[ext_resource type="AudioStream" uid="uid://dkp7lcy6n54yn" path="res://sound_effects/triumph_1.mp3" id="2_d448s"]
 [ext_resource type="Script" uid="uid://cvj3wmfkyo4wv" path="res://enemies/rabbit/super_rabbit.gd" id="3_d448s"]
+[ext_resource type="AudioStream" uid="uid://d02md8xvykkkg" path="res://sound_effects/blaster_1.mp3" id="3_dnf3x"]
+[ext_resource type="Texture2D" uid="uid://cafngpty4rhpd" path="res://objects/gyser/gyser_spritesheet.png" id="4_0kt6x"]
 
 [sub_resource type="Curve2D" id="Curve2D_q4j7r"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 96, 0, 0, 0, 0, 13, 178, 0, 0, 0, 0, 25, 236, 0, 0, 0, 0, 42, 291, 0, 0, 0, 0, 64, 345, 0, 0, 0, 0, 91, 389, 0, 0, 0, 0, 120, 422, 0, 0, 0, 0, 156, 453, 0, 0, 0, 0, 193, 477, 0, 0, 0, 0, 234, 499, 0, 0, 0, 0, 281, 517, 0, 0, 0, 0, 329, 530, 0, 0, 0, 0, 376, 539, 0, 0, 0, 0, 419, 544, 0, 0, 0, 0, 643, 544)
 }
 point_count = 16
+
+[sub_resource type="Animation" id="Animation_0kt6x"]
+resource_name = "superbunny_smoke"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CPUParticles2D:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d448s"]
+_data = {
+&"superbunny_smoke": SubResource("Animation_0kt6x")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnf3x"]
+atlas = ExtResource("4_0kt6x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Curve" id="Curve_f22i5"]
+_data = [Vector2(0, 0.48221916), 0.0, 0.0, 0, 0, Vector2(0.23611113, 0.7411096), 1.0181575, 1.0181575, 0, 0, Vector2(0.4548611, 0.86130875), -0.71009946, -0.71009946, 0, 0, Vector2(0.6388889, 0), -12.867442, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_per6r"]
+offsets = PackedFloat32Array(0, 0.10687023, 1)
+colors = PackedColorArray(1, 1, 1, 0, 18.892157, 18.892157, 18.892157, 0.94509804, 1, 1, 1, 0.5019608)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4j7r"]
 atlas = ExtResource("2_0kt6x")
@@ -55,8 +92,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_n1djo"]
 radius = 15.0
 
-[node name="SuperBunnyPath" type="Node2D" unique_id=2104571356]
+[node name="SuperBunnyPath" type="Node2D" unique_id=2104571356 node_paths=PackedStringArray("entrance_sound", "hit_sound", "hit_particles_effect", "superbunny_body")]
 script = ExtResource("3_d448s")
+entrance_sound = NodePath("Sounds/SuperbunnyAudioStreamPlayer")
+hit_sound = NodePath("Sounds/SuperbunnyHitAudioStreamPlayer")
+hit_particles_effect = NodePath("SuperBunnyPath/PathFollow2D/CPUParticles2D")
+superbunny_body = NodePath("SuperBunnyPath/PathFollow2D/SuperBunny")
+
+[node name="Sounds" type="Node" parent="." unique_id=1956221853]
+
+[node name="SuperbunnyAudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds" unique_id=162101593]
+stream = ExtResource("2_d448s")
+
+[node name="SuperbunnyHitAudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds" unique_id=1219671179]
+stream = ExtResource("3_dnf3x")
 
 [node name="SuperBunnyPath" type="Path2D" parent="." unique_id=1129267791]
 curve = SubResource("Curve2D_q4j7r")
@@ -68,6 +117,29 @@ metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
 position = Vector2(3, 0)
 rotation = 1.5707964
 loop = false
+
+[node name="ParticleEffectAnimationPlayer" type="AnimationPlayer" parent="SuperBunnyPath/PathFollow2D" unique_id=1772013863]
+root_node = NodePath("../SuperBunny")
+libraries/ = SubResource("AnimationLibrary_d448s")
+autoplay = &"superbunny_smoke"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SuperBunnyPath/PathFollow2D" unique_id=2020905612]
+position = Vector2(-2.9999998, 8)
+emitting = false
+amount = 75
+texture = SubResource("AtlasTexture_dnf3x")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.7
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 350.0
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_f22i5")
+color_ramp = SubResource("Gradient_per6r")
 
 [node name="SuperBunny" type="AnimatedSprite2D" parent="SuperBunnyPath/PathFollow2D" unique_id=1107411545]
 position = Vector2(-3, 0)

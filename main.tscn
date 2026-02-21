@@ -59,6 +59,7 @@ font_size = 48
 process_mode = 3
 script = ExtResource("1_lquwl")
 inital_level_path = "uid://cgrbopls2dqgk"
+inital_checkpoint_path = "uid://cgrbopls2dqgk"
 
 [node name="GameMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=673001295]
 stream = ExtResource("2_ycdy4")
@@ -227,7 +228,6 @@ position = Vector2(32, 284)
 camera = NodePath("Camera2D")
 player_heath_ui = NodePath("../GameUI/UI/PlayerHealthUI")
 lives_count_label_ui = NodePath("../GameUI/UI/LivesCount")
-lives = 100
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=382210141]
 limit_left = 0

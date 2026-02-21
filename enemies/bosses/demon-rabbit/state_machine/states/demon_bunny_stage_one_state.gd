@@ -11,6 +11,7 @@ var _pitchfork_throw_duration := 1.5;
 var _pitchfork_return_duration := 2.0;
 var _is_holding_pitchfork := true;
 
+@export var throw_sound: AudioStreamPlayer;
 @export var jump_strength := 500.0;
 @export var state_duration_timer := 15.0;
 var _c_state_duration_timer := 0.0;
@@ -58,6 +59,7 @@ func _throw_pitchfork_to_and_return(
 	outbound_duration: float,
 	inbound_duration: float,
 ) -> void:
+	throw_sound.play();
 	_is_holding_pitchfork = false;
 	var player = Main.instance.player;
 	var c_outbound_duration = 0;

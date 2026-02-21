@@ -42,7 +42,7 @@ to_spawn_location_with_index = 1
 
 [node name="CheckpointFlagpole" parent="." unique_id=22318296 instance=ExtResource("5_kn8ic")]
 position = Vector2(160, -152)
-level_path = "uid://ckv0iv8uxynge"
+level_path = "uid://8kbkcv6qiqvg"
 spawn_index = 2
 
 [node name="Rabbit" parent="." unique_id=1479659022 instance=ExtResource("6_myxss")]

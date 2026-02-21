@@ -13,6 +13,7 @@ var _c_hop_count := hop_count;
 @export var spider_spawners: Array[EnemySpawner];
 @export var imp_spawner: EnemySpawner;
 @export var super_bunny_spawner: EnemySpawner;
+@export var spin_reels_sound: AudioStreamPlayer;
 
 var _is_awaiting_spin_result := false;
 
@@ -55,6 +56,7 @@ func physics_process(delta: float)->void:
 	body.move_and_slide();
 
 func _spin_reels()->void:
+	spin_reels_sound.play();
 	body.sprite_body.play("default");
 	body.pitchfork.animation_player.play("spin_pitchfork");
 	body.slots.spin_all_reels(_slot_spin_speed_min, _slot_spin_speed_max);

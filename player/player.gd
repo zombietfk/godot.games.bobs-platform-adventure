@@ -13,7 +13,7 @@ const VELOCITY_X_MIN = 10;
 @export var movement_state_machine: StateMachine;
 @export var max_health = 3;
 @export var current_health = 3;
-@export var lives = 50;
+@export var lives = 100;
 @export var crush_check_raycast_up: RayCast2D;
 @export var crush_check_raycast_down: RayCast2D;
 @export var crush_check_raycast_left: RayCast2D;

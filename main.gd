@@ -2,9 +2,9 @@ class_name Main;
 extends Node2D;
 
 enum DIFFICULTY {
-	EASY = 50,
-	NORMAL = 10,
-	HARD = 3,
+	EASY = 100,
+	NORMAL = 50,
+	HARD = 25,
 }
 
 const STANDARD_UNIT = 64;

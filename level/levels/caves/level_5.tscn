@@ -234,6 +234,7 @@ rotation = -1.5707964
 position = Vector2(192, 320)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SwitchArea" unique_id=612690085]
+z_index = -1
 position = Vector2(-1.9073486e-06, -3.8146973e-06)
 scale = Vector2(2, 1.9999999)
 sprite_frames = SubResource("SpriteFrames_i2wgy")
@@ -242,6 +243,7 @@ frame_progress = 0.51906085
 
 [node name="CreateBoulderOnSwitchPress" parent="." unique_id=1339712771 instance=ExtResource("8_e10hl")]
 position = Vector2(192, -640)
+boulder_scale = Vector2(2, 2)
 boulder_travel_direction = Vector2(0, 1)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

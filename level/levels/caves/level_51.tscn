@@ -17,13 +17,14 @@ font_size = 32
 [node name="Level_51" type="Node2D" unique_id=1504185619 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_rcbqq")
 level_binding_box = Rect2(0, -64, 704, 448)
-spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("")]
+spawn_locations = [NodePath("EntrySpawnPoint")]
 
 [node name="Spike" parent="." unique_id=942304117 instance=ExtResource("3_ocfky")]
 position = Vector2(608, 352)
 
 [node name="CheckpointFlagpole" parent="." unique_id=1398330232 instance=ExtResource("4_35wsb")]
 position = Vector2(352, 363)
+level_path = "uid://c1erl7bnnoa87"
 
 [node name="Control" type="Control" parent="." unique_id=640627207]
 layout_mode = 3

@@ -38,7 +38,7 @@ anchor_bottom = 1.0
 offset_top = -15.0
 offset_right = 125.0
 grow_vertical = 0
-text = "version 0.1.0"
+text = "version 0.1.1"
 label_settings = SubResource("LabelSettings_fu7sn")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=1062002665]

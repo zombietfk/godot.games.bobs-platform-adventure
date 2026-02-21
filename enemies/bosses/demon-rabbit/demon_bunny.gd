@@ -5,13 +5,14 @@ extends AbstractEnemy;
 @onready var pitchfork : DemonBunnyPitchfork = $Pitchfork;
 @onready var pitchfork_origin_marker: Marker2D = $PitchforkOriginMarker;
 @onready var sprite_body: AnimatedSprite2D = $Body;
+@export var enterance_sound: AudioStreamPlayer;
 
 var health = 3;
 
 signal on_damage();
 
 func _ready()->void:
-	gib_and_kill();
+	enterance_sound.play();
 
 func take_damage()->void:
 	health -= 1;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dtv20uql2kyac"]
+[gd_scene format=4 uid="uid://dtv20uql2kyac"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_mpagl"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_ny35j"]
@@ -8,56 +8,57 @@
 [ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="7_6ks8m"]
 [ext_resource type="PackedScene" uid="uid://c1fppnc76mn0n" path="res://enemies/mushroom/mushroom.tscn" id="11_om7jc"]
 
-[node name="Level_31" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_31" type="Node2D" unique_id=1037396008 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_mpagl")
 level_binding_box = Rect2(128, 512, 512, 1152)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=838377972]
 position = Vector2(192, 544)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1740510335]
 position = Vector2(192, 1120)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1574501236]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAAAAA4AAgAFAAQAAAAAAAsAAgAPAAcAAAAAAA8AAgADAAIAAAAAABIAAgAFAAQAAAAAABMAAgADAAIAAAAAABAAAgADAAIAAAAAABEAAgADAAIAAAABABQAAgAJAAMAAAAEABQAAgAHAAMAAAABAAsAAgAJAAUAAAAEAAsAAgAHAAUAAAAFAAwAAgAFAAQAAAAFAA0AAgABAAIAAAAFAA4AAgABAAIAAAAFAA8AAgAFAAQAAAAFABAAAgABAAIAAAAFABEAAgABAAIAAAAFABIAAgABAAIAAAAFABMAAgAFAAQAAAAAAAwAAgADAAIAAAAAAA0AAgADAAIAAAAAABQAAgAPAAMAAAAFAAsAAgALAAcAAAAFABQAAgALAAMAAAACABAAAgAHAAEAAAADABAAAgAJAAEAAAD//w0AAgACAAMAAAD+/w4AAgADAAIAAAD//w8AAgACAAEAAAAGAA0AAgACAAEAAAAHAAwAAgABAAIAAAAGAAsAAgACAAMAAAAGABIAAgACAAMAAAAHABMAAgABAAIAAAAGABQAAgACAAEAAAAHAAsAAgALAAcAAAAHABIAAgALAAcAAAAHABQAAgALAAMAAAAHAA0AAgALAAMAAAD+/w8AAgAPAAMAAAD+/w0AAgAPAAcAAAD+/xEAAgAPAAcAAAD+/xIAAgADAAIAAAD+/xMAAgAPAAMAAAD//xEAAgACAAMAAAD//xMAAgACAAEAAAAGAA4AAgACAAMAAAAGABAAAgACAAEAAAAHAA4AAgALAAcAAAAHAA8AAgABAAIAAAAHABAAAgALAAMAAAAHABEAAgACAAIAAAAGABEAAgACAAIAAAD//xQAAgACAAIAAAD//xAAAgACAAIAAAD+/xAAAgACAAIAAAD+/wwAAgACAAIAAAD//wsAAgACAAIAAAD//wwAAgACAAIAAAD+/wsAAgACAAIAAAD+/xQAAgACAAIAAAA=")
 tile_set = ExtResource("2_ny35j")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=353390369]
 tile_set = ExtResource("3_o31i1")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_n7uqu")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=2138152027 instance=ExtResource("4_n7uqu")]
 position = Vector2(192, 1184)
 rotation = 1.5707964
 scale = Vector2(4, 8.1)
 to_level_path = "uid://biqdhyqxc8ik4"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_n7uqu")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=725114778 instance=ExtResource("4_n7uqu")]
 position = Vector2(192, 480)
 rotation = 1.5707964
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bt5bnysw7wsfs"
 to_spawn_location_with_index = 1
 
-[node name="Mushroom" parent="." instance=ExtResource("11_om7jc")]
+[node name="Mushroom" parent="." unique_id=1608070299 instance=ExtResource("11_om7jc")]
 position = Vector2(-32, 736)
 
-[node name="Mushroom3" parent="." instance=ExtResource("11_om7jc")]
+[node name="Mushroom3" parent="." unique_id=1020363143 instance=ExtResource("11_om7jc")]
 position = Vector2(416, 1056)
 
-[node name="Mushroom2" parent="." instance=ExtResource("11_om7jc")]
+[node name="Mushroom2" parent="." unique_id=2062606826 instance=ExtResource("11_om7jc")]
 position = Vector2(416, 608)
 
-[node name="CheckpointFlagpole" parent="." instance=ExtResource("6_amt3v")]
+[node name="CheckpointFlagpole" parent="." unique_id=2025412906 instance=ExtResource("6_amt3v")]
 z_index = -1
 position = Vector2(192, 816)
+level_path = "uid://dtv20uql2kyac"
 
-[node name="Rabbit" parent="." instance=ExtResource("7_6ks8m")]
+[node name="Rabbit" parent="." unique_id=957850676 instance=ExtResource("7_6ks8m")]
 position = Vector2(-32, 1008)
 randomize_starting_direction = true
 
-[node name="Rabbit2" parent="." instance=ExtResource("7_6ks8m")]
+[node name="Rabbit2" parent="." unique_id=593900262 instance=ExtResource("7_6ks8m")]
 position = Vector2(416, 816)
 randomize_starting_direction = true
 

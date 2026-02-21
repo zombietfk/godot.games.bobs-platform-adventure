@@ -9,8 +9,11 @@
 [ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="6_2qow0"]
 [ext_resource type="SpriteFrames" uid="uid://bm0ynqus6gxsc" path="res://enemies/bosses/demon-rabbit/demon_rabbit_sprites.tres" id="6_geej5"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="6_nphm7"]
+[ext_resource type="AudioStream" uid="uid://bbuu8yjub3vqw" path="res://sound_effects/whoosh_1.mp3" id="6_ykkyn"]
+[ext_resource type="AudioStream" uid="uid://e01qn8opguxb" path="res://sound_effects/casino_1.mp3" id="7_gfy6r"]
 [ext_resource type="Texture2D" uid="uid://jphbfbr6mhm8" path="res://enemies/bosses/demon-rabbit/pitchfork.png" id="7_plgov"]
 [ext_resource type="Script" uid="uid://ck3ako1qxoafe" path="res://enemies/bosses/demon-rabbit/state_machine/states/demon_bunny_stage_one_state.gd" id="7_sajdd"]
+[ext_resource type="AudioStream" uid="uid://h5v4kaacqk6c" path="res://sound_effects/evil_laugh.mp3" id="8_32dcf"]
 [ext_resource type="Script" uid="uid://brolk62jwg6tn" path="res://enemies/bosses/demon-rabbit/state_machine/states/demon_bunny_stage_two_state.gd" id="8_sajdd"]
 [ext_resource type="Script" uid="uid://b5r2dlqget504" path="res://objects/slots/reel_face.gd" id="9_fvgwv"]
 [ext_resource type="Texture2D" uid="uid://71v0qc16koph" path="res://objects/slots/slot_reel_icons_spreadsheet.png" id="9_plgov"]
@@ -455,23 +458,36 @@ position = Vector2(1440, 832)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://c1erl7bnnoa87"
 
-[node name="DemonRabbit" type="CharacterBody2D" parent="." unique_id=1851863627 node_paths=PackedStringArray("slots")]
+[node name="DemonRabbit" type="CharacterBody2D" parent="." unique_id=1851863627 node_paths=PackedStringArray("slots", "enterance_sound")]
 position = Vector2(1120, 752)
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 64
 script = ExtResource("5_5vagu")
 slots = NodePath("../SlotsPath2D/PathFollow2D/Slot")
+enterance_sound = NodePath("Sounds/LaughAudioStreamPlayer")
+
+[node name="Sounds" type="Node" parent="DemonRabbit" unique_id=733933601]
+
+[node name="WooshAudioStreamPlayer" type="AudioStreamPlayer" parent="DemonRabbit/Sounds" unique_id=1688454236]
+stream = ExtResource("6_ykkyn")
+
+[node name="SpinReelsAudioStreamPlayer" type="AudioStreamPlayer" parent="DemonRabbit/Sounds" unique_id=1205176373]
+stream = ExtResource("7_gfy6r")
+
+[node name="LaughAudioStreamPlayer" type="AudioStreamPlayer" parent="DemonRabbit/Sounds" unique_id=1587470151]
+stream = ExtResource("8_32dcf")
 
 [node name="StateMachine" type="Node" parent="DemonRabbit" unique_id=1600860637 node_paths=PackedStringArray("inital_state")]
 script = ExtResource("6_nphm7")
 inital_state = NodePath("StageOne")
 
-[node name="StageOne" type="Node" parent="DemonRabbit/StateMachine" unique_id=1058901099 node_paths=PackedStringArray("body")]
+[node name="StageOne" type="Node" parent="DemonRabbit/StateMachine" unique_id=1058901099 node_paths=PackedStringArray("throw_sound", "body")]
 script = ExtResource("7_sajdd")
+throw_sound = NodePath("../../Sounds/WooshAudioStreamPlayer")
 body = NodePath("../..")
 
-[node name="StageTwo" type="Node" parent="DemonRabbit/StateMachine" unique_id=1762179082 node_paths=PackedStringArray("pitchfork_spawners", "rock_spawners", "spike_spawners", "spider_spawners", "imp_spawner", "super_bunny_spawner", "slots_path", "body")]
+[node name="StageTwo" type="Node" parent="DemonRabbit/StateMachine" unique_id=1762179082 node_paths=PackedStringArray("pitchfork_spawners", "rock_spawners", "spike_spawners", "spider_spawners", "imp_spawner", "super_bunny_spawner", "spin_reels_sound", "slots_path", "body")]
 script = ExtResource("8_sajdd")
 pitchfork_spawners = [NodePath("../../../PitchforkSpawner"), NodePath("../../../PitchforkSpawner2"), NodePath("../../../PitchforkSpawner3")]
 rock_spawners = [NodePath("../../../RockSpawner"), NodePath("../../../RockSpawner2"), NodePath("../../../RockSpawner3")]
@@ -479,6 +495,7 @@ spike_spawners = [NodePath("../../../SpikeSpawner"), NodePath("../../../SpikeSpa
 spider_spawners = [NodePath("../../../SpiderSpawner"), NodePath("../../../SpiderSpawner2"), NodePath("../../../SpiderSpawner3")]
 imp_spawner = NodePath("../../../ImpSpawner")
 super_bunny_spawner = NodePath("../../../SuperRabbitSpawner")
+spin_reels_sound = NodePath("../../Sounds/SpinReelsAudioStreamPlayer")
 slots_path = NodePath("../../../SlotsPath2D/PathFollow2D")
 body = NodePath("../..")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://m3l82q2pi5hi"]
+[gd_scene format=4 uid="uid://m3l82q2pi5hi"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_vwnxs"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_rw3b7"]
@@ -8,54 +8,55 @@
 [ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="7_yh13f"]
 [ext_resource type="PackedScene" uid="uid://buo1dkp0kvwh2" path="res://enemies/rat/rat.tscn" id="9_hojji"]
 
-[node name="Level_20_Checkpoint" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_20_Checkpoint" type="Node2D" unique_id=2024148547 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_vwnxs")
 level_binding_box = Rect2(-64, 192, 512, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=715650323]
 position = Vector2(-32, 608)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=365088823]
 position = Vector2(480, 608)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1066723925]
 position = Vector2(0, -256)
 tile_map_data = PackedByteArray("AAADAA4AAgAFAAMAAAD//w4AAgACAAEAAAD//wsAAgADAAMAAAAAAA4AAgADAAEAAAAGAA4AAgABAAEAAAAHAA4AAgACAAEAAAAHAAsAAgABAAMAAAAAAAoAAgAJAAUAAAACAAgAAgAJAAUAAAAEAAgAAgAHAAUAAAAGAAoAAgAHAAUAAAAFAAkAAgABAAMAAAABAAkAAgADAAMAAAADAAcAAgACAAMAAAD//woAAgAPAAcAAAAAAAkAAgAPAAcAAAABAAgAAgAPAAcAAAACAAcAAgAPAAcAAAAHAAoAAgALAAcAAAAGAAkAAgALAAcAAAAFAAgAAgALAAcAAAAEAAcAAgALAAcAAAABAA8AAgACAAEAAAACAA8AAgACAAEAAAAEAA8AAgACAAEAAAAFAA8AAgACAAEAAAADAA8AAgANAAQAAAAAAA8AAgAPAAMAAAAGAA8AAgALAAMAAAA=")
 tile_set = ExtResource("2_rw3b7")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=131229051]
 tile_set = ExtResource("3_sj3cb")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_3nxys")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=50842900 instance=ExtResource("4_3nxys")]
 position = Vector2(544, 576)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://c0y1qe12m74dr"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_3nxys")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=30402896 instance=ExtResource("4_3nxys")]
 position = Vector2(-96, 576)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://diro7gfk2fsfl"
 to_spawn_location_with_index = 1
 
-[node name="Rat" parent="." instance=ExtResource("9_hojji")]
+[node name="Rat" parent="." unique_id=1136678993 instance=ExtResource("9_hojji")]
 position = Vector2(360, 672)
 idle_every_x_seconds_timer = 1.0
 idle_timer = 2.0
 
-[node name="CheckpointFlagpole" parent="." instance=ExtResource("6_50efx")]
+[node name="CheckpointFlagpole" parent="." unique_id=1839293108 instance=ExtResource("6_50efx")]
 position = Vector2(224, 616)
+level_path = "uid://m3l82q2pi5hi"
 
-[node name="LightOccluder2D" parent="CheckpointFlagpole/Confetti/GPUParticles2D" index="0"]
+[node name="LightOccluder2D" parent="CheckpointFlagpole/Confetti/GPUParticles2D" parent_id_path=PackedInt32Array(1839293108, 75272398) index="0" unique_id=2056292993]
 position = Vector2(-1, 166)
 
-[node name="Rabbit" parent="." instance=ExtResource("7_yh13f")]
+[node name="Rabbit" parent="." unique_id=1963308042 instance=ExtResource("7_yh13f")]
 position = Vector2(88, 688)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
 jump_timer = 1.2
 
-[node name="Rabbit2" parent="." instance=ExtResource("7_yh13f")]
+[node name="Rabbit2" parent="." unique_id=1255054166 instance=ExtResource("7_yh13f")]
 position = Vector2(160, 688)
 randomize_starting_direction = true
 jump_timer_variance = 0.5

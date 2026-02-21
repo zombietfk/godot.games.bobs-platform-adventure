@@ -74,12 +74,13 @@ position = Vector2(4096, 480)
 position = Vector2(-544, 544)
 collision_mask = 64
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1827781159]
+[node name="Node2D" type="Node2D" parent="." unique_id=1827781159 node_paths=PackedStringArray("play_sound_on_spawn")]
 position = Vector2(-640, 320)
 script = ExtResource("8_3dcdr")
 enemy_scene = ExtResource("8_8wx7j")
 spawn_every_x_seconds = 1000.0
 stop_spawning_after_x_seconds = 0.0
+play_sound_on_spawn = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node2D" unique_id=1447106982]
 stream = ExtResource("9_m1s2r")

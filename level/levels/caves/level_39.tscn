@@ -51,10 +51,11 @@ scale = Vector2(4, 8.1)
 to_level_path = "uid://cg1bqo2ggwmt4"
 to_spawn_location_with_index = 1
 
-[node name="LevelEnemyDeathController" type="Node" parent="." unique_id=1712862291 node_paths=PackedStringArray("demon_bunny_spawn_point")]
+[node name="LevelEnemyDeathController" type="Node" parent="." unique_id=1712862291 node_paths=PackedStringArray("demon_bunny_spawn_point", "summon_sound")]
 script = ExtResource("5_vkgue")
 demon_bunny_scene = ExtResource("13_gdkmv")
 demon_bunny_spawn_point = NodePath("DemonRabbitSpawnPoint")
+summon_sound = NodePath("AudioStreamPlayer")
 
 [node name="DemonRabbitSpawnPoint" type="Marker2D" parent="LevelEnemyDeathController" unique_id=162498882]
 position = Vector2(-576, 288)
