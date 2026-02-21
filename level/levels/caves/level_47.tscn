@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c1fppnc76mn0n" path="res://enemies/mushroom/mushroom.tscn" id="8_cslax"]
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="8_eg3l2"]
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="8_pau4w"]
+[ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="9_n5plr"]
 [ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="9_n8bh1"]
 [ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying/flying_imp.tscn" id="12_pu2cg"]
 
@@ -87,6 +88,10 @@ spore_release_force = 516.0
 [node name="Spike" parent="Path2DCyclical/PathFollow2D/SpinningPlatformPivot" unique_id=1573982552 instance=ExtResource("7_k5cnk")]
 position = Vector2(64, 128)
 rotation = 1.5707964
+
+[node name="HealthUpgradeItem" parent="Path2DCyclical/PathFollow2D" unique_id=712384853 instance=ExtResource("9_n5plr")]
+position = Vector2(416, 96)
+pickup_unique_name = "level_47_hp_up"
 
 [node name="Path2DCyclical2" type="Path2D" parent="." unique_id=1206210505]
 position = Vector2(736, -96)

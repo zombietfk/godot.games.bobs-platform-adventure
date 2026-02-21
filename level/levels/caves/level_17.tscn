@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bkb14r24qkb5h" path="res://objects/traps/boulder/factory/create_boulder_on_switch_press.tscn" id="6_77gkp"]
 [ext_resource type="PackedScene" uid="uid://na80be7hljms" path="res://objects/web/web.tscn" id="7_3rose"]
 [ext_resource type="PackedScene" uid="uid://c0f040qno7j70" path="res://objects/switch/switch_area.tscn" id="7_w2xo2"]
+[ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="8_kh8ow"]
 [ext_resource type="Texture2D" uid="uid://bd4mebmw75evm" path="res://objects/danger_area_spritesheet.png" id="8_n3wck"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bk054"]
@@ -198,6 +199,25 @@ position = Vector2(608, 672)
 
 [node name="Web22" parent="." unique_id=724530248 instance=ExtResource("7_3rose")]
 position = Vector2(736, 576)
+
+[node name="Web26" parent="." unique_id=1174359431 instance=ExtResource("7_3rose")]
+position = Vector2(736, 512)
+
+[node name="Web34" parent="." unique_id=1202779114 instance=ExtResource("7_3rose")]
+position = Vector2(736, 448)
+
+[node name="Web60" parent="." unique_id=171409747 instance=ExtResource("7_3rose")]
+position = Vector2(680, 408)
+
+[node name="Web77" parent="." unique_id=204498094 instance=ExtResource("7_3rose")]
+position = Vector2(680, 344)
+
+[node name="Web78" parent="." unique_id=1336274092 instance=ExtResource("7_3rose")]
+position = Vector2(616, 320)
+
+[node name="HealthUpgradeItem" parent="Web78" unique_id=505655237 instance=ExtResource("8_kh8ow")]
+position = Vector2(0, 64)
+pickup_unique_name = "level_17_hp_up"
 
 [node name="Web23" parent="." unique_id=1849807487 instance=ExtResource("7_3rose")]
 position = Vector2(736, 640)

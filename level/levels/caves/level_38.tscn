@@ -2443,7 +2443,7 @@ jump_timer_variance = 0.5
 
 [node name="HealthUpgradeItem" parent="." unique_id=1727710538 instance=ExtResource("6_7h6xf")]
 position = Vector2(-736, 224)
-pickup_unique_name = "hp_pickup_2"
+pickup_unique_name = "level_38_hp_up"
 
 [node name="Switch" parent="." unique_id=874433171 instance=ExtResource("7_wtvq0")]
 position = Vector2(960, 64)
