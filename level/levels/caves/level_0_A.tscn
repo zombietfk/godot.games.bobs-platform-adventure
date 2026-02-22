@@ -1,0 +1,32 @@
+[gd_scene format=4 uid="uid://b15nwgr8neenv"]
+
+[ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_ej4uf"]
+[ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_41l02"]
+[ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_on1pa"]
+[ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_qukqx"]
+
+[node name="Level_0_A" type="Node2D" unique_id=1504185619 node_paths=PackedStringArray("spawn_locations")]
+script = ExtResource("1_ej4uf")
+level_binding_box = Rect2(0, -64, 704, 448)
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=486256698]
+position = Vector2(128, -32)
+
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1456260816]
+position = Vector2(608, 352)
+
+[node name="Level" type="TileMapLayer" parent="." unique_id=913483066]
+position = Vector2(0, -192)
+tile_map_data = PackedByteArray("AAABAAkAAgACAAEAAAACAAkAAgACAAEAAAADAAkAAgACAAEAAAAEAAkAAgALAAMAAAAFAAkAAgACAAIAAAAGAAkAAgAPAAMAAAAHAAkAAgACAAEAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAAKAAUAAgABAAIAAAAKAAYAAgABAAMAAAAKAAkAAgACAAEAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAKAAMAAgABAAIAAAAKAAQAAgABAAIAAAADAAIAAgABAAMAAAAEAAIAAgACAAMAAAAFAAIAAgACAAMAAAAGAAIAAgACAAMAAAAHAAIAAgACAAMAAAAIAAIAAgACAAMAAAAJAAIAAgACAAMAAAAIAAkAAgACAAEAAAAJAAkAAgACAAEAAAAKAAIAAgALAAcAAAAAAAkAAgAPAAMAAAAEAAcAAgABAAEAAAAEAAgAAgABAAIAAAAFAAcAAgACAAEAAAAFAAgAAgACAAIAAAAGAAcAAgADAAEAAAAGAAgAAgADAAIAAAAAAAIAAgADAAIAAAA=")
+tile_set = ExtResource("2_41l02")
+
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=953369791]
+tile_set = ExtResource("3_on1pa")
+
+[node name="TeleportToLevelZone" parent="." unique_id=873573120 instance=ExtResource("4_qukqx")]
+position = Vector2(736, 319.99997)
+scale = Vector2(4, 8.1)
+to_level_path = "uid://dkv5yjro7fpkr"
+
+[connection signal="ready" from="." to="." method="_on_ready"]

@@ -9,4 +9,4 @@ func _ready() -> void:
 	$CanvasLayer/Control/CenterContainer/VBoxContainer/Button.grab_focus();
 
 func _begin_game() -> void:
-	get_tree().change_scene_to_file("res://main.tscn");
+	get_tree().change_scene_to_file("res://cutscenes/opening.tscn");

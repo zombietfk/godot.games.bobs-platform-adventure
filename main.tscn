@@ -59,7 +59,7 @@ font_size = 48
 process_mode = 3
 script = ExtResource("1_lquwl")
 inital_level_path = "uid://cgrbopls2dqgk"
-inital_checkpoint_path = "uid://cgrbopls2dqgk"
+inital_checkpoint_path = "uid://b15nwgr8neenv"
 
 [node name="GameMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=673001295]
 stream = ExtResource("2_ycdy4")

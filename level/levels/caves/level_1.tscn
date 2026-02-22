@@ -33,7 +33,7 @@ to_level_path = "uid://dbxieqouw3yu0"
 [node name="TeleportToPreviousLevelZone" parent="." unique_id=996709912 instance=ExtResource("4_uvlp3")]
 position = Vector2(-32, 320)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://cgrbopls2dqgk"
+to_level_path = "uid://b15nwgr8neenv"
 to_spawn_location_with_index = 1
 
 [node name="Spike" parent="." unique_id=153314221 instance=ExtResource("5_eilrb")]

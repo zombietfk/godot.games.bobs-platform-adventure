@@ -1,0 +1,366 @@
+[gd_scene format=3 uid="uid://dadfpi7dynx73"]
+
+[ext_resource type="Script" uid="uid://b2mcwejti1p35" path="res://cutscenes/opening_cutscene_controller.gd" id="1_kc107"]
+[ext_resource type="Texture2D" uid="uid://crw8qsmrqbhfa" path="res://cutscenes/intro_1.png" id="1_x3nyi"]
+[ext_resource type="Texture2D" uid="uid://ct6ea0bbbtewx" path="res://cutscenes/intro_2.png" id="1_xo4io"]
+[ext_resource type="Texture2D" uid="uid://doj3sc17v2tac" path="res://cutscenes/big_bob.png" id="2_xo4io"]
+[ext_resource type="Texture2D" uid="uid://dfqbouqi2gdrq" path="res://cutscenes/intro_3.png" id="3_pb3xr"]
+[ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="6_ccdgc"]
+[ext_resource type="Script" uid="uid://36fsqxphi64s" path="res://cutscenes/typewriter_label.gd" id="7_3l142"]
+
+[sub_resource type="Animation" id="Animation_pb3xr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/bob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1408, 672)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/backdrop:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_x3nyi")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/bob:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/bob:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qdnu3"]
+resource_name = "clip_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/bob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1408, 672), Vector2(608, 672)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/backdrop:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_x3nyi")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/bob:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/bob:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xo4io"]
+resource_name = "clip_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/bob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(608, 672), Vector2(-320, 672)]
+}
+
+[sub_resource type="Animation" id="Animation_kc107"]
+resource_name = "clip_3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/backdrop:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_xo4io")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/bob:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1312, 960), Vector2(960, 704)]
+}
+
+[sub_resource type="Animation" id="Animation_ccdgc"]
+resource_name = "clip_4"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/bob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 704), Vector2(576, 544)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/bob:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="Animation" id="Animation_3l142"]
+resource_name = "clip_5"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/bob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(256, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/backdrop:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_pb3xr")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/bob:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_gkbse"]
+resource_name = "clip_6"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/bob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(256, 160), Vector2(288, 416)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/bob:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.84299403]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/bob:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_of42q"]
+resource_name = "clip_7"
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/bob:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.84299403, 3.312635]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/bob:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(288, 416), Vector2(736, 608)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/bob:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kc107"]
+_data = {
+&"RESET": SubResource("Animation_pb3xr"),
+&"clip_1": SubResource("Animation_qdnu3"),
+&"clip_2": SubResource("Animation_xo4io"),
+&"clip_3": SubResource("Animation_kc107"),
+&"clip_4": SubResource("Animation_ccdgc"),
+&"clip_5": SubResource("Animation_3l142"),
+&"clip_6": SubResource("Animation_gkbse"),
+&"clip_7": SubResource("Animation_of42q")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_kc107"]
+font = ExtResource("6_ccdgc")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 16
+
+[node name="Opening" type="Node2D" unique_id=908337227 node_paths=PackedStringArray("cutscene_typewriter", "animation_player")]
+script = ExtResource("1_kc107")
+cutscene_typewriter = NodePath("Control/Label")
+animation_player = NodePath("Node2D/AnimationPlayer")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1798770295]
+position = Vector2(64, 0)
+scale = Vector2(0.6, 0.6)
+
+[node name="backdrop" type="Sprite2D" parent="Node2D" unique_id=98777735]
+position = Vector2(576, 389)
+texture = ExtResource("1_x3nyi")
+
+[node name="bob" type="Sprite2D" parent="Node2D" unique_id=182522815]
+position = Vector2(1408, 672)
+texture = ExtResource("2_xo4io")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=1786181261]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_kc107")
+
+[node name="Control" type="Control" parent="." unique_id=855397577]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 448.0
+offset_right = 128.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="Control" unique_id=1739997840]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 192.0
+offset_top = -832.0
+offset_right = 942.0
+offset_bottom = -802.0
+grow_horizontal = 2
+text = "one sunny day, bob was at home relaxing"
+label_settings = SubResource("LabelSettings_kc107")
+autowrap_mode = 2
+script = ExtResource("7_3l142")

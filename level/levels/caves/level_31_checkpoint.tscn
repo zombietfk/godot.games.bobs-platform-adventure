@@ -10,7 +10,7 @@
 
 [node name="Level_31" type="Node2D" unique_id=1037396008 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_mpagl")
-level_binding_box = Rect2(128, 512, 512, 1152)
+level_binding_box = Rect2(-128, 512, 512, 1152)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=838377972]

@@ -39,11 +39,11 @@ func _take_damage(
 
 func _play_take_damage_sound()->void:
 	var roll_lower_bond := 0;
-	var roll_upper_bound := 101;
+	var roll_upper_bound := 100;
 	var roll = randi_range(roll_lower_bond, roll_upper_bound);
-	if roll <= 5:
+	if roll <= 20:
 		damaged_sounds[0].play();
-	elif roll <= 53:
+	elif roll <= 60:
 		damaged_sounds[1].play();
-	elif roll <= 101:
+	else:
 		damaged_sounds[2].play();
