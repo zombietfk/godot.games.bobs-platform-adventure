@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://fxtkyrhbeyuk"]
+
+[ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="1_skyfm"]
+[ext_resource type="Script" uid="uid://vmi8mua4h0y1" path="res://ui/master_volume_controller.gd" id="2_f8mfy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_glbon"]
+font = ExtResource("1_skyfm")
+font_size = 18
+
+[node name="MasterVolumeController" type="HBoxContainer" unique_id=1303257056]
+
+[node name="Label" type="Label" parent="." unique_id=569734307]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_glbon")
+
+[node name="HSlider" type="HSlider" parent="." unique_id=459014070]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+script = ExtResource("2_f8mfy")
+
+[connection signal="changed" from="HSlider" to="HSlider" method="_value_changed"]

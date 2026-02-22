@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://buko0op3ok08h" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://bo7vwjgkdvcgm" path="res://player/bob_sprite.png" id="2_7vrkn"]
-[ext_resource type="Script" uid="uid://vmi8mua4h0y1" path="res://ui/master_volume_controller.gd" id="4_glbon"]
+[ext_resource type="PackedScene" uid="uid://fxtkyrhbeyuk" path="res://ui/master_volume_controller.tscn" id="4_glbon"]
 [ext_resource type="AudioStream" uid="uid://be6xey68t1ytg" path="res://menu_music.mp3" id="4_jix8l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fu7sn"]
@@ -12,10 +12,6 @@ font = ExtResource("1_06t4h")
 [sub_resource type="LabelSettings" id="LabelSettings_7vrkn"]
 font = ExtResource("1_06t4h")
 font_size = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_glbon"]
-font = ExtResource("1_06t4h")
-font_size = 18
 
 [sub_resource type="Theme" id="Theme_06t4h"]
 default_font = ExtResource("1_06t4h")
@@ -70,20 +66,8 @@ layout_mode = 2
 text = "BOB'S BIG AVENTURE!"
 label_settings = SubResource("LabelSettings_7vrkn")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1682632971]
+[node name="MasterVolumeController" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1303257056 instance=ExtResource("4_glbon")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=325228546]
-layout_mode = 2
-text = "Master Volume"
-label_settings = SubResource("LabelSettings_glbon")
-
-[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer2" unique_id=54401804]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-value = 75.0
-script = ExtResource("4_glbon")
 
 [node name="Button" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1303368107]
 layout_mode = 2
@@ -95,5 +79,4 @@ stream = ExtResource("4_jix8l")
 autoplay = true
 parameters/looping = true
 
-[connection signal="changed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer2/HSlider" to="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer2/HSlider" method="_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Button" to="." method="_begin_game"]

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dfqbouqi2gdrq" path="res://cutscenes/intro_3.png" id="3_pb3xr"]
 [ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="6_ccdgc"]
 [ext_resource type="Script" uid="uid://36fsqxphi64s" path="res://cutscenes/typewriter_label.gd" id="7_3l142"]
+[ext_resource type="AudioStream" uid="uid://ciq23c85qpkvy" path="res://cutscene_music.mp3" id="8_gkbse"]
 
 [sub_resource type="Animation" id="Animation_pb3xr"]
 length = 0.001
@@ -364,3 +365,8 @@ text = "one sunny day, bob was at home relaxing"
 label_settings = SubResource("LabelSettings_kc107")
 autowrap_mode = 2
 script = ExtResource("7_3l142")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=636644302]
+stream = ExtResource("8_gkbse")
+autoplay = true
+parameters/looping = true

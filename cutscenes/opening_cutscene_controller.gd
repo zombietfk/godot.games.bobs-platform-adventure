@@ -42,11 +42,13 @@ var _c_clip_index = 0;
 var _c_label_index = 0;
 @export var cutscene_typewriter: TypewriterLabel;
 @export var animation_player: AnimationPlayer;
+@onready var music: AudioStreamPlayer = $AudioStreamPlayer;
 
 func _init()->void:
 	RenderingServer.set_default_clear_color(Color.WHITE);
 
 func _ready()->void:
+	music.seek(2.0);
 	animation_player.play("RESET");
 	cutscene_typewriter.finished_writing.connect(_wait_for_input_then_play_next);
 	
