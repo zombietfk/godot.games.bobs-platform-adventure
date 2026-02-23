@@ -368,5 +368,6 @@ script = ExtResource("7_3l142")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=636644302]
 stream = ExtResource("8_gkbse")
+volume_db = 8.0
 autoplay = true
 parameters/looping = true
