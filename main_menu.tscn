@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://mdc6a3orbcju" path="res://ui/slider_bar.png" id="5_dy7ct"]
 [ext_resource type="Texture2D" uid="uid://drnm4va3uegtk" path="res://ui/button_9_slice.png" id="5_nlkkf"]
 [ext_resource type="Script" uid="uid://vmi8mua4h0y1" path="res://ui/master_volume_controller.gd" id="6_0o4t1"]
+[ext_resource type="Texture2D" uid="uid://ds6e4i42jsdbo" path="res://ui/github.png" id="8_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://406mjw5hikla" path="res://ui/itchiio.png" id="9_0o4t1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fu7sn"]
 font = ExtResource("1_06t4h")
@@ -57,14 +59,18 @@ grow_vertical = 2
 
 [node name="Version" type="Label" parent="CanvasLayer/Control" unique_id=822671300]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -338.0
 offset_top = -15.0
-offset_right = 125.0
+grow_horizontal = 0
 grow_vertical = 0
-text = "version 0.1.3-a"
+text = "version 0.1.3-b"
 label_settings = SubResource("LabelSettings_fu7sn")
+horizontal_alignment = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=1062002665]
 layout_mode = 1
@@ -120,6 +126,49 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_qe12f")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxTexture_qe12f")
 text = "Start!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1236533716]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+offset_right = 338.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1070272063]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1275896263]
+layout_mode = 2
+texture = ExtResource("8_dy7ct")
+stretch_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=951583977]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 16
+text = "https://github.com/zombietfk"
+uri = "https://github.com/zombietfk"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=971212065]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2" unique_id=599873706]
+layout_mode = 2
+texture = ExtResource("9_0o4t1")
+stretch_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2" unique_id=1850285195]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 16
+text = "https://zombietfk.itch.io"
+uri = "https://zombietfk.itch.io"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2002043816]
 stream = ExtResource("4_jix8l")
