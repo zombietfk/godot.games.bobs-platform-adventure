@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://byq78k0jb2l32"]
+[gd_scene format=4 uid="uid://byq78k0jb2l32"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_v1ui5"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="3_j6uu3"]
@@ -17,157 +17,157 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_12" type="Node2D" node_paths=PackedStringArray("spawn_locations", "pathfinding_tilemap")]
+[node name="Level_12" type="Node2D" unique_id=1944903737 node_paths=PackedStringArray("spawn_locations", "pathfinding_tilemap")]
 script = ExtResource("1_v1ui5")
 level_binding_box = Rect2(-64, 192, 960, 768)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 pathfinding_tilemap = NodePath("Level")
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1422407754]
 position = Vector2(-32, 480)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=746035361]
 position = Vector2(928, 480)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=944697800]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAD//wsAAgACAAEAAAAAAAsAAgACAAEAAAAHAAsAAgACAAEAAAADAAsAAgACAAEAAAAEAAsAAgAIAAEAAAAJAAsAAgACAAEAAAAKAAsAAgACAAEAAAALAAsAAgACAAEAAAAMAAsAAgAIAAEAAAAMAAgAAgABAAMAAAANAAsAAgACAAEAAAABAAsAAgACAAEAAAACAAsAAgACAAEAAAAFAAsAAgACAAEAAAAGAAsAAgACAAEAAAAAAAwAAgACAAIAAAAAAA0AAgACAAIAAAAIAAgAAgAFAAUAAAAEAAgAAgAFAAUAAAD//wgAAgACAAMAAAAAAAgAAgADAAMAAAAEAAcAAgAFAAQAAAAIAAcAAgAFAAQAAAAAAAcAAgADAAIAAAAAAAYAAgADAAIAAAAEAAYAAgAFAAQAAAAIAAYAAgAFAAQAAAANAAwAAgABAAIAAAANAA0AAgABAAIAAAANAAgAAgACAAMAAAAMAAcAAgABAAIAAAAMAAYAAgABAAIAAAAIAAsAAgAIAAEAAAADAAwAAgADAAIAAAADAA0AAgADAAIAAAAFAAwAAgABAAIAAAAFAA0AAgABAAIAAAAHAAwAAgADAAIAAAAHAA0AAgADAAIAAAAJAAwAAgABAAIAAAAJAA0AAgABAAIAAAALAAwAAgADAAIAAAALAA0AAgADAAIAAAABAAwAAgACAAIAAAABAA0AAgACAAIAAAACAAwAAgACAAIAAAACAA0AAgACAAIAAAAGAAwAAgACAAIAAAAGAA0AAgACAAIAAAAKAAwAAgACAAIAAAAKAA0AAgACAAIAAAAOAAsAAgACAAEAAAAOAAgAAgACAAMAAAAAAA4AAgACAAIAAAABAA4AAgACAAIAAAACAA4AAgACAAIAAAADAA4AAgACAAIAAAAFAA4AAgACAAIAAAAGAA4AAgACAAIAAAAHAA4AAgACAAIAAAAIAA4AAgACAAEAAAAJAA4AAgACAAIAAAAKAA4AAgACAAIAAAALAA4AAgACAAIAAAAMAA4AAgACAAEAAAANAA4AAgACAAIAAAAEAA4AAgACAAEAAAA=")
 tile_set = ExtResource("3_j6uu3")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=847653178]
 tile_map_data = PackedByteArray("AAAHABwAAAAEAAUAAAAPABwAAAAEAAUAAAAXABwAAAAEAAUAAAAHABcAAAAEAAUAAAAPABcAAAAEAAUAAAAXABcAAAAEAAUAAAAKABwAAAAEAAUAAAASABwAAAAEAAUAAAAaABwAAAAEAAUAAAAKABcAAAAEAAUAAAASABcAAAAEAAUAAAAaABcAAAAEAAUAAAAIABsAAAAEAAIAAAAJABsAAAAFAAIAAAAQABsAAAAEAAIAAAARABsAAAAFAAIAAAAYABsAAAAEAAIAAAAZABsAAAAFAAIAAAAIABgAAAAEAAcAAAAJABgAAAAFAAcAAAAQABgAAAAEAAcAAAARABgAAAAFAAcAAAAYABgAAAAEAAcAAAAZABgAAAAFAAcAAAAHABgAAAAfAA8AAAAIABcAAAAEAAUAAAAJABcAAAAEAAUAAAAKABgAAAAWAA8AAAAPABgAAAAfAA8AAAAQABcAAAAEAAUAAAARABcAAAAEAAUAAAASABgAAAAWAA8AAAAXABgAAAAfAA8AAAAYABcAAAAEAAUAAAAZABcAAAAEAAUAAAAaABgAAAAWAA8AAAAHABsAAAAfAAYAAAALABsAAAAEAAUAAAAKABsAAAAWAAYAAAAJABwAAAAEAAUAAAAIABwAAAAEAAUAAAAPABsAAAAfAAYAAAAQABwAAAAEAAUAAAARABwAAAAEAAUAAAASABsAAAAWAAYAAAAXABsAAAAfAAYAAAAYABwAAAAEAAUAAAAZABwAAAAEAAUAAAAaABsAAAAWAAYAAAAHABoAAAAHAAUAAAAPABoAAAAHAAUAAAAXABoAAAAHAAUAAAAXABkAAAAHAAQAAAAPABkAAAAHAAQAAAAHABkAAAAHAAQAAAA=")
 tile_set = ExtResource("4_q5rjn")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("5_jdocr")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=298138909 instance=ExtResource("5_jdocr")]
 position = Vector2(992, 448)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://jr3onq8odump"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("5_jdocr")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=103768563 instance=ExtResource("5_jdocr")]
 position = Vector2(-96, 448)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bh343njjeji8k"
 to_spawn_location_with_index = 1
 
-[node name="Rabbit" parent="." instance=ExtResource("6_11l0m")]
+[node name="Rabbit" parent="." unique_id=1748087022 instance=ExtResource("6_11l0m")]
 position = Vector2(288, 656)
 jump_movement = Vector2(119, -200)
 jump_inital_delay = -1
 jump_timer = 2.0
 
-[node name="Rabbit2" parent="." instance=ExtResource("6_11l0m")]
+[node name="Rabbit2" parent="." unique_id=2079577528 instance=ExtResource("6_11l0m")]
 position = Vector2(544, 656)
-jump_movement = Vector2(119, -200)
-jump_timer = 2.0
-
-[node name="Rabbit3" parent="." instance=ExtResource("6_11l0m")]
-position = Vector2(800, 656)
 jump_movement = Vector2(119, -200)
 jump_inital_delay = 1
 jump_timer = 2.0
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Rabbit3" parent="." unique_id=1499952151 instance=ExtResource("6_11l0m")]
+position = Vector2(800, 656)
+jump_movement = Vector2(119, -200)
+jump_timer = 2.0
+
+[node name="Path2D" type="Path2D" parent="." unique_id=556874206]
 curve = SubResource("Curve2D_t44sk")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=258560804]
 position = Vector2(288, 448)
 rotates = false
 loop = false
 
-[node name="Door6" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_nb8xc")]
+[node name="Door6" parent="Path2D/PathFollow2D" unique_id=526070585 node_paths=PackedStringArray("movement_path") instance=ExtResource("7_nb8xc")]
 script = ExtResource("8_vn2ac")
 movement_path = NodePath("..")
 movement_speed = 250.0
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="." unique_id=469604998]
 position = Vector2(256, 0)
 curve = SubResource("Curve2D_t44sk")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1097232191]
 position = Vector2(288, 448)
 rotates = false
 loop = false
 
-[node name="Door2" parent="Path2D2/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_nb8xc")]
+[node name="Door2" parent="Path2D2/PathFollow2D" unique_id=1730306515 node_paths=PackedStringArray("movement_path") instance=ExtResource("7_nb8xc")]
 script = ExtResource("8_vn2ac")
 movement_path = NodePath("..")
 movement_speed = 250.0
 
-[node name="Path2D3" type="Path2D" parent="."]
+[node name="Path2D3" type="Path2D" parent="." unique_id=54592030]
 position = Vector2(512, 0)
 curve = SubResource("Curve2D_t44sk")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3" unique_id=1322504265]
 position = Vector2(288, 448)
 rotates = false
 loop = false
 
-[node name="Door3" parent="Path2D3/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_nb8xc")]
+[node name="Door3" parent="Path2D3/PathFollow2D" unique_id=515620846 node_paths=PackedStringArray("movement_path") instance=ExtResource("7_nb8xc")]
 script = ExtResource("8_vn2ac")
 movement_path = NodePath("..")
 movement_speed = 250.0
 
-[node name="Switch" parent="." instance=ExtResource("9_heoj5")]
+[node name="Switch" parent="." unique_id=764569695 instance=ExtResource("9_heoj5")]
 position = Vector2(320, 640)
 rotation = 1.5707964
 has_timer = true
 switch_duration = 1.0
 
-[node name="Switch2" parent="." instance=ExtResource("9_heoj5")]
+[node name="Switch2" parent="." unique_id=2041040900 instance=ExtResource("9_heoj5")]
 position = Vector2(576, 640)
 rotation = 1.5707964
 has_timer = true
 switch_duration = 1.0
 
-[node name="Switch3" parent="." instance=ExtResource("9_heoj5")]
+[node name="Switch3" parent="." unique_id=2136228866 instance=ExtResource("9_heoj5")]
 position = Vector2(832, 640)
 rotation = 1.5707964
 has_timer = true
 switch_duration = 1.0
 
-[node name="Switch1_sawblade_shooters" type="Node" parent="." node_paths=PackedStringArray("connects_to")]
+[node name="Switch1_sawblade_shooters" type="Node" parent="." unique_id=1375014506 node_paths=PackedStringArray("connects_to")]
 script = ExtResource("10_1sgm7")
 connects_to = NodePath("../Switch")
 signal_names = Array[String](["switch_flipped_on"])
 callback_names = Array[String](["_fire_boulder_on_swtich_press"])
 
-[node name="CreateBoulderOnSwitchPress" parent="Switch1_sawblade_shooters" instance=ExtResource("10_db0oe")]
+[node name="CreateBoulderOnSwitchPress" parent="Switch1_sawblade_shooters" unique_id=1988734021 instance=ExtResource("10_db0oe")]
 position = Vector2(96, 160)
 
-[node name="CreateBoulderOnSwitchPress2" parent="Switch1_sawblade_shooters" instance=ExtResource("10_db0oe")]
+[node name="CreateBoulderOnSwitchPress2" parent="Switch1_sawblade_shooters" unique_id=1769231328 instance=ExtResource("10_db0oe")]
 position = Vector2(352, 160)
 
-[node name="CreateBoulderOnSwitchPress3" parent="Switch1_sawblade_shooters" instance=ExtResource("10_db0oe")]
+[node name="CreateBoulderOnSwitchPress3" parent="Switch1_sawblade_shooters" unique_id=1253414110 instance=ExtResource("10_db0oe")]
 position = Vector2(608, 160)
 
-[node name="Switch2_sawblade_shooters" type="Node" parent="." node_paths=PackedStringArray("connects_to")]
+[node name="Switch2_sawblade_shooters" type="Node" parent="." unique_id=1920393565 node_paths=PackedStringArray("connects_to")]
 script = ExtResource("10_1sgm7")
 connects_to = NodePath("../Switch2")
 signal_names = Array[String](["switch_flipped_on"])
 callback_names = Array[String](["_fire_boulder_on_swtich_press"])
 
-[node name="CreateBoulderOnSwitchPress4" parent="Switch2_sawblade_shooters" instance=ExtResource("10_db0oe")]
+[node name="CreateBoulderOnSwitchPress4" parent="Switch2_sawblade_shooters" unique_id=1449737827 instance=ExtResource("10_db0oe")]
 position = Vector2(160, 160)
 
-[node name="CreateBoulderOnSwitchPress5" parent="Switch2_sawblade_shooters" instance=ExtResource("10_db0oe")]
+[node name="CreateBoulderOnSwitchPress5" parent="Switch2_sawblade_shooters" unique_id=893980125 instance=ExtResource("10_db0oe")]
 position = Vector2(416, 160)
 
-[node name="CreateBoulderOnSwitchPress6" parent="Switch2_sawblade_shooters" instance=ExtResource("10_db0oe")]
+[node name="CreateBoulderOnSwitchPress6" parent="Switch2_sawblade_shooters" unique_id=1540232411 instance=ExtResource("10_db0oe")]
 position = Vector2(672, 160)
 
-[node name="Switch3_sawblade_shooters" type="Node" parent="." node_paths=PackedStringArray("connects_to")]
+[node name="Switch3_sawblade_shooters" type="Node" parent="." unique_id=657769392 node_paths=PackedStringArray("connects_to")]
 script = ExtResource("10_1sgm7")
 connects_to = NodePath("../Switch3")
 signal_names = Array[String](["switch_flipped_on"])
 callback_names = Array[String](["_fire_boulder_on_swtich_press"])
 
-[node name="CreateBoulderOnSwitchPress7" parent="Switch3_sawblade_shooters" instance=ExtResource("10_db0oe")]
+[node name="CreateBoulderOnSwitchPress7" parent="Switch3_sawblade_shooters" unique_id=152626554 instance=ExtResource("10_db0oe")]
 position = Vector2(224, 160)
 
-[node name="CreateBoulderOnSwitchPress8" parent="Switch3_sawblade_shooters" instance=ExtResource("10_db0oe")]
+[node name="CreateBoulderOnSwitchPress8" parent="Switch3_sawblade_shooters" unique_id=1843516100 instance=ExtResource("10_db0oe")]
 position = Vector2(480, 160)
 
-[node name="CreateBoulderOnSwitchPress9" parent="Switch3_sawblade_shooters" instance=ExtResource("10_db0oe")]
+[node name="CreateBoulderOnSwitchPress9" parent="Switch3_sawblade_shooters" unique_id=1439977863 instance=ExtResource("10_db0oe")]
 position = Vector2(736, 160)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
