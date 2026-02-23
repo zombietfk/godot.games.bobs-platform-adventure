@@ -1,23 +1,33 @@
 [gd_scene format=3 uid="uid://fxtkyrhbeyuk"]
 
-[ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="1_skyfm"]
+[ext_resource type="Texture2D" uid="uid://dnyb0oceqt3sf" path="res://ui/slider_grabber.png" id="2_eiiss"]
 [ext_resource type="Script" uid="uid://vmi8mua4h0y1" path="res://ui/master_volume_controller.gd" id="2_f8mfy"]
+[ext_resource type="Texture2D" uid="uid://mdc6a3orbcju" path="res://ui/slider_bar.png" id="2_n45oj"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_glbon"]
-font = ExtResource("1_skyfm")
-font_size = 18
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8mfy"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("2_n45oj")
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n45oj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eiiss"]
 
 [node name="MasterVolumeController" type="HBoxContainer" unique_id=1303257056]
-
-[node name="Label" type="Label" parent="." unique_id=569734307]
-layout_mode = 2
-text = "Master Volume"
-label_settings = SubResource("LabelSettings_glbon")
+offset_right = 384.0
+offset_bottom = 17.0
 
 [node name="HSlider" type="HSlider" parent="." unique_id=459014070]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_icons/grabber = ExtResource("2_eiiss")
+theme_override_icons/grabber_highlight = ExtResource("2_eiiss")
+theme_override_icons/grabber_disabled = ExtResource("2_eiiss")
+theme_override_styles/slider = SubResource("StyleBoxTexture_f8mfy")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_n45oj")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_eiiss")
 value = 50.0
 script = ExtResource("2_f8mfy")
 
