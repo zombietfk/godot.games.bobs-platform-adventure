@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide();
 
 func _free_after_x_seconds(x: float)->void:
-	await get_tree().create_timer(x).timeout;
+	await get_tree().create_timer(x, false).timeout;
 	queue_free();
 
 func _on_player_enter_bee_attack_area(body: Node2D)->void:
@@ -63,5 +63,5 @@ func _get_brownian_motion_vector2()->Vector2:
 func gib_and_kill()->void:
 	_is_dying = true;
 	on_death.emit();
-	await get_tree().create_timer(5).timeout;
+	await get_tree().create_timer(5, false).timeout;
 	queue_free();

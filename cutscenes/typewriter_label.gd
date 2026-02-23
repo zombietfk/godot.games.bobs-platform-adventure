@@ -30,7 +30,7 @@ func type_text() -> void:
 	while _char_index < _full_text.length():
 		text += _full_text[_char_index];
 		_char_index += 1;
-		await get_tree().create_timer(text_speed).timeout;
+		await get_tree().create_timer(text_speed, false).timeout;
 	finished_writing.emit();
 
 func update_text(message: String)->void:

@@ -24,11 +24,11 @@ func _process(_delta: float) -> void:
 		if collision is Player or ignore_raycast_check:
 			_current_state = SpikeState.TRIGGERED;
 			animation_player.play("spike_shake");
-			await get_tree().create_timer(fall_after_timer).timeout;
+			await get_tree().create_timer(fall_after_timer, false).timeout;
 			animation_player.play("RESET");
 			_current_state = SpikeState.FALLING;
 			if respawns:
-				await get_tree().create_timer(respawn_after_timer).timeout;
+				await get_tree().create_timer(respawn_after_timer, false).timeout;
 				_current_state = SpikeState.RESPAWNING;
 				spike_body.visible = false;
 				animation_player.play("respawn");

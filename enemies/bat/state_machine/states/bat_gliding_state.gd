@@ -26,5 +26,5 @@ func physics_process(delta: float) -> void:
 	).normalized() * move_speed + body.get_gravity() * delta * gravity_factor;
 	
 func _transition_to_flap_state_after_timeout()->void:
-	await get_tree().create_timer(flap_after_x_seconds_timer).timeout;
+	await get_tree().create_timer(flap_after_x_seconds_timer, false).timeout;
 	transition.emit("Flap");

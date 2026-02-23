@@ -39,5 +39,5 @@ func _begin_flapping() -> void:
 		flying_animated_sprite.play();
 		_flap_impulse = Vector2.UP * flap_strength;
 		_c_flap_count += 1;
-		await get_tree().create_timer(rest_between_flaps_timer).timeout;
+		await get_tree().create_timer(rest_between_flaps_timer, false).timeout;
 	transition.emit("Glide");

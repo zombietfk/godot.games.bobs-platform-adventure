@@ -27,7 +27,7 @@ func _wait_until_reemerge()->void:
 	worm_path.paused = false;
 	attack_area.monitoring = false;
 	collider_animation.stop();
-	await get_tree().create_timer(in_ground_time).timeout;
+	await get_tree().create_timer(in_ground_time, false).timeout;
 	worm_path.paused = true;
 	attack_area.monitoring = true;
 	animation_sprite_2d.play();

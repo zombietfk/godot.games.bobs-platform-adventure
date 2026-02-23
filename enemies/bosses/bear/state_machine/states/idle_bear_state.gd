@@ -3,7 +3,7 @@ extends AbstractBearState;
 
 func enter(_from: AbstractState)->void:
 	animated_sprite.animation = "idle";
-	await get_tree().create_timer(2.0).timeout;
+	await get_tree().create_timer(2.0, false).timeout;
 	transition.emit("Stage1State");
 	
 	

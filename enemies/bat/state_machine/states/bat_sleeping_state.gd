@@ -32,7 +32,7 @@ func _awaken() -> void:
 	_is_awakening = true;
 	hanging_sprite.play("waking_up");
 	animation_player.play("awaken");
-	await get_tree().create_timer(time_to_awaken).timeout;
+	await get_tree().create_timer(time_to_awaken, false).timeout;
 	animation_player.stop();
 	_is_awakening = false;
 	transition.emit("Glide")

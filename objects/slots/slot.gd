@@ -16,7 +16,7 @@ func stop_all_reels()->void:
 	await reel_1.stop();
 	await reel_2.stop();
 	await reel_3.stop();
-	await get_tree().create_timer(_spin_cooldown_period).timeout;
+	await get_tree().create_timer(_spin_cooldown_period, false).timeout;
 
 func _await_all_reels_stopped()->void:
 	while reel_1.is_spinning or reel_2.is_spinning or reel_3.is_spinning:

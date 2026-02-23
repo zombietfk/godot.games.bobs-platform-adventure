@@ -159,7 +159,7 @@ func throw_pitchfork_to_and_return(
 		$Pitchfork.global_position += (to - from).normalized() * pitchfork_speed;
 		if $Pitchfork/RayCast2D.get_collider() == player:
 			player.damage(1, (from - to).normalized(), Vector2(500,500));
-		await get_tree().create_timer(coroutine_processing_timer_duration).timeout;
+		await get_tree().create_timer(coroutine_processing_timer_duration, false).timeout;
 		if state != DemonRabbitState.THROWING_PITCHFORK:
 			$Pitchfork/AnimationPlayer.stop();
 			$Pitchfork.global_position = $PitchforkOriginMarker.global_position;
@@ -178,7 +178,7 @@ func throw_pitchfork_to_and_return(
 			from,
 			c_duration / inbound_duration
 		);
-		await get_tree().create_timer(coroutine_processing_timer_duration).timeout
+		await get_tree().create_timer(coroutine_processing_timer_duration, false).timeout
 		if state != DemonRabbitState.THROWING_PITCHFORK:
 			$Pitchfork/AnimationPlayer.stop();
 			$Pitchfork.global_position = $PitchforkOriginMarker.global_position;
@@ -198,7 +198,7 @@ func fire_spell_to_target(target: Node2D, travel_time: float = 2.0)->void:
 	var inital_position = spell.global_position;
 	var c_travel_time = 0;
 	while c_travel_time < travel_time:
-		await get_tree().create_timer(coroutine_processing_timer_duration).timeout;
+		await get_tree().create_timer(coroutine_processing_timer_duration, false).timeout;
 		c_travel_time += coroutine_processing_timer_duration;
 		spell.global_position = lerp(
 			inital_position,
@@ -219,7 +219,7 @@ func spawn_mirror_at_target(target: Node2D)->void:
 	spawn_enemies_at_node_every_x(summoned_mirror, mirror_summon_time);
 
 func spawn_enemies_at_node_every_x(node: Mirror, every_x: float)->void:
-	await get_tree().create_timer(every_x).timeout;
+	await get_tree().create_timer(every_x, false).timeout;
 	var summoned_enemies_at_node = { "count" : 0 };
 	while node != null:
 		if summoned_enemies_at_node.count < max_summoned_enemies_per_mirror:
@@ -233,7 +233,7 @@ func spawn_enemies_at_node_every_x(node: Mirror, every_x: float)->void:
 			increase_summoned_size_until(summoned_enemy);
 			summoned_enemies_at_node.count += 1;
 			Main.instance.level_instance.add_child(summoned_enemy);
-		await get_tree().create_timer(every_x).timeout;
+		await get_tree().create_timer(every_x, false).timeout;
 		
 func increase_summoned_size_until(
 	summon: Node2D,
@@ -243,7 +243,7 @@ func increase_summoned_size_until(
 	var c_duration = 0.0;
 	var inital_scale = summon.scale;
 	while c_duration < duration:
-		await get_tree().create_timer(coroutine_processing_timer_duration).timeout;
+		await get_tree().create_timer(coroutine_processing_timer_duration, false).timeout;
 		if summon == null:
 			return;
 		c_duration += coroutine_processing_timer_duration;
@@ -253,9 +253,9 @@ func hit_by_bullet() -> void:
 	if state == DemonRabbitState.THROWING_PITCHFORK and !is_in_bullet_hit_cooldown_period:
 		is_in_bullet_hit_cooldown_period = true;
 		$Body.modulate = Color(1.0, 1.0, 1.0, 1.0);
-		await get_tree().create_timer(0.1).timeout;
+		await get_tree().create_timer(0.1, false).timeout;
 		$Body.modulate = Color(1.0, 0.0, 0.0, 1.0);
-		await get_tree().create_timer(0.2).timeout;
+		await get_tree().create_timer(0.2, false).timeout;
 		is_in_bullet_hit_cooldown_period = false
 		bullet_hits_until_stunned -= 1;
 	if bullet_hits_until_stunned <= 0:
@@ -273,9 +273,9 @@ func recover_from_stun_and_reset() -> void:
 		destroy();
 		return;
 	is_recovering = true;
-	await get_tree().create_timer(3.0).timeout;
+	await get_tree().create_timer(3.0, false).timeout;
 	state = DemonRabbitState.IDLE;
-	await get_tree().create_timer(1.0).timeout;
+	await get_tree().create_timer(1.0, false).timeout;
 	if platform_jump_locations.size() > 1:
 		var target_platform_jump_location = current_platform_jump_location;
 		while target_platform_jump_location == current_platform_jump_location: 
@@ -305,10 +305,10 @@ func destroy()->void:
 		Gib.spawn(global_position, Vector2(sin((i * 4) / 50.0), -1));
 		scale.x -= 0.01;
 		scale.y += 0.01;
-		await get_tree().create_timer(0.05).timeout;
+		await get_tree().create_timer(0.05, false).timeout;
 	$CollisionShape2D.disabled = true;
 	$ForceField/StaticBody2D/CollisionShape2D.disabled = true;
-	await get_tree().create_timer(5).timeout;
+	await get_tree().create_timer(5, false).timeout;
 	remove_child(Main.instance.player.camera);
 	Main.instance.player.camera.reparent(Main.instance.player);
 	demon_rabbit_destroyed.emit();

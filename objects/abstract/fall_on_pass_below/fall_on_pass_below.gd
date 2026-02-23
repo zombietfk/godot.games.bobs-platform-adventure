@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 		if collision is Player:
 			is_triggered = true;
 			$AnimationPlayer.play(before_fall_animation_label);
-			await get_tree().create_timer(fall_after).timeout;
+			await get_tree().create_timer(fall_after, false).timeout;
 			$AnimationPlayer.stop();
 			is_falling = true;
 

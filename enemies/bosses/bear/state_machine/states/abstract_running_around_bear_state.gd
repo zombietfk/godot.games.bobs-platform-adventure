@@ -73,7 +73,7 @@ func _wait_then_run()->void:
 	_move_acceleration = move_acceleration_sqr;
 	animated_sprite.animation = "idle";
 	_is_running = false;
-	await get_tree().create_timer(_wait_time_before_run).timeout;
+	await get_tree().create_timer(_wait_time_before_run, false).timeout;
 	if _interrupt_wait_then_run:
 		_is_running = true;
 		return;
@@ -83,7 +83,7 @@ func _wait_then_run()->void:
 	await _jump_after(randf_range(jump_timer_range.x, jump_timer_range.y));
 
 func _jump_after(t: float)->void:
-	await get_tree().create_timer(t).timeout;
+	await get_tree().create_timer(t, false).timeout;
 	if _interrupt_wait_then_run:
 		return;
 	_jump_impetus.y = _jump_strength;

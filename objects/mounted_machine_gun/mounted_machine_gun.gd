@@ -96,7 +96,7 @@ func flip_gun_direction()->void:
 	var timer = 0;
 	var timer_step = 0.02;
 	while timer < 1:
-		await get_tree().create_timer(timer_step).timeout;
+		await get_tree().create_timer(timer_step, false).timeout;
 		timer += timer_step;
 		scale.x = lerp(original_scale, target_scale, timer);
 	scale.x = original_scale * -1;

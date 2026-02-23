@@ -68,7 +68,7 @@ func _on_slots_finish_spinning_handler(results: Array[ReelFace.Values])->void:
 	body.pitchfork.animation_player.stop();
 	_perform_slot_action(results);
 	_interpolate_slot_path_over_time(1, 0, 2);
-	await get_tree().create_timer(5.0).timeout;
+	await get_tree().create_timer(5.0, false).timeout;
 	if !_superbunny_summoned:
 		transition.emit('StageOne');
 
@@ -113,20 +113,20 @@ func _fire_pitchforks(in_zone: int):
 	pitchfork_spawners[in_zone].spawn_pitchforks();
 
 func _fire_rock(in_zone: int):
-	await get_tree().create_timer(2.5).timeout;
+	await get_tree().create_timer(2.5, false).timeout;
 	rock_spawners[in_zone].spawn();
 
 func _fire_spike(in_zone: int):
-	await get_tree().create_timer(3.0).timeout;
+	await get_tree().create_timer(3.0, false).timeout;
 	spike_spawners[in_zone].spawn();
 
 func _create_spider(in_zone: int):
-	await get_tree().create_timer(2.0).timeout;
+	await get_tree().create_timer(2.0, false).timeout;
 	spider_spawners[in_zone].spawn();
 
 func _create_super_bunny():
 	_superbunny_summoned = true;
-	await get_tree().create_timer(2.0).timeout;
+	await get_tree().create_timer(2.0, false).timeout;
 	super_bunny_spawner.spawn();
 
 func _interpolate_slot_path_over_time(from: float, to: float, t: float)->void:
@@ -142,5 +142,5 @@ func _on_death()->void:
 
 func _on_take_damage()->void:
 	body.sprite_body.play('stunned');
-	await get_tree().create_timer(3.0).timeout;
+	await get_tree().create_timer(3.0, false).timeout;
 	transition.emit("StageOne");

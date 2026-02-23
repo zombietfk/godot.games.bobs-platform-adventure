@@ -41,7 +41,7 @@ func _inital_move_forward()->void:
 		await get_tree().process_frame;
 
 func _fire_after(time: float)->void: 
-	await get_tree().create_timer(time).timeout;
+	await get_tree().create_timer(time, false).timeout;
 	_is_fired = true;
 	
 func _process(delta: float)->void:

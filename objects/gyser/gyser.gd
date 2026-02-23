@@ -37,6 +37,6 @@ func _shoot_water()->void:
 	water_effect_particle_effect.emitting = true;
 	lift_effect_animation_player.play("ResizeLiftArea");
 	gyser_sound.play();
-	await get_tree().create_timer(water_effect_particle_effect.lifetime * 0.85).timeout;
+	await get_tree().create_timer(water_effect_particle_effect.lifetime * 0.85, false).timeout;
 	lift_effect_animation_player.play("RESET");
 	_is_water_shooting = false;

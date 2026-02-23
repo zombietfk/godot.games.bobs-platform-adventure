@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 		if !animation_player.is_playing():
 			animation_player.play("sway");
 			bee_release_sound.play();
-		await get_tree().create_timer(1).timeout;
+		await get_tree().create_timer(1, false).timeout;
 		if is_falling or _is_being_destroyed:
 			return;
 		var bee: Bee = bee_scene.instantiate();
@@ -79,6 +79,6 @@ func _free_after_x_seconds(x: float)->void:
 	_is_being_destroyed = true;
 	falling_rotation_speed = 0;
 	modulate = Color(1.0,1.0,1.0,0.5);
-	await get_tree().create_timer(x).timeout;
+	await get_tree().create_timer(x, false).timeout;
 	on_destroy.emit();
 	queue_free();

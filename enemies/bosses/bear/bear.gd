@@ -25,5 +25,5 @@ func gib_and_kill() -> void:
 	for i in 100:
 		Gib.spawn(global_position, Vector2(sin((i * 4) / 50.0), -1));
 		scale = lerp(original_scale, Vector2.ZERO, i / 100.0);
-		await get_tree().create_timer(0.05).timeout;
+		await get_tree().create_timer(0.05, false).timeout;
 	super.gib_and_kill();

@@ -58,7 +58,7 @@ func _awaken_after_awakening_animation()->void:
 
 func _chase_for_x_seconds_then_go_idle(x: float)->void:
 	attack_area_2d.monitoring = true;
-	await get_tree().create_timer(x).timeout;
+	await get_tree().create_timer(x, false).timeout;
 	attack_area_2d.monitoring = false;
 	running_sprite.visible = false;
 	awaken_sprite.visible = true;
