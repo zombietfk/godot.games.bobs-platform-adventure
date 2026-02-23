@@ -60,6 +60,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit2" parent="Rabbits" unique_id=960879546 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -70,6 +71,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit3" parent="Rabbits" unique_id=70997341 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -80,6 +82,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit4" parent="Rabbits" unique_id=2091951010 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -90,6 +93,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit5" parent="Rabbits" unique_id=1534193840 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -100,6 +104,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit6" parent="Rabbits" unique_id=1182178639 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -110,6 +115,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit10" parent="Rabbits" unique_id=1327901750 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -120,6 +126,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit11" parent="Rabbits" unique_id=1419936380 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -130,6 +137,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit12" parent="Rabbits" unique_id=489234429 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -140,6 +148,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit13" parent="Rabbits" unique_id=251511974 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -150,6 +159,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit14" parent="Rabbits" unique_id=1558738506 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -160,6 +170,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit15" parent="Rabbits" unique_id=1252561902 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -170,6 +181,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit16" parent="Rabbits" unique_id=1593474299 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -180,6 +192,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit17" parent="Rabbits" unique_id=1554686431 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -190,6 +203,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit21" parent="Rabbits" unique_id=1166681491 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -200,6 +214,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit22" parent="Rabbits" unique_id=875457805 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -210,6 +225,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit23" parent="Rabbits" unique_id=1468631507 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -220,6 +236,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit25" parent="Rabbits" unique_id=944061009 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -230,6 +247,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit26" parent="Rabbits" unique_id=417160299 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -240,6 +258,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit27" parent="Rabbits" unique_id=1953355297 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -250,6 +269,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit30" parent="Rabbits" unique_id=678802249 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -260,6 +280,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit31" parent="Rabbits" unique_id=1377047038 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -270,6 +291,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit32" parent="Rabbits" unique_id=745562250 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -280,6 +302,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit33" parent="Rabbits" unique_id=1799298872 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -290,6 +313,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit34" parent="Rabbits" unique_id=242758815 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -300,6 +324,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit40" parent="Rabbits" unique_id=1367400108 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -310,6 +335,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit43" parent="Rabbits" unique_id=427772649 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -320,6 +346,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit44" parent="Rabbits" unique_id=2092326272 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -330,6 +357,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit45" parent="Rabbits" unique_id=215744975 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -340,6 +368,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit47" parent="Rabbits" unique_id=1107609572 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -350,6 +379,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit50" parent="Rabbits" unique_id=633513471 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -360,6 +390,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit51" parent="Rabbits" unique_id=974300289 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -370,6 +401,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit52" parent="Rabbits" unique_id=1186977275 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -380,6 +412,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit53" parent="Rabbits" unique_id=2004229095 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -390,6 +423,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit55" parent="Rabbits" unique_id=1087073436 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -400,6 +434,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit56" parent="Rabbits" unique_id=1084782421 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -410,6 +445,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit57" parent="Rabbits" unique_id=1760774689 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -420,6 +456,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit60" parent="Rabbits" unique_id=266446559 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -430,6 +467,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit61" parent="Rabbits" unique_id=1985264961 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -440,6 +478,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit62" parent="Rabbits" unique_id=1910572041 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -450,6 +489,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit63" parent="Rabbits" unique_id=2084896043 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -460,6 +500,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit64" parent="Rabbits" unique_id=1882663968 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -470,6 +511,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit65" parent="Rabbits" unique_id=1143777420 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -480,6 +522,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit66" parent="Rabbits" unique_id=1426540614 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -490,6 +533,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit70" parent="Rabbits" unique_id=879769685 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -500,6 +544,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit71" parent="Rabbits" unique_id=2053732439 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -510,6 +555,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit72" parent="Rabbits" unique_id=1828657 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -520,6 +566,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit73" parent="Rabbits" unique_id=1202351681 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -530,6 +577,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit74" parent="Rabbits" unique_id=1828161 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -540,6 +588,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit75" parent="Rabbits" unique_id=2082913822 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -550,6 +599,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit76" parent="Rabbits" unique_id=751818254 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -560,6 +610,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit77" parent="Rabbits" unique_id=1261407664 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -570,6 +621,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit88" parent="Rabbits" unique_id=1562059167 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -580,6 +632,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit100" parent="Rabbits" unique_id=1158898214 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -590,6 +643,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit101" parent="Rabbits" unique_id=198846752 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -600,6 +654,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit102" parent="Rabbits" unique_id=1954453496 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -610,6 +665,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit103" parent="Rabbits" unique_id=2106353953 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -620,6 +676,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit104" parent="Rabbits" unique_id=1600270084 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -630,6 +687,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit105" parent="Rabbits" unique_id=677657347 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -640,6 +698,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit106" parent="Rabbits" unique_id=1524782498 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -650,6 +709,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit107" parent="Rabbits" unique_id=684355994 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -660,6 +720,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit108" parent="Rabbits" unique_id=373293521 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -670,6 +731,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit110" parent="Rabbits" unique_id=1722018810 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -680,6 +742,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit111" parent="Rabbits" unique_id=217662932 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -690,6 +753,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit112" parent="Rabbits" unique_id=363571071 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -700,6 +764,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit113" parent="Rabbits" unique_id=1165975614 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -710,6 +775,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit114" parent="Rabbits" unique_id=36096468 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -720,6 +786,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit115" parent="Rabbits" unique_id=483362457 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -730,6 +797,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit116" parent="Rabbits" unique_id=496740451 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -740,6 +808,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit117" parent="Rabbits" unique_id=110729240 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -750,6 +819,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit118" parent="Rabbits" unique_id=2024481392 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -760,6 +830,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit120" parent="Rabbits" unique_id=1684538686 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -770,6 +841,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit121" parent="Rabbits" unique_id=177627084 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -780,6 +852,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit122" parent="Rabbits" unique_id=440784837 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -790,6 +863,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit123" parent="Rabbits" unique_id=226658691 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -800,6 +874,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit124" parent="Rabbits" unique_id=1374002704 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -810,6 +885,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit125" parent="Rabbits" unique_id=736798741 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -820,6 +896,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit126" parent="Rabbits" unique_id=346546735 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -830,6 +907,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit127" parent="Rabbits" unique_id=153162453 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -840,6 +918,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit130" parent="Rabbits" unique_id=1374525034 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -850,6 +929,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit143" parent="Rabbits" unique_id=1205716584 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -860,6 +940,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit144" parent="Rabbits" unique_id=2032518920 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -870,6 +951,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit145" parent="Rabbits" unique_id=1421316594 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -880,6 +962,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit146" parent="Rabbits" unique_id=1654155434 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -890,6 +973,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit147" parent="Rabbits" unique_id=1944931923 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -900,6 +984,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit157" parent="Rabbits" unique_id=543432844 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -910,6 +995,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit158" parent="Rabbits" unique_id=190887356 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -920,6 +1006,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit160" parent="Rabbits" unique_id=872127473 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -930,6 +1017,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit161" parent="Rabbits" unique_id=1205304756 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -940,6 +1028,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit162" parent="Rabbits" unique_id=2029250062 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -950,6 +1039,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit163" parent="Rabbits" unique_id=2125469711 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -960,6 +1050,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit164" parent="Rabbits" unique_id=1373901059 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -970,6 +1061,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit165" parent="Rabbits" unique_id=1202810307 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -980,6 +1072,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit166" parent="Rabbits" unique_id=735584192 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -990,6 +1083,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit167" parent="Rabbits" unique_id=913451944 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1000,6 +1094,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit168" parent="Rabbits" unique_id=659360746 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1010,6 +1105,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit170" parent="Rabbits" unique_id=1529686966 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1020,6 +1116,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit171" parent="Rabbits" unique_id=761426072 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1030,6 +1127,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit172" parent="Rabbits" unique_id=514565271 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1040,6 +1138,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit173" parent="Rabbits" unique_id=654451474 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1050,6 +1149,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit174" parent="Rabbits" unique_id=788170556 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1060,6 +1160,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit175" parent="Rabbits" unique_id=1780485747 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1070,6 +1171,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit176" parent="Rabbits" unique_id=2130638631 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1080,6 +1182,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit177" parent="Rabbits" unique_id=565259758 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1090,6 +1193,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit178" parent="Rabbits" unique_id=949788745 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1100,6 +1204,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit180" parent="Rabbits" unique_id=1642233587 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1110,6 +1215,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit181" parent="Rabbits" unique_id=611703820 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1120,6 +1226,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit182" parent="Rabbits" unique_id=1262877270 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1130,6 +1237,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit183" parent="Rabbits" unique_id=746834348 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1140,6 +1248,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit184" parent="Rabbits" unique_id=1780809805 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1150,6 +1259,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit185" parent="Rabbits" unique_id=2086895579 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1160,6 +1270,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit186" parent="Rabbits" unique_id=1425066064 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1170,6 +1281,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit187" parent="Rabbits" unique_id=1750844766 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1180,6 +1292,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit188" parent="Rabbits" unique_id=656931034 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1190,6 +1303,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit220" parent="Rabbits" unique_id=1077356818 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1200,6 +1314,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit221" parent="Rabbits" unique_id=414411363 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1210,6 +1325,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit222" parent="Rabbits" unique_id=387230530 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1220,6 +1336,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit223" parent="Rabbits" unique_id=524742944 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1230,6 +1347,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit224" parent="Rabbits" unique_id=262005361 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1240,6 +1358,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit225" parent="Rabbits" unique_id=1765343906 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1250,6 +1369,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit226" parent="Rabbits" unique_id=1577172018 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1260,6 +1380,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit227" parent="Rabbits" unique_id=513678540 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1270,6 +1391,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit228" parent="Rabbits" unique_id=1363384696 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1280,6 +1402,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit230" parent="Rabbits" unique_id=627112745 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1290,6 +1413,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit231" parent="Rabbits" unique_id=88402904 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1300,6 +1424,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit232" parent="Rabbits" unique_id=1580501002 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1310,6 +1435,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit233" parent="Rabbits" unique_id=1135221552 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1320,6 +1446,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit234" parent="Rabbits" unique_id=555407992 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1330,6 +1457,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit235" parent="Rabbits" unique_id=1586114446 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1340,6 +1468,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit236" parent="Rabbits" unique_id=61152928 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1350,6 +1479,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit237" parent="Rabbits" unique_id=757570091 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1360,6 +1490,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit238" parent="Rabbits" unique_id=594595455 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1370,6 +1501,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit240" parent="Rabbits" unique_id=1929930683 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1380,6 +1512,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit241" parent="Rabbits" unique_id=1962417173 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1390,6 +1523,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit242" parent="Rabbits" unique_id=1535810584 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1400,6 +1534,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit246" parent="Rabbits" unique_id=1769525724 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1410,6 +1545,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit330" parent="Rabbits" unique_id=726455552 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1420,6 +1556,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit331" parent="Rabbits" unique_id=1160123878 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1430,6 +1567,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit332" parent="Rabbits" unique_id=402037116 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1440,6 +1578,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit333" parent="Rabbits" unique_id=140237812 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1450,6 +1589,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit334" parent="Rabbits" unique_id=629738315 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1460,6 +1600,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit247" parent="Rabbits" unique_id=1338408105 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1470,6 +1611,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit248" parent="Rabbits" unique_id=1262238263 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1480,6 +1622,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit250" parent="Rabbits" unique_id=2112486655 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1490,6 +1633,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit251" parent="Rabbits" unique_id=808283547 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1500,6 +1644,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit252" parent="Rabbits" unique_id=454803555 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1510,6 +1655,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit253" parent="Rabbits" unique_id=2086199576 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1520,6 +1666,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit254" parent="Rabbits" unique_id=2077704622 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1530,6 +1677,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit255" parent="Rabbits" unique_id=837817198 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1540,6 +1688,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit256" parent="Rabbits" unique_id=848344902 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1550,6 +1699,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit257" parent="Rabbits" unique_id=928279037 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1560,6 +1710,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit335" parent="Rabbits" unique_id=881436337 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1570,6 +1721,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit336" parent="Rabbits" unique_id=238216709 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1580,6 +1732,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit337" parent="Rabbits" unique_id=327640340 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1590,6 +1743,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit338" parent="Rabbits" unique_id=993514512 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1600,6 +1754,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit258" parent="Rabbits" unique_id=36765657 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1610,6 +1765,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit260" parent="Rabbits" unique_id=1415432932 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1620,6 +1776,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit261" parent="Rabbits" unique_id=1110612667 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1630,6 +1787,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit262" parent="Rabbits" unique_id=1942111280 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1640,6 +1798,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit263" parent="Rabbits" unique_id=1201432399 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1650,6 +1809,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit264" parent="Rabbits" unique_id=1859407828 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1660,6 +1820,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit265" parent="Rabbits" unique_id=1263092258 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1670,6 +1831,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit266" parent="Rabbits" unique_id=1578856572 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1680,6 +1842,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit267" parent="Rabbits" unique_id=653106669 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1690,6 +1853,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit268" parent="Rabbits" unique_id=388087149 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1700,6 +1864,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit270" parent="Rabbits" unique_id=609964808 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1710,6 +1875,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit271" parent="Rabbits" unique_id=56341059 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1720,6 +1886,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit272" parent="Rabbits" unique_id=967578604 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1730,6 +1897,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit273" parent="Rabbits" unique_id=2111565571 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1740,6 +1908,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit274" parent="Rabbits" unique_id=238753464 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1750,6 +1919,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit275" parent="Rabbits" unique_id=795233882 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1760,6 +1930,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit276" parent="Rabbits" unique_id=1048422107 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1770,6 +1941,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit277" parent="Rabbits" unique_id=2073899026 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1780,6 +1952,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit278" parent="Rabbits" unique_id=207471082 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1790,6 +1963,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit280" parent="Rabbits" unique_id=224373386 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1800,6 +1974,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit281" parent="Rabbits" unique_id=1700254626 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1810,6 +1985,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit282" parent="Rabbits" unique_id=1120081729 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1820,6 +1996,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit283" parent="Rabbits" unique_id=312417125 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1830,6 +2007,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit287" parent="Rabbits" unique_id=488728571 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1840,6 +2018,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit288" parent="Rabbits" unique_id=10848702 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1850,6 +2029,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit290" parent="Rabbits" unique_id=1321834019 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1860,6 +2040,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit291" parent="Rabbits" unique_id=1322074836 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1870,6 +2051,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit301" parent="Rabbits" unique_id=1571732611 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1880,6 +2062,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit302" parent="Rabbits" unique_id=1210940559 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1890,6 +2073,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit303" parent="Rabbits" unique_id=1770276397 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1900,6 +2084,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit304" parent="Rabbits" unique_id=2110416785 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1910,6 +2095,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit305" parent="Rabbits" unique_id=1832279284 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1920,6 +2106,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit306" parent="Rabbits" unique_id=1860746701 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1930,6 +2117,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit307" parent="Rabbits" unique_id=1062187363 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1940,6 +2128,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit308" parent="Rabbits" unique_id=1117059585 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1950,6 +2139,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit310" parent="Rabbits" unique_id=1266854241 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1960,6 +2150,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit311" parent="Rabbits" unique_id=978135042 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1970,6 +2161,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit312" parent="Rabbits" unique_id=969443258 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1980,6 +2172,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit313" parent="Rabbits" unique_id=355186736 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -1990,6 +2183,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit314" parent="Rabbits" unique_id=1918928258 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2000,6 +2194,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit315" parent="Rabbits" unique_id=281869225 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2010,6 +2205,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit316" parent="Rabbits" unique_id=836068712 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2020,6 +2216,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit317" parent="Rabbits" unique_id=887882092 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2030,6 +2227,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit318" parent="Rabbits" unique_id=850500910 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2040,6 +2238,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit320" parent="Rabbits" unique_id=981969480 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2050,6 +2249,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit321" parent="Rabbits" unique_id=1970126689 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2060,6 +2260,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit322" parent="Rabbits" unique_id=4609439 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2070,6 +2271,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit323" parent="Rabbits" unique_id=1312556006 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2080,6 +2282,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit324" parent="Rabbits" unique_id=1253511085 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2090,6 +2293,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit325" parent="Rabbits" unique_id=1358238246 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2100,6 +2304,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit326" parent="Rabbits" unique_id=1391224912 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2110,6 +2315,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit356" parent="Rabbits" unique_id=479242347 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2120,6 +2326,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit357" parent="Rabbits" unique_id=109787865 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2130,6 +2337,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit358" parent="Rabbits" unique_id=608525058 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2140,6 +2348,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit364" parent="Rabbits" unique_id=1043290869 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2150,6 +2359,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit365" parent="Rabbits" unique_id=348037140 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2160,6 +2370,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit366" parent="Rabbits" unique_id=1846453159 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2170,6 +2381,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit367" parent="Rabbits" unique_id=1418021674 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2180,6 +2392,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit368" parent="Rabbits" unique_id=1288530243 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2190,6 +2403,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit370" parent="Rabbits" unique_id=1647996133 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2200,6 +2414,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit371" parent="Rabbits" unique_id=978033086 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2210,6 +2425,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit372" parent="Rabbits" unique_id=880799764 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2220,6 +2436,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit373" parent="Rabbits" unique_id=1630834615 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2230,6 +2447,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit400" parent="Rabbits" unique_id=1763750576 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2240,6 +2458,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit401" parent="Rabbits" unique_id=957529434 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2250,6 +2469,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit374" parent="Rabbits" unique_id=828696380 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2260,6 +2480,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit375" parent="Rabbits" unique_id=1551431428 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2270,6 +2491,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit376" parent="Rabbits" unique_id=286936253 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2280,6 +2502,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit377" parent="Rabbits" unique_id=715846375 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2290,6 +2513,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit378" parent="Rabbits" unique_id=1314562216 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2300,6 +2524,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit379" parent="Rabbits" unique_id=471065080 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2310,6 +2535,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit380" parent="Rabbits" unique_id=1806696134 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2320,6 +2546,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit384" parent="Rabbits" unique_id=1769383857 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2330,6 +2557,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit385" parent="Rabbits" unique_id=884089825 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2340,6 +2568,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit386" parent="Rabbits" unique_id=700071514 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2350,6 +2579,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit387" parent="Rabbits" unique_id=230021949 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2360,6 +2590,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit388" parent="Rabbits" unique_id=1761654655 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2370,6 +2601,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit395" parent="Rabbits" unique_id=1295457114 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2380,6 +2612,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit455" parent="Rabbits" unique_id=1255972647 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2390,6 +2623,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit457" parent="Rabbits" unique_id=1615482740 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2400,6 +2634,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit458" parent="Rabbits" unique_id=1252996472 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2410,6 +2645,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit459" parent="Rabbits" unique_id=745785627 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2420,6 +2656,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit460" parent="Rabbits" unique_id=1295890740 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2430,6 +2667,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="Rabbit467" parent="Rabbits" unique_id=2021023154 instance=ExtResource("5_irw12")]
 z_index = 1
@@ -2440,6 +2678,7 @@ turnaround_on_platform_edge = true
 jump_variance = Vector2(250, 200)
 randomize_starting_direction = true
 jump_timer_variance = 0.5
+gib_count = 3
 
 [node name="HealthUpgradeItem" parent="." unique_id=1727710538 instance=ExtResource("6_7h6xf")]
 position = Vector2(-736, 224)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfdmpp2r661yo"]
+[gd_scene format=3 uid="uid://bfdmpp2r661yo"]
 
 [ext_resource type="Script" uid="uid://bmxr661q11g4g" path="res://enemies/rabbit/rabbit.gd" id="1_yjq4o"]
 [ext_resource type="Texture2D" uid="uid://couq8jeja7if0" path="res://enemies/rabbit/rabbit_spritesheet.png" id="2_yjq4o"]
@@ -42,26 +42,32 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(24, 28)
 
-[node name="Rabbit" type="CharacterBody2D"]
+[node name="Rabbit" type="CharacterBody2D" unique_id=255109563]
 collision_layer = 4
 collision_mask = 64
 script = ExtResource("1_yjq4o")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1491430670]
 sprite_frames = SubResource("SpriteFrames_2rv2j")
 autoplay = "default"
 frame = 3
 frame_progress = 0.8960669
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1248072424]
 shape = SubResource("RectangleShape2D_1bvp3")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1995462494]
 target_position = Vector2(20, 0)
 collision_mask = 64
 
-[node name="FloorCheckCast2D" type="RayCast2D" parent="."]
+[node name="FloorCheckCast2D" type="RayCast2D" parent="." unique_id=1107468411]
 position = Vector2(16, 0)
 target_position = Vector2(0, 63)
 collision_mask = 64
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=343374170]
+rect = Rect2(-128, -128, 256, 256)
+
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_screen_exited"]

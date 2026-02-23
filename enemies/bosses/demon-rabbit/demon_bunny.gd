@@ -16,11 +16,9 @@ func _ready()->void:
 
 func take_damage()->void:
 	health -= 1;
-	print('health', health);
 	if health == 0:
 		on_death.emit();
 	else:
-		print('on_damage');
 		on_damage.emit();
 
 func gib_and_kill() -> void:

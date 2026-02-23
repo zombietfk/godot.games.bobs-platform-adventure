@@ -76,3 +76,11 @@ func _play_gib_sound()->void:
 		gib_sounds[1].play();
 	elif roll <= 9:
 		gib_sounds[2].play();
+		
+func _disable_contact_reporting():
+	contact_monitor = false;
+	lock_rotation = true;
+
+func _enable_contact_reporting():
+	contact_monitor = true;
+	lock_rotation = false;

@@ -37,6 +37,8 @@ gib_sprites = Array[Texture2D]([ExtResource("2_entj7"), ExtResource("3_l4afj"), 
 inital_force = 500.0
 gib_sounds = [NodePath("Sounds/GibAudioStreamPlayer1"), NodePath("Sounds/GibAudioStreamPlayer2"), NodePath("Sounds/GibAudioStreamPlayer3")]
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1786322032]
+
 [node name="Sounds" type="Node" parent="." unique_id=352968862]
 
 [node name="GibAudioStreamPlayer1" type="AudioStreamPlayer" parent="Sounds" unique_id=355145941]
@@ -61,4 +63,6 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_enable_contact_reporting"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_disable_contact_reporting"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

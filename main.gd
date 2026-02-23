@@ -85,7 +85,6 @@ static func load_level(
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause_game"):
-		print('Thinking...');
 		$GameUI/UI/PauseUI.visible = !$GameUI/UI/PauseUI.visible; 
 		get_tree().paused = !get_tree().paused;
 		Main.instance.music.stream_paused = !Main.instance.music.stream_paused; 

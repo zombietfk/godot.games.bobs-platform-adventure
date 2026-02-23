@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 [debug]
 
+settings/stdout/print_fps=true
 shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.784314)
 
 [display]

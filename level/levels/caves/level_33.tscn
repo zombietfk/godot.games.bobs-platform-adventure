@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://ikv58wb746ny"]
+[gd_scene format=4 uid="uid://ikv58wb746ny"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_x1x8g"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="2_vykf4"]
@@ -7,37 +7,37 @@
 [ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="5_cc7a7"]
 [ext_resource type="PackedScene" uid="uid://ctaeyscddayym" path="res://objects/traps/sawblade/sawblade.tscn" id="6_muu23"]
 
-[node name="Level_33" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_33" type="Node2D" unique_id=1513239211 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_x1x8g")
 level_binding_box = Rect2(128, 128, 896, 3136)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=420389408]
 position = Vector2(160, 288)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1426511023]
 position = Vector2(864, 3040)
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("2_vykf4")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=189093182 instance=ExtResource("2_vykf4")]
 position = Vector2(928, 3007.9998)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_34.tscn"
 
-[node name="ToPreviousLevelTeleportZone2" parent="." instance=ExtResource("2_vykf4")]
+[node name="ToPreviousLevelTeleportZone2" parent="." unique_id=1964719887 instance=ExtResource("2_vykf4")]
 position = Vector2(96, 256)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://biqdhyqxc8ik4"
+to_level_path = "uid://bf61ovcgft1ic"
 to_spawn_location_with_index = 1
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1525013981]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAAEAAUAAgACAAMAAAAFAAUAAgACAAMAAAADAAUAAgACAAMAAAAJAAkAAgACAAoAAAAJAAoAAgACAAoAAAAKAAkAAgADAAoAAAAHAAcAAgACAAoAAAAIAAcAAgADAAoAAAANAA0AAgABAAIAAAAGAAUAAgACAAMAAAAHAAUAAgALAAcAAAAIAAUAAgACAAIAAAAJAAUAAgACAAIAAAAKAAUAAgACAAIAAAALAAUAAgACAAIAAAAMAAUAAgACAAIAAAANAAUAAgACAAIAAAANAAYAAgACAAIAAAANAAcAAgACAAIAAAANAAgAAgACAAIAAAALAAcAAgACAAIAAAALAAYAAgACAAIAAAAKAAYAAgACAAIAAAAJAAYAAgACAAIAAAAIAAYAAgADAAkAAAAHAAYAAgAHAAUAAAAJAAcAAgACAAIAAAAJAAgAAgACAAkAAAAKAAgAAgADAAkAAAAKAAcAAgACAAIAAAALAAgAAgACAAIAAAAMAAgAAgACAAIAAAAMAAcAAgACAAIAAAAMAAYAAgACAAIAAAACAAUAAgACAAMAAAAJAA0AAgAFAAgAAAAJAA4AAgAFAAkAAAANAA4AAgABAAIAAAANAA8AAgABAAIAAAAMAAoAAgADAAkAAAAMAAsAAgAHAAUAAAANAAoAAgACAAIAAAANAAsAAgALAAcAAAANAAwAAgABAAIAAAALAAsAAgACAAoAAAALAAkAAgACAAIAAAALAAoAAgACAAkAAAAMAAkAAgACAAIAAAANAAkAAgACAAIAAAACABIAAgACAAIAAAACABMAAgACAAIAAAACABQAAgAPAAcAAAACABUAAgADAAIAAAACABYAAgADAAIAAAACABcAAgADAAIAAAACABgAAgADAAIAAAACABkAAgAPAAMAAAACABoAAgACAAIAAAACABsAAgACAAIAAAACABwAAgACAAIAAAACAB0AAgACAAIAAAACAB4AAgACAAIAAAACAB8AAgACAAIAAAACACAAAgACAAIAAAACACEAAgACAAIAAAACACIAAgACAAIAAAACACMAAgACAAIAAAACACQAAgACAAIAAAACACUAAgACAAIAAAACACYAAgAPAAcAAAACACcAAgADAAIAAAACACgAAgADAAIAAAACACkAAgADAAIAAAACACoAAgADAAIAAAACACsAAgAPAAMAAAACACwAAgACAAIAAAACAC0AAgACAAIAAAACAC4AAgACAAIAAAACAC8AAgACAAIAAAACADAAAgACAAIAAAACADEAAgACAAIAAAACADIAAgACAAIAAAADABIAAgACAAIAAAADABMAAgAEAAkAAAADABkAAgAJAAMAAAADABoAAgAEAAgAAAADABsAAgACAAIAAAADABwAAgACAAIAAAADAB0AAgACAAIAAAADAB4AAgACAAIAAAADAB8AAgACAAIAAAADACAAAgACAAIAAAADACEAAgACAAIAAAADACIAAgACAAIAAAADACMAAgACAAIAAAADACQAAgACAAIAAAADACUAAgAEAAkAAAADACsAAgAJAAMAAAADACwAAgAEAAgAAAADAC0AAgACAAIAAAADAC4AAgACAAIAAAADAC8AAgACAAIAAAADADAAAgACAAIAAAADADEAAgACAAIAAAADADIAAgACAAIAAAAEABIAAgACAAIAAAAEABMAAgAFAAkAAAAEABkAAgAFAAcAAAAEABoAAgAFAAgAAAAEABsAAgACAAIAAAAEABwAAgACAAIAAAAEAB0AAgACAAIAAAAEAB4AAgACAAIAAAAEAB8AAgACAAIAAAAEACAAAgACAAIAAAAEACEAAgACAAIAAAAEACIAAgACAAIAAAAEACMAAgACAAIAAAAEACQAAgACAAIAAAAEACUAAgAFAAkAAAAEACsAAgAFAAcAAAAEACwAAgAFAAgAAAAEAC0AAgACAAIAAAAEAC4AAgACAAIAAAAEAC8AAgACAAIAAAAEADAAAgACAAIAAAAEADEAAgACAAIAAAAEADIAAgACAAIAAAAFABsAAgAEAAcAAAAFABwAAgAEAAgAAAAFAB0AAgACAAIAAAAFAB4AAgACAAIAAAAFAB8AAgACAAIAAAAFACAAAgACAAIAAAAFACEAAgACAAIAAAAFACIAAgACAAIAAAAFACMAAgAEAAkAAAAFAC0AAgAEAAcAAAAFAC4AAgAEAAgAAAAFAC8AAgACAAIAAAAFADAAAgACAAIAAAAFADEAAgACAAIAAAAFADIAAgACAAIAAAAGABUAAgACAAcAAAAGABYAAgACAAgAAAAGABsAAgAFAAcAAAAGABwAAgAFAAgAAAAGAB0AAgACAAIAAAAGAB4AAgACAAIAAAAGAB8AAgACAAIAAAAGACAAAgACAAIAAAAGACEAAgACAAIAAAAGACIAAgACAAIAAAAGACMAAgAFAAkAAAAGACcAAgACAAcAAAAGACgAAgACAAgAAAAGACkAAgACAAkAAAAGAC0AAgAFAAcAAAAGAC4AAgAFAAgAAAAGAC8AAgACAAIAAAAGADAAAgACAAIAAAAGADEAAgACAAIAAAAGADIAAgACAAIAAAAHABUAAgADAAcAAAAHABYAAgADAAgAAAAHABcAAgACAAIAAAAHABgAAgACAAkAAAAHAB0AAgAEAAcAAAAHAB4AAgAEAAgAAAAHAB8AAgACAAIAAAAHACAAAgACAAIAAAAHACEAAgAEAAkAAAAHACYAAgACAAcAAAAHACcAAgADAAcAAAAHACgAAgADAAgAAAAHACkAAgADAAkAAAAHAC8AAgAEAAcAAAAHADAAAgAEAAgAAAAHADEAAgACAAIAAAAHADIAAgACAAIAAAAIABMAAgACAAcAAAAIABQAAgACAAgAAAAIABUAAgACAAIAAAAIABYAAgACAAIAAAAIABcAAgACAAIAAAAIABgAAgADAAkAAAAIAB0AAgAFAAcAAAAIAB4AAgAEAAcAAAAIAB8AAgAEAAgAAAAIACAAAgACAAIAAAAIACEAAgAFAAkAAAAIACYAAgADAAcAAAAIACcAAgADAAgAAAAIACgAAgACAAIAAAAIACkAAgACAAIAAAAIACoAAgACAAIAAAAIACsAAgACAAkAAAAIAC8AAgAFAAcAAAAIADAAAgAFAAgAAAAIADEAAgACAAIAAAAIADIAAgACAAIAAAAJABMAAgADAAcAAAAJABQAAgADAAgAAAAJABUAAgACAAIAAAAJABYAAgACAAIAAAAJABcAAgACAAIAAAAJABgAAgACAAIAAAAJABkAAgACAAIAAAAJABoAAgACAAkAAAAJAB4AAgAFAAcAAAAJAB8AAgAFAAgAAAAJACQAAgACAAcAAAAJACUAAgACAAgAAAAJACYAAgACAAIAAAAJACcAAgACAAIAAAAJACgAAgACAAIAAAAJACkAAgACAAIAAAAJACoAAgACAAIAAAAJACsAAgADAAkAAAAJADEAAgAEAAcAAAAJADIAAgAEAAgAAAAKABIAAgACAAgAAAAKABMAAgACAAIAAAAKABQAAgACAAIAAAAKABUAAgACAAIAAAAKABYAAgACAAIAAAAKABcAAgACAAIAAAAKABgAAgACAAIAAAAKABkAAgACAAIAAAAKABoAAgADAAkAAAAKACQAAgADAAcAAAAKACUAAgADAAgAAAAKACYAAgACAAIAAAAKACcAAgACAAIAAAAKACgAAgACAAIAAAAKACkAAgACAAIAAAAKACoAAgACAAIAAAAKACsAAgACAAIAAAAKACwAAgACAAIAAAAKAC0AAgACAAkAAAAKADEAAgAFAAcAAAAKADIAAgAJAAMAAAALABIAAgADAAgAAAALABMAAgACAAIAAAALABQAAgACAAIAAAALABUAAgACAAIAAAALABYAAgACAAIAAAALABcAAgACAAIAAAALABgAAgACAAIAAAALABkAAgACAAIAAAALABoAAgACAAIAAAALABsAAgACAAIAAAALABwAAgACAAkAAAALACIAAgACAAcAAAALACMAAgACAAgAAAALACQAAgACAAIAAAALACUAAgACAAIAAAALACYAAgACAAIAAAALACcAAgACAAIAAAALACgAAgACAAIAAAALACkAAgACAAIAAAALACoAAgACAAIAAAALACsAAgACAAIAAAALACwAAgACAAIAAAALAC0AAgADAAkAAAAMABIAAgACAAIAAAAMABMAAgACAAIAAAAMABQAAgACAAIAAAAMABUAAgACAAIAAAAMABYAAgACAAIAAAAMABcAAgACAAIAAAAMABgAAgACAAIAAAAMABkAAgACAAIAAAAMABoAAgACAAIAAAAMABsAAgACAAIAAAAMABwAAgADAAkAAAAMACIAAgAHAAMAAAAMACMAAgADAAgAAAAMACQAAgACAAIAAAAMACUAAgACAAIAAAAMACYAAgACAAIAAAAMACcAAgACAAIAAAAMACgAAgACAAIAAAAMACkAAgACAAIAAAAMACoAAgACAAIAAAAMACsAAgACAAIAAAAMACwAAgACAAIAAAAMAC0AAgACAAIAAAAMAC4AAgACAAIAAAAMAC8AAgACAAkAAAANABIAAgACAAIAAAANABMAAgACAAIAAAANABQAAgACAAIAAAANABUAAgACAAIAAAANABYAAgACAAIAAAANABcAAgACAAIAAAANABgAAgACAAIAAAANABkAAgACAAIAAAANABoAAgACAAIAAAANABsAAgACAAIAAAANABwAAgACAAIAAAANAB0AAgALAAcAAAANAB4AAgABAAIAAAANAB8AAgABAAIAAAANACAAAgABAAIAAAANACEAAgABAAIAAAANACIAAgALAAMAAAANACMAAgACAAIAAAANACQAAgACAAIAAAANACUAAgACAAIAAAANACYAAgACAAIAAAANACcAAgACAAIAAAANACgAAgACAAIAAAANACkAAgACAAIAAAANACoAAgACAAIAAAANACsAAgACAAIAAAANACwAAgACAAIAAAANAC0AAgACAAIAAAANAC4AAgACAAIAAAANAC8AAgADAAkAAAACADMAAgACAAIAAAADABQAAgAJAAUAAAADACYAAgAJAAUAAAADADMAAgACAAIAAAAEABQAAgAFAAoAAAAEACYAAgAFAAoAAAAEADMAAgACAAIAAAAFABIAAgAEAAoAAAAFABcAAgACAAoAAAAFACQAAgAEAAoAAAAFADMAAgACAAIAAAAGABIAAgAFAAoAAAAGABcAAgADAAoAAAAGABkAAgAFAAcAAAAGACQAAgAFAAoAAAAGACoAAgACAAoAAAAGADMAAgACAAIAAAAHABkAAgACAAoAAAAHACIAAgAEAAoAAAAHACoAAgADAAoAAAAHACwAAgACAAoAAAAHADMAAgACAAIAAAAIABkAAgADAAoAAAAIABsAAgAFAAcAAAAIACIAAgAFAAoAAAAIACwAAgACAAoAAAAIADMAAgACAAIAAAAJABsAAgACAAoAAAAJACAAAgAEAAoAAAAJACwAAgADAAoAAAAJAC4AAgACAAoAAAAJADMAAgACAAIAAAAKABsAAgADAAoAAAAKAB0AAgAFAAcAAAAKACAAAgAFAAoAAAAKAC4AAgACAAoAAAAKADMAAgAPAAMAAAALAB0AAgACAAoAAAALAC4AAgADAAoAAAALADAAAgACAAoAAAALADMAAgACAAEAAAAMAB0AAgAHAAUAAAAMADAAAgACAAoAAAAMADMAAgACAAEAAAANADAAAgADAAoAAAANADMAAgACAAEAAAAMABAAAgADAAcAAAANABAAAgALAAMAAAADAA8AAgACAAIAAAADABAAAgACAAIAAAAEAA8AAgACAAIAAAAEABAAAgACAAIAAAAFAA8AAgACAAIAAAAFABAAAgACAAIAAAAGAA8AAgACAAIAAAAGABAAAgAEAAkAAAAHAA8AAgACAAIAAAAIAA8AAgAEAAoAAAADABEAAgACAAIAAAAEABEAAgACAAIAAAAFABEAAgACAAIAAAAGABEAAgAEAAoAAAAHABAAAgAFAAkAAAAHABEAAgAFAAoAAAAJAA8AAgAFAAoAAAAJABAAAgAFAAoAAAADAAkAAgACAAIAAAADAAoAAgACAAIAAAADAAsAAgACAAIAAAADAAwAAgACAAIAAAADAA0AAgACAAIAAAAEAAkAAgAEAAgAAAAEAAoAAgAEAAgAAAAEAAsAAgACAAIAAAAEAAwAAgACAAIAAAAEAA0AAgACAAIAAAAFAAoAAgACAAIAAAAFAAsAAgACAAIAAAAFAAwAAgACAAIAAAAFAA0AAgACAAIAAAAGAAsAAgAEAAgAAAAGAAwAAgAEAAgAAAAGAA0AAgACAAIAAAAHAAwAAgACAAIAAAAHAA0AAgACAAIAAAAIAA0AAgAEAAgAAAADAA4AAgACAAIAAAAEAA4AAgACAAIAAAAFAAkAAgAFAAgAAAAFAA4AAgACAAIAAAAGAA4AAgACAAIAAAAHAAsAAgAFAAgAAAAHAA4AAgACAAIAAAAIAAkAAgACAAoAAAAIAA4AAgAEAAkAAAAIAAwAAgAEAAcAAAAJAAwAAgAFAAcAAAAGAAoAAgAEAAcAAAAHAAoAAgAFAAcAAAAEAAgAAgAJAAMAAAAFAAgAAgAFAAcAAAADAAgAAgACAAEAAAALABAAAgACAAcAAAALABEAAgACAAgAAAAMABEAAgADAAgAAAANABEAAgACAAIAAAACAAgAAgACAAEAAAACAAoAAgACAAIAAAACAAsAAgACAAIAAAACAAwAAgACAAIAAAACAA0AAgACAAIAAAACAA4AAgACAAIAAAACAA8AAgACAAIAAAACABAAAgACAAIAAAACABEAAgACAAIAAAACAAkAAgACAAIAAAA=")
 tile_set = ExtResource("3_2oiuk")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=686292712]
 tile_set = ExtResource("4_dg48r")
 
-[node name="FallingSpike" parent="." instance=ExtResource("5_cc7a7")]
+[node name="FallingSpike" parent="." unique_id=2075433508 instance=ExtResource("5_cc7a7")]
 position = Vector2(224, 224)
 fall_speed = 400.0
 fall_after_timer = 0.5
@@ -46,7 +46,7 @@ respawn_after_timer = 10.0
 [node name="RayCast2D" parent="FallingSpike" index="0"]
 target_position = Vector2(-0.00024414063, -2784)
 
-[node name="FallingSpike3" parent="." instance=ExtResource("5_cc7a7")]
+[node name="FallingSpike3" parent="." unique_id=349196683 instance=ExtResource("5_cc7a7")]
 position = Vector2(288, 224)
 fall_speed = 400.0
 fall_after_timer = 0.5
@@ -55,7 +55,7 @@ respawn_after_timer = 10.0
 [node name="RayCast2D" parent="FallingSpike3" index="0"]
 target_position = Vector2(-0.00024414063, -2784)
 
-[node name="FallingSpike5" parent="." instance=ExtResource("5_cc7a7")]
+[node name="FallingSpike5" parent="." unique_id=915219914 instance=ExtResource("5_cc7a7")]
 position = Vector2(352, 224)
 fall_speed = 400.0
 fall_after_timer = 0.5
@@ -64,7 +64,7 @@ respawn_after_timer = 10.0
 [node name="RayCast2D" parent="FallingSpike5" index="0"]
 target_position = Vector2(-0.00024414063, -2784)
 
-[node name="FallingSpike7" parent="." instance=ExtResource("5_cc7a7")]
+[node name="FallingSpike7" parent="." unique_id=1092412593 instance=ExtResource("5_cc7a7")]
 position = Vector2(416, 224)
 fall_speed = 400.0
 fall_after_timer = 0.5
@@ -73,91 +73,91 @@ respawn_after_timer = 10.0
 [node name="RayCast2D" parent="FallingSpike7" index="0"]
 target_position = Vector2(-0.00024414063, -2784)
 
-[node name="Sawblade" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade" parent="." unique_id=893873638 instance=ExtResource("6_muu23")]
 position = Vector2(672, 416)
 scale = Vector2(2, 2)
 
-[node name="Sawblade23" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade23" parent="." unique_id=146241454 instance=ExtResource("6_muu23")]
 position = Vector2(608, 704)
 scale = Vector2(2, 2)
 
-[node name="Sawblade25" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade25" parent="." unique_id=578203886 instance=ExtResource("6_muu23")]
 position = Vector2(416, 928)
 scale = Vector2(2, 2)
 
-[node name="Sawblade26" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade26" parent="." unique_id=1640731664 instance=ExtResource("6_muu23")]
 position = Vector2(416, 480)
 scale = Vector2(2, 2)
 
-[node name="Sawblade2" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade2" parent="." unique_id=595100553 instance=ExtResource("6_muu23")]
 position = Vector2(448, 1344)
 scale = Vector2(2, 2)
 
-[node name="Sawblade11" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade11" parent="." unique_id=512370745 instance=ExtResource("6_muu23")]
 position = Vector2(672, 992)
 scale = Vector2(2, 2)
 
-[node name="Sawblade21" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade21" parent="." unique_id=984362398 instance=ExtResource("6_muu23")]
 position = Vector2(832, 1984)
 scale = Vector2(2, 2)
 
-[node name="Sawblade4" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade4" parent="." unique_id=898183069 instance=ExtResource("6_muu23")]
 position = Vector2(448, 1216)
 scale = Vector2(2, 2)
 
-[node name="Sawblade6" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade6" parent="." unique_id=1908412129 instance=ExtResource("6_muu23")]
 position = Vector2(832, 1728)
 scale = Vector2(2, 2)
 
-[node name="Sawblade7" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade7" parent="." unique_id=1533368967 instance=ExtResource("6_muu23")]
 position = Vector2(672, 1568)
 scale = Vector2(2, 2)
 
-[node name="Sawblade9" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade9" parent="." unique_id=746562318 instance=ExtResource("6_muu23")]
 position = Vector2(608, 1856)
 scale = Vector2(2, 2)
 
-[node name="Sawblade12" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade12" parent="." unique_id=821488181 instance=ExtResource("6_muu23")]
 position = Vector2(416, 2080)
 scale = Vector2(2, 2)
 
-[node name="Sawblade13" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade13" parent="." unique_id=438771273 instance=ExtResource("6_muu23")]
 position = Vector2(640, 2176)
 scale = Vector2(2, 2)
 
-[node name="Sawblade14" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade14" parent="." unique_id=711038112 instance=ExtResource("6_muu23")]
 position = Vector2(448, 2368)
 scale = Vector2(2, 2)
 
-[node name="Sawblade10" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade10" parent="." unique_id=2015490370 instance=ExtResource("6_muu23")]
 position = Vector2(416, 1632)
 scale = Vector2(2, 2)
 
-[node name="Sawblade15" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade15" parent="." unique_id=457724769 instance=ExtResource("6_muu23")]
 position = Vector2(448, 2496)
 scale = Vector2(2, 2)
 
-[node name="Sawblade20" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade20" parent="." unique_id=1126001 instance=ExtResource("6_muu23")]
 position = Vector2(192, 2272)
 scale = Vector2(2, 2)
 
-[node name="Sawblade22" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade22" parent="." unique_id=225656244 instance=ExtResource("6_muu23")]
 position = Vector2(192, 2592)
 scale = Vector2(2, 2)
 
-[node name="Sawblade24" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade24" parent="." unique_id=21040800 instance=ExtResource("6_muu23")]
 position = Vector2(416, 2432)
 scale = Vector2(2, 2)
 
-[node name="Sawblade27" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade27" parent="." unique_id=461124211 instance=ExtResource("6_muu23")]
 position = Vector2(160, 2432)
 scale = Vector2(2, 2)
 
-[node name="Sawblade17" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade17" parent="." unique_id=1224493313 instance=ExtResource("6_muu23")]
 position = Vector2(640, 2688)
 scale = Vector2(2, 2)
 
-[node name="Sawblade18" parent="." instance=ExtResource("6_muu23")]
+[node name="Sawblade18" parent="." unique_id=1690262355 instance=ExtResource("6_muu23")]
 position = Vector2(832, 2880)
 scale = Vector2(2, 2)
 
