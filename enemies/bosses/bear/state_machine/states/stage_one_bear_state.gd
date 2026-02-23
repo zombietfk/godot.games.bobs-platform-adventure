@@ -20,5 +20,6 @@ func process(_delta: float)->void:
 		_passes_made += 1;
 		if _passes_made > _passes_to_make:
 			transition.emit("Stage2State");
+			return;
 		_change_direction();
 		_wait_then_run();

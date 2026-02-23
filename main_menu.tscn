@@ -63,7 +63,7 @@ anchor_bottom = 1.0
 offset_top = -15.0
 offset_right = 125.0
 grow_vertical = 0
-text = "version 0.1.2b"
+text = "version 0.1.3"
 label_settings = SubResource("LabelSettings_fu7sn")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=1062002665]
@@ -124,6 +124,7 @@ text = "Start!"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2002043816]
 stream = ExtResource("4_jix8l")
 autoplay = true
+playback_type = 1
 parameters/looping = true
 
 [connection signal="changed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/MasterVolumeController/HSlider" to="CanvasLayer/Control/CenterContainer/VBoxContainer/MasterVolumeController/HSlider" method="_value_changed"]

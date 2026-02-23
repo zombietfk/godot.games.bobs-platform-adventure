@@ -132,6 +132,7 @@ movement_speed = 250.0
 
 [node name="BossMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1443969908]
 stream = ExtResource("11_sywym")
+playback_type = 1
 parameters/looping = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -370,4 +370,5 @@ script = ExtResource("7_3l142")
 stream = ExtResource("8_gkbse")
 volume_db = 8.0
 autoplay = true
+playback_type = 1
 parameters/looping = true

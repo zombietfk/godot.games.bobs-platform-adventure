@@ -41,13 +41,8 @@ func enter(_from: AbstractState)->void:
 func exit(_to: AbstractState)->void:
 	pass;
 
-func process(delta: float)->void:
-	var x_distance_to_marker = middle_stage_marker.global_position.x - bear.global_position.x;
-	if abs(x_distance_to_marker) < _min_distance_to_marker:
-		_c_time += delta;
-	if _c_time > time and bear.is_on_floor():
-		animated_sprite.animation = "idle";
-		transition.emit("Stage3State");
+func process(_delta: float)->void:
+	pass;
 	
 func physics_process(delta: float)->void:
 	var x_distance_to_marker = middle_stage_marker.global_position.x - bear.global_position.x;
@@ -62,10 +57,15 @@ func physics_process(delta: float)->void:
 			_move_speed
 		);
 	else:
+		_c_time += delta;
 		bear.velocity.x = 0;
 		bear.global_position.x = middle_stage_marker.global_position.x;
 		animated_sprite.animation = "forward";
 		if bear.is_on_floor():
+			if _c_time > time and bear.is_on_floor():
+				animated_sprite.animation = "idle";
+				transition.emit("Stage3State");
+				return;
 			if _jump_count == 1:
 				var summoned_count = beehives_to_summon_by_lives_remaining[bear.lives - 1];
 				while summoned_count > 0:
