@@ -20,6 +20,8 @@ const VELOCITY_X_MIN = 10;
 @export var crush_check_raycast_right: RayCast2D;
 @export var alert_notifcation: Sprite2D;
 
+var flying_cheat := false;
+
 # SIGNALSs
 @warning_ignore("unused_signal")
 signal on_web_enter(web: Web);

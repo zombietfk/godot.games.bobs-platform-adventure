@@ -19,7 +19,6 @@ point_count = 27
 script = ExtResource("1_wg8eo")
 level_binding_box = Rect2(-192, -64, 1152, 960)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
-camera_zoom_to = Vector2(0.9, 0.9)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=994656651]
 position = Vector2(-160, 480)
@@ -43,7 +42,7 @@ to_level_path = "uid://w1huu4k68vfs"
 [node name="ToPreviousLevelTeleportZone" parent="." unique_id=1584093236 instance=ExtResource("2_rmubv")]
 position = Vector2(-224, 448)
 scale = Vector2(4, 8.1)
-to_level_path = "uid://dcned4rgrnxi7"
+to_level_path = "uid://8kbkcv6qiqvg"
 to_spawn_location_with_index = 1
 
 [node name="CloudPlatform" parent="." unique_id=1349213751 instance=ExtResource("8_goq3y")]

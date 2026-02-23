@@ -68,7 +68,7 @@ to_level_path = "uid://c4snfn4mlu03j"
 to_spawn_location_with_index = 1
 
 [node name="Cart" parent="." unique_id=1504089960 instance=ExtResource("5_76h8p")]
-position = Vector2(4096, 480)
+position = Vector2(4096, 491)
 
 [node name="Bat3" parent="." unique_id=1550561957 instance=ExtResource("6_btuh4")]
 position = Vector2(-544, 544)

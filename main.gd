@@ -26,6 +26,7 @@ static var checkpoint_spawn_index = 0;
 static var difficulty = DIFFICULTY.EASY;
 static var persistant_trigger_labels: Array[String] = [];
 static var music: AudioStreamPlayer;
+static var show_clock: bool = true;
 
 # TRIGGERS
 func _on_level_ready() -> void:
@@ -90,5 +91,8 @@ func _process(_delta: float) -> void:
 		Main.instance.music.stream_paused = !Main.instance.music.stream_paused; 
 	if Input.is_action_just_pressed("cheat_menu"):
 		$GameUI/UI/CheatBox.visible = !$GameUI/UI/CheatBox.visible;
+		$GameUI/UI/CheatBox/Lives.disabled = !$GameUI/UI/CheatBox/Lives.disabled;
+		$GameUI/UI/CheatBox/GrantHealth.disabled = !$GameUI/UI/CheatBox/GrantHealth.disabled;
+		$GameUI/UI/CheatBox/Fly.disabled = !$GameUI/UI/CheatBox/Fly.disabled;
 		$GameUI/UI/CheatBox/HBoxContainer/Button.disabled = !$GameUI/UI/CheatBox/HBoxContainer/Button.disabled;
 		$GameUI/UI/CheatBox/HBoxContainer/LineEdit.editable = !$GameUI/UI/CheatBox/HBoxContainer/LineEdit.editable;

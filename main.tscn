@@ -7,12 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://dytsp84th4riy" path="res://stub_music.mp3" id="2_ycdy4"]
 [ext_resource type="FontFile" uid="uid://bl5u1y53d40ig" path="res://ui/HomeVideo-BLG6G.ttf" id="4_dg77c"]
 [ext_resource type="FontFile" uid="uid://cl83hp2mdm2xw" path="res://ui/HomeVideoBold-R90Dv.ttf" id="4_efxa6"]
-[ext_resource type="Script" uid="uid://ctgkcqkl80emy" path="res://ui/ui_difficulty_selector.gd" id="4_kek77"]
-[ext_resource type="Texture2D" uid="uid://mkniumx4artt" path="res://ui/face_sad.png" id="4_lquwl"]
-[ext_resource type="Texture2D" uid="uid://b3pm6md6jdgyc" path="res://ui/face_neutral.png" id="5_7mycd"]
-[ext_resource type="Texture2D" uid="uid://dh2t3yqy7jnph" path="res://ui/face_smile.png" id="6_272bh"]
-[ext_resource type="Texture2D" uid="uid://csbgstbk3iit4" path="res://ui/circular_circle.png" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://bbwh3q5g3nk62" path="res://ui/cheats_reset_lives.gd" id="7_4c57u"]
+[ext_resource type="Script" uid="uid://pbr8vjc4dix2" path="res://ui/cheat_grant_health.gd" id="8_efxa6"]
 [ext_resource type="Script" uid="uid://dhwpen6bnogod" path="res://ui/cheats_ui_warp_level.gd" id="9_4c57u"]
+[ext_resource type="Script" uid="uid://cjubtnacl3pko" path="res://ui/cheat_fly.gd" id="9_dg77c"]
+[ext_resource type="PackedScene" uid="uid://d5syprqcytin" path="res://ui/show_timer_checkbox.tscn" id="12_w48qg"]
+[ext_resource type="Script" uid="uid://bbcjjjy68uwub" path="res://ui/game_timer.gd" id="12_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://fxtkyrhbeyuk" path="res://ui/master_volume_controller.tscn" id="13_w48qg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ycdy4"]
@@ -23,34 +23,9 @@ font_size = 18
 font = ExtResource("4_efxa6")
 font_size = 18
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
-atlas = ExtResource("7_5vw27")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
-atlas = ExtResource("7_5vw27")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
-atlas = ExtResource("7_5vw27")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dg77c"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kek77")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4c57u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_efxa6")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="LabelSettings" id="LabelSettings_vivmo"]
+font = ExtResource("4_dg77c")
+font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_w48qg"]
 font = ExtResource("4_dg77c")
@@ -118,10 +93,10 @@ vertical_alignment = 1
 
 [node name="LivesLabel" type="Label" parent="GameUI/UI" unique_id=1386310491]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 33.0
-offset_right = 96.0
-offset_bottom = 56.0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 93.0
+offset_bottom = 55.0
 text = "lives -"
 label_settings = SubResource("LabelSettings_ycdy4")
 
@@ -141,18 +116,40 @@ offset_left = 8.0
 offset_top = 64.0
 offset_right = 178.0
 offset_bottom = 104.0
-scale = Vector2(0.5, 0.5)
 
 [node name="Label" type="Label" parent="GameUI/UI/CheatBox" unique_id=2093403817]
 layout_mode = 2
 text = "CHEATS!"
 label_settings = SubResource("LabelSettings_dg77c")
 
+[node name="Lives" type="Button" parent="GameUI/UI/CheatBox" unique_id=1426296356]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_efxa6")
+disabled = true
+text = "Reset LIves"
+script = ExtResource("7_4c57u")
+
+[node name="GrantHealth" type="Button" parent="GameUI/UI/CheatBox" unique_id=487139519]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_efxa6")
+disabled = true
+text = "Extra Health"
+script = ExtResource("8_efxa6")
+
+[node name="Fly" type="Button" parent="GameUI/UI/CheatBox" unique_id=353030607]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_efxa6")
+disabled = true
+text = "Free Movement"
+script = ExtResource("9_dg77c")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="GameUI/UI/CheatBox" unique_id=1914341158]
 layout_mode = 2
 
 [node name="LineEdit" type="LineEdit" parent="GameUI/UI/CheatBox/HBoxContainer" unique_id=1480521766]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_dg77c")
 editable = false
 script = ExtResource("9_4c57u")
 
@@ -162,43 +159,16 @@ theme_override_fonts/font = ExtResource("4_efxa6")
 disabled = true
 text = "Warp LvL"
 
-[node name="Label2" type="Label" parent="GameUI/UI/CheatBox" unique_id=1023801457]
-layout_mode = 2
-text = "DIFFICULTY CHANGE"
-label_settings = SubResource("LabelSettings_dg77c")
-
-[node name="PlayerDifficultyUI" type="HBoxContainer" parent="GameUI/UI/CheatBox" unique_id=2078173515]
-layout_direction = 2
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 6
-alignment = 2
-script = ExtResource("4_kek77")
-metadata/_edit_use_anchors_ = true
-
-[node name="Selector" type="Control" parent="GameUI/UI/CheatBox/PlayerDifficultyUI" unique_id=320112925]
-layout_mode = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameUI/UI/CheatBox/PlayerDifficultyUI/Selector" unique_id=865270467]
-position = Vector2(35, 35)
-sprite_frames = SubResource("SpriteFrames_dg77c")
-autoplay = "default"
-frame_progress = 0.26171932
-
-[node name="EasyMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI" unique_id=407327518]
-layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("6_272bh")
-
-[node name="NormalMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI" unique_id=1441266399]
-layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("5_7mycd")
-
-[node name="HardMode" type="TextureButton" parent="GameUI/UI/CheatBox/PlayerDifficultyUI" unique_id=1368942507]
-layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("4_lquwl")
+[node name="GameTimer" type="Label" parent="GameUI/UI" unique_id=861133629]
+process_mode = 1
+layout_mode = 0
+offset_left = 672.0
+offset_top = 32.0
+offset_right = 769.0
+offset_bottom = 55.0
+text = "00:00:00"
+label_settings = SubResource("LabelSettings_vivmo")
+script = ExtResource("12_ycdy4")
 
 [node name="PauseUI" type="Panel" parent="GameUI/UI" unique_id=1291900376]
 visible = false
@@ -236,6 +206,18 @@ layout_mode = 2
 [node name="HSlider" parent="GameUI/UI/PauseUI/CenterContainer/VBoxContainer/MasterVolumeController2" index="0" unique_id=459014070]
 use_current_master_volume = true
 
+[node name="ShowTimerController" type="HBoxContainer" parent="GameUI/UI/PauseUI/CenterContainer/VBoxContainer" unique_id=1303257056]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="GameUI/UI/PauseUI/CenterContainer/VBoxContainer/ShowTimerController" unique_id=1661986961]
+layout_mode = 2
+text = "show timer?   "
+label_settings = SubResource("LabelSettings_glbon")
+
+[node name="ShowTimerCheckbox" parent="GameUI/UI/PauseUI/CenterContainer/VBoxContainer/ShowTimerController" unique_id=118898657 instance=ExtResource("12_w48qg")]
+layout_mode = 2
+size_flags_horizontal = 0
+
 [node name="Player" parent="." unique_id=389177389 node_paths=PackedStringArray("camera", "player_heath_ui", "lives_count_label_ui") instance=ExtResource("1_0xm2m")]
 process_mode = 1
 position = Vector2(32, 284)
@@ -251,9 +233,9 @@ limit_smoothed = true
 position_smoothing_speed = 10.0
 editor_draw_limits = true
 
+[connection signal="button_down" from="GameUI/UI/CheatBox/Lives" to="GameUI/UI/CheatBox/Lives" method="_reset_lives"]
+[connection signal="button_down" from="GameUI/UI/CheatBox/GrantHealth" to="GameUI/UI/CheatBox/GrantHealth" method="_grant_health"]
+[connection signal="button_down" from="GameUI/UI/CheatBox/Fly" to="GameUI/UI/CheatBox/Fly" method="_fly"]
 [connection signal="button_down" from="GameUI/UI/CheatBox/HBoxContainer/Button" to="GameUI/UI/CheatBox/HBoxContainer/LineEdit" method="_on_cheat_warp_button_down"]
-[connection signal="pressed" from="GameUI/UI/CheatBox/PlayerDifficultyUI/EasyMode" to="GameUI/UI/CheatBox/PlayerDifficultyUI" method="_on_easy_mode_pressed"]
-[connection signal="pressed" from="GameUI/UI/CheatBox/PlayerDifficultyUI/NormalMode" to="GameUI/UI/CheatBox/PlayerDifficultyUI" method="_on_normal_mode_pressed"]
-[connection signal="pressed" from="GameUI/UI/CheatBox/PlayerDifficultyUI/HardMode" to="GameUI/UI/CheatBox/PlayerDifficultyUI" method="_on_hard_mode_pressed"]
 
 [editable path="GameUI/UI/PauseUI/CenterContainer/VBoxContainer/MasterVolumeController2"]

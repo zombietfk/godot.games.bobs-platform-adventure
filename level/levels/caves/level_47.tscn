@@ -30,6 +30,7 @@ point_count = 2
 script = ExtResource("1_pau4w")
 level_binding_box = Rect2(-64, -1088, 1600, 256)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+camera_zoom_to = Vector2(0.8, 0.8)
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1906738804]
 position = Vector2(-32, -96)

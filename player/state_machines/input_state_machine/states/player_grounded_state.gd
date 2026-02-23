@@ -26,6 +26,8 @@ func exit(_to: AbstractState)->void:
 		body.on_web_exit.disconnect(_remove_slowing_web);
 		
 func process(_delta: float)->void:
+	if body.flying_cheat:
+		return;
 	if (
 		!body.is_on_floor() and
 		_c_jump_forgiveness_timer >= _jump_forgiveness_timer and
@@ -34,6 +36,9 @@ func process(_delta: float)->void:
 		transition.emit("Airborn");
 	
 func physics_process(delta: float)->void:
+	if body.flying_cheat:
+		_process_flying_input();
+		return;
 	_process_horizontal_input(_movement_context);
 	_process_jump_input(delta);
 	_process_fall_through_platform_input();
@@ -116,3 +121,13 @@ func _apply_slope_slide(movement_impetus: Vector2 = Vector2.ZERO) -> void:
 			vertical_angle_deg
 		) * _movement_context.max_movement_speed
 	);
+
+func _process_flying_input()->void:
+	if Input.is_action_pressed("move_right"):
+		body.position.x += _movement_context.movement_speed / 8;
+	if Input.is_action_pressed("move_left"):
+		body.position.x -= _movement_context.movement_speed / 8;
+	if Input.is_action_pressed("move_up"):
+		body.position.y -= _movement_context.movement_speed / 8;
+	if Input.is_action_pressed("move_down"):
+		body.position.y += _movement_context.movement_speed / 8;

@@ -76,8 +76,9 @@ func _is_player_in_cart() -> bool:
 	return $InCartArea.overlaps_body(Main.instance.player);
 
 func _disembark_player()->void:
+	Main.instance.player.reparent(Main.instance);
 	cart_sound.stop();
-	Main.instance.player.velocity.y += 600;
+	Main.instance.player.velocity.y -= 600;
 	velocity.x = 0;
 	disembarked = true;
 	is_in_motion = false;
