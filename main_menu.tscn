@@ -68,7 +68,7 @@ offset_left = -338.0
 offset_top = -15.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "version 0.1.3-b"
+text = "version 0.1.3-c"
 label_settings = SubResource("LabelSettings_fu7sn")
 horizontal_alignment = 2
 
