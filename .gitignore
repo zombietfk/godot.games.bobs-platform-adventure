@@ -4,3 +4,4 @@ addons/
 /android/
 .tutorial_stuff/
 builds/**/*
+project_time_traker.json
