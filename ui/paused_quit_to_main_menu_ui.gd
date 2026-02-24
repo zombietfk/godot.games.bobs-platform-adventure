@@ -14,4 +14,5 @@ func _on_quit()->void:
 		_has_pressed_once = true;
 		text = confirm_message;
 	else:
+		get_tree().paused = false;
 		get_tree().change_scene_to_file("res://main_menu.tscn");
