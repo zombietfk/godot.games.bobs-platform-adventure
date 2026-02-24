@@ -11,13 +11,16 @@
 [node name="Level_20_Checkpoint" type="Node2D" unique_id=2024148547 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_vwnxs")
 level_binding_box = Rect2(-64, 192, 512, 768)
-spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), NodePath("CheckpointSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=715650323]
 position = Vector2(-32, 608)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=365088823]
 position = Vector2(480, 608)
+
+[node name="CheckpointSpawnPoint" type="Marker2D" parent="." unique_id=578931898]
+position = Vector2(224, 608)
 
 [node name="Level" type="TileMapLayer" parent="." unique_id=1066723925]
 position = Vector2(0, -256)
@@ -46,6 +49,8 @@ idle_timer = 2.0
 [node name="CheckpointFlagpole" parent="." unique_id=1839293108 instance=ExtResource("6_50efx")]
 position = Vector2(224, 616)
 level_path = "uid://m3l82q2pi5hi"
+spawn_index = 2
+checkpoint_save_index = 2
 
 [node name="LightOccluder2D" parent="CheckpointFlagpole/Confetti/GPUParticles2D" parent_id_path=PackedInt32Array(1839293108, 75272398) index="0" unique_id=2056292993]
 position = Vector2(-1, 166)

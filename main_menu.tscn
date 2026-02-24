@@ -11,9 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://d5syprqcytin" path="res://ui/show_timer_checkbox.tscn" id="7_0k4wn"]
 [ext_resource type="Texture2D" uid="uid://ds6e4i42jsdbo" path="res://ui/github.png" id="8_dy7ct"]
 [ext_resource type="Texture2D" uid="uid://406mjw5hikla" path="res://ui/itchiio.png" id="9_0o4t1"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fu7sn"]
-font = ExtResource("1_06t4h")
+[ext_resource type="Texture2D" uid="uid://bkcyekc7w1cku" path="res://objects/flag/flag.png" id="11_iotk1"]
+[ext_resource type="Script" uid="uid://geyr7ede6imd" path="res://ui/load_checkpoint_button.gd" id="11_j5v2v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7vrkn"]
 font = ExtResource("1_06t4h")
@@ -35,7 +34,7 @@ axis_stretch_horizontal = 1
 
 [sub_resource type="Theme" id="Theme_06t4h"]
 default_font = ExtResource("1_06t4h")
-default_font_size = 32
+default_font_size = 24
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qe12f"]
 texture = ExtResource("5_nlkkf")
@@ -44,13 +43,38 @@ texture_margin_top = 12.0
 texture_margin_right = 32.0
 texture_margin_bottom = 12.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w44g7"]
+atlas = ExtResource("11_iotk1")
+region = Rect2(3, 3, 64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j5v2v"]
+load_path = "res://.godot/imported/button_9_slice.png-0539f684d3a3f22df635c9abe620f6df.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iotk1"]
+texture = SubResource("CompressedTexture2D_j5v2v")
+texture_margin_left = 22.0
+texture_margin_top = 16.0
+texture_margin_right = 22.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0k4wn"]
+texture = SubResource("CompressedTexture2D_j5v2v")
+texture_margin_left = 22.0
+texture_margin_top = 16.0
+texture_margin_right = 22.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.39215687)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fu7sn"]
+font = ExtResource("1_06t4h")
+
 [node name="MainMenu" type="Node2D" unique_id=934825764]
 script = ExtResource("1_fu7sn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=707458833]
 layer = 0
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1812880919]
+[node name="ContainerControl" type="Control" parent="CanvasLayer" unique_id=918639310]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,22 +82,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Version" type="Label" parent="CanvasLayer/Control" unique_id=822671300]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -338.0
-offset_top = -15.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "version 0.1.4"
-label_settings = SubResource("LabelSettings_fu7sn")
-horizontal_alignment = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=1062002665]
+[node name="Main" type="Control" parent="CanvasLayer/ContainerControl" unique_id=1812880919]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,31 +90,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer" unique_id=709238559]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/ContainerControl/Main" unique_id=1062002665]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ContainerControl/Main/CenterContainer" unique_id=709238559]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=75660526]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer" unique_id=75660526]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1868216866]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1868216866]
 layout_mode = 2
 texture = ExtResource("2_7vrkn")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/HBoxContainer" unique_id=872424232]
+[node name="Label" type="Label" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/HBoxContainer" unique_id=872424232]
 layout_mode = 2
 text = "BOB'S BIG AVENTURE!"
 label_settings = SubResource("LabelSettings_7vrkn")
 
-[node name="MasterVolumeController" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1303257056]
+[node name="MasterVolumeController" type="HBoxContainer" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer" unique_id=1303257056]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/MasterVolumeController" unique_id=1603914658]
+[node name="Label" type="Label" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/MasterVolumeController" unique_id=1603914658]
 layout_mode = 2
 text = "Master Volume"
 label_settings = SubResource("LabelSettings_glbon")
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/MasterVolumeController" unique_id=459014070]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/MasterVolumeController" unique_id=459014070]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -118,18 +135,18 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_eiiss"
 value = 50.0
 script = ExtResource("6_0o4t1")
 
-[node name="ShowClockSetting" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=277085183]
+[node name="ShowClockSetting" type="HBoxContainer" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer" unique_id=277085183]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/ShowClockSetting" unique_id=1605018424]
+[node name="Label" type="Label" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/ShowClockSetting" unique_id=1605018424]
 layout_mode = 2
 text = "Show TIMER?  "
 label_settings = SubResource("LabelSettings_glbon")
 
-[node name="ShowTimerCheckbox" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/ShowClockSetting" unique_id=118898657 instance=ExtResource("7_0k4wn")]
+[node name="ShowTimerCheckbox" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/ShowClockSetting" unique_id=118898657 instance=ExtResource("7_0k4wn")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer" unique_id=1303368107]
+[node name="StartButton" type="Button" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer" unique_id=1303368107]
 layout_mode = 2
 theme = SubResource("Theme_06t4h")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qe12f")
@@ -139,7 +156,169 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxTexture_qe12f")
 text = "Start!"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1236533716]
+[node name="ContiuneButton" type="Button" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer" unique_id=1884626218]
+layout_mode = 2
+theme = SubResource("Theme_06t4h")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/focus = SubResource("StyleBoxTexture_qe12f")
+text = "Checkpoints >"
+
+[node name="Checkpoints" type="Control" parent="CanvasLayer/ContainerControl" unique_id=1960993297]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/ContainerControl/Checkpoints" unique_id=1641593404]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer" unique_id=1252704521]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer" unique_id=2099270585]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/HBoxContainer" unique_id=547126961]
+layout_mode = 2
+texture = SubResource("AtlasTexture_w44g7")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/HBoxContainer" unique_id=907640568]
+layout_mode = 2
+text = "unlocked checkpoints"
+label_settings = SubResource("LabelSettings_7vrkn")
+
+[node name="CheckpointsHBoxContainer" type="HBoxContainer" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer" unique_id=815921588]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LoadCheckpointButton1" type="Button" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer" unique_id=1143886847]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.5019608)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0k4wn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_iotk1")
+text = "1"
+script = ExtResource("11_j5v2v")
+checkpoint_level_path = "uid://cq02vr7nrvuj8"
+checkpoint_index = 1
+
+[node name="LoadCheckpointButton2" type="Button" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer" unique_id=395193337]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.5019608)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0k4wn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_iotk1")
+text = "2"
+script = ExtResource("11_j5v2v")
+checkpoint_level_path = "uid://m3l82q2pi5hi"
+checkpoint_index = 2
+
+[node name="LoadCheckpointButton3" type="Button" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer" unique_id=954865517]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.5019608)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0k4wn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_iotk1")
+text = "3"
+script = ExtResource("11_j5v2v")
+checkpoint_level_path = "uid://dtv20uql2kyac"
+checkpoint_index = 3
+
+[node name="LoadCheckpointButton4" type="Button" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer" unique_id=743381945]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.5019608)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0k4wn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_iotk1")
+text = "4"
+script = ExtResource("11_j5v2v")
+checkpoint_level_path = "uid://bf61ovcgft1ic"
+checkpoint_index = 4
+
+[node name="LoadCheckpointButton5" type="Button" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer" unique_id=1855260192]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.5019608)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0k4wn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_iotk1")
+text = "5"
+script = ExtResource("11_j5v2v")
+checkpoint_level_path = "uid://8kbkcv6qiqvg"
+checkpoint_index = 5
+
+[node name="LoadCheckpointButton6" type="Button" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer" unique_id=1642108251]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.5019608)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iotk1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0k4wn")
+theme_override_styles/focus = SubResource("StyleBoxTexture_iotk1")
+text = "6"
+script = ExtResource("11_j5v2v")
+checkpoint_level_path = "uid://b2wkqvpwpo63j"
+checkpoint_index = 6
+
+[node name="BackButton" type="Button" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer" unique_id=1909498780]
+layout_mode = 2
+theme = SubResource("Theme_06t4h")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/focus = SubResource("StyleBoxTexture_qe12f")
+text = "< Back"
+
+[node name="Version" type="Label" parent="CanvasLayer/ContainerControl" unique_id=822671300]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -338.0
+offset_top = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "version 0.1.5"
+label_settings = SubResource("LabelSettings_fu7sn")
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ContainerControl" unique_id=1236533716]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -148,15 +327,15 @@ offset_top = -68.0
 offset_right = 338.0
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1070272063]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ContainerControl/VBoxContainer" unique_id=1070272063]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1275896263]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ContainerControl/VBoxContainer/HBoxContainer" unique_id=1275896263]
 layout_mode = 2
 texture = ExtResource("8_dy7ct")
 stretch_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=951583977]
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer/ContainerControl/VBoxContainer/HBoxContainer" unique_id=951583977]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -165,15 +344,15 @@ theme_override_font_sizes/font_size = 16
 text = "https://github.com/zombietfk"
 uri = "https://github.com/zombietfk"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=971212065]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/ContainerControl/VBoxContainer" unique_id=971212065]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2" unique_id=599873706]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ContainerControl/VBoxContainer/HBoxContainer2" unique_id=599873706]
 layout_mode = 2
 texture = ExtResource("9_0o4t1")
 stretch_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2" unique_id=1850285195]
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer/ContainerControl/VBoxContainer/HBoxContainer2" unique_id=1850285195]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -188,5 +367,13 @@ autoplay = true
 playback_type = 1
 parameters/looping = true
 
-[connection signal="changed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/MasterVolumeController/HSlider" to="CanvasLayer/Control/CenterContainer/VBoxContainer/MasterVolumeController/HSlider" method="_value_changed"]
-[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/VBoxContainer/Button" to="." method="_begin_game"]
+[connection signal="changed" from="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/MasterVolumeController/HSlider" to="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/MasterVolumeController/HSlider" method="_value_changed"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/StartButton" to="." method="_begin_game"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/ContiuneButton" to="." method="_show_checkpoints_ui_menu"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton1" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton1" method="_load_checkpoint"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton2" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton2" method="_load_checkpoint"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton3" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton3" method="_load_checkpoint"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton4" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton4" method="_load_checkpoint"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton5" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton5" method="_load_checkpoint"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton6" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton6" method="_load_checkpoint"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/BackButton" to="." method="_show_main_ui_menu"]

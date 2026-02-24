@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://d5syprqcytin" path="res://ui/show_timer_checkbox.tscn" id="12_w48qg"]
 [ext_resource type="Script" uid="uid://bbcjjjy68uwub" path="res://ui/game_timer.gd" id="12_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://fxtkyrhbeyuk" path="res://ui/master_volume_controller.tscn" id="13_w48qg"]
+[ext_resource type="Texture2D" uid="uid://drnm4va3uegtk" path="res://ui/button_9_slice.png" id="14_vivmo"]
+[ext_resource type="Script" uid="uid://chu62a468r7a3" path="res://ui/paused_quit_to_main_menu_ui.gd" id="15_2cqfq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ycdy4"]
 font = ExtResource("4_dg77c")
@@ -34,6 +36,17 @@ font_size = 48
 [sub_resource type="LabelSettings" id="LabelSettings_glbon"]
 font = ExtResource("4_dg77c")
 font_size = 18
+
+[sub_resource type="Theme" id="Theme_2cqfq"]
+default_font = ExtResource("4_dg77c")
+default_font_size = 18
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yaehf"]
+texture = ExtResource("14_vivmo")
+texture_margin_left = 32.0
+texture_margin_top = 12.0
+texture_margin_right = 32.0
+texture_margin_bottom = 12.0
 
 [node name="Main" type="Node2D" unique_id=1316412496]
 process_mode = 3
@@ -218,6 +231,21 @@ label_settings = SubResource("LabelSettings_glbon")
 layout_mode = 2
 size_flags_horizontal = 0
 
+[node name="Label3" type="Label" parent="GameUI/UI/PauseUI/CenterContainer/VBoxContainer" unique_id=712367012]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_glbon")
+
+[node name="BackButton" type="Button" parent="GameUI/UI/PauseUI/CenterContainer/VBoxContainer" unique_id=1049183476]
+layout_mode = 2
+theme = SubResource("Theme_2cqfq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yaehf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yaehf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yaehf")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_yaehf")
+theme_override_styles/focus = SubResource("StyleBoxTexture_yaehf")
+text = "Main Menu"
+script = ExtResource("15_2cqfq")
+
 [node name="Player" parent="." unique_id=389177389 node_paths=PackedStringArray("camera", "player_heath_ui", "lives_count_label_ui") instance=ExtResource("1_0xm2m")]
 process_mode = 1
 position = Vector2(32, 284)
@@ -237,5 +265,6 @@ editor_draw_limits = true
 [connection signal="button_down" from="GameUI/UI/CheatBox/GrantHealth" to="GameUI/UI/CheatBox/GrantHealth" method="_grant_health"]
 [connection signal="button_down" from="GameUI/UI/CheatBox/Fly" to="GameUI/UI/CheatBox/Fly" method="_fly"]
 [connection signal="button_down" from="GameUI/UI/CheatBox/HBoxContainer/Button" to="GameUI/UI/CheatBox/HBoxContainer/LineEdit" method="_on_cheat_warp_button_down"]
+[connection signal="pressed" from="GameUI/UI/PauseUI/CenterContainer/VBoxContainer/BackButton" to="GameUI/UI/PauseUI/CenterContainer/VBoxContainer/BackButton" method="_on_quit"]
 
 [editable path="GameUI/UI/PauseUI/CenterContainer/VBoxContainer/MasterVolumeController2"]

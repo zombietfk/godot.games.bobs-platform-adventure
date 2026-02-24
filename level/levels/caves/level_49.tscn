@@ -316,7 +316,7 @@ position = Vector2(-32, 96)
 [node name="ToNextLevelTeleportZone" parent="." unique_id=1331089556 instance=ExtResource("4_wl40v")]
 position = Vector2(-672, -1024)
 scale = Vector2(4, 8.1)
-to_level_path = "res://level/levels/caves/level_50.tscn"
+to_level_path = "uid://b2wkqvpwpo63j"
 
 [node name="CollisionShape2D" parent="ToNextLevelTeleportZone" index="0"]
 position = Vector2(0, -3.950617)

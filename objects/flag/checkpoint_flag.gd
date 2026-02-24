@@ -30,6 +30,7 @@ func _process(delta: float) -> void:
 
 # METHODS
 func raise_flag():
+	visible = true;
 	if !is_being_raised:
 		is_being_raised = true;
 		c_raise_duration = 0.0;

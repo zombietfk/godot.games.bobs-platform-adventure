@@ -10,13 +10,16 @@
 [node name="Level_10_Checkpoint" type="Node2D" unique_id=1117366316 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_ik612")
 level_binding_box = Rect2(-64, 64, 640, 576)
-spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), null]
+spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), NodePath("CheckpointSpawnPoint")]
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1265514526]
 position = Vector2(-32, 480)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=508712778]
 position = Vector2(608, 480)
+
+[node name="CheckpointSpawnPoint" type="Marker2D" parent="." unique_id=2005744897]
+position = Vector2(288, 416)
 
 [node name="Level" type="TileMapLayer" parent="." unique_id=691977501]
 position = Vector2(0, -192)
@@ -40,6 +43,8 @@ to_spawn_location_with_index = 1
 [node name="CheckpointFlagpole" parent="." unique_id=1653737679 instance=ExtResource("5_oy7d5")]
 position = Vector2(288, 423)
 level_path = "uid://cq02vr7nrvuj8"
+spawn_index = 2
+checkpoint_save_index = 1
 
 [node name="Rabbit" parent="." unique_id=2068080551 instance=ExtResource("6_ik612")]
 position = Vector2(214, 437)

@@ -166,6 +166,7 @@ autoplay = "waving"
 frame_progress = 0.582564
 
 [node name="Flag" type="Node2D" parent="." unique_id=1278038817 node_paths=PackedStringArray("confetti_particles_2d")]
+visible = false
 z_index = -1
 position = Vector2(-8, 59)
 script = ExtResource("3_kaw7s")
