@@ -8,6 +8,7 @@ func _init() -> void:
 	
 func _ready() -> void:
 	$CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/StartButton.grab_focus();
+	Main.inital_level_path_static = "";
 
 func _begin_game() -> void:
 	get_tree().change_scene_to_file("res://cutscenes/opening.tscn");

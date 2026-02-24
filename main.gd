@@ -27,7 +27,7 @@ static var difficulty = DIFFICULTY.EASY;
 static var persistant_trigger_labels: Array[String] = [];
 static var music: AudioStreamPlayer;
 static var show_clock: bool = true;
-static var inital_level_path_static: String;
+static var inital_level_path_static: String = "";
 
 # TRIGGERS
 func _on_level_ready() -> void:
@@ -39,7 +39,7 @@ func _ready() -> void:
 	player = $Player;
 	instance = self;
 	RenderingServer.set_default_clear_color(Color.BLACK);
-	if Main.inital_level_path_static:
+	if Main.inital_level_path_static != "":
 		update_spawn(Main.inital_level_path_static, 2);
 		update_checkpoint(Main.inital_level_path_static, 2);
 	else:
