@@ -21,6 +21,7 @@ const VELOCITY_X_MIN = 10;
 @export var alert_notifcation: Sprite2D;
 
 var flying_cheat := false;
+var is_dead_flag := false;
 
 # SIGNALSs
 @warning_ignore("unused_signal")
@@ -55,6 +56,8 @@ func _physics_process(_delta: float) -> void:
 	
 # METHODS
 func gib_and_kill() -> void:
+	if is_dead_flag:
+		return;
 	on_kill.emit();
 	
 func is_out_of_bounds() -> bool:

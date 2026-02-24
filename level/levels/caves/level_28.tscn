@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://b0nap6fal5nig"]
+[gd_scene format=4 uid="uid://b0nap6fal5nig"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_hcuol"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_044cv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="5_044cv"]
 [ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="5_fquso"]
 [ext_resource type="PackedScene" uid="uid://dmrrhkelp6h5m" path="res://objects/traps/boulder/factory/create_boulder_on_timeout_factory.tscn" id="6_hcuol"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="8_bnh1a"]
 
 [sub_resource type="Curve2D" id="Curve2D_bnh1a"]
 resource_local_to_scene = true
@@ -22,44 +23,44 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_28" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_28" type="Node2D" unique_id=2110097629 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_hcuol")
 level_binding_box = Rect2(0, -64, 576, 832)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint"), NodePath("SecretReturnPointA"), NodePath("SecretReturnPointB")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1235174603]
 position = Vector2(32, 672)
 
-[node name="SecretReturnPointA" type="Marker2D" parent="."]
+[node name="SecretReturnPointA" type="Marker2D" parent="." unique_id=1145079809]
 position = Vector2(128, -32)
 
-[node name="SecretReturnPointB" type="Marker2D" parent="."]
+[node name="SecretReturnPointB" type="Marker2D" parent="." unique_id=1630323883]
 position = Vector2(448, -32)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=494187998]
 position = Vector2(544, 160)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=403787822]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAAAAA4AAgADAAEAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAAAAA8AAgADAAIAAAAIAAMAAgABAAMAAAAIAAYAAgABAAEAAAAIAAcAAgABAAIAAAAIAAIAAgABAAIAAAAIAAgAAgABAAIAAAAIAAkAAgABAAIAAAAIAAoAAgABAAIAAAAIAAsAAgABAAIAAAAIAAwAAgABAAIAAAAIAA0AAgABAAIAAAAIAA4AAgABAAIAAAAIAA8AAgABAAIAAAAAAAIAAgADAAIAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAAAAAgAAgADAAIAAAAAAAkAAgADAAIAAAADAAEAAgAHAAEAAAAEAAEAAgAIAAEAAAAFAAEAAgAJAAEAAAA=")
 tile_set = ExtResource("2_044cv")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=1383576897]
 tile_set = ExtResource("3_bnh1a")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_efyo2")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=2145918198 instance=ExtResource("4_efyo2")]
 position = Vector2(608, 128)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_29.tscn"
 
-[node name="ToSecretRoomTeleportZoneA" parent="." instance=ExtResource("4_efyo2")]
+[node name="ToSecretRoomTeleportZoneA" parent="." unique_id=817274433 instance=ExtResource("4_efyo2")]
 position = Vector2(128, -96)
 rotation = 1.5707964
 scale = Vector2(4, 8.1)
 to_level_path = "uid://1b1ilam8308w"
 zero_player_velocity = false
 
-[node name="ToSecretRoomTeleportZoneB" parent="." instance=ExtResource("4_efyo2")]
+[node name="ToSecretRoomTeleportZoneB" parent="." unique_id=1616382097 instance=ExtResource("4_efyo2")]
 position = Vector2(448, -96)
 rotation = 1.5707964
 scale = Vector2(4, 8.1)
@@ -67,39 +68,44 @@ to_level_path = "uid://1b1ilam8308w"
 to_spawn_location_with_index = 1
 zero_player_velocity = false
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_efyo2")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=900335482 instance=ExtResource("4_efyo2")]
 position = Vector2(-32, 640)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://do64ugblw26ev"
 to_spawn_location_with_index = 1
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=386903167]
 position = Vector2(128, 704)
 curve = SubResource("Curve2D_bnh1a")
 script = ExtResource("5_044cv")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=373873979]
 rotates = false
 
-[node name="CloudPlatform" parent="Path2D/PathFollow2D" instance=ExtResource("5_fquso")]
+[node name="CloudPlatform" parent="Path2D/PathFollow2D" unique_id=370755214 instance=ExtResource("5_fquso")]
 randomize_inital_displacement = false
 enable_displacement = false
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="." unique_id=1863903050]
 position = Vector2(448, 64)
 curve = SubResource("Curve2D_044cv")
 script = ExtResource("5_044cv")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1098910122]
 rotates = false
 
-[node name="CloudPlatform" parent="Path2D2/PathFollow2D" instance=ExtResource("5_fquso")]
+[node name="CloudPlatform" parent="Path2D2/PathFollow2D" unique_id=314107366 instance=ExtResource("5_fquso")]
 randomize_inital_displacement = false
 enable_displacement = false
 
-[node name="CreateBoulderOnTimeoutFactory" parent="." instance=ExtResource("6_hcuol")]
+[node name="CreateBoulderOnTimeoutFactory" parent="." unique_id=824580339 instance=ExtResource("6_hcuol")]
 position = Vector2(288, -224)
 fires_every_x_timer = 0.78
 boulder_scale = Vector2(3, 3)
+
+[node name="ArrowGuide2" parent="." unique_id=2055402888 instance=ExtResource("8_bnh1a")]
+position = Vector2(128, -32)
+rotation = -1.5707964
+scale = Vector2(0.25, 0.25)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

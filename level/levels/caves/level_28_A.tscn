@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_nhsyw"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_77eh8"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_r7mfe"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="6_7nrx0"]
 [ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="6_rs37s"]
 [ext_resource type="PackedScene" uid="uid://cclnn5v3he5e0" path="res://enemies/bat/bat.tscn" id="7_7nrx0"]
 
@@ -58,6 +59,10 @@ shape = SubResource("RectangleShape2D_7nrx0")
 [node name="HealthUpgradeItem" parent="." unique_id=1649751264 instance=ExtResource("6_rs37s")]
 position = Vector2(288, 416)
 pickup_unique_name = "level_28_a_hp_up"
+
+[node name="ArrowGuide2" parent="HealthUpgradeItem" unique_id=2055402888 instance=ExtResource("6_7nrx0")]
+position = Vector2(160, 320)
+rotation = 0.8061967
 
 [node name="Bat" parent="." unique_id=1592842538 instance=ExtResource("7_7nrx0")]
 position = Vector2(32, 608)

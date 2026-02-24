@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_xpkyc"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_uvlp3"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_eilrb"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="6_xpkyc"]
 
 [node name="Level_1" type="Node2D" unique_id=983252814 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_f1d3x")
@@ -53,5 +54,17 @@ position = Vector2(400, 416)
 
 [node name="Spike6" parent="." unique_id=1148317695 instance=ExtResource("5_eilrb")]
 position = Vector2(432, 416)
+
+[node name="ArrowGuide" parent="." unique_id=2055402888 instance=ExtResource("6_xpkyc")]
+position = Vector2(240, 272)
+rotation = -0.8689867
+
+[node name="ArrowGuide2" parent="." unique_id=839088308 instance=ExtResource("6_xpkyc")]
+position = Vector2(352, 223.99998)
+rotation = -0.048280016
+
+[node name="ArrowGuide3" parent="." unique_id=1617366816 instance=ExtResource("6_xpkyc")]
+position = Vector2(464, 272)
+rotation = 0.7695478
 
 [connection signal="ready" from="." to="." method="_on_ready"]

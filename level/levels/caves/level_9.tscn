@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bkbrum8vu2nyp"]
+[gd_scene format=4 uid="uid://bkbrum8vu2nyp"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_5j862"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_yqqvd"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="6_yqqvd"]
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="7_spdf4"]
 [ext_resource type="PackedScene" uid="uid://c53dd0xd2rwap" path="res://objects/abstract/enemy_only_wall/enemy_only_wall.tscn" id="8_52dqv"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="11_uqlot"]
 
 [sub_resource type="Curve2D" id="Curve2D_qfk1p"]
 _data = {
@@ -17,357 +18,361 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_9" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_9" type="Node2D" unique_id=996201390 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_5j862")
 level_binding_box = Rect2(-128, -256, 1344, 256)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=534863232]
 position = Vector2(-96, 160)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=107798789]
 position = Vector2(1312, 160)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=1454114498]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAD+/wMAAgADAAMAAAD+/wYAAgACAAEAAAAOAAYAAgACAAEAAAD//wYAAgACAAEAAAAAAAYAAgACAAEAAAABAAYAAgACAAEAAAACAAYAAgACAAEAAAADAAYAAgACAAEAAAAEAAYAAgACAAEAAAAGAAYAAgACAAEAAAAHAAYAAgACAAEAAAAIAAYAAgACAAEAAAAJAAYAAgACAAEAAAAKAAYAAgACAAEAAAALAAYAAgACAAEAAAANAAYAAgACAAEAAAAPAAYAAgACAAEAAAAQAAYAAgACAAEAAAARAAYAAgACAAEAAAASAAYAAgACAAEAAAATAAYAAgACAAEAAAATAAMAAgABAAMAAAATAAIAAgABAAIAAAATAAEAAgABAAIAAAATAAAAAgABAAIAAAANAP//AgACAAMAAAAOAP//AgACAAMAAAAPAP//AgACAAMAAAAQAP//AgACAAMAAAARAP//AgACAAMAAAASAP//AgACAAMAAAAHAP//AgACAAMAAAAIAP//AgACAAMAAAAJAP//AgACAAMAAAAKAP//AgACAAMAAAALAP//AgACAAMAAAD/////AgACAAMAAAAAAP//AgACAAMAAAABAP//AgACAAMAAAACAP//AgACAAMAAAADAP//AgACAAMAAAAEAP//AgACAAMAAAD+/wAAAgADAAIAAAD+/wEAAgADAAIAAAD+/wIAAgADAAIAAAAGAP//AgACAAMAAAAFAAIAAgAFAAQAAAAFAAMAAgAFAAUAAAAFAAAAAgAFAAQAAAAFAAEAAgAFAAQAAAAFAAYAAgACAAEAAAAMAAIAAgAFAAQAAAAMAAMAAgAFAAUAAAAMAAAAAgAFAAQAAAAMAAEAAgAFAAQAAAAMAAYAAgACAAEAAAAUAAMAAgACAAMAAAAUAAYAAgACAAEAAAD+/wcAAgACAAIAAAD+/wgAAgACAAIAAAD+/wkAAgACAAIAAAD//wcAAgACAAIAAAD//wgAAgACAAIAAAD//wkAAgACAAIAAAAAAAcAAgACAAIAAAAAAAgAAgACAAIAAAAAAAkAAgACAAIAAAABAAcAAgACAAIAAAABAAgAAgACAAIAAAABAAkAAgACAAIAAAACAAcAAgACAAIAAAACAAgAAgACAAIAAAACAAkAAgACAAIAAAADAAcAAgACAAIAAAADAAgAAgACAAIAAAADAAkAAgACAAIAAAAEAAcAAgACAAIAAAAEAAgAAgACAAIAAAAEAAkAAgACAAIAAAAFAAcAAgACAAIAAAAFAAgAAgACAAIAAAAFAAkAAgACAAIAAAAGAAcAAgACAAIAAAAGAAgAAgACAAIAAAAGAAkAAgACAAIAAAAHAAcAAgACAAIAAAAHAAgAAgACAAIAAAAHAAkAAgACAAIAAAAIAAcAAgACAAIAAAAIAAgAAgACAAIAAAAIAAkAAgACAAIAAAAJAAcAAgACAAIAAAAJAAgAAgACAAIAAAAJAAkAAgACAAIAAAAKAAcAAgACAAIAAAAKAAgAAgACAAIAAAAKAAkAAgACAAIAAAALAAcAAgACAAIAAAALAAgAAgACAAIAAAALAAkAAgACAAIAAAAMAAcAAgACAAIAAAAMAAgAAgACAAIAAAAMAAkAAgACAAIAAAANAAcAAgACAAIAAAANAAgAAgACAAIAAAANAAkAAgACAAIAAAAOAAcAAgACAAIAAAAOAAgAAgACAAIAAAAOAAkAAgACAAIAAAAPAAcAAgACAAIAAAAPAAgAAgACAAIAAAAPAAkAAgACAAIAAAAQAAcAAgACAAIAAAAQAAgAAgACAAIAAAAQAAkAAgACAAIAAAARAAcAAgACAAIAAAARAAgAAgACAAIAAAARAAkAAgACAAIAAAASAAcAAgACAAIAAAASAAgAAgACAAIAAAASAAkAAgACAAIAAAATAAcAAgACAAIAAAATAAgAAgACAAIAAAATAAkAAgACAAIAAAAUAAcAAgACAAIAAAAUAAgAAgACAAIAAAAUAAkAAgACAAIAAAAFAP//AgANAAYAAAAMAP//AgANAAYAAAATAP//AgALAAcAAAD+////AgAPAAcAAAD+//3/AgACAAIAAAD+//7/AgACAAIAAAD///3/AgACAAIAAAD///7/AgACAAIAAAAAAP3/AgACAAIAAAAAAP7/AgACAAIAAAABAP3/AgACAAIAAAABAP7/AgACAAIAAAACAP3/AgACAAIAAAACAP7/AgACAAIAAAADAP3/AgACAAIAAAADAP7/AgACAAIAAAAEAP3/AgACAAIAAAAEAP7/AgACAAIAAAAFAP3/AgACAAIAAAAFAP7/AgACAAIAAAAGAP3/AgACAAIAAAAGAP7/AgACAAIAAAAHAP3/AgACAAIAAAAHAP7/AgACAAIAAAAIAP3/AgACAAIAAAAIAP7/AgACAAIAAAAJAP3/AgACAAIAAAAJAP7/AgACAAIAAAAKAP3/AgACAAIAAAAKAP7/AgACAAIAAAALAP3/AgACAAIAAAALAP7/AgACAAIAAAAMAP3/AgACAAIAAAAMAP7/AgACAAIAAAANAP3/AgACAAIAAAANAP7/AgACAAIAAAAOAP3/AgACAAIAAAAOAP7/AgACAAIAAAAPAP3/AgACAAIAAAAPAP7/AgACAAIAAAAQAP3/AgACAAIAAAAQAP7/AgACAAIAAAARAP3/AgACAAIAAAARAP7/AgACAAIAAAASAP3/AgACAAIAAAASAP7/AgACAAIAAAATAP3/AgACAAIAAAATAP7/AgACAAIAAAAUAP3/AgACAAIAAAAUAP7/AgACAAIAAAAUAP//AgACAAIAAAAUAAAAAgACAAIAAAAUAAEAAgACAAIAAAAUAAIAAgACAAIAAAA=")
 tile_set = ExtResource("2_yqqvd")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=105415715]
 tile_set = ExtResource("3_ym2t5")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("3_spdf4")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=922084702 instance=ExtResource("3_spdf4")]
 position = Vector2(1376, 128)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://db7pkela8qxg2"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("3_spdf4")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=189300695 instance=ExtResource("3_spdf4")]
 position = Vector2(-160, 128)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bmmpi22ejy5ko"
 to_spawn_location_with_index = 1
 
-[node name="Spikes" type="Node2D" parent="."]
+[node name="Spikes" type="Node2D" parent="." unique_id=1808423002]
 
-[node name="FallingSpike" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike" parent="Spikes" unique_id=1563066537 instance=ExtResource("5_5j862")]
 position = Vector2(-48, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike2" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike2" parent="Spikes" unique_id=1016738904 instance=ExtResource("5_5j862")]
 position = Vector2(16, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike3" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike3" parent="Spikes" unique_id=1379197885 instance=ExtResource("5_5j862")]
 position = Vector2(80, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike4" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike4" parent="Spikes" unique_id=375621344 instance=ExtResource("5_5j862")]
 position = Vector2(144, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike5" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike5" parent="Spikes" unique_id=757952905 instance=ExtResource("5_5j862")]
 position = Vector2(208, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike6" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike6" parent="Spikes" unique_id=1551884022 instance=ExtResource("5_5j862")]
 position = Vector2(272, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike7" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike7" parent="Spikes" unique_id=2004719012 instance=ExtResource("5_5j862")]
 position = Vector2(-16, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike8" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike8" parent="Spikes" unique_id=318413418 instance=ExtResource("5_5j862")]
 position = Vector2(48, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike9" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike9" parent="Spikes" unique_id=1858503493 instance=ExtResource("5_5j862")]
 position = Vector2(112, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike10" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike10" parent="Spikes" unique_id=1848072203 instance=ExtResource("5_5j862")]
 position = Vector2(176, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike11" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike11" parent="Spikes" unique_id=439267048 instance=ExtResource("5_5j862")]
 position = Vector2(240, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="FallingSpike12" parent="Spikes" instance=ExtResource("5_5j862")]
+[node name="FallingSpike12" parent="Spikes" unique_id=2084819405 instance=ExtResource("5_5j862")]
 position = Vector2(304, -160)
 rotation = -3.1415925
 fall_speed = 300.0
 fall_after_timer = 1.0
 
-[node name="Spikes2" type="Node2D" parent="."]
+[node name="Spikes2" type="Node2D" parent="." unique_id=1455858670]
 position = Vector2(448, 0)
 
-[node name="FallingSpike" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike" parent="Spikes2" unique_id=1856318524 instance=ExtResource("5_5j862")]
 position = Vector2(-48, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike2" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike2" parent="Spikes2" unique_id=1818841084 instance=ExtResource("5_5j862")]
 position = Vector2(16, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike3" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike3" parent="Spikes2" unique_id=438840161 instance=ExtResource("5_5j862")]
 position = Vector2(80, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike4" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike4" parent="Spikes2" unique_id=849974517 instance=ExtResource("5_5j862")]
 position = Vector2(144, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike5" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike5" parent="Spikes2" unique_id=509477319 instance=ExtResource("5_5j862")]
 position = Vector2(208, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike6" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike6" parent="Spikes2" unique_id=1357781693 instance=ExtResource("5_5j862")]
 position = Vector2(272, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike7" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike7" parent="Spikes2" unique_id=479910644 instance=ExtResource("5_5j862")]
 position = Vector2(-16, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike8" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike8" parent="Spikes2" unique_id=1196105014 instance=ExtResource("5_5j862")]
 position = Vector2(48, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike9" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike9" parent="Spikes2" unique_id=2011235395 instance=ExtResource("5_5j862")]
 position = Vector2(112, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike10" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike10" parent="Spikes2" unique_id=1921141007 instance=ExtResource("5_5j862")]
 position = Vector2(176, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike11" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike11" parent="Spikes2" unique_id=1959872791 instance=ExtResource("5_5j862")]
 position = Vector2(240, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="FallingSpike12" parent="Spikes2" instance=ExtResource("5_5j862")]
+[node name="FallingSpike12" parent="Spikes2" unique_id=1201632250 instance=ExtResource("5_5j862")]
 position = Vector2(304, -160)
 rotation = -3.1415925
 fall_speed = 320.0
 fall_after_timer = 0.75
 respawn_after_timer = 1.5
 
-[node name="Spikes3" type="Node2D" parent="."]
+[node name="Spikes3" type="Node2D" parent="." unique_id=355195643]
 position = Vector2(896, 0)
 
-[node name="FallingSpike" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike" parent="Spikes3" unique_id=1115175129 instance=ExtResource("5_5j862")]
 position = Vector2(-48, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike2" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike2" parent="Spikes3" unique_id=330379684 instance=ExtResource("5_5j862")]
 position = Vector2(16, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike3" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike3" parent="Spikes3" unique_id=1535629316 instance=ExtResource("5_5j862")]
 position = Vector2(80, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike4" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike4" parent="Spikes3" unique_id=449533201 instance=ExtResource("5_5j862")]
 position = Vector2(144, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike5" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike5" parent="Spikes3" unique_id=460292854 instance=ExtResource("5_5j862")]
 position = Vector2(208, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike6" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike6" parent="Spikes3" unique_id=889571821 instance=ExtResource("5_5j862")]
 position = Vector2(272, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike7" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike7" parent="Spikes3" unique_id=2073047016 instance=ExtResource("5_5j862")]
 position = Vector2(-16, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike8" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike8" parent="Spikes3" unique_id=210669808 instance=ExtResource("5_5j862")]
 position = Vector2(48, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike9" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike9" parent="Spikes3" unique_id=598290906 instance=ExtResource("5_5j862")]
 position = Vector2(112, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike10" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike10" parent="Spikes3" unique_id=1940489270 instance=ExtResource("5_5j862")]
 position = Vector2(176, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike11" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike11" parent="Spikes3" unique_id=556158593 instance=ExtResource("5_5j862")]
 position = Vector2(240, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="FallingSpike12" parent="Spikes3" instance=ExtResource("5_5j862")]
+[node name="FallingSpike12" parent="Spikes3" unique_id=229624337 instance=ExtResource("5_5j862")]
 position = Vector2(304, -160)
 rotation = -3.1415925
 fall_speed = 340.0
 fall_after_timer = 0.5
 respawn_after_timer = 1.5
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=1923468773]
 position = Vector2(352, 128)
 curve = SubResource("Curve2D_qfk1p")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1932164047]
 rotation = -1.5707964
 rotates = false
 loop = false
 
-[node name="Door" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yqqvd")]
+[node name="Door" parent="Path2D/PathFollow2D" unique_id=937557702 node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yqqvd")]
 rotation = 1.5707964
 script = ExtResource("6_7hy1r")
 movement_path = NodePath("..")
 movement_speed = 25.6
 
-[node name="Path2D2" type="Path2D" parent="."]
+[node name="Path2D2" type="Path2D" parent="." unique_id=1999540976]
 position = Vector2(800, 128)
 curve = SubResource("Curve2D_qfk1p")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1839475072]
 rotation = -1.5707964
 rotates = false
 loop = false
 
-[node name="Door" parent="Path2D2/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yqqvd")]
+[node name="Door" parent="Path2D2/PathFollow2D" unique_id=1359451602 node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yqqvd")]
 rotation = 1.5707964
 script = ExtResource("6_7hy1r")
 movement_path = NodePath("..")
 movement_speed = 12.0
 
-[node name="Path2D3" type="Path2D" parent="."]
+[node name="Path2D3" type="Path2D" parent="." unique_id=1859978429]
 position = Vector2(1248, 128)
 curve = SubResource("Curve2D_qfk1p")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3" unique_id=97333955]
 rotation = -1.5707964
 rotates = false
 loop = false
 
-[node name="Door" parent="Path2D3/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yqqvd")]
+[node name="Door" parent="Path2D3/PathFollow2D" unique_id=113550301 node_paths=PackedStringArray("movement_path") instance=ExtResource("6_yqqvd")]
 rotation = 1.5707964
 script = ExtResource("6_7hy1r")
 movement_path = NodePath("..")
 movement_speed = 6.0
 
-[node name="Switch" parent="." instance=ExtResource("7_spdf4")]
+[node name="Switch" parent="." unique_id=1291871472 instance=ExtResource("7_spdf4")]
 position = Vector2(288, 192)
 collision_mask = 1
 
-[node name="Switch2" parent="." instance=ExtResource("7_spdf4")]
+[node name="Switch2" parent="." unique_id=1168653266 instance=ExtResource("7_spdf4")]
 position = Vector2(416, 192)
 collision_mask = 1
 
-[node name="Switch3" parent="." instance=ExtResource("7_spdf4")]
+[node name="Switch3" parent="." unique_id=725899152 instance=ExtResource("7_spdf4")]
 position = Vector2(736, 192)
 collision_mask = 1
 
-[node name="Switch4" parent="." instance=ExtResource("7_spdf4")]
+[node name="Switch4" parent="." unique_id=609790669 instance=ExtResource("7_spdf4")]
 position = Vector2(864, 192)
 collision_mask = 1
 
-[node name="Switch5" parent="." instance=ExtResource("7_spdf4")]
+[node name="Switch5" parent="." unique_id=190795108 instance=ExtResource("7_spdf4")]
 position = Vector2(1184, 192)
 collision_mask = 1
 
-[node name="EnemyOnlyWall" parent="." instance=ExtResource("8_52dqv")]
+[node name="EnemyOnlyWall" parent="." unique_id=1043264772 instance=ExtResource("8_52dqv")]
 position = Vector2(800, 160)
 
-[node name="EnemyOnlyWall2" parent="." instance=ExtResource("8_52dqv")]
+[node name="EnemyOnlyWall2" parent="." unique_id=1391929253 instance=ExtResource("8_52dqv")]
 position = Vector2(1248, 160)
 
-[node name="Rat" parent="." instance=ExtResource("5_qfk1p")]
+[node name="Rat" parent="." unique_id=548633017 instance=ExtResource("5_qfk1p")]
 position = Vector2(992, 160)
+
+[node name="ArrowGuide" parent="." unique_id=2055402888 instance=ExtResource("11_uqlot")]
+position = Vector2(297, 115)
+rotation = 1.5707964
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="Switch" to="Path2D/PathFollow2D/Door" method="_on_switch_flipped_on"]

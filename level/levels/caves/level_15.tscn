@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ce6cjiq8cccjq"]
+[gd_scene format=4 uid="uid://ce6cjiq8cccjq"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_uqry3"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_udixl"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="7_hv7q4"]
 [ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="8_a8k7s"]
 [ext_resource type="PackedScene" uid="uid://2w50byocu5p" path="res://enemies/spider/spider.tscn" id="9_a8k7s"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="10_tlxtd"]
 
 [sub_resource type="Curve2D" id="Curve2D_tlxtd"]
 _data = {
@@ -16,178 +17,186 @@ _data = {
 }
 point_count = 2
 
-[node name="Level_15" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_15" type="Node2D" unique_id=1391844112 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_uqry3")
 level_binding_box = Rect2(0, 224, 1408, 1184)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=48291060]
 position = Vector2(32, 640)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1411851309]
 position = Vector2(1376, 640)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=317584910]
 position = Vector2(0, -224)
 tile_map_data = PackedByteArray("AAAAAAsAAgACAAMAAAAAAA4AAgACAAEAAAABAA4AAgACAAEAAAACAA4AAgACAAEAAAADAA4AAgAJAAMAAAAEAA8AAgAEAAcAAAAFABAAAgAEAAcAAAAGABEAAgAEAAcAAAAHABIAAgAEAAcAAAAIABMAAgAEAAcAAAAJABQAAgAEAAcAAAAKABUAAgAEAAcAAAALABUAAgADAAcAAAAMABQAAgADAAcAAAANABMAAgADAAcAAAAOABIAAgADAAcAAAAPABEAAgADAAcAAAAQABAAAgADAAcAAAARAA8AAgADAAcAAAASAA4AAgAHAAMAAAATAA4AAgACAAEAAAAUAA4AAgACAAEAAAAVAA4AAgACAAEAAAATAAsAAgACAAMAAAAUAAsAAgACAAMAAAAVAAsAAgACAAMAAAABAAsAAgACAAMAAAACAAsAAgACAAMAAAADAAsAAgAJAAUAAAAEAAoAAgAEAAoAAAAFAAkAAgAEAAoAAAAGAAgAAgAJAAUAAAASAAsAAgAHAAUAAAARAAoAAgADAAoAAAAQAAkAAgADAAoAAAAPAAgAAgAHAAUAAAAHAAcAAgACAAMAAAAIAAcAAgACAAMAAAAJAAcAAgACAAMAAAAKAAcAAgACAAMAAAALAAcAAgACAAMAAAAMAAcAAgACAAMAAAANAAcAAgACAAMAAAAOAAcAAgACAAMAAAATAA8AAgACAAIAAAATABAAAgACAAIAAAAUAA8AAgACAAIAAAAUABAAAgACAAIAAAASAA8AAgACAAIAAAASABAAAgACAAIAAAA=")
 tile_set = ExtResource("2_udixl")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=346293999]
 tile_map_data = PackedByteArray("AAAkABYAAAAEABIAAAAeAA8AAAAWAA8AAAANAA8AAAAfAA8AAAAHABYAAAALABIAAAAVACwAAAAHABYAAAAWACwAAAAIABYAAAAHAB0AAAALABEAAAAGAB0AAAAKABEAAAAGABcAAAASAAsAAAA=")
 tile_set = ExtResource("3_hv7q4")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_a8k7s")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1526097480 instance=ExtResource("4_a8k7s")]
 position = Vector2(1440, 608)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_16.tscn"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_a8k7s")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=1907474438 instance=ExtResource("4_a8k7s")]
 position = Vector2(-32, 608)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://cmmw41vavdu68"
 to_spawn_location_with_index = 1
 
-[node name="Web" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web" parent="." unique_id=266988927 instance=ExtResource("5_uqry3")]
 position = Vector2(672, 1088)
 
-[node name="Web2" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web2" parent="." unique_id=2106795650 instance=ExtResource("5_uqry3")]
 position = Vector2(160, 640)
 
-[node name="Web23" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web23" parent="." unique_id=39330131 instance=ExtResource("5_uqry3")]
 position = Vector2(992, 832)
 
-[node name="Web24" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web24" parent="." unique_id=1597254574 instance=ExtResource("5_uqry3")]
 position = Vector2(992, 768)
 
-[node name="Web26" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web26" parent="." unique_id=1413970579 instance=ExtResource("5_uqry3")]
 position = Vector2(992, 704)
 
-[node name="Web27" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web27" parent="." unique_id=1279268 instance=ExtResource("5_uqry3")]
 position = Vector2(1056, 768)
 
-[node name="Web28" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web28" parent="." unique_id=1562738654 instance=ExtResource("5_uqry3")]
 position = Vector2(1056, 640)
 
-[node name="Web29" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web29" parent="." unique_id=303693559 instance=ExtResource("5_uqry3")]
 position = Vector2(1120, 576)
 
-[node name="Web30" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web30" parent="." unique_id=1045915811 instance=ExtResource("5_uqry3")]
 position = Vector2(1120, 512)
 
-[node name="Web31" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web31" parent="." unique_id=2104974291 instance=ExtResource("5_uqry3")]
 position = Vector2(1184, 576)
 
-[node name="Web32" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web32" parent="." unique_id=1928297839 instance=ExtResource("5_uqry3")]
 position = Vector2(1312, 640)
 
-[node name="Web33" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web33" parent="." unique_id=1676450199 instance=ExtResource("5_uqry3")]
 position = Vector2(1184, 640)
 
-[node name="Web34" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web34" parent="." unique_id=1776131886 instance=ExtResource("5_uqry3")]
 position = Vector2(1056, 448)
 
-[node name="Web14" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web14" parent="." unique_id=770161607 instance=ExtResource("5_uqry3")]
 position = Vector2(160, 576)
 
-[node name="Web15" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web15" parent="." unique_id=527908282 instance=ExtResource("5_uqry3")]
 position = Vector2(640, 832)
 
-[node name="Web20" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web20" parent="." unique_id=295974277 instance=ExtResource("5_uqry3")]
 position = Vector2(768, 896)
 
-[node name="Web16" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web16" parent="." unique_id=75586548 instance=ExtResource("5_uqry3")]
 position = Vector2(768, 768)
 
-[node name="Web17" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web17" parent="." unique_id=186033515 instance=ExtResource("5_uqry3")]
 position = Vector2(640, 704)
 
-[node name="Web18" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web18" parent="." unique_id=427472689 instance=ExtResource("5_uqry3")]
 position = Vector2(768, 640)
 
-[node name="Web19" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web19" parent="." unique_id=747216919 instance=ExtResource("5_uqry3")]
 position = Vector2(640, 576)
 
-[node name="Web21" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web21" parent="." unique_id=195257785 instance=ExtResource("5_uqry3")]
 position = Vector2(704, 448)
 
-[node name="Web22" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web22" parent="." unique_id=907242011 instance=ExtResource("5_uqry3")]
 position = Vector2(704, 512)
 
-[node name="Web25" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web25" parent="." unique_id=1391711567 instance=ExtResource("5_uqry3")]
 position = Vector2(704, 384)
 
-[node name="Web3" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web3" parent="." unique_id=1644646541 instance=ExtResource("5_uqry3")]
 position = Vector2(608, 1024)
 
-[node name="Web4" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web4" parent="." unique_id=2001955771 instance=ExtResource("5_uqry3")]
 position = Vector2(544, 960)
 
-[node name="Web5" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web5" parent="." unique_id=1131721998 instance=ExtResource("5_uqry3")]
 position = Vector2(608, 960)
 
-[node name="Web6" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web6" parent="." unique_id=1553492106 instance=ExtResource("5_uqry3")]
 position = Vector2(736, 1088)
 
-[node name="Web7" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web7" parent="." unique_id=1722167912 instance=ExtResource("5_uqry3")]
 position = Vector2(736, 1024)
 
-[node name="Web8" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web8" parent="." unique_id=1503885534 instance=ExtResource("5_uqry3")]
 position = Vector2(800, 1024)
 
-[node name="Web9" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web9" parent="." unique_id=1175217023 instance=ExtResource("5_uqry3")]
 position = Vector2(864, 960)
 
-[node name="Web10" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web10" parent="." unique_id=2145432466 instance=ExtResource("5_uqry3")]
 position = Vector2(672, 1024)
 
-[node name="Web11" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web11" parent="." unique_id=1716133577 instance=ExtResource("5_uqry3")]
 position = Vector2(800, 960)
 
-[node name="Web12" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web12" parent="." unique_id=102066286 instance=ExtResource("5_uqry3")]
 position = Vector2(480, 896)
 
-[node name="Web13" parent="." instance=ExtResource("5_uqry3")]
+[node name="Web13" parent="." unique_id=775117577 instance=ExtResource("5_uqry3")]
 position = Vector2(928, 896)
 
-[node name="Path2D5" type="Path2D" parent="."]
+[node name="Path2D5" type="Path2D" parent="." unique_id=1185291483]
 position = Vector2(1248, 608)
 rotation = -3.1415925
 curve = SubResource("Curve2D_tlxtd")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5" unique_id=818072992]
 rotation = -1.5707964
 rotates = false
 loop = false
 
-[node name="Door" parent="Path2D5/PathFollow2D" node_paths=PackedStringArray("movement_path") instance=ExtResource("7_hv7q4")]
+[node name="Door" parent="Path2D5/PathFollow2D" unique_id=2081699686 node_paths=PackedStringArray("movement_path") instance=ExtResource("7_hv7q4")]
 rotation = 1.5707964
 script = ExtResource("8_a8k7s")
 movement_path = NodePath("..")
 movement_speed = 25.6
 
-[node name="Switch" parent="." instance=ExtResource("6_uqry3")]
+[node name="Switch" parent="." unique_id=1464975183 instance=ExtResource("6_uqry3")]
 position = Vector2(704, 288)
 rotation = 3.1415927
 
-[node name="Spider" parent="." instance=ExtResource("9_a8k7s")]
+[node name="Spider" parent="." unique_id=295462381 instance=ExtResource("9_a8k7s")]
 position = Vector2(480, 304)
 
-[node name="Spider2" parent="." instance=ExtResource("9_a8k7s")]
+[node name="Spider2" parent="." unique_id=1223937164 instance=ExtResource("9_a8k7s")]
 position = Vector2(928, 304)
 
-[node name="Spider3" parent="." instance=ExtResource("9_a8k7s")]
+[node name="Spider3" parent="." unique_id=290147433 instance=ExtResource("9_a8k7s")]
 position = Vector2(239.99997, 528)
 rotation = -3.9269907
 
-[node name="AwakeningRayCast2D" parent="Spider3" index="5"]
+[node name="AwakeningRayCast2D" parent="Spider3" index="5" unique_id=524875443]
 rotation = 0.7853982
 
-[node name="Spider4" parent="." instance=ExtResource("9_a8k7s")]
+[node name="Spider4" parent="." unique_id=1275316502 instance=ExtResource("9_a8k7s")]
 position = Vector2(1168, 528.00006)
 rotation = -2.3561945
 
-[node name="AwakeningRayCast2D" parent="Spider4" index="5"]
+[node name="AwakeningRayCast2D" parent="Spider4" index="5" unique_id=524875443]
 rotation = -0.7853982
+
+[node name="ArrowGuide2" parent="." unique_id=2055402888 instance=ExtResource("10_tlxtd")]
+position = Vector2(696, 695)
+rotation = -1.5707964
+
+[node name="ArrowGuide3" parent="." unique_id=1796802895 instance=ExtResource("10_tlxtd")]
+position = Vector2(784, 367.99997)
+rotation = -2.3561945
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="Switch" to="Path2D5/PathFollow2D/Door" method="_on_switch_flipped_on"]

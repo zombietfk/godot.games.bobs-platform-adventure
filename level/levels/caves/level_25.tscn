@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_alydq"]
 [ext_resource type="PackedScene" uid="uid://c1fppnc76mn0n" path="res://enemies/mushroom/mushroom.tscn" id="5_4g4jd"]
 [ext_resource type="PackedScene" uid="uid://rj3yluedrk4u" path="res://enemies/mushroom/mushroom_man.tscn" id="6_e4jkq"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="6_fdiul"]
 [ext_resource type="PackedScene" uid="uid://c0f040qno7j70" path="res://objects/switch/switch_area.tscn" id="7_81yy7"]
 [ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="8_w7h8g"]
 [ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="9_alydq"]
@@ -80,6 +81,10 @@ position = Vector2(416, 608.00006)
 rotation = 3.1415927
 poof_every_x_seconds = 5.0
 poof_timer_inital_offset = 2.0
+
+[node name="ArrowGuide2" parent="Mushroom2" unique_id=2055402888 instance=ExtResource("6_fdiul")]
+position = Vector2(-1664.0002, 192.00026)
+rotation = -2.3561945
 
 [node name="MushroomMan" parent="." unique_id=970232998 instance=ExtResource("6_e4jkq")]
 position = Vector2(1088, 672)

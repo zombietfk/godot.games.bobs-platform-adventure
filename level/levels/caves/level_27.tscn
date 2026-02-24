@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://do64ugblw26ev"]
+[gd_scene format=4 uid="uid://do64ugblw26ev"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_8grcu"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_sedlg"]
@@ -6,173 +6,178 @@
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_j3ler"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="5_561yg"]
 [ext_resource type="PackedScene" uid="uid://66k67ajayd8k" path="res://objects/gyser/gyser.tscn" id="6_8grcu"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="7_sedlg"]
 
-[node name="Level_27" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_27" type="Node2D" unique_id=1857142727 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_8grcu")
 level_binding_box = Rect2(0, 384, 1280, 960)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1117365769]
 position = Vector2(32, 672)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1310788503]
 position = Vector2(1248, 672)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=980623604]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAAAAA4AAgADAAEAAAAAAAoAAgADAAIAAAAAAAsAAgADAAMAAAAAAA8AAgADAAIAAAABABAAAgACAAEAAAACABAAAgACAAEAAAADABAAAgACAAEAAAAEABAAAgACAAEAAAAGABEAAgACAAEAAAAHABEAAgACAAEAAAAIABEAAgACAAEAAAAJABEAAgACAAEAAAAKAA8AAgABAAEAAAALAA8AAgACAAEAAAAMAA8AAgACAAEAAAANAA8AAgACAAEAAAAPABAAAgACAAEAAAAQABAAAgACAAEAAAARABAAAgACAAEAAAASABAAAgACAAEAAAAFABAAAgADAAEAAAAFABEAAgAPAAMAAAAKABAAAgABAAIAAAAOAA8AAgADAAEAAAATAA4AAgABAAEAAAATAA8AAgABAAIAAAATAAsAAgABAAMAAAABAAkAAgACAAMAAAACAAkAAgACAAMAAAADAAkAAgACAAMAAAAEAAkAAgACAAMAAAAFAAoAAgABAAIAAAAFAAsAAgAFAAUAAAAGAAoAAgADAAMAAAAHAAkAAgACAAMAAAAIAAkAAgACAAMAAAAJAAkAAgACAAMAAAAKAAkAAgACAAMAAAALAAkAAgACAAMAAAAMAAkAAgACAAMAAAANAAkAAgACAAMAAAAOAAoAAgAFAAQAAAAOAAsAAgAFAAUAAAAPAAkAAgACAAMAAAAQAAkAAgACAAMAAAARAAkAAgACAAMAAAASAAoAAgABAAMAAAA=")
 tile_set = ExtResource("2_sedlg")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=1027449155]
 tile_set = ExtResource("3_oigbx")
 
-[node name="ToNextLevelTeleportZone" parent="." instance=ExtResource("4_j3ler")]
+[node name="ToNextLevelTeleportZone" parent="." unique_id=1894291451 instance=ExtResource("4_j3ler")]
 position = Vector2(1312, 640)
 scale = Vector2(4, 8.1)
 to_level_path = "res://level/levels/caves/level_28.tscn"
 
-[node name="ToPreviousLevelTeleportZone" parent="." instance=ExtResource("4_j3ler")]
+[node name="ToPreviousLevelTeleportZone" parent="." unique_id=264396832 instance=ExtResource("4_j3ler")]
 position = Vector2(-32, 640)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://cjyt7ufelywbh"
 to_spawn_location_with_index = 1
 
-[node name="Spike" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike" parent="." unique_id=603962667 instance=ExtResource("5_561yg")]
 position = Vector2(96, 800)
 
-[node name="Spike2" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike2" parent="." unique_id=1015075566 instance=ExtResource("5_561yg")]
 position = Vector2(128, 800)
 
-[node name="Spike3" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike3" parent="." unique_id=1902869833 instance=ExtResource("5_561yg")]
 position = Vector2(160, 800)
 
-[node name="Spike4" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike4" parent="." unique_id=832661805 instance=ExtResource("5_561yg")]
 position = Vector2(192, 800)
 
-[node name="Spike5" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike5" parent="." unique_id=981786707 instance=ExtResource("5_561yg")]
 position = Vector2(224, 800)
 
-[node name="Spike6" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike6" parent="." unique_id=503155845 instance=ExtResource("5_561yg")]
 position = Vector2(256, 800)
 
-[node name="Spike7" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike7" parent="." unique_id=2030849842 instance=ExtResource("5_561yg")]
 position = Vector2(288, 800)
 
-[node name="Spike10" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike10" parent="." unique_id=1270283600 instance=ExtResource("5_561yg")]
 position = Vector2(416, 864)
 
-[node name="Spike11" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike11" parent="." unique_id=1469244642 instance=ExtResource("5_561yg")]
 position = Vector2(448, 864)
 
-[node name="Spike12" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike12" parent="." unique_id=1399693993 instance=ExtResource("5_561yg")]
 position = Vector2(480, 864)
 
-[node name="Spike13" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike13" parent="." unique_id=196772544 instance=ExtResource("5_561yg")]
 position = Vector2(512, 864)
 
-[node name="Spike14" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike14" parent="." unique_id=504467556 instance=ExtResource("5_561yg")]
 position = Vector2(544, 864)
 
-[node name="Spike19" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike19" parent="." unique_id=1533120903 instance=ExtResource("5_561yg")]
 position = Vector2(736, 736)
 
-[node name="Spike20" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike20" parent="." unique_id=1163725658 instance=ExtResource("5_561yg")]
 position = Vector2(768, 736)
 
-[node name="Spike21" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike21" parent="." unique_id=680890151 instance=ExtResource("5_561yg")]
 position = Vector2(800, 736)
 
-[node name="Spike22" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike22" parent="." unique_id=211186665 instance=ExtResource("5_561yg")]
 position = Vector2(832, 736)
 
-[node name="Spike23" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike23" parent="." unique_id=2112607807 instance=ExtResource("5_561yg")]
 position = Vector2(864, 736)
 
-[node name="Spike26" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike26" parent="." unique_id=1696386310 instance=ExtResource("5_561yg")]
 position = Vector2(992, 800)
 
-[node name="Spike27" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike27" parent="." unique_id=1763570595 instance=ExtResource("5_561yg")]
 position = Vector2(1024, 800)
 
-[node name="Spike28" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike28" parent="." unique_id=1812310894 instance=ExtResource("5_561yg")]
 position = Vector2(1056, 800)
 
-[node name="Spike29" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike29" parent="." unique_id=1250846257 instance=ExtResource("5_561yg")]
 position = Vector2(1088, 800)
 
-[node name="Spike30" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike30" parent="." unique_id=1911742300 instance=ExtResource("5_561yg")]
 position = Vector2(1120, 800)
 
-[node name="Spike8" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike8" parent="." unique_id=1969014120 instance=ExtResource("5_561yg")]
 position = Vector2(480, 480)
 rotation = 3.1415927
 
-[node name="Spike31" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike31" parent="." unique_id=1747085869 instance=ExtResource("5_561yg")]
 position = Vector2(864, 480)
 rotation = 3.1415927
 
-[node name="Spike32" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike32" parent="." unique_id=1315570166 instance=ExtResource("5_561yg")]
 position = Vector2(672, 480)
 rotation = 3.1415927
 
-[node name="Spike34" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike34" parent="." unique_id=1626582192 instance=ExtResource("5_561yg")]
 position = Vector2(640, 480)
 rotation = 3.1415927
 
-[node name="Spike35" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike35" parent="." unique_id=906832583 instance=ExtResource("5_561yg")]
 position = Vector2(608, 480)
 rotation = 3.1415927
 
-[node name="Spike15" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike15" parent="." unique_id=2038915502 instance=ExtResource("5_561yg")]
 position = Vector2(288, 480)
 rotation = 3.1415927
 
-[node name="Spike16" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike16" parent="." unique_id=2095967173 instance=ExtResource("5_561yg")]
 position = Vector2(256, 480)
 rotation = 3.1415927
 
-[node name="Spike18" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike18" parent="." unique_id=213254100 instance=ExtResource("5_561yg")]
 position = Vector2(224, 480)
 rotation = 3.1415927
 
-[node name="Spike9" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike9" parent="." unique_id=1945170715 instance=ExtResource("5_561yg")]
 position = Vector2(992, 480)
 rotation = 3.1415927
 
-[node name="Spike17" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike17" parent="." unique_id=1602077939 instance=ExtResource("5_561yg")]
 position = Vector2(1024, 480)
 rotation = 3.1415927
 
-[node name="Spike24" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike24" parent="." unique_id=1066063219 instance=ExtResource("5_561yg")]
 position = Vector2(1056, 480)
 rotation = 3.1415927
 
-[node name="Spike25" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike25" parent="." unique_id=1927545792 instance=ExtResource("5_561yg")]
 position = Vector2(1088, 480)
 rotation = 3.1415927
 
-[node name="Spike33" parent="." instance=ExtResource("5_561yg")]
+[node name="Spike33" parent="." unique_id=109256806 instance=ExtResource("5_561yg")]
 position = Vector2(1120, 480)
 rotation = 3.1415927
 
-[node name="Gyser" parent="." instance=ExtResource("6_8grcu")]
+[node name="Gyser" parent="." unique_id=1225245880 instance=ExtResource("6_8grcu")]
 position = Vector2(352, 800)
 gyser_shoot_water_timer_offset = 2.5
 
-[node name="Gyser2" parent="." instance=ExtResource("6_8grcu")]
+[node name="Gyser2" parent="." unique_id=1134686688 instance=ExtResource("6_8grcu")]
 position = Vector2(608, 864)
 gyser_shoot_water_timer_offset = 2.0
 
-[node name="Gyser3" parent="." instance=ExtResource("6_8grcu")]
+[node name="Gyser3" parent="." unique_id=498012274 instance=ExtResource("6_8grcu")]
 position = Vector2(672, 736)
 gyser_shoot_water_timer_offset = 1.5
 
-[node name="Gyser4" parent="." instance=ExtResource("6_8grcu")]
+[node name="Gyser4" parent="." unique_id=1345602348 instance=ExtResource("6_8grcu")]
 position = Vector2(928, 736)
 gyser_shoot_water_timer_offset = 1.0
 
-[node name="Gyser5" parent="." instance=ExtResource("6_8grcu")]
+[node name="Gyser5" parent="." unique_id=717585683 instance=ExtResource("6_8grcu")]
 position = Vector2(1184, 800)
 gyser_shoot_water_timer_offset = 0.5
+
+[node name="ArrowGuide2" parent="." unique_id=2055402888 instance=ExtResource("7_sedlg")]
+position = Vector2(288, 704.00006)
+rotation = 0.8061967
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="9_n5plr"]
 [ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="9_n8bh1"]
 [ext_resource type="PackedScene" uid="uid://ctot71jpjx0j0" path="res://enemies/imp/flying/flying_imp.tscn" id="12_pu2cg"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="14_k5cnk"]
 
 [sub_resource type="Curve2D" id="Curve2D_qeonq"]
 _data = {
@@ -310,6 +311,32 @@ attacking_length_timer = 1.6
 
 [node name="PrepareAttack" parent="FlyingImp2/StateMachine" parent_id_path=PackedInt32Array(637502456, 1059472708) index="2" unique_id=233037493]
 attack_pause_length_timer = 1.5
+
+[node name="ArrowGuide34" parent="." unique_id=2055402888 instance=ExtResource("14_k5cnk")]
+position = Vector2(160.00002, -160)
+rotation = -0.60562927
+
+[node name="ArrowGuide35" parent="." unique_id=949654990 instance=ExtResource("14_k5cnk")]
+position = Vector2(1248.0001, -64)
+rotation = 0.7853982
+
+[node name="ArrowGuide36" parent="." unique_id=133905104 instance=ExtResource("14_k5cnk")]
+position = Vector2(544, -352)
+
+[node name="ArrowGuide37" parent="." unique_id=1807836914 instance=ExtResource("14_k5cnk")]
+position = Vector2(928, -288)
+rotation = 0.5305801
+
+[node name="ArrowGuide38" parent="." unique_id=1260095473 instance=ExtResource("14_k5cnk")]
+position = Vector2(864.00006, -512)
+rotation = -1.0471976
+
+[node name="ArrowGuide39" parent="." unique_id=1806010615 instance=ExtResource("14_k5cnk")]
+position = Vector2(1056, -672)
+rotation = -0.5166175
+
+[node name="ArrowGuide40" parent="." unique_id=1003503320 instance=ExtResource("14_k5cnk")]
+position = Vector2(1344, -736)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="FloorSwitch" to="DoorPath/DoorPathFollow/Door" method="_on_switch_flipped_on"]

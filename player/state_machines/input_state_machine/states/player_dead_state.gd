@@ -30,6 +30,7 @@ func physics_process(_delta: float)->void:
 	pass;
 
 func _kill()->void:
+	body.is_dead_flag = true;
 	body.visible = false;
 	body.velocity = Vector2.ZERO;
 	_movement_context.movement_impetus = Vector2.ZERO;
@@ -54,6 +55,8 @@ func _on_respawn_grace_timer_timeout()->void:
 	body.current_health = body.max_health;
 	body.damage(0, Vector2.ZERO);
 	transition.emit("Grounded");
+	await get_tree().create_timer(0.25).timeout;
+	body.is_dead_flag = false;
 	
 func _on_respawn_timeout()->void:
 	body.global_position = Main.instance.level_instance.spawn_locations[

@@ -58,6 +58,8 @@ script = ExtResource("1_jq3dk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1881918845]
 stream = ExtResource("2_7xidb")
+volume_db = 12.0
+playback_type = 1
 parameters/looping = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=35864881]

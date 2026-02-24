@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b0au5c0e5qeas"]
+
+[ext_resource type="Texture2D" uid="uid://cbsxucuq8ky6n" path="res://objects/guide_arrow_spritesheet.png" id="1_nvtl8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on1pa"]
+atlas = ExtResource("1_nvtl8")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qukqx"]
+atlas = ExtResource("1_nvtl8")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5npwr"]
+atlas = ExtResource("1_nvtl8")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hav87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on1pa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qukqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5npwr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ArrowGuide" type="AnimatedSprite2D" unique_id=2055402888]
+z_index = -5
+sprite_frames = SubResource("SpriteFrames_hav87")
+autoplay = "default"
+frame_progress = 0.01658177

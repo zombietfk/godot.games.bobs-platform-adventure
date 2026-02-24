@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://na80be7hljms" path="res://objects/web/web.tscn" id="15_nlb8j"]
 [ext_resource type="PackedScene" uid="uid://2w50byocu5p" path="res://enemies/spider/spider.tscn" id="16_g7lw1"]
 [ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="17_gmbhr"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="19_fcf75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4p7d"]
 size = Vector2(320, 128)
@@ -736,6 +737,83 @@ position = Vector2(20320, 1760)
 
 [node name="Spike45" parent="." unique_id=1940510130 instance=ExtResource("11_upjaq")]
 position = Vector2(20384, 1760)
+
+[node name="ArrowGuide2" parent="." unique_id=2055402888 instance=ExtResource("19_fcf75")]
+position = Vector2(-576, 768)
+
+[node name="ArrowGuide3" parent="." unique_id=600838866 instance=ExtResource("19_fcf75")]
+position = Vector2(4105, 404)
+rotation = 1.5707964
+
+[node name="ArrowGuide4" parent="." unique_id=1563009606 instance=ExtResource("19_fcf75")]
+position = Vector2(4725, 829.00024)
+rotation = -0.7853982
+
+[node name="ArrowGuide6" parent="." unique_id=729741493 instance=ExtResource("19_fcf75")]
+position = Vector2(6379, 576)
+rotation = 0.33161256
+
+[node name="ArrowGuide7" parent="." unique_id=2079414723 instance=ExtResource("19_fcf75")]
+position = Vector2(6942, 671.9999)
+rotation = 0.2268928
+
+[node name="ArrowGuide18" parent="." unique_id=1970147503 instance=ExtResource("19_fcf75")]
+position = Vector2(7489, 736.00024)
+rotation = 0.28797933
+
+[node name="ArrowGuide19" parent="." unique_id=1139328972 instance=ExtResource("19_fcf75")]
+position = Vector2(7953, 768.0001)
+rotation = 0.28797933
+
+[node name="ArrowGuide11" parent="." unique_id=553025932 instance=ExtResource("19_fcf75")]
+position = Vector2(8672.001, 928)
+rotation = 0.7853982
+
+[node name="ArrowGuide21" parent="." unique_id=784171286 instance=ExtResource("19_fcf75")]
+position = Vector2(9376.001, 928)
+rotation = 0.7853982
+
+[node name="ArrowGuide24" parent="." unique_id=1071917314 instance=ExtResource("19_fcf75")]
+position = Vector2(11680, 927.99976)
+rotation = 0.7853982
+
+[node name="ArrowGuide26" parent="." unique_id=1601322656 instance=ExtResource("19_fcf75")]
+position = Vector2(12640, 991.99976)
+rotation = 0.7853982
+
+[node name="ArrowGuide27" parent="." unique_id=2048628604 instance=ExtResource("19_fcf75")]
+position = Vector2(12628, 799.99927)
+rotation = -0.7853982
+
+[node name="ArrowGuide28" parent="." unique_id=1852725696 instance=ExtResource("19_fcf75")]
+position = Vector2(14656.002, 928.00073)
+rotation = -0.7853982
+
+[node name="ArrowGuide29" parent="." unique_id=1471277395 instance=ExtResource("19_fcf75")]
+position = Vector2(14666.001, 1120.0002)
+rotation = 0.7853982
+
+[node name="ArrowGuide31" parent="." unique_id=2082028652 instance=ExtResource("19_fcf75")]
+position = Vector2(15536, 1215.9996)
+rotation = -0.7853982
+
+[node name="ArrowGuide34" parent="." unique_id=1577814135 instance=ExtResource("19_fcf75")]
+position = Vector2(18464.002, 1440.0009)
+rotation = -0.7853982
+
+[node name="ArrowGuide33" parent="." unique_id=572184333 instance=ExtResource("19_fcf75")]
+position = Vector2(16969, 1165)
+rotation = 1.5707964
+
+[node name="ArrowGuide32" parent="." unique_id=1392806380 instance=ExtResource("19_fcf75")]
+position = Vector2(15584, 1360)
+
+[node name="ArrowGuide25" parent="." unique_id=1473357085 instance=ExtResource("19_fcf75")]
+position = Vector2(11168, 928)
+rotation = 0.7853982
+
+[node name="ArrowGuide23" parent="." unique_id=1160294701 instance=ExtResource("19_fcf75")]
+position = Vector2(10464, 672)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="SwitchArea" to="Node2D" method="_spawn_on_trigger" unbinds=1]

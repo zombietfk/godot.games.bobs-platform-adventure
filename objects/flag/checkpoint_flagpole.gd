@@ -13,3 +13,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$Flag.raise_flag();
 		Main.update_checkpoint(level_path, spawn_index);
 		Main.update_spawn(level_path, spawn_index);
+		body.lives = Main.DIFFICULTY.EASY;

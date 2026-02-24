@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c0f040qno7j70" path="res://objects/switch/switch_area.tscn" id="7_w2xo2"]
 [ext_resource type="PackedScene" uid="uid://bvqby3mtmw7qn" path="res://objects/health_upgrade_item.tscn" id="8_kh8ow"]
 [ext_resource type="Texture2D" uid="uid://bd4mebmw75evm" path="res://objects/danger_area_spritesheet.png" id="8_n3wck"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="9_msljh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bk054"]
 atlas = ExtResource("8_n3wck")
@@ -212,12 +213,18 @@ position = Vector2(680, 408)
 [node name="Web77" parent="." unique_id=204498094 instance=ExtResource("7_3rose")]
 position = Vector2(680, 344)
 
+[node name="ArrowGuide2" parent="." unique_id=2055402888 instance=ExtResource("9_msljh")]
+position = Vector2(352, 720)
+
+[node name="ArrowGuide3" parent="." unique_id=791071302 instance=ExtResource("9_msljh")]
+position = Vector2(1288, 624)
+
+[node name="HealthUpgradeItem" parent="." unique_id=505655237 instance=ExtResource("8_kh8ow")]
+position = Vector2(616, 384)
+pickup_unique_name = "level_17_hp_up"
+
 [node name="Web78" parent="." unique_id=1336274092 instance=ExtResource("7_3rose")]
 position = Vector2(616, 320)
-
-[node name="HealthUpgradeItem" parent="Web78" unique_id=505655237 instance=ExtResource("8_kh8ow")]
-position = Vector2(0, 64)
-pickup_unique_name = "level_17_hp_up"
 
 [node name="Web23" parent="." unique_id=1849807487 instance=ExtResource("7_3rose")]
 position = Vector2(736, 640)

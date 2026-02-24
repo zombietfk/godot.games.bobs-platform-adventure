@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cucm55as7id28" path="res://objects/traps/spikes/falling/falling_spike.tscn" id="5_we5xp"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="6_768qd"]
 [ext_resource type="PackedScene" uid="uid://bwm72kx7ki3v6" path="res://objects/traps/sawblade/shooter/sawblade_timed_shooter.tscn" id="7_a4a6w"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="8_jk2fm"]
 
 [node name="Level_42" type="Node2D" unique_id=1482901729 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_3ood3")
@@ -152,5 +153,22 @@ sawblade_autodestroy = true
 sawblade_autodestroy_after_x_seconds_timer = 5
 is_enabled = true
 fires_every_x_timer = 1.0
+
+[node name="ArrowGuide34" parent="." unique_id=2055402888 instance=ExtResource("8_jk2fm")]
+position = Vector2(-64, 415.99994)
+rotation = -0.87266463
+
+[node name="ArrowGuide35" parent="." unique_id=71236338 instance=ExtResource("8_jk2fm")]
+position = Vector2(384, 96)
+
+[node name="ArrowGuide36" parent="." unique_id=904575591 instance=ExtResource("8_jk2fm")]
+position = Vector2(1024, 96)
+
+[node name="ArrowGuide37" parent="." unique_id=1198628740 instance=ExtResource("8_jk2fm")]
+position = Vector2(1664, 96)
+
+[node name="ArrowGuide38" parent="." unique_id=822515278 instance=ExtResource("8_jk2fm")]
+position = Vector2(2144, 415.99994)
+rotation = 0.7853982
 
 [connection signal="ready" from="." to="." method="_on_ready"]

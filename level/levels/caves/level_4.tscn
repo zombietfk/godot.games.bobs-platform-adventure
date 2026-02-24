@@ -1,35 +1,35 @@
-[gd_scene load_steps=5 format=4 uid="uid://dljx62mud24nt"]
+[gd_scene format=4 uid="uid://dljx62mud24nt"]
 
 [ext_resource type="Script" uid="uid://qkyrpvk420dw" path="res://level/level.gd" id="1_wxudk"]
 [ext_resource type="TileSet" uid="uid://c5nfl1oinj88m" path="res://level/level_tileset.tres" id="2_u6n0j"]
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_wp0gp"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_7mchm"]
 
-[node name="Level_4" type="Node2D" node_paths=PackedStringArray("spawn_locations")]
+[node name="Level_4" type="Node2D" unique_id=2073720201 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_wxudk")
 level_binding_box = Rect2(0, -512, 576, 448)
 spawn_locations = [NodePath("EntrySpawnPoint"), NodePath("ReturnSpawnPoint")]
 
-[node name="EntrySpawnPoint" type="Marker2D" parent="."]
+[node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=2082704985]
 position = Vector2(32, 352)
 
-[node name="ReturnSpawnPoint" type="Marker2D" parent="."]
+[node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=1897723278]
 position = Vector2(544, 352)
 
-[node name="Level" type="TileMapLayer" parent="."]
+[node name="Level" type="TileMapLayer" parent="." unique_id=35430233]
 position = Vector2(0, -192)
 tile_map_data = PackedByteArray("AAABAAkAAgACAAEAAAAAAAUAAgAPAAMAAAAAAAYAAgACAAMAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAAAAkAAgACAAEAAAACAAkAAgACAAEAAAAEAAgAAgANAAQAAAADAAkAAgALAAMAAAAEAAcAAgAFAAQAAAAEAAYAAgAFAAQAAAAEAAUAAgAFAAQAAAAEAAQAAgAFAAQAAAAEAAMAAgANAAYAAAAEAAIAAgANAAQAAAAEAAEAAgAFAAQAAAAEAAAAAgAFAAQAAAAEAP//AgAFAAQAAAAEAP7/AgAFAAMAAAADAAgAAgAHAAMAAAABAAUAAgAJAAMAAAABAAYAAgAJAAUAAAADAAIAAgAHAAMAAAADAAMAAgAHAAUAAAABAP//AgAJAAMAAAABAAAAAgAJAAUAAAAAAAIAAgADAAIAAAAAAAEAAgADAAIAAAAAAAAAAgAPAAcAAAAAAP//AgAPAAMAAAAAAP7/AgADAAIAAAAAAP3/AgADAAIAAAAAAPz/AgADAAIAAAABAPv/AgACAAMAAAACAPv/AgACAAMAAAADAPv/AgACAAMAAAAEAPv/AgACAAMAAAAFAPv/AgACAAMAAAAGAPv/AgACAAMAAAAHAPv/AgACAAMAAAAIAPz/AgABAAIAAAAIAP3/AgABAAIAAAAIAP7/AgABAAIAAAAIAP//AgALAAMAAAAIAAAAAgALAAcAAAAIAAEAAgABAAIAAAAIAAIAAgABAAIAAAAIAAMAAgABAAIAAAAIAAQAAgABAAIAAAAIAAUAAgALAAMAAAAIAAYAAgACAAMAAAAFAAkAAgAPAAMAAAAGAAkAAgACAAEAAAAHAAkAAgACAAEAAAAIAAkAAgACAAEAAAAFAAgAAgAJAAMAAAAEAAkAAgACAAIAAAAHAP//AgAHAAMAAAAHAAAAAgAHAAUAAAAFAAIAAgAFAAgAAAAFAAMAAgAFAAkAAAAGAAIAAgAGAAgAAAAGAAMAAgAGAAkAAAAHAAUAAgAHAAMAAAAHAAYAAgAHAAUAAAAAAPv/AgAPAAcAAAAIAPv/AgALAAcAAAA=")
 tile_set = ExtResource("2_u6n0j")
 
-[node name="MiniLevel" type="TileMapLayer" parent="Level"]
+[node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=1912322426]
 tile_set = ExtResource("3_wp0gp")
 
-[node name="TeleportToNextLevelZone" parent="." instance=ExtResource("4_7mchm")]
+[node name="TeleportToNextLevelZone" parent="." unique_id=53463107 instance=ExtResource("4_7mchm")]
 position = Vector2(608, 320)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://f6tqo6uxjshx"
 
-[node name="TeleportToPreviousLevelZone" parent="." instance=ExtResource("4_7mchm")]
+[node name="TeleportToPreviousLevelZone" parent="." unique_id=2029354874 instance=ExtResource("4_7mchm")]
 position = Vector2(-32, 320)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://bremvu40aw6tq"

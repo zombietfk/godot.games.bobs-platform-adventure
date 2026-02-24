@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cun18auwrqa22" path="res://objects/abstract/follow_path_cyclical/follow_path_cyclical.gd" id="6_qr7df"]
 [ext_resource type="PackedScene" uid="uid://b2lfscx2oorkx" path="res://level/platforms/cloud/cloud_platform.tscn" id="7_iar71"]
 [ext_resource type="PackedScene" uid="uid://ctaeyscddayym" path="res://objects/traps/sawblade/sawblade.tscn" id="8_6a013"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="8_tjouo"]
 
 [sub_resource type="Curve2D" id="Curve2D_r5ys4"]
 _data = {
@@ -76,5 +77,8 @@ scale = Vector2(3, 3)
 [node name="Sawblade2" parent="." unique_id=731815596 instance=ExtResource("8_6a013")]
 position = Vector2(480, 800.00006)
 scale = Vector2(3, 3)
+
+[node name="ArrowGuide34" parent="." unique_id=2055402888 instance=ExtResource("8_tjouo")]
+position = Vector2(486, 956)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

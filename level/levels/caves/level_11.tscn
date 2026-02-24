@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cclnn5v3he5e0" path="res://enemies/bat/bat.tscn" id="8_2srip"]
 [ext_resource type="PackedScene" uid="uid://dqf5epnakyje8" path="res://objects/door/door.tscn" id="9_fbq4g"]
 [ext_resource type="Script" uid="uid://jen8d055ikgk" path="res://objects/abstract/move_on_switch_activated/move_on_switch_activated.gd" id="10_dhc6g"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="11_dhc6g"]
 
 [sub_resource type="Curve2D" id="Curve2D_2aajd"]
 _data = {
@@ -253,6 +254,22 @@ rotation = 1.5707964
 script = ExtResource("10_dhc6g")
 movement_path = NodePath("..")
 movement_speed = 25.6
+
+[node name="ArrowGuide5" parent="." unique_id=52508810 instance=ExtResource("11_dhc6g")]
+position = Vector2(826, 220)
+rotation = -1.5707964
+
+[node name="ArrowGuide6" parent="." unique_id=2055402888 instance=ExtResource("11_dhc6g")]
+position = Vector2(313, 228)
+rotation = -1.5707964
+
+[node name="ArrowGuide7" parent="." unique_id=868140397 instance=ExtResource("11_dhc6g")]
+position = Vector2(326, 658)
+rotation = 1.5707964
+
+[node name="ArrowGuide8" parent="." unique_id=853757647 instance=ExtResource("11_dhc6g")]
+position = Vector2(839, 658)
+rotation = 1.5707964
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="Switch" to="Path2D5/PathFollow2D/Door" method="_on_switch_flipped_on"]

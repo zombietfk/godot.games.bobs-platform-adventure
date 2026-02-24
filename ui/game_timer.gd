@@ -4,7 +4,6 @@ var time_in_s := 0.0;
 
 func _process(delta: float)->void:
 	time_in_s += delta;
-	print(Main.show_clock);
 	if Main.show_clock == true:
 		visible = true;
 		text = _seconds_to_hms(time_in_s);

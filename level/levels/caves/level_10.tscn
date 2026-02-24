@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_aiflk"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_b8utg"]
 [ext_resource type="PackedScene" uid="uid://b8mbn7xxabui" path="res://objects/traps/sawblade/shooter/sawblade_shooter_on_switch.tscn" id="6_fv43r"]
+[ext_resource type="PackedScene" uid="uid://b0au5c0e5qeas" path="res://objects/arrow_guide.tscn" id="7_7om88"]
 [ext_resource type="PackedScene" uid="uid://bus2730on4ksk" path="res://objects/switch/floor_switch.tscn" id="8_4njbc"]
 
 [node name="Level_10" type="Node2D" unique_id=2141065503 node_paths=PackedStringArray("spawn_locations")]
@@ -94,6 +95,18 @@ position = Vector2(2880, 576)
 sawblade_travel_speed = 600
 sawblade_autodestroy = true
 sawblade_autodestroy_after_x_seconds_timer = 10
+
+[node name="ArrowGuide" parent="." unique_id=2055402888 instance=ExtResource("7_7om88")]
+position = Vector2(1024.0001, 288.00003)
+rotation = -0.014723897
+
+[node name="ArrowGuide2" parent="." unique_id=1549355573 instance=ExtResource("7_7om88")]
+position = Vector2(1216, 352)
+rotation = 0.8061967
+
+[node name="ArrowGuide3" parent="." unique_id=731147857 instance=ExtResource("7_7om88")]
+position = Vector2(1312.0001, 512.00006)
+rotation = 1.4632215
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="switch_flipped_on" from="Switch" to="Sawblade_Shooter_On_Switch" method="_fire_sawblade_on_swtich_press"]
