@@ -25,6 +25,6 @@ static func set_unlock_checkpoint(unlocked_checkpoint_index: int)->void:
 		);
 		save_ini.save(SAVE_PATH);
 
-func clear_checkpoints()->void:
+static func clear_checkpoints()->void:
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH);

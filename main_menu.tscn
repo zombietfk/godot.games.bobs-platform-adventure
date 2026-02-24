@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d5syprqcytin" path="res://ui/show_timer_checkbox.tscn" id="7_0k4wn"]
 [ext_resource type="Texture2D" uid="uid://ds6e4i42jsdbo" path="res://ui/github.png" id="8_dy7ct"]
 [ext_resource type="Texture2D" uid="uid://406mjw5hikla" path="res://ui/itchiio.png" id="9_0o4t1"]
+[ext_resource type="Script" uid="uid://njrhr856f7v5" path="res://ui/ui_checkpoints_delete_saves_button.gd" id="9_w44g7"]
 [ext_resource type="Texture2D" uid="uid://bkcyekc7w1cku" path="res://objects/flag/flag.png" id="11_iotk1"]
 [ext_resource type="Script" uid="uid://geyr7ede6imd" path="res://ui/load_checkpoint_button.gd" id="11_j5v2v"]
 
@@ -303,6 +304,27 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_qe12f")
 theme_override_styles/focus = SubResource("StyleBoxTexture_qe12f")
 text = "< Back"
 
+[node name="Label" type="Label" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer" unique_id=1941136545]
+layout_mode = 2
+
+[node name="DeleteSavesButton" type="Button" parent="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer" unique_id=931285537 node_paths=PackedStringArray("main_menu_controller")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_06t4h")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_qe12f")
+theme_override_styles/focus = SubResource("StyleBoxTexture_qe12f")
+text = "Delete SAVE"
+script = ExtResource("9_w44g7")
+main_menu_controller = NodePath("../../../../../..")
+
 [node name="Version" type="Label" parent="CanvasLayer/ContainerControl" unique_id=822671300]
 layout_mode = 1
 anchors_preset = 3
@@ -377,3 +399,5 @@ parameters/looping = true
 [connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton5" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton5" method="_load_checkpoint"]
 [connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton6" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton6" method="_load_checkpoint"]
 [connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/BackButton" to="." method="_show_main_ui_menu"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/BackButton" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/DeleteSavesButton" method="reset"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/DeleteSavesButton" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/DeleteSavesButton" method="_on_delete"]

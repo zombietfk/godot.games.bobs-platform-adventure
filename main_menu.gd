@@ -1,3 +1,4 @@
+class_name MainMenu;
 extends Node2D
 
 @export_file var inital_level_path: String;
