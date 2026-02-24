@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://caoku7dqkwa54" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="2_2ieo8"]
+[ext_resource type="SpriteFrames" uid="uid://cjj5jchwshtl8" path="res://player/bobette_sprite_frames.tres" id="2_65viv"]
 [ext_resource type="AudioStream" uid="uid://c7utqvbm4ixyv" path="res://sound_effects/jump_1.mp3" id="2_ebec5"]
 [ext_resource type="Texture2D" uid="uid://csatwk1neiden" path="res://player/bob_idle_spritesheet.png" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://dd6lpf0ufyjvy" path="res://player/state_machines/input_state_machine/states/player_airborn_state.gd" id="3_ebec5"]
@@ -120,6 +121,7 @@ platform_on_leave = 2
 platform_floor_layers = 4278190528
 platform_wall_layers = 448
 script = ExtResource("1_rkbax")
+bobette_sprite_frames = ExtResource("2_65viv")
 movement_state_machine = NodePath("StateMachines/MovementStateMachine")
 crush_check_raycast_up = NodePath("CrushCheckUpCast")
 crush_check_raycast_down = NodePath("CrushCheckDownCast")
@@ -216,8 +218,7 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_rgyib")
 animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.673187
+frame_progress = 0.123878114
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475461127]
 position = Vector2(1.5, 2)

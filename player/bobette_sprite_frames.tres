@@ -1,0 +1,55 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cjj5jchwshtl8"]
+
+[ext_resource type="Texture2D" uid="uid://dmcv2vwdhxqw" path="res://player/bobette_idle_spritesheet.png" id="1_hwe6q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p31ht"]
+atlas = ExtResource("1_hwe6q")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrx5b"]
+atlas = ExtResource("1_hwe6q")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keksb"]
+atlas = ExtResource("1_hwe6q")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coulh"]
+atlas = ExtResource("1_hwe6q")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wupt0"]
+atlas = ExtResource("1_hwe6q")
+region = Rect2(256, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p31ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrx5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keksb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coulh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wupt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coulh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keksb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrx5b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]

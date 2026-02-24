@@ -6,6 +6,9 @@ const FLOOR_COLLISION_MASK = (1 << 7) | (1 << 8) | (1 << 9);
 const FLOOR_CORRECTION_DISTANCE = 100;
 const VELOCITY_X_MIN = 10;
 
+static var use_bobette_as_player = false;
+@export var bobette_sprite_frames: SpriteFrames;
+
 # SETTINGS
 @export var camera: Camera2D;
 @export var player_heath_ui: PlayerHealthUI;
@@ -39,6 +42,11 @@ signal on_take_damage(
 	knockback_duration_in_s: float,
 );
 signal on_kill();
+
+func _ready()->void:
+	if Player.use_bobette_as_player:
+		$AnimatedSprite2D.sprite_frames = bobette_sprite_frames;
+		$AnimatedSprite2D.play();
 
 # LIFECYCLE
 func _process(_delta: float) -> void:

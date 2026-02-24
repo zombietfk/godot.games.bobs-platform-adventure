@@ -6,13 +6,17 @@
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_g1pj3"]
 [ext_resource type="PackedScene" uid="uid://bvkius8ni6k6a" path="res://objects/traps/spikes/spike.tscn" id="3_ocfky"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_8hcfh"]
-[ext_resource type="PackedScene" uid="uid://dtcuxsjxmk3o6" path="res://objects/flag/checkpoint_flagpole.tscn" id="4_35wsb"]
 [ext_resource type="Texture2D" uid="uid://dh2t3yqy7jnph" path="res://ui/face_smile.png" id="5_vnpiu"]
 [ext_resource type="PackedScene" uid="uid://bfdmpp2r661yo" path="res://enemies/rabbit/rabbit.tscn" id="6_tva36"]
+[ext_resource type="SpriteFrames" uid="uid://cjj5jchwshtl8" path="res://player/bobette_sprite_frames.tres" id="9_21xgj"]
+[ext_resource type="Script" uid="uid://dkxih4iuwtd2y" path="res://cutscenes/play_ending_on_area_2d_entered.gd" id="10_p31ht"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ocfky"]
 font = ExtResource("2_7uowy")
 font_size = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tva36"]
+size = Vector2(64, 64)
 
 [node name="Level_51" type="Node2D" unique_id=1504185619 node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("1_rcbqq")
@@ -20,13 +24,47 @@ level_binding_box = Rect2(0, -64, 704, 448)
 spawn_locations = [NodePath("EntrySpawnPoint")]
 
 [node name="Spike" parent="." unique_id=942304117 instance=ExtResource("3_ocfky")]
-position = Vector2(608, 352)
+position = Vector2(608, 32)
+rotation = -3.1415927
 
-[node name="CheckpointFlagpole" parent="." unique_id=1398330232 instance=ExtResource("4_35wsb")]
-position = Vector2(352, 363)
-level_path = "uid://c1erl7bnnoa87"
+[node name="Spike2" parent="." unique_id=1355125684 instance=ExtResource("3_ocfky")]
+position = Vector2(544, 32)
+rotation = -3.1415927
+
+[node name="Spike3" parent="." unique_id=1254177506 instance=ExtResource("3_ocfky")]
+position = Vector2(96, 32)
+rotation = -3.1415927
+
+[node name="Rabbit" parent="." unique_id=738928563 instance=ExtResource("6_tva36")]
+position = Vector2(284, 369)
+turnaround_on_platform_edge = true
+randomize_starting_direction = true
+jump_timer_variance = 1.0
+jump_timer = 2.0
+
+[node name="Rabbit2" parent="." unique_id=1601033526 instance=ExtResource("6_tva36")]
+position = Vector2(432, 367)
+turnaround_on_platform_edge = true
+randomize_starting_direction = true
+jump_timer_variance = 1.0
+jump_timer = 2.0
+
+[node name="Rabbit3" parent="." unique_id=308288551 instance=ExtResource("6_tva36")]
+position = Vector2(517, 369)
+turnaround_on_platform_edge = true
+randomize_starting_direction = true
+jump_timer_variance = 1.0
+jump_timer = 2.0
+
+[node name="Rabbit4" parent="." unique_id=1060413558 instance=ExtResource("6_tva36")]
+position = Vector2(192, 367)
+turnaround_on_platform_edge = true
+randomize_starting_direction = true
+jump_timer_variance = 1.0
+jump_timer = 2.0
 
 [node name="Control" type="Control" parent="." unique_id=640627207]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -38,46 +76,19 @@ offset_left = 128.0
 offset_top = 128.0
 offset_right = 608.0
 offset_bottom = 224.0
-text = "That's All For Now Folks!
+text = "The End!
 
 Thanks For Playing!"
 label_settings = SubResource("LabelSettings_ocfky")
+horizontal_alignment = 1
 
 [node name="FaceSmile" type="TextureRect" parent="Control" unique_id=101300453]
 layout_mode = 0
-offset_left = 502.0
-offset_top = 183.0
-offset_right = 566.0
-offset_bottom = 247.0
+offset_left = 331.0
+offset_top = 229.0
+offset_right = 395.0
+offset_bottom = 293.0
 texture = ExtResource("5_vnpiu")
-
-[node name="Rabbit" parent="Control" unique_id=738928563 instance=ExtResource("6_tva36")]
-position = Vector2(284, 369)
-turnaround_on_platform_edge = true
-randomize_starting_direction = true
-jump_timer_variance = 1.0
-jump_timer = 2.0
-
-[node name="Rabbit2" parent="Control" unique_id=1601033526 instance=ExtResource("6_tva36")]
-position = Vector2(432, 367)
-turnaround_on_platform_edge = true
-randomize_starting_direction = true
-jump_timer_variance = 1.0
-jump_timer = 2.0
-
-[node name="Rabbit3" parent="Control" unique_id=308288551 instance=ExtResource("6_tva36")]
-position = Vector2(517, 369)
-turnaround_on_platform_edge = true
-randomize_starting_direction = true
-jump_timer_variance = 1.0
-jump_timer = 2.0
-
-[node name="Rabbit4" parent="Control" unique_id=1060413558 instance=ExtResource("6_tva36")]
-position = Vector2(192, 367)
-turnaround_on_platform_edge = true
-randomize_starting_direction = true
-jump_timer_variance = 1.0
-jump_timer = 2.0
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=486256698]
 position = Vector2(32, 352)
@@ -95,4 +106,18 @@ position = Vector2(-32, 320)
 scale = Vector2(4, 8.1)
 to_level_path = "uid://cgrbopls2dqgk"
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=958898347]
+position = Vector2(352, 356)
+sprite_frames = ExtResource("9_21xgj")
+autoplay = "default"
+frame_progress = 0.37020317
+script = ExtResource("10_p31ht")
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D" unique_id=134302982]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D" unique_id=1603084634]
+shape = SubResource("RectangleShape2D_tva36")
+
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="AnimatedSprite2D" method="_play_ending"]

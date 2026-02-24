@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://d5syprqcytin" path="res://ui/show_timer_checkbox.tscn" id="7_0k4wn"]
 [ext_resource type="Texture2D" uid="uid://ds6e4i42jsdbo" path="res://ui/github.png" id="8_dy7ct"]
 [ext_resource type="Texture2D" uid="uid://406mjw5hikla" path="res://ui/itchiio.png" id="9_0o4t1"]
+[ext_resource type="Texture2D" uid="uid://bf3mdfkm2pkm2" path="res://ui/button_checkbox_confirm.png" id="9_g8g3n"]
 [ext_resource type="Script" uid="uid://njrhr856f7v5" path="res://ui/ui_checkpoints_delete_saves_button.gd" id="9_w44g7"]
+[ext_resource type="Script" uid="uid://b3v8hla5lugin" path="res://ui_option_play_as_bobette.gd" id="10_8u0te"]
 [ext_resource type="Texture2D" uid="uid://bkcyekc7w1cku" path="res://objects/flag/flag.png" id="11_iotk1"]
 [ext_resource type="Script" uid="uid://geyr7ede6imd" path="res://ui/load_checkpoint_button.gd" id="11_j5v2v"]
 
@@ -32,6 +34,13 @@ axis_stretch_horizontal = 1
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n45oj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eiiss"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0o4t1"]
+texture = ExtResource("5_nlkkf")
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="Theme" id="Theme_06t4h"]
 default_font = ExtResource("1_06t4h")
@@ -146,6 +155,26 @@ label_settings = SubResource("LabelSettings_glbon")
 
 [node name="ShowTimerCheckbox" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/ShowClockSetting" unique_id=118898657 instance=ExtResource("7_0k4wn")]
 layout_mode = 2
+
+[node name="PlayAsBobette" type="HBoxContainer" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer" unique_id=1839585088]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/PlayAsBobette" unique_id=1030144869]
+layout_mode = 2
+text = "play as bobette? "
+label_settings = SubResource("LabelSettings_glbon")
+
+[node name="PlayAsBobetteCheckbox" type="CheckBox" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/PlayAsBobette" unique_id=818141784]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0o4t1")
+theme_override_icons/checked = ExtResource("9_g8g3n")
+script = ExtResource("10_8u0te")
 
 [node name="StartButton" type="Button" parent="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer" unique_id=1303368107]
 layout_mode = 2
@@ -389,7 +418,9 @@ autoplay = true
 playback_type = 1
 parameters/looping = true
 
+[connection signal="visibility_changed" from="CanvasLayer/ContainerControl/Main" to="." method="_show_bobette_option_if_unlocked"]
 [connection signal="changed" from="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/MasterVolumeController/HSlider" to="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/MasterVolumeController/HSlider" method="_value_changed"]
+[connection signal="pressed" from="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/PlayAsBobette/PlayAsBobetteCheckbox" to="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/PlayAsBobette/PlayAsBobetteCheckbox" method="_play_as_bobette"]
 [connection signal="pressed" from="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/StartButton" to="." method="_begin_game"]
 [connection signal="pressed" from="CanvasLayer/ContainerControl/Main/CenterContainer/VBoxContainer/ContiuneButton" to="." method="_show_checkpoints_ui_menu"]
 [connection signal="pressed" from="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton1" to="CanvasLayer/ContainerControl/Checkpoints/CenterContainer/VBoxContainer/CheckpointsHBoxContainer/LoadCheckpointButton1" method="_load_checkpoint"]
