@@ -38,7 +38,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-266.66675, 672)]
+"values": [Vector2(106.667, 672)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -95,10 +95,10 @@ tracks/6/path = NodePath("../Control/Label3:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.0009999999),
+"times": PackedFloat32Array(0, 0.001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(128, 128), Vector2(128, 192)]
+"values": [Vector2(128, 128), Vector2(128, 256)]
 }
 
 [sub_resource type="Animation" id="Animation_d6jeg"]
@@ -125,7 +125,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-266.66675, 672), Vector2(426.6667, 672)]
+"values": [Vector2(106.66669, 672), Vector2(426.6667, 672)]
 }
 
 [sub_resource type="Animation" id="Animation_sx3ne"]
@@ -255,7 +255,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 5.0333333, 29),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(128, 128), Vector2(128, 128), Vector2(128, -3328)]
+"values": [Vector2(128, 256), Vector2(128, 256.00003), Vector2(128, -3328)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vxjf2"]
@@ -297,7 +297,7 @@ position = Vector2(576, 389)
 texture = ExtResource("2_d6jeg")
 
 [node name="bob" type="Sprite2D" parent="Node2D" unique_id=182522815]
-position = Vector2(-266.66675, 672)
+position = Vector2(106.667, 672)
 texture = ExtResource("3_u17xv")
 
 [node name="bobette" type="Sprite2D" parent="Node2D" unique_id=756827457]
@@ -349,7 +349,7 @@ layout_mode = 0
 offset_left = 128.0
 offset_top = 256.0
 offset_right = 974.0
-offset_bottom = 377.0
+offset_bottom = 377.00003
 text = "The End!
 Thank you for playing!"
 label_settings = SubResource("LabelSettings_vxjf2")
@@ -360,7 +360,7 @@ layout_mode = 0
 offset_left = 128.0
 offset_top = 128.0
 offset_right = 974.0
-offset_bottom = 2146.003
+offset_bottom = 2146.0042
 text = "[CREDITS]
 
 A game by ZOMBIE-TFK (sam)

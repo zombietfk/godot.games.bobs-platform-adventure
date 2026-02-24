@@ -52,10 +52,9 @@ func _wait_for_input_then_play_next():
 		if _c_label_index == ENDING_PLAY_NEXT_CLIP_AFTER_LABEL_INDEX[_c_clip_index]:
 			_c_clip_index += 1;
 			animation_player.play("clip_" + str(_c_clip_index))
+			await animation_player.animation_finished;
 	_c_label_index += 1;
 	if _c_label_index > ENDING_LABELS.size() - 1:
-		_freeze_input = true;
-		await animation_player.animation_finished;
 		get_tree().change_scene_to_file("res://main_menu.tscn");
 		return;
 	cutscene_typewriter.update_text(ENDING_LABELS[_c_label_index]);
