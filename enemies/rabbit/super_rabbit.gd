@@ -7,7 +7,7 @@ extends Node2D;
 @export var superbunny_body: AnimatedSprite2D;
 
 func _ready()->void:
-	entrance_sound.play();
+	entrance_sound.play(1.5);
 	
 func _on_hit_demon_bunny(body: Node2D)->void:
 	if body is DemonBunny:

@@ -28,3 +28,7 @@ func gib_and_kill() -> void:
 		scale = lerp(original_scale, Vector2.ZERO, i / 100.0);
 		await get_tree().create_timer(0.05, false).timeout;
 	super.gib_and_kill();
+	
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.gib_and_kill();

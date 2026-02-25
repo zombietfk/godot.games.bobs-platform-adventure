@@ -75,8 +75,8 @@ func _on_slots_finish_spinning_handler(results: Array[ReelFace.Values])->void:
 func _reset_state_variables()->void:
 	match body.health:
 		1:
-			_slot_spin_speed_min = 2;
-			_slot_spin_speed_max = 2.3;
+			_slot_spin_speed_min = 1.5;
+			_slot_spin_speed_max = 1.9;
 		2:
 			_slot_spin_speed_min = 1.3;
 			_slot_spin_speed_max = 1.6;

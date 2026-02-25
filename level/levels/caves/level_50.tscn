@@ -6,7 +6,6 @@
 [ext_resource type="TileSet" uid="uid://dpa3di8xng37r" path="res://level/level_tileset_mini.tres" id="3_se30l"]
 [ext_resource type="PackedScene" uid="uid://bxjr0uwo0iqbk" path="res://objects/abstract/teleport_to_level_zone/teleport_to_level_zone.tscn" id="4_lieyi"]
 [ext_resource type="Script" uid="uid://l6sodqykds7e" path="res://enemies/bosses/demon-rabbit/demon_bunny.gd" id="5_5vagu"]
-[ext_resource type="Script" uid="uid://cwv6f5eaqt8it" path="res://objects/abstract/follow_path_cyclical/follow_path.gd" id="6_2qow0"]
 [ext_resource type="SpriteFrames" uid="uid://bm0ynqus6gxsc" path="res://enemies/bosses/demon-rabbit/demon_rabbit_sprites.tres" id="6_geej5"]
 [ext_resource type="Script" uid="uid://cq1n40n7najap" path="res://utils/finate_state_machine/state_machine.gd" id="6_nphm7"]
 [ext_resource type="AudioStream" uid="uid://bbuu8yjub3vqw" path="res://sound_effects/whoosh_1.mp3" id="6_ykkyn"]
@@ -74,11 +73,8 @@ _data = {
 &"spin_pitchfork": SubResource("Animation_bv7or")
 }
 
-[sub_resource type="Curve2D" id="Curve2D_geej5"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 512, 928, 0, 0, 0, 0, 832, 928, 0, 0, 0, 0, 832, 992, 0, 0, 0, 0, 512, 992, 0, 0, 0, 0, 512, 928)
-}
-point_count = 5
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfy6r"]
+radius = 59.0
 
 [sub_resource type="Curve2D" id="Curve2D_8r4um"]
 _data = {
@@ -439,14 +435,14 @@ camera_zoom_speed = 0.01
 music_override = NodePath("BossMusicAudioStreamPlayer")
 
 [node name="EntrySpawnPoint" type="Marker2D" parent="." unique_id=1426282439]
-position = Vector2(512, 832)
+position = Vector2(480, 384)
 
 [node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=881931622]
 position = Vector2(2144, 480)
 
 [node name="Level" type="TileMapLayer" parent="." unique_id=536247868]
 position = Vector2(0, -192)
-tile_map_data = PackedByteArray("AAAFAAgAAgADAAIAAAAFAAkAAgADAAIAAAAFAAoAAgADAAIAAAAFAAsAAgADAAIAAAAFAAwAAgADAAIAAAAFAA0AAgADAAIAAAAFAA4AAgADAAIAAAAFAA8AAgADAAIAAAAFABAAAgADAAIAAAAFABEAAgADAAIAAAAFABIAAgADAAIAAAAFABMAAgADAAIAAAAQABEAAgAHAAEAAAARABEAAgAIAAEAAAASABEAAgAJAAEAAAAVAAoAAgABAAIAAAAVAAsAAgABAAIAAAAVAAwAAgABAAIAAAAVAA0AAgABAAIAAAAVABIAAgABAAIAAAAVABMAAgABAAIAAAAVAAkAAgABAAIAAAAJAAgAAgACAAMAAAAKAAgAAgACAAMAAAALAAgAAgACAAMAAAAMAAgAAgACAAMAAAANAAgAAgACAAMAAAAOAAgAAgACAAMAAAAPAAgAAgADAAMAAAATAAgAAgABAAMAAAAUAAgAAgACAAMAAAAVABEAAgABAAEAAAAVAA4AAgABAAMAAAA=")
+tile_map_data = PackedByteArray("AAAFAAgAAgADAAIAAAAFAAkAAgADAAIAAAAFAAoAAgADAAIAAAAFAAsAAgADAAIAAAAFAAwAAgADAAIAAAAFAA0AAgADAAIAAAAFAA4AAgADAAIAAAAFAA8AAgADAAIAAAAFABAAAgADAAIAAAAFABEAAgADAAIAAAAFABIAAgADAAIAAAAFABMAAgADAAIAAAAQABEAAgAHAAEAAAARABEAAgAIAAEAAAASABEAAgAJAAEAAAAVAAoAAgABAAIAAAAVAAsAAgABAAIAAAAVAAwAAgABAAIAAAAVAA0AAgABAAIAAAAVABIAAgABAAIAAAAVABMAAgABAAIAAAAVAAkAAgABAAIAAAAJAAgAAgACAAMAAAAKAAgAAgACAAMAAAALAAgAAgACAAMAAAAMAAgAAgACAAMAAAANAAgAAgACAAMAAAAOAAgAAgACAAMAAAAPAAgAAgADAAMAAAATAAgAAgABAAMAAAAUAAgAAgACAAMAAAAVABEAAgABAAEAAAAVAA4AAgABAAMAAAAHABEAAgAHAAEAAAAIABEAAgAIAAEAAAAJABEAAgAIAAEAAAAMABEAAgAIAAEAAAANABEAAgAIAAEAAAAOABEAAgAJAAEAAAALABEAAgAIAAEAAAAKABEAAgAIAAEAAAA=")
 tile_set = ExtResource("2_5p3ro")
 
 [node name="MiniLevel" type="TileMapLayer" parent="Level" unique_id=711802277]
@@ -527,72 +523,11 @@ libraries/ = SubResource("AnimationLibrary_i52du")
 position = Vector2(14, 2)
 target_position = Vector2(-38, 0)
 
-[node name="Path2DLinear" type="Path2D" parent="." unique_id=305918026]
-position = Vector2(-32, 0)
-curve = SubResource("Curve2D_geej5")
-script = ExtResource("6_2qow0")
-metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
+[node name="Area2D" type="Area2D" parent="DemonRabbit" unique_id=1992627331]
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear" unique_id=1329965944]
-position = Vector2(512, 928)
-rotates = false
-
-[node name="Level" type="TileMapLayer" parent="Path2DLinear/PathFollow2D" unique_id=1519674090]
-position = Vector2(-448, -1120)
-tile_map_data = PackedByteArray("AAAHABEAAgAFAAEAAAA=")
-tile_set = ExtResource("2_5p3ro")
-use_kinematic_bodies = true
-
-[node name="Path2DLinear2" type="Path2D" parent="." unique_id=1620325771]
-position = Vector2(-32, 0)
-curve = SubResource("Curve2D_geej5")
-script = ExtResource("6_2qow0")
-start_ratio = 0.25
-metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear2" unique_id=600655998]
-position = Vector2(512, 928)
-rotates = false
-
-[node name="Level" type="TileMapLayer" parent="Path2DLinear2/PathFollow2D" unique_id=1019436840]
-position = Vector2(-448, -1120)
-tile_map_data = PackedByteArray("AAAHABEAAgAFAAEAAAA=")
-tile_set = ExtResource("2_5p3ro")
-use_kinematic_bodies = true
-
-[node name="Path2DLinear3" type="Path2D" parent="." unique_id=113860410]
-position = Vector2(-32, 0)
-curve = SubResource("Curve2D_geej5")
-script = ExtResource("6_2qow0")
-start_ratio = 0.5
-metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear3" unique_id=1759865277]
-position = Vector2(512, 928)
-rotates = false
-
-[node name="Level" type="TileMapLayer" parent="Path2DLinear3/PathFollow2D" unique_id=564850716]
-position = Vector2(-448, -1120)
-tile_map_data = PackedByteArray("AAAHABEAAgAFAAEAAAA=")
-tile_set = ExtResource("2_5p3ro")
-use_kinematic_bodies = true
-
-[node name="Path2DLinear4" type="Path2D" parent="." unique_id=228866098]
-position = Vector2(-32, 0)
-curve = SubResource("Curve2D_geej5")
-script = ExtResource("6_2qow0")
-start_ratio = 0.75
-metadata/_custom_type_script = "uid://cwv6f5eaqt8it"
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2DLinear4" unique_id=822756452]
-position = Vector2(512, 928)
-rotates = false
-
-[node name="Level" type="TileMapLayer" parent="Path2DLinear4/PathFollow2D" unique_id=1066742065]
-position = Vector2(-448, -1120)
-tile_map_data = PackedByteArray("AAAHABEAAgAFAAEAAAA=")
-tile_set = ExtResource("2_5p3ro")
-use_kinematic_bodies = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DemonRabbit/Area2D" unique_id=1644909752]
+position = Vector2(3, 32)
+shape = SubResource("CircleShape2D_gfy6r")
 
 [node name="SlotsPath2D" type="Path2D" parent="." unique_id=1085100440]
 position = Vector2(0, -192)
@@ -903,6 +838,7 @@ movement_path = NodePath("..")
 [connection signal="on_damage" from="DemonRabbit" to="DemonRabbit/StateMachine/StageTwo" method="_on_take_damage"]
 [connection signal="on_death" from="DemonRabbit" to="DemonRabbit/StateMachine/StageTwo" method="_on_death"]
 [connection signal="on_death" from="DemonRabbit" to="Path2D/PathFollow2D/Door" method="_on_switch_flipped_on"]
+[connection signal="body_entered" from="DemonRabbit/Area2D" to="DemonRabbit" method="_on_body_entered"]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch" to="SlotsPath2D/PathFollow2D/Slot/Reel" method="hold_reel" unbinds=1]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch2" to="SlotsPath2D/PathFollow2D/Slot/Reel2" method="hold_reel" unbinds=1]
 [connection signal="switch_flipped_on" from="SlotsPath2D/PathFollow2D/FloorSwitch3" to="SlotsPath2D/PathFollow2D/Slot/Reel3" method="hold_reel" unbinds=1]
