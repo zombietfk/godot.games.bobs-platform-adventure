@@ -69,11 +69,9 @@ func _process_is_player_on_platform_flags() -> void:
 			if collider.is_on_floor() and !is_player_standing_on_platform:
 				is_player_standing_on_platform = true;
 				is_landed_on_platform_one_shot_trigger = true;
-				player_landed.emit();
 			elif !collider.is_on_floor() and is_player_standing_on_platform:
 				is_player_standing_on_platform = false;
 				is_exited_from_platform_one_shot_trigger = true;
-				player_exited.emit();
 
 func _physics_process(delta: float) -> void:
 	_process_player_landed();
