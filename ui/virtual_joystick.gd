@@ -51,6 +51,7 @@ func _apply_input_actions(movement_direction: Vector2):
 	Input.action_release("move_left");
 	Input.action_release("move_up");
 	Input.action_release("move_down");
+	Input.action_release("drop");
 	if movement_direction.x > 0:
 		Input.action_press("move_right", movement_direction.x);
 	elif movement_direction.x < -0:
