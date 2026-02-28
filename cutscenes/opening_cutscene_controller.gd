@@ -54,7 +54,6 @@ func _ready()->void:
 
 func _input(event)->void:
 	if event is InputEventScreenTouch:
-		print('booock');
 		if event.pressed:
 			Input.action_press("jump"); 
 		else:

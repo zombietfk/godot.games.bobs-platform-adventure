@@ -13,7 +13,6 @@ func _gui_input(event):
 			button_pressed = true;
 			accept_event();
 		elif !event.pressed and event.index == touch_id:
-			print('bzzt');
 			touch_id = -1;
 			Input.action_release(virtual_action_name);
 			button_pressed = false;

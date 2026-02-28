@@ -47,7 +47,6 @@ func _ready() -> void:
 		update_spawn(inital_level_path, 0);
 		update_checkpoint(inital_checkpoint_path, 0);
 	load_level();
-	print(Main.mobile_compatabilty_mode);
 	if Main.mobile_compatabilty_mode:
 		$GameUI/VirtualControls.visible = true;
 
