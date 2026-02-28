@@ -20,7 +20,9 @@ func _process(delta: float) -> void:
 	if(is_being_raised && c_raise_duration < raise_duration):
 		c_raise_duration += delta;
 		if(c_raise_duration > raise_duration):
-			confetti_particles_2d.emitting = true;
+			# for compatability with low end devices
+			if !_is_mobile_browser():
+				confetti_particles_2d.emitting = true;
 			c_raise_duration = raise_duration;
 	position = lerp(
 		origin_target_local_pos,
@@ -39,3 +41,14 @@ func reset_flag():
 	c_raise_duration = 0;
 	is_being_raised = false;
 	position = origin_target_local_pos;
+	
+func _is_mobile_browser() -> bool:
+	if !OS.has_feature("web"):
+		return false;
+	var user_agent = JavaScriptBridge.eval("navigator.userAgent");
+	return (
+		"Android" in user_agent
+		or "iPhone" in user_agent
+		or "iPad" in user_agent
+		or "iPod" in user_agent
+	);

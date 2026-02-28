@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://fxtkyrhbeyuk" path="res://ui/master_volume_controller.tscn" id="13_w48qg"]
 [ext_resource type="Texture2D" uid="uid://drnm4va3uegtk" path="res://ui/button_9_slice.png" id="14_vivmo"]
 [ext_resource type="Script" uid="uid://chu62a468r7a3" path="res://ui/paused_quit_to_main_menu_ui.gd" id="15_2cqfq"]
+[ext_resource type="Script" uid="uid://gq1godd1jh45" path="res://ui/virtual_joystick.gd" id="16_074og"]
+[ext_resource type="Texture2D" uid="uid://b2txoe7d7ju3x" path="res://objects/traps/boulder/boulder.png" id="16_yaehf"]
+[ext_resource type="Script" uid="uid://bclyluclvgq11" path="res://ui/virtual_action_button.gd" id="18_cegan"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ycdy4"]
 font = ExtResource("4_dg77c")
@@ -47,6 +50,20 @@ texture_margin_left = 32.0
 texture_margin_top = 12.0
 texture_margin_right = 32.0
 texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_074og"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
+atlas = ExtResource("16_yaehf")
+region = Rect2(0, 0, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cegan"]
+atlas = ExtResource("16_yaehf")
+region = Rect2(0, 0, 52, 52)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_074og"]
+texture = SubResource("AtlasTexture_cegan")
+region_rect = Rect2(0, 0, 52, 52)
 
 [node name="Main" type="Node2D" unique_id=1316412496]
 process_mode = 3
@@ -175,10 +192,10 @@ text = "Warp LvL"
 [node name="GameTimer" type="Label" parent="GameUI/UI" unique_id=861133629]
 process_mode = 1
 layout_mode = 0
-offset_left = 672.0
-offset_top = 32.0
-offset_right = 769.0
-offset_bottom = 55.0
+offset_left = 808.0
+offset_top = 8.0
+offset_right = 905.0
+offset_bottom = 31.0
 text = "00:00:00"
 label_settings = SubResource("LabelSettings_vivmo")
 script = ExtResource("12_ycdy4")
@@ -245,6 +262,97 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_yaehf")
 theme_override_styles/focus = SubResource("StyleBoxTexture_yaehf")
 text = "Main Menu"
 script = ExtResource("15_2cqfq")
+
+[node name="VirtualControls" type="Control" parent="GameUI" unique_id=163676063]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = -248.0
+offset_right = 40.0
+offset_bottom = -208.0
+
+[node name="VirtualJoystick" type="PanelContainer" parent="GameUI/VirtualControls" unique_id=1294673727]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 576.0
+offset_right = 184.0
+offset_bottom = 688.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_074og")
+script = ExtResource("16_074og")
+max_radius = 32.0
+
+[node name="Base" type="TextureRect" parent="GameUI/VirtualControls/VirtualJoystick" unique_id=856810661]
+self_modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+texture = SubResource("AtlasTexture_074og")
+
+[node name="Handle" type="TextureRect" parent="GameUI/VirtualControls/VirtualJoystick/Base" unique_id=778294852]
+self_modulate = Color(1, 1, 1, 0.7529412)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 96.0
+pivot_offset = Vector2(16, 16)
+texture = SubResource("AtlasTexture_074og")
+
+[node name="VirtualButtonA" type="PanelContainer" parent="GameUI/VirtualControls" unique_id=1005968279]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 704.0
+offset_top = 608.0
+offset_right = 784.0
+offset_bottom = 688.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_074og")
+
+[node name="Button" type="Button" parent="GameUI/VirtualControls/VirtualButtonA" unique_id=1027712859]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.5019608)
+theme_override_fonts/font = ExtResource("4_efxa6")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_074og")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_074og")
+theme_override_styles/hover = SubResource("StyleBoxTexture_074og")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_074og")
+theme_override_styles/focus = SubResource("StyleBoxTexture_074og")
+text = "A"
+script = ExtResource("18_cegan")
+virtual_action_name = "jump"
+
+[node name="VirtualButtonB" type="PanelContainer" parent="GameUI/VirtualControls" unique_id=2051940223]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 792.0
+offset_top = 568.0
+offset_right = 856.0
+offset_bottom = 632.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_074og")
+
+[node name="Button" type="Button" parent="GameUI/VirtualControls/VirtualButtonB" unique_id=630446409]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.5019608)
+theme_override_fonts/font = ExtResource("4_efxa6")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_074og")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_074og")
+theme_override_styles/hover = SubResource("StyleBoxTexture_074og")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_074og")
+theme_override_styles/focus = SubResource("StyleBoxTexture_074og")
+text = "B"
+script = ExtResource("18_cegan")
+virtual_action_name = "interaction"
 
 [node name="Player" parent="." unique_id=389177389 node_paths=PackedStringArray("camera", "player_heath_ui", "lives_count_label_ui") instance=ExtResource("1_0xm2m")]
 process_mode = 1

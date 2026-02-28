@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2lfscx2oorkx"]
+[gd_scene format=3 uid="uid://b2lfscx2oorkx"]
 
 [ext_resource type="Script" uid="uid://dcys5f7vhk0x2" path="res://level/platforms/cloud/cloud_platform.gd" id="1_fo1gd"]
 [ext_resource type="Texture2D" uid="uid://dhqbusl5wbuyn" path="res://level/platforms/cloud/cloud_platform.png" id="2_1qdmc"]
@@ -38,26 +38,26 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b2ua"]
 resource_local_to_scene = true
 custom_solver_bias = 1.0
-size = Vector2(129, 4)
+size = Vector2(132, 12)
 
-[node name="CloudPlatform" type="AnimatableBody2D"]
+[node name="CloudPlatform" type="AnimatableBody2D" unique_id=1311166541]
 collision_layer = 128
 sync_to_physics = false
 script = ExtResource("1_fo1gd")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=88841695]
 position = Vector2(0, -31)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_73g21")
 target_position = Vector2(0, -8)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=404334915]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_2sx2x")
 autoplay = "default"
 frame_progress = 0.472206
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1441756293]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5b2ua")
 one_way_collision = true

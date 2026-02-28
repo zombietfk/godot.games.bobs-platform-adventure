@@ -37,9 +37,9 @@ func process(_delta: float)->void:
 				knockpack_impetus,
 			);
 	
-func physics_process(_delta: float):
+func physics_process(delta: float):
 	body.velocity = (
 		_walking_context.movement_direction.normalized() *
 		_walking_context.movement_speed +
-		body.get_gravity()
+		body.get_gravity() * delta
 	);

@@ -19,14 +19,18 @@ run/main_scene="uid://dhlm8oerqsx8g"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/show_image=false
 
+[audio]
+
+driver/output_latency.web=100
+
 [debug]
 
 shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.784314)
 
 [display]
 
+window/size/viewport_width=1352
 window/size/viewport_height=778
-window/size/mode=3
 window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/scale=1.5
@@ -468,6 +472,10 @@ move_down={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [layer_names]
 
 2d_physics/layer_1="Actors 1"
@@ -486,7 +494,6 @@ move_down={
 
 [physics]
 
-common/physics_ticks_per_second=240
 2d/default_gravity=1920.0
 common/default_gravity=8.0
 

@@ -20,14 +20,15 @@ func _clamp_vertical_movement(max_movement_speed: float):
 
 func _process_horizontal_input(movement_context: PlayerMovementContext):
 	movement_context.movement_impetus = Vector2.ZERO;
+	var input_strength = abs(Input.get_axis("move_left", "move_right"));
 	if Input.is_action_pressed("move_right"):
 		movement_context.movement_impetus += (
 			Vector2.RIGHT * movement_context.movement_speed
-		);
+		) * input_strength;
 	if Input.is_action_pressed("move_left"):
 		movement_context.movement_impetus += (
 			Vector2.LEFT * movement_context.movement_speed
-		);
+		) * input_strength;
 
 func _kill_player()->void:
 	transition.emit("Dead");

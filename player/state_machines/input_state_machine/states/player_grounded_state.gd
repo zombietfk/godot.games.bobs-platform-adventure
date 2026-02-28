@@ -4,8 +4,8 @@ extends AbstractPlayerMovementState;
 var _movement_context: PlayerMovementContext;
 @export var _jump_forgiveness_timer: float = 0.08;
 var _c_jump_forgiveness_timer: float;
-@export var friction_strength: float = 9.0/8;
-@export var slope_slipperyness_factor: float = 1.6;
+@export var friction_strength: float = 1.3;
+@export var slope_slipperyness_factor: float = 1.4;
 @export var jump_sound: AudioStreamPlayer;
 
 func enter(_from: AbstractState)->void:
@@ -75,7 +75,7 @@ func _process_jump_input(delta: float):
 func _process_fall_through_platform_input():
 	if Input.is_action_pressed("drop"):
 		body.set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, false);
-	if !Input.is_action_pressed("drop"):
+	if Input.is_action_just_released("drop"):
 		body.set_collision_mask_value(PhysicsLayers.NAMES.LEVEL_2, true);
 
 func _process_object_interaction_input():

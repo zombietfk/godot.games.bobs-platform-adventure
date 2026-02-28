@@ -51,7 +51,15 @@ func _ready()->void:
 	music.seek(2.0);
 	animation_player.play("RESET");
 	cutscene_typewriter.finished_writing.connect(_wait_for_input_then_play_next);
-	
+
+func _input(event)->void:
+	if event is InputEventScreenTouch:
+		print('booock');
+		if event.pressed:
+			Input.action_press("jump"); 
+		else:
+			Input.action_release("jump");
+
 func _wait_for_input_then_play_next():
 	while !Input.is_action_pressed("jump"):
 		await get_tree().process_frame;

@@ -1,0 +1,32 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://b0d1vuf8hbj5j"]
+
+[sub_resource type="Curve" id="Curve_pk8b5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.93125, 1), 0.0, 0.0, 0, 0, Vector2(0.9875, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kaw7s"]
+curve = SubResource("Curve_pk8b5")
+
+[resource]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 400.0
+initial_velocity_max = 450.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 300, 0)
+scale_min = 1.2
+scale_max = 1.6
+scale_curve = SubResource("CurveTexture_kaw7s")
+color = Color(1, 0, 1, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+turbulence_enabled = true
+turbulence_noise_scale = 0.5
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.08
+turbulence_initial_displacement_min = 0.100001
+turbulence_initial_displacement_max = 0.500001

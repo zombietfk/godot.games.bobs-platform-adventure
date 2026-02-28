@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://btrhx0xc2eli3"]
+
+[ext_resource type="Texture2D" uid="uid://drnm4va3uegtk" path="res://ui/button_9_slice.png" id="1_qp581"]
+[ext_resource type="Texture2D" uid="uid://bf3mdfkm2pkm2" path="res://ui/button_checkbox_confirm.png" id="2_qyoeu"]
+[ext_resource type="Script" uid="uid://b1w4tnf5f4rha" path="res://ui/show_timer_check_box.gd" id="3_ukh3e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0o4t1"]
+texture = ExtResource("1_qp581")
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="ShowTimerCheckbox" type="CheckBox" unique_id=118898657]
+theme_override_styles/normal = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0o4t1")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0o4t1")
+theme_override_icons/checked = ExtResource("2_qyoeu")
+script = ExtResource("3_ukh3e")
+
+[connection signal="pressed" from="." to="." method="_toggle_timer"]

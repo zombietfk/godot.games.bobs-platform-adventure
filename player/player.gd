@@ -4,7 +4,7 @@ extends CharacterBody2D;
 # CONSTANTS
 const FLOOR_COLLISION_MASK = (1 << 7) | (1 << 8) | (1 << 9);
 const FLOOR_CORRECTION_DISTANCE = 100;
-const VELOCITY_X_MIN = 10;
+const VELOCITY_X_MIN = 40;
 
 static var use_bobette_as_player = false;
 @export var bobette_sprite_frames: SpriteFrames;
@@ -22,6 +22,7 @@ static var use_bobette_as_player = false;
 @export var crush_check_raycast_left: RayCast2D;
 @export var crush_check_raycast_right: RayCast2D;
 @export var alert_notifcation: Sprite2D;
+@export var virtual_jotstick: VirtualController;
 
 var flying_cheat := false;
 var is_dead_flag := false;

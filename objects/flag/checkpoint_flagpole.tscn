@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://djq4d4knkv1da" path="res://objects/flag/checkpoint_flag.gd" id="3_kaw7s"]
 [ext_resource type="Texture2D" uid="uid://cvx72hv61cght" path="res://objects/flag/flag_spritesheet.png" id="4_7lbva"]
 [ext_resource type="Texture2D" uid="uid://635y7nh3j3a1" path="res://objects/confetti.png" id="5_pk8b5"]
+[ext_resource type="Material" uid="uid://b0d1vuf8hbj5j" path="res://objects/flag/confetti_particle_process_material.tres" id="7_wud71"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
 atlas = ExtResource("2_pk8b5")
@@ -109,43 +110,6 @@ animations = [{
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kaw7s"]
 
-[sub_resource type="Curve" id="Curve_pk8b5"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.93125, 1), 0.0, 0.0, 0, 0, Vector2(0.9875, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_kaw7s"]
-curve = SubResource("Curve_pk8b5")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kaw7s"]
-particle_flag_disable_z = true
-angle_min = -720.0
-angle_max = 720.0
-direction = Vector3(0, -1, 0)
-spread = 15.0
-initial_velocity_min = 400.0
-initial_velocity_max = 450.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-gravity = Vector3(0, 300, 0)
-scale_min = 1.2
-scale_max = 1.6
-scale_curve = SubResource("CurveTexture_kaw7s")
-color = Color(1, 0, 1, 1)
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-turbulence_enabled = true
-turbulence_noise_scale = 0.5
-turbulence_noise_speed_random = 0.0
-turbulence_influence_min = 0.08
-turbulence_initial_displacement_min = 0.100001
-turbulence_initial_displacement_max = 0.500001
-collision_mode = 1
-collision_friction = 0.3
-collision_bounce = 0.7
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pk8b5"]
-polygon = PackedVector2Array(200, 0, 200, 25, -200, 25, -200, 0)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vw27"]
 size = Vector2(20, 120)
 
@@ -191,11 +155,7 @@ texture = ExtResource("5_pk8b5")
 lifetime = 5.0
 one_shot = true
 explosiveness = 0.9
-process_material = SubResource("ParticleProcessMaterial_kaw7s")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Confetti/GPUParticles2D" unique_id=2056292993]
-position = Vector2(-1, 104)
-occluder = SubResource("OccluderPolygon2D_pk8b5")
+process_material = ExtResource("7_wud71")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1124460367]
 position = Vector2(-1, -29)

@@ -53,7 +53,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 z_index = 1
 collision_layer = 8
 collision_mask = 64
-floor_snap_length = 8.0
+floor_snap_length = 32.0
 script = ExtResource("1_jq3dk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1881918845]

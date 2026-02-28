@@ -27,6 +27,7 @@ static var difficulty = DIFFICULTY.EASY;
 static var persistant_trigger_labels: Array[String] = [];
 static var music: AudioStreamPlayer;
 static var show_clock: bool = true;
+static var mobile_compatabilty_mode: bool = false;
 static var inital_level_path_static: String = "";
 
 # TRIGGERS
@@ -46,6 +47,9 @@ func _ready() -> void:
 		update_spawn(inital_level_path, 0);
 		update_checkpoint(inital_checkpoint_path, 0);
 	load_level();
+	print(Main.mobile_compatabilty_mode);
+	if Main.mobile_compatabilty_mode:
+		$GameUI/VirtualControls.visible = true;
 
 # UTILITY
 static func update_spawn(next_level_path: String, with_spawn_index: int = 0) -> void:

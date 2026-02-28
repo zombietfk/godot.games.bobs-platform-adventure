@@ -19,9 +19,9 @@ var _interrupt_wait_then_run: bool = false;
 
 var _lives_remaining_stats = {
 	"move_acceleration_sqr": [
-		0.022,
-		0.015,
-		0.01,
+		0.56,
+		0.32,
+		0.16,
 	],
 	"_wait_time_before_run": [
 		0.5,
